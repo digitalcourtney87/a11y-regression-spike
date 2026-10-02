@@ -1,0 +1,9 @@
+{
+  "itemId": "item-0001",
+  "arm": "C",
+  "verdict": "FAIL",
+  "symptom": "ANNOUNCEMENT_MISSING",
+  "ruleIds": [
+    "b2.live-region.1"
+  ]
+}

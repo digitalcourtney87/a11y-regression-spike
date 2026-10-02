@@ -1,0 +1,32 @@
+{
+  "itemId": "item-0001",
+  "side": "candidate",
+  "repetition": 2,
+  "orderIndex": 3,
+  "env": {
+    "harnessCommit": "0123456789abcdef0123456789abcdef01234567",
+    "imageOS": "win25",
+    "imageVersion": "20260101.1.0",
+    "windowsBuild": "10.0.26100.0",
+    "chromeVersion": "153.0.8010.12",
+    "chromeFlags": [
+      "--force-renderer-accessibility=screen-reader"
+    ],
+    "listenerVersion": "0.0.0",
+    "nodeVersion": "24.21.0",
+    "locale": "en-GB"
+  },
+  "canaries": {
+    "pre": true,
+    "post": true
+  },
+  "maxClockSkewMs": 0.4,
+  "steps": [
+    {
+      "stepId": "s1",
+      "startedAt": 1200000000000,
+      "endedAt": 1201500000000,
+      "outcome": "UNREACHABLE"
+    }
+  ]
+}
