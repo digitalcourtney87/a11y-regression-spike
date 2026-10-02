@@ -19,6 +19,13 @@ docs/private/
 # NVDA binaries and portable builds are never committed (D6)
 nvda/
 *.nvda-addon
+nvda*.exe
+*.dll
+
+# Local secrets (the repository-safety test also forbids these)
+.env
+.env.*
+.envrc
 
 # OS and editor noise
 .DS_Store
