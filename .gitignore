@@ -1,0 +1,27 @@
+# Dependencies and tool output
+node_modules/
+coverage/
+dist/
+*.tsbuildinfo
+
+# Downloaded CI artefacts (gate bundles live on the orphan `results` branch, D6)
+artefacts/
+
+# .NET build output (listener)
+listener/**/bin/
+listener/**/obj/
+
+# The full PRD and all commercial content stay out of this repository (D5).
+# The in-repo reference is docs/PRD-v0.3-technical-extract.md.
+docs/PRD-v0.3.md
+docs/private/
+
+# NVDA binaries and portable builds are never committed (D6)
+nvda/
+*.nvda-addon
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

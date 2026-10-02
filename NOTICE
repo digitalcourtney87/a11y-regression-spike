@@ -1,0 +1,9 @@
+a11y-regression-spike
+Copyright 2026 Courtney Allen Ventures Ltd.
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Any NVDA add-on code, if approved and added under adapters/nvda-addon/, is
+licensed separately under the GNU General Public License, version 2 or later,
+and is not part of the Apache-2.0 licensed harness. The harness does not import
+NVDA modules; it communicates with NVDA only as a separate process.
