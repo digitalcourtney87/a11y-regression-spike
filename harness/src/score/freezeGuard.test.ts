@@ -12,6 +12,7 @@ import {
   gitFreezeDeps,
   latestFreezeTag,
   parseRecordedHash,
+  repositoryFreezeDeps,
 } from "./freezeGuard.ts";
 import type { FreezeGuardDeps } from "./freezeGuard.ts";
 import { computeProtocolHash } from "./protocolHash.ts";
@@ -73,6 +74,18 @@ describe("evaluateSplit with injected deps", () => {
     const decision = evaluateSplit("test", deps({ "v1.0.0": "release" }, H1));
     expect(decision.allowed).toBe(false);
     expect(!decision.allowed && decision.reason).toMatch(/no protocol freeze tag/);
+  });
+
+  test("without a freeze tag the live hash is never computed (DR-0033)", () => {
+    const d: FreezeGuardDeps = { listFreezeTags: () => ["v1.0.0"], readTagMessage: throwing, computeHash: throwing };
+    const decision = evaluateSplit("test", d);
+    expect(!decision.allowed && decision.reason).toMatch(/no protocol freeze tag/);
+  });
+
+  test("a freeze tag without a parseable hash refuses before the live hash is computed", () => {
+    const d: FreezeGuardDeps = { ...deps({ "protocol-freeze-v1": "frozen, hash to follow" }, H1), computeHash: throwing };
+    const decision = evaluateSplit("test", d);
+    expect(!decision.allowed && decision.reason).toMatch(/does not record exactly one parseable/);
   });
 
   test("test is allowed when the latest tag records the current hash", () => {
@@ -158,8 +171,12 @@ describe("gitFreezeDeps against a temporary repository", () => {
     delete env.GIT_INDEX_FILE;
     git(["init", "-q"]);
     mkdirSync(join(repo, "protocol", "oracles"), { recursive: true });
+    mkdirSync(join(repo, "harness", "src"), { recursive: true });
+    writeFileSync(join(repo, "protocol", "frozen-paths.txt"), "protocol/\nharness/src/\n");
     writeFileSync(join(repo, "protocol", "PROTOCOL.md"), "# Frozen protocol\n");
     writeFileSync(join(repo, "protocol", "oracles", ".gitkeep"), "");
+    writeFileSync(join(repo, "harness", "src", "oracle.ts"), "export const rule = 1;\n");
+    writeFileSync(join(repo, "README.md"), "not frozen\n");
     git(["add", "-A"]);
     git(["commit", "-q", "-m", "protocol"]);
   });
@@ -168,7 +185,7 @@ describe("gitFreezeDeps against a temporary repository", () => {
     rmSync(base, { recursive: true, force: true });
   });
 
-  const hashNow = (): string => computeProtocolHash(join(repo, "protocol"));
+  const hashNow = (): string => computeProtocolHash(repo);
 
   test("no tag: refused", () => {
     const decision = evaluateSplit("test", gitFreezeDeps(repo, hashNow));
@@ -187,6 +204,24 @@ describe("gitFreezeDeps against a temporary repository", () => {
     expect(decision).toEqual({ allowed: true, split: "test", tag: "protocol-freeze-v2", protocolSha256: hashNow() });
   });
 
+  test("repositoryFreezeDeps hashes the repository's frozen set", () => {
+    expect(assertSplitAllowed("test", repositoryFreezeDeps(repo)).tag).toBe("protocol-freeze-v2");
+  });
+
+  test("a committed change outside the frozen set keeps the test split allowed", () => {
+    writeFileSync(join(repo, "README.md"), "edited after freeze\n");
+    git(["commit", "-q", "-am", "edit README after freeze"]);
+    expect(evaluateSplit("test", gitFreezeDeps(repo, hashNow)).allowed).toBe(true);
+  });
+
+  test("an uncommitted edit to a frozen path outside protocol/ refuses the test split", () => {
+    writeFileSync(join(repo, "harness", "src", "oracle.ts"), "export const rule = 2;\n");
+    const decision = evaluateSplit("test", gitFreezeDeps(repo, hashNow));
+    expect(!decision.allowed && decision.reason).toMatch(/could not compute the protocol hash: .*uncommitted or untracked changes/);
+    git(["checkout", "--", "harness/src/oracle.ts"]);
+    expect(evaluateSplit("test", gitFreezeDeps(repo, hashNow)).allowed).toBe(true);
+  });
+
   test("an uncommitted edit to protocol/ after the freeze refuses the test split", () => {
     writeFileSync(join(repo, "protocol", "PROTOCOL.md"), "# Edited after freeze\n");
     const decision = evaluateSplit("test", gitFreezeDeps(repo, hashNow));
@@ -195,6 +230,15 @@ describe("gitFreezeDeps against a temporary repository", () => {
 
   test("a committed edit to protocol/ after the freeze refuses the test split", () => {
     git(["commit", "-q", "-am", "edit protocol after freeze"]);
+    const decision = evaluateSplit("test", gitFreezeDeps(repo, hashNow));
+    expect(!decision.allowed && decision.reason).toMatch(/does not match/);
+  });
+
+  test("a committed edit to a frozen path outside protocol/ refuses the test split (DR-0033)", () => {
+    git(["tag", "-a", "protocol-freeze-v3", "-m", `Protocol freeze 3\n\nprotocol-sha256: ${hashNow()}`]);
+    expect(evaluateSplit("test", gitFreezeDeps(repo, hashNow)).allowed).toBe(true);
+    writeFileSync(join(repo, "harness", "src", "oracle.ts"), "export const rule = 3;\n");
+    git(["commit", "-q", "-am", "edit scoring code after freeze"]);
     const decision = evaluateSplit("test", gitFreezeDeps(repo, hashNow));
     expect(!decision.allowed && decision.reason).toMatch(/does not match/);
   });

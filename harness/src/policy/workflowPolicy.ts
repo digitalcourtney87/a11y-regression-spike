@@ -21,8 +21,8 @@
  * | W8 | Every `actions/checkout` step sets `with.persist-credentials: false` |
  *
  * \* The `github.token` and whole-`github` part of W4 goes beyond the literal
- * S7 rule ("no `secrets.` reference anywhere"). It is Proposed by Claude (not
- * yet owner-approved): `github.token` is the GITHUB_TOKEN under another name,
+ * S7 rule ("no `secrets.` reference anywhere"). It was approved by the owner
+ * 2026-10-02 (DR-0030): `github.token` is the GITHUB_TOKEN under another name,
  * and `toJSON(secrets)` or `toJSON(github)` piped through base64 gets past
  * log masking.
  *

@@ -1,18 +1,31 @@
 /**
- * Protocol freeze guard (DR-0028; HANDOFF §4 hard rule 5 and §10.3).
+ * Protocol freeze guard (DR-0028, scope amended by DR-0033; HANDOFF §4 hard
+ * rule 5 and §10.3).
  *
- * The scorer may score the test split only after the protocol freeze. The
- * freeze is an annotated git tag named `protocol-freeze-v<N>` whose message
- * contains a line `protocol-sha256: <64 lowercase hex>`. The test split is
- * allowed only if at least one freeze tag exists, the latest one (highest N,
- * compared numerically) records a parseable hash, and that hash equals the
- * hash of `protocol/` now. That hash covers the committed protocol and cannot
- * be computed while `protocol/` has uncommitted or untracked changes
- * (protocolHash.ts), so such changes also refuse. The dev split is always
+ * The scorer may score the test split only after the protocol freeze, and
+ * from M4 the runner may execute a test-split item only on the same condition
+ * (DR-0034, `harness/src/runner/splitGuard.ts`). The freeze is an annotated
+ * git tag named `protocol-freeze-v<N>` whose message contains a line
+ * `protocol-sha256: <64 lowercase hex>`. The test split is allowed only if at
+ * least one freeze tag exists, the latest one (highest N, compared
+ * numerically) records a parseable hash, and that hash equals the protocol
+ * hash now. The protocol hash covers the frozen set, every path listed in
+ * `protocol/frozen-paths.txt` (DR-0033), as committed, and cannot be computed
+ * while the working tree differs from the committed frozen set (uncommitted,
+ * untracked or hidden changes, or stray git-ignored files under a listed path;
+ * see protocolHash.ts), so such changes also refuse. The dev split is always
  * allowed.
+ *
+ * The guard checks the tags before it computes anything: without a freeze tag
+ * carrying a parseable hash, it refuses without computing the live repository
+ * hash. A dirty working tree therefore never affects the dev split, `npm test`
+ * or a refused `npm run score -- --split test`.
  */
 
 import { execFileSync } from "node:child_process";
+import { resolve } from "node:path";
+
+import { computeProtocolHash } from "./protocolHash.ts";
 
 export type Split = "dev" | "test";
 
@@ -28,7 +41,10 @@ export interface FreezeGuardDeps {
   listFreezeTags(): string[];
   /** The full message of an annotated tag; throws if the tag is not annotated. */
   readTagMessage(tag: string): string;
-  /** The current protocol hash (see protocolHash.ts). */
+  /**
+   * The current protocol hash of the frozen set (see protocolHash.ts). Called
+   * only after a freeze tag with a parseable hash has been found.
+   */
   computeHash(): string;
 }
 
@@ -86,7 +102,11 @@ function describeError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
-/** Decides whether a split may be scored. Never throws; dependency failures refuse. */
+/**
+ * Decides whether a split may be scored or executed. Never throws; dependency
+ * failures refuse. `deps.computeHash` is called only once a freeze tag with a
+ * parseable hash exists.
+ */
 export function evaluateSplit(split: Split, deps: FreezeGuardDeps): SplitDecision {
   if (split === "dev") return { allowed: true, split };
 
@@ -124,14 +144,15 @@ export function evaluateSplit(split: Split, deps: FreezeGuardDeps): SplitDecisio
     return refuse(`computed protocol hash is malformed: ${current}`);
   }
   if (current !== recorded) {
-    return refuse(`protocol/ hash ${current} does not match ${recorded} recorded in freeze tag ${tag}`);
+    return refuse(`protocol hash ${current} of the frozen set does not match ${recorded} recorded in freeze tag ${tag}`);
   }
   return { allowed: true, split, tag, protocolSha256: current };
 }
 
 /**
- * Throws FreezeGuardRefusal unless the split may be scored. Returns the
- * decision (with the freeze tag and hash for the test split) when allowed.
+ * Throws FreezeGuardRefusal unless the split may be scored or executed.
+ * Returns the decision (with the freeze tag and hash for the test split) when
+ * allowed.
  */
 export function assertSplitAllowed(split: Split, deps: FreezeGuardDeps): Extract<SplitDecision, { allowed: true }> {
   const decision = evaluateSplit(split, deps);
@@ -168,4 +189,17 @@ export function gitFreezeDeps(repoDir: string, computeHash: () => string): Freez
     },
     computeHash,
   };
+}
+
+/** The repository root, located from this file rather than the working directory. */
+export const REPO_ROOT = resolve(import.meta.dirname, "../../..");
+
+/**
+ * Freeze-guard dependencies for this repository: git tags in `repoRoot` and
+ * the protocol hash of its frozen set (DR-0033). Shared by the scorer CLI and
+ * the runner's execution guard (DR-0034). Nothing runs until the guard calls
+ * a dependency.
+ */
+export function repositoryFreezeDeps(repoRoot: string = REPO_ROOT): FreezeGuardDeps {
+  return gitFreezeDeps(repoRoot, () => computeProtocolHash(repoRoot));
 }

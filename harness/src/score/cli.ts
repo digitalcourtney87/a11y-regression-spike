@@ -1,5 +1,6 @@
 /**
- * Scorer entry point: `npm run score -- --split <dev|test>` (DR-0028).
+ * Scorer entry point: `npm run score -- --split <dev|test>` (DR-0028; the
+ * freeze covers the frozen set listed in protocol/frozen-paths.txt, DR-0033).
  *
  * Exit codes:
  *
@@ -10,12 +11,12 @@
  * | 3 | Split allowed, but the scorer is not implemented until M5 |
  */
 
-import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 
-import { evaluateSplit, gitFreezeDeps, isSplit } from "./freezeGuard.ts";
+import { evaluateSplit, isSplit, REPO_ROOT, repositoryFreezeDeps } from "./freezeGuard.ts";
 import type { FreezeGuardDeps } from "./freezeGuard.ts";
-import { computeProtocolHash } from "./protocolHash.ts";
+
+export { REPO_ROOT };
 
 export const EXIT_REFUSED = 1;
 export const EXIT_USAGE = 2;
@@ -37,11 +38,8 @@ const consoleIo: CliIo = {
   },
 };
 
-/** The repository root, located from this file rather than the working directory. */
-export const REPO_ROOT = resolve(import.meta.dirname, "../../..");
-
 export function defaultDeps(repoRoot: string = REPO_ROOT): FreezeGuardDeps {
-  return gitFreezeDeps(repoRoot, () => computeProtocolHash(resolve(repoRoot, "protocol")));
+  return repositoryFreezeDeps(repoRoot);
 }
 
 /** Runs the scorer CLI and returns its exit code. */

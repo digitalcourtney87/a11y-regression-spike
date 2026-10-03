@@ -1,0 +1,30 @@
+# Frozen paths (DR-0033): every repository path that can change a verdict.
+#
+# The protocol freeze guard hashes the tracked regular files under these paths
+# (harness/src/score/protocolHash.ts), and the freeze tag records that hash.
+# This list lives in protocol/, so changing it changes the hash.
+#
+# Format: one repository-relative POSIX path per line. A trailing "/" marks a
+# directory; any other entry is a single file. Blank lines and lines starting
+# with "#" are ignored. Absolute paths, ".." segments, backslashes and
+# duplicate entries are rejected, and protocol/ must be listed.
+#
+# Owner minimum (owner review 2026-10-02, DR-0033): protocol/, corpus/,
+# journeys/, harness/src/, listener/, env/env.lock.json and package-lock.json.
+#
+# Added because each can change a verdict (Decided by Claude under DR-0045,
+# 2026-10-03): fixtures/ (canary pages, SPA and Prompt to Page exports),
+# package.json (scripts, including score), .nvmrc (Node version) and
+# .github/workflows/ (run steps and flags).
+
+protocol/
+corpus/
+journeys/
+fixtures/
+harness/src/
+listener/
+env/env.lock.json
+package.json
+package-lock.json
+.nvmrc
+.github/workflows/

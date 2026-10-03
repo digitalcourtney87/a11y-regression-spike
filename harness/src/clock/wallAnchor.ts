@@ -5,7 +5,10 @@
  * clock policy in harness/src/policy/clockPolicy.ts enforces it). The anchor
  * pairs one QPC reading with one wall-clock reading so that QPC timestamps can
  * be rendered as human-readable times. It is never used for measurement,
- * alignment or validity decisions.
+ * alignment or validity decisions. One further use is allowed (DR-0039):
+ * NVDA log lines, which carry only wall-clock times, may be bucketed into
+ * segments through this anchor for parity counts and diagnostics, never for
+ * latency, ordering or validity.
  *
  * Precision. D1 asks for one precise wall-clock anchor per process. The Node
  * anchor below is not yet precise on Windows. Node's `Date.now()` is V8's
@@ -18,7 +21,7 @@
  * macOS the error is below the 1 ms resolution of `wallIso`. Because the
  * anchor only labels times for people, this affects no measurement.
  *
- * Proposed by Claude (not yet owner-approved): the Node anchor stays coarse
+ * Approved by the owner 2026-10-02 (DR-0030): the Node anchor stays coarse
  * until M2. From M2 the Node process adopts the (QPC, wall) pair measured by
  * the listener's `WallAnchor.cs`. There, `DateTime.UtcNow` uses
  * `GetSystemTimePreciseAsFileTime` and `Stopwatch.GetTimestamp()` reads the

@@ -1,7 +1,7 @@
 # Dependencies and tool output
 node_modules/
 coverage/
-dist/
+/dist/
 *.tsbuildinfo
 
 # Downloaded CI artefacts (gate bundles live on the orphan `results` branch, D6)

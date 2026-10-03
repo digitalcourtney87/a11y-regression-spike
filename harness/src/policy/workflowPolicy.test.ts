@@ -172,7 +172,7 @@ describe("W4 no secrets", () => {
     ["a computed github index", ["steps:", "  - env:", "      T: ${{ github[format('{0}', 'token')] }}", "    run: echo ok"]],
     ["the whole github context", ["steps:", "  - env:", "      G: ${{ toJSON(github) }}", "    run: echo ok"]],
     ["github.token in an action input", ["steps:", "  - uses: ./local", "    with:", "      token: ${{ github.token }}"]],
-  ])("rejects %s (Proposed by Claude: expressions and github.token)", (_label, lines) => {
+  ])("rejects %s (W4 extension approved 2026-10-02, DR-0030: expressions and github.token)", (_label, lines) => {
     const wf = workflow({ jobBody: job([...BASE_JOB, ...lines]) });
     const v = checkWorkflow(wf, "ci.yml");
     expect(rules(v)).toEqual(["W4"]);

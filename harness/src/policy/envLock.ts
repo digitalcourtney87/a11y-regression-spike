@@ -2,10 +2,29 @@
  * Schema for env/env.lock.json, the Phase 0 environment pins (DR-0006 Runner
  * images, DR-0007 Toolchain pins, DR-0008 GitHub Action pins, DR-0009 NVDA
  * provisioning via Guidepup (setup-action archived), DR-0012 D3 Virtual
- * audio, DR-0019 D10 B2 scope and listener).
+ * audio as amended by DR-0040 Scream Authenticode verification, DR-0017 D8
+ * NVDA channel and voice as amended by DR-0041 eSpeak NG at NVDA's default
+ * rate, DR-0019 D10 B2 scope and listener).
  *
  * Every pin records a status: "pinned" (value resolved and fixed) or
  * "pending-M1a" (to be resolved by the M1a runner probes; value is null).
+ * A GitHub Action pin may instead be "pending-owner": its version and SHA are
+ * recorded, but adopting it awaits a pending owner item (hard rule 12), which
+ * its note must name (P<n>). No workflow may use such an Action: the env.lock
+ * cross-check test (harness/test/policy/envLock.test.ts) requires every Action
+ * a workflow or local action uses to be "pinned". `actions/setup-dotnet` is
+ * pending owner item P2 (DR-0008, DR-0019).
+ *
+ * Scream (DR-0040): M1a records the Authenticode signature status, signer and
+ * issuer, not just the signer thumbprint, and the schema refuses a pinned
+ * thumbprint until all three are pinned. If the chain is valid and the signer
+ * is consistent with the release, the thumbprint is pinned; if the
+ * certificate is self-signed, authenticity rests on trust on first use and
+ * the owner is asked before pinning.
+ *
+ * NVDA synth (DR-0041): eSpeak NG at NVDA's default rate ("nvda-default", 30
+ * on a fresh NVDA 2026.2 configuration) with rate boost off. The effective
+ * rate is recorded per run in the evidence manifest, not here.
  */
 
 import { readFileSync } from "node:fs";
@@ -33,13 +52,78 @@ function pendingOr<T extends z.ZodType>(value: T) {
   ]);
 }
 
-const actionPin = z.strictObject({
-  status: z.literal("pinned"),
-  repo: z.string().regex(/^[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/, "expected owner/repo"),
-  version: vSemver,
-  sha: sha1Hex,
+/**
+ * Authenticode signature status as reported by PowerShell's
+ * Get-AuthenticodeSignature (System.Management.Automation.SignatureStatus).
+ */
+export const SIGNATURE_STATUSES = [
+  "Valid",
+  "UnknownError",
+  "NotSigned",
+  "HashMismatch",
+  "NotTrusted",
+  "NotSupportedFileFormat",
+  "Incompatible",
+] as const;
+
+/** A certificate distinguished name, for example the subject or issuer of the signer certificate. */
+const distinguishedName = z.string().min(1);
+
+const screamPin = z
+  .strictObject({
+    status: z.literal("pinned"),
+    version: z.string().regex(/^\d+\.\d+$/, "expected major.minor"),
+    url: z.url({ protocol: /^https$/ }),
+    sha256: sha256Hex,
+    sizeBytes: z.number().int().positive().optional(),
+    licence: z.string().min(1).optional(),
+    signerThumbprint: pendingOr(z.string().regex(/^[0-9A-Fa-f]{40}$/, "expected a 40-character hex certificate thumbprint")),
+    // DR-0040: recorded in M1a alongside the thumbprint.
+    signatureStatus: pendingOr(z.enum(SIGNATURE_STATUSES)),
+    signer: pendingOr(distinguishedName),
+    issuer: pendingOr(distinguishedName),
+    note,
+  })
+  .superRefine((scream, ctx) => {
+    if (scream.signerThumbprint.status !== "pinned") return;
+    for (const key of ["signatureStatus", "signer", "issuer"] as const) {
+      if (scream[key].status !== "pinned") {
+        ctx.addIssue({
+          code: "custom",
+          path: [key, "status"],
+          message: `scream.${key} must be pinned before scream.signerThumbprint is pinned (DR-0040)`,
+        });
+      }
+    }
+  });
+
+/** The declared NVDA synthesiser (D8, DR-0017, amended by DR-0041). */
+const nvdaSynth = z.strictObject({
+  name: z.literal("espeak"),
+  rate: z.literal("nvda-default"),
+  rateBoost: z.literal(false),
   note,
 });
+
+/**
+ * Statuses of a GitHub Action pin. "pending-owner": recorded, but adopting the
+ * Action awaits a pending owner item (hard rule 12), so no workflow may use it.
+ */
+export const ACTION_PIN_STATUSES = ["pinned", "pending-owner"] as const;
+export type ActionPinStatus = (typeof ACTION_PIN_STATUSES)[number];
+
+const actionRepo = z.string().regex(/^[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/, "expected owner/repo");
+
+const actionPin = z.discriminatedUnion("status", [
+  z.strictObject({ status: z.literal("pinned"), repo: actionRepo, version: vSemver, sha: sha1Hex, note }),
+  z.strictObject({
+    status: z.literal("pending-owner"),
+    repo: actionRepo,
+    version: vSemver,
+    sha: sha1Hex,
+    note: z.string().regex(/\bP\d+\b/, "a pending-owner Action pin's note must name the pending owner item (P<n>)"),
+  }),
+]);
 
 export const EnvLockSchema = z.strictObject({
   lockVersion: z.literal(1),
@@ -70,18 +154,10 @@ export const EnvLockSchema = z.strictObject({
     guidepupAsset: z.string().min(1),
     sha256: sha256Hex,
     relayCertificateValidUntil: isoDate.optional(),
+    synth: nvdaSynth,
     note,
   }),
-  scream: z.strictObject({
-    status: z.literal("pinned"),
-    version: z.string().regex(/^\d+\.\d+$/, "expected major.minor"),
-    url: z.url({ protocol: /^https$/ }),
-    sha256: sha256Hex,
-    sizeBytes: z.number().int().positive().optional(),
-    licence: z.string().min(1).optional(),
-    signerThumbprint: pendingOr(z.string().regex(/^[0-9A-Fa-f]{40}$/, "expected a 40-character hex certificate thumbprint")),
-    note,
-  }),
+  scream: screamPin,
   dotnet: z.strictObject({ status: z.literal("pinned"), sdk: semver, runtime: semver.optional(), note }),
   actions: z.record(z.string().regex(/^[a-z0-9-]+$/), actionPin),
 });
