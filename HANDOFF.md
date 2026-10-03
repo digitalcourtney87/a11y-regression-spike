@@ -1,14 +1,27 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.5 (2026-10-03)
+**Version:** 1.6 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
-**Authorised scope:** Milestones M0–M2 (bootstrap and instrument validation). M3–M7 are specified for context only and are locked until the owner approves Gate G2.
+**Authorised scope:** Milestones M0–M3. The owner approved Gate G2 on 2026-10-03 and confirmed that it unlocks M3 (DR-0055). M4–M7 are specified for context; Claude asks the owner before starting M4, and the Phase 1 proceed/stop decision stays on 27 November 2026 (DR-0003).
 
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.6
+
+v1.6 records the owner's approvals at the G2 gate (DR-0055): G2 is accepted and M3 is unlocked; P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) are approved; P9 is final as tested. No owner items are pending. The v1.5 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.6; authorised scope M0–M3 | DR-0055 |
+| §7.4 | Errors: only setup errors before activation are INCONCLUSIVE; listener failures and errors after activation are failures | DR-0055 (P13); DR-0053 |
+| §8.3 | P9 final as tested: same task or one rAF within one frame, 50 ms or more, REVIEW between | DR-0055; DR-0052 |
+| §9 (M2) | G2 accepted | DR-0055 |
+| §9.1 | B2 signature definitions (P12) | DR-0055; DR-0053 |
+| §12 | Current authorisation: M0–M3 | DR-0055 |
 
 ## Changes in v1.5
 
@@ -56,7 +69,7 @@ v1.2 applies the owner's review of M0 (2 October 2026; recorded 2026-10-03). Dec
 |---|---|
 | "approved by the owner 2026-10-02 (DR-0030)", or a specific record | The owner approved the part in the review of M0 |
 | "Decided by Claude under DR-0045 (2026-10-03)" | Not a hard-rule-12 item; Claude decided it under the owner's delegation and logged it |
-| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. In v1.2 four appeared in this file (P1, P2, P3, P4); the owner approved P1, P2 and P4 on 2026-10-03 (DR-0046) and P3 at the G1 gate (DR-0052), so none remains |
+| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. In v1.2 four appeared in this file (P1, P2, P3, P4); the owner approved P1, P2 and P4 on 2026-10-03 (DR-0046) and P3 at the G1 gate (DR-0052), so none remains; P12 and P13, added in M2, were approved at the G2 gate (DR-0055) |
 
 Sections §1, §3 and §13 are unchanged. The v1.1 change log below is kept as written for v1.1, with a one-line historical note added at its top.
 
@@ -319,6 +332,8 @@ Base and candidate run in the same job on the same machine. Order is counterbala
 
 INCONCLUSIVE comes only from checks completed before the outcome is known (R9; DR-0021, D12): the environment manifest, the foreground HWND and platform focus, the pre-block canary and the §7.3 clock limits, plus the injection marker, the audio endpoint and the active synth in the NVDA-present leg (limiting the audio check to that leg was approved by the owner 2026-10-02, DR-0030). A failed pre-block canary makes the whole block INCONCLUSIVE. A failed post-block canary is reported with the block but does not convert outcomes already observed; the next block must pass its own pre-block canary. The owner approved this post-block handling on 2026-10-02: a post-block canary never converts observed outcomes (DR-0030, DR-0032). It follows the DR-0032 principle that a check may produce INCONCLUSIVE only if the thing being judged cannot cause it to fail; a post-block canary can fail because the block's own pages broke NVDA, so it cannot void outcomes. From M4 the side-aware validity rule applies (R9; DR-0035).
 
+**Errors (P13; DR-0053, DR-0055).** Only a setup error before activation (browser launch, page load, process or window lookup) makes an attempt INCONCLUSIVE (`ENV_FAILURE`). A failure of the B2 listener (start, fewer hooks than ranges, ping, stop, not drained, or malformed output lines) and any error after activation count as failures, because the thing being judged may have caused them (DR-0032). Approved by the owner on 2026-10-03.
+
 ---
 
 ## 8. Instruments
@@ -357,7 +372,7 @@ Patch `Element.prototype.attachShadow` before page scripts run so every shadow r
 
 **Insertion-to-content delay grading (DR-0037).** For every live region, record the delay in milliseconds from its insertion to its first non-empty content, and grade it against Chrome's accessibility serialisation window: after load, Chrome serialises non-immediate changes at most once per 150 ms (350 ms before load), so a region filled within that window can reach the platform as though it had been inserted populated. A region inserted with non-empty content is graded as a populated insertion; a fill within the window is graded as possibly indistinguishable from a populated insertion; a fill after the window is graded as a separate update (basis DR-0029). This grading replaces the v1.0 same-batch flag and is the rule in force now. K6e shows where the boundary falls on the runner; if its data contradict the 150 ms and 350 ms boundaries, the change goes to the owner (hard rule 12; DR-0037).
 
-**Post-load boundary for polite regions (P9; DR-0052).** K6e in the M1d pilot and G1 contradicted the 150 ms post-load boundary for polite regions: same-frame fills were silent and fills from 50 ms were announced. For polite live regions filled after page load, a fill in the same frame (0 ms or one rAF) is graded as a populated insertion; a fill 50 ms or more after insertion is graded as a separate update; a fill between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep the grading above until tested. The owner approved this provisionally on 2026-10-03: the G2 report confirms it against the NVDA-absent K6e B2 signatures, and data that contradict it go back to the owner.
+**Post-load boundary for polite regions (P9; DR-0052).** K6e in the M1d pilot and G1 contradicted the 150 ms post-load boundary for polite regions: same-frame fills were silent and fills from 50 ms were announced. For polite live regions filled after page load, a fill in the same frame (0 ms or one rAF) is graded as a populated insertion; a fill 50 ms or more after insertion is graded as a separate update; a fill between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep the grading above until tested. The owner approved this provisionally on 2026-10-03 (DR-0052). G2's NVDA-absent K6e signatures agreed with it, and the owner made it final as tested on 2026-10-03 (DR-0055): a fill in the same task, or in a `requestAnimationFrame` callback within one 60 Hz frame (1000/60 ms), is the same frame; every other fill under 50 ms routes to REVIEW (DR-0053).
 
 ### 8.4 Arms from separate legs (DR-0020, D11; DR-0018, D9)
 
@@ -441,7 +456,9 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
 
 **G2 rule (exploratory; DR-0021, D12), replacing the v1.0 threshold:** the same structure as G1, applied to B2 signature matches for K1–K5 in the NVDA-absent leg: at least 50 valid runs per canary, pooled failures at most 5 in 250, no single canary with more than 3, and INCONCLUSIVE at most 5% of attempts, pooled across K1–K5 (DR-0030); per-canary flags above 10% are reported without changing the result (DR-0038).
 
-### M3–M7 — Locked until the owner approves G2
+**G2 outcome (DR-0055).** The owner accepted G2 on 2026-10-03 (`docs/gates/G2.md`): 260 valid NVDA-absent runs of K1–K5 with 0 signature failures and INCONCLUSIVE 0%. M2 is merged and M3 is unlocked.
+
+### M3–M7 — M3 unlocked by the G2 approval (DR-0055); ask the owner before M4
 
 - **M3 — Corpus scaffolding (dev split only).**
   - Select the SPA after evaluating at least three candidates against these criteria: runs natively on Windows via Node; no external credentials; permissive licence; client-side routing; form validation; a dialog; a status update; at least one composite widget; deterministic data; builds in under five minutes.
@@ -480,6 +497,7 @@ K6 and K7 are not pass/fail canaries. They test premises the corpus depends on.
 - Fill delays are over 350 ms, except in the K6e sweep, which tests shorter delays on purpose.
 - No keypress inside any observation window; K7 is triggered by a timer, not a key.
 - K5 does not depend on the title; latency is measured from the canary events themselves (DR-0010, D1).
+- B2 signatures (P12; DR-0053, DR-0055): a platform event is attributed by UIA AutomationId (the DOM id), and only when it has none by MSAA name, UIA AriaRole or MSAA role; LiveSetting is not an identity; events on the browser frame window are excluded (P3). The required components per gating canary, the K6 and K7 record-only traces and the "same frame" rule are as listed in DR-0053.
 - Speech matching (P11; DR-0048, DR-0052): an utterance contains the expected text when its lower-cased letters and digits contain the expected text's, because NVDA's speech dictionaries rewrite text before it is queued ("K1" becomes "K 1"); K3 needs the name immediately followed by the role.
 
 **Pre-registered K6a rule (DR-0013, D4):** if any K6a variant is announced in more than 1 of 20 runs, the creation-time regression family leaves the M3 catalogue. The rule is evaluated on the NVDA-present leg (v1.2; DR-0036). "Announced" means the tap records a `speak` message containing the region's text within the observation window (DR-0013's reading, approved by the owner 2026-10-02, DR-0030). Which mechanisms belong to the creation-time regression family, and which are not affected, is as listed in DR-0013 (P1, approved by the owner 2026-10-03, DR-0046), fixed before any K6a data exist.
@@ -770,7 +788,7 @@ export interface ArmVerdict {
 ~~~markdown
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.5). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.6). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -808,7 +826,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M2 only. G1 report target Fri 23 Oct 2026; the M2 listener and the NVDA-absent leg are built in parallel with M1, and only the G2 report waits for G1 (DR-0043). G2 report due by Fri 6 Nov 2026, otherwise stop and report; the Phase 1 proceed/stop decision is on Fri 27 Nov 2026 (DR-0003). M3 onwards is locked until the owner approves Gate G2 (docs/gates/G2.md).
+M0–M3. The owner approved Gate G2 on 2026-10-03 and confirmed that it unlocks M3 (DR-0055). M4 onwards was not part of that approval: ask the owner before starting M4. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
 
 ## Logs
 - docs/DECISIONS.md — decisions

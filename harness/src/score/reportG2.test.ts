@@ -91,6 +91,20 @@ describe("buildG2Report", () => {
     expect(report.listenerFailures).toBe(1);
   });
 
+  test("a trace with malformed listener lines never passes (P13)", () => {
+    const lossy: B2Attempt = { ...absent("K3", true), listener: { events: evidence("K3", true).events, malformed: 1, uia: "validated" } };
+    expect(rescoreB2(lossy)).toBeNull();
+    expect(buildG2Report([lossy]).gating.find((g) => g.canary === "K3")).toMatchObject({ valid: 1, failures: 1 });
+  });
+
+  test("keeps attempts with no B2 outcome in every component denominator", () => {
+    const report = buildG2Report([absent("K3", true), { ...absent("K3", true), b2: null }]);
+    expect(report.gating.find((g) => g.canary === "K3")?.components).toEqual([
+      expect.objectContaining({ name: "dom-focusin", required: true, found: 1, of: 2 }),
+      expect.objectContaining({ name: "focus", required: true, found: 1, of: 2 }),
+    ]);
+  });
+
   test("keeps the on/off diagnostic out of G1 and does not evaluate the G2 rule on it", () => {
     const diag: B2Attempt = { ...absent("K1", false), leg: "nvda-present", diagnostic: "b2-onoff", outcome: { kind: "gating", verdict: "PASS" } };
     const g2 = buildG2Report([absent("K1", true), diag]);
@@ -117,9 +131,20 @@ describe("buildG2Report", () => {
       const events = [ev(509, "EVENT_OBJECT_SHOW", "region"), ...(fillAt === null ? [] : [ev(665, "IA2_EVENT_TEXT_INSERTED", "region"), ev(665, "EVENT_OBJECT_LIVEREGIONCHANGED", "region")])];
       return { ...absent("K3", true), itemId: "K6e:50", canary: "K6e", gating: false, b2: { kind: "b2-record" }, timeline, listener: { events, malformed: 0, uia: "validated" } };
     };
-    const report = buildG2Report([k6(50), k6(51), k6(null)]);
-    expect(report.recordOnly[0]).toMatchObject({ itemId: "K6e:50", valid: 3, grades: { "separate-update": 2, "populated-insertion": 1 }, separateUpdate: 2, regionEvents: { EVENT_OBJECT_LIVEREGIONCHANGED: 2 } });
+    const report = buildG2Report([k6(50), k6(51), k6(null), { ...k6(50), listenerFailure: "ping: timed out" }]);
+    expect(report.recordOnly[0]).toMatchObject({ itemId: "K6e:50", valid: 4, missing: 1, grades: { "separate-update": 2, "populated-insertion": 1 }, separateUpdate: 2, regionEvents: { EVENT_OBJECT_LIVEREGIONCHANGED: 2 } });
     expect(report.recordOnly[0]?.delayMs).toMatchObject({ min: 50, max: 51 });
     expect(report.recordOnly[0]?.timing?.textInserted).toMatchObject({ n: 2, medianMs: 165 });
+  });
+
+  test("compares every K7 order field the run-time outcome recorded", () => {
+    const k7 = (order: Record<string, boolean | null>): B2Attempt => {
+      const events = [ev(510, "IA2_EVENT_TEXT_INSERTED", "live"), { ...ev(510.3, "EVENT_OBJECT_FOCUS", "target") }, ev(510.5, "EVENT_OBJECT_LIVEREGIONCHANGED", "live")];
+      const timeline = [dom(500, { kind: "insert", target: "#text", parent: "div#live", liveRoot: "div#live", inLive: true }), dom(500, { kind: "focusin", target: "button#target" })];
+      return { ...absent("K3", true), itemId: "K7a", canary: "K7a", gating: false, timeline, listener: { events, malformed: 0, uia: "validated" }, b2: { kind: "b2-record", order } as B2Attempt["b2"] };
+    };
+    // Re-scored: DOM true, IA2 text true, LIVEREGIONCHANGED false.
+    expect(buildG2Report([k7({ domTextBeforeFocus: true, platformTextBeforeFocus: true })]).rescore.recordChanged).toEqual([]);
+    expect(buildG2Report([k7({ domTextBeforeFocus: true, platformTextBeforeFocus: true, platformLiveRegionBeforeFocus: true })]).rescore.recordChanged).toHaveLength(1);
   });
 });

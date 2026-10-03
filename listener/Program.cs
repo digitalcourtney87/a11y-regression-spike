@@ -79,7 +79,7 @@ internal static class Program
             json.WriteNumber("frequency", Stopwatch.Frequency);
             json.WriteNumber("anchorQpcNs", anchorQpc);
             json.WriteString("anchorWall", anchorWall);
-            json.WriteString("version", "0.3.0");
+            json.WriteString("version", "0.3.1");
             json.WriteString("runtime", Environment.Version.ToString());
         });
 

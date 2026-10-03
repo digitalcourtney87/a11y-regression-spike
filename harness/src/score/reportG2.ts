@@ -12,7 +12,7 @@
  * to the definitions is visible and the evidence never needs re-running.
  */
 import type { MappedTimelineEntry } from "../collectors/mutationTimeline.ts";
-import { evaluateGatingB2, evaluateRecordB2, SAME_FRAME_MS } from "../runner/b2Signature.ts";
+import { evaluateGatingB2, evaluateRecordB2, gatingComponents, SAME_FRAME_MS } from "../runner/b2Signature.ts";
 import type { B2Component, B2GatingOutcome, B2RecordOutcome, DelayGrade, SignatureEvent } from "../runner/b2Signature.ts";
 import { specByItemId } from "../runner/canaries.ts";
 import { gateResult } from "../runner/validity.ts";
@@ -73,6 +73,8 @@ export interface B2GatingRow {
 export interface B2RecordRow {
   itemId: string;
   valid: number;
+  /** Valid attempts with no B2 trace (listener failure, malformed lines or an error after activation). */
+  missing: number;
   grades: Partial<Record<DelayGrade, number>>;
   delayMs: { median: number | null; min: number | null; max: number | null };
   separateUpdate: number;
@@ -165,11 +167,14 @@ function clockStat(values: (number | null | undefined)[]): ClockStat {
 
 /**
  * Re-scores an attempt's B2 outcome from its raw evidence. Attempts whose
- * listener failed, or that recorded no B2 outcome at run time, stay null
- * (a failure for gating canaries).
+ * listener failed or wrote malformed lines, or that recorded no B2 outcome at
+ * run time, stay null (a failure for gating canaries; counted as missing for
+ * record-only canaries).
  */
 export function rescoreB2(a: B2Attempt): B2Outcome | null {
   if (a.b2 === null || a.b2 === undefined || a.listenerFailure !== undefined || a.listener === undefined || a.timeline === undefined) return null;
+  // A trace with malformed listener lines lost events and never passes (P13, DR-0055).
+  if (a.listener.malformed > 0) return null;
   const step = a.package?.steps[0];
   const spec = specByItemId(a.itemId);
   if (step?.endedAt === undefined || spec === undefined) return null;
@@ -177,15 +182,19 @@ export function rescoreB2(a: B2Attempt): B2Outcome | null {
   return spec.gating ? evaluateGatingB2(spec.canary, a.listener.events, a.timeline, w) : evaluateRecordB2(spec, a.listener.events, a.timeline, w, { timelineVersion: a.timelineVersion ?? 1 });
 }
 
-function componentRates(outcomes: readonly (B2GatingOutcome | null)[]): ComponentRate[] {
-  const present = outcomes.filter((o): o is B2GatingOutcome => o !== null);
-  const names = [...new Set(present.flatMap((o) => o.components.map((c) => c.name)))];
-  return names.map((name) => {
-    const comps = present.map((o) => o.components.find((c) => c.name === name)).filter((c): c is B2Component => c !== undefined);
-    const found = comps.filter((c) => c.found);
+/**
+ * Component rates over every valid attempt. A valid attempt with no B2
+ * outcome counts as "not found" for every component, so an instrument
+ * failure lowers the rates rather than leaving the denominator.
+ */
+function componentRates(canary: string, outcomes: readonly (B2GatingOutcome | null)[]): ComponentRate[] {
+  const expected = gatingComponents(canary, [], [], { activationT: 0, endT: 0 });
+  return expected.map(({ name, required }) => {
+    const comps = outcomes.map((o) => (o === null ? null : (o.components.find((c) => c.name === name) ?? null)));
+    const found = comps.filter((c): c is B2Component => c?.found === true);
     const via: Record<string, number> = {};
     for (const c of found) if (c.via !== undefined) via[c.via] = (via[c.via] ?? 0) + 1;
-    return { name, required: comps[0]?.required ?? false, found: found.length, of: comps.length, interval: interval(found.length, comps.length), via };
+    return { name, required, found: found.length, of: comps.length, interval: interval(found.length, comps.length), via };
   });
 }
 
@@ -254,10 +263,27 @@ function sameVerdict(x: B2Outcome | null | undefined, y: B2Outcome | null): bool
   return vx === vy;
 }
 
+/**
+ * Whether a re-scored record-only outcome agrees with the run-time one: the K6
+ * grade and separate-update flag, or every K7 order field the run-time outcome
+ * carries (runs before the gate review did not record the live-region order).
+ */
+function recordAgrees(runtime: B2Outcome | null | undefined, rescored: B2Outcome | null): boolean {
+  const a = runtime?.kind === "b2-record" ? runtime : null;
+  const b = rescored?.kind === "b2-record" ? rescored : null;
+  if (a === null || b === null) return a === b;
+  if (a.region !== undefined || b.region !== undefined) return a.region?.grade === b.region?.grade && a.region?.separateUpdate === b.region?.separateUpdate;
+  const x = a.order;
+  const y = b.order;
+  if (x === undefined || y === undefined) return x === y;
+  const live = (x as { platformLiveRegionBeforeFocus?: boolean | null }).platformLiveRegionBeforeFocus;
+  return x.domTextBeforeFocus === y.domTextBeforeFocus && x.platformTextBeforeFocus === y.platformTextBeforeFocus && (live === undefined || live === y.platformLiveRegionBeforeFocus);
+}
+
 function recordKey(o: B2Outcome | null | undefined): string {
   if (o?.kind !== "b2-record") return "null";
   if (o.region !== undefined) return `${o.region.grade}/${String(o.region.separateUpdate)}`;
-  return `${String(o.order?.domTextBeforeFocus)}/${String(o.order?.platformTextBeforeFocus)}`;
+  return `${String(o.order?.domTextBeforeFocus)}/${String(o.order?.platformTextBeforeFocus)}/${String(o.order?.platformLiveRegionBeforeFocus)}`;
 }
 
 /** Aggregates the NVDA-absent leg for G2, and the on/off diagnostic. */
@@ -277,7 +303,7 @@ export function buildG2Report(attempts: readonly B2Attempt[]): G2Report {
       valid: valid.length,
       failures: failures.length,
       passInterval: interval(valid.length - failures.length, valid.length),
-      components: componentRates(valid.map(gatingOf)),
+      components: componentRates(canary, valid.map(gatingOf)),
       domToPlatform: summary(finite(valid.map((s) => domToPlatformMs(gatingOf(s))))),
     };
   });
@@ -286,7 +312,8 @@ export function buildG2Report(attempts: readonly B2Attempt[]): G2Report {
   const recordIds = [...new Set(absent.filter((s) => !s.a.gating).map((s) => s.a.itemId))].sort();
   const recordOnly: B2RecordRow[] = recordIds.map((itemId) => {
     const valid = absent.filter((s) => s.a.itemId === itemId && s.a.valid === true);
-    const records = valid.map((s) => (s.b2?.kind === "b2-record" ? s.b2 : null)).filter((r) => r !== null);
+    const all = valid.map((s) => (s.b2?.kind === "b2-record" ? s.b2 : null));
+    const records = all.filter((r) => r !== null);
     const regions = records.map((r) => r.region).filter((r) => r !== undefined);
     const grades: Partial<Record<DelayGrade, number>> = {};
     for (const r of regions) grades[r.grade] = (grades[r.grade] ?? 0) + 1;
@@ -300,6 +327,7 @@ export function buildG2Report(attempts: readonly B2Attempt[]): G2Report {
     return {
       itemId,
       valid: valid.length,
+      missing: all.length - records.length,
       grades,
       delayMs: { median: quantile(delays, 0.5), min: min(delays), max: max(delays) },
       separateUpdate: separate,
@@ -355,7 +383,7 @@ export function buildG2Report(attempts: readonly B2Attempt[]): G2Report {
       agree: gatingScored.filter((s) => sameVerdict(s.a.b2, s.b2)).length,
       changed: gatingScored.filter((s) => !sameVerdict(s.a.b2, s.b2)).map((s) => `${s.a.jobId}/${s.a.itemId}`),
       recordAttempts: recordScored.length,
-      recordChanged: recordScored.filter((s) => recordKey(s.a.b2) !== recordKey(s.b2)).map((s) => `${s.a.jobId}/${s.a.itemId}: ${recordKey(s.a.b2)} -> ${recordKey(s.b2)}`),
+      recordChanged: recordScored.filter((s) => !recordAgrees(s.a.b2, s.b2)).map((s) => `${s.a.jobId}/${s.a.itemId}: ${recordKey(s.a.b2)} -> ${recordKey(s.b2)}`),
     },
     clock: {
       native: clockStat(absent.map((s) => s.a.clock?.native)),
@@ -422,8 +450,8 @@ export function renderG2Report(report: G2Report): string {
     lines.push(
       `## Record-only B2 signatures (DR-0036; K6 graded by insertion-to-content delay, DR-0037 with P9; one frame = ${SAME_FRAME_MS.toFixed(1)} ms)`,
       "",
-      "| Item | Valid | Grades | DOM delay (median, range) | Separate update on the region (Wilson 95%) | Platform events on the region (attempts) | Region SHOW after DOM insertion (median, range) | TEXT_INSERTED after DOM insertion (median, range) | Before focus: DOM / IA2 text / LIVEREGIONCHANGED |",
-      "|---|---|---|---|---|---|---|---|---|",
+      "| Item | Valid | No B2 trace | Grades | DOM delay (median, range) | Separate update on the region (Wilson 95%) | Platform events on the region (attempts) | Region SHOW after DOM insertion (median, range) | TEXT_INSERTED after DOM insertion (median, range) | Before focus: DOM / IA2 text / LIVEREGIONCHANGED |",
+      "|---|---|---|---|---|---|---|---|---|---|",
     );
     for (const row of report.recordOnly) {
       const grades = Object.entries(row.grades).map(([k, v]) => `${k} ${String(v)}`).join(", ") || "–";
@@ -431,7 +459,7 @@ export function renderG2Report(report: G2Report): string {
       const events = Object.entries(row.regionEvents).map(([k, v]) => `${k.replace(/^EVENT_OBJECT_|^IA2_EVENT_/, "")} ${String(v)}`).join(", ") || "–";
       const timing = (s: (LatencySummary & { minMs: number | null }) | undefined): string => (s === undefined || s.n === 0 ? "–" : `${ms(s.medianMs)} (${ms(s.minMs)}–${ms(s.maxMs)})`);
       const order = row.domTextBeforeFocus === null ? "–" : `${String(row.domTextBeforeFocus)} / ${String(row.platformTextBeforeFocus)} / ${String(row.platformLiveRegionBeforeFocus)}`;
-      lines.push(`| ${row.itemId} | ${String(row.valid)} | ${grades} | ${delay} | ${row.separateUpdateInterval === null ? "–" : `${String(row.separateUpdate)}: ${pct(row.separateUpdateInterval)}`} | ${events} | ${timing(row.timing?.show)} | ${timing(row.timing?.textInserted)} | ${order} |`);
+      lines.push(`| ${row.itemId} | ${String(row.valid)} | ${String(row.missing)} | ${grades} | ${delay} | ${row.separateUpdateInterval === null ? "–" : `${String(row.separateUpdate)}: ${pct(row.separateUpdateInterval)}`} | ${events} | ${timing(row.timing?.show)} | ${timing(row.timing?.textInserted)} | ${order} |`);
     }
     lines.push("");
   }
