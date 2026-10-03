@@ -180,6 +180,6 @@ This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" secti
 | NVDA-present leg (speech) | As in G1: K1–K5 10 of 10; K6a 0 of 60; K6b NOW 20 of 20; K6e silent at 0 ms and one rAF (0 of 20), announced from 50 ms (50 of 50); K7b cancel 20 of 20. Parity per segment exact (166 against 166) |
 | P4 latency (DOM change to tap) | Pilot medians: K1 33.5 ms, K2 24.4 ms, K3 68.3 ms, K4 95.0 ms, K5 71.5 ms (n = 2 each) |
 | eSpeak NG | Effective rate 30, rate boost off, recorded in each of the 10 NVDA runs (DR-0041) |
-| P10 retry | No attempt needed a second focus read (0 of 410) |
+| P10 retry | 1 of 410 attempts needed more than one focus read: NVDA-present leg, K6e:raf, anchor returned on the fifth read (about 400 ms after the first). Under G1's single read it would have been INCONCLUSIVE; with P10 it is valid |
 | Clocks | Native self-test 0 ms for both native collectors; page mapping 0.1 ms; drift at most 0.19 ms; rAF gap at most 46.9 ms |
 | Listener build | The executable's SHA-256 is identical across jobs of one run but differs between commits with the same listener source (inferred: the SDK embeds the source revision); the hash identifies a build, not the source |
