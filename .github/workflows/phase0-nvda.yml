@@ -1,7 +1,9 @@
 name: phase0-nvda
-# Canary runs for M1b, the M1d pilot and the G1 runs (HANDOFF §9.2; DR-0021
-# D12). Dispatch with --ref <branch>; the placeholder on main makes the file
-# dispatchable (DR-0046). The NVDA-absent leg joins the matrix with M2.
+# Canary runs for M1 (G1) and M2 (G2) (HANDOFF §9.2; DR-0021 D12). Dispatch
+# with --ref <branch>. Both legs run in one dispatch so they share an image
+# version (R8, DR-0006). The NVDA-absent leg runs the B2 listener (DR-0019);
+# the NVDA-present leg runs it only with present_listener, for the on/off
+# diagnostic (DR-0020, P4).
 on:
   workflow_dispatch:
     inputs:
@@ -29,6 +31,14 @@ on:
         description: Recorded seed for the attempt order
         type: string
         default: "20261003"
+      legs:
+        description: JSON list of legs, e.g. ["nvda-present","nvda-absent"]
+        type: string
+        default: '["nvda-present","nvda-absent"]'
+      present_listener:
+        description: Run the B2 listener in the NVDA-present leg (on/off diagnostic only, P4)
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -41,7 +51,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        leg: [nvda-present]
+        leg: ${{ fromJSON(inputs.legs) }}
         shard: ${{ fromJSON(inputs.shard_list) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -53,6 +63,11 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.401
+      - name: Build the B2 listener (DR-0019)
+        run: dotnet build listener/Listener.csproj -c Release -warnaserror
       - name: Install Scream 3.6 virtual audio (D3, DR-0040, DR-0047)
         shell: pwsh
         run: ./harness/src/probes/scream.ps1 -Lock env/env.lock.json -OutDir artefacts/canaries
@@ -73,10 +88,12 @@ jobs:
           CANARIES: ${{ inputs.canaries }}
           RECORD_ONLY: ${{ inputs.record_only }}
           SEED: ${{ inputs.seed }}
+          PRESENT_LISTENER: ${{ inputs.present_listener }}
         run: |
-          $recordOnly = @()
-          if ($env:RECORD_ONLY -eq 'true') { $recordOnly = @('--record-only') }
-          npm run phase0:canaries -- --leg "$env:LEG" --runs "$env:RUNS" --canaries "$env:CANARIES" --shard "$env:SHARD/$env:SHARDS" --seed "$env:SEED" --out artefacts/canaries --env artefacts/canaries/env.json @recordOnly
+          $extra = @()
+          if ($env:RECORD_ONLY -eq 'true') { $extra += '--record-only' }
+          if ($env:PRESENT_LISTENER -eq 'true' -and $env:LEG -eq 'nvda-present') { $extra += '--with-listener' }
+          npm run phase0:canaries -- --leg "$env:LEG" --runs "$env:RUNS" --canaries "$env:CANARIES" --shard "$env:SHARD/$env:SHARDS" --seed "$env:SEED" --out artefacts/canaries --env artefacts/canaries/env.json @extra
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:

@@ -69,4 +69,10 @@ describe("latency, INCONCLUSIVE intervals and cancel timing", () => {
     expect(report.inconclusive.find((r) => r.itemId === "K2")).toMatchObject({ attempts: 2, inconclusive: 1 });
     expect(report.activationCancel).toEqual({ n: 1, medianMs: 5 });
   });
+  test("reports P4's DOM-change-to-tap latency when the timeline is present", () => {
+    const a: AttemptRecord = { ...gating("K3", "PASS"), domChangeAtMs: 501, outcome: { kind: "gating", verdict: "PASS", late: false, matched: { atMs: 610 } } as AttemptRecord["outcome"] };
+    const report = buildReport([a, gating("K3", "PASS")], []);
+    expect(report.domToTap.find((l) => l.canary === "K3")).toMatchObject({ n: 1, medianMs: 109 });
+    expect(renderReport(report)).toContain("DOM change to tap receipt");
+  });
 });

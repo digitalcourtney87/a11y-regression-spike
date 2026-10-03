@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.4 (2026-10-03)
+**Version:** 1.5 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -9,6 +9,20 @@
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.5
+
+v1.5 records the owner's approvals at the G1 gate (DR-0052): G1 is accepted and M1 merged; pending owner items P3, P7, P9, P10 and P11 are approved. No part of this file is now Proposed. The v1.4 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.5 | DR-0052 |
+| Changes in v1.2 (label legend) | No Proposed items remain in this file | DR-0052 |
+| §7.2 (step 2) | The MSAA focus read is retried for up to 1 s, from M2 | DR-0052 (P10); DR-0051 |
+| §8.2 | Listener event scope approved | DR-0052 (P3); DR-0019 |
+| §8.3 | Post-load boundary for polite regions replaced by the observed one, provisionally | DR-0052 (P9); DR-0037 |
+| §9 (M1) | G1 accepted | DR-0052 |
+| §9.1 | Canary speech-matching rule added | DR-0052 (P11); DR-0048 |
 
 ## Changes in v1.4
 
@@ -42,7 +56,7 @@ v1.2 applies the owner's review of M0 (2 October 2026; recorded 2026-10-03). Dec
 |---|---|
 | "approved by the owner 2026-10-02 (DR-0030)", or a specific record | The owner approved the part in the review of M0 |
 | "Decided by Claude under DR-0045 (2026-10-03)" | Not a hard-rule-12 item; Claude decided it under the owner's delegation and logged it |
-| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. In v1.2 four appeared in this file (P1, P2, P3, P4); the owner approved P1, P2 and P4 on 2026-10-03 (DR-0046), so only P3 (listener event scope, §8.2) remains |
+| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. In v1.2 four appeared in this file (P1, P2, P3, P4); the owner approved P1, P2 and P4 on 2026-10-03 (DR-0046) and P3 at the G1 gate (DR-0052), so none remains |
 
 Sections §1, §3 and §13 are unchanged. The v1.1 change log below is kept as written for v1.1, with a one-line historical note added at its top.
 
@@ -281,7 +295,7 @@ Playwright always enables CDP focus emulation, so DOM focus signals (`document.h
 
 Handover protocol:
 1. Bring the browser window to the foreground and verify that `GetForegroundWindow()` returns Chrome's top-level HWND.
-2. Move focus to the journey's declared anchor and verify platform focus on it (the listener's focus WinEvent or an MSAA/UIA focus read), not DOM focus. In the NVDA-present leg, platform focus is verified by an MSAA-only focus read, so that no UIA client registers (approved by the owner 2026-10-03, DR-0046; §8.4, DR-0020, DR-0024).
+2. Move focus to the journey's declared anchor and verify platform focus on it (the listener's focus WinEvent or an MSAA/UIA focus read), not DOM focus. In the NVDA-present leg, platform focus is verified by an MSAA-only focus read, so that no UIA client registers (approved by the owner 2026-10-03, DR-0046; §8.4, DR-0020, DR-0024). From M2 the MSAA read is retried every 100 ms for up to 1 s before the check fails (approved by the owner 2026-10-03, P10; DR-0051, DR-0052).
 3. In the NVDA-present leg, verify the D8 injection marker: `nvdaHelperRemote*.dll` loaded in `chrome.exe` and "Buffer load took" in the NVDA log (DR-0017).
 4. Attach the relay tap (§8.1).
 5. Wait for NVDA's virtual buffer to settle (a declared quiet window).
@@ -324,7 +338,7 @@ Implement an `AtAdapter` interface with one Phase 0 implementation: Guidepup's N
 
 A separate listener process in C# on .NET 10 (`listener/`); .NET 8 and 9 leave support on 10 November 2026 (DR-0019, D10).
 
-- **WinEvents are the primary channel.** Out-of-process `SetWinEventHook` hooks scoped to the Chrome browser process, across the MSAA and IA2 event IDs, including `EVENT_OBJECT_FOCUS`, `EVENT_OBJECT_NAMECHANGE`, `EVENT_OBJECT_DESCRIPTIONCHANGE`, `EVENT_OBJECT_LIVEREGIONCHANGED`, `EVENT_OBJECT_SHOW`, `EVENT_OBJECT_HIDE`, `EVENT_OBJECT_REORDER` and IA2 text insert and remove events, plus `EVENT_SYSTEM_ALERT` and `EVENT_SYSTEM_FOREGROUND` (DR-0024). The hook thread only stamps and enqueues; resolution runs on another thread (Decided by Claude under DR-0045 (2026-10-03); DR-0019). The exact hook ranges, the filtering by browser PID and window class, and the exclusion of browser-UI alerts by `hwndClass` are Proposed by Claude (not yet owner-approved; pending owner item P3 in `docs/DECISIONS.md`, DR-0019), because they decide which platform events B2 observes; the final ranges are fixed from M2 data.
+- **WinEvents are the primary channel.** Out-of-process `SetWinEventHook` hooks scoped to the Chrome browser process, across the MSAA and IA2 event IDs, including `EVENT_OBJECT_FOCUS`, `EVENT_OBJECT_NAMECHANGE`, `EVENT_OBJECT_DESCRIPTIONCHANGE`, `EVENT_OBJECT_LIVEREGIONCHANGED`, `EVENT_OBJECT_SHOW`, `EVENT_OBJECT_HIDE`, `EVENT_OBJECT_REORDER` and IA2 text insert and remove events, plus `EVENT_SYSTEM_ALERT` and `EVENT_SYSTEM_FOREGROUND` (DR-0024). The hook thread only stamps and enqueues; resolution runs on another thread (Decided by Claude under DR-0045 (2026-10-03); DR-0019). The exact hook ranges, the filtering by browser PID and window class, and the exclusion of browser-UI alerts by `hwndClass` were approved by the owner on 2026-10-03 (P3; DR-0019, DR-0052); the final ranges are confirmed from M2 data, and a change that adds or removes events goes back to the owner.
 - **Identity through MSAA and UIA property reads:** role, name, `AutomationId`, `LiveSetting` and `AriaRole`. No IA2 `QueryService` and no proxy registration, so B2's output cannot depend on whether NVDA has injected into Chrome.
 - **UIA events are diagnostic only.** UIA subscriptions are tagged as a separate, diagnostic channel and never form part of a B2 signature.
 - **Timestamps:** QPC via `Stopwatch.GetTimestamp()` on callback entry (§7.3). JSONL output.
@@ -342,6 +356,8 @@ A Playwright `addInitScript` installs a `MutationObserver` before page scripts r
 Patch `Element.prototype.attachShadow` before page scripts run so every shadow root is observed, and call `takeRecords()` inside the focus, history and title handlers before logging them so that records keep causal order. The owner approved these two techniques on 2026-10-02 (DR-0030; basis in DR-0029). Page times are mapped to QPC per §7.3 (DR-0010, D1). A `focusin` record is evidence of DOM focus only (§7.2).
 
 **Insertion-to-content delay grading (DR-0037).** For every live region, record the delay in milliseconds from its insertion to its first non-empty content, and grade it against Chrome's accessibility serialisation window: after load, Chrome serialises non-immediate changes at most once per 150 ms (350 ms before load), so a region filled within that window can reach the platform as though it had been inserted populated. A region inserted with non-empty content is graded as a populated insertion; a fill within the window is graded as possibly indistinguishable from a populated insertion; a fill after the window is graded as a separate update (basis DR-0029). This grading replaces the v1.0 same-batch flag and is the rule in force now. K6e shows where the boundary falls on the runner; if its data contradict the 150 ms and 350 ms boundaries, the change goes to the owner (hard rule 12; DR-0037).
+
+**Post-load boundary for polite regions (P9; DR-0052).** K6e in the M1d pilot and G1 contradicted the 150 ms post-load boundary for polite regions: same-frame fills were silent and fills from 50 ms were announced. For polite live regions filled after page load, a fill in the same frame (0 ms or one rAF) is graded as a populated insertion; a fill 50 ms or more after insertion is graded as a separate update; a fill between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep the grading above until tested. The owner approved this provisionally on 2026-10-03: the G2 report confirms it against the NVDA-absent K6e B2 signatures, and data that contradict it go back to the owner.
 
 ### 8.4 Arms from separate legs (DR-0020, D11; DR-0018, D9)
 
@@ -403,6 +419,8 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
 
 **G1 rule (exploratory; DR-0021, D12), replacing the v1.0 thresholds:** on `windows-2025`, retries off, at least 50 valid runs per gating canary (K1–K5). G1 passes when pooled K1–K5 failures are at most 5 in 250, no single canary has more than 3 failures, and INCONCLUSIVE is at most 5% of attempts (R9; pooled across K1–K5, approved by the owner 2026-10-02, DR-0030). A canary whose INCONCLUSIVE rate exceeds 10% is flagged in the report but does not change the result (DR-0038). Report Wilson intervals throughout and label every result exploratory. K6 and K7 never decide G1. A G1 failure of the relay tap is the only condition for reopening AT Driver (DR-0011).
 
+**G1 outcome (DR-0052).** The owner accepted G1 on 2026-10-03 (`docs/gates/G1.md`): 252 valid runs of K1–K5 with 0 failures and INCONCLUSIVE 0.4%, with the K2 top-up of DR-0050. M1 is merged.
+
 ### M2 — Event instruments (Gate G2)
 
 - Platform-event listener (§8.2), mutation timeline (§8.3) and clock alignment (§7.3), integrated with the canary runs. (v1.2: the listener and the NVDA-absent leg are built in parallel with M1; only the G2 report waits for G1, DR-0043.)
@@ -462,6 +480,7 @@ K6 and K7 are not pass/fail canaries. They test premises the corpus depends on.
 - Fill delays are over 350 ms, except in the K6e sweep, which tests shorter delays on purpose.
 - No keypress inside any observation window; K7 is triggered by a timer, not a key.
 - K5 does not depend on the title; latency is measured from the canary events themselves (DR-0010, D1).
+- Speech matching (P11; DR-0048, DR-0052): an utterance contains the expected text when its lower-cased letters and digits contain the expected text's, because NVDA's speech dictionaries rewrite text before it is queued ("K1" becomes "K 1"); K3 needs the name immediately followed by the role.
 
 **Pre-registered K6a rule (DR-0013, D4):** if any K6a variant is announced in more than 1 of 20 runs, the creation-time regression family leaves the M3 catalogue. The rule is evaluated on the NVDA-present leg (v1.2; DR-0036). "Announced" means the tap records a `speak` message containing the region's text within the observation window (DR-0013's reading, approved by the owner 2026-10-02, DR-0030). Which mechanisms belong to the creation-time regression family, and which are not affected, is as listed in DR-0013 (P1, approved by the owner 2026-10-03, DR-0046), fixed before any K6a data exist.
 
@@ -751,7 +770,7 @@ export interface ArmVerdict {
 ~~~markdown
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.2). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.5). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.

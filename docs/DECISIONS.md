@@ -41,7 +41,7 @@ Conventions:
 | [DR-0002](#dr-0002-copyright-holder) | Copyright holder | Accepted | 2026-10-02 | §2 Copyright holder | — | No |
 | [DR-0003](#dr-0003-time-box-and-stop-dates) | Time box and stop dates | Accepted | 2026-10-02 | §2 Stop dates | DR-0043 | Resolved |
 | [DR-0004](#dr-0004-owner-review-cadence) | Owner review cadence | Accepted | 2026-10-02 | §2 Owner review | DR-0043, DR-0045 | Resolved |
-| [DR-0005](#dr-0005-spend) | Spend | Accepted | 2026-10-02 | §2 Spend | — | Pending: P7 |
+| [DR-0005](#dr-0005-spend) | Spend | Accepted | 2026-10-02 | §2 Spend | — | Resolved (P7, DR-0052) |
 | [DR-0006](#dr-0006-runner-images) | Runner images | Accepted | 2026-10-02 | §2 Runner | — | Resolved |
 | [DR-0007](#dr-0007-toolchain-pins) | Toolchain pins | Accepted | 2026-10-02 | Approved as proposed (toolchain) | — | Resolved |
 | [DR-0008](#dr-0008-github-action-pins) | GitHub Action pins | Accepted | 2026-10-02 | HANDOFF hard rule 3, §9.2 | DR-0046 | Resolved (DR-0046) |
@@ -55,7 +55,7 @@ Conventions:
 | [DR-0016](#dr-0016-d7-sha-pinning-and-repository-settings) | D7 SHA pinning and repository settings | Accepted | 2026-10-02 | D7 | — | Resolved |
 | [DR-0017](#dr-0017-d8-nvda-channel-and-voice) | D8 NVDA channel and voice | Accepted | 2026-10-02 | D8 | DR-0041 | Resolved |
 | [DR-0018](#dr-0018-d9-arm-b-evidence) | D9 Arm B evidence | Accepted | 2026-10-02 | D9 | — | No |
-| [DR-0019](#dr-0019-d10-b2-scope-and-listener) | D10 B2 scope and listener | Accepted | 2026-10-02 | D10 | DR-0037, DR-0046 | Pending: P3 (P2 resolved, DR-0046) |
+| [DR-0019](#dr-0019-d10-b2-scope-and-listener) | D10 B2 scope and listener | Accepted | 2026-10-02 | D10 | DR-0037, DR-0046, DR-0052 | Resolved (P2, DR-0046; P3, DR-0052) |
 | [DR-0020](#dr-0020-d11-separate-legs) | D11 Separate legs | Accepted | 2026-10-02 | D11 | DR-0031, DR-0046 | Resolved (DR-0046) |
 | [DR-0021](#dr-0021-d12-gates-and-validity) | D12 Gates and validity | Accepted | 2026-10-02 | D12 | DR-0032, DR-0035, DR-0038 | Resolved |
 | [DR-0022](#dr-0022-d13-h2-scope) | D13 H2 scope | Accepted | 2026-10-02 | D13 | — (related: DR-0042) | Resolved |
@@ -73,7 +73,7 @@ Conventions:
 | [DR-0034](#dr-0034-execution-guard-for-the-test-split-hard-rule-5) | Execution guard for the test split (hard rule 5) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, gaps item 5 | — | No |
 | [DR-0035](#dr-0035-side-aware-validity-from-m4-validityts-is-phase-0-scoped-record-now-implement-before-m4) | Side-aware validity from M4; validity.ts is Phase 0-scoped (record now, implement before M4) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, item 6 and key item 3 (c) | — | No |
 | [DR-0036](#dr-0036-k6-and-k7-in-both-legs-k6a-rule-on-the-nvda-present-leg-amends-dr-0013) | K6 and K7 in both legs; K6a rule on the NVDA-present leg (amends DR-0013) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
-| [DR-0037](#dr-0037-k6-insertion-to-content-delay-grading-replaces-the-same-batch-flag-amends-dr-0013-dr-0019-handoff-83) | K6 insertion-to-content delay grading replaces the same-batch flag (amends DR-0013, DR-0019, HANDOFF §8.3) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | Pending: P9 |
+| [DR-0037](#dr-0037-k6-insertion-to-content-delay-grading-replaces-the-same-batch-flag-amends-dr-0013-dr-0019-handoff-83) | K6 insertion-to-content delay grading replaces the same-batch flag (amends DR-0013, DR-0019, HANDOFF §8.3) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | DR-0052 | Provisional: P9 (DR-0052); final pending |
 | [DR-0038](#dr-0038-per-canary-inconclusive-reporting-amends-dr-0021) | Per-canary INCONCLUSIVE reporting (amends DR-0021) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
 | [DR-0039](#dr-0039-nvda-log-bucketing-via-the-wall-anchor-amends-dr-0010-dr-0011) | NVDA log bucketing via the wall anchor (amends DR-0010, DR-0011) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
 | [DR-0040](#dr-0040-scream-authenticode-verification-amends-dr-0012) | Scream Authenticode verification (amends DR-0012) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
@@ -84,30 +84,35 @@ Conventions:
 | [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
 | [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0047](#dr-0047-scream-pinned-from-m1a-in-repository-installer-both-legs) | Scream pinned from M1a; in-repository installer; both legs | Accepted | 2026-10-03 | Decided by Claude under DR-0040 and DR-0045 | — | No |
-| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0049 | Pending: P11 |
+| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0049, DR-0052 | Resolved (P11, DR-0052) |
 | [DR-0049](#dr-0049-owner-approvals-of-p6-and-p8) | Owner approvals of P6 and P8 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0050](#dr-0050-g1-top-up-and-evidence-archive) | G1 top-up and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
-| [DR-0051](#dr-0051-handover-focus-read-retry-proposed) | Handover focus-read retry (proposed) | Proposed | 2026-10-03 | Pending owner item P10 | — | Pending: P10 |
+| [DR-0051](#dr-0051-handover-focus-read-retry) | Handover focus-read retry | Accepted | 2026-10-03 | P10, approved by the owner 2026-10-03 (DR-0052) | — | Resolved (P10, DR-0052) |
+| [DR-0052](#dr-0052-owner-approvals-at-the-g1-gate) | Owner approvals at the G1 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted, except P12 and P13 | 2026-10-03 | Decided by Claude under DR-0045; P12 and P13 pending | — | Pending: P12, P13 |
+| [DR-0054](#dr-0054-g2-runs-diagnostic-and-evidence-archive) | G2 runs, diagnostic and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
-These parts still carry **Proposed by Claude (not yet owner-approved)**. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
+Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). Five items are pending, all in the G1 brief: P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review).
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). Three items are pending, all in the G2 brief: P12, P13 and making P9 final (DR-0054).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
 | P1 | **Resolved (approved by the owner 2026-10-03, DR-0046).** Membership of the creation-time regression family, and the mechanisms not affected, in the reading of the pre-registered K6a rule | DR-0013 | What is measured (what leaves the M3 catalogue if the rule triggers) | No longer pending | Approved as recommended |
 | P2 | **Resolved (approved by the owner 2026-10-03, DR-0046).** `actions/setup-dotnet` v6.0.0 (`a98b56852c35b8e3190ac28c8c2271da59106c68`) to install the .NET 10 SDK for the listener build | DR-0008, DR-0019 | Security (a new third-party Action) | No longer pending | Approved as recommended |
-| P3 | Listener event scope: hook ranges (EVENT_OBJECT_LOCATIONCHANGE excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | DR-0019 | What is measured (which platform events B2 observes) | Before any G2 run; the final ranges are fixed in M2 | Yes, with the final ranges confirmed from M2 data |
+| P3 | **Resolved (approved by the owner 2026-10-03, DR-0052).** Listener event scope: hook ranges (EVENT_OBJECT_LOCATIONCHANGE excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | DR-0019 | What is measured (which platform events B2 observes) | No longer pending | Approved as recommended |
 | P4 | **Resolved (approved by the owner 2026-10-03, DR-0046).** Collectors in the NVDA-present leg, and how platform focus is verified there. Proposal: the WinEvent listener runs in that leg only for the 20-run on/off diagnostic, not in G1 runs; the in-page DOM timeline runs in both legs; G1 capture latency is measured from DOM mutation (page QPC) to tap receipt; platform focus in that leg is verified by an MSAA-only focus read (`accFocus` on Chrome's window), with no UIA client | DR-0020 (affects DR-0010 and DR-0024) | What is measured (which events are captured in the leg that produces C's evidence) | No longer pending | Approved as recommended |
 | P5 | **Resolved (decided by Claude under DR-0045, 2026-10-03).** The `yaml` 2.9.1 dev dependency, used by the workflow policy test to parse workflow files | DR-0007 | Listed on 2026-10-03 as security (third-party code that runs in CI; no owner-authored text names it) | No longer pending | Decided, not asked: the package is dev-only and has no dependencies of its own. It is exactly pinned, with a sha512 integrity hash in `package-lock.json`, and carries the ISC licence. It runs only in the Linux CI job (`ci.yml`), under `contents: read` with no secrets, and it parses only this repository's workflow files. It exists to enforce hard rule 3 (supply chain): the workflow policy test uses it to check Action pins, permissions, secrets and input handling |
 | P6 | **Resolved (approved by the owner 2026-10-03, DR-0049).** Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | No longer pending | Approved as recommended |
-| P7 | The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | The G1 brief; meanwhile Claude flags token-heavy work before running it and estimates spend | Yes; Claude's estimates in each gate report support it |
+| P7 | **Resolved (approved by the owner 2026-10-03, DR-0052).** The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | No longer pending | Approved as recommended |
 | P8 | **Resolved (approved by the owner 2026-10-03, DR-0049).** In Phase 0 canary runs, the pre-canary check is not applicable: each canary is itself the known-answer check, so `preCanaryOk` is always true and a capture failure counts as a canary failure, not INCONCLUSIVE. The anchor's focus announcement before activation is recorded per attempt, so the alternative (using it as the pre-canary) can be computed from the data | DR-0048 | What counts as INCONCLUSIVE (it decides whether an instrument failure can be absorbed as INCONCLUSIVE in G1) | No longer pending | Approved as recommended |
-| P9 | **Proposed by Claude (not yet owner-approved):** for polite live regions filled after page load, replace DR-0037's 150 ms grading boundary with the observed one: a fill in the same frame (0 ms or one rAF) counts as a populated insertion; a fill 50 ms or more after insertion counts as a fill; between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep DR-0037's grading until tested; the boundary is confirmed against M2's NVDA-absent K6e signatures before G2 | DR-0037 (triggered by the M1d pilot and G1; lab notebook 2026-10-03) | What counts as detection (B2 signatures and the M3 catalogue) | Before the G2 K6e signatures are scored | Yes, provisionally |
-| P10 | **Proposed by Claude (not yet owner-approved):** the handover's platform-focus check retries the MSAA focus read for up to 1 s before ruling `FOREGROUND_HWND`, from M2 onwards; G1 is unchanged | DR-0051 | What counts as INCONCLUSIVE (a pre-outcome check's timing) | Before the G2 runs | Yes |
-| P11 | **Proposed by Claude (not yet owner-approved):** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | At the G1 gate | Yes |
+| P9 | **Approved provisionally by the owner 2026-10-03 (DR-0052); making it final is pending (G2 brief item 3).** For polite live regions filled after page load, replace DR-0037's 150 ms grading boundary with the observed one: a fill in the same frame (0 ms or one rAF) counts as a populated insertion; a fill 50 ms or more after insertion counts as a fill; between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep DR-0037's grading until tested; the boundary is confirmed against M2's NVDA-absent K6e signatures before G2 | DR-0037 (triggered by the M1d pilot and G1; lab notebook 2026-10-03) | What counts as detection (B2 signatures and the M3 catalogue) | At the G2 gate | Yes, final as tested (G2 brief item 3) |
+| P10 | **Resolved (approved by the owner 2026-10-03, DR-0052).** the handover's platform-focus check retries the MSAA focus read for up to 1 s before ruling `FOREGROUND_HWND`, from M2 onwards; G1 is unchanged | DR-0051 | What counts as INCONCLUSIVE (a pre-outcome check's timing) | No longer pending | Approved as recommended |
+| P11 | **Resolved (approved by the owner 2026-10-03, DR-0052).** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | No longer pending | Approved as recommended |
+| P12 | **Proposed by Claude (not yet owner-approved):** the operational B2 signatures of DR-0053 as narrowed by the G2 gate review: identity by AutomationId, with name, AriaRole or MSAA role only for events without one, no LiveSetting, and browser-frame events excluded (P3); the gating components for K1–K5 (K4 including SHOW on the dialog); the record-only traces for K6 and K7 ("separate update"; K7 order per event type); and "same frame" as the same task or a rAF fill within one 60 Hz frame, with other fills under 50 ms routed to REVIEW (timeline version 2; version 1 records keep the pre-registered one-frame threshold). Every listener event and the whole DOM timeline are kept per attempt, so another reading can be re-scored without new runs | DR-0053 | What counts as detection (G2's result rests on it) | At the G2 gate | Yes |
+| P13 | **Proposed by Claude (not yet owner-approved):** only a setup error before activation (browser launch, page load, process or window lookup) makes an attempt INCONCLUSIVE (`ENV_FAILURE`); a failure of the B2 listener (start, fewer hooks than ranges, ping, stop, not drained) or any error after activation counts as a failure. Implemented in the G2 gate-review fix; `ENV_FAILURE` for setup errors has been in the runner since M1 without an owner decision | DR-0053 | What counts as INCONCLUSIVE (D12, DR-0032) | At the G2 gate | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -243,7 +248,7 @@ The owner's request on 2 October 2026:
 |---|---|
 | Date | 2026-10-02 |
 | Status | Accepted |
-| Proposed parts | One pending owner item (P7, who monitors the spend cap), marked inline; the rest resolved by DR-0030 |
+| Proposed parts | Resolved: P7 approved by the owner 2026-10-03 (DR-0052); the rest resolved by DR-0030 |
 | Owner label | §2 Spend |
 | HANDOFF v1.1 | §2, §4 (rule 4) |
 
@@ -261,7 +266,7 @@ The owner's request on 2 October 2026:
 - Free-plan limits fit the study: 4 vCPU and 16 GB per Windows runner, 20 concurrent jobs, 6 h per job, 256 jobs per matrix.
 - No paid services and no package publishing.
 - **Decided by Claude under DR-0045 (2026-10-03):** Claude flags token-heavy work, such as multi-agent research or verification passes, before running it, and gives a spend estimate in each gate report.
-- **Proposed by Claude (not yet owner-approved):** Claude cannot meter its own model spend exactly, so the owner monitors the £150 cap. Who watches the cap is a cost item under DR-0045 (pending owner item P7).
+- **Approved by the owner 2026-10-03 (P7; DR-0052):** Claude cannot meter its own model spend exactly, so the owner monitors the £150 cap. Claude's estimates in each gate report support it.
 
 ## DR-0006 Runner images
 
@@ -1017,9 +1022,9 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 |---|---|
 | Date | 2026-10-02 |
 | Status | Accepted |
-| Proposed parts | Two pending owner items (P2, `actions/setup-dotnet`; P3, the listener's event scope), marked inline; the rest resolved by DR-0030 |
+| Proposed parts | Resolved: P2 approved by the owner 2026-10-03 (DR-0046), P3 approved by the owner 2026-10-03 (DR-0052); the rest resolved by DR-0030 |
 | Owner label | D10 |
-| Amended by | DR-0037 (2026-10-02): the K6 insertion-to-content delay grading is approved and replaces the v1.0 same-batch flag now DR-0046 (2026-10-03): `actions/setup-dotnet` for the listener build is approved (P2). |
+| Amended by | DR-0037 (2026-10-02): the K6 insertion-to-content delay grading is approved and replaces the v1.0 same-batch flag now DR-0046 (2026-10-03): `actions/setup-dotnet` for the listener build is approved (P2). DR-0052 (2026-10-03): the listener's event scope is approved (P3), with the final ranges confirmed from M2 data. |
 | HANDOFF v1.1 | §5 (R4), §7.1, §8.2 (rewritten), §10.1 |
 
 **Context.** Desk research (events dimension, with verifier corrections):
@@ -1062,9 +1067,9 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 
 | Aspect | Proposal | Status |
 |---|---|---|
-| Hooks | Global out-of-context hooks over narrow ranges, filtered by the browser PID (from CDP `SystemInfo.getProcessInfo`) and window class: EVENT_SYSTEM_ALERT (0x0002), EVENT_SYSTEM_FOREGROUND (0x0003), EVENT_OBJECT_SHOW–FOCUS (0x8002–0x8005), STATECHANGE (0x800A), NAMECHANGE (0x800C), DESCRIPTIONCHANGE (0x800D), VALUECHANGE (0x800E), LIVEREGIONCHANGED (0x8019), and the IA2 range (0x0101–0x0123). LOCATIONCHANGE is excluded. Final ranges are fixed in M2. | **Proposed by Claude (not yet owner-approved).** Pending owner item P3: the ranges, filters and exclusions set which events B2 observes, while D10 names "MSAA and IA2 event IDs" without exclusions |
+| Hooks | Global out-of-context hooks over narrow ranges, filtered by the browser PID (from CDP `SystemInfo.getProcessInfo`) and window class: EVENT_SYSTEM_ALERT (0x0002), EVENT_SYSTEM_FOREGROUND (0x0003), EVENT_OBJECT_SHOW–FOCUS (0x8002–0x8005), STATECHANGE (0x800A), NAMECHANGE (0x800C), DESCRIPTIONCHANGE (0x800D), VALUECHANGE (0x800E), LIVEREGIONCHANGED (0x8019), and the IA2 range (0x0101–0x0123). LOCATIONCHANGE is excluded. Final ranges are fixed in M2. | **Approved by the owner 2026-10-03 (P3; DR-0052).** The ranges, filters and exclusions set which events B2 observes, while D10 names "MSAA and IA2 event IDs" without exclusions |
 | Threads | The hook thread only stamps QPC and enqueues. A resolver thread reads properties and keeps a cache, so later HIDE events can still be labelled. | **Decided by Claude under DR-0045 (2026-10-03)** |
-| Browser-UI alerts | Excluded by `hwndClass` (`Chrome_WidgetWin_1` against `Chrome_RenderWidgetHostHWND`) | **Proposed by Claude (not yet owner-approved).** Pending owner item P3, with the hooks |
+| Browser-UI alerts | Excluded by `hwndClass` (`Chrome_WidgetWin_1` against `Chrome_RenderWidgetHostHWND`) | **Approved by the owner 2026-10-03 (P3; DR-0052)**, with the hooks |
 | Linux CI | The listener compiles in Linux CI (Windows targeting enabled), so interop errors surface before a Windows run | **Decided by Claude under DR-0045 (2026-10-03)**: a free standard runner, with minutes that are not material. Installing the .NET SDK there depends on P2 |
 | Mutation timeline: shadow DOM | Patch `Element.prototype.attachShadow` before page scripts run, so every shadow root is observed (HANDOFF §8.3) | **Approved by the owner 2026-10-02 (DR-0030)** |
 | Mutation timeline: ordering | Call `takeRecords()` inside the focus, history and title handlers before logging them, so records keep causal order (HANDOFF §8.3) | **Approved by the owner 2026-10-02 (DR-0030)** |
@@ -2029,6 +2034,7 @@ The four additions each control what runs or how it runs, so each can change a v
 | Status | Accepted |
 | Owner label | Owner review 2026-10-02, other rulings |
 | Amends | DR-0013 ("flagged" in the K6a and K6b B2 signatures); DR-0019 (the delay-grading row); HANDOFF §8.3 |
+| Amended by | DR-0052 (2026-10-03): for polite regions filled after load, the observed boundary replaces 150 ms (P9, provisional until confirmed against M2's NVDA-absent K6e signatures) |
 | HANDOFF v1.2 | §8.3; §9 M2 and the G2 report; §9.1 (K6a and K6b signature cells) |
 
 **Context.**
@@ -2455,7 +2461,7 @@ The four additions each control what runs or how it runs, so each can change a v
 | | |
 |---|---|
 | Date | 2026-10-03 |
-| Status | Accepted (P8 approved by the owner on 2026-10-03, DR-0049), except the speech-matching rule, pending as P11 |
+| Status | Accepted (P8 approved by the owner on 2026-10-03, DR-0049; the speech-matching rule, P11, approved by the owner on 2026-10-03, DR-0052) |
 | Owner label | Decided by Claude under DR-0045; P8 approved by the owner (DR-0049) |
 | HANDOFF v1.4 | §7.2, §8.1, §9 (M1b, M1d), §9.1 (implemented as stated) |
 
@@ -2465,9 +2471,9 @@ The four additions each control what runs or how it runs, so each can change a v
 
 | Item | Decision |
 |---|---|
-| Speech matching (P11, pending) | **Proposed by Claude (not yet owner-approved):** an utterance "contains the text" when its letters and digits, lower-cased, contain the expected text's letters and digits (`speechKey`); K3 requires the name immediately followed by the role ("K3 target button" then "button"). It is more lenient than literal matching (case, spaces and punctuation are ignored) and was adopted after the smoke run scored 10 conveyed canaries as FAIL; G1's result rests on it, so it goes to the owner for ratification at G1 |
+| Speech matching (P11) | **Approved by the owner 2026-10-03 (P11; DR-0052):** an utterance "contains the text" when its letters and digits, lower-cased, contain the expected text's letters and digits (`speechKey`); K3 requires the name immediately followed by the role ("K3 target button" then "button"). It is more lenient than literal matching (case, spaces and punctuation are ignored) and was adopted after the smoke run scored 10 conveyed canaries as FAIL; G1's result rests on it, so it went to the owner, who ratified it at G1 |
 | Relay tap | Attached once per NVDA run, right after NVDA starts, so it is attached before every segment (D2) and tap-versus-log parity covers the whole run |
-| Activation | OS-level Enter through NVDA on the focused "Start canary" button; the canary behaviour runs 500 ms later (D4); the observation window is 4000 ms from activation; K1's deadline is 3.5 s after activation (3 s after insertion) |
+| Activation | NVDA-present leg: OS-level Enter through NVDA on the focused "Start canary" button (the NVDA-absent leg uses a Playwright click; DR-0053); the canary behaviour runs 500 ms later (D4); the observation window is 4000 ms from activation; K1's deadline is 3.5 s after activation (3 s after insertion) |
 | Handover order | Foreground and verify; DOM-focus the anchor in setup; MSAA-only focus read (P4); injection marker and virtual buffer (D8); clock checks; 1.5 s settle; segment |
 | Evidence | One gate evidence package per attempt (DR-0026 amendment a), `side: "base"` (canaries have no candidate), item id with any variant suffix (for example `K6a:polite`) |
 | K6a | Run once, in the G1 dispatch, so the pre-registered rule (DR-0013) has a single look; pilots exclude K6a |
@@ -2520,19 +2526,122 @@ The four additions each control what runs or how it runs, so each can change a v
 
 - `docs/gates/G1.md` reports the G1 run and the top-up together. Its reproduction steps rebuild §2.1, §2.2, the cancel timing, §2.4 and the validity, parity and clock rows of §2.5 from the archived bundle with `report:phase0`, verified on 2026-10-03.
 
-## DR-0051 Handover focus-read retry (proposed)
+## DR-0051 Handover focus-read retry
 
 | | |
 |---|---|
 | Date | 2026-10-03 |
-| Status | Proposed (pending owner item P10) |
-| Owner label | Pending owner item P10 |
-| HANDOFF v1.4 | §7.2 (step 2) if accepted |
+| Status | Accepted (P10 approved by the owner on 2026-10-03, DR-0052) |
+| Owner label | P10, approved by the owner 2026-10-03 (DR-0052) |
+| HANDOFF v1.5 | §7.2 (step 2) |
 
 **Context.** Both G1 INCONCLUSIVEs (2 of 443 attempts) were the handover's platform-focus check: Chrome was in the foreground, but the MSAA focus read, taken 300 ms after the anchor's DOM focus, returned the document. NVDA announced the anchor afterwards in both attempts, so platform focus most likely settled later (inferred).
 
 **Options considered.** Keep the single read at 300 ms; retry the read until it returns the anchor or 1 s has passed.
 
-**Decision.** **Proposed by Claude (not yet owner-approved):** from M2 onwards, the check retries the MSAA read every 100 ms for up to 1 s and rules `FOREGROUND_HWND` only if the anchor is not returned by then. The check stays pre-outcome. G1's results are unchanged.
+**Decision.** **Approved by the owner 2026-10-03 (P10; DR-0052):** from M2 onwards, the check retries the MSAA read every 100 ms for up to 1 s and rules `FOREGROUND_HWND` only if the anchor is not returned by then. The check stays pre-outcome. G1's results are unchanged.
 
-**Consequences.** If accepted, fewer attempts are INCONCLUSIVE for a reason unrelated to the canary, and the retry count is recorded per attempt.
+**Consequences.** Fewer attempts should be INCONCLUSIVE for a reason unrelated to the canary; the number of reads is recorded per attempt.
+
+## DR-0052 Owner approvals at the G1 gate
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.5 | Header; label legend; §7.2 (step 2); §8.2; §8.3; §9 (G1 accepted); §9.1 (speech matching) |
+
+**Context.** The G1 pull request (#4) carried the G1 report and a one-page brief with six yes/no items, each recommended Yes: accept G1 and merge M1; P3 (listener event scope); P7 (owner monitors model spend); P9 (post-load K6 boundary for polite regions); P10 (focus-read retry); P11 (canary speech matching).
+
+**Decision.**
+
+> Yes to all six; merged, continue M2
+
+**Consequences.**
+
+- G1 is accepted: the speech instrument (relay tap, canary runner, report) passes the D12 rule with the K2 top-up of DR-0050. M1 is merged to `main` (pull request #4, merge commit `3c3b183`). The G2 report may now be written when its runs are done (DR-0043).
+- P3: the listener's hook ranges, browser-PID and window-class filtering and the browser-UI alert exclusion (DR-0019) are in force for the G2 runs. The final ranges are confirmed from M2 data; a change that adds or removes events goes back to the owner.
+- P7: the owner monitors model spend against the £150 cap; Claude keeps flagging token-heavy work and estimating spend in each gate report (DR-0005).
+- P9: for polite live regions filled after page load, a fill in the same frame (0 ms or one rAF) is graded as a populated insertion, a fill 50 ms or more after insertion as a separate update, and a fill between one frame and 50 ms routes to REVIEW. The 350 ms pre-load boundary and other region roles keep DR-0037's grading until tested. The rule is provisional: the G2 report confirms it against the NVDA-absent K6e B2 signatures, and data that contradict it go back to the owner.
+- P10: from M2 the handover's MSAA focus read is retried every 100 ms for up to 1 s (DR-0051). G1's results are unchanged.
+- P11: the canary speech-matching rule of DR-0048 is ratified.
+- No owner items are pending after this record.
+
+## DR-0053 M2 build: listener integration and B2 signatures
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except the signature definitions (P12) and the INCONCLUSIVE rule for errors (P13), both pending |
+| Owner label | Decided by Claude under DR-0045; P12 and P13 pending |
+| HANDOFF v1.5 | §7.2, §8.2, §8.3, §8.4, §9 (M2), §9.1, §9.2 (implemented as stated); §7.3 with one departure (wall anchor, below) |
+
+**Context.** M2 integrates the B2 listener (DR-0019) and the DOM mutation timeline (HANDOFF §8.3) with the canary runs, and verifies the expected B2 signature of each gating canary in the NVDA-absent leg (G2). The smoke run [37119067877](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119067877) (NVDA-absent leg, K1–K5 twice each, commit `8e7bce1`) was the listener's first Windows run: all six hook ranges installed, the UIA self-check validated in 10 of 10 attempts, Chrome exposed each DOM id as the UIA AutomationId, and all 10 attempts matched their signatures.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Listener lifetime | One listener per attempt, started for that attempt's browser process after launch and before the handover, stopped after the observation window. Each job first starts and stops it against the Node process, so a broken build fails the job before any attempt |
+| Native self-test | The approved method (DR-0010) pings each native collector: in the NVDA-absent leg the Windows helper and the listener, over stdin and stdout; the recorded disagreement is the larger of the two. Both values are kept |
+| Timeline | Installed with `addInitScript` in both legs (P4). Insertions record their parent, so a text change inside a region can be attributed. Page times map to QPC as NavigationStart + `performance.now()` minus the minimum-RTT offset (HANDOFF §7.3) |
+| Raw evidence | Every listener event of the attempt and the whole DOM timeline are written to the attempt record, and the evidence package carries those inside the observation window, so signatures can be re-scored offline |
+| P10 | The MSAA focus read is retried every 100 ms for up to 1 s after the first read at 300 ms; the number of reads is recorded |
+| eSpeak rate | Read from the session `nvda.ini` at each NVDA start, as in M1a (DR-0041); with no `[[espeak]]` section the effective rate is 30 and rate boost off. Recorded in the manifest and the job summary |
+| P4 latency | Each gating attempt records the time of the canary's own DOM change (the first DOM component of its signature), so the G1 report gives DOM-change-to-tap latency, QPC on both sides |
+| Workflow | Both legs in one dispatch (R8); the listener is built in each job with the pinned `actions/setup-dotnet` (P2); the `present_listener` input runs it in the NVDA-present leg for the on/off diagnostic only (P4), and those attempts are marked and excluded from G1 |
+| On/off diagnostic | A separate dispatch of both legs, K1–K5 20 times each, with `present_listener` on, compared within that dispatch (DR-0020). It never feeds the G2 rule |
+| G2 sizing | 52 runs per gating canary (DR-0050's margin of two, applied before dispatch), with DR-0050's top-up rule if a canary is still short of 50 valid runs |
+| Activation, NVDA-absent leg | A Playwright click on `#start`, as since M1 (commit `a047d18`): no AT segment exists in that leg, so DevTools input is allowed (HANDOFF §7.2 forbids it only inside AT segments). It leaves pointer-state STATECHANGE events (inferred), outside every signature; the on/off diagnostic therefore changes NVDA presence and activation together |
+| Wall anchor (departure from DR-0030's plan) | From the gate-review fix, the Node process adopts the listener's (QPC, wall) pair in jobs that run the listener. In G1-type NVDA-present jobs no listener runs (P4), so the coarse Node anchor (up to about 16 ms) remains there; it labels times and buckets parity only (DR-0039). Listed in the G2 brief for information |
+
+**Proposed by Claude (not yet owner-approved): signature definitions (P12).** A platform event is attributed to a canary element by UIA AutomationId (the DOM id), then MSAA name, UIA AriaRole, UIA LiveSetting or MSAA role; the path used is recorded. Evidence counts only inside the observation window (activation to 4 s). EVENT_SYSTEM_ALERT on `Chrome_WidgetWin_1` is browser UI and excluded (P3). A gating attempt matches when every required component is found.
+
+| Canary | HANDOFF §9.1 | Required components |
+|---|---|---|
+| K1 | Text mutation inside the live region; live-region or text events | DOM text change inside `#live`; EVENT_OBJECT_LIVEREGIONCHANGED or an IA2 text event (inserted, updated, changed) on the region |
+| K2 | EVENT_OBJECT_LIVEREGIONCHANGED plus IA2 TEXT_INSERTED on the alert (not EVENT_SYSTEM_ALERT) | Both platform events on the alert. EVENT_SYSTEM_ALERT and the DOM text change are recorded, not required |
+| K3 | focusin; focus WinEvent | DOM `focusin` on the button; EVENT_OBJECT_FOCUS on it |
+| K4 | Dialog inserted or shown; focus events | The dialog shown in the DOM (`hidden` removed, or inserted) and EVENT_OBJECT_SHOW on it; DOM `focusin` on its first control and EVENT_OBJECT_FOCUS on it |
+| K5 | History event; focus events. No title dependency | DOM `pushState`; DOM `focusin` on the `h1`; EVENT_OBJECT_FOCUS on it. The title is not read |
+
+Record-only canaries are described, not scored: for K6, the region's insertion-to-content delay and grade (DR-0037 with P9), the platform events attributed to it, and whether a live-region or text event on the region follows its insertion ("separate update"); for K7, whether the polite update precedes the focus move in the DOM (timeline order) and on the platform (QPC). P9's "same frame" is implemented as a fill at most one 60 Hz frame (1000/60 ms) after the insertion; G1's K6e page logs put every one-rAF fill at 4.9–14.9 ms.
+
+**Amendments after the G2 gate review (2026-10-03; after the G2 run).** The review confirmed 50 findings (`docs/gates/G2.md` §3). The code changes, all re-scored against the raw evidence with no change to any G2 verdict or record-only trace:
+
+- **Proposed by Claude (not yet owner-approved), part of P12:** an event that carries an AutomationId matches only by it; LiveSetting is no longer an identity, because Chrome reports it on every descendant of a live region (it had attributed each K6e fill's text node to the region); events on `Chrome_WidgetWin_1` are excluded from all matching, implementing P3's window-class filter as approved; K7 order is read per platform event type; and with timeline version 2, "same frame" is the same task or a fill made in a rAF callback within one frame, other fills under 50 ms routing to REVIEW (version 1 records, including the G2 run's, keep the pre-registered one-frame threshold).
+- **Proposed by Claude (not yet owner-approved), P13:** listener failures (start, fewer hooks than ranges, ping, stop, not drained) and errors after activation count as failures, not INCONCLUSIVE (DR-0032); setup errors before activation stay `ENV_FAILURE`.
+- **Decided by Claude under DR-0045:** each attempt records the listener's readiness line; the listener writes its JSON with `Utf8JsonWriter` and reports whether its resolver drained (version 0.3.0); a listener that fails to become ready is killed; the timeline records each change's live-region root, so nested children count; P10's retry stays within 1 s of the first read; the applied page mapping's half-RTT is recorded as a diagnostic; `report:phase0` re-scores B2 from raw evidence and reports the comparison, the K6 platform timing, clock percentiles, the on/off systematic differences and speech with the listener present.
+
+**Consequences.**
+
+- G2 is scored with these definitions; P12 asks the owner to ratify them at the G2 gate, as P11 did for speech matching at G1. The raw evidence allows re-scoring under another reading without new runs.
+- K4's platform SHOW component was made required after the smoke run, where it was present in 2 of 2; it was fixed before the pilot and the G2 runs.
+- The gate-review code was checked on Windows by a verification run before the G2 pull request (DR-0054).
+
+## DR-0054 G2 runs, diagnostic and evidence archive
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.5 | §9 (M2 and the G2 report), §9.2 (dispatch inputs) |
+
+**Context.** M2's signature definitions and run size were fixed in DR-0053 (commit `68019bc`) before the G2 runs. The G2 rule reads B2 signature matches for K1–K5 in the NVDA-absent leg (HANDOFF §9).
+
+**Decision.**
+
+- **G2 run.** [37119632093](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119632093): NVDA-absent leg, 52 runs per gating canary and every record-only canary at its D4 count, 10 shards, seed 20261012, commit `14fd612`. No top-up was needed: every gating canary had 52 valid runs.
+- **On/off diagnostic.** [37119638620](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119638620): both legs, K1–K5 20 times each, `present_listener` on, seed 20261013, commit `14fd612`. It is reported in G2 and never feeds the G2 rule (DR-0020). It changes NVDA presence and the activation method together (DR-0053).
+- **Verification run.** [37122536874](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37122536874): both legs, K1–K5 once, K6e one rAF and 50 ms and K7a, seed 20261014, commit `3076d67`, to check the gate-review code on Windows before the pull request. It is not G2 evidence.
+- **Archive.** All five M2 runs (smoke 37119067877, pilot 37119295670, G2 37119632093, diagnostic 37119638620, verification 37122536874), with `report.md` and `report-g2.md` regenerated by `report:phase0` at the gate-review code, are in `g2/g2-evidence.tar.zst` on the orphan `results` branch (768,146 bytes; SHA-256 `860478b101e4cfc08e1507b09fa2bfd0c59d71046ce675bae79069fa965947b2`), with `MANIFEST.json` (run IDs, head commits, image versions, listener builds, pins, the G2 result, the re-scoring comparison and the on/off table) and `SHA256SUMS`. The bundle holds JSON, JSON lines, NVDA logs and Markdown only, no NVDA binaries, and was scanned for token-shaped secrets before commit. A first bundle (four runs, with reports from the pre-review code) was replaced after the gate review. Rebuilding the G2 run's report from the bundle gives an identical `report-g2.md`.
+- **Report code.** `report:phase0` writes the G2 report (`report-g2.*`) beside the G1 report and re-scores B2 from the raw evidence. With the M2 code it still rebuilds the G1 report from the G1 bundle unchanged. A directory with no G1 attempts says the G1 rule is not applicable, and one holding the on/off diagnostic says the G2 rule is not evaluated.
+
+**Consequences.**
+
+- G2 rule: PASS, with 260 valid of 260 attempts, 0 failures and INCONCLUSIVE at 0% (`docs/gates/G2.md`), under the definitions fixed before the run and under the narrowed definitions of the gate review.
+- The NVDA-absent K6e signatures agree with P9's boundary as tested (one-rAF fills and fills from 50 ms). Timer fills under 50 ms were not tested. The G2 brief asks the owner to make P9 final as tested; until then it stays provisional (DR-0052).
+- Every required component of the canary signatures was observed within the approved P3 ranges, so they are unchanged and nothing goes back to the owner under DR-0052. Whether the ranges suffice for the M3 and M5 oracles is untested.
+- Pending owner items for the G2 brief: P12, P13, and making P9 final.

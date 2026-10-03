@@ -75,6 +75,18 @@ export function captureWallAnchor(): WallAnchor {
 }
 
 /**
+ * Adopts a precise (QPC, wall) pair measured by a native process, such as the
+ * B2 listener's WallAnchor.cs (DR-0010, DR-0030), as this process's anchor.
+ * It must come before the first `captureWallAnchor()`; afterwards the anchor
+ * is fixed and this returns false.
+ */
+export function adoptWallAnchor(external: WallAnchor): boolean {
+  if (anchor !== undefined) return false;
+  anchor = Object.freeze({ qpcNs: external.qpcNs, wallIso: external.wallIso });
+  return true;
+}
+
+/**
  * Renders a QPC timestamp as a human-readable ISO 8601 UTC string using the
  * process anchor. For display and logs only.
  */

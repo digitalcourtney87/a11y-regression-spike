@@ -28,3 +28,8 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.401
+      - name: Build the B2 listener (Windows targeting on Linux; DR-0019)
+        run: dotnet build listener/Listener.csproj -c Release -warnaserror

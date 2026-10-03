@@ -140,7 +140,7 @@ Combined from the sources named in each row. DR-0019 amends PRD §33's B2 "Inves
 |---|---|---|---|
 | A | axe at each relevant journey state. axe runs in its own browser context, never near an AT segment (its Playwright helper opens a new tab and steals focus). | NVDA-absent | PRD §33; DR-0018; DR-0024 |
 | B | A, plus Chrome's accessibility tree via CDP `Accessibility.getFullAXTree` (including live, atomic, relevant and busy), plus `ariaSnapshot` for structure. | NVDA-absent | PRD §33; DR-0018 |
-| B2 | B, plus the DOM mutation timeline (HANDOFF §8.3, with the insertion-to-content delay grading of DR-0037), plus platform events from a C# listener on .NET 10. WinEvents are primary: MSAA and IA2 event IDs, plus `EVENT_SYSTEM_ALERT`, `EVENT_SYSTEM_FOREGROUND` and `EVENT_OBJECT_DESCRIPTIONCHANGE`. Identity is resolved through MSAA and UIA property reads (AutomationId, LiveSetting, AriaRole); no IA2 QueryService and no proxy registration. UIA events are diagnostic only. The listener's hook ranges, its browser-PID and window-class filtering, and the exclusion of browser-UI alerts are pending owner item P3 (§8). | NVDA-absent | PRD §33; HANDOFF §8.3; DR-0019; DR-0024; DR-0037 |
+| B2 | B, plus the DOM mutation timeline (HANDOFF §8.3, with the insertion-to-content delay grading of DR-0037), plus platform events from a C# listener on .NET 10. WinEvents are primary: MSAA and IA2 event IDs, plus `EVENT_SYSTEM_ALERT`, `EVENT_SYSTEM_FOREGROUND` and `EVENT_OBJECT_DESCRIPTIONCHANGE`. Identity is resolved through MSAA and UIA property reads (AutomationId, LiveSetting, AriaRole); no IA2 QueryService and no proxy registration. UIA events are diagnostic only. The listener's hook ranges, its browser-PID and window-class filtering, and the exclusion of browser-UI alerts were approved by the owner on 2026-10-03 (P3; DR-0052). | NVDA-absent | PRD §33; HANDOFF §8.3; DR-0019; DR-0024; DR-0037 |
 | C | B2, plus real NVDA (Guidepup 0.35.0 for provisioning, lifecycle and input only, started with `capture:false`). Speech from the receive-only relay tap, attached before each segment; NVDA DEBUG log as a second record. Scored under UNION and ADJUDICATED (§2.3). | B2 evidence from the NVDA-absent leg; NVDA evidence from the NVDA-present leg; combined at item level (§2.4). The split for C was approved by the owner 2026-10-02, with the item-level combination as an amendment (DR-0031). | PRD §33; HANDOFF R3, v1.2 R8; DR-0011; DR-0020; DR-0031 |
 | D | Triggers applied to the NVDA-absent B2 evidence; NVDA evidence taken from the NVDA-present leg for triggered steps only; combined at item level, as for C (DR-0031). Trigger rules v1 are fixed in advance from PRD §14 (HANDOFF R5) in `protocol/triggers.v1.json`. Runtime is estimated from the durations of triggered NVDA segments (HANDOFF §8.4). Scored under UNION and ADJUDICATED. | Both, as stated | PRD §33; HANDOFF R3, R5, §8.4; DR-0020; DR-0031 |
 
@@ -613,16 +613,17 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| P3 | Listener event scope: hook ranges (`EVENT_OBJECT_LOCATIONCHANGE` excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | As listed in DR-0019, with the final ranges confirmed from M2 data | Sets which platform events Arm B2 observes (what is measured) | Before any G2 run | §2.2 |
+| P12 | Operational B2 signature definitions: identity by AutomationId (name, AriaRole or MSAA role only without one; no LiveSetting; browser-frame events excluded), the K1–K5 components, the K6 and K7 record-only traces, and "same frame" as the same task or a rAF fill within one frame | As in DR-0053, narrowed by the G2 gate review | Decides what counts as a B2 match (what counts as detection) | At the G2 gate | §2.2 |
+| P13 | Only setup errors before activation are INCONCLUSIVE (`ENV_FAILURE`); listener failures and errors after activation count as failures | As in DR-0053 | Decides what counts as INCONCLUSIVE | At the G2 gate | §2.2 |
 
-P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
+P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). Making P9 final, as tested by G2, is also in the G2 brief. P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
 Conditional hard-rule-12 questions, which arise only if a later result triggers them:
 
 | Question | Trigger | Record |
 |---|---|---|
 | A change to any G1 or G2 criterion | M2 data, including the desk-research predictions in §5.3 | DR-0013 |
-| The K6 delay-grading boundaries | K6e data contradict the 150 ms and 350 ms boundaries | DR-0037 |
+| The K6 delay-grading boundaries | M2's NVDA-absent K6e signatures contradict the P9 post-load boundary for polite regions, or data contradict the 350 ms pre-load boundary or the boundary for other roles | DR-0037; DR-0052 |
 | The FAIL rules that cover candidate-only check failures | Set with the M5 oracles | DR-0035 |
 | The M5 handling of ANNOUNCEMENT_DUPLICATED (NVDA-log corroboration or REVIEW) | M5 | DR-0042 |
 | The eSpeak NG rate | M1a finds an effective rate other than 30, or another reason to change it | DR-0041 |

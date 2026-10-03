@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { nativeDisagreementMs, outsideBracketNs, PAGE_CLAMP_MS, pageMappingUncertaintyMs } from "./clockChecks.ts";
+import { nativeDisagreementMs, outsideBracketNs, PAGE_CLAMP_MS, pageMappingUncertaintyMs, pageToQpcNs } from "./clockChecks.ts";
 
 describe("clock checks (DR-0010)", () => {
   test("outsideBracketNs is zero inside the bracket and the distance outside it", () => {
@@ -22,5 +22,10 @@ describe("clock checks (DR-0010)", () => {
     ];
     expect(pageMappingUncertaintyMs(samples)).toBeCloseTo(0.2 + PAGE_CLAMP_MS, 9);
     expect(pageMappingUncertaintyMs([{ t0: 0, t1: 300_000, value: 150_000 }])).toBeCloseTo(PAGE_CLAMP_MS, 9);
+  });
+
+  test("pageToQpcNs inverts the minimum-RTT mapping offset", () => {
+    // Mapping value = NavigationStart + performance.now(); offset = value − QPC bracket midpoint.
+    expect(pageToQpcNs(250, { navigationStartS: 1000, mappingOffsetNs: 2_000 })).toBe(1000 * 1e9 + 250 * 1e6 - 2_000);
   });
 });

@@ -1,7 +1,7 @@
 /**
- * Per-attempt clock checks (DR-0010 D1; working definitions pending owner item
- * P6, used here to collect M1b exploratory data). Every collector stamps QPC
- * nanoseconds; these checks bound how well the clocks agree.
+ * Per-attempt clock checks (DR-0010 D1; the computations were approved by the
+ * owner on 2026-10-03, P6, DR-0049). Every collector stamps QPC nanoseconds;
+ * these checks bound how well the clocks agree.
  *
  * | Check | Computation |
  * |---|---|
@@ -15,7 +15,6 @@ import type { Page } from "playwright";
 
 import { minRttEstimate, stepSummary, ticksToNs } from "../probes/analysis.ts";
 import type { BracketSample } from "../probes/analysis.ts";
-import type { WinHelper } from "../probes/winhelper.ts";
 import { qpcNowNs } from "../clock/qpc.ts";
 
 /** Blink's `performance.now()` clamp in a non-isolated page (ms). */
@@ -42,7 +41,12 @@ export function pageMappingUncertaintyMs(samples: readonly BracketSample[]): num
   return outsideBracketNs(sample) / 1e6 + PAGE_CLAMP_MS;
 }
 
-export async function nativeSelfTest(helper: WinHelper, pings: number): Promise<{ disagreementMs: number; samples: BracketSample[] }> {
+/** A native collector that answers QPC pings (the Windows helper or the B2 listener). */
+export interface QpcSource {
+  qpc(): Promise<{ ticks: number; frequency: number }>;
+}
+
+export async function nativeSelfTest(helper: QpcSource, pings: number): Promise<{ disagreementMs: number; samples: BracketSample[] }> {
   const samples: BracketSample[] = [];
   for (let i = 0; i < pings; i++) {
     const t0 = qpcNowNs();
@@ -69,6 +73,8 @@ export interface PageClock {
   uncertaintyMs: number;
   /** Minimum-RTT offset of the NavigationStart + performance.now() mapping (ns). */
   mappingOffsetNs: number;
+  /** Half the minimum RTT of the mapping samples (ns): the applied mapping's own uncertainty, a diagnostic. */
+  mappingHalfRttNs: number;
   highResolution: boolean | null;
 }
 
@@ -86,12 +92,13 @@ export async function pageClock(page: Page, pings: number, withSteps: boolean): 
       navigationStartS = metric(metrics, "NavigationStart");
       stamps.push({ t0, t1, value: Math.round(metric(metrics, "Timestamp") * 1e9) });
     }
-    const mapping = await mappingSamples(page, navigationStartS, pings);
+    const mapping = minRttEstimate(await mappingSamples(page, navigationStartS, pings));
     const steps = withSteps ? stepSummary(await page.evaluate<number[]>(STEPS_SCRIPT)) : null;
     return {
       navigationStartS,
       uncertaintyMs: pageMappingUncertaintyMs(stamps),
-      mappingOffsetNs: minRttEstimate(mapping).offsetNs,
+      mappingOffsetNs: mapping.offsetNs,
+      mappingHalfRttNs: mapping.uncertaintyNs,
       highResolution: steps?.highResolution ?? null,
     };
   } finally {
@@ -108,6 +115,15 @@ async function mappingSamples(page: Page, navigationStartS: number, pings: numbe
     samples.push({ t0, t1, value: Math.round(navigationStartS * 1e9 + now * 1e6) });
   }
   return samples;
+}
+
+/**
+ * Maps a page `performance.now()` time (ms) to QPC nanoseconds through the
+ * minimum-RTT mapping (D1, HANDOFF §7.3): the mapping samples are
+ * NavigationStart + performance.now(), so QPC ≈ that sum minus the offset.
+ */
+export function pageToQpcNs(tMs: number, clock: Pick<PageClock, "navigationStartS" | "mappingOffsetNs">): number {
+  return Math.round(clock.navigationStartS * 1e9 + tMs * 1e6 - clock.mappingOffsetNs);
 }
 
 /** Re-measures the mapping offset at the end of a segment and returns the drift (ms). */
