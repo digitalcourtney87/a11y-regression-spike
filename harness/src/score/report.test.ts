@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { buildReport, renderReport } from "./report.ts";
+import { buildReport, quantile, renderReport } from "./report.ts";
 import type { AttemptRecord } from "./report.ts";
 
 function gating(itemId: string, verdict: "PASS" | "FAIL", valid = true): AttemptRecord {
@@ -49,5 +49,24 @@ describe("buildReport", () => {
   test("ignores the NVDA-absent leg for G1", () => {
     const report = buildReport([{ ...gating("K1", "FAIL"), leg: "nvda-absent" }], []);
     expect(report.gating.find((g) => g.canary === "K1")?.attempts).toBe(0);
+  });
+});
+
+describe("latency, INCONCLUSIVE intervals and cancel timing", () => {
+  test("quantile interpolates linearly", () => {
+    expect(quantile([1, 2, 3, 4], 0.5)).toBe(2.5);
+    expect(quantile([10, 20], 0.9)).toBeCloseTo(19, 9);
+    expect(quantile([], 0.5)).toBeNull();
+  });
+  test("latency subtracts the page's activation-to-update delay", () => {
+    const a: AttemptRecord = { ...gating("K1", "PASS"), outcome: { kind: "gating", verdict: "PASS", late: false, matched: { atMs: 570 } } as AttemptRecord["outcome"], page: { activatedAt: 10, log: [{ t: 10, what: "activated" }, { t: 512, what: "done" }] } };
+    const report = buildReport([a], []);
+    expect(report.latency.find((l) => l.canary === "K1")).toMatchObject({ n: 1, medianMs: 68 });
+  });
+  test("reports INCONCLUSIVE per item with Wilson intervals and the activation cancel", () => {
+    const valid = { ...gating("K2", "PASS"), package: { steps: [{ startedAt: 1_000_000_000, speechCancels: [{ t: 1_005_000_000 }] }] } };
+    const report = buildReport([valid, gating("K2", "PASS", false)], []);
+    expect(report.inconclusive.find((r) => r.itemId === "K2")).toMatchObject({ attempts: 2, inconclusive: 1 });
+    expect(report.activationCancel).toEqual({ n: 1, medianMs: 5 });
   });
 });

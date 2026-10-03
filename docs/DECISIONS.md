@@ -73,7 +73,7 @@ Conventions:
 | [DR-0034](#dr-0034-execution-guard-for-the-test-split-hard-rule-5) | Execution guard for the test split (hard rule 5) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, gaps item 5 | — | No |
 | [DR-0035](#dr-0035-side-aware-validity-from-m4-validityts-is-phase-0-scoped-record-now-implement-before-m4) | Side-aware validity from M4; validity.ts is Phase 0-scoped (record now, implement before M4) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, item 6 and key item 3 (c) | — | No |
 | [DR-0036](#dr-0036-k6-and-k7-in-both-legs-k6a-rule-on-the-nvda-present-leg-amends-dr-0013) | K6 and K7 in both legs; K6a rule on the NVDA-present leg (amends DR-0013) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
-| [DR-0037](#dr-0037-k6-insertion-to-content-delay-grading-replaces-the-same-batch-flag-amends-dr-0013-dr-0019-handoff-83) | K6 insertion-to-content delay grading replaces the same-batch flag (amends DR-0013, DR-0019, HANDOFF §8.3) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
+| [DR-0037](#dr-0037-k6-insertion-to-content-delay-grading-replaces-the-same-batch-flag-amends-dr-0013-dr-0019-handoff-83) | K6 insertion-to-content delay grading replaces the same-batch flag (amends DR-0013, DR-0019, HANDOFF §8.3) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | Pending: P9 |
 | [DR-0038](#dr-0038-per-canary-inconclusive-reporting-amends-dr-0021) | Per-canary INCONCLUSIVE reporting (amends DR-0021) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
 | [DR-0039](#dr-0039-nvda-log-bucketing-via-the-wall-anchor-amends-dr-0010-dr-0011) | NVDA log bucketing via the wall anchor (amends DR-0010, DR-0011) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
 | [DR-0040](#dr-0040-scream-authenticode-verification-amends-dr-0012) | Scream Authenticode verification (amends DR-0012) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
@@ -84,14 +84,16 @@ Conventions:
 | [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
 | [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0047](#dr-0047-scream-pinned-from-m1a-in-repository-installer-both-legs) | Scream pinned from M1a; in-repository installer; both legs | Accepted | 2026-10-03 | Decided by Claude under DR-0040 and DR-0045 | — | No |
-| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0049 | Resolved (DR-0049) |
+| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0049 | Pending: P11 |
 | [DR-0049](#dr-0049-owner-approvals-of-p6-and-p8) | Owner approvals of P6 and P8 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0050](#dr-0050-g1-top-up-and-evidence-archive) | G1 top-up and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0051](#dr-0051-handover-focus-read-retry-proposed) | Handover focus-read retry (proposed) | Proposed | 2026-10-03 | Pending owner item P10 | — | Pending: P10 |
 
 ## Pending owner items (hard rule 12)
 
 These parts still carry **Proposed by Claude (not yet owner-approved)**. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). Two items remain pending: P3 and P7.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). Five items are pending, all in the G1 brief: P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -103,8 +105,11 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P6 | **Resolved (approved by the owner 2026-10-03, DR-0049).** Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | No longer pending | Approved as recommended |
 | P7 | The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | The G1 brief; meanwhile Claude flags token-heavy work before running it and estimates spend | Yes; Claude's estimates in each gate report support it |
 | P8 | **Resolved (approved by the owner 2026-10-03, DR-0049).** In Phase 0 canary runs, the pre-canary check is not applicable: each canary is itself the known-answer check, so `preCanaryOk` is always true and a capture failure counts as a canary failure, not INCONCLUSIVE. The anchor's focus announcement before activation is recorded per attempt, so the alternative (using it as the pre-canary) can be computed from the data | DR-0048 | What counts as INCONCLUSIVE (it decides whether an instrument failure can be absorbed as INCONCLUSIVE in G1) | No longer pending | Approved as recommended |
+| P9 | **Proposed by Claude (not yet owner-approved):** for polite live regions filled after page load, replace DR-0037's 150 ms grading boundary with the observed one: a fill in the same frame (0 ms or one rAF) counts as a populated insertion; a fill 50 ms or more after insertion counts as a fill; between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep DR-0037's grading until tested; the boundary is confirmed against M2's NVDA-absent K6e signatures before G2 | DR-0037 (triggered by the M1d pilot and G1; lab notebook 2026-10-03) | What counts as detection (B2 signatures and the M3 catalogue) | Before the G2 K6e signatures are scored | Yes, provisionally |
+| P10 | **Proposed by Claude (not yet owner-approved):** the handover's platform-focus check retries the MSAA focus read for up to 1 s before ruling `FOREGROUND_HWND`, from M2 onwards; G1 is unchanged | DR-0051 | What counts as INCONCLUSIVE (a pre-outcome check's timing) | Before the G2 runs | Yes |
+| P11 | **Proposed by Claude (not yet owner-approved):** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | At the G1 gate | Yes |
 
-Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), K6e data that contradict the 150 ms and 350 ms serialisation boundaries (DR-0037), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
+Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
 ---
 
@@ -2450,7 +2455,7 @@ The four additions each control what runs or how it runs, so each can change a v
 | | |
 |---|---|
 | Date | 2026-10-03 |
-| Status | Accepted (P8 approved by the owner on 2026-10-03, DR-0049) |
+| Status | Accepted (P8 approved by the owner on 2026-10-03, DR-0049), except the speech-matching rule, pending as P11 |
 | Owner label | Decided by Claude under DR-0045; P8 approved by the owner (DR-0049) |
 | HANDOFF v1.4 | §7.2, §8.1, §9 (M1b, M1d), §9.1 (implemented as stated) |
 
@@ -2460,7 +2465,7 @@ The four additions each control what runs or how it runs, so each can change a v
 
 | Item | Decision |
 |---|---|
-| Speech matching | An utterance "contains the text" when its letters and digits, lower-cased, contain the expected text's letters and digits (`speechKey`). K3 requires the name immediately followed by the role ("K3 target button" then "button"). This implements HANDOFF §9.1's expected outcomes; it does not relax them |
+| Speech matching (P11, pending) | **Proposed by Claude (not yet owner-approved):** an utterance "contains the text" when its letters and digits, lower-cased, contain the expected text's letters and digits (`speechKey`); K3 requires the name immediately followed by the role ("K3 target button" then "button"). It is more lenient than literal matching (case, spaces and punctuation are ignored) and was adopted after the smoke run scored 10 conveyed canaries as FAIL; G1's result rests on it, so it goes to the owner for ratification at G1 |
 | Relay tap | Attached once per NVDA run, right after NVDA starts, so it is attached before every segment (D2) and tap-versus-log parity covers the whole run |
 | Activation | OS-level Enter through NVDA on the focused "Start canary" button; the canary behaviour runs 500 ms later (D4); the observation window is 4000 ms from activation; K1's deadline is 3.5 s after activation (3 s after insertion) |
 | Handover order | Foreground and verify; DOM-focus the anchor in setup; MSAA-only focus read (P4); injection marker and virtual buffer (D8); clock checks; 1.5 s settle; segment |
@@ -2492,5 +2497,42 @@ The four additions each control what runs or how it runs, so each can change a v
 
 - P6: the DR-0010 methods for page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap are the D1 INCONCLUSIVE tests, as implemented in `harness/src/runner/clockChecks.ts`.
 - P8: in Phase 0 canary runs `preCanaryOk` is always true; a capture failure counts as a canary failure. The anchor announcement stays recorded per attempt.
-- Pending owner items after this record: P3 (listener event scope, before any G2 run) and P7 (spend monitoring, for the G1 brief). The K6e result has triggered DR-0037's conditional question, which goes in the G1 brief.
+- Pending owner items after this record: P3 (listener event scope, before any G2 run) and P7 (spend monitoring, for the G1 brief). The K6e result has triggered DR-0037's conditional question, now pending as P9 in the G1 brief.
 - The G1 run is dispatched on 2026-10-03 with these rules in force.
+
+## DR-0050 G1 top-up and evidence archive
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.4 | §9 (G1), R12 (archive) |
+
+**Context.** The G1 run (37115887572; 50 attempts per gating canary) left K2 with 49 valid runs, because one attempt was INCONCLUSIVE (`FOREGROUND_HWND`). D12 requires at least 50 valid runs per canary. D6 requires the gate evidence to be archived from the local machine.
+
+**Decision.**
+
+- **Top-up.** A gating canary short of 50 valid runs gets a separate dispatch on the same commit, with a new recorded seed and retries off. Size: the shortfall plus 2, fixed before dispatch. Every top-up attempt counts, whatever its outcome. This rule was set after the G1 run's outcomes were known (0 failures), but the top-up's size depended only on the INCONCLUSIVE count. For G1: 3 K2 attempts (run 37116418050, commit `f81bcd7`, seed 20261006), all valid and all passing; K2 has 52 valid runs of 53.
+- **Archive.** All eight M1 workflow runs (probes 37111758115, 37111906022, 37112285497 and 37114407991, the last push-triggered by commit 8992346; smoke 37114407343; pilot 37114709402; G1 37115887572; top-up 37116418050) and the combined report are in `g1/g1-evidence.tar.zst` on the orphan `results` branch (1,128,179 bytes; SHA-256 `9e8a6d7b0e21a71e8237b8de4b6d5e9ab8999bf7757478e9f0e554ab5e3c4ca0`), with `MANIFEST.json` (run IDs, head commits, image versions, pins, the G1 result) and `SHA256SUMS`. The bundle holds logs, JSON, INI and screenshots only, and was scanned for token-shaped secrets before commit. A first bundle (seven runs) was replaced after the G1 gate review found the eighth run missing.
+
+**Consequences.**
+
+- `docs/gates/G1.md` reports the G1 run and the top-up together. Its reproduction steps rebuild §2.1, §2.2, the cancel timing, §2.4 and the validity, parity and clock rows of §2.5 from the archived bundle with `report:phase0`, verified on 2026-10-03.
+
+## DR-0051 Handover focus-read retry (proposed)
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Proposed (pending owner item P10) |
+| Owner label | Pending owner item P10 |
+| HANDOFF v1.4 | §7.2 (step 2) if accepted |
+
+**Context.** Both G1 INCONCLUSIVEs (2 of 443 attempts) were the handover's platform-focus check: Chrome was in the foreground, but the MSAA focus read, taken 300 ms after the anchor's DOM focus, returned the document. NVDA announced the anchor afterwards in both attempts, so platform focus most likely settled later (inferred).
+
+**Options considered.** Keep the single read at 300 ms; retry the read until it returns the anchor or 1 s has passed.
+
+**Decision.** **Proposed by Claude (not yet owner-approved):** from M2 onwards, the check retries the MSAA read every 100 ms for up to 1 s and rules `FOREGROUND_HWND` only if the anchor is not returned by then. The check stays pre-outcome. G1's results are unchanged.
+
+**Consequences.** If accepted, fewer attempts are INCONCLUSIVE for a reason unrelated to the canary, and the retry count is recorded per attempt.

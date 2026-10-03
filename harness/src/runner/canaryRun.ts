@@ -308,6 +308,9 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
       activation,
       msaa,
       clock: { native: native.disagreementMs, mappingUncertaintyMs: clockStart.uncertaintyMs, driftMs, highResolution: clockStart.highResolution, raf },
+      // Page time to QPC (D1): page QPC ns ≈ navigationStartS × 1e9 + performance.now() × 1e6 + mappingOffsetNs correction.
+      // Recorded so that DOM-mutation latency (P4) can be computed from the page log (from M2 onwards).
+      pageMapping: { navigationStartS: clockStart.navigationStartS, mappingOffsetNs: clockStart.mappingOffsetNs },
       page: pageLog,
       packageValid: validation.success,
       ...(validation.success ? {} : { packageErrors: validation.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`) }),
