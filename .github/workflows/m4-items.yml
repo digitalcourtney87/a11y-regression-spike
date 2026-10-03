@@ -5,8 +5,14 @@ name: m4-items
 # never saved; P17, P19), then runs that app's dev items in one leg: K1
 # bracketing canaries, ABBA attempts and evidence packages. Both legs run in one
 # dispatch so they share an image version (R8, DR-0006). Test-split items are
-# never built or run before the freeze (hard rule 5, DR-0034).
+# never built or run before the freeze (hard rule 5, DR-0034). A push that
+# changes .github/m4-request.json runs the request it holds (the same fields as
+# the dispatch inputs), so runs can be requested from a branch before the
+# workflow reaches the default branch.
 on:
+  push:
+    paths:
+      - .github/m4-request.json
   workflow_dispatch:
     inputs:
       apps:
@@ -43,14 +49,63 @@ concurrency:
   group: m4-items-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      apps: ${{ steps.plan.outputs.apps }}
+      legs: ${{ steps.plan.outputs.legs }}
+      items: ${{ steps.plan.outputs.items }}
+      sides: ${{ steps.plan.outputs.sides }}
+      reps: ${{ steps.plan.outputs.reps }}
+      canaries: ${{ steps.plan.outputs.canaries }}
+      axe: ${{ steps.plan.outputs.axe }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          IN_APPS: ${{ inputs.apps }}
+          IN_LEGS: ${{ inputs.legs }}
+          IN_ITEMS: ${{ inputs.items }}
+          IN_SIDES: ${{ inputs.sides }}
+          IN_REPS: ${{ inputs.reps }}
+          IN_CANARIES: ${{ inputs.canaries }}
+          IN_AXE: ${{ inputs.axe }}
+        run: |
+          if [ "$EVENT" = "push" ]; then
+            f=.github/m4-request.json
+            {
+              echo "apps=$(jq -c '.apps' "$f")"
+              echo "legs=$(jq -c '.legs' "$f")"
+              echo "items=$(jq -r '.items | join(",")' "$f")"
+              echo "sides=$(jq -r '.sides' "$f")"
+              echo "reps=$(jq -r '.reps' "$f")"
+              echo "canaries=$(jq -r '.canaries' "$f")"
+              echo "axe=$(jq -r '.axe' "$f")"
+            } >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "apps=$IN_APPS"
+              echo "legs=$IN_LEGS"
+              echo "items=$IN_ITEMS"
+              echo "sides=$IN_SIDES"
+              echo "reps=$IN_REPS"
+              echo "canaries=$IN_CANARIES"
+              echo "axe=$IN_AXE"
+            } >> "$GITHUB_OUTPUT"
+          fi
   items:
+    needs: plan
     runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
     timeout-minutes: 240
     strategy:
       fail-fast: false
       matrix:
-        app: ${{ fromJSON(inputs.apps) }}
-        leg: ${{ fromJSON(inputs.legs) }}
+        app: ${{ fromJSON(needs.plan.outputs.apps) }}
+        leg: ${{ fromJSON(needs.plan.outputs.legs) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -83,7 +138,7 @@ jobs:
         shell: pwsh
         env:
           APP_KEY: ${{ matrix.app }}
-          ITEMS: ${{ inputs.items }}
+          ITEMS: ${{ needs.plan.outputs.items }}
         run: |
           $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
           ./harness/src/runner/buildApp.ps1 -App $app -Out builds -Items "$env:ITEMS"
@@ -93,11 +148,11 @@ jobs:
         env:
           APP_KEY: ${{ matrix.app }}
           LEG: ${{ matrix.leg }}
-          ITEMS: ${{ inputs.items }}
-          SIDES: ${{ inputs.sides }}
-          REPS: ${{ inputs.reps }}
-          CANARIES: ${{ inputs.canaries }}
-          AXE: ${{ inputs.axe }}
+          ITEMS: ${{ needs.plan.outputs.items }}
+          SIDES: ${{ needs.plan.outputs.sides }}
+          REPS: ${{ needs.plan.outputs.reps }}
+          CANARIES: ${{ needs.plan.outputs.canaries }}
+          AXE: ${{ needs.plan.outputs.axe }}
         run: |
           $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
           $extra = @()

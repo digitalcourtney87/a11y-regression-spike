@@ -1,0 +1,36 @@
+{
+  "label": "EXPLORATORY",
+  "purpose": "journey development: each journey once on its base build, NVDA-absent leg (DR-0068)",
+  "apps": [
+    "atomic-crm",
+    "react-admin-simple",
+    "oss-carbon-19563",
+    "oss-fluent-35927",
+    "oss-rac-8697"
+  ],
+  "legs": [
+    "nvda-absent"
+  ],
+  "items": [
+    "acrm-contact-create-notification-unchanged",
+    "acrm-contact-create-save-unchanged",
+    "acrm-contact-show-tabs-unchanged",
+    "acrm-dashboard-complete-task-unchanged",
+    "acrm-dashboard-task-actions-escape-unchanged",
+    "acrm-dashboard-task-actions-unchanged",
+    "acrm-deals-move-card-keyboard-unchanged",
+    "oss-carbon-19563-unchanged",
+    "oss-fluent-35927-unchanged",
+    "oss-rac-8697-unchanged",
+    "ras-comment-post-preview-unchanged",
+    "ras-comment-quick-create-cancel-unchanged",
+    "ras-comment-quick-create-open-unchanged",
+    "ras-custom-page-heading-unchanged",
+    "ras-menu-navigate-comments-unchanged",
+    "ras-post-edit-save-notification-unchanged"
+  ],
+  "sides": "base",
+  "reps": "1",
+  "canaries": false,
+  "axe": false
+}
