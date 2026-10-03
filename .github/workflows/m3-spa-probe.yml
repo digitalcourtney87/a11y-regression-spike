@@ -1,0 +1,121 @@
+name: m3-spa-probe
+# M3 SPA selection (HANDOFF §9 M3; DR-0056): builds each candidate at a pinned
+# commit on the gate runner, times the install and the build, and probes the
+# production build offline (spaProbe.ts). Third-party code runs here only with
+# contents: read, no secrets, a separate npm cache that is never saved, and
+# install scripts off.
+# Runs on pushes to m3-corpus that touch the probe, so it needs no merge to main.
+on:
+  workflow_dispatch:
+  push:
+    branches: [m3-corpus]
+    paths:
+      - .github/workflows/m3-spa-probe.yml
+      - harness/src/probes/spaProbe.ts
+permissions:
+  contents: read
+concurrency:
+  group: m3-spa-probe-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  candidate:
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: atomic-crm
+            repo: marmelab/atomic-crm
+            ref: b23289b46734d796e74edd3ef224cbf23792ff82
+            sparse: ""
+            subdir: "."
+            build: npx --no-install vite build --config vite.demo.config.ts
+            dist: dist
+            paths: "/,/#/contacts,/#/deals,/#/companies"
+          - name: react-admin-simple
+            repo: marmelab/react-admin
+            ref: 47890673cae903b9c5a33898c07a12ea94205b5a
+            sparse: examples/simple
+            subdir: examples/simple
+            build: npx --no-install vite build
+            dist: dist
+            paths: "/,/#/posts,/#/comments"
+          - name: tanstack-kitchen-sink
+            repo: TanStack/router
+            ref: 1f0f20a3206a28365d74fd2485b9a8eedbf74dd0
+            sparse: examples/react/kitchen-sink
+            subdir: examples/react/kitchen-sink
+            build: npx --no-install vite build
+            dist: dist
+            paths: "/,/dashboard"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install harness dependencies
+        run: npm ci
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        run: npx --no-install playwright install chromium
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ matrix.repo }}
+          ref: ${{ matrix.ref }}
+          path: candidate-src
+          sparse-checkout: ${{ matrix.sparse }}
+          persist-credentials: false
+      - name: Install and build the candidate (timed)
+        shell: pwsh
+        env:
+          NAME: ${{ matrix.name }}
+          SUBDIR: ${{ matrix.subdir }}
+          BUILD: ${{ matrix.build }}
+          DIST: ${{ matrix.dist }}
+        run: |
+          $out = Join-Path $PWD "artefacts/spa/$env:NAME"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          # Build outside the harness tree so the candidate resolves only its own dependencies.
+          $work = Join-Path $env:RUNNER_TEMP "candidate"
+          Copy-Item -Recurse -Force (Join-Path "candidate-src" $env:SUBDIR) $work
+          Set-Location $work
+          # A separate npm cache, so candidate packages never enter the harness's saved cache.
+          $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-candidate"
+          $lock = Test-Path package-lock.json
+          $install = [Diagnostics.Stopwatch]::StartNew()
+          if ($lock) { npm ci --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out install.log) }
+          else { npm install --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out install.log) }
+          $installExit = $LASTEXITCODE
+          $install.Stop()
+          $build = [Diagnostics.Stopwatch]::StartNew()
+          Invoke-Expression "$env:BUILD 2>&1" | Out-File (Join-Path $out build.log)
+          $buildExit = $LASTEXITCODE
+          $build.Stop()
+          $packages = (Get-ChildItem node_modules -Directory -ErrorAction SilentlyContinue | Measure-Object).Count
+          Copy-Item package-lock.json (Join-Path $out package-lock.json) -ErrorAction SilentlyContinue
+          [ordered]@{
+            name = $env:NAME; lockfileInRepo = $lock
+            installSeconds = [math]::Round($install.Elapsed.TotalSeconds, 1); installExit = $installExit
+            buildSeconds = [math]::Round($build.Elapsed.TotalSeconds, 1); buildExit = $buildExit
+            topLevelPackages = $packages; node = (node --version); npm = (npm --version)
+            distExists = (Test-Path $env:DIST)
+          } | ConvertTo-Json | Out-File (Join-Path $out timing.json)
+          if (Test-Path $env:DIST) { Copy-Item -Recurse -Force $env:DIST (Join-Path $env:RUNNER_TEMP "dist") }
+      - name: Probe the production build offline
+        shell: pwsh
+        env:
+          NAME: ${{ matrix.name }}
+          PATHS: ${{ matrix.paths }}
+        run: |
+          $dist = Join-Path $env:RUNNER_TEMP "dist"
+          if (Test-Path $dist) { node harness/src/probes/spaProbe.ts --name "$env:NAME" --dist "$dist" --out "artefacts/spa/$env:NAME/probe.json" --paths "$env:PATHS" }
+          else { Write-Output "no build output to probe" }
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: spa-${{ matrix.name }}
+          path: artefacts/spa/
+          retention-days: 30
