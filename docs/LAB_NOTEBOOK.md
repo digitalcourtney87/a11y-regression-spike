@@ -246,3 +246,19 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | B2 signatures | 10 of 10 matched; every platform component by AutomationId |
 | NVDA-present leg (speech) | K1–K5 conveyed in 10 of 10 |
 | Re-scoring the five earlier M2 runs | No verdict, grade or order changed; the record-only table gains the "No B2 trace" column (0 everywhere) |
+
+### M3: corpus SPAs and the first dev items (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m3-spa-probe.yml` run [37126215365](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37126215365) (candidates); `m3-spa-build.yml` runs [37129009688](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37129009688) (Atomic CRM vendored), [37129580999](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37129580999) (both apps) and [37130160420](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37130160420) (both apps and the 17 dev patches); image `win25-vs2026` 20260925.250.1.
+**Affects:** DR-0056 to DR-0060 (P14–P19).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| Candidates, offline | Atomic CRM (as shipped): 83 requests to `marmelab.com` (logos, avatars, telemetry), no page error. react-admin simple: 2 (telemetry, Google fonts), no page error. TanStack kitchen sink: its data request to `jsonplaceholder.typicode.com` fails offline |
+| Vendored and integrated | Atomic CRM: install 23–32 s, build 9 s; react-admin simple: install 30 s, build 2 s. Both: no outside request, no console error, and identical ARIA snapshots across two fresh loads at a fixed clock on every path probed (4 and 3 paths) |
+| Atomic CRM build | The first build failed: the app imports `CHANGELOG.md` as text for its changelog page; vendored afterwards |
+| react-admin lockfile | Generated in CI: 284 packages, all from `registry.npmjs.org`, every one with an integrity hash; react-admin 5.15.4, MUI 5.18.0, React 18.3.1 |
+| Dev patches | 17 of 17 apply, build and load offline with no page error, and revert cleanly |
+| Open-source survey | Title-only search of 12 libraries: about 15 plausible accessibility regressions (`docs/research/2026-10-03-oss-regression-survey.md`) |

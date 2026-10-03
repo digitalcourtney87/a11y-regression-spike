@@ -96,6 +96,7 @@ Conventions:
 | [DR-0057](#dr-0057-owner-approvals-for-the-m3-corpus) | Owner approvals for the M3 corpus | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0058](#dr-0058-m3-spa-integrated-tooling-and-the-pattern-count) | M3: SPA integrated, tooling, and the pattern count | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P19 approved (DR-0059) | DR-0059 | Resolved (DR-0059) |
 | [DR-0059](#dr-0059-a-second-spa-and-the-dev-split-specs) | A second SPA, and the dev-split specs | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
+| [DR-0060](#dr-0060-dev-split-specs-for-the-spa-regression-batch) | Dev-split specs for the SPA regression batch | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -2791,3 +2792,29 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 
 - The SPA regression batch has 69 planned patterns (74 less 5 dropped) and is split with seed 20261004 at a test fraction of 0.7 after this record is committed.
 - ROUTE_CHANGE_SILENT has no SPA pattern, because neither base conveys route changes. Seeding it would mean adding a route announcer to a base, which changes the application, so that would be a new owner decision. It is reported with the pattern count.
+
+## DR-0060 Dev-split specs for the SPA regression batch
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** The split of the SPA regression batch (DR-0059) put 18 patterns in the dev split, nine per app. Each needs a spec realising its catalogue mechanism (P16) in the app's own source.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Dropped after the split | `atomic-crm--aria-modal-removed`, from the base alone: Radix Dialog makes the background inert with `aria-hidden` instead of `aria-modal`, bundled with its focus trap, so "aria-modal removed while containment stays" cannot be expressed without patching the library; `modal={false}` is the containment-removed mechanism, a separate (test) pattern. 17 dev patterns remain |
+| Realisation rule | Each mechanism is realised as the smallest plausible source change in the app's own code (vendored components included, libraries never patched). Shared-component edits are used where a design-system regression is the realistic form (Atomic CRM's shadcn `Checkbox`, `Tabs`, `DropdownMenuContent`, `SaveButton`); one-off edits otherwise. Radix and react-admin apply caller props after their own, so attribute overrides take effect (read from their sources) |
+| Judgement calls | `submit-pointer-only`: the SaveButton saves on `pointerup` only. `button-to-div`: a focusable `div` keeps the target reachable, so the expected symptom is the role, not reachability. `dialog-labelledby-removed` (react-admin): the preview dialog loses both its `aria-label` and its title link. `landmark-or-heading-removed` (react-admin) deletes the custom page's `h1`; the separate `heading-to-div` (test) pattern keeps the text. `toast-duplicated` (react-admin): a global `role="status"` announcer repeats "Element updated", because react-admin gives each notification to a single consumer. `toast-region-created-populated` (react-admin): MUI's Snackbar mounts its content populated, so the realisation downgrades it from `alert` to `status`, a mechanism DR-0013 lists in the creation-time family |
+| Journeys | Each item names the journey that will exercise it; journeys are written in M4, so validation warns about missing journeys until then |
+| Checks in M3 | Every patch applies with `git apply --check`, and CI applies each to its app, builds it and loads it offline (`m3-spa-build.yml`, `patches` job). Whether each base journey holds, and the candidate shows the symptom, is checked when journeys exist (M4, M5); an item whose base expectation fails is dropped on that base-only evidence |
+
+**Consequences.**
+
+- 17 dev items exist: 8 on Atomic CRM, 9 on react-admin's example.
+- The SPA regression batch now has 68 planned patterns (17 dev, 51 test).
