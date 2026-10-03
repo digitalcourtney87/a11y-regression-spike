@@ -12,8 +12,8 @@
  * recorded, but adopting it awaits a pending owner item (hard rule 12), which
  * its note must name (P<n>). No workflow may use such an Action: the env.lock
  * cross-check test (harness/test/policy/envLock.test.ts) requires every Action
- * a workflow or local action uses to be "pinned". `actions/setup-dotnet` is
- * pending owner item P2 (DR-0008, DR-0019).
+ * a workflow or local action uses to be "pinned". `actions/setup-dotnet` was
+ * pending owner item P2 until the owner approved it on 2026-10-03 (DR-0046).
  *
  * Scream (DR-0040): M1a records the Authenticode signature status, signer and
  * issuer, not just the signer thumbprint, and the schema refuses a pinned

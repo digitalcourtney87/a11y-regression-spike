@@ -5,8 +5,8 @@
  * every workflow and every local action manifest is recorded in env.lock with
  * status "pinned" and is used at the recorded SHA and version, and the Node
  * and TypeScript pins match .nvmrc and package.json. An action whose status is
- * "pending-owner" (`actions/setup-dotnet`, pending owner item P2) therefore
- * cannot be used by any workflow until the owner approves it.
+ * "pending-owner" therefore cannot be used by any workflow until the owner
+ * approves it (`actions/setup-dotnet` was approved on 2026-10-03, DR-0046).
  */
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -58,7 +58,7 @@ describe("env.lock", () => {
     expect(lock.dotnet.sdk).toBe("10.0.401");
   });
 
-  test("records the four action pins, with actions/setup-dotnet pending owner item P2", () => {
+  test("records the four action pins; actions/setup-dotnet was approved on 2026-10-03 (DR-0046)", () => {
     expect(lock.actions).toEqual({
       checkout: { status: "pinned", repo: "actions/checkout", version: "v7.0.1", sha: "3d3c42e5aac5ba805825da76410c181273ba90b1" },
       "setup-node": { status: "pinned", repo: "actions/setup-node", version: "v7.0.0", sha: "820762786026740c76f36085b0efc47a31fe5020" },
@@ -69,11 +69,11 @@ describe("env.lock", () => {
         sha: "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
       },
       "setup-dotnet": {
-        status: "pending-owner",
+        status: "pinned",
         repo: "actions/setup-dotnet",
         version: "v6.0.0",
         sha: "a98b56852c35b8e3190ac28c8c2271da59106c68",
-        note: expect.stringMatching(/\bP2\b/) as unknown,
+        note: expect.stringMatching(/\bDR-0046\b/) as unknown,
       },
     });
   });
@@ -156,15 +156,30 @@ describe("the env.lock cross-check", () => {
     expect(pinProblems(workflow(CHECKOUT), "ok.yml")).toEqual([]);
   });
 
-  test("refuses actions/setup-dotnet while it is pending owner item P2, even at the recorded SHA", () => {
-    const problems = pinProblems(workflow(CHECKOUT, SETUP_DOTNET), "listener.yml");
+  /** The committed lock with setup-dotnet turned back into a pending-owner pin. */
+  const pending: EnvLock = {
+    ...lock,
+    actions: {
+      ...lock.actions,
+      "setup-dotnet": {
+        status: "pending-owner",
+        repo: "actions/setup-dotnet",
+        version: "v6.0.0",
+        sha: "a98b56852c35b8e3190ac28c8c2271da59106c68",
+        note: "Adoption is pending owner item P9.",
+      },
+    },
+  };
+
+  test("refuses a pending-owner Action, even at the recorded SHA", () => {
+    const problems = pinProblems(workflow(CHECKOUT, SETUP_DOTNET), "listener.yml", pending);
     expect(problems).toHaveLength(1);
-    expect(problems[0]).toMatch(/^listener\.yml:\d+ .*actions\/setup-dotnet has env\.lock status "pending-owner" \(.*\bP2\b.*\); no workflow may use it/);
+    expect(problems[0]).toMatch(/^listener\.yml:\d+ .*actions\/setup-dotnet has env\.lock status "pending-owner" \(.*\bP9\b.*\); no workflow may use it/);
   });
 
   test("refuses the same use in a local action manifest", () => {
     const manifest = `runs:\n  using: composite\n  steps:\n    - uses: ${SETUP_DOTNET}\n`;
-    expect(pinProblems(manifest, ".github/actions/build/action.yml")).toEqual([expect.stringMatching(/"pending-owner"/)]);
+    expect(pinProblems(manifest, ".github/actions/build/action.yml", pending)).toEqual([expect.stringMatching(/"pending-owner"/)]);
   });
 
   test("accepts actions/setup-dotnet once the owner approves and its status is pinned", () => {
