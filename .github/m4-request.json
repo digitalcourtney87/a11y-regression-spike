@@ -1,8 +1,10 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M4 smoke test: one mined pair's three items, both sides, one attempt per side, canaries and axe on, both legs (DR-0072)",
+  "purpose": "M4 smoke test 2: the three mined pairs, both sides, one attempt per side, canaries and axe on, both legs, after the build fix (DR-0072)",
   "apps": [
-    "oss-fluent-35927"
+    "oss-fluent-35927",
+    "oss-carbon-19563",
+    "oss-rac-8697"
   ],
   "legs": [
     "nvda-absent",

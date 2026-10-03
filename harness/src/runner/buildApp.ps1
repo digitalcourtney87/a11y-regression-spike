@@ -45,10 +45,12 @@ if ($App -like "oss/*") {
   npm install --prefix $tools --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $logs "tools.log")
   if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
   $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
-  $regression = $devItems | Where-Object { $_.source -eq "oss-history" } | Select-Object -First 1
+  # The version pair comes from the regression item; the unchanged control is also oss-history, with base = candidate.
+  $regression = @($all | Where-Object { $_.app -eq $App -and $_.split -eq "dev" -and $_.source -eq "oss-history" -and $_.expected.kind -eq "regression" }) | Select-Object -First 1
   if ($null -eq $regression) { throw "no dev regression item for $App" }
   $good = $regression.base.ref -replace '^.*@', ''
   $broken = $regression.candidate.ref -replace '^.*@', ''
+  if ($good -eq $broken) { throw "the regression item's base and candidate are the same release ($good)" }
   function Build-Release([string]$version, [string]$label, [string]$patch) {
     $before = ([datetime]$times[$version]).ToUniversalTime().AddDays(1).ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
     $work = Join-Path $env:RUNNER_TEMP "item-oss-$label"
@@ -67,7 +69,7 @@ if ($App -like "oss/*") {
   $results += Build-Release $good "base" ""
   foreach ($item in $devItems) {
     if ($item.expected.kind -eq "unchanged") { continue }
-    if ($item.source -eq "oss-history") { $results += Build-Release $broken $item.id "" }
+    if ($item.source -eq "oss-history" -and $item.expected.kind -eq "regression") { $results += Build-Release $broken $item.id "" }
     elseif ($item.candidate.patch) { $results += Build-Release $good $item.id (Join-Path $repo "corpus/patches/$($item.candidate.patch)") }
   }
 } else {
