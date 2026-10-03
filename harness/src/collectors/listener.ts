@@ -125,8 +125,14 @@ export class ListenerProcess {
     if (!existsSync(exe)) throw new Error(`listener not built: ${exe}`);
     const child = spawn(exe, ["--pid", String(options.pid), "--out", options.outPath], { stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
     const listener = new ListenerProcess(child, options.outPath);
-    const ready = await listener.#next((v) => v.ready === true, options.timeoutMs ?? 15_000, "readiness");
-    listener.ready = ready as unknown as ListenerReady;
+    try {
+      const ready = await listener.#next((v) => v.ready === true, options.timeoutMs ?? 15_000, "readiness");
+      listener.ready = ready as unknown as ListenerReady;
+    } catch (error) {
+      // Never leave an orphan holding hooks for the rest of the job.
+      listener.kill();
+      throw error;
+    }
     return listener;
   }
 
@@ -155,14 +161,24 @@ export class ListenerProcess {
     return (await answer) as unknown as ListenerPing;
   }
 
-  /** Unhooks, drains and returns every event the listener wrote, with its final UIA status. */
-  async stop(): Promise<{ events: ListenerEvent[]; malformed: number; uia: string | null; stderr: string[] }> {
+  /**
+   * Unhooks, drains and returns every event the listener wrote, with its final
+   * UIA status. `drained` is false when the listener's resolver had not
+   * finished writing (its output is then incomplete), or when it had already
+   * exited.
+   */
+  async stop(): Promise<{ events: ListenerEvent[]; malformed: number; uia: string | null; drained: boolean; remaining: number | null; stderr: string[] }> {
     let uia: string | null = null;
+    let drained = false;
+    let remaining: number | null = null;
     if (this.#exited === null) {
       const stopped = this.#next((v) => v.stopped === true, 20_000, "stop");
       this.#child.stdin.write("stop\n");
       try {
-        uia = String((await stopped).uia);
+        const line = await stopped;
+        uia = String(line.uia);
+        drained = line.drained === true;
+        remaining = typeof line.remaining === "number" ? line.remaining : null;
       } finally {
         this.#child.stdin.end();
       }
@@ -175,7 +191,7 @@ export class ListenerProcess {
       });
     }
     const text = existsSync(this.#outPath) ? readFileSync(this.#outPath, "utf8") : "";
-    return { ...parseListenerOutput(text), uia, stderr: [...this.#stderr] };
+    return { ...parseListenerOutput(text), uia, drained, remaining, stderr: [...this.#stderr] };
   }
 
   /** Kills the process without draining (error paths only). */

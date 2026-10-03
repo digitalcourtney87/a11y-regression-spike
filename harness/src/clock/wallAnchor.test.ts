@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import { qpcNowNs } from "./qpc.ts";
-import { captureWallAnchor, qpcToWallIso } from "./wallAnchor.ts";
+import { adoptWallAnchor, captureWallAnchor, qpcToWallIso } from "./wallAnchor.ts";
 
 describe("captureWallAnchor", () => {
   test("returns one frozen anchor per process", () => {
@@ -27,5 +27,13 @@ describe("qpcToWallIso", () => {
     expect(qpcToWallIso(5_000_000_000, anchor)).toBe("2026-10-02T09:00:00.000Z");
     expect(qpcToWallIso(6_500_000_000, anchor)).toBe("2026-10-02T09:00:01.500Z");
     expect(qpcToWallIso(4_000_000_000, anchor)).toBe("2026-10-02T08:59:59.000Z");
+  });
+});
+
+describe("adoptWallAnchor", () => {
+  test("is refused once the process anchor exists", () => {
+    captureWallAnchor();
+    expect(adoptWallAnchor({ qpcNs: 1, wallIso: "2026-10-02T09:00:00.000Z" })).toBe(false);
+    expect(captureWallAnchor().qpcNs).not.toBe(1);
   });
 });

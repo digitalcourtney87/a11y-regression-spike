@@ -6,10 +6,14 @@
  *
  * Evidence is the listener's WinEvents (QPC on callback entry) and the DOM
  * mutation timeline (page times mapped to QPC), both inside the observation
- * window. UIA events are never part of a signature (DR-0019). A platform event
- * is attributed to a canary element through its identity: UIA AutomationId
- * (Chrome exposes the DOM id), MSAA name, UIA AriaRole, UIA LiveSetting or
- * MSAA role, in that order; the path used is recorded per component.
+ * window. UIA events are never part of a signature (DR-0019), and events on
+ * the browser frame window (`Chrome_WidgetWin_1`, browser UI) are excluded by
+ * window class (P3). A platform event is attributed to a canary element
+ * through its identity: UIA AutomationId (Chrome exposes the DOM id) and, only
+ * for an event with no AutomationId, MSAA name, UIA AriaRole or MSAA role, in
+ * that order; the path used is recorded per component. UIA LiveSetting is not
+ * an identity: Chrome reports it on every descendant of a live region (gate
+ * review of G2).
  *
  * Gating canaries pass when every required component is found. Record-only
  * canaries are described, not scored. Every Phase 0 result is EXPLORATORY.
@@ -35,16 +39,18 @@ export interface Identity {
   ids?: readonly string[];
   names?: readonly string[];
   ariaRoles?: readonly string[];
-  liveSettings?: readonly string[];
   roles?: readonly string[];
 }
 
-/** The identity path that matched, or null. */
+/**
+ * The identity path that matched, or null. An event that carries an
+ * AutomationId is that element: it matches only by AutomationId, never by a
+ * fallback, so another element with the same name or role is not attributed.
+ */
 export function identityVia(e: SignatureEvent, identity: Identity): string | null {
-  if (e.automationId !== undefined && identity.ids?.includes(e.automationId) === true) return "automationId";
+  if (e.automationId !== undefined) return identity.ids?.includes(e.automationId) === true ? "automationId" : null;
   if (e.name !== undefined && identity.names?.includes(e.name) === true) return "name";
   if (e.ariaRole !== undefined && identity.ariaRoles?.includes(e.ariaRole) === true) return "ariaRole";
-  if (e.liveSetting !== undefined && identity.liveSettings?.includes(e.liveSetting) === true) return "liveSetting";
   if (e.role !== undefined && identity.roles?.includes(e.role) === true) return "role";
   return null;
 }
@@ -55,11 +61,13 @@ export const LIVE_REGION_CHANGED = "EVENT_OBJECT_LIVEREGIONCHANGED";
 export const FOCUS = "EVENT_OBJECT_FOCUS";
 
 /**
- * P3 (DR-0019, DR-0052): EVENT_SYSTEM_ALERT raised on the browser frame
- * window (`Chrome_WidgetWin_1`) is browser UI and is excluded.
+ * P3 (DR-0019, DR-0052): events raised on the browser frame window
+ * (`Chrome_WidgetWin_1`: tab strip, address bar, browser-UI alerts) are
+ * browser UI and never part of a signature; web content is raised on
+ * `Chrome_RenderWidgetHostHWND`.
  */
-export function isBrowserUiAlert(e: SignatureEvent): boolean {
-  return e.event === "EVENT_SYSTEM_ALERT" && e.hwndClass === "Chrome_WidgetWin_1";
+export function isBrowserUi(e: SignatureEvent): boolean {
+  return e.hwndClass === "Chrome_WidgetWin_1";
 }
 
 export interface B2Component {
@@ -84,7 +92,7 @@ export interface B2GatingOutcome {
 /** K6 grading (DR-0037, amended by P9 of DR-0052). */
 export type DelayGrade = "populated-insertion" | "possibly-indistinguishable" | "review" | "separate-update" | "never-filled";
 
-/** One frame at 60 Hz (ms): a fill at or under this after insertion is a same-frame fill (P9). */
+/** One frame at 60 Hz (ms): the longest delay a one-rAF fill can have and still count as the same frame (P9). */
 export const SAME_FRAME_MS = 1000 / 60;
 /** P9: a polite fill at least this long after insertion is graded as a separate update (ms). */
 export const P9_SEPARATE_MS = 50;
@@ -95,14 +103,20 @@ export const WINDOW_BEFORE_LOAD_MS = 350;
 /**
  * Grades a live region's insertion-to-content delay. `delayMs` is null when
  * the region was inserted already populated (`populated` true) or never
- * filled. Polite regions filled after load use P9's observed boundary; other
- * roles, and any region before load, keep DR-0037's windows until tested.
+ * filled. Polite regions filled after load use P9's observed boundary: the
+ * same task (populated) or one rAF is the same frame; 50 ms or more is a
+ * separate update; anything between routes to REVIEW. `fillInRaf` says whether
+ * the fill was made in a requestAnimationFrame callback (timeline version 2);
+ * when it is unknown (version 1 records, as in the G2 runs) a fill within one
+ * frame counts as the same frame, as pre-registered in DR-0053. Other roles,
+ * and any region before load, keep DR-0037's windows until tested.
  */
-export function gradeDelay(delayMs: number | null, options: { populated: boolean; politeAfterLoad: boolean; loaded: boolean }): DelayGrade {
+export function gradeDelay(delayMs: number | null, options: { populated: boolean; politeAfterLoad: boolean; loaded: boolean; fillInRaf?: boolean | null }): DelayGrade {
   if (options.populated) return "populated-insertion";
   if (delayMs === null) return "never-filled";
   if (options.politeAfterLoad) {
-    if (delayMs <= SAME_FRAME_MS) return "populated-insertion";
+    const sameFrameFill = options.fillInRaf === undefined || options.fillInRaf === null ? delayMs <= SAME_FRAME_MS : options.fillInRaf && delayMs <= SAME_FRAME_MS;
+    if (sameFrameFill) return "populated-insertion";
     if (delayMs >= P9_SEPARATE_MS) return "separate-update";
     return "review";
   }
@@ -124,7 +138,7 @@ function relMs(t: number, w: Window_): number {
 
 function platform(name: string, required: boolean, events: readonly SignatureEvent[], w: Window_, types: readonly string[], identity: Identity): B2Component {
   const matches = events
-    .filter((e) => inWindow(e.t, w) && types.includes(e.event) && !isBrowserUiAlert(e))
+    .filter((e) => inWindow(e.t, w) && types.includes(e.event) && !isBrowserUi(e))
     .map((e) => ({ e, via: identityVia(e, identity) }))
     .filter((m): m is { e: SignatureEvent; via: string } => m.via !== null)
     .sort((a, b) => a.e.t - b.e.t);
@@ -138,8 +152,8 @@ function dom(name: string, required: boolean, timeline: readonly MappedTimelineE
   return { name, channel: "dom", required, found: first !== undefined, count: matches.length, ...(first === undefined ? {} : { atMs: relMs(first.tQpc, w) }) };
 }
 
-const K1_REGION: Identity = { ids: ["live"], liveSettings: ["polite"] };
-const K2_ALERT: Identity = { ids: ["alert"], ariaRoles: ["alert"], roles: ["alert"], liveSettings: ["assertive"] };
+const K1_REGION: Identity = { ids: ["live"] };
+const K2_ALERT: Identity = { ids: ["alert"], ariaRoles: ["alert"], roles: ["alert"] };
 const K3_BUTTON: Identity = { ids: ["target"], names: ["K3 target button"] };
 const K4_DIALOG: Identity = { ids: ["dialog"], names: ["K4 settings dialog"], ariaRoles: ["dialog"], roles: ["dialog"] };
 const K4_FIRST: Identity = { ids: ["dialog-first"], names: ["First control"] };
@@ -197,6 +211,8 @@ export interface RegionTrace {
   populated: boolean;
   /** Insertion-to-content delay in page ms; null if populated or never filled. */
   delayMs: number | null;
+  /** Whether the fill was made in a rAF callback; null when unknown (timeline version 1) or not filled. */
+  fillInRaf: boolean | null;
   grade: DelayGrade;
   /** Platform events attributed to the region: name and ms after the DOM insertion. */
   platform: { event: string; atMs: number; via: string }[];
@@ -207,24 +223,32 @@ export interface RegionTrace {
 export interface B2RecordOutcome {
   kind: "b2-record";
   region?: RegionTrace;
-  /** K7: whether the polite update precedes the focus move, per channel. */
-  order?: { domTextBeforeFocus: boolean | null; platformTextBeforeFocus: boolean | null };
+  /**
+   * K7: whether the polite update precedes the focus move. In the DOM the
+   * canary sets the text before calling focus() in one task, so that order is
+   * fixed by construction; on the platform it is read per event type.
+   */
+  order?: { domTextBeforeFocus: boolean | null; platformTextBeforeFocus: boolean | null; platformLiveRegionBeforeFocus: boolean | null };
 }
 
-function regionTrace(spec: CanarySpec, events: readonly SignatureEvent[], timeline: readonly MappedTimelineEntry[], w: Window_): RegionTrace {
+/** Options for record-only evaluation. */
+export interface RecordOptions {
+  /** The attempt's timeline format; version 2 records rAF fills and live-region roots. */
+  timelineVersion?: number;
+}
+
+function regionTrace(spec: CanarySpec, events: readonly SignatureEvent[], timeline: readonly MappedTimelineEntry[], w: Window_, options: RecordOptions): RegionTrace {
   const insert = timeline.filter((e) => inWindow(e.tQpc, w) && e.kind === "insert" && e.target.startsWith("div#region")).sort((a, b) => a.tQpc - b.tQpc)[0];
   const target = insert?.target ?? null;
   const populated = insert?.liveWithContent === true;
   const fill = insert === undefined || populated ? undefined : timeline.filter((e) => e.tQpc >= insert.tQpc && e !== insert && changedRegion(e) === target).sort((a, b) => a.tQpc - b.tQpc)[0];
   const delayMs = fill === undefined || insert === undefined ? null : Math.round((fill.t - insert.t) * 100) / 100;
+  const fillInRaf = fill === undefined || (options.timelineVersion ?? 1) < 2 ? null : fill.inRaf === true;
   const role = spec.canary === "K6a" ? spec.variant : spec.canary === "K6b" ? "alert" : "polite";
-  const identity: Identity = {
-    ids: ["region"],
-    ...(role === "alert" || role === "status" ? { ariaRoles: [role], roles: [role] } : { liveSettings: [role ?? "polite"] }),
-  };
+  const identity: Identity = { ids: ["region"], ...(role === "alert" || role === "status" ? { ariaRoles: [role], roles: [role] } : {}) };
   const from = insert?.tQpc ?? w.activationT;
   const attributed = events
-    .filter((e) => inWindow(e.t, w) && !isBrowserUiAlert(e))
+    .filter((e) => inWindow(e.t, w) && !isBrowserUi(e))
     .map((e) => ({ e, via: identityVia(e, identity) }))
     .filter((m): m is { e: SignatureEvent; via: string } => m.via !== null)
     .sort((a, b) => a.e.t - b.e.t);
@@ -232,8 +256,9 @@ function regionTrace(spec: CanarySpec, events: readonly SignatureEvent[], timeli
     target,
     populated,
     delayMs,
+    fillInRaf,
     // Canary regions are inserted after load; only polite regions take P9's boundary.
-    grade: insert === undefined ? "never-filled" : gradeDelay(delayMs, { populated, politeAfterLoad: role === "polite", loaded: true }),
+    grade: insert === undefined ? "never-filled" : gradeDelay(delayMs, { populated, politeAfterLoad: role === "polite", loaded: true, fillInRaf }),
     platform: attributed.map((m) => ({ event: m.e.event, atMs: Math.round(((m.e.t - from) / 1e6) * 10) / 10, via: m.via })),
     separateUpdate: attributed.some((m) => m.e.t >= from && (m.e.event === LIVE_REGION_CHANGED || TEXT_EVENTS.includes(m.e.event))),
   };
@@ -253,8 +278,8 @@ function before(a: number | null, b: number | null): boolean | null {
   return a === null || b === null ? null : a < b;
 }
 
-export function evaluateRecordB2(spec: CanarySpec, events: readonly SignatureEvent[], timeline: readonly MappedTimelineEntry[], w: Window_): B2RecordOutcome {
-  if (spec.canary === "K6a" || spec.canary === "K6b" || spec.canary === "K6e") return { kind: "b2-record", region: regionTrace(spec, events, timeline, w) };
+export function evaluateRecordB2(spec: CanarySpec, events: readonly SignatureEvent[], timeline: readonly MappedTimelineEntry[], w: Window_, options: RecordOptions = {}): B2RecordOutcome {
+  if (spec.canary === "K6a" || spec.canary === "K6b" || spec.canary === "K6e") return { kind: "b2-record", region: regionTrace(spec, events, timeline, w, options) };
   if (spec.canary === "K7a" || spec.canary === "K7b") {
     const focusTarget = spec.canary === "K7a" ? "button#target" : "input#field";
     const focusIdentity: Identity = spec.canary === "K7a" ? { ids: ["target"], names: ["K7a target button"] } : { ids: ["field"], names: ["K7b text field"] };
@@ -262,10 +287,14 @@ export function evaluateRecordB2(spec: CanarySpec, events: readonly SignatureEve
     // focusin), while records flushed together share one time.
     const domText = firstIndex(timeline, (e) => inWindow(e.tQpc, w) && changedRegion(e) === "div#live");
     const domFocus = firstIndex(timeline, (e) => inWindow(e.tQpc, w) && e.kind === "focusin" && e.target === focusTarget);
-    const inW = events.filter((e) => inWindow(e.t, w));
-    const platformText = firstT(inW.filter((e) => (e.event === LIVE_REGION_CHANGED || TEXT_EVENTS.includes(e.event)) && identityVia(e, K1_REGION) !== null), (e) => e.t);
+    const inW = events.filter((e) => inWindow(e.t, w) && !isBrowserUi(e));
+    const platformText = firstT(inW.filter((e) => TEXT_EVENTS.includes(e.event) && identityVia(e, K1_REGION) !== null), (e) => e.t);
+    const platformLive = firstT(inW.filter((e) => e.event === LIVE_REGION_CHANGED && identityVia(e, K1_REGION) !== null), (e) => e.t);
     const platformFocus = firstT(inW.filter((e) => e.event === FOCUS && identityVia(e, focusIdentity) !== null), (e) => e.t);
-    return { kind: "b2-record", order: { domTextBeforeFocus: before(domText, domFocus), platformTextBeforeFocus: before(platformText, platformFocus) } };
+    return {
+      kind: "b2-record",
+      order: { domTextBeforeFocus: before(domText, domFocus), platformTextBeforeFocus: before(platformText, platformFocus), platformLiveRegionBeforeFocus: before(platformLive, platformFocus) },
+    };
   }
   throw new Error(`${spec.canary} is not a record-only canary`);
 }

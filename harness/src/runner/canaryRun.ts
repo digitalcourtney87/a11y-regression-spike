@@ -48,11 +48,11 @@ import { GuidepupNvdaAdapter } from "../adapters/atAdapter.ts";
 import { NVDA_SETTINGS } from "../adapters/nvda-settings.ts";
 import { RelayTap } from "../adapters/relayTap.ts";
 import type { TapEvent } from "../adapters/relayTap.ts";
-import { captureWallAnchor, qpcToWallIso } from "../clock/wallAnchor.ts";
+import { adoptWallAnchor, captureWallAnchor, qpcToWallIso } from "../clock/wallAnchor.ts";
 import { qpcNowNs } from "../clock/qpc.ts";
 import { LISTENER_EXE, ListenerProcess, toPlatformEvent } from "../collectors/listener.ts";
 import type { ListenerEvent, ListenerReady } from "../collectors/listener.ts";
-import { TIMELINE_DRAIN_SCRIPT, TIMELINE_INIT_SCRIPT } from "../collectors/mutationTimeline.ts";
+import { TIMELINE_DRAIN_SCRIPT, TIMELINE_INIT_SCRIPT, TIMELINE_VERSION } from "../collectors/mutationTimeline.ts";
 import type { MappedTimelineEntry, TimelineEntry } from "../collectors/mutationTimeline.ts";
 import { countSpeakingBetween, isoTimeOfDay, nvdaVersionFromLog, readEspeakSettings, scanNvdaLog } from "../probes/analysis.ts";
 import type { EspeakSettings } from "../probes/analysis.ts";
@@ -241,6 +241,16 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
   const record: Json = { jobId, index: attempt.index, itemId: spec.itemId, canary: spec.canary, repetition: attempt.repetition, gating: spec.gating, leg, ...(diagnostic === null ? {} : { diagnostic }) };
   let browser: Browser | undefined;
   let listener: ListenerProcess | undefined;
+  // Set by failListener, which is called from several places (a holder, so
+  // the type checker does not narrow it to its initial value).
+  const failure: { listener: string | null } = { listener: null };
+  let activatedAt: number | null = null;
+  let preActivationReasons: string[] | null = null;
+  const failListener = (why: string): void => {
+    failure.listener ??= why;
+    listener?.kill();
+    listener = undefined;
+  };
   try {
     const logOffset = ctx.nvdaRun !== null && existsSync(ctx.nvdaRun.logPath) ? statSync(ctx.nvdaRun.logPath).size : 0;
     browser = await chromium.launch({ headless: false, chromiumSandbox: true, args: CHROME_FLAGS });
@@ -258,7 +268,19 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     const win = (await ctx.helper.windowsForPid(browserPid)).find((w) => w.class === "Chrome_WidgetWin_1");
     if (win === undefined) throw new Error("no Chrome window");
     // B2 listener for this browser process, started before the handover (DR-0019).
-    if (listenerTmp !== null) listener = await ListenerProcess.start({ exe: args.listener, pid: browserPid, outPath: join(listenerTmp, `${jobId}-${String(attempt.index)}.jsonl`) });
+    // The listener is the instrument G2 judges, so its failures never make an
+    // attempt INCONCLUSIVE (DR-0032): the attempt continues without it and its
+    // B2 outcome is null, which the G2 report counts as a failure.
+    if (listenerTmp !== null) {
+      try {
+        listener = await ListenerProcess.start({ exe: args.listener, pid: browserPid, outPath: join(listenerTmp, `${jobId}-${String(attempt.index)}.jsonl`) });
+        record.listenerReady = listener.ready;
+        const ready = listener.ready;
+        if (ready !== null && ready.hooks !== ready.ranges) failListener(`hooks installed ${String(ready.hooks)} of ${String(ready.ranges)}`);
+      } catch (error) {
+        failListener(`start: ${errorText(error)}`);
+      }
+    }
 
     // Handover (HANDOFF §7.2).
     const activation = await ctx.helper.activate(win.hwnd);
@@ -268,11 +290,11 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     const anchorFrom = qpcNowNs();
     await page.locator("#start").focus();
     await sleep(FOCUS_FIRST_READ_MS);
-    // P10 (DR-0051): retry the MSAA read every 100 ms for up to 1 s before ruling.
+    // P10 (DR-0051): retry the MSAA read every 100 ms, within 1 s of the first read, before ruling.
+    const retryUntil = qpcNowNs() + FOCUS_RETRY_FOR_MS * 1e6;
     let msaa = await ctx.helper.msaaFocus(win.hwnd);
     let focusReads = 1;
-    const retryUntil = qpcNowNs() + FOCUS_RETRY_FOR_MS * 1e6;
-    while (msaa.name !== ANCHOR_NAME && qpcNowNs() < retryUntil) {
+    while (msaa.name !== ANCHOR_NAME && qpcNowNs() + FOCUS_RETRY_MS * 1e6 <= retryUntil) {
       await sleep(FOCUS_RETRY_MS);
       msaa = await ctx.helper.msaaFocus(win.hwnd);
       focusReads++;
@@ -290,15 +312,47 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     // Clock checks before the segment (D1). The native self-test pings each
     // native collector (DR-0010): the Windows helper and, when it runs, the listener.
     const helperNative = await nativeSelfTest(ctx.helper, PINGS);
-    const listenerNative = listener === undefined ? null : await nativeSelfTest(listener, PINGS);
+    let listenerNative: { disagreementMs: number } | null = null;
+    if (listener !== undefined) {
+      try {
+        listenerNative = await nativeSelfTest(listener, PINGS);
+      } catch (error) {
+        failListener(`ping: ${errorText(error)}`);
+      }
+    }
     const native = { disagreementMs: Math.max(helperNative.disagreementMs, listenerNative?.disagreementMs ?? 0) };
     const clockStart = await pageClock(page, PINGS, true);
     await page.evaluate(RAF_START_SCRIPT);
     await sleep(SETTLE_MS);
 
+    const buildPreflight = (segmentDrift: number, maxRafGapMs: number): Preflight => ({
+      foregroundHwndOk: foregroundOk && focusOk,
+      // Phase 0 canary runs: each canary is itself the known-answer check, so no
+      // separate pre-canary can absorb an instrument failure (DR-0048).
+      preCanaryOk: true,
+      manifestValid: ctx.manifestValid && chromeVersion === EXPECTED_CHROME,
+      clock: {
+        nativeSelfTestDisagreementMs: native.disagreementMs,
+        pageMappingUncertaintyMs: clockStart.uncertaintyMs,
+        segmentDriftMs: segmentDrift,
+        timeTicksHighResolution: clockStart.highResolution === true,
+        maxRafGapMs,
+      },
+      ...(ctx.nvdaRun === null
+        ? {}
+        : {
+            injectionMarkerOk: injectionMarkerOk === true,
+            audioOk: ctx.audio.endpointCount >= 1 && ctx.audio.audiosrvRunning,
+            synthOk: ctx.nvdaRun.synthOk,
+          }),
+    });
+    // The checks completed before activation; drift and the rAF gap are finished after the window.
+    preActivationReasons = inconclusiveReasons(buildPreflight(0, 0), leg);
+
     // Segment.
     const segmentId = `${jobId}-${String(attempt.index)}`;
     const activationT = qpcNowNs();
+    activatedAt = activationT;
     if (ctx.nvdaRun !== null) await ctx.nvdaRun.adapter.press("Enter");
     else await page.locator("#start").click();
     await sleep(spec.observeMs);
@@ -309,38 +363,33 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     const driftMs = await segmentDriftMs(page, clockStart, 8);
     const pageLog = await page.evaluate<unknown>("window.__canary");
     const timeline: MappedTimelineEntry[] = (await page.evaluate<TimelineEntry[]>(TIMELINE_DRAIN_SCRIPT)).map((e) => ({ ...e, tQpc: pageToQpcNs(e.t, clockStart) }));
-    const drained = listener === undefined ? null : await listener.stop();
-    listener = undefined;
+    let drained: Awaited<ReturnType<ListenerProcess["stop"]>> | null = null;
+    if (listener !== undefined) {
+      try {
+        drained = await listener.stop();
+        if (!drained.drained) failListener(`not drained (${String(drained.remaining)} events still queued)`);
+      } catch (error) {
+        failListener(`stop: ${errorText(error)}`);
+      }
+      listener = undefined;
+    }
     const platformEvents: ListenerEvent[] = drained?.events ?? [];
     const window_ = { activationT, endT };
     const inWindow = (tq: number): boolean => tq >= activationT && tq <= endT;
-    const b2 = drained === null ? null : spec.gating ? evaluateGatingB2(spec.canary, platformEvents, timeline, window_) : evaluateRecordB2(spec, platformEvents, timeline, window_);
+    const options = { timelineVersion: TIMELINE_VERSION };
+    const b2 =
+      listenerTmp === null || failure.listener !== null || drained === null
+        ? null
+        : spec.gating
+          ? evaluateGatingB2(spec.canary, platformEvents, timeline, window_)
+          : evaluateRecordB2(spec, platformEvents, timeline, window_, options);
+    if (failure.listener !== null) record.listenerFailure = failure.listener;
     // The canary's own DOM change (first DOM component of its signature), ms after
     // activation: the start of P4's DOM-mutation-to-tap latency (DR-0046).
     const domAt = spec.gating ? gatingComponents(spec.canary, [], timeline, window_).filter((c) => c.channel === "dom" && c.found && c.atMs !== undefined).map((c) => c.atMs as number) : [];
     record.domChangeAtMs = domAt.length === 0 ? null : Math.min(...domAt);
 
-    const preflight: Preflight = {
-      foregroundHwndOk: foregroundOk && focusOk,
-      // Phase 0 canary runs: each canary is itself the known-answer check, so no
-      // separate pre-canary can absorb an instrument failure (DR-0048).
-      preCanaryOk: true,
-      manifestValid: ctx.manifestValid && chromeVersion === EXPECTED_CHROME,
-      clock: {
-        nativeSelfTestDisagreementMs: native.disagreementMs,
-        pageMappingUncertaintyMs: clockStart.uncertaintyMs,
-        segmentDriftMs: driftMs,
-        timeTicksHighResolution: clockStart.highResolution === true,
-        maxRafGapMs: raf.maxGapMs ?? Number.POSITIVE_INFINITY,
-      },
-      ...(ctx.nvdaRun === null
-        ? {}
-        : {
-            injectionMarkerOk: injectionMarkerOk === true,
-            audioOk: ctx.audio.endpointCount >= 1 && ctx.audio.audiosrvRunning,
-            synthOk: ctx.nvdaRun.synthOk,
-          }),
-    };
+    const preflight = buildPreflight(driftMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY);
     const reasons = inconclusiveReasons(preflight, leg);
     record.anchorSpeech =
       ctx.nvdaRun === null
@@ -398,11 +447,12 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
         raf,
       },
       // Every listener event of the attempt, and the whole DOM timeline, for offline re-analysis.
-      ...(drained === null ? {} : { listener: { events: platformEvents, malformed: drained.malformed, uia: drained.uia, stderr: drained.stderr } }),
+      ...(drained === null ? {} : { listener: { events: platformEvents, malformed: drained.malformed, uia: drained.uia, drained: drained.drained, remaining: drained.remaining, stderr: drained.stderr } }),
       timeline,
-      // Page time to QPC (D1): page QPC ns ≈ navigationStartS × 1e9 + performance.now() × 1e6 + mappingOffsetNs correction.
-      // Recorded so that DOM-mutation latency (P4) can be computed from the page log (from M2 onwards).
-      pageMapping: { navigationStartS: clockStart.navigationStartS, mappingOffsetNs: clockStart.mappingOffsetNs },
+      // Page time to QPC (D1): page QPC ns ≈ navigationStartS × 1e9 + performance.now() × 1e6 − mappingOffsetNs
+      // (pageToQpcNs). The half-RTT of the mapping samples is a diagnostic of the applied mapping.
+      pageMapping: { navigationStartS: clockStart.navigationStartS, mappingOffsetNs: clockStart.mappingOffsetNs, mappingHalfRttNs: clockStart.mappingHalfRttNs },
+      timelineVersion: TIMELINE_VERSION,
       page: pageLog,
       packageValid: validation.success,
       ...(validation.success ? {} : { packageErrors: validation.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`) }),
@@ -410,8 +460,21 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     });
   } catch (error) {
     record.error = errorText(error);
-    record.valid = false;
-    record.inconclusiveReasons = ["ENV_FAILURE"];
+    if (activatedAt === null || preActivationReasons === null) {
+      // Setup failed before activation, before any outcome existed (D12).
+      record.valid = false;
+      record.inconclusiveReasons = ["ENV_FAILURE"];
+    } else {
+      // After activation an error may come from the thing being judged, so it
+      // can never make the attempt INCONCLUSIVE (DR-0032): validity rests on the
+      // checks completed before activation, and the missing outcome counts as a failure.
+      record.valid = preActivationReasons.length === 0;
+      record.inconclusiveReasons = preActivationReasons;
+      record.outcome = null;
+      record.b2 = null;
+      record.errorAfterActivation = true;
+    }
+    if (failure.listener !== null) record.listenerFailure = failure.listener;
   } finally {
     listener?.kill();
     await browser?.close();
@@ -434,7 +497,12 @@ async function main(): Promise<void> {
       listenerReady = probe.ready;
       await probe.stop();
       summary.listenerProbe = listenerReady;
+      // From M2 the Node process adopts the listener's precise (QPC, wall) pair
+      // (DR-0010, DR-0030). In G1-type NVDA-present jobs no listener runs (P4),
+      // so the coarse Node anchor stays; it labels times and buckets parity only.
+      if (listenerReady !== null) adoptWallAnchor({ qpcNs: listenerReady.anchorQpcNs, wallIso: listenerReady.anchorWall });
     }
+    summary.wallAnchor = { ...captureWallAnchor(), source: listenerReady === null ? "node" : "listener" };
     if (leg === "nvda-present") nvdaRun = await startNvda();
     const manifest: EnvManifest = {
       harnessCommit: process.env.GITHUB_SHA ?? "local",

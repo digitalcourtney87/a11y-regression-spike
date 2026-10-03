@@ -15,6 +15,6 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>A11ySpike.Listener</RootNamespace>
     <AssemblyName>a11y-listener</AssemblyName>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
   </PropertyGroup>
 </Project>

@@ -9,10 +9,16 @@
  * - live regions inserted with non-empty content.
  * `attachShadow` is patched so that shadow roots are observed too, and
  * `takeRecords()` runs before focus and history entries so records keep
- * causal order. Entries are buffered in `window.__a11yTimeline` and drained
+ * causal order. From version 2, insertions and text changes inside a live
+ * region record the region's root (`liveRoot`), and records flushed at the end
+ * of a `requestAnimationFrame` callback are tagged `inRaf`, so a fill made in
+ * a rAF callback can be told from a timer fill (P9). Entries are buffered in `window.__a11yTimeline` and drained
  * with `TIMELINE_DRAIN_SCRIPT` after the observation window. Each entry's `t`
  * is the observer callback's time, so records delivered in one batch share it.
  */
+
+/** Version of the init script's record format (attempt records carry it from version 2). */
+export const TIMELINE_VERSION = 2;
 
 /** One timeline entry, as the init script records it. */
 export interface TimelineEntry {
@@ -29,6 +35,10 @@ export interface TimelineEntry {
   liveWithContent?: boolean;
   /** For insert and text: whether the node is inside a live region. */
   inLive?: boolean;
+  /** Version 2: for insert and text inside a live region, the descriptor of the nearest live-region root. */
+  liveRoot?: string;
+  /** Version 2: recorded by the flush at the end of a requestAnimationFrame callback. */
+  inRaf?: boolean;
 }
 
 /** The init script (a classic script string; it reads performance.now() only). */
@@ -48,10 +58,12 @@ export const TIMELINE_INIT_SCRIPT = `(() => {
     return d;
   };
   const isLiveRoot = (el) => el && el.nodeType === 1 && ((el.hasAttribute("aria-live") && el.getAttribute("aria-live") !== "off") || LIVE_ROLES.has(el.getAttribute("role")));
-  const inLive = (node) => {
-    for (let n = node && node.nodeType === 1 ? node : node && node.parentElement; n; n = n.parentElement) if (isLiveRoot(n)) return true;
-    return false;
+  const liveRootOf = (node) => {
+    for (let n = node && node.nodeType === 1 ? node : node && node.parentElement; n; n = n.parentElement) if (isLiveRoot(n)) return n;
+    return null;
   };
+  const inLive = (node) => liveRootOf(node) !== null;
+  const withRoot = (entry, node) => { const root = liveRootOf(node); if (root) entry.liveRoot = describe(root); return entry; };
   const liveWithContent = (node) => {
     if (node.nodeType !== 1) return false;
     const roots = isLiveRoot(node) ? [node] : Array.from(node.querySelectorAll("[aria-live],[role=status],[role=alert],[role=log],[role=marquee],[role=timer]")).filter(isLiveRoot);
@@ -62,13 +74,13 @@ export const TIMELINE_INIT_SCRIPT = `(() => {
     for (const m of records) {
       if (m.type === "childList") {
         const parent = describe(m.target);
-        for (const n of m.addedNodes) out.push({ t, kind: "insert", target: describe(n), parent, liveWithContent: liveWithContent(n), inLive: inLive(m.target) });
+        for (const n of m.addedNodes) out.push(withRoot({ t, kind: "insert", target: describe(n), parent, liveWithContent: liveWithContent(n), inLive: inLive(m.target) }, m.target));
         for (const n of m.removedNodes) out.push({ t, kind: "remove", target: describe(n), parent });
         if (m.target && m.target.nodeName === "TITLE") out.push({ t, kind: "title", target: "title", detail: document.title });
       } else if (m.type === "characterData") {
         const parent = m.target.parentElement;
         if (parent && parent.nodeName === "TITLE") out.push({ t, kind: "title", target: "title", detail: document.title });
-        else out.push({ t, kind: "text", target: describe(parent), inLive: inLive(parent) });
+        else out.push(withRoot({ t, kind: "text", target: describe(parent), inLive: inLive(parent) }, parent));
       } else if (m.type === "attributes") {
         const name = m.attributeName || "";
         if (name.startsWith("aria-") || ATTRS.has(name)) out.push({ t, kind: "attr", target: describe(m.target), detail: name });
@@ -93,6 +105,12 @@ export const TIMELINE_INIT_SCRIPT = `(() => {
     history[method] = function (...args) { flush(); out.push({ t: now(), kind: "history", target: "history", detail: method }); return original.apply(this, args); };
   }
   addEventListener("popstate", () => { flush(); out.push({ t: now(), kind: "history", target: "history", detail: "popstate" }); }, true);
+  const raf = window.requestAnimationFrame;
+  window.requestAnimationFrame = function (callback) {
+    return raf.call(window, function (time) {
+      try { return callback(time); } finally { const from = out.length; flush(); for (let i = from; i < out.length; i++) out[i].inRaf = true; }
+    });
+  };
   window.__a11yTimelineFlush = flush;
 })();`;
 
@@ -122,12 +140,14 @@ export interface MappedTimelineEntry extends TimelineEntry {
 }
 
 /**
- * The live region a timeline entry changes: for a text change its target, for
- * an insertion into a live region the parent it was inserted into.
+ * The live region a timeline entry changes: the recorded live-region root
+ * (version 2); in version 1 records, the text change's target or the parent an
+ * insertion went into.
  */
 export function changedRegion(entry: TimelineEntry): string | null {
   if (entry.inLive !== true) return null;
-  if (entry.kind === "text") return entry.target;
-  if (entry.kind === "insert") return entry.parent ?? null;
-  return null;
+  if (entry.kind !== "text" && entry.kind !== "insert") return null;
+  // Version 2 records the live-region root, so changes to nested children count.
+  if (entry.liveRoot !== undefined) return entry.liveRoot;
+  return entry.kind === "text" ? entry.target : (entry.parent ?? null);
 }

@@ -139,7 +139,11 @@ internal sealed class Resolver : IDisposable
 
     public void Complete() => _queue.CompleteAdding();
 
-    public void Join() => _thread.Join(TimeSpan.FromSeconds(10));
+    /// True when the resolver drained its queue and exited within the timeout.
+    public bool Join() => _thread.Join(TimeSpan.FromSeconds(10));
+
+    /// Events still queued (non-zero only if Join timed out).
+    public int Remaining => _queue.Count;
 
     public void Dispose()
     {

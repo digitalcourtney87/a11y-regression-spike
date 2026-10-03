@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Threading;
 
 namespace A11ySpike.Listener;
@@ -67,17 +70,31 @@ internal static class Program
 
         var (anchorQpc, anchorWall) = WallAnchor.Capture();
         int installed = hooks.FindAll(h => h != IntPtr.Zero).Count;
-        Console.Out.WriteLine(
-            $"{{\"ready\":true,\"pid\":{pid},\"hooks\":{installed},\"ranges\":{Events.Ranges.Length},\"frequency\":{Stopwatch.Frequency},\"anchorQpcNs\":{anchorQpc},\"anchorWall\":\"{anchorWall}\",\"version\":\"0.2.0\",\"runtime\":\"{Environment.Version}\"}}");
-        Console.Out.Flush();
+        WriteLine(json =>
+        {
+            json.WriteBoolean("ready", true);
+            json.WriteNumber("pid", pid);
+            json.WriteNumber("hooks", installed);
+            json.WriteNumber("ranges", Events.Ranges.Length);
+            json.WriteNumber("frequency", Stopwatch.Frequency);
+            json.WriteNumber("anchorQpcNs", anchorQpc);
+            json.WriteString("anchorWall", anchorWall);
+            json.WriteString("version", "0.3.0");
+            json.WriteString("runtime", Environment.Version.ToString());
+        });
 
         string? line;
         while ((line = Console.In.ReadLine()) is not null)
         {
             if (line == "ping")
             {
-                Console.Out.WriteLine($"{{\"ticks\":{Stopwatch.GetTimestamp()},\"frequency\":{Stopwatch.Frequency},\"uia\":\"{resolver.UiaStatus.Replace("\"", "'")}\"}}");
-                Console.Out.Flush();
+                long ticks = Stopwatch.GetTimestamp();
+                WriteLine(json =>
+                {
+                    json.WriteNumber("ticks", ticks);
+                    json.WriteNumber("frequency", Stopwatch.Frequency);
+                    json.WriteString("uia", resolver.UiaStatus);
+                });
             }
             else if (line == "stop")
             {
@@ -88,9 +105,30 @@ internal static class Program
         Native.PostThreadMessage(hookThreadId, Native.WM_QUIT, IntPtr.Zero, IntPtr.Zero);
         hookThread.Join(TimeSpan.FromSeconds(5));
         resolver.Complete();
-        resolver.Join();
-        Console.Out.WriteLine($"{{\"stopped\":true,\"uia\":\"{resolver.UiaStatus.Replace("\"", "'")}\"}}");
-        Console.Out.Flush();
+        // drained is false if the resolver did not finish writing within its
+        // timeout; Node then treats the attempt's B2 evidence as incomplete.
+        bool drained = resolver.Join();
+        WriteLine(json =>
+        {
+            json.WriteBoolean("stopped", true);
+            json.WriteBoolean("drained", drained);
+            json.WriteNumber("remaining", resolver.Remaining);
+            json.WriteString("uia", resolver.UiaStatus);
+        });
         return 0;
+    }
+
+    /// Writes one JSON object as a line on stdout, escaped by Utf8JsonWriter.
+    private static void WriteLine(Action<Utf8JsonWriter> body)
+    {
+        using var buffer = new MemoryStream();
+        using (var json = new Utf8JsonWriter(buffer))
+        {
+            json.WriteStartObject();
+            body(json);
+            json.WriteEndObject();
+        }
+        Console.Out.WriteLine(Encoding.UTF8.GetString(buffer.ToArray()));
+        Console.Out.Flush();
     }
 }

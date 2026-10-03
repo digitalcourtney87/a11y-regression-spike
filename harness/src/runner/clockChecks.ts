@@ -73,6 +73,8 @@ export interface PageClock {
   uncertaintyMs: number;
   /** Minimum-RTT offset of the NavigationStart + performance.now() mapping (ns). */
   mappingOffsetNs: number;
+  /** Half the minimum RTT of the mapping samples (ns): the applied mapping's own uncertainty, a diagnostic. */
+  mappingHalfRttNs: number;
   highResolution: boolean | null;
 }
 
@@ -90,12 +92,13 @@ export async function pageClock(page: Page, pings: number, withSteps: boolean): 
       navigationStartS = metric(metrics, "NavigationStart");
       stamps.push({ t0, t1, value: Math.round(metric(metrics, "Timestamp") * 1e9) });
     }
-    const mapping = await mappingSamples(page, navigationStartS, pings);
+    const mapping = minRttEstimate(await mappingSamples(page, navigationStartS, pings));
     const steps = withSteps ? stepSummary(await page.evaluate<number[]>(STEPS_SCRIPT)) : null;
     return {
       navigationStartS,
       uncertaintyMs: pageMappingUncertaintyMs(stamps),
-      mappingOffsetNs: minRttEstimate(mapping).offsetNs,
+      mappingOffsetNs: mapping.offsetNs,
+      mappingHalfRttNs: mapping.uncertaintyNs,
       highResolution: steps?.highResolution ?? null,
     };
   } finally {
