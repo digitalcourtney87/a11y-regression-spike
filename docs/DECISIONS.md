@@ -48,7 +48,7 @@ Conventions:
 | [DR-0009](#dr-0009-nvda-provisioning-via-guidepup-setup-action-archived) | NVDA provisioning via Guidepup (setup-action archived) | Accepted | 2026-10-02 | D2 (provisioning) | — | Resolved |
 | [DR-0010](#dr-0010-d1-clock-alignment) | D1 Clock alignment | Accepted | 2026-10-02 | D1 | DR-0039 | Pending: P6 |
 | [DR-0011](#dr-0011-d2-speech-capture-incl-prd-48-at-driver-teardown) | D2 Speech capture (incl. PRD §48 AT Driver teardown) | Accepted | 2026-10-02 | D2 | DR-0039 | Resolved |
-| [DR-0012](#dr-0012-d3-virtual-audio) | D3 Virtual audio | Accepted | 2026-10-02 | D3 | DR-0040 | Resolved |
+| [DR-0012](#dr-0012-d3-virtual-audio) | D3 Virtual audio | Accepted | 2026-10-02 | D3 | DR-0040, DR-0047 | Resolved |
 | [DR-0013](#dr-0013-d4-canaries-incl-pre-registered-k6a-rule) | D4 Canaries (incl. pre-registered K6a rule) | Accepted | 2026-10-02 | D4 | DR-0036, DR-0037, DR-0046 | Resolved (DR-0046) |
 | [DR-0014](#dr-0014-d5-prd-publication) | D5 PRD publication | Accepted | 2026-10-02 | D5 | — | Resolved |
 | [DR-0015](#dr-0015-d6-evidence-archive) | D6 Evidence archive | Accepted | 2026-10-02 | D6 | — | Resolved |
@@ -83,6 +83,7 @@ Conventions:
 | [DR-0044](#dr-0044-auto-fix-fence-for-pr-1) | Auto-fix fence for PR #1 | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, auto-fix | — | No |
 | [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
 | [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0047](#dr-0047-scream-pinned-from-m1a-in-repository-installer-both-legs) | Scream pinned from M1a; in-repository installer; both legs | Accepted | 2026-10-03 | Decided by Claude under DR-0040 and DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -639,7 +640,7 @@ Its strength is recorded too. ARIA-AT's CI is the most proven recipe for running
 | Status | Accepted |
 | Proposed parts | Resolved by DR-0030; labels updated inline |
 | Owner label | D3 |
-| Amended by | DR-0040 (2026-10-02): M1a checks the Authenticode signature status, not just the thumbprint, and records signer and issuer. If the driver proves self-signed, a statement is added to this record that authenticity rests on trust on first use, and the owner is asked. |
+| Amended by | DR-0040 (2026-10-02): M1a checks the Authenticode signature status, not just the thumbprint, and records signer and issuer. If the driver proves self-signed, a statement is added to this record that authenticity rests on trust on first use, and the owner is asked. DR-0047 (2026-10-03): signature pinned from M1a; installed in both legs with an in-repository SetupAPI installer, never the archive's unsigned `devcon.exe`. |
 | HANDOFF v1.1 | §7.1, §8.1, §9.2 (install step) |
 
 **Context.**
@@ -2408,3 +2409,35 @@ The four additions each control what runs or how it runs, so each can change a v
 - Pending owner items after this record: P3, P6 and P7.
 - PR #1 was merged on 2026-10-03 and M1a starts on branch `m1-nvda`.
 - **Decided by Claude under DR-0045 (2026-10-03):** placeholder `phase0-probe.yml` and `phase0-nvda.yml` workflows are added to `main` with only a `workflow_dispatch` trigger and a single echo step on `ubuntu-24.04`, because GitHub dispatches a workflow only if its file exists on the default branch; `gh workflow run <file> --ref <branch>` then runs the branch's version. The M1a probe workflow on `m1-nvda` also runs on pushes to that branch that touch its files, so probes do not wait for this pull request.
+
+## DR-0047 Scream pinned from M1a; in-repository installer; both legs
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0040 (the owner's rule for pinning a valid signature) and DR-0045 |
+| HANDOFF v1.4 | §7.1 (audio); §9.2 |
+
+**Context.** The M1a probe runs on 2026-10-03 (lab notebook, "M1a runner probes") recorded Scream 3.6's Authenticode signature and showed that, without an audio device, eSpeak NG cannot open audio and NVDA falls back to oneCore, which D8 makes INCONCLUSIVE. Scream's archive bundles `devcon.exe`, which is not signed.
+
+**Options considered.**
+
+| Question | Options | Outcome |
+|---|---|---|
+| Scream signature | Pin (valid chain, signer consistent with the release); ask the owner (self-signed or other) | Pin: `Scream.sys` and `scream.cat` are Authenticode `Valid`; signer Tom Kistner, who is the GitHub release author `duncanthrax`; issuer Sectigo RSA Code Signing CA, chaining to USERTrust; timestamped; not self-signed |
+| Creating the device | The archive's unsigned `devcon.exe`; the Windows Kits `devcon.exe` (present on `windows-2022` only); a separate WDK download (a security item for the owner); an in-repository SetupAPI installer | In-repository installer: no unsigned third-party executable and no new download |
+| Legs | NVDA-present leg only; both legs | Both legs, so the two legs differ only in NVDA |
+
+**Decision.** Under the owner's rule in DR-0040 ("If the chain is valid and the signer is consistent with the release, pin the thumbprint without asking me") and under DR-0045:
+
+- `env/env.lock.json` pins the signature status `Valid`, the signer, the issuer and the signer thumbprint `B2353603B4837C7A86A01D12A2B34DA7B5F2D368`.
+- `harness/src/probes/scream.ps1` creates the device with `RootDevice`, which makes the same SetupAPI and `newdev` calls as `devcon install` (`SetupDiCreateDeviceInfo`, `DIF_REGISTERDEVICE`, `UpdateDriverForPlugAndPlayDevices`), only after the signature matches the pins and the certificate is added to TrustedPublisher. The archive's `devcon.exe` is never run.
+- Scream is installed in both legs. The audio preflight check stays in the NVDA-present leg only (approved by the owner, DR-0030).
+
+**Consequences.**
+
+- M1a run 37112285497 installed Scream this way on both labels: "Scream (WDM)" and the endpoint "Speakers (Scream (WDM))", both OK. eSpeak NG then loaded with no audio errors.
+- The effective eSpeak NG rate was 30 with rate boost off, as DR-0041 predicted, so its conditional owner question does not arise.
+- The M1a checks behind P4 (MSAA-only focus read: 80 of 80) and D8 (injection marker and virtual buffer: 40 of 40) passed; P6's clock data are in the lab notebook and go to the owner with the segment-drift data from the M1b pilot, before any G1 run.
+- The Scream signer certificate expired in 2023 and validates through its timestamp; Windows loaded the driver on both images. If a future image refused it, the audio preflight would make every NVDA-present attempt INCONCLUSIVE rather than silently changing the synth.

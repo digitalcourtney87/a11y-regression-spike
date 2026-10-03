@@ -78,3 +78,29 @@ Dated observations for the Accessibility Regression CI falsification spike. Deci
 | The Scream driver's signer certificate thumbprint | Extended by DR-0040: the Authenticode status, signer and issuer are recorded too (question 11) |
 | `ImageOS`, `ImageVersion` and the image name for each label | Approved by the owner 2026-10-02 (DR-0030, PR #1 item 10) |
 | Tap reception alongside Guidepup; tap-versus-log message-count parity; the overhead of DEBUG logging | Parity is required by D2 (DR-0011), and per-segment parity may use wall-anchor bucketing (DR-0039). The tap-reception check and the overhead measurement are decided by Claude under DR-0045 (2026-10-03) |
+
+### M1a runner probes (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-probe.yml` runs [37111758115](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111758115) (failed: the Scream step looked for an `x64` folder that the archive does not have), [37111906022](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111906022) (no audio driver) and [37112285497](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37112285497) (Scream installed). Images: `windows-2025` = `win25-vs2026` 20260925.250.1, Windows Server 2025 build 26100.33438; `windows-2022` = `win22` 20260927.320.1, Windows Server 2022 build 20348.5622. Each run: 10 fresh-profile Chrome launches without NVDA, then 10 with NVDA, per label. Artefacts are kept locally until the G1 archive (DR-0015).
+**Confidence:** observed, except where a row says inferred. Counts are small (10 per leg per label per run), so they bound gross failure rates only: 20 of 20 successes gives a Wilson 95% interval of 83.9–100%.
+
+| # | Question | Observation | Affects |
+|---|---|---|---|
+| 1, 11 | Audio, and the Scream signature | No sound device or audio endpoint on either image. Audio services run on `windows-2025` (automatic) and are stopped on `windows-2022` (manual). Scream 3.6's archive matches the pinned SHA-256. `Scream.sys` and `scream.cat` are Authenticode `Valid`, signed by Tom Kistner (the release author, GitHub user `duncanthrax`) through Sectigo RSA Code Signing CA, chaining to USERTrust RSA Certification Authority. Not self-signed; timestamped by Symantec; the signer certificate expired on 2023-07-06 and validates through the timestamp, as the 3.6 release notes say. The driver is x64. The archive's bundled `devcon.exe` is **not signed**. After installing with the in-repository SetupAPI installer (DR-0047): "Scream (WDM)" and the endpoint "Speakers (Scream (WDM))", both OK, on both images. | DR-0040, DR-0047, DR-0012 |
+| 2, 12 | Synth and effective eSpeak rate | Without an audio device, eSpeak NG fails to open audio and NVDA falls back to oneCore ("Couldn't open specified or default audio device"), which D8 makes INCONCLUSIVE. With Scream, NVDA loads `espeak` with no audio errors. The saved session configuration has `[speech] [[espeak]] rate = 30`, with rate boost absent (the driver default, off). Speech carries `LangChangeCommand('en_GB')`. | DR-0041, DR-0017 |
+| 3 | Injection marker | `nvdaHelperRemote.dll` is loaded in Chrome's browser process in 40 of 40 NVDA-present launches (two runs, two labels); never in sandboxed renderers, as expected. "Buffer load took" appears in 40 of 40, 3.1 to 4.2 s after launch, including page load. | DR-0017 |
+| 4 | Foreground handover | `SetForegroundWindow` alone made Chrome the foreground window in 80 of 80 launches (both legs, both labels, two runs); no Alt keypress was needed. `ForegroundLockTimeout` reads 2147483647 through `SystemParametersInfo` on `windows-2025` and 200000 on `windows-2022` (the registry holds 200000 on both); it made no difference. | DR-0024 |
+| 5 | CfT infobars | No speech mentioning an infobar or alert in any NVDA-present launch. Screenshots of the first launch per leg are in the artefacts. | DR-0007 |
+| 6, 14 | Clocks (D1) | QPC at 10 MHz, high resolution, on both labels. Native self-test (Node against a PowerShell helper over a pipe, 50 pings): every reading inside its bracket; offset 60–97 µs with uncertainty 133–212 µs (limit 0.5 ms). CDP `Timestamp` against Node's QPC: offset within ±25 µs (uncertainty up to 368 µs), so Chrome TimeTicks and `process.hrtime.bigint()` share an epoch. `performance.now()` steps are 0.1 ms in every launch (high resolution). | DR-0010, P6 |
+| 7, 14 | Page mapping (D1) | `NavigationStart + performance.now()` against a 16-ping minimum-RTT bracket: worst \|offset\| + uncertainty 441–656 µs per run and label (limit 2 ms). | DR-0010, P6 |
+| 8 | Display | 1024 × 768 at 96 DPI; interactive input desktop; session 2. | DR-0025 |
+| 9 | First-launch virtual buffer | No launch without a virtual buffer in 40 NVDA-present fresh-profile launches. | DR-0021 |
+| 10 | Integrity and session | Node, the helper, Chrome's browser process and NVDA all run at high integrity in session 2, so window-message isolation between integrity levels cannot block input or reads. | DR-0024 |
+| 14 | rAF gaps | Largest rAF gap per launch mostly 15.7 ms; at most 46.9 ms (one launch); none over 100 ms. | DR-0010, P6 |
+| 15 | MSAA-only focus read | Identified the anchor ("Probe anchor", push button) in 80 of 80 launches, with and without NVDA, with no UIA client. | DR-0020, DR-0024 |
+
+**Design inputs for M1b (observed).**
+- NVDA speaks at startup (the runner console window, then "Connected as controlled computer" when a relay client joins). The relay tap must attach, and these must pass, before an observation window opens; a declared quiet window after attaching covers it.
+- NVDA's relay logs one "Error accepting connection" (TLS) at startup, consistent with Guidepup's TCP readiness check on the relay port (inferred).
+- Not yet measured: segment drift within a segment, DEBUG-logging overhead, and canary durations in each leg (question 13). These need canary segments and come from the M1b pilot.
