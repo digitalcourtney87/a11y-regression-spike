@@ -99,6 +99,7 @@ Conventions:
 | [DR-0060](#dr-0060-dev-split-specs-for-the-spa-regression-batch) | Dev-split specs for the SPA regression batch | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0061](#dr-0061-benign-corpus-design) | Benign corpus design | Accepted | 2026-10-03 | P20, approved by the owner 2026-10-03 (DR-0062) | DR-0062 | Resolved (P20, DR-0062) |
 | [DR-0062](#dr-0062-owner-approval-of-p20-and-the-mining-pass) | Owner approval of P20, and the mining pass | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
+| [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted (method and rules); P21, P22 Proposed | 2026-10-03 | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P21, P22 | — | Yes (P21, P22) |
 
 ## Pending owner items (hard rule 12)
 
@@ -128,6 +129,8 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P18 | **Resolved (owner reply 2026-10-03, DR-0057): Prompt to Page exports are skipped for now; no customer defects were offered, so there are no reconstructed items for now.** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | No longer pending | Not adopted for now |
 | P19 | **Resolved (approved by the owner 2026-10-03, DR-0059).** to close the expected shortfall against P15's 110 regression patterns (about 57–67 reachable from the SPA and mined pairs), add react-admin's "simple" example (MIT; evaluated in DR-0056, meets every criterion) as a second SPA context: vendor about 1 MB of its source at the pinned commit, generate its lockfile in CI, and install it in CI under the P17 safeguards. The achievable count is reported again before the split | DR-0058; `docs/research/2026-10-03-oss-regression-survey.md` | What is measured (sample size and the independence of patterns); security (more third-party code) | No longer pending | Approved as recommended |
 | P20 | **Resolved (approved by the owner 2026-10-03, DR-0062).** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | No longer pending | Approved as recommended |
+| P21 | **Proposed by Claude (not yet owner-approved).** Accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | Before the `oss-regression` split, and before dev OSS items and twins are written | Yes (option A of DR-0063; a third SPA, option C, reaches about 113 if the power table calls for it) |
+| P22 | **Proposed by Claude (not yet owner-approved).** Keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | With P21 | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2869,3 +2872,65 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 | Documentary check | The issue or its fix names a broken release and a fixed release (or commits), the fix is merged, both releases are published, the licence is permissive, and the behaviour maps to a primary-analysis symptom |
 | Reproduction check | Before the split: a minimal fixture page with the component, built against each release in CI, and a targeted assertion taken from the issue's own description (for example "`aria-expanded` stays false after opening"), not from any arm's oracle |
 | Batch | Pairs that pass both checks are planned as the `oss-regression` batch and split with seed 20261004 at a test fraction of 0.7 |
+
+## DR-0063 Mined pairs: reproduction method and verification
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 (method and verification rules); Proposed: P21 (the pattern count) and P22 (keeping the verification rules), pending the owner (hard rule 12) |
+| HANDOFF v1.6 | §9 (M3), R1 |
+
+**Context.** DR-0062 set the mining method: a documentary check, then a reproduction check before the batch is split. This record sets out how the reproduction check runs, the rules applied in verification, and the outcome.
+
+**Reproduction method (Decided by Claude under DR-0045).**
+
+| Part | Method |
+|---|---|
+| Fixture | `fixtures/oss/<id>/`: `fixture.json` (package, releases in ascending order with the last good first, exact pinned dependencies, and `override` mode for a transitive package), a minimal `index.html` and `src/`, and `check.mjs`. Nothing third-party runs locally |
+| Install | CI only (`m3-oss-repro.yml`: `contents: read`, no secrets, install scripts off, a separate npm cache that is never saved). Each release installs with `npm install --before=<its publish time + 1 day>`, so it resolves its dependencies as a user installing it then would have. One shared date per fixture was tried first and broke older releases of monorepo packages, whose sibling packages had moved on. Pinned dependencies must predate the first listed release |
+| Build | Vite 8.3.2 (and `@vitejs/plugin-react` 6.0.1 for React) from a separate tools directory (`fixtures/oss-tools/ossBuild.mjs`), so the build tooling is current and independent of the release under test. The `vue` stack aliases `vue` to Vue 2's full build |
+| Check | `harness/src/probes/ossCheck.ts` serves the build from 127.0.0.1 with every other host blocked, opens it in the pinned Chrome with the screen-reader accessibility mode, and runs `check.mjs`, written from the issue's own description (or the fix's own test steps), never from an arm's oracle. It returns whether the correct behaviour holds when the scenario is driven as the issue describes (`pointer`) and from the keyboard (`keyboard`). Static attributes on elements that cannot be focused are read once and count for both. Every result is EXPLORATORY |
+| Verified | The check holds on the last-good release and fails on the first broken one. Where the issue named only a range, the releases in it are bisected by the same check |
+
+**Verification rules (Decided by Claude under DR-0045), applied before the split and never after it.**
+
+1. **The keyboard rule.** A pair enters the corpus only if the keyboard path reproduces, because journeys drive the page with OS-level keys (D4).
+2. **The last-good construct must be accessible.** A pair is rejected when the maintainers document the construct in the last-good release as unsupported or not accessible, because then the change is not an accessibility regression of a working pattern.
+3. **The reported last good must have the behaviour.** A pair is rejected when the reported last-good release lacks the behaviour too (by its source or by the check).
+4. **A release pair of one package.** A pair is rejected when the change arrives with a major version that needs different pinned dependencies (for example a framework major), spans a package rename, or exists only in pre-releases, because then no two releases differ only in the package under test.
+5. **The issue's own description.** A pair is rejected when the issue gives no steps or symptom to write the check from, or when the maintainers could not reproduce the reported example.
+6. **A library fix.** A pair is rejected when there is no library fix (as for radix-1615 in the first survey).
+7. **A user-facing symptom.** A pair is rejected when the attribute change has no user-facing effect, for example because the live region moved to a container that still announces.
+8. **Fixing the check is allowed until the split.** Where the check failed its own precondition (for example a click that never reached the control, or a selector the library overrides), it is fixed and rerun. The criterion is never changed after seeing which release passes.
+
+**Results.** Four runs: 37131615681, 37132740948, 37133618945 and 37134051657. The full tables are in `docs/research/2026-10-03-oss-verification.md`.
+
+| Stage | Count |
+|---|---|
+| Candidates read at the documentary check (two search rounds) | 47 (23 rejected from the issue alone) |
+| Accepted or pending after it | 24 |
+| Rejected on a closer reading of the issue, fix and source (rules 2–7) | 11 |
+| Rejected by reproduction | 2: floating-2874 (keyboard path holds on both releases), rac-8298 (not reproduced in three fixtures, including the component the fix's own test steps use) |
+| **Verified** | **11**: radix-4014, rac-8697, bootstrap-35496, carbon-18824, carbon-19563, carbon-7253, carbon-5623, fluent-35927, fluent-7796, vuetify-9627, blueprint-6163 |
+
+Every verified pair reproduced on the keyboard path and as the issue describes. Where a fixed release was tested, it held again. Five pairs map to a catalogue mechanism. The other six have operator `mined`; for them the mechanism is recorded in the pattern's note, and the symptom is the scored unit (R2).
+
+**The batch.** `npm run corpus -- plan oss-regression` planned the 11 patterns in `corpus/patterns.json`. They fall across 8 strata. Split as approved (seed 20261004, test fraction 0.7, stratified), they would give 8 test and 3 dev patterns. The split is not run until P21 is answered (DR-0057).
+
+**The pattern count (P21, P22).** The corpus would hold 79 regression patterns, against P15's 110 and the 94–104 projected for P19:
+
+| | SPA (two apps) | Mined | Total | Dev | Test | 95% margin at p = 0.15 |
+|---|---|---|---|---|---|---|
+| P15 as approved | | | 110 | 33 | 77 | about ±0.080 |
+| P19's projection | 68 | 26–36 | 94–104 | | 66–73 | about ±0.082–0.086 |
+| Now | 68 | 11 | 79 | 20 | 59 | about ±0.091 |
+
+The shortfall comes from verification. 24 documentary accepts left 11 pairs, against the 20–30 the first survey expected; most losses were issues whose own facts did not hold up on a closer reading. The options:
+
+| Option | Patterns | Test | Margin | Cost and note |
+|---|---|---|---|---|
+| A. Accept 79 now, and decide on more at M5's power table | 79 | 59 | about ±0.091 | None now. The split already supports a later batch without moving any assignment, and test items are built only after M5's power table (P15), which is when the needed size is known. Recommended |
+| B. A third mining round | About 79 + 1 per 4 candidates read | | | At this pass's yield (11 of 47), 31 more pairs need about 130 more candidates. Token-heavy, and the extra pairs would come from the same libraries |
+| C. A third SPA context on another component library | About 113 | About 83 | about ±0.077 | Desk research for a candidate, then vendoring and CI install under the P17 safeguards (security), and about 15 dev specs with twins. Seeded patterns would then be about 90% of the corpus |

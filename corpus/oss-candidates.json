@@ -11,6 +11,7 @@
       ],
       "stack": "react",
       "package": "@radix-ui/react-dismissable-layer",
+      "licence": "MIT",
       "good": "1.1.13",
       "broken": "1.1.14",
       "fixed": "1.1.15",
@@ -33,6 +34,7 @@
       ],
       "stack": "react",
       "package": "react-aria-components",
+      "licence": "Apache-2.0",
       "good": "1.10.0",
       "broken": "1.11.0",
       "fixed": "1.12.0",
@@ -47,23 +49,6 @@
       }
     },
     {
-      "id": "rac-8298",
-      "repo": "adobe/react-spectrum",
-      "refs": [
-        "#8298",
-        "PR #8301"
-      ],
-      "stack": "react",
-      "package": "@adobe/react-spectrum",
-      "good": "3.41.0",
-      "broken": "3.42.0",
-      "fixed": "3.42.1",
-      "symptom": "INTERACTION_FAILS_UNDER_AT",
-      "documentary": "accept",
-      "note": "Navigating past the last visible item of a scrollable ComboBox dropdown scrolls the window and closes it (May 2025 release; fixed by PR #8301). Two React Aria Components fixtures did not reproduce; the fix's own test steps use React Spectrum's ComboBox",
-      "operator": "combobox-keyboard-broken"
-    },
-    {
       "id": "bootstrap-35496",
       "repo": "twbs/bootstrap",
       "refs": [
@@ -72,13 +57,19 @@
       ],
       "stack": "vanilla",
       "package": "bootstrap",
+      "licence": "MIT",
       "good": "5.0.2",
       "broken": "5.1.0",
       "fixed": "5.2.0",
       "symptom": "FOCUS_NOT_RESTORED",
       "documentary": "accept",
       "note": "Escape in a dropdown no longer returns focus to the toggle",
-      "operator": "menu-focus-not-restored"
+      "operator": "menu-focus-not-restored",
+      "reproduction": {
+        "run": 37134051657,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "fluent-35927",
@@ -89,6 +80,7 @@
       ],
       "stack": "react",
       "package": "@fluentui/react-badge",
+      "licence": "MIT",
       "good": "9.4.15",
       "broken": "9.5.0",
       "fixed": "9.5.1",
@@ -110,6 +102,7 @@
       ],
       "stack": "react",
       "package": "office-ui-fabric-react",
+      "licence": "MIT",
       "good": "6.124.2",
       "broken": "6.125.0",
       "fixed": "6.129.4",
@@ -132,6 +125,7 @@
       ],
       "stack": "web-components",
       "package": "@carbon/web-components",
+      "licence": "Apache-2.0",
       "good": "2.28.0",
       "broken": "2.29.0",
       "fixed": null,
@@ -154,6 +148,7 @@
       ],
       "stack": "react",
       "package": "@carbon/react",
+      "licence": "Apache-2.0",
       "good": "1.53.1",
       "broken": "1.54.0",
       "fixed": null,
@@ -176,6 +171,7 @@
       ],
       "stack": "react",
       "package": "carbon-components",
+      "licence": "Apache-2.0",
       "good": "10.22.0",
       "broken": "10.23.0",
       "fixed": "10.24.0",
@@ -198,6 +194,7 @@
       ],
       "stack": "react",
       "package": "carbon-components-react",
+      "licence": "Apache-2.0",
       "good": "7.9.3",
       "broken": "7.10.0",
       "fixed": "7.11.0",
@@ -221,6 +218,7 @@
       ],
       "stack": "vue",
       "package": "vuetify",
+      "licence": "MIT",
       "good": "2.0.14",
       "broken": "2.0.15",
       "fixed": "2.1.10",
@@ -243,6 +241,7 @@
       ],
       "stack": "react",
       "package": "@blueprintjs/select",
+      "licence": "Apache-2.0",
       "good": "4.9.14",
       "broken": "4.9.15",
       "fixed": "4.9.16",
@@ -397,6 +396,10 @@
     {
       "id": "floating-2874",
       "reason": "the keyboard path does not reproduce (run 37133618945: focus returns to the menu button on both releases); by the fix (PR #2876) the bug needs a menu opened on mousedown while focus is elsewhere, which a keyboard journey cannot produce (keyboard rule, DR-0063)"
+    },
+    {
+      "id": "rac-8298",
+      "reason": "not reproduced in three fixtures: two React Aria Components layouts (runs 37132740948, 37133618945) and React Spectrum's ComboBox as in the fix's own test steps (run 37134051657); the fix's author could reproduce it only on the docs site, not in Storybook, so it depends on page context the issue does not give (DR-0063)"
     }
   ]
 }

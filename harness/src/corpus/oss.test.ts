@@ -12,6 +12,7 @@ const candidate = (over: Partial<OssCandidate>): OssCandidate => ({
   refs: ["#1", "PR #2"],
   stack: "react",
   package: "lib",
+  licence: "MIT",
   good: "1.0.0",
   broken: "1.1.0",
   fixed: "1.2.0",

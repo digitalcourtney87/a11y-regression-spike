@@ -24,3 +24,5 @@
 ## Consequence for the pattern count
 
 With Prompt to Page set aside (P18), patterns come from the SPA, which holds at most one pattern per catalogue mechanism (37), and from mined pairs (about 20–30). That gives about 57–67 regression patterns, short of the 110 approved under P15. The options are set out in DR-0058.
+
+**Update (verification, DR-0063).** 47 candidates were read in two search rounds. 24 passed the documentary check and 11 survived verification; see `2026-10-03-oss-verification.md`. The pattern count is P21.

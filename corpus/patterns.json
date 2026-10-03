@@ -597,6 +597,105 @@
       "operator": "required-field-unnamed",
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned"
+    },
+    {
+      "id": "oss--radix-4014",
+      "batch": "oss-regression",
+      "context": "oss:radix-ui/primitives#4014",
+      "operator": "escape-not-closing",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned",
+      "note": "@radix-ui/react-dismissable-layer 1.1.13 to 1.1.14: Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2"
+    },
+    {
+      "id": "oss--rac-8697",
+      "batch": "oss-regression",
+      "context": "oss:adobe/react-spectrum#8697",
+      "operator": "mined",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned",
+      "note": "react-aria-components 1.10.0 to 1.11.0: Menu item links do nothing on Enter"
+    },
+    {
+      "id": "oss--bootstrap-35496",
+      "batch": "oss-regression",
+      "context": "oss:twbs/bootstrap#35496",
+      "operator": "menu-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned",
+      "note": "bootstrap 5.0.2 to 5.1.0: Escape in a dropdown no longer returns focus to the toggle"
+    },
+    {
+      "id": "oss--fluent-35927",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#35927",
+      "operator": "mined",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@fluentui/react-badge 9.4.15 to 9.5.0: PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)"
+    },
+    {
+      "id": "oss--fluent-7796",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#7796",
+      "operator": "mined",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "office-ui-fabric-react 6.124.2 to 6.125.0: DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)"
+    },
+    {
+      "id": "oss--carbon-19563",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#19563",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@carbon/web-components 2.28.0 to 2.29.0: Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070)"
+    },
+    {
+      "id": "oss--carbon-18824",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#18824",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@carbon/react 1.53.1 to 1.54.0: Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported"
+    },
+    {
+      "id": "oss--carbon-7253",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#7253",
+      "operator": "icon-button-label-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned",
+      "note": "carbon-components 10.22.0 to 10.23.0: Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253"
+    },
+    {
+      "id": "oss--carbon-5623",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#5623",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "carbon-components-react 7.9.3 to 7.10.0: Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)"
+    },
+    {
+      "id": "oss--vuetify-9627",
+      "batch": "oss-regression",
+      "context": "oss:vuetifyjs/vuetify#9627",
+      "operator": "dialog-containment-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "planned",
+      "note": "vuetify 2.0.14 to 2.0.15: VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10)"
+    },
+    {
+      "id": "oss--blueprint-6163",
+      "batch": "oss-regression",
+      "context": "oss:palantir/blueprint#6163",
+      "operator": "mined",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned",
+      "note": "@blueprintjs/select 4.9.14 to 4.9.15: Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it"
     }
   ]
 }

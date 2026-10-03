@@ -32,6 +32,8 @@ export const OssCandidateSchema = z.strictObject({
   refs: z.array(z.string()).min(1),
   stack: z.enum(["react", "vanilla", "web-components", "vue"]),
   package: z.string().min(1),
+  /** The package's SPDX licence, from npm (DR-0062 requires a permissive one). */
+  licence: z.enum(["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"]),
   good: z.string().nullable(),
   broken: z.string().nullable(),
   fixed: z.string().nullable(),

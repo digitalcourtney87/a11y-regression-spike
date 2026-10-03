@@ -262,3 +262,18 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | react-admin lockfile | Generated in CI: 284 packages, all from `registry.npmjs.org`, every one with an integrity hash; react-admin 5.15.4, MUI 5.18.0, React 18.3.1 |
 | Dev patches | 17 of 17 apply, build and load offline with no page error, and revert cleanly |
 | Open-source survey | Title-only search of 12 libraries: about 15 plausible accessibility regressions (`docs/research/2026-10-03-oss-regression-survey.md`) |
+
+### M3: reproducing mined open-source pairs (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m3-oss-repro.yml` runs [37131615681](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37131615681), [37132740948](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37132740948), [37133618945](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37133618945) and [37134051657](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134051657).
+**Affects:** DR-0063 (P21, P22).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| First run | 1 of 12 fixtures reproduced cleanly (bootstrap-35496). Most fixtures did not set up the issue's scenario: a click that never reached the control, a selector the library overwrote (`useRole` replaces the reference's `id`), or a missing precondition (a user tick before a programmatic change; state that changes after mount) |
+| Install date | One shared `--before` date per fixture made react-aria-components 1.10.0 fail to build (a missing export from a later `@react-aria/utils`); each release now installs as of its own publish date plus one day |
+| Verified | 11 pairs reproduce on both paths; every fixed release tested holds again |
+| Not reproduced | rac-8298 in three fixtures; floating-2874 holds on the keyboard path (pointer-only by its mechanism) |
+| Outside requests | None, except carbon-7253 (2 font requests from the Carbon CSS, blocked, no page error) |
