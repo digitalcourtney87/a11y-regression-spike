@@ -1,9 +1,11 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M4 smoke test 2: the three mined pairs, both sides, one attempt per side, canaries and axe on, both legs, after the build fix (DR-0072)",
+  "purpose": "M4 full run: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app (DR-0072)",
   "apps": [
-    "oss-fluent-35927",
+    "atomic-crm",
+    "react-admin-simple",
     "oss-carbon-19563",
+    "oss-fluent-35927",
     "oss-rac-8697"
   ],
   "legs": [
@@ -12,8 +14,8 @@
   ],
   "items": [],
   "sides": "both",
-  "reps": "1",
+  "reps": "",
   "canaries": true,
   "axe": true,
-  "shards": 1
+  "shards": 3
 }

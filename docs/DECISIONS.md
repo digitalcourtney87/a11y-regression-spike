@@ -108,6 +108,7 @@ Conventions:
 | [DR-0069](#dr-0069-m4-journey-development-the-page-date-and-the-tab-journey) | M4 journey development: the page date and the tab journey | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) | DR-0071 | Resolved (P26, DR-0071) |
 | [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3168,4 +3169,24 @@ The deals journey would toggle to focus mode before the drag and back after it. 
 - **DOCUMENT_TOP:** Control+Home in browse mode in the NVDA-present leg; the simulated cursor before the first line in the NVDA-absent leg.
 
 The deals journey toggles focus mode around the keyboard drag. The contact-save journey goes to the top of the new page before heading navigation. HANDOFF moves to v1.9, and the schema follows.
+
+## DR-0072 M4: journeys complete, smoke tests and the first full run
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §7.4, §9 (M4) |
+
+**Context.** With P26 (DR-0071), journey round 5 (run 37141599755) completed every journey on its base build in both legs, with all 32 attempts valid. NVDA's speech confirms the keyboard drag ("You have lifted an item…", "…dropped the item") and the heading on the saved contact's page.
+
+| Part | Decision |
+|---|---|
+| Sharding | `itemRun --shard i/N` and the request's `shards`: each job runs every Nth item of its app (items sorted by id). An Atomic CRM block in the NVDA-present leg takes about 75 s per attempt, since each Tab waits 0.9 s for NVDA, so one job per app would exceed the job limit. The limit is 340 minutes |
+| Report | `npm run m4:report -- artefacts/<run>`: per item and leg, side-aware validity, the bracketing canaries, journey completion per side, and step outcomes. It judges no expectation; that is M5 |
+| Build fix | Smoke run 37142093929 built a mined pair's candidate at the last good release. `buildApp.ps1` had taken the version pair from the first `oss-history` item, the unchanged control, whose candidate is its base. The pair now comes from the regression item, and the build refuses a pair whose releases match. Smoke run 37142491385 confirmed the fix: each candidate is built at its first broken release, and the raw evidence shows each regression (NVDA speaks "available" for fluent-35927; rac-8697's candidate journey stops UNREACHABLE; carbon-19563's checkbox stays checked) |
+| Full run | Every dev item (56), both sides in ABBA order, n = 3 (5 beside an absence-based regression), K1 bracketing canaries, axe, both legs, three shards per app |
+
+**Consequences.** The full run is M4's evidence: exploratory, dev split only, with no verdicts (M5).
 
