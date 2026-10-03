@@ -279,3 +279,19 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Outside requests | None, except carbon-7253 (2 font requests from the Carbon CSS, blocked, no page error) |
 | After the split (run [37134734243](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134734243)) | Only the 3 dev fixtures ran. Each pair reproduced a third time, and the three benign twins (wrapper-added, css-only, css-only) kept the checked behaviour on both paths |
 
+### M4: journeys and the first full item run (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m4-items.yml` journey rounds 37139054732, 37139594634, 37140040580, 37140786020 and 37141599755; smoke runs 37142093929 and 37142491385; full run [37143043955](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37143043955); re-run [37145610510](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37145610510).
+**Affects:** DR-0066 to DR-0073 (P23–P26).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| Playwright's clock API | Also fakes `performance.now()` and rAF: every Atomic CRM attempt was INCONCLUSIVE (low-resolution TimeTicks), and Radix's focus restoration after Escape failed. A Date-only shim fixed both |
+| NVDA browse mode (base builds) | A list item is one line ("bullet Ana graphic busy"); "/" is spoken "slash"; Enter clicks a menu trigger, so the menu, not its first item, takes focus; the first Escape in a menu leaves focus mode without reaching the page; focus mode persists after a form; after an in-app navigation the cursor is at the bottom; Space on a focused drag handle clicks it. The last of these opened a deal and archived it |
+| NVDA and the keyboard drag (with focus mode) | "You have lifted an item in position 1", "You have moved the item from position 1 in list opportunity to list proposal-sent…", "You have dropped the item…" |
+| Mined pairs, raw evidence | fluent-35927: NVDA says "graphic available" on the candidate against "graphic busy" on the base; rac-8697: the candidate's link never opens; carbon-19563: the candidate's checkbox stays checked after the clear |
+| Full run | 112 blocks, 0 INCONCLUSIVE; 736 attempts, all packages valid; all canaries passed; all base journeys complete; no PATH_CHANGED on any benign twin or unchanged control |
+| Imprecise goal | A name-only goal ("Comments") matched a table header after the hidden menu; with its role, the candidate is UNREACHABLE in both legs |
+

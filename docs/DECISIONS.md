@@ -109,6 +109,7 @@ Conventions:
 | [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) | DR-0071 | Resolved (P26, DR-0071) |
 | [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3189,4 +3190,36 @@ The deals journey toggles focus mode around the keyboard drag. The contact-save 
 | Full run | Every dev item (56), both sides in ABBA order, n = 3 (5 beside an absence-based regression), K1 bracketing canaries, axe, both legs, three shards per app |
 
 **Consequences.** The full run is M4's evidence: exploratory, dev split only, with no verdicts (M5).
+
+## DR-0073 M4 full run results, and M4 status
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §9 (M4) |
+
+**Context.** The first full M4 run (run 37143043955) ran every dev item: 56 items in both legs, ABBA order, n = 3 (5 beside an absence-based regression), with K1 bracketing canaries and axe. It used 30 jobs, all successful. Every result is EXPLORATORY, and no expectation was judged (M5).
+
+| Measure | Result |
+|---|---|
+| Blocks (item × leg) | 112; none INCONCLUSIVE (side-aware rule, DR-0035); no candidate-only findings |
+| Attempts | 736; every evidence package valid against `GateEvidencePackageSchema`; no page errors; no request to another host |
+| Canaries | Every pre-block and post-block K1 canary passed, in both legs |
+| Base journeys | Complete in every attempt of all 56 items, in both legs |
+| Benign twins and unchanged controls | Complete on both sides in every attempt, in both legs; no PATH_CHANGED anywhere |
+| Reachability regressions | The candidate stops UNREACHABLE in every attempt, in both legs: acrm-drag-only-deal-card, acrm-submit-pointer-only-save, oss-rac-8697, ras-heading-removed-custom-page and ras-navigation-hidden-menu (the last after the fix below) |
+| Other regressions | Journeys complete on both sides. The regression is in the evidence (names, roles, states, focus, announcements), which M5's oracles judge |
+
+**Goal fix (Decided by Claude under DR-0045).** In the NVDA-present leg, ras-navigation-hidden-menu's candidate reached its goal as PATH_CHANGED. With the menu hidden, NVDA browsed into the posts table and matched the column header "Nb comments", because the goal named only "Comments". The role is not what this regression changes, so the goal now requires `menuitem` (DR-0068's goal principle). Re-run 37145610510: the candidate is UNREACHABLE in both legs, and the twin and unchanged control are reached in every attempt.
+
+**M4 status.** The M4 deliverables are in place:
+- goal-based steps with the four outcomes (P24);
+- journeys for every dev item (16), with unchanged controls (16);
+- paired, counterbalanced execution with bracketing canaries;
+- evidence packages uploaded as artefacts (30-day retention);
+- the execution guard (DR-0034) and side-aware validity (DR-0035).
+
+M5 (oracles, scoring, the dev report and the power table) needs the owner's go-ahead. The full run's artefacts expire after 30 days, so if M5 starts later they are re-run rather than archived. M4 is not a gate (D6).
 
