@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Header.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Header.tsx
+index 2e8f983..e648eb8 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Header.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Header.tsx
+@@ -51,7 +51,7 @@ const Header = () => {
+                 <h1 className="text-xl font-semibold">{title}</h1>
+               </Link>
+               <div>
+-                <nav className="flex">
++                <nav className="flex" aria-hidden="true">
+                   <NavigationTab
+                     label={translate("ra.page.dashboard")}
+                     to="/"

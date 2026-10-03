@@ -1,0 +1,16 @@
+{
+  "id": "acrm-invalid-missing-form-control-twin",
+  "patternId": "atomic-crm--invalid-missing",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared FormError: the error text made medium weight",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      className={cn(\"text-destructive text-sm\", className)}\n",
+      "replace": "      className={cn(\"text-destructive text-sm font-medium\", className)}\n"
+    }
+  ],
+  "twinOf": "acrm-invalid-missing-form-control"
+}

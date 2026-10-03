@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+index 4dfbdb2..e94132c 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+@@ -22,7 +22,7 @@ export function ThemeModeToggle() {
+ 
+   return (
+     <DropdownMenu modal={false}>
+-      <DropdownMenuTrigger asChild>
++      <DropdownMenuTrigger asChild aria-expanded={false}>
+         <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
+           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

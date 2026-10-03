@@ -1,0 +1,15 @@
+{
+  "id": "acrm-combobox-role-removed-select",
+  "patternId": "atomic-crm--combobox-role-removed",
+  "operator": "combobox-role-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Shared Select: the trigger (for example the task's Type) given role=button, so it is no longer a combobox",
+  "edits": [
+    {
+      "file": "src/components/ui/select.tsx",
+      "find": "      data-slot=\"select-trigger\"\n      data-size={size}\n",
+      "replace": "      data-slot=\"select-trigger\"\n      data-size={size}\n      role=\"button\"\n"
+    }
+  ]
+}

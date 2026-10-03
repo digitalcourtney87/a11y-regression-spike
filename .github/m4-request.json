@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, Atomic CRM round 1: draft journeys and exploration journeys on the base build only, both legs, one attempt, no item and no candidate (DR-0082)",
+  "purpose": "Test-pattern journey development, Atomic CRM round 2: the eight journeys of the 26 test patterns on the base build only, both legs, one attempt, no item and no candidate (DR-0082)",
   "apps": [
     "atomic-crm"
   ],
@@ -15,9 +15,9 @@
     "acrm-contact-add-task-dialog",
     "acrm-theme-menu",
     "acrm-landmarks",
-    "jx-acrm-contacts-list",
-    "jx-acrm-contact-show",
-    "jx-acrm-companies"
+    "acrm-companies-list-actions",
+    "acrm-contact-show-details",
+    "acrm-contact-merge-dialog"
   ],
   "sides": "base",
   "reps": "1",

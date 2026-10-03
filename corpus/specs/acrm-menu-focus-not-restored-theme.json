@@ -1,0 +1,15 @@
+{
+  "id": "acrm-menu-focus-not-restored-theme",
+  "patternId": "atomic-crm--menu-focus-not-restored",
+  "operator": "menu-focus-not-restored",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "target": "Theme toggle: closing its menu no longer returns focus to the trigger",
+  "edits": [
+    {
+      "file": "src/components/admin/theme-mode-toggle.tsx",
+      "find": "      <DropdownMenuContent align=\"end\">\n",
+      "replace": "      <DropdownMenuContent align=\"end\" onCloseAutoFocus={(event) => event.preventDefault()}>\n"
+    }
+  ]
+}

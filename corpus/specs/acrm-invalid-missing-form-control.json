@@ -1,0 +1,15 @@
+{
+  "id": "acrm-invalid-missing-form-control",
+  "patternId": "atomic-crm--invalid-missing",
+  "operator": "invalid-missing",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared FormControl: aria-invalid fixed at false, so a field with a validation error is not conveyed as invalid",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      aria-invalid={!!error}\n",
+      "replace": "      aria-invalid={false}\n"
+    }
+  ]
+}

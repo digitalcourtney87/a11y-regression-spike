@@ -1,0 +1,23 @@
+{
+  "id": "acrm-combobox-role-removed-select",
+  "patternId": "atomic-crm--combobox-role-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-combobox-role-removed-select.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "combobox-role-removed: Combobox trigger loses its role (Shared Select: the trigger (for example the task's Type) given role=button, so it is no longer a combobox)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator combobox-role-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

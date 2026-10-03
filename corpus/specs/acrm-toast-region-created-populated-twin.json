@@ -1,0 +1,16 @@
+{
+  "id": "acrm-toast-region-created-populated-twin",
+  "patternId": "atomic-crm--toast-region-created-populated",
+  "operator": "timing-within-tolerance",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: each toast shown 200 ms later",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "        toast[type](finalMessage, {\n          duration,\n          action: undoable\n            ? {\n                label: translate(\"ra.action.undo\"),\n                onClick: handleUndo,\n              }\n            : undefined,\n          onDismiss: handleExited,\n          onAutoClose: handleExited,\n        });\n",
+      "replace": "        window.setTimeout(() => {\n          toast[type](finalMessage, {\n            duration,\n            action: undoable\n              ? {\n                  label: translate(\"ra.action.undo\"),\n                  onClick: handleUndo,\n                }\n              : undefined,\n            onDismiss: handleExited,\n            onAutoClose: handleExited,\n          });\n        }, 200);\n"
+    }
+  ],
+  "twinOf": "acrm-toast-region-created-populated"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "acrm-toast-region-created-populated",
+  "patternId": "atomic-crm--toast-region-created-populated",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-toast-region-created-populated.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "toast-region-created-populated: Toast region rendered only when populated (Shared Notification: toasts shown in a role=status element mounted with its message, instead of the persistent sonner live region (creation-time family))"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator toast-region-created-populated",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

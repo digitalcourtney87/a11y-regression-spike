@@ -1,0 +1,23 @@
+{
+  "id": "acrm-combobox-keyboard-broken-select",
+  "patternId": "atomic-crm--combobox-keyboard-broken",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-combobox-keyboard-broken-select.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "INTERACTION_FAILS_UNDER_AT",
+    "mechanism": "combobox-keyboard-broken: Combobox options not selectable from the keyboard (Shared Select: an option's Enter and Space are swallowed, so options cannot be chosen from the keyboard)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator combobox-keyboard-broken",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "acrm-combobox-role-removed-select-twin",
+  "patternId": "atomic-crm--combobox-role-removed",
+  "operator": "class-rename",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Shared Select: a data attribute renamed on the trigger",
+  "edits": [
+    {
+      "file": "src/components/ui/select.tsx",
+      "find": "      data-slot=\"select-trigger\"\n      data-size={size}\n",
+      "replace": "      data-slot=\"select-trigger\"\n      data-variant=\"default\"\n      data-size={size}\n"
+    }
+  ],
+  "twinOf": "acrm-combobox-role-removed-select"
+}

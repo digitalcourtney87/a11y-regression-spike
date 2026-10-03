@@ -1,0 +1,22 @@
+{
+  "id": "acrm-toast-region-created-populated-twin",
+  "patternId": "atomic-crm--toast-region-created-populated",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-toast-region-created-populated-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "TIMING_WITHIN_TOLERANCE"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator timing-within-tolerance",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

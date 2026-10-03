@@ -1,0 +1,16 @@
+{
+  "id": "acrm-tab-swallowed-company-search-twin",
+  "patternId": "atomic-crm--tab-swallowed",
+  "operator": "equivalent-refactor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-companies-list-actions",
+  "target": "Companies list: the search box given a key handler that lets every key through",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyListFilter.tsx",
+      "find": "        <SearchInput source=\"q\" />\n",
+      "replace": "        <SearchInput source=\"q\" onKeyDown={() => undefined} />\n"
+    }
+  ],
+  "twinOf": "acrm-tab-swallowed-company-search"
+}

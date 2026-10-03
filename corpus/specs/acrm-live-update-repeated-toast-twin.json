@@ -1,0 +1,16 @@
+{
+  "id": "acrm-live-update-repeated-toast-twin",
+  "patternId": "atomic-crm--live-update-repeated",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: toasts without rich colours",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "      <Toaster\n        richColors\n",
+      "replace": "      <Toaster\n"
+    }
+  ],
+  "twinOf": "acrm-live-update-repeated-toast"
+}

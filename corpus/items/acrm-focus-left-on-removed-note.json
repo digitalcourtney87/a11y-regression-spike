@@ -1,0 +1,23 @@
+{
+  "id": "acrm-focus-left-on-removed-note",
+  "patternId": "atomic-crm--focus-left-on-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-focus-left-on-removed-note.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_MOVED",
+    "mechanism": "focus-left-on-removed: After an inline create, focus is left on a removed element (Note form: after a note is added, the Add this note button is remounted, so focus is left on the removed one)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator focus-left-on-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

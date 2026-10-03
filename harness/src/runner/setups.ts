@@ -34,6 +34,11 @@ export const SETUPS: Readonly<Record<string, SetupFn>> = {
     await page.locator('input[name="name"]').first().fill("Ada Corp");
     await settle(page, 300);
   },
+  /** Atomic CRM, contact page: type a fixed note into the Add a note box. */
+  "acrm.type-note": async (page) => {
+    await page.getByRole("textbox", { name: "Add a note" }).first().fill("Called about the renewal");
+    await settle(page, 300);
+  },
   /** react-admin "simple", post edit: change the title, so that the Save button is enabled. */
   "ras.edit-post-title": async (page) => {
     const title = page.locator('input[name="title"]').first();

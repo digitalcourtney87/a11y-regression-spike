@@ -1,5 +1,5 @@
 {
-  "id": "acrm-theme-menu",
+  "id": "acrm-contact-merge-dialog",
   "version": "1",
   "app": "atomic-crm",
   "entryUrl": "/#/contacts/0/show",
@@ -7,30 +7,30 @@
   "steps": [
     {
       "kind": "at",
-      "id": "reach-theme",
+      "id": "reach-merge",
       "strategy": "TAB",
       "until": {
-        "name": "Toggle theme",
+        "name": "Merge with another contact",
         "role": "button",
-        "maxAttempts": 4
+        "maxAttempts": 100
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Toggle theme"
+          "value": "button|Merge with another contact"
         }
       ]
     },
     {
       "kind": "at",
-      "id": "open-theme",
+      "id": "open-merge",
       "strategy": "ACTIVATE",
-      "observeMs": 1500,
+      "observeMs": 2000,
       "expectations": [
         {
-          "type": "stateIs",
-          "value": "button|Toggle theme|expanded=true"
+          "type": "focusOn",
+          "value": "dialog|Merge Contact"
         }
       ]
     },
@@ -44,14 +44,14 @@
     },
     {
       "kind": "at",
-      "id": "close-theme",
+      "id": "close-merge",
       "strategy": "PRESS",
       "key": "Escape",
       "observeMs": 1500,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Toggle theme"
+          "value": "button|Merge with another contact"
         }
       ]
     }

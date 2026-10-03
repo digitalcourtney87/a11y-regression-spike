@@ -15,14 +15,14 @@
       "id": "reach-save",
       "strategy": "TAB",
       "until": {
-        "name": "Save",
+        "name": "Create Company",
         "maxAttempts": 60
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Save"
+          "value": "button|Create Company"
         }
       ]
     },

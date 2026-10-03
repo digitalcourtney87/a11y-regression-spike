@@ -1,0 +1,15 @@
+{
+  "id": "acrm-busy-left-true-toaster",
+  "patternId": "atomic-crm--busy-left-true",
+  "operator": "busy-left-true",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: aria-busy=true set on the toaster's live region and never cleared",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "  const { theme } = useTheme();\n",
+      "replace": "  const { theme } = useTheme();\n  useEffect(() => {\n    document.querySelector(\"section[aria-live]\")?.setAttribute(\"aria-busy\", \"true\");\n  });\n"
+    }
+  ]
+}

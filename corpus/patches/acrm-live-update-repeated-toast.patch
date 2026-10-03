@@ -1,0 +1,14 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+index 4151e3b..6e6e7f4 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+@@ -96,6 +96,9 @@ export const Notification = (props: ToasterProps) => {
+           onDismiss: handleExited,
+           onAutoClose: handleExited,
+         });
++        window.setTimeout(() => {
++          toast[type](finalMessage, { duration });
++        }, 300);
+       }
+     }
+   }, [notifications, takeMutation, takeNotification, translate]);

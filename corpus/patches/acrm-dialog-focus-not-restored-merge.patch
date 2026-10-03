@@ -1,0 +1,16 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactMergeButton.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactMergeButton.tsx
+index 5efa9f8..70f0f07 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactMergeButton.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactMergeButton.tsx
+@@ -167,7 +167,10 @@ const ContactMergeDialog = ({ open, onClose }: ContactMergeDialogProps) => {
+ 
+   return (
+     <Dialog open={open} onOpenChange={onClose}>
+-      <DialogContent className="md:min-w-lg max-w-2xl">
++      <DialogContent
++        className="md:min-w-lg max-w-2xl"
++        onCloseAutoFocus={(event) => event.preventDefault()}
++      >
+         <DialogHeader>
+           <DialogTitle>
+             {translate("resources.contacts.merge.title", {

@@ -1,0 +1,22 @@
+{
+  "id": "acrm-landmark-removed-main-twin",
+  "patternId": "atomic-crm--landmark-or-heading-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-landmark-removed-main-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "A11Y_IMPROVEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator a11y-improvement",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

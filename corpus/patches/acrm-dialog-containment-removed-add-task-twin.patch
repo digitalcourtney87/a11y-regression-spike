@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+index 9f6dece..651bd9e 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+@@ -123,7 +123,7 @@ export const AddTask = ({
+                 </DialogTitle>
+               </DialogHeader>
+               <TaskFormContent selectContact={selectContact} />
+-              <DialogFooter className="w-full justify-end">
++              <DialogFooter className="justify-end w-full">
+                 <SaveButton />
+               </DialogFooter>
+             </Form>

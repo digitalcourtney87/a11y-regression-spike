@@ -1,0 +1,22 @@
+{
+  "id": "acrm-busy-left-true-toaster-twin",
+  "patternId": "atomic-crm--busy-left-true",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-busy-left-true-toaster-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "WRAPPER_ELEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator wrapper-added",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

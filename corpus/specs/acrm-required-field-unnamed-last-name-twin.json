@@ -1,0 +1,16 @@
+{
+  "id": "acrm-required-field-unnamed-last-name-twin",
+  "patternId": "atomic-crm--required-field-unnamed",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Contact form: the Last name field wrapped in a plain div",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactInputs.tsx",
+      "find": "      <TextInput source=\"last_name\" validate={required()} helperText={false} />\n",
+      "replace": "      <div>\n        <TextInput source=\"last_name\" validate={required()} helperText={false} />\n      </div>\n"
+    }
+  ],
+  "twinOf": "acrm-required-field-unnamed-last-name"
+}

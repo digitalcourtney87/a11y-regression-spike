@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+index 4151e3b..3924c35 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+@@ -111,7 +111,7 @@ export const Notification = (props: ToasterProps) => {
+         richColors
+         theme={theme}
+         closeButton
+-        position="bottom-center"
++        position="bottom-right"
+         {...props}
+       />
+     </CloseNotificationContext.Provider>

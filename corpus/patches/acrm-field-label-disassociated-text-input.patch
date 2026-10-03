@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/text-input.tsx b/fixtures/spa/atomic-crm/src/components/admin/text-input.tsx
+index 9536b5b..4bc88d4 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/text-input.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/text-input.tsx
+@@ -55,7 +55,7 @@ export const TextInput = (props: TextInputProps) => {
+   return (
+     <FormField id={id} className={className} name={field.name}>
+       {label !== false && (
+-        <FormLabel>
++        <FormLabel htmlFor={`${id}-label`}>
+           <FieldTitle
+             label={label}
+             source={source}

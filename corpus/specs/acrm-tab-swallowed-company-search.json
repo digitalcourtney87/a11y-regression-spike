@@ -1,0 +1,15 @@
+{
+  "id": "acrm-tab-swallowed-company-search",
+  "patternId": "atomic-crm--tab-swallowed",
+  "operator": "tab-swallowed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-companies-list-actions",
+  "target": "Companies list: the search box swallows Tab, so focus cannot leave it by its documented key",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyListFilter.tsx",
+      "find": "        <SearchInput source=\"q\" />\n",
+      "replace": "        <SearchInput\n          source=\"q\"\n          onKeyDown={(event) => {\n            if (event.key === \"Tab\") event.preventDefault();\n          }}\n        />\n"
+    }
+  ]
+}

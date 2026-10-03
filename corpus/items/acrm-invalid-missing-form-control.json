@@ -1,0 +1,23 @@
+{
+  "id": "acrm-invalid-missing-form-control",
+  "patternId": "atomic-crm--invalid-missing",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-invalid-missing-form-control.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "invalid-missing: aria-invalid missing on a field with a validation error (Shared FormControl: aria-invalid fixed at false, so a field with a validation error is not conveyed as invalid)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator invalid-missing",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

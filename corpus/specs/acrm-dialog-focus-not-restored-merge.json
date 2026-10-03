@@ -1,0 +1,15 @@
+{
+  "id": "acrm-dialog-focus-not-restored-merge",
+  "patternId": "atomic-crm--dialog-focus-not-restored",
+  "operator": "dialog-focus-not-restored",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-merge-dialog",
+  "target": "Merge contact dialog: closing it no longer returns focus to the Merge with another contact button",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactMergeButton.tsx",
+      "find": "      <DialogContent className=\"md:min-w-lg max-w-2xl\">\n",
+      "replace": "      <DialogContent\n        className=\"md:min-w-lg max-w-2xl\"\n        onCloseAutoFocus={(event) => event.preventDefault()}\n      >\n"
+    }
+  ]
+}

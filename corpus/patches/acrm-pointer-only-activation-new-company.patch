@@ -1,0 +1,26 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyList.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyList.tsx
+index 51400e3..914fc1d 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyList.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyList.tsx
+@@ -51,11 +51,18 @@ const CompanyListActions = () => {
+       <SortButton fields={["name", "created_at", "nb_contacts"]} />
+       <DataImportButton resource="companies" />
+       <ExportButton />
+-      <CreateButton
+-        label={translate("resources.companies.action.new", {
++      <a
++        href="#/companies/create"
++        className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground"
++        onClick={(event) => event.preventDefault()}
++        onPointerDown={() => {
++          window.location.hash = "#/companies/create";
++        }}
++      >
++        {translate("resources.companies.action.new", {
+           _: "New Company",
+         })}
+-      />
++      </a>
+     </TopToolbar>
+   );
+ };

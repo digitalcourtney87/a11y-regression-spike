@@ -1,0 +1,15 @@
+{
+  "id": "acrm-field-label-disassociated-text-input",
+  "patternId": "atomic-crm--field-label-disassociated",
+  "operator": "field-label-disassociated",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared TextInput: the label's htmlFor no longer matches the input's id, so text fields such as First name lose their accessible name",
+  "edits": [
+    {
+      "file": "src/components/admin/text-input.tsx",
+      "find": "        <FormLabel>\n",
+      "replace": "        <FormLabel htmlFor={`${id}-label`}>\n"
+    }
+  ]
+}

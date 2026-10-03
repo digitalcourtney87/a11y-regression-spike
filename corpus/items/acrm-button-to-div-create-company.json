@@ -1,0 +1,23 @@
+{
+  "id": "acrm-button-to-div-create-company",
+  "patternId": "atomic-crm--button-to-div",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-button-to-div-create-company.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "button-to-div: Button replaced by a clickable div (Company create: the Create Company button replaced by a focusable div that submits on click)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator button-to-div",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

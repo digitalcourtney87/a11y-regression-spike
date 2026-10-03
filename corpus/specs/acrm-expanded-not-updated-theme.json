@@ -1,0 +1,15 @@
+{
+  "id": "acrm-expanded-not-updated-theme",
+  "patternId": "atomic-crm--expanded-not-updated",
+  "operator": "expanded-not-updated",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "target": "Theme toggle: aria-expanded fixed at false on the menu trigger",
+  "edits": [
+    {
+      "file": "src/components/admin/theme-mode-toggle.tsx",
+      "find": "      <DropdownMenuTrigger asChild>\n",
+      "replace": "      <DropdownMenuTrigger asChild aria-expanded={false}>\n"
+    }
+  ]
+}

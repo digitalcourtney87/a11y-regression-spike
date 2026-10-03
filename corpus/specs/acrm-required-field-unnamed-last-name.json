@@ -1,0 +1,15 @@
+{
+  "id": "acrm-required-field-unnamed-last-name",
+  "patternId": "atomic-crm--required-field-unnamed",
+  "operator": "required-field-unnamed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Contact form: the required Last name field loses its label, so it has no accessible name",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactInputs.tsx",
+      "find": "      <TextInput source=\"last_name\" validate={required()} helperText={false} />\n",
+      "replace": "      <TextInput source=\"last_name\" label={false} validate={required()} helperText={false} />\n"
+    }
+  ]
+}

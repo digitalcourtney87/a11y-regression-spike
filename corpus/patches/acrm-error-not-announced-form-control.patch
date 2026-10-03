@@ -1,0 +1,17 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/form.tsx b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+index d87e2cf..1855941 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/form.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+@@ -102,11 +102,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+     <Slot
+       data-slot="form-control"
+       id={formItemId}
+-      aria-describedby={
+-        !error
+-          ? `${formDescriptionId}`
+-          : `${formDescriptionId} ${formMessageId}`
+-      }
++      aria-describedby={`${formDescriptionId}`}
+       aria-invalid={!!error}
+       {...props}
+     />

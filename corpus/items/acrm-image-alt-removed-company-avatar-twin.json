@@ -1,0 +1,22 @@
+{
+  "id": "acrm-image-alt-removed-company-avatar-twin",
+  "patternId": "atomic-crm--image-alt-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-image-alt-removed-company-avatar-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

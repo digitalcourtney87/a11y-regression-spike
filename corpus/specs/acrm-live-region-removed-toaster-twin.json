@@ -1,0 +1,16 @@
+{
+  "id": "acrm-live-region-removed-toaster-twin",
+  "patternId": "atomic-crm--live-region-removed",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: the toasts offset 20 px from the edge",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "      <Toaster\n        richColors\n",
+      "replace": "      <Toaster\n        offset={20}\n        richColors\n"
+    }
+  ],
+  "twinOf": "acrm-live-region-removed-toaster"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "acrm-navigation-hidden-header",
+  "patternId": "atomic-crm--navigation-hidden",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-navigation-hidden-header.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAV_TARGET_UNREACHABLE",
+    "mechanism": "navigation-hidden: Navigation hidden with aria-hidden (Header: the main navigation links hidden with aria-hidden)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator navigation-hidden",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

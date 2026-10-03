@@ -1,0 +1,21 @@
+{
+  "id": "acrm-busy-left-true-toaster-twin",
+  "patternId": "atomic-crm--busy-left-true",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: the toaster wrapped in a plain div",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "      <Toaster\n        richColors\n",
+      "replace": "      <div>\n      <Toaster\n        richColors\n"
+    },
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "        {...props}\n      />\n    </CloseNotificationContext.Provider>\n",
+      "replace": "        {...props}\n      />\n      </div>\n    </CloseNotificationContext.Provider>\n"
+    }
+  ],
+  "twinOf": "acrm-busy-left-true-toaster"
+}

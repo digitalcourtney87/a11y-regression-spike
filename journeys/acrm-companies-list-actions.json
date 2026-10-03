@@ -1,0 +1,114 @@
+{
+  "id": "acrm-companies-list-actions",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/companies",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-export",
+      "strategy": "TAB",
+      "until": {
+        "name": "Export",
+        "role": "button",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Export"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-new-company",
+      "strategy": "TAB",
+      "until": {
+        "name": "New Company",
+        "role": "link",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "link|New Company"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-search",
+      "strategy": "TAB",
+      "until": {
+        "name": "Search",
+        "role": "textbox",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Search"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-search",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|1 employee"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "back-to-new-company",
+      "strategy": "SHIFT_TAB",
+      "until": {
+        "name": "New Company",
+        "role": "link",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-create",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-company-name",
+      "strategy": "NEXT_FORM_FIELD",
+      "until": {
+        "name": "Company name",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Company name"
+        }
+      ]
+    }
+  ]
+}

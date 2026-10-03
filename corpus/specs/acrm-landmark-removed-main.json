@@ -1,0 +1,20 @@
+{
+  "id": "acrm-landmark-removed-main",
+  "patternId": "atomic-crm--landmark-or-heading-removed",
+  "operator": "landmark-or-heading-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "target": "Layout: the main landmark becomes a div, so NEXT_LANDMARK cannot reach the main content",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Layout.tsx",
+      "find": "      <main className=\"max-w-screen-xl mx-auto p-4\" id=\"main-content\">\n",
+      "replace": "      <div className=\"max-w-screen-xl mx-auto p-4\" id=\"main-content\">\n"
+    },
+    {
+      "file": "src/components/atomic-crm/layout/Layout.tsx",
+      "find": "      </main>\n",
+      "replace": "      </div>\n"
+    }
+  ]
+}

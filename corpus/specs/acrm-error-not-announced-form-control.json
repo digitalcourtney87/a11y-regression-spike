@@ -1,0 +1,15 @@
+{
+  "id": "acrm-error-not-announced-form-control",
+  "patternId": "atomic-crm--error-not-announced",
+  "operator": "error-not-announced",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared FormControl: aria-describedby no longer points at the error message, so a field's validation error is not conveyed with it",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      aria-describedby={\n        !error\n          ? `${formDescriptionId}`\n          : `${formDescriptionId} ${formMessageId}`\n      }\n",
+      "replace": "      aria-describedby={`${formDescriptionId}`}\n"
+    }
+  ]
+}

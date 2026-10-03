@@ -1,0 +1,23 @@
+{
+  "id": "acrm-menu-focus-not-restored-theme",
+  "patternId": "atomic-crm--menu-focus-not-restored",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-menu-focus-not-restored-theme.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_RESTORED",
+    "mechanism": "menu-focus-not-restored: Closing a menu or popover does not return focus (Theme toggle: closing its menu no longer returns focus to the trigger)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator menu-focus-not-restored",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

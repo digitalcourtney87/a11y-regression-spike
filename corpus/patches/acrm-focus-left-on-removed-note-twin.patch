@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteCreate.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteCreate.tsx
+index b3100ea..f4f7f9d 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteCreate.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteCreate.tsx
+@@ -105,7 +105,7 @@ const NoteCreateButton = ({
+   };
+ 
+   return (
+-    <div className="flex justify-end">
++    <div className="justify-end flex">
+       <SaveButton
+         type="button"
+         label={translate("resources.notes.action.add_this")}

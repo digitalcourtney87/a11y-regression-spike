@@ -1,0 +1,25 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyCreate.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyCreate.tsx
+index 412e3df..6700b23 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyCreate.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyCreate.tsx
+@@ -30,11 +30,17 @@ export const CompanyCreate = () => {
+                   className="sticky flex pt-4 pb-4 md:pb-0 bottom-0 bg-linear-to-b from-transparent to-card to-10% flex-row justify-end gap-2"
+                 >
+                   <CancelButton />
+-                  <SaveButton
+-                    label={translate("resources.companies.action.create", {
++                  <div
++                    tabIndex={0}
++                    className="inline-flex h-9 cursor-pointer items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground"
++                    onClick={(event) =>
++                      event.currentTarget.closest("form")?.requestSubmit()
++                    }
++                  >
++                    {translate("resources.companies.action.create", {
+                       _: "Create Company",
+                     })}
+-                  />
++                  </div>
+                 </div>
+               </CardContent>
+             </Card>

@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+index 4dfbdb2..d308121 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+@@ -39,7 +39,7 @@ export function ThemeModeToggle() {
+           <Check className={cn("ml-auto", theme !== "dark" && "hidden")} />
+         </DropdownMenuItem>
+         <DropdownMenuItem onClick={() => setTheme("system")}>
+-          System
++          System default
+           <Check className={cn("ml-auto", theme !== "system" && "hidden")} />
+         </DropdownMenuItem>
+       </DropdownMenuContent>

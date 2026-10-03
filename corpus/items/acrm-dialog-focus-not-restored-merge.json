@@ -1,0 +1,23 @@
+{
+  "id": "acrm-dialog-focus-not-restored-merge",
+  "patternId": "atomic-crm--dialog-focus-not-restored",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-merge-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-dialog-focus-not-restored-merge.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_RESTORED",
+    "mechanism": "dialog-focus-not-restored: Closing a dialog does not return focus to its trigger (Merge contact dialog: closing it no longer returns focus to the Merge with another contact button)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-focus-not-restored",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

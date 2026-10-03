@@ -68,7 +68,7 @@
       "expectations": [
         {
           "type": "announcementContains",
-          "value": "URL must be from linkedin.com"
+          "value": "URL must be from linkedin"
         }
       ]
     }

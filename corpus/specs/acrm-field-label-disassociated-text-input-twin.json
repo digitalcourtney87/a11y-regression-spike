@@ -1,0 +1,16 @@
+{
+  "id": "acrm-field-label-disassociated-text-input-twin",
+  "patternId": "atomic-crm--field-label-disassociated",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared TextInput: the label's letter spacing tightened",
+  "edits": [
+    {
+      "file": "src/components/admin/text-input.tsx",
+      "find": "        <FormLabel>\n",
+      "replace": "        <FormLabel className=\"tracking-tight\">\n"
+    }
+  ],
+  "twinOf": "acrm-field-label-disassociated-text-input"
+}

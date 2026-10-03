@@ -1,0 +1,23 @@
+{
+  "id": "acrm-dialog-initial-focus-add-task",
+  "patternId": "atomic-crm--dialog-initial-focus-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-dialog-initial-focus-add-task.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_MOVED",
+    "mechanism": "dialog-initial-focus-removed: Dialog opens without moving focus into it (Add task dialog: opening it no longer moves focus into it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-initial-focus-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

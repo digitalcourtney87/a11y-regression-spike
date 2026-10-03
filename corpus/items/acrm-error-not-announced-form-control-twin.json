@@ -1,0 +1,22 @@
+{
+  "id": "acrm-error-not-announced-form-control-twin",
+  "patternId": "atomic-crm--error-not-announced",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-error-not-announced-form-control-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "EQUIVALENT_REFACTOR"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator equivalent-refactor",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

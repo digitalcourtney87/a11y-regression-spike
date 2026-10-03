@@ -1,0 +1,22 @@
+{
+  "id": "acrm-pointer-only-activation-new-company-twin",
+  "patternId": "atomic-crm--pointer-only-activation",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-companies-list-actions",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-pointer-only-activation-new-company-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "WRAPPER_ELEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator wrapper-added",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

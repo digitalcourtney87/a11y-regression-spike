@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/export-button.tsx b/fixtures/spa/atomic-crm/src/components/admin/export-button.tsx
+index c280126..3d5f7cc 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/export-button.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/export-button.tsx
+@@ -107,6 +107,7 @@ export const ExportButton = (props: ExportButtonProps) => {
+   return (
+     <Button
+       variant="outline"
++      tabIndex={-1}
+       onClick={handleClick}
+       disabled={total === 0}
+       className={className}

@@ -1,0 +1,15 @@
+{
+  "id": "acrm-dialog-initial-focus-add-task",
+  "patternId": "atomic-crm--dialog-initial-focus-removed",
+  "operator": "dialog-initial-focus-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: opening it no longer moves focus into it",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "          <DialogContent className=\"lg:max-w-xl overflow-y-auto max-h-9/10 top-1/20 translate-y-0\">\n",
+      "replace": "          <DialogContent className=\"lg:max-w-xl overflow-y-auto max-h-9/10 top-1/20 translate-y-0\"\n            onOpenAutoFocus={(event) => event.preventDefault()}\n          >\n"
+    }
+  ]
+}

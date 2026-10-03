@@ -36,78 +36,75 @@
     },
     {
       "kind": "at",
-      "id": "t1",
+      "id": "reach-type",
       "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
+      "until": {
+        "name": "Type",
+        "role": "combobox",
+        "maxAttempts": 10
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Type"
+        }
+      ]
     },
     {
       "kind": "at",
-      "id": "t2",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t3",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t4",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t5",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t6",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t7",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t8",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "leave-focus-mode",
+      "id": "open-type",
       "strategy": "PRESS",
-      "key": "Escape",
+      "key": "ArrowDown",
       "observeMs": 1000,
       "expectations": []
     },
     {
       "kind": "at",
-      "id": "close-task-dialog",
+      "id": "next-type",
       "strategy": "PRESS",
-      "key": "Escape",
-      "observeMs": 1500,
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "pick-type",
+      "strategy": "PRESS",
+      "until": {
+        "role": "combobox",
+        "maxAttempts": 1
+      },
+      "key": "Enter",
+      "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Add task"
+          "value": "combobox|Type"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-close",
+      "strategy": "TAB",
+      "until": {
+        "name": "Close",
+        "role": "button",
+        "maxAttempts": 6
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "wrap-around",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Create task"
         }
       ]
     }

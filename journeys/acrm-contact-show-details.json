@@ -1,0 +1,84 @@
+{
+  "id": "acrm-contact-show-details",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/0/show",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-name",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Spencer Ledner",
+        "maxAttempts": 16
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "heading|Spencer Ledner"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-company-logo",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "role": "img",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "img|Connelly, Lind and Jaskolski"
+        }
+      ]
+    },
+    {
+      "kind": "setup",
+      "id": "type-note",
+      "fn": "acrm.type-note"
+    },
+    {
+      "kind": "at",
+      "id": "reach-add-note",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add this note",
+        "role": "button",
+        "maxAttempts": 40
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add this note"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "add-note",
+      "strategy": "ACTIVATE",
+      "observeMs": 2500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t1",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    }
+  ]
+}

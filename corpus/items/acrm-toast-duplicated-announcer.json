@@ -1,0 +1,23 @@
+{
+  "id": "acrm-toast-duplicated-announcer",
+  "patternId": "atomic-crm--toast-duplicated",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-toast-duplicated-announcer.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_DUPLICATED",
+    "mechanism": "toast-duplicated: Two notification regions both announce the same toast (Shared Notification: a second, visually hidden role=status region repeats every toast's message)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator toast-duplicated",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

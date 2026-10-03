@@ -1,0 +1,16 @@
+{
+  "id": "acrm-button-to-div-create-company-twin",
+  "patternId": "atomic-crm--button-to-div",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Company create: the Create Company button wrapped in a plain span",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyCreate.tsx",
+      "find": "                  <SaveButton\n                    label={translate(\"resources.companies.action.create\", {\n                      _: \"Create Company\",\n                    })}\n                  />\n",
+      "replace": "                  <span>\n                    <SaveButton\n                      label={translate(\"resources.companies.action.create\", {\n                        _: \"Create Company\",\n                      })}\n                    />\n                  </span>\n"
+    }
+  ],
+  "twinOf": "acrm-button-to-div-create-company"
+}

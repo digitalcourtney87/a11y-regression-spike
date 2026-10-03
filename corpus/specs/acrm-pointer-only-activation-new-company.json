@@ -1,0 +1,15 @@
+{
+  "id": "acrm-pointer-only-activation-new-company",
+  "patternId": "atomic-crm--pointer-only-activation",
+  "operator": "pointer-only-activation",
+  "app": "atomic-crm",
+  "journeyId": "acrm-companies-list-actions",
+  "target": "Companies list: the New Company link navigates on pointerdown only; its click (Enter) is cancelled",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyList.tsx",
+      "find": "      <CreateButton\n        label={translate(\"resources.companies.action.new\", {\n          _: \"New Company\",\n        })}\n      />\n",
+      "replace": "      <a\n        href=\"#/companies/create\"\n        className=\"inline-flex h-9 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground\"\n        onClick={(event) => event.preventDefault()}\n        onPointerDown={() => {\n          window.location.hash = \"#/companies/create\";\n        }}\n      >\n        {translate(\"resources.companies.action.new\", {\n          _: \"New Company\",\n        })}\n      </a>\n"
+    }
+  ]
+}

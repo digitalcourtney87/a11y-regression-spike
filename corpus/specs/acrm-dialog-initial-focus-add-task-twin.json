@@ -1,0 +1,16 @@
+{
+  "id": "acrm-dialog-initial-focus-add-task-twin",
+  "patternId": "atomic-crm--dialog-initial-focus-removed",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: its form fields wrapped in a plain div",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "              <TaskFormContent selectContact={selectContact} />\n",
+      "replace": "              <div>\n                <TaskFormContent selectContact={selectContact} />\n              </div>\n"
+    }
+  ],
+  "twinOf": "acrm-dialog-initial-focus-add-task"
+}

@@ -1,0 +1,54 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+index 4151e3b..2671882 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+@@ -36,6 +36,7 @@ export const Notification = (props: ToasterProps) => {
+   const { notifications, takeNotification } = useNotificationContext();
+   const takeMutation = useTakeUndoableMutation();
+   const { theme } = useTheme();
++  const [current, setCurrent] = React.useState<React.ReactNode>(null);
+ 
+   useEffect(() => {
+     if (notifications.length) {
+@@ -85,17 +86,15 @@ export const Notification = (props: ToasterProps) => {
+         const duration =
+           autoHideDuration === null ? Infinity : autoHideDuration;
+ 
+-        toast[type](finalMessage, {
+-          duration,
+-          action: undoable
+-            ? {
+-                label: translate("ra.action.undo"),
+-                onClick: handleUndo,
+-              }
+-            : undefined,
+-          onDismiss: handleExited,
+-          onAutoClose: handleExited,
+-        });
++        void handleUndo;
++        setCurrent(finalMessage ?? null);
++        window.setTimeout(
++          () => {
++            setCurrent(null);
++            handleExited();
++          },
++          Number.isFinite(duration) ? duration : 4000,
++        );
+       }
+     }
+   }, [notifications, takeMutation, takeNotification, translate]);
+@@ -107,6 +106,14 @@ export const Notification = (props: ToasterProps) => {
+ 
+   return (
+     <CloseNotificationContext.Provider value={handleRequestClose}>
++      {current ? (
++        <div
++          role="status"
++          className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-md border bg-popover px-4 py-3 text-sm text-popover-foreground shadow-md"
++        >
++          {current}
++        </div>
++      ) : null}
+       <Toaster
+         richColors
+         theme={theme}

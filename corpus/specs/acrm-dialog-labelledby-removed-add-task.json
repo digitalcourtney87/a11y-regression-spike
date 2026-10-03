@@ -1,0 +1,20 @@
+{
+  "id": "acrm-dialog-labelledby-removed-add-task",
+  "patternId": "atomic-crm--dialog-labelledby-removed",
+  "operator": "dialog-labelledby-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: its title is a plain h2, not the dialog's title, so the dialog's aria-labelledby points at nothing",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "                <DialogTitle>\n",
+      "replace": "                <h2 className=\"text-lg leading-none font-semibold\">\n"
+    },
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "                </DialogTitle>\n",
+      "replace": "                </h2>\n"
+    }
+  ]
+}
