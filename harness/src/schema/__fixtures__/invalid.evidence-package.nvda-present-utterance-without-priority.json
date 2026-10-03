@@ -48,7 +48,7 @@
     {
       "stepId": "activate",
       "segmentId": "seg-0001",
-      "startedAt": -1,
+      "startedAt": 1200000000000,
       "endedAt": 1203000000000,
       "outcome": "REACHED",
       "speech": [
@@ -56,6 +56,10 @@
           "text": "Saved",
           "t": 1200640000000,
           "priority": "NORMAL"
+        },
+        {
+          "text": "Saved, 3 items",
+          "t": 1200700000000
         }
       ],
       "speechCancels": [],

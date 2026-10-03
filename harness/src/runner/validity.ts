@@ -5,9 +5,31 @@
  * known (D12). `inconclusiveReasons` therefore takes preflight data and the
  * leg alone; it never sees speech, events, signatures or verdicts.
  *
+ * Principle (DR-0032): a check may produce INCONCLUSIVE only if the thing
+ * being judged cannot cause it to fail. The post-block canary
+ * (`EvidencePackage.canaries.post`) can fail because the block's own pages
+ * broke NVDA, so it never voids or converts observed outcomes and is not an
+ * input here (DR-0021, DR-0032).
+ *
+ * Scope (DR-0035; DR-0026 amendment c). These rules are Phase 0-scoped.
+ * Canaries are fixed pages, so the current rule stands for Phase 0: a failed
+ * check makes the attempt INCONCLUSIVE whichever side it occurs on. From M4,
+ * candidate builds can themselves steal the foreground, stall frames or crash
+ * NVDA, and a side-aware rule replaces this one (recorded now, implemented
+ * before M4):
+ *
+ * | Check fails on | Result |
+ * |---|---|
+ * | Both sides | INCONCLUSIVE |
+ * | Candidate only | A finding: REVIEW, unless a FAIL rule covers it |
+ * | Base only | INCONCLUSIVE for that item |
+ *
  * `gateResult` applies the D12 rule shared by G1 (speech, K1-K5) and G2 (B2
- * signature matches in the NVDA-absent leg, K1-K5). Phase 0 results are
- * exploratory; Wilson intervals are reported alongside, not computed here.
+ * signature matches in the NVDA-absent leg, K1-K5). The pooled 5% INCONCLUSIVE
+ * limit is the rule; per-canary INCONCLUSIVE rates are reported, and any
+ * canary above 10% is flagged without changing the result (DR-0038). Phase 0
+ * results are exploratory; Wilson intervals are reported alongside, not
+ * computed here.
  */
 import type { GatingCanaryId, Leg, Preflight } from "../schema/index.ts";
 import { GATING_CANARIES } from "../schema/index.ts";
@@ -47,8 +69,8 @@ export type InconclusiveReason = (typeof INCONCLUSIVE_REASONS)[number];
 
 /**
  * True when a clock measurement is within its limit. NaN, negative and
- * infinite measurements fail closed (Proposed by Claude, not yet
- * owner-approved): they are not evidence that the clock was good.
+ * infinite measurements fail closed (approved by the owner 2026-10-02,
+ * DR-0030): they are not evidence that the clock was good.
  */
 function withinLimit(value: number, limit: number): boolean {
   return Number.isFinite(value) && value >= 0 && value <= limit;
@@ -56,12 +78,12 @@ function withinLimit(value: number, limit: number): boolean {
 
 /**
  * The reasons an attempt is INCONCLUSIVE, decided from preflight data only
- * (D12, DR-0021). An empty array means the attempt is valid.
+ * (D12, DR-0021). An empty array means the attempt is valid. Phase 0 rule:
+ * the side does not matter, because canaries are fixed pages (DR-0035).
  *
  * On the NVDA-present leg the injection marker, audio and synth checks are
  * also required, and a missing check counts as failed (D3, D8, D12). Limiting
- * the audio check to that leg is Proposed by Claude (not yet owner-approved),
- * because D3 names no leg.
+ * the audio check to that leg was approved by the owner 2026-10-02 (DR-0030).
  */
 export function inconclusiveReasons(preflight: Preflight, leg: Leg): InconclusiveReason[] {
   const reasons: InconclusiveReason[] = [];
@@ -98,8 +120,19 @@ export function inconclusiveReasons(preflight: Preflight, leg: Leg): Inconclusiv
 // Gates G1 and G2
 // ---------------------------------------------------------------------------
 
-/** Validity ceiling: INCONCLUSIVE attempts must be at most 5% of attempts (D12, DR-0021). */
+/**
+ * Validity ceiling: INCONCLUSIVE attempts must be at most 5% of attempts,
+ * pooled across K1-K5 (D12, DR-0021; pooling approved by the owner
+ * 2026-10-02, DR-0030). This pooled limit is the gate rule (DR-0038).
+ */
 export const VALIDITY_LIMIT = 0.05;
+
+/**
+ * Per-canary INCONCLUSIVE flag (DR-0038): a canary whose INCONCLUSIVE rate,
+ * (attempts - valid) / attempts, is strictly greater than this is flagged in
+ * the gate report. A flag never changes the gate result.
+ */
+export const PER_CANARY_INCONCLUSIVE_FLAG = 0.1;
 
 /** The D12 gate thresholds for G1 and G2 (DR-0021). */
 export const GATE_LIMITS = {
@@ -136,10 +169,36 @@ export interface GateReason {
   message: string;
 }
 
+/** One gating canary's INCONCLUSIVE rate, reported for every supplied tally (DR-0038). */
+export interface CanaryInconclusive {
+  canary: GatingCanaryId;
+  attempts: number;
+  valid: number;
+  /** attempts - valid. */
+  inconclusive: number;
+  /** inconclusive / attempts, or null when there were no attempts. */
+  inconclusiveRate: number | null;
+  /** True when `inconclusiveRate` is strictly greater than PER_CANARY_INCONCLUSIVE_FLAG. */
+  flagged: boolean;
+}
+
+/** A reported observation that does not affect `pass` (DR-0038). */
+export interface GateFlag {
+  code: "CANARY_INCONCLUSIVE_RATE";
+  canary: GatingCanaryId;
+  inconclusiveRate: number;
+  message: string;
+}
+
 export interface GateResult {
+  /** Decided by `reasons` alone; flags never change it (DR-0038). */
   pass: boolean;
   /** Empty when `pass` is true. */
   reasons: GateReason[];
+  /** Per-canary INCONCLUSIVE rates, in K1-K5 order, for the canaries supplied (DR-0038). */
+  perCanary: CanaryInconclusive[];
+  /** Canaries whose INCONCLUSIVE rate is above PER_CANARY_INCONCLUSIVE_FLAG; reported only (DR-0038). */
+  flags: GateFlag[];
   pooled: {
     attempts: number;
     valid: number;
@@ -184,6 +243,10 @@ function assertTally(tally: CanaryTally): void {
  * - no single canary has more than 3 failures; and
  * - pooled (attempts - valid) / attempts is at most 5%.
  *
+ * It also reports each supplied canary's INCONCLUSIVE rate and flags every
+ * canary whose rate is strictly greater than 10% (DR-0038). Flags are
+ * reported only; they do not change `pass`.
+ *
  * Throws a RangeError on malformed input (non-integer or negative counts,
  * valid > attempts, failures > valid, a duplicate or non-gating canary).
  */
@@ -196,6 +259,8 @@ export function gateResult(input: readonly CanaryTally[]): GateResult {
   }
 
   const reasons: GateReason[] = [];
+  const perCanary: CanaryInconclusive[] = [];
+  const flags: GateFlag[] = [];
   let attempts = 0;
   let valid = 0;
   let failures = 0;
@@ -209,6 +274,27 @@ export function gateResult(input: readonly CanaryTally[]): GateResult {
     attempts += tally.attempts;
     valid += tally.valid;
     failures += tally.failures;
+
+    const canaryInconclusive = tally.attempts - tally.valid;
+    const canaryRate = tally.attempts > 0 ? canaryInconclusive / tally.attempts : null;
+    const flagged = canaryRate !== null && canaryRate > PER_CANARY_INCONCLUSIVE_FLAG;
+    perCanary.push({
+      canary,
+      attempts: tally.attempts,
+      valid: tally.valid,
+      inconclusive: canaryInconclusive,
+      inconclusiveRate: canaryRate,
+      flagged,
+    });
+    if (flagged) {
+      flags.push({
+        code: "CANARY_INCONCLUSIVE_RATE",
+        canary,
+        inconclusiveRate: canaryRate,
+        message: `${canary}: ${String(canaryInconclusive)} of ${String(tally.attempts)} attempts INCONCLUSIVE, above the per-canary flag of ${String(PER_CANARY_INCONCLUSIVE_FLAG)} (reported only)`,
+      });
+    }
+
     if (tally.valid < GATE_LIMITS.minValidRunsPerCanary) {
       reasons.push({
         code: "INSUFFICIENT_VALID_RUNS",
@@ -244,6 +330,8 @@ export function gateResult(input: readonly CanaryTally[]): GateResult {
   return {
     pass: reasons.length === 0,
     reasons,
+    perCanary,
+    flags,
     pooled: { attempts, valid, inconclusive, failures, inconclusiveRate },
   };
 }

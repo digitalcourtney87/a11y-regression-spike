@@ -15,23 +15,10 @@
     "listenerVersion": "0.0.0",
     "nodeVersion": "24.21.0",
     "locale": "en-GB",
-    "nvdaVersion": "2026.2",
-    "nvdaConfigHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
-    "adapter": {
-      "name": "guidepup",
-      "version": "0.35.0"
-    },
     "imageName": "windows-2025-vs2026",
     "playwrightVersion": "1.63.0",
     "chromeSandbox": true,
     "axMode": "screen-reader",
-    "nvdaChannel": "IA2",
-    "synth": {
-      "name": "espeak",
-      "voice": "en-gb",
-      "rate": 30,
-      "rateBoost": false
-    },
     "audio": {
       "endpointCount": 1,
       "audiosrvRunning": true,
@@ -47,18 +34,60 @@
   "steps": [
     {
       "stepId": "activate",
-      "segmentId": "seg-0001",
-      "startedAt": -1,
+      "segmentId": "seg-0002",
+      "startedAt": 1200000000000,
       "endedAt": 1203000000000,
       "outcome": "REACHED",
-      "speech": [
+      "ariaSnapshot": "- status: Saved",
+      "axTree": {
+        "nodes": [
+          {
+            "role": "status",
+            "live": "polite",
+            "atomic": false,
+            "relevant": "additions text",
+            "busy": false
+          }
+        ]
+      },
+      "mutations": [
         {
-          "text": "Saved",
-          "t": 1200640000000,
-          "priority": "NORMAL"
+          "t": 1200500000000,
+          "type": "characterData",
+          "target": "#status",
+          "value": "Saved"
         }
       ],
-      "speechCancels": [],
+      "platformEvents": [
+        {
+          "t": 1200501000000,
+          "channel": "IA2",
+          "event": "IA2_EVENT_TEXT_INSERTED",
+          "eventId": 286,
+          "hwndClass": "Chrome_RenderWidgetHostHWND",
+          "text": "Saved"
+        },
+        {
+          "t": 1200502000000,
+          "channel": "MSAA",
+          "event": "EVENT_OBJECT_LIVEREGIONCHANGED",
+          "eventId": 32793,
+          "hwndClass": "Chrome_RenderWidgetHostHWND",
+          "role": "status",
+          "automationId": "status",
+          "liveSetting": "Polite",
+          "ariaRole": "status"
+        },
+        {
+          "t": 1200503000000,
+          "channel": "UIA",
+          "event": "LiveRegionChanged",
+          "eventId": 20024,
+          "automationId": "status",
+          "liveSetting": "Polite",
+          "diagnostic": true
+        }
+      ],
       "focusTrace": [
         {
           "t": 1200002000000,
@@ -67,7 +96,7 @@
       ]
     }
   ],
-  "leg": "nvda-present",
+  "leg": "nvda-absent",
   "preflight": {
     "foregroundHwndOk": true,
     "preCanaryOk": true,
@@ -78,9 +107,6 @@
       "segmentDriftMs": 0.1,
       "timeTicksHighResolution": true,
       "maxRafGapMs": 18.4
-    },
-    "injectionMarkerOk": true,
-    "audioOk": true,
-    "synthOk": true
+    }
   }
 }

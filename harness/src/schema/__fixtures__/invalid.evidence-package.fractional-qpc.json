@@ -29,7 +29,7 @@
     "synth": {
       "name": "espeak",
       "voice": "en-gb",
-      "rate": 50,
+      "rate": 30,
       "rateBoost": false
     },
     "audio": {

@@ -1,10 +1,17 @@
 /**
- * Data contracts for the Phase 0 harness: schema v1.1.
+ * Data contracts for the Phase 0 harness: schema v1.1 (DR-0026, accepted with
+ * amendments by the owner 2026-10-02).
  *
  * Every type, field, optionality and literal of HANDOFF v1.0 §10.2 is mirrored
  * here unchanged. Schema v1.1 adds optional fields only, so any valid v1.0
  * document stays valid; each addition cites the owner decision it implements
- * and DR-0026 (Schema v1.1 additions).
+ * and DR-0026 (Schema v1.1 additions). The owner's amendments to DR-0026 are:
+ * (a) gate evidence must carry `leg`, `preflight` and a `segmentId` on every
+ * step (`GateEvidencePackage`, enforced by the runner); (b)
+ * `Utterance.priority` is required in packages whose `leg` is
+ * "nvda-present"; (c) `harness/src/runner/validity.ts` is Phase 0-scoped
+ * (DR-0035). Amendments (a) and (b) bind only documents that use v1.1 fields
+ * (a gate package, or a `leg`), so a v1.0 document stays valid.
  *
  * The zod mirror lives in `schemas.ts`. `types.test.ts` asserts that every
  * interface here equals `z.infer` of its schema, so the two cannot drift.
@@ -115,7 +122,14 @@ export type UtterancePriority = "NORMAL" | "NEXT" | "NOW";
 /** The channel NVDA is configured to use for Chromium (D8). */
 export type NvdaChannel = "IA2" | "UIA";
 
-/** Whether an evidence package comes from the leg with or without NVDA (D11). */
+/**
+ * Whether an evidence package comes from the leg with or without NVDA (D11,
+ * DR-0020). C and D both take B2 evidence from the nvda-absent leg and NVDA
+ * evidence from the nvda-present leg, combined at item level (DR-0031). Every
+ * canary, K6 and K7 included, runs in both legs: speech outcomes come from
+ * nvda-present, B2 signatures from nvda-absent, and the K6a rule is evaluated
+ * on the nvda-present leg (DR-0036).
+ */
 export type Leg = "nvda-absent" | "nvda-present";
 
 export interface EnvManifest {
@@ -152,9 +166,10 @@ export interface EnvManifest {
   /** The channel NVDA was configured to use for Chromium (D8, DR-0017; DR-0026). */
   nvdaChannel?: NvdaChannel;
   /**
-   * The active synthesiser as recorded at run time. D8 requires eSpeak NG at a
-   * declared rate with rate boost off; any fallback is INCONCLUSIVE
-   * (DR-0017; DR-0026).
+   * The active synthesiser as recorded at run time. D8 requires eSpeak NG with
+   * rate boost off, at NVDA's default eSpeak NG rate (DR-0041, amending
+   * DR-0017); `rate` is the effective rate read from the running synth each
+   * run. Any fallback is INCONCLUSIVE (DR-0017; DR-0026).
    */
   synth?: { name: string; voice?: string; rate?: number; rateBoost?: boolean };
   /**
@@ -183,7 +198,9 @@ export interface Utterance {
   /**
    * Speech priority of the relay speak message. It separates polite (NORMAL)
    * from assertive (NEXT) live-region speech and NOW-priority alerts
-   * (D2, DR-0011; DR-0026).
+   * (D2, DR-0011; DR-0026). Required on every utterance of a package whose
+   * `leg` is "nvda-present" (DR-0026 amendment b); the schema refinement
+   * enforces it.
    */
   priority?: UtterancePriority;
 }
@@ -240,9 +257,16 @@ export interface StepEvidence {
   speechCancels?: Array<{ t: number }>;
   /**
    * Orchestrator-issued segment ID used, with QPC, to join collector logs.
-   * It replaces the document.title marker (D1, DR-0010; DR-0026).
+   * It replaces the document.title marker (D1, DR-0010; DR-0026). Required,
+   * and non-empty, in gate evidence (`GateStepEvidence`, DR-0026 amendment a).
    */
   segmentId?: string;
+}
+
+/** A step in gate evidence: `segmentId` is required (DR-0026 amendment a). */
+export interface GateStepEvidence extends StepEvidence {
+  /** Non-empty orchestrator-issued segment ID (DR-0026 amendment a). */
+  segmentId: string;
 }
 
 /** Clock checks completed before the outcome is known (D1, DR-0010; D12, DR-0021). */
@@ -282,8 +306,8 @@ export interface Preflight {
   injectionMarkerOk?: boolean;
   /**
    * At least one audio endpoint and Audiosrv running (D3, DR-0012). Required
-   * when `leg` is "nvda-present"; limiting the check to that leg is Proposed
-   * by Claude (not yet owner-approved), because D3 names no leg.
+   * when `leg` is "nvda-present"; limiting the check to that leg was approved
+   * by the owner 2026-10-02 (DR-0030).
    */
   audioOk?: boolean;
   /**
@@ -300,9 +324,16 @@ export interface EvidencePackage {
   /** Position in the counterbalanced sequence. */
   orderIndex: number;
   env: EnvManifest;
+  /**
+   * Known-answer canaries run before and after the block. A failed pre-block
+   * canary makes the attempt INCONCLUSIVE (`preflight.preCanaryOk`). The
+   * post-block canary is recorded but never voids or converts observed
+   * outcomes, because the block's own pages could have caused it to fail
+   * (DR-0021, DR-0032).
+   */
   canaries: { pre: boolean; post: boolean };
   /**
-   * Redefined in DR-0026 (Proposed by Claude, not yet owner-approved), derived
+   * Redefined in DR-0026 (approved by the owner 2026-10-02, DR-0030), derived
    * from the D1 limits (DR-0010): max(nativeSelfTestDisagreementMs,
    * pageMappingUncertaintyMs) from the clock preflight. It is no longer a
    * document.title pulse skew. When `preflight` is present the schema checks
@@ -310,13 +341,31 @@ export interface EvidencePackage {
    */
   maxClockSkewMs: number;
   steps: StepEvidence[];
-  /** The leg this package comes from (D11, DR-0020; DR-0026). */
+  /**
+   * The leg this package comes from (D11, DR-0020; DR-0026). Required in gate
+   * evidence (DR-0026 amendment a). When it is "nvda-present", every
+   * utterance must carry `priority` (DR-0026 amendment b).
+   */
   leg?: Leg;
   /**
    * Preflight checks (D12, DR-0021; DR-0026). When `leg` is "nvda-present",
-   * `injectionMarkerOk`, `audioOk` and `synthOk` must be present.
+   * `injectionMarkerOk`, `audioOk` and `synthOk` must be present. Required in
+   * gate evidence (DR-0026 amendment a).
    */
   preflight?: Preflight;
+}
+
+/**
+ * Gate evidence; the M1 runner validates every gate package against this
+ * (DR-0026 amendment a). An EvidencePackage in which `leg` and `preflight`
+ * are required and every step has a non-empty `segmentId`. The EvidencePackage
+ * refinements (NVDA-present preflight keys, utterance priority, clock skew)
+ * apply as well.
+ */
+export interface GateEvidencePackage extends Omit<EvidencePackage, "leg" | "preflight" | "steps"> {
+  steps: GateStepEvidence[];
+  leg: Leg;
+  preflight: Preflight;
 }
 
 export interface ArmVerdict {
@@ -336,7 +385,10 @@ export type CanaryId =
 /** Canaries that gate G1 and G2 (D4, DR-0013; D12, DR-0021). */
 export const GATING_CANARIES = ["K1", "K2", "K3", "K4", "K5"] as const satisfies readonly CanaryId[];
 
-/** Canaries recorded at 20 runs each but never gating (D4, DR-0013). */
+/**
+ * Canaries recorded at 20 runs each but never gating (D4, DR-0013). They run
+ * in both legs; the K6a rule is evaluated on the nvda-present leg (DR-0036).
+ */
 export const RECORD_ONLY_CANARIES = ["K6a", "K6b", "K6e", "K7a", "K7b"] as const satisfies readonly CanaryId[];
 
 export type GatingCanaryId = (typeof GATING_CANARIES)[number];

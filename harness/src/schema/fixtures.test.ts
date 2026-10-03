@@ -10,13 +10,14 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, test } from "vitest";
 import type { z } from "zod";
-import { ArmVerdictSchema, CorpusItemSchema, EvidencePackageSchema, JourneySchema } from "./index.ts";
+import { ArmVerdictSchema, CorpusItemSchema, EvidencePackageSchema, GateEvidencePackageSchema, JourneySchema } from "./index.ts";
 
 const FIXTURE_DIR = fileURLToPath(new URL("./__fixtures__/", import.meta.url));
 const NAME_PATTERN = /^(valid|invalid)\.([a-z-]+)\.([a-z0-9-]+)\.json$/;
 
 const SCHEMAS: Readonly<Record<string, z.ZodType>> = {
   "evidence-package": EvidencePackageSchema,
+  "gate-evidence-package": GateEvidencePackageSchema,
   journey: JourneySchema,
   "corpus-item": CorpusItemSchema,
   "arm-verdict": ArmVerdictSchema,
@@ -32,6 +33,9 @@ const EXPECTED_INVALID_PATHS: Readonly<Record<string, string>> = {
   "invalid.evidence-package.title-marker-key.json": "steps.0",
   "invalid.evidence-package.skew-mismatch.json": "maxClockSkewMs",
   "invalid.evidence-package.missing-max-clock-skew.json": "maxClockSkewMs",
+  "invalid.evidence-package.nvda-present-utterance-without-priority.json": "steps.0.speech.1.priority",
+  "invalid.gate-evidence-package.step-missing-segment-id.json": "steps.0.segmentId",
+  "invalid.gate-evidence-package.missing-leg.json": "leg",
   "invalid.corpus-item.regression-without-symptom.json": "expected.symptom",
   "invalid.corpus-item.unknown-benign-type.json": "expected.benignType",
   "invalid.journey.setup-step-with-strategy.json": "steps.0",

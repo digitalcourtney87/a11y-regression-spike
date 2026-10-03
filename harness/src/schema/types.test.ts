@@ -17,6 +17,8 @@ import type {
   EvidencePackage,
   Expectation,
   Expected,
+  GateEvidencePackage,
+  GateStepEvidence,
   Journey,
   Leg,
   NvdaChannel,
@@ -43,6 +45,8 @@ import type {
   EvidencePackageSchema,
   ExpectationSchema,
   ExpectedSchema,
+  GateEvidencePackageSchema,
+  GateStepEvidenceSchema,
   JourneySchema,
   JourneyStepSchema,
   LegSchema,
@@ -97,10 +101,20 @@ describe("interfaces equal z.infer of their schemas", () => {
     expectTypeOf<z.infer<typeof ArmVerdictSchema>>().toEqualTypeOf<ArmVerdict>();
   });
 
+  test("gate evidence contracts (DR-0026 amendment a)", () => {
+    expectTypeOf<z.infer<typeof GateStepEvidenceSchema>>().toEqualTypeOf<GateStepEvidence>();
+    expectTypeOf<z.infer<typeof GateEvidencePackageSchema>>().toEqualTypeOf<GateEvidencePackage>();
+    expectTypeOf<GateEvidencePackage>().toExtend<EvidencePackage>();
+    expectTypeOf<GateEvidencePackage["leg"]>().toEqualTypeOf<Leg>();
+    expectTypeOf<GateEvidencePackage["preflight"]>().toEqualTypeOf<Preflight>();
+    expectTypeOf<GateStepEvidence["segmentId"]>().toEqualTypeOf<string>();
+  });
+
   test("schemas have no transforms: input types equal output types", () => {
     expectTypeOf<z.input<typeof JourneySchema>>().toEqualTypeOf<Journey>();
     expectTypeOf<z.input<typeof CorpusItemSchema>>().toEqualTypeOf<CorpusItem>();
     expectTypeOf<z.input<typeof EvidencePackageSchema>>().toEqualTypeOf<EvidencePackage>();
+    expectTypeOf<z.input<typeof GateEvidencePackageSchema>>().toEqualTypeOf<GateEvidencePackage>();
     expectTypeOf<z.input<typeof ArmVerdictSchema>>().toEqualTypeOf<ArmVerdict>();
   });
 });

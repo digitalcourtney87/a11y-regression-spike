@@ -6,6 +6,7 @@ import {
   CLOCK_LIMITS,
   GATE_LIMITS,
   INCONCLUSIVE_REASONS,
+  PER_CANARY_INCONCLUSIVE_FLAG,
   VALIDITY_LIMIT,
   gateResult,
   inconclusiveReasons,
@@ -278,6 +279,74 @@ describe("gateResult (D12)", () => {
     expect(result.pass).toBe(false);
     expect(codes(result)).toEqual(GATING_CANARIES.map((c) => `CANARY_MISSING:${c}`));
     expect(result.pooled.inconclusiveRate).toBeNull();
+  });
+
+  describe("per-canary INCONCLUSIVE rates (DR-0038)", () => {
+    test("the flag threshold is 10%", () => {
+      expect(PER_CANARY_INCONCLUSIVE_FLAG).toBe(0.1);
+    });
+
+    test("every supplied canary's rate is reported in K1-K5 order, with no flags when all are clean", () => {
+      const result = gateResult(tallies({ K2: { attempts: 52, valid: 50 } }).reverse());
+      expect(result.perCanary.map((c) => c.canary)).toEqual([...GATING_CANARIES]);
+      expect(result.perCanary[1]).toEqual({ canary: "K2", attempts: 52, valid: 50, inconclusive: 2, inconclusiveRate: 2 / 52, flagged: false });
+      expect(result.perCanary[0]?.inconclusiveRate).toBe(0);
+      expect(result.flags).toEqual([]);
+    });
+
+    test("exactly 10% is not flagged", () => {
+      const result = gateResult(tallies({ K3: { attempts: 60, valid: 54 } }));
+      const k3 = result.perCanary.find((c) => c.canary === "K3");
+      expect(k3?.inconclusiveRate).toBe(0.1);
+      expect(k3?.flagged).toBe(false);
+      expect(result.flags).toEqual([]);
+    });
+
+    test("just over 10% is flagged", () => {
+      const result = gateResult(tallies({ K3: { attempts: 1000, valid: 899 } }));
+      expect(result.perCanary.find((c) => c.canary === "K3")?.flagged).toBe(true);
+      expect(result.flags).toEqual([
+        {
+          code: "CANARY_INCONCLUSIVE_RATE",
+          canary: "K3",
+          inconclusiveRate: 0.101,
+          message: expect.stringMatching(/^K3: 101 of 1000 attempts INCONCLUSIVE/) as string,
+        },
+      ]);
+    });
+
+    test("a flag with the pooled rate under 5% still passes", () => {
+      const result = gateResult(tallies({ K1: { attempts: 57, valid: 50 } }));
+      expect(result.pooled.inconclusive).toBe(7);
+      expect(result.pooled.inconclusiveRate).toBeLessThan(VALIDITY_LIMIT);
+      expect(result.flags.map((f) => f.canary)).toEqual(["K1"]);
+      expect(result.pass).toBe(true);
+      expect(result.reasons).toEqual([]);
+    });
+
+    test("flags do not add reasons when the gate fails for other causes", () => {
+      const result = gateResult(tallies({ K1: { attempts: 60, valid: 50, failures: 4 } }));
+      expect(result.flags.map((f) => f.canary)).toEqual(["K1"]);
+      expect(codes(result)).toEqual(["CANARY_FAILURES:K1"]);
+    });
+
+    test("a canary with no attempts has a null rate and is not flagged", () => {
+      const result = gateResult(tallies({ K4: { attempts: 0, valid: 0 } }));
+      expect(result.perCanary.find((c) => c.canary === "K4")).toEqual({
+        canary: "K4",
+        attempts: 0,
+        valid: 0,
+        inconclusive: 0,
+        inconclusiveRate: null,
+        flagged: false,
+      });
+      expect(result.flags).toEqual([]);
+    });
+
+    test("a missing canary has no per-canary entry", () => {
+      const result = gateResult(tallies().filter((t) => t.canary !== "K5"));
+      expect(result.perCanary.map((c) => c.canary)).toEqual(["K1", "K2", "K3", "K4"]);
+    });
   });
 
   describe("malformed input throws", () => {

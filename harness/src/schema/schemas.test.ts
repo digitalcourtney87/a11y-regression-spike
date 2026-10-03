@@ -9,6 +9,7 @@ import {
   EvidencePackageSchema,
   ExpectedSchema,
   GATING_CANARIES,
+  GateEvidencePackageSchema,
   JourneySchema,
   NVDA_PRESENT_PREFLIGHT_KEYS,
   PlatformEventSchema,
@@ -25,6 +26,7 @@ import type {
   BenignType,
   CorpusItem,
   EvidencePackage,
+  GateEvidencePackage,
   Journey,
   Preflight,
   SetupStep,
@@ -105,7 +107,7 @@ function evidencePackage(times: Partial<TimeValues> = {}): EvidencePackage {
       chromeSandbox: true,
       axMode: "screen-reader",
       nvdaChannel: "IA2",
-      synth: { name: "espeak", voice: "en-gb", rate: 50, rateBoost: false },
+      synth: { name: "espeak", voice: "en-gb", rate: 30, rateBoost: false },
       audio: { endpointCount: 1, audiosrvRunning: true, driver: "Scream 3.6" },
       dotnetVersion: "10.0.12",
     },
@@ -621,5 +623,124 @@ describe("maxClockSkewMs consistency with the clock preflight (D1)", () => {
 
   test("rejects a negative skew", () => {
     expect(issuePaths(EvidencePackageSchema.safeParse({ ...v10Package(), maxClockSkewMs: -0.1 }))).toEqual(["maxClockSkewMs"]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Utterance priority on the NVDA-present leg (DR-0026 amendment b)
+// ---------------------------------------------------------------------------
+
+describe("utterance priority on the nvda-present leg (DR-0026 amendment b)", () => {
+  function withSpeech(pkg: EvidencePackage, speech: Array<{ text: string; t: number; priority?: "NORMAL" | "NEXT" | "NOW" }>): EvidencePackage {
+    const step = first(pkg.steps);
+    pkg.steps = [{ ...step, speech }, { ...step, stepId: "second", speech: [...speech] }];
+    return pkg;
+  }
+
+  test("rejects an utterance without priority, reporting each one", () => {
+    const pkg = withSpeech(evidencePackage(), [
+      { text: "Saved", t: T0 + 1, priority: "NORMAL" },
+      { text: "Error", t: T0 + 2 },
+    ]);
+    const result = EvidencePackageSchema.safeParse(pkg);
+    expect(issuePaths(result)).toEqual(["steps.0.speech.1.priority", "steps.1.speech.1.priority"]);
+    expect(issueCodes(result)).toEqual(["custom", "custom"]);
+  });
+
+  test("accepts every priority value", () => {
+    const pkg = withSpeech(evidencePackage(), [
+      { text: "a", t: T0 + 1, priority: "NORMAL" },
+      { text: "b", t: T0 + 2, priority: "NEXT" },
+      { text: "c", t: T0 + 3, priority: "NOW" },
+    ]);
+    expect(EvidencePackageSchema.safeParse(pkg).success).toBe(true);
+  });
+
+  test("does not apply to the nvda-absent leg or to a package with no leg", () => {
+    const pkg = withSpeech(evidencePackage(), [{ text: "Saved", t: T0 + 1 }]);
+    expect(EvidencePackageSchema.safeParse({ ...pkg, leg: "nvda-absent" }).success).toBe(true);
+    const noLeg: Partial<EvidencePackage> = { ...pkg };
+    delete noLeg.leg;
+    expect(EvidencePackageSchema.safeParse(noLeg).success).toBe(true);
+  });
+
+  test("a step with no speech needs no priority", () => {
+    const pkg = evidencePackage();
+    const step = first(pkg.steps);
+    delete step.speech;
+    expect(EvidencePackageSchema.safeParse(pkg).success).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Gate evidence (DR-0026 amendment a)
+// ---------------------------------------------------------------------------
+
+describe("gate evidence (DR-0026 amendment a)", () => {
+  function gatePackage(): GateEvidencePackage {
+    const pkg = evidencePackage();
+    const step = first(pkg.steps);
+    return { ...pkg, steps: [{ ...step, segmentId: "seg-0001" }], leg: "nvda-present", preflight: defined(pkg.preflight) };
+  }
+
+  test("a complete package is valid gate evidence on either leg", () => {
+    expect(GateEvidencePackageSchema.safeParse(gatePackage()).success).toBe(true);
+    const absent = gatePackage();
+    absent.leg = "nvda-absent";
+    absent.preflight = withoutNvdaChecks(absent.preflight);
+    expect(GateEvidencePackageSchema.safeParse(absent).success).toBe(true);
+  });
+
+  test("every gate package is also a valid evidence package", () => {
+    expect(EvidencePackageSchema.safeParse(gatePackage()).success).toBe(true);
+  });
+
+  test.each(["leg", "preflight"] as const)("requires %s", (key) => {
+    const pkg: Partial<GateEvidencePackage> = gatePackage();
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- removing one required key per case
+    delete pkg[key];
+    expect(issuePaths(GateEvidencePackageSchema.safeParse(pkg))).toEqual([key]);
+  });
+
+  test("requires a segmentId on every step", () => {
+    const pkg = gatePackage();
+    const step = first(pkg.steps);
+    const second: Partial<typeof step> = { ...step, stepId: "second" };
+    delete second.segmentId;
+    const result = GateEvidencePackageSchema.safeParse({ ...pkg, steps: [step, second] });
+    expect(issuePaths(result)).toEqual(["steps.1.segmentId"]);
+  });
+
+  test("rejects an empty segmentId", () => {
+    const pkg = gatePackage();
+    pkg.steps = [{ ...first(pkg.steps), segmentId: "" }];
+    const result = GateEvidencePackageSchema.safeParse(pkg);
+    expect(issuePaths(result)).toEqual(["steps.0.segmentId"]);
+    expect(issueCodes(result)).toEqual(["too_small"]);
+  });
+
+  test("an ordinary evidence package without leg, preflight or segmentId is not gate evidence", () => {
+    const paths = issuePaths(GateEvidencePackageSchema.safeParse(v10Package()));
+    expect(paths).toEqual(expect.arrayContaining(["leg", "preflight", "steps.0.segmentId"]));
+  });
+
+  test("the evidence package refinements apply to gate evidence", () => {
+    const missingAudio = gatePackage();
+    delete missingAudio.preflight.audioOk;
+    expect(issuePaths(GateEvidencePackageSchema.safeParse(missingAudio))).toEqual(["preflight.audioOk"]);
+
+    const noPriority = gatePackage();
+    noPriority.steps = [{ ...first(noPriority.steps), speech: [{ text: "Saved", t: T0 + 1 }] }];
+    expect(issuePaths(GateEvidencePackageSchema.safeParse(noPriority))).toEqual(["steps.0.speech.0.priority"]);
+
+    const skew = gatePackage();
+    skew.maxClockSkewMs = 20;
+    expect(issuePaths(GateEvidencePackageSchema.safeParse(skew))).toEqual(["maxClockSkewMs"]);
+  });
+
+  test("rejects unknown keys like every evidence schema", () => {
+    const pkg = gatePackage();
+    Object.assign(first(pkg.steps), { titleNonce: "abc" });
+    expect(issueCodes(GateEvidencePackageSchema.safeParse(pkg))).toEqual(["unrecognized_keys"]);
   });
 });

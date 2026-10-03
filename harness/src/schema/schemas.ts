@@ -1,13 +1,19 @@
 /**
- * zod mirror of `types.ts` (schema v1.1; HANDOFF v1.0 §10.2 plus DR-0026).
+ * zod mirror of `types.ts` (schema v1.1; HANDOFF v1.0 §10.2 plus DR-0026,
+ * accepted with amendments by the owner 2026-10-02).
  *
  * Every object schema is strict, so unknown keys are rejected. `types.test.ts`
  * asserts that `z.infer` of each schema equals the hand-written interface.
  *
  * Numeric constraints beyond §10.2 (QPC safe integers are required by D1;
- * the rest are Proposed by Claude, not yet owner-approved): counts are
- * non-negative integers, durations in milliseconds are non-negative and
- * finite, and `until.maxAttempts` is at least 1.
+ * the rest were approved by the owner 2026-10-02 with schema v1.1, DR-0030):
+ * counts are non-negative integers, durations in milliseconds are
+ * non-negative and finite, and `until.maxAttempts` is at least 1.
+ *
+ * DR-0026 amendments: (a) `GateEvidencePackageSchema` requires `leg`,
+ * `preflight` and a non-empty `segmentId` on every step, and the M1 runner
+ * validates every gate package against it; (b) when `leg` is "nvda-present",
+ * every utterance must carry `priority`.
  */
 import { z } from "zod";
 
@@ -188,7 +194,10 @@ export const EnvManifestSchema = z.strictObject({
     .strictObject({
       name: z.string(),
       voice: z.string().optional(),
-      /** NVDA's rate setting, 0 to 100 (Proposed by Claude, not yet owner-approved). */
+      /**
+       * NVDA's effective rate setting, 0 to 100 (range approved by the owner
+       * 2026-10-02, DR-0030), recorded from the running synth (DR-0041).
+       */
       rate: z.number().min(0).max(100).optional(),
       rateBoost: z.boolean().optional(),
     })
@@ -273,49 +282,90 @@ export const PreflightSchema = z.strictObject({
 /** Preflight fields that must be present when `leg` is "nvda-present" (D12, DR-0021). */
 export const NVDA_PRESENT_PREFLIGHT_KEYS = ["injectionMarkerOk", "audioOk", "synthOk"] as const;
 
-export const EvidencePackageSchema = z
-  .strictObject({
-    itemId: z.string(),
-    side: z.enum(["base", "candidate"]),
-    repetition: CountSchema,
-    orderIndex: CountSchema,
-    env: EnvManifestSchema,
-    canaries: z.strictObject({ pre: z.boolean(), post: z.boolean() }),
-    maxClockSkewMs: DurationMsSchema,
-    steps: z.array(StepEvidenceSchema),
-    // Schema v1.1 additions (DR-0026).
-    leg: LegSchema.optional(),
-    preflight: PreflightSchema.optional(),
-  })
-  .superRefine((pkg, ctx) => {
+/** The EvidencePackage fields shared by `EvidencePackageSchema` and `GateEvidencePackageSchema`. */
+const evidencePackageShape = {
+  itemId: z.string(),
+  side: z.enum(["base", "candidate"]),
+  repetition: CountSchema,
+  orderIndex: CountSchema,
+  env: EnvManifestSchema,
+  canaries: z.strictObject({ pre: z.boolean(), post: z.boolean() }),
+  maxClockSkewMs: DurationMsSchema,
+  steps: z.array(StepEvidenceSchema),
+  // Schema v1.1 additions (DR-0026).
+  leg: LegSchema.optional(),
+  preflight: PreflightSchema.optional(),
+};
+
+/** The fields the EvidencePackage refinements read; every gate package has them too. */
+interface RefinedPackage {
+  leg?: z.infer<typeof LegSchema>;
+  preflight?: z.infer<typeof PreflightSchema>;
+  maxClockSkewMs: number;
+  steps: ReadonlyArray<{ speech?: ReadonlyArray<{ priority?: z.infer<typeof UtterancePrioritySchema> }> }>;
+}
+
+/** Cross-field rules of every evidence package, gate packages included. */
+function refineEvidencePackage(pkg: RefinedPackage, ctx: z.RefinementCtx): void {
+  if (pkg.leg === "nvda-present") {
     // D12 (DR-0021): the NVDA-present leg must record its NVDA-specific checks.
-    if (pkg.leg === "nvda-present") {
-      for (const key of NVDA_PRESENT_PREFLIGHT_KEYS) {
-        if (pkg.preflight?.[key] === undefined) {
-          ctx.addIssue({
-            code: "custom",
-            path: ["preflight", key],
-            message: `preflight.${key} is required when leg is "nvda-present" (D12)`,
-          });
-        }
-      }
-    }
-    // D1 (DR-0010): maxClockSkewMs is max(native self-test, page mapping).
-    // Consistency check proposed by Claude (not yet owner-approved).
-    if (pkg.preflight !== undefined) {
-      const { nativeSelfTestDisagreementMs, pageMappingUncertaintyMs } = pkg.preflight.clock;
-      const expected = Math.max(nativeSelfTestDisagreementMs, pageMappingUncertaintyMs);
-      if (pkg.maxClockSkewMs !== expected) {
+    for (const key of NVDA_PRESENT_PREFLIGHT_KEYS) {
+      if (pkg.preflight?.[key] === undefined) {
         ctx.addIssue({
           code: "custom",
-          path: ["maxClockSkewMs"],
-          message:
-            "maxClockSkewMs must equal max(preflight.clock.nativeSelfTestDisagreementMs, " +
-            "preflight.clock.pageMappingUncertaintyMs) (D1)",
+          path: ["preflight", key],
+          message: `preflight.${key} is required when leg is "nvda-present" (D12)`,
         });
       }
     }
-  });
+    // DR-0026 amendment b: every utterance on the NVDA-present leg carries its priority.
+    pkg.steps.forEach((step, stepIndex) => {
+      step.speech?.forEach((utterance, utteranceIndex) => {
+        if (utterance.priority === undefined) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["steps", stepIndex, "speech", utteranceIndex, "priority"],
+            message: 'priority is required on every utterance when leg is "nvda-present" (DR-0026 amendment b)',
+          });
+        }
+      });
+    });
+  }
+  // D1 (DR-0010): maxClockSkewMs is max(native self-test, page mapping).
+  // Consistency check approved by the owner 2026-10-02 (DR-0030).
+  if (pkg.preflight !== undefined) {
+    const { nativeSelfTestDisagreementMs, pageMappingUncertaintyMs } = pkg.preflight.clock;
+    const expected = Math.max(nativeSelfTestDisagreementMs, pageMappingUncertaintyMs);
+    if (pkg.maxClockSkewMs !== expected) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["maxClockSkewMs"],
+        message:
+          "maxClockSkewMs must equal max(preflight.clock.nativeSelfTestDisagreementMs, " +
+          "preflight.clock.pageMappingUncertaintyMs) (D1)",
+      });
+    }
+  }
+}
+
+export const EvidencePackageSchema = z.strictObject(evidencePackageShape).superRefine(refineEvidencePackage);
+
+/** A step in gate evidence: a non-empty `segmentId` is required (DR-0026 amendment a). */
+export const GateStepEvidenceSchema = StepEvidenceSchema.extend({ segmentId: z.string().min(1) });
+
+/**
+ * Gate evidence; the M1 runner validates every gate package against this
+ * (DR-0026 amendment a). `leg` and `preflight` are required and every step
+ * has a non-empty `segmentId`; the EvidencePackage refinements also apply.
+ */
+export const GateEvidencePackageSchema = z
+  .strictObject({
+    ...evidencePackageShape,
+    steps: z.array(GateStepEvidenceSchema),
+    leg: LegSchema,
+    preflight: PreflightSchema,
+  })
+  .superRefine(refineEvidencePackage);
 
 export const ArmVerdictSchema = z.strictObject({
   itemId: z.string(),
