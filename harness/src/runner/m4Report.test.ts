@@ -27,15 +27,16 @@ describe("M4 report", () => {
       pre: { ok: true },
       post: { ok: false },
       validity: { result: "VALID", inconclusive: [], candidateFindings: ["CLOCK_RAF_GAP"] },
-      attempts: [attempt("base", ["REACHED", "REACHED"]), attempt("candidate", ["REACHED", "UNREACHABLE"]), attempt("candidate", ["REACHED", "UNREACHABLE"]), attempt("base", ["REACHED", "PATH_CHANGED"], { pageErrors: ["e"] })],
-      packageErrors: [null, null, ["steps.0: bad"], null],
+      attempts: [attempt("base", ["REACHED", "REACHED"]), attempt("candidate", ["REACHED", "UNREACHABLE"], { b2Evidence: "missing" }), attempt("candidate", ["REACHED", "UNREACHABLE"]), attempt("base", ["REACHED", "PATH_CHANGED"], { pageErrors: ["e"] })],
+      packageErrors: [null, ["no evidence package: the attempt failed before its preflight"], ["steps.0: bad"], null],
     };
     const s = summariseBlock(block);
-    expect(s).toMatchObject({ itemId: "x", expected: "regression:NAV_TARGET_UNREACHABLE", pre: true, post: false, pageErrors: 1, invalidPackages: 1 });
-    expect(s.base).toEqual({ attempts: 2, completed: 2, steps: { s1: { REACHED: 2 }, s2: { REACHED: 1, PATH_CHANGED: 1 } } });
+    expect(s).toMatchObject({ itemId: "x", expected: "regression:NAV_TARGET_UNREACHABLE", pre: true, post: false, pageErrors: 1, invalidPackages: 2 });
+    expect(s.base).toEqual({ attempts: 2, completed: 2, b2Missing: 0, steps: { s1: { REACHED: 2 }, s2: { REACHED: 1, PATH_CHANGED: 1 } } });
+    expect(s.candidate.b2Missing).toBe(1);
     expect(s.candidate.completed).toBe(0);
     const md = renderReport([s]);
-    expect(md).toMatch(/\| x \| regression:NAV_TARGET_UNREACHABLE \| 2 \| pre ok, post FAIL \| VALID \(findings: CLOCK_RAF_GAP\) \| 2\/2 \| 0\/2 \|/);
+    expect(md).toMatch(/\| x \| regression:NAV_TARGET_UNREACHABLE \| 2 \| pre ok, post FAIL \| VALID \(findings: CLOCK_RAF_GAP\) \| 2\/2 \| 0\/2 \| 1 \| 2 \|/);
     expect(md).toMatch(/s2: R1 P1 \/ U2/);
   });
 });

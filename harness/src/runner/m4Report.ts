@@ -29,6 +29,8 @@ export interface BlockAttempt {
   error?: string;
   pageErrors?: string[];
   external?: string[];
+  /** NVDA-absent leg: whether B2's platform events are complete (the listener ran without failure). */
+  b2Evidence?: "complete" | "missing" | "not-in-leg";
 }
 
 export interface Block {
@@ -46,6 +48,8 @@ export interface Block {
 export interface SideSummary {
   attempts: number;
   completed: number;
+  /** Attempts whose B2 platform events are missing (a listener failure counts as a failure, P13). */
+  b2Missing: number;
   steps: Record<string, Partial<Record<Outcome | "NOT_RUN", number>>>;
 }
 
@@ -87,7 +91,7 @@ function side(attempts: readonly BlockAttempt[]): SideSummary {
       tally.NOT_RUN = (tally.NOT_RUN ?? 0) + 1;
     }
   }
-  return { attempts: attempts.length, completed: attempts.filter(completed).length, steps };
+  return { attempts: attempts.length, completed: attempts.filter(completed).length, b2Missing: attempts.filter((a) => a.b2Evidence === "missing").length, steps };
 }
 
 export function summariseBlock(b: Block): BlockSummary {
@@ -119,18 +123,18 @@ function stepCell(s: SideSummary, id: string): string {
 }
 
 export function renderReport(summaries: readonly BlockSummary[]): string {
-  const lines: string[] = ["# M4 item run (EXPLORATORY)", "", "Per item and leg: side-aware validity (DR-0035), the K1 bracketing canaries, journey completion per side, and step outcomes per side (R reached, P path changed, U unreachable, E env failure, – not run). No expectation is judged here; oracles and verdicts are M5.", ""];
+  const lines: string[] = ["# M4 item run (EXPLORATORY)", "", "Per item and leg: side-aware validity (DR-0035), the K1 bracketing canaries, journey completion per side, attempts whose B2 platform events are missing (a listener failure is a failure, not INCONCLUSIVE, P13), invalid or missing evidence packages, and step outcomes per side (R reached, P path changed, U unreachable, E env failure, – not run). No expectation is judged here; oracles and verdicts are M5.", ""];
   for (const leg of [...new Set(summaries.map((s) => s.leg))].sort()) {
     const rows = summaries.filter((s) => s.leg === leg);
     const inconclusive = rows.filter((r) => r.validity !== "VALID").length;
     lines.push(`## ${leg}`, "", `${String(rows.length)} items; ${String(inconclusive)} INCONCLUSIVE; base journeys completed in every attempt: ${String(rows.filter((r) => r.base.completed === r.base.attempts && r.base.attempts > 0).length)} of ${String(rows.length)}.`, "");
-    lines.push("| Item | Expected | n | Canaries | Validity | Base complete | Candidate complete | Steps (base / candidate) |", "|---|---|---|---|---|---|---|---|");
+    lines.push("| Item | Expected | n | Canaries | Validity | Base complete | Candidate complete | B2 events missing | Packages invalid | Steps (base / candidate) |", "|---|---|---|---|---|---|---|---|---|---|");
     for (const r of rows.sort((a, b) => (a.itemId < b.itemId ? -1 : 1))) {
       const ids = [...new Set([...Object.keys(r.base.steps), ...Object.keys(r.candidate.steps)])];
       const steps = ids.map((id) => `${id}: ${stepCell(r.base, id)} / ${stepCell(r.candidate, id)}`).join("<br>");
       const canaries = `${r.pre === null ? "–" : r.pre ? "pre ok" : "pre FAIL"}, ${r.post === null ? "–" : r.post ? "post ok" : "post FAIL"}`;
       const validity = r.validity === "VALID" ? `VALID${r.candidateFindings.length > 0 ? ` (findings: ${r.candidateFindings.join(", ")})` : ""}` : `INCONCLUSIVE (${r.inconclusive.join(", ")})`;
-      lines.push(`| ${r.itemId} | ${r.expected} | ${String(r.n)} | ${canaries} | ${validity} | ${String(r.base.completed)}/${String(r.base.attempts)} | ${String(r.candidate.completed)}/${String(r.candidate.attempts)} | ${steps} |`);
+      lines.push(`| ${r.itemId} | ${r.expected} | ${String(r.n)} | ${canaries} | ${validity} | ${String(r.base.completed)}/${String(r.base.attempts)} | ${String(r.candidate.completed)}/${String(r.candidate.attempts)} | ${String(r.base.b2Missing + r.candidate.b2Missing)} | ${String(r.invalidPackages)} | ${steps} |`);
     }
     lines.push("");
   }

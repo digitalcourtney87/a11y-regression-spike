@@ -110,6 +110,7 @@ Conventions:
 | [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0074](#dr-0074-m4-pr-review-findings) | M4 PR review findings | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3222,4 +3223,27 @@ The deals journey toggles focus mode around the keyboard drag. The contact-save 
 - the execution guard (DR-0034) and side-aware validity (DR-0035).
 
 M5 (oracles, scoring, the dev report and the power table) needs the owner's go-ahead. The full run's artefacts expire after 30 days, so if M5 starts later they are re-run rather than archived. M4 is not a gate (D6).
+
+## DR-0074 M4 PR review findings
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §7.3, §7.4, §9 (M4); P13 |
+
+**Context.** Devin Review (5 comments) and Codex (4 comments) reviewed PR #7. Claude checked each against the code and the full run's data (run 37143043955). That run had no listener failure and no missing package. However, 301 of its 736 attempts recorded more than one "document": Playwright's `framenavigated` fires on same-document (hash-route) navigations, so the runner treated those as new pages and restarted the rAF heartbeat.
+
+| Finding | Assessment | Change |
+|---|---|---|
+| A listener failure is metadata only, so a block can look complete without B2 events (Devin; Codex P1) | Valid. Under P13 a listener failure is a failure of the instrument, never INCONCLUSIVE, so it must not enter validity. It must be explicit, though | Each attempt records `b2Evidence` (`complete`, `missing` or `not-in-leg`). The report counts attempts with missing B2 events per item. M5 counts them as failures for B2 |
+| The K1 canary ignores an undrained or malformed listener (Codex P1) | Valid | An incomplete collector, a hook shortfall or a failed handover focus read fails the canary, which makes the block INCONCLUSIVE (HANDOFF §7.4) |
+| Navigation handling (Codex P2; Devin) | Valid in substance. Same-document navigations were treated as new documents, losing rAF readings since the last check. A full navigation lost the old document's undrained entries, and a document replaced before any reading kept zero drift. Devin's claim that new-document entries were mapped with the old clock is not borne out: the drain ran after the new clock was set | Each document gets an id at creation (an init script), so only a real document change switches the clock and heartbeat. The timeline is drained, and the heartbeat read, before each AT step's first action and after each action; drift is read at each step's start and end. A document replaced before any drift reading is counted as unmeasured, never as a failure (the page may cause navigations, DR-0032) |
+| A missing package counts as valid in the report (Devin) | Valid | A missing package is recorded as an error and counted |
+| `buildApp.ps1` always exits 0 (Devin) | Valid. A missing build is a harness failure, and it showed as a candidate-only setup error | The job fails when any side fails to install, apply, build or revert |
+| Skipped canaries are recorded as passing (Codex P2) | Valid | A skipped canary is not passed. Attempts then fail the pre-canary check (R9), and the block records `canariesSkipped` |
+| The NVDA log is uploaded unredacted (Devin) | Not adopted. The log is the protocol's second speech record (HANDOFF §8.1, D2). It comes from an ephemeral runner with no secrets, and gate bundles already include it (D6) | None |
+
+**Consequences.** The full run is repeated with the fixed runner, so M4's evidence reflects it. Journey-development runs without canaries are now INCONCLUSIVE by design.
 

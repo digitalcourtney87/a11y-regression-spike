@@ -100,5 +100,11 @@ if ($App -like "oss/*") {
   Pop-Location
 }
 $results | ConvertTo-Json | Out-File (Join-Path $logs "builds.json")
-if ($results | Where-Object { $_.buildExit -ne 0 }) { Write-Host "one or more builds failed; see $logs/builds.json" }
+# A side that fails to install, apply, build or revert is a failure of the harness, not a measurement:
+# fail the job, so no candidate attempt runs against a missing build (DR-0074).
+$failed = @($results | Where-Object { $_.buildExit -ne 0 -or ($_.Contains("installExit") -and $_.installExit -ne 0) -or ($_.Contains("applyExit") -and $_.applyExit -ne 0) -or ($_.Contains("revertExit") -and $_.revertExit -ne 0) })
+if ($failed.Count -gt 0) {
+  Write-Host "builds failed: $(($failed | ForEach-Object { $_.label }) -join ', '); see $logs/builds.json"
+  exit 1
+}
 exit 0

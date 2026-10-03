@@ -98,6 +98,10 @@ const FOCUS_RETRY_FOR_MS = 1000;
 const ESPEAK_DEFAULT_RATE = 30;
 /** Wait after each goal-seeking attempt before checking the goal: longer with NVDA, which must speak first. */
 const ATTEMPT_SETTLE_MS = { "nvda-absent": 300, "nvda-present": 900 } as const;
+/** Gives each document an id when it is created, so a full navigation can be told from a same-document one (DR-0074). */
+const DOC_ID_SCRIPT = "window.__a11yDoc = crypto.randomUUID();";
+const DOC_ID_READ = "window.__a11yDoc ?? null";
+
 /** The page clock for apps whose data depend on today's date (P14), as epoch milliseconds (2026-10-05T09:00:00Z). */
 const FIXED_TIME_MS: Record<string, number> = { "atomic-crm": 1_791_190_800_000 };
 
@@ -508,7 +512,8 @@ async function goalTarget(rt: Runtime, step: AtStep, absent: boolean, since: num
   return { attempt: 0, speech };
 }
 
-async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: boolean): Promise<StepRun> {
+/** One AT step. `afterAction` runs after each action, before the goal check (the timeline drain and rAF reading; DR-0074). */
+async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: boolean, afterAction: () => Promise<void>): Promise<StepRun> {
   const run: StepRun = { stepId: step.id, kind: "at", segmentId, strategy: step.strategy, goalBased: step.until !== undefined, startedAt: qpcNowNs(), goalTrace: [] };
   const goal = step.until;
   const attempts = goal?.maxAttempts ?? 1;
@@ -517,6 +522,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
     const since = qpcNowNs();
     await act(rt, step, absent);
     await sleep(ATTEMPT_SETTLE_MS[leg]);
+    await afterAction();
     if (goal === undefined) {
       run.reachedAt = 1;
       break;
@@ -635,7 +641,11 @@ async function runK1(ctx: JobContext): Promise<Json> {
     if (pid === undefined) throw new Error("no browser process");
     const win = (await ctx.helper.windowsForPid(pid)).find((w) => w.class === "Chrome_WidgetWin_1");
     if (win === undefined) throw new Error("no Chrome window");
-    if (listenerTmp !== null) listener = await ListenerProcess.start({ exe: args.listener, pid, outPath: join(listenerTmp, `k1-${String(qpcNowNs())}.jsonl`) });
+    if (listenerTmp !== null) {
+      listener = await ListenerProcess.start({ exe: args.listener, pid, outPath: join(listenerTmp, `k1-${String(qpcNowNs())}.jsonl`) });
+      const ready = listener.ready;
+      if (ready !== null && ready.hooks !== ready.ranges) record.listenerFailure = `hooks installed ${String(ready.hooks)} of ${String(ready.ranges)}`;
+    }
     await ctx.helper.activate(win.hwnd);
     await page.locator("#start").focus();
     await sleep(FOCUS_FIRST_READ_MS);
@@ -651,14 +661,17 @@ async function runK1(ctx: JobContext): Promise<Json> {
     if (ctx.nvda !== null) {
       const outcome = evaluateAttempt(spec, ctx.nvda.tap.between(activationT, endT), activationT);
       record.outcome = outcome;
-      record.ok = outcome.kind === "gating" && outcome.verdict === "PASS";
+      record.ok = record.focusOk === true && outcome.kind === "gating" && outcome.verdict === "PASS";
     } else {
       const timeline: MappedTimelineEntry[] = (await page.evaluate<TimelineEntry[]>(TIMELINE_DRAIN_SCRIPT)).map((e) => ({ ...e, tQpc: pageToQpcNs(e.t, clock) }));
       const drained = listener === undefined ? null : await listener.stop();
       listener = undefined;
+      // An incomplete collector fails the canary even when its surviving events match (DR-0074).
+      if (drained !== null && !drained.drained) record.listenerFailure ??= `not drained (${String(drained.remaining)} events still queued)`;
+      else if (drained !== null && drained.malformed > 0) record.listenerFailure ??= `${String(drained.malformed)} malformed output lines`;
       const b2 = drained === null ? null : evaluateGatingB2("K1", drained.events, timeline, { activationT, endT });
       record.b2 = b2;
-      record.ok = b2?.verdict === "PASS";
+      record.ok = record.focusOk === true && record.listenerFailure === undefined && b2?.verdict === "PASS";
     }
   } catch (error) {
     record.ok = false;
@@ -704,6 +717,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     browser = await chromium.launch({ headless: false, chromiumSandbox: true, args: CHROME_FLAGS });
     const chromeVersion = browser.version();
     const context = await newContext(browser, base, external);
+    await context.addInitScript(DOC_ID_SCRIPT);
     await context.addInitScript(TIMELINE_INIT_SCRIPT);
     const page = await openPage(context, base + journey.entryUrl, pageErrors);
     const cdp = await context.newCDPSession(page);
@@ -775,39 +789,39 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     const clockStart = await pageClock(page, PINGS, true);
     await page.evaluate(RAF_START_SCRIPT);
     await sleep(SETTLE_MS);
-    // One page clock per document (HANDOFF §7.3: recompute the mapping after every full navigation).
-    // Drift and the rAF gap are read after every AT step, so a document that a navigation replaces
-    // keeps its last readings, and the timeline is drained per step, so its entries survive the load.
-    interface DocClock { index: number; clock: typeof clockStart; driftMs: number; rafGapMs: number }
-    let doc: DocClock = { index: 0, clock: clockStart, driftMs: 0, rafGapMs: 0 };
+    // One page clock per document (HANDOFF §7.3: recompute the mapping after every full navigation;
+    // DR-0074). A document is identified by the id DOC_ID_SCRIPT gives it, so a same-document
+    // navigation (a hash route) keeps its clock and rAF heartbeat. The timeline is drained, and the
+    // rAF heartbeat read, before each AT step's first action and after each action, so a full
+    // navigation loses at most the entries of the one action that caused it; drift is read at each
+    // step's start and end. A document a navigation replaced before any drift reading is counted
+    // as unmeasured, never as a failure (the page may have caused the navigation, DR-0032).
+    interface DocClock { index: number; id: string | null; clock: typeof clockStart; driftMs: number; rafGapMs: number; measured: boolean }
+    const docIdNow = async (): Promise<string | null> => (await page.evaluate<string | null>(DOC_ID_READ).catch(() => null)) ?? null;
+    let doc: DocClock = { index: 0, id: await docIdNow(), clock: clockStart, driftMs: 0, rafGapMs: 0, measured: false };
     const docs: DocClock[] = [doc];
     const timeline: MappedTimelineEntry[] = [];
-    let navigated = false;
-    page.on("framenavigated", (frame) => {
-      if (frame === page.mainFrame()) navigated = true;
-    });
     const drain = async (): Promise<void> => {
       const current = doc;
       timeline.push(...(await page.evaluate<TimelineEntry[]>(TIMELINE_DRAIN_SCRIPT)).map((e) => ({ ...e, tQpc: pageToQpcNs(e.t, current.clock), doc: current.index })));
     };
-    const readClock = async (): Promise<void> => {
-      doc.driftMs = Math.max(doc.driftMs, await segmentDriftMs(page, doc.clock, 8));
+    const sync = async (withDrift: boolean): Promise<void> => {
+      const id = await docIdNow();
+      if (id !== null && id !== doc.id) {
+        // A new document: the old one is gone with its last readings; this one gets its own clock.
+        await page.waitForLoadState("load").catch(() => undefined);
+        const clock = await pageClock(page, PINGS, true);
+        await page.evaluate(RAF_START_SCRIPT);
+        doc = { index: doc.index + 1, id, clock, driftMs: 0, rafGapMs: 0, measured: false };
+        docs.push(doc);
+      }
+      await drain();
       const r = await page.evaluate<{ maxGapMs: number | null } | null>(RAF_PEEK_SCRIPT);
       doc.rafGapMs = Math.max(doc.rafGapMs, r?.maxGapMs ?? Number.POSITIVE_INFINITY);
-    };
-    const afterStep = async (): Promise<void> => {
-      if (!navigated) {
-        await drain();
-        await readClock();
-        return;
+      if (withDrift) {
+        doc.driftMs = Math.max(doc.driftMs, await segmentDriftMs(page, doc.clock, 8));
+        doc.measured = true;
       }
-      navigated = false;
-      await page.waitForLoadState("load").catch(() => undefined);
-      const clock = await pageClock(page, PINGS, true);
-      await page.evaluate(RAF_START_SCRIPT);
-      doc = { index: doc.index + 1, clock, driftMs: 0, rafGapMs: 0 };
-      docs.push(doc);
-      await drain();
     };
     const worst = (f: (d: DocClock) => number): number => Math.max(...docs.map(f));
     const buildPreflight = (drift: number, rafGap: number): Preflight => ({
@@ -848,15 +862,15 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
         stopped = true;
         continue;
       }
-      const run = await runAtStep(rt, step, segmentId, leg === "nvda-absent");
+      await sync(true);
+      const run = await runAtStep(rt, step, segmentId, leg === "nvda-absent", () => sync(false));
       record.steps.push(run);
-      await afterStep();
+      await sync(true);
       if (run.outcome === "UNREACHABLE") stopped = true;
     }
     record.notRun = notRun;
 
-    await drain();
-    await readClock();
+    await sync(true);
     const raf = await page.evaluate<{ maxGapMs: number | null; frames: number }>(RAF_READ_SCRIPT);
     doc.rafGapMs = Math.max(doc.rafGapMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY);
     const driftMs = worst((d) => d.driftMs);
@@ -881,7 +895,10 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
       timelineVersion: TIMELINE_VERSION,
       listenerEvents: events,
       ...(failure.listener === null ? {} : { listenerFailure: failure.listener }),
-      clock: { native, driftMs, rafGapMs, raf, documents: docs.map((d) => ({ index: d.index, uncertaintyMs: d.clock.uncertaintyMs, highResolution: d.clock.highResolution, driftMs: d.driftMs, rafGapMs: d.rafGapMs, navigationStartS: d.clock.navigationStartS, mappingOffsetNs: d.clock.mappingOffsetNs })) },
+      // B2's platform events are complete only when the listener ran without failure (P13: a listener
+      // failure is a failure of the instrument, never INCONCLUSIVE; DR-0074).
+      b2Evidence: listenerTmp === null ? "not-in-leg" : events === null ? "missing" : "complete",
+      clock: { native, driftMs, rafGapMs, raf, unmeasuredDocuments: docs.filter((d) => !d.measured).length, documents: docs.map((d) => ({ index: d.index, measured: d.measured, uncertaintyMs: d.clock.uncertaintyMs, highResolution: d.clock.highResolution, driftMs: d.driftMs, rafGapMs: d.rafGapMs, navigationStartS: d.clock.navigationStartS, mappingOffsetNs: d.clock.mappingOffsetNs })) },
       preflight: buildPreflight(driftMs, rafGapMs),
       maxClockSkewMs: Math.max(native, worst((d) => d.clock.uncertaintyMs)),
       speechEvents: ctx.nvda === null ? null : ctx.nvda.tap.between(record.steps.find((s) => s.startedAt !== undefined)?.startedAt ?? 0, qpcNowNs()),
@@ -894,6 +911,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     record.reasons = preActivation ?? ["ENV_FAILURE"];
     if (preActivation !== null) record.errorAfterActivation = true;
     if (failure.listener !== null) record.listenerFailure = failure.listener;
+    record.b2Evidence = listenerTmp === null ? "not-in-leg" : "missing";
   } finally {
     listener?.kill();
     await browser?.close();
@@ -948,7 +966,8 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
   const n = args.reps === "" ? repetitionsFor(item, corpus) : Number(args.reps);
   const order: Side[] = args.sides === "base" ? Array.from({ length: n }, () => "base" as const) : abbaOrder(n);
   const pre = args["no-canaries"] ? null : await runK1(ctx);
-  const preOk = pre === null || pre.ok === true;
+  // A skipped canary is not a passed one: the attempts then fail the pre-canary check (R9; DR-0074).
+  const preOk = pre !== null && pre.ok === true;
   const attempts: AttemptRecord[] = [];
   const reps: Record<Side, number> = { base: 0, candidate: 0 };
   for (const [i, side] of order.entries()) {
@@ -965,11 +984,11 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
       if (s !== undefined && s.outcome !== "ENV_FAILURE" && s.reachedAt !== undefined) s.outcome = goalOutcome(s.reachedAt, baseModal);
     }
   }
-  const canaries = { pre: preOk, post: post === null || post.ok === true };
+  const canaries = { pre: preOk, post: post !== null && post.ok === true };
   const packages = attempts.map((a) => packageFor(item, a, ctx.manifest, canaries));
   const validations = packages.map((p) => (p === null ? null : GateEvidencePackageSchema.safeParse(p)));
   const validity = itemValidity(attempts.map((a) => ({ side: a.side, reasons: a.reasons })));
-  const block = { label: "EXPLORATORY", jobId, item, journeyId: journey.id, leg, n, order, split: decision.split, pre, post, validity, attempts, packages, packageErrors: validations.map((v) => (v === null || v.success ? null : v.error.issues.slice(0, 10).map((i) => `${i.path.join(".")}: ${i.message}`))) };
+  const block = { label: "EXPLORATORY", jobId, item, journeyId: journey.id, leg, n, order, split: decision.split, pre, post, validity, attempts, packages, canariesSkipped: args["no-canaries"], packageErrors: validations.map((v) => (v === null ? ["no evidence package: the attempt failed before its preflight"] : v.success ? null : v.error.issues.slice(0, 10).map((i) => `${i.path.join(".")}: ${i.message}`))) };
   mkdirSync(join(outDir, "blocks"), { recursive: true });
   writeFileSync(join(outDir, "blocks", `${item.id}.json.gz`), gzipSync(JSON.stringify(block)));
   const summary = {
@@ -980,7 +999,7 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
     pre: pre?.ok ?? null,
     post: post?.ok ?? null,
     validity,
-    attempts: attempts.map((a) => ({ side: a.side, orderIndex: a.orderIndex, reasons: a.reasons, error: a.error ?? null, steps: a.steps.filter((s) => s.kind === "at").map((s) => ({ id: s.stepId, outcome: s.outcome ?? null, reachedAt: s.reachedAt ?? null, focusAtEnd: s.focusAtEnd ?? null, goalTrace: s.goalTrace ?? [] })), notRun: a.notRun ?? [], pageErrors: a.pageErrors, external: (a.external as string[] | undefined)?.length ?? 0 })),
+    attempts: attempts.map((a) => ({ side: a.side, orderIndex: a.orderIndex, reasons: a.reasons, error: a.error ?? null, steps: a.steps.filter((s) => s.kind === "at").map((s) => ({ id: s.stepId, outcome: s.outcome ?? null, reachedAt: s.reachedAt ?? null, focusAtEnd: s.focusAtEnd ?? null, goalTrace: s.goalTrace ?? [] })), notRun: a.notRun ?? [], b2Evidence: a.b2Evidence ?? null, listenerFailure: a.listenerFailure ?? null, pageErrors: a.pageErrors, external: (a.external as string[] | undefined)?.length ?? 0 })),
     packagesValid: validations.every((v) => v?.success === true),
   };
   appendFileSync(join(outDir, `blocks-${jobId}.jsonl`), `${JSON.stringify(summary)}\n`);
