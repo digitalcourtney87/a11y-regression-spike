@@ -1,37 +1,17 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "journey development, round 5: each journey once on its base build, both legs, with P26 (DR-0071)",
+  "purpose": "M4 smoke test: one mined pair's three items, both sides, one attempt per side, canaries and axe on, both legs (DR-0072)",
   "apps": [
-    "atomic-crm",
-    "react-admin-simple",
-    "oss-carbon-19563",
-    "oss-fluent-35927",
-    "oss-rac-8697"
+    "oss-fluent-35927"
   ],
   "legs": [
     "nvda-absent",
     "nvda-present"
   ],
-  "items": [
-    "acrm-company-show-tabs-unchanged",
-    "acrm-contact-create-notification-unchanged",
-    "acrm-contact-create-save-unchanged",
-    "acrm-dashboard-complete-task-unchanged",
-    "acrm-dashboard-task-actions-escape-unchanged",
-    "acrm-dashboard-task-actions-unchanged",
-    "acrm-deals-move-card-keyboard-unchanged",
-    "oss-carbon-19563-unchanged",
-    "oss-fluent-35927-unchanged",
-    "oss-rac-8697-unchanged",
-    "ras-comment-post-preview-unchanged",
-    "ras-comment-quick-create-cancel-unchanged",
-    "ras-comment-quick-create-open-unchanged",
-    "ras-custom-page-heading-unchanged",
-    "ras-menu-navigate-comments-unchanged",
-    "ras-post-edit-save-notification-unchanged"
-  ],
-  "sides": "base",
+  "items": [],
+  "sides": "both",
   "reps": "1",
-  "canaries": false,
-  "axe": false
+  "canaries": true,
+  "axe": true,
+  "shards": 1
 }

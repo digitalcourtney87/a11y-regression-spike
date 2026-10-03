@@ -3,7 +3,11 @@
  * only. One invocation is one job: one app, one leg.
  *
  *   node harness/src/runner/itemRun.ts --leg <nvda-absent|nvda-present> --app <app> --builds <dir> --out <dir>
- *     [--items id,id] [--sides both|base] [--reps n] [--no-canaries] [--no-axe]
+ *     [--items id,id] [--sides both|base] [--reps n] [--shard i/N] [--no-canaries] [--no-axe]
+ *
+ * With `--shard i/N` the job runs every Nth of the app's selected items,
+ * starting with the i-th (items sorted by id), so long blocks fit the job
+ * time limit.
  *
  * Builds are read from `<builds>/<app key>/base` (the base side) and
  * `<builds>/<app key>/<item id>` (each candidate); an unchanged control's
@@ -130,6 +134,7 @@ const { values: args } = parseArgs({
     items: { type: "string", default: "" },
     sides: { type: "string", default: "both" },
     reps: { type: "string", default: "" },
+    shard: { type: "string", default: "1/1" },
     env: { type: "string", default: "artefacts/env.json" },
     listener: { type: "string", default: LISTENER_EXE },
     "no-canaries": { type: "boolean", default: false },
@@ -146,7 +151,11 @@ if (args.sides !== "both" && args.sides !== "base") throw new Error("--sides mus
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outDir = resolve(args.out);
 const appKey = app.replace("/", "-");
-const jobId = `${appKey}-${leg}`;
+const shardParts = args.shard.split("/").map(Number);
+const shardIndex: number = shardParts[0] ?? Number.NaN;
+const shardCount: number = shardParts[1] ?? Number.NaN;
+if (!Number.isInteger(shardIndex) || !Number.isInteger(shardCount) || shardIndex < 1 || shardIndex > shardCount) throw new Error(`--shard must be i/N with 1 <= i <= N, not ${args.shard}`);
+const jobId = `${appKey}-${leg}-${String(shardIndex)}of${String(shardCount)}`;
 const useListener = leg === "nvda-absent";
 const runAxe = leg === "nvda-absent" && !args["no-axe"];
 const listenerTmp = useListener ? mkdtempSync(join(tmpdir(), "a11y-listener-")) : null;
@@ -1004,7 +1013,7 @@ async function main(): Promise<void> {
   const corpus = readCorpus();
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
   // Dev items only: test-split items are not executed before the freeze (hard rule 5); the guard below is the backstop.
-  const items = corpus.filter((i) => i.app === app && i.split === "dev" && (wantedIds === null || wantedIds.has(i.id)));
+  const items = corpus.filter((i) => i.app === app && i.split === "dev" && (wantedIds === null || wantedIds.has(i.id))).filter((_, k) => k % shardCount === shardIndex - 1);
   const { journeys, errors } = checkJourneys(readJourneyFiles(), items, SETUP_NAMES);
   if (errors.length > 0) throw new Error(`journeys: ${errors.join("; ")}`);
   const env = (existsSync(args.env) ? JSON.parse(readFileSync(args.env, "utf8")) : {}) as EnvSnapshot;

@@ -18,7 +18,8 @@
     "phase0:canaries": "node harness/src/runner/canaryRun.ts",
     "report:phase0": "node harness/src/score/reportCli.ts",
     "corpus": "node harness/src/corpus/corpusCli.ts",
-    "m4:items": "node harness/src/runner/itemRun.ts"
+    "m4:items": "node harness/src/runner/itemRun.ts",
+    "m4:report": "node harness/src/runner/m4Report.ts"
   },
   "dependencies": {
     "zod": "4.6.5"
