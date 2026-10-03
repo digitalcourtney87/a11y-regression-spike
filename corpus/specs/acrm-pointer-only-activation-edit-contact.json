@@ -1,0 +1,15 @@
+{
+  "id": "acrm-pointer-only-activation-edit-contact",
+  "patternId": "atomic-crm--pointer-only-activation",
+  "operator": "pointer-only-activation",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page: the Edit contact link navigates on pointerdown only; its click (Enter) is cancelled",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactAside.tsx",
+      "find": "          <EditButton label=\"resources.contacts.action.edit\" />\n",
+      "replace": "          <a\n            href=\"#\"\n            className=\"inline-flex h-8 items-center gap-1 rounded-md px-2 text-sm\"\n            onClick={(event) => event.preventDefault()}\n            onPointerDown={() => {\n              window.location.hash = `#/contacts/${String(record.id)}`;\n            }}\n          >\n            {translate(\"resources.contacts.action.edit\")}\n          </a>\n"
+    }
+  ]
+}

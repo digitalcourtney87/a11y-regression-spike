@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+index ac03867..15ce212 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+@@ -111,6 +111,7 @@ export const TagsListEdit = () => {
+           <DropdownMenuTrigger asChild>
+             <Button
+               variant="outline"
++              tabIndex={-1}
+               size="sm"
+               className="h-9 md:h-6 cursor-pointer"
+             >

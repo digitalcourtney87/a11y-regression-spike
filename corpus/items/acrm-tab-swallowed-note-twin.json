@@ -1,15 +1,15 @@
 {
-  "id": "acrm-tab-swallowed-company-search-twin",
+  "id": "acrm-tab-swallowed-note-twin",
   "patternId": "atomic-crm--tab-swallowed",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-companies-list-actions",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-tab-swallowed-company-search-twin.patch"
+    "patch": "acrm-tab-swallowed-note-twin.patch"
   },
   "expected": {
     "kind": "benign",

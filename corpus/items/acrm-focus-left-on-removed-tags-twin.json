@@ -1,22 +1,22 @@
 {
-  "id": "acrm-focus-left-on-removed-note-twin",
+  "id": "acrm-focus-left-on-removed-tags-twin",
   "patternId": "atomic-crm--focus-left-on-removed",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-details",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-focus-left-on-removed-note-twin.patch"
+    "patch": "acrm-focus-left-on-removed-tags-twin.patch"
   },
   "expected": {
     "kind": "benign",
-    "benignType": "CLASS_RENAME"
+    "benignType": "CSS_ONLY"
   },
   "provenance": {
-    "origin": "seeded by Claude with operator class-rename",
+    "origin": "seeded by Claude with operator css-only",
     "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
   }
 }

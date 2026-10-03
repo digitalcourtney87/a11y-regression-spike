@@ -1,0 +1,14 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteInputs.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteInputs.tsx
+index 4ce659f..8d7cada 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteInputs.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/notes/NoteInputs.tsx
+@@ -101,6 +101,9 @@ export const NoteInputs = ({
+         helperText={false}
+         placeholder={translate("resources.notes.inputs.add_note")}
+         rows={2}
++        onKeyDown={(event) => {
++          if (event.key === "Tab") event.preventDefault();
++        }}
+         inputClassName={cn(
+           "transition-[min-height] duration-300 ease-in-out",
+           isExpanded && "min-h-[20rem]",

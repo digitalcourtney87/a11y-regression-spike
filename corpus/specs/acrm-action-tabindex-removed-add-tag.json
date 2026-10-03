@@ -1,0 +1,15 @@
+{
+  "id": "acrm-action-tabindex-removed-add-tag",
+  "patternId": "atomic-crm--action-tabindex-removed",
+  "operator": "action-tabindex-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page: the Add tag button given tabindex=-1, so it is out of the tab order",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "            <Button\n              variant=\"outline\"\n              size=\"sm\"\n              className=\"h-9 md:h-6 cursor-pointer\"\n            >\n",
+      "replace": "            <Button\n              variant=\"outline\"\n              tabIndex={-1}\n              size=\"sm\"\n              className=\"h-9 md:h-6 cursor-pointer\"\n            >\n"
+    }
+  ]
+}

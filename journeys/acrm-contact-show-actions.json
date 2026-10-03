@@ -1,88 +1,103 @@
 {
-  "id": "acrm-companies-list-actions",
+  "id": "acrm-contact-show-actions",
   "version": "1",
   "app": "atomic-crm",
-  "entryUrl": "/#/companies",
+  "entryUrl": "/#/contacts/0/show",
   "anchor": "header a[href=\"#/deals\"]",
   "steps": [
     {
       "kind": "at",
-      "id": "reach-export",
+      "id": "reach-note",
       "strategy": "TAB",
       "until": {
-        "name": "Export",
-        "role": "button",
+        "name": "Add a note",
+        "role": "textbox",
         "maxAttempts": 12
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Export"
+          "value": "textbox|Add a note"
         }
       ]
     },
     {
       "kind": "at",
-      "id": "reach-new-company",
+      "id": "leave-note",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Show options"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-edit",
       "strategy": "TAB",
       "until": {
-        "name": "New Company",
+        "name": "Edit contact",
         "role": "link",
-        "maxAttempts": 3
+        "maxAttempts": 25
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "link|New Company"
+          "value": "link|Edit contact"
         }
       ]
     },
     {
       "kind": "at",
-      "id": "reach-search",
+      "id": "reach-add-tag",
       "strategy": "TAB",
       "until": {
-        "name": "Search",
-        "role": "textbox",
-        "maxAttempts": 3
-      },
-      "observeMs": 1000,
-      "expectations": [
-        {
-          "type": "focusOn",
-          "value": "textbox|Search"
-        }
-      ]
-    },
-    {
-      "kind": "at",
-      "id": "leave-search",
-      "strategy": "TAB",
-      "observeMs": 1000,
-      "expectations": [
-        {
-          "type": "focusOn",
-          "value": "button|1 employee"
-        }
-      ]
-    },
-    {
-      "kind": "at",
-      "id": "back-to-new-company",
-      "strategy": "SHIFT_TAB",
-      "until": {
-        "name": "New Company",
-        "role": "link",
-        "maxAttempts": 4
+        "name": "Add tag",
+        "role": "button",
+        "maxAttempts": 12
       },
       "observeMs": 1000,
       "expectations": []
     },
     {
       "kind": "at",
-      "id": "open-create",
+      "id": "open-tags",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "pick-tag",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add tag"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "back-to-edit",
+      "strategy": "SHIFT_TAB",
+      "until": {
+        "name": "Edit contact",
+        "role": "link",
+        "maxAttempts": 15
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-edit",
       "strategy": "ACTIVATE",
       "observeMs": 2000,
       "expectations": []
@@ -96,17 +111,17 @@
     },
     {
       "kind": "at",
-      "id": "reach-company-name",
+      "id": "reach-first-name",
       "strategy": "NEXT_FORM_FIELD",
       "until": {
-        "name": "Company name",
-        "maxAttempts": 4
+        "name": "First name",
+        "maxAttempts": 10
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "textbox|Company name"
+          "value": "textbox|First name"
         }
       ]
     }

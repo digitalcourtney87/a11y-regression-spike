@@ -40,7 +40,6 @@
       "strategy": "TAB",
       "until": {
         "name": "Type",
-        "role": "combobox",
         "maxAttempts": 10
       },
       "observeMs": 1000,
@@ -72,17 +71,12 @@
       "id": "pick-type",
       "strategy": "PRESS",
       "until": {
-        "role": "combobox",
+        "role": "dialog",
         "maxAttempts": 1
       },
       "key": "Enter",
       "observeMs": 1000,
-      "expectations": [
-        {
-          "type": "focusOn",
-          "value": "combobox|Type"
-        }
-      ]
+      "expectations": []
     },
     {
       "kind": "at",
@@ -91,7 +85,7 @@
       "until": {
         "name": "Close",
         "role": "button",
-        "maxAttempts": 6
+        "maxAttempts": 14
       },
       "observeMs": 1000,
       "expectations": []

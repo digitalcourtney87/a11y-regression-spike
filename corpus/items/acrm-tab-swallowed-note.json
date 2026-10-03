@@ -1,20 +1,20 @@
 {
-  "id": "acrm-tab-swallowed-company-search",
+  "id": "acrm-tab-swallowed-note",
   "patternId": "atomic-crm--tab-swallowed",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-companies-list-actions",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-tab-swallowed-company-search.patch"
+    "patch": "acrm-tab-swallowed-note.patch"
   },
   "expected": {
     "kind": "regression",
     "symptom": "KEYBOARD_TRAP",
-    "mechanism": "tab-swallowed: A component swallows Tab (Companies list: the search box swallows Tab, so focus cannot leave it by its documented key)"
+    "mechanism": "tab-swallowed: A component swallows Tab (Note form: the Add a note box swallows Tab, so focus cannot leave it by its documented key)"
   },
   "provenance": {
     "origin": "seeded by Claude with operator tab-swallowed",

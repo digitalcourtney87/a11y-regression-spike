@@ -2,7 +2,7 @@
   "id": "acrm-contact-merge-dialog",
   "version": "1",
   "app": "atomic-crm",
-  "entryUrl": "/#/contacts/0/show",
+  "entryUrl": "/#/contacts/0",
   "anchor": "header a[href=\"#/deals\"]",
   "steps": [
     {

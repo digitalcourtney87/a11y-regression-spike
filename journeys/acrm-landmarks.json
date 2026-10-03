@@ -2,7 +2,7 @@
   "id": "acrm-landmarks",
   "version": "1",
   "app": "atomic-crm",
-  "entryUrl": "/#/contacts",
+  "entryUrl": "/#/contacts/0/show",
   "anchor": "header a[href=\"#/deals\"]",
   "steps": [
     {

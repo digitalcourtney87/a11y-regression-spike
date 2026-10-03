@@ -43,42 +43,6 @@
           "value": "img|Connelly, Lind and Jaskolski"
         }
       ]
-    },
-    {
-      "kind": "setup",
-      "id": "type-note",
-      "fn": "acrm.type-note"
-    },
-    {
-      "kind": "at",
-      "id": "reach-add-note",
-      "strategy": "TAB",
-      "until": {
-        "name": "Add this note",
-        "role": "button",
-        "maxAttempts": 40
-      },
-      "observeMs": 1000,
-      "expectations": [
-        {
-          "type": "focusOn",
-          "value": "button|Add this note"
-        }
-      ]
-    },
-    {
-      "kind": "at",
-      "id": "add-note",
-      "strategy": "ACTIVATE",
-      "observeMs": 2500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t1",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
     }
   ]
 }

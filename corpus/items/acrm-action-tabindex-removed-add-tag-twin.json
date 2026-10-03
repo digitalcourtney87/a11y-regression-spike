@@ -1,15 +1,15 @@
 {
-  "id": "acrm-action-tabindex-removed-export-twin",
+  "id": "acrm-action-tabindex-removed-add-tag-twin",
   "patternId": "atomic-crm--action-tabindex-removed",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-companies-list-actions",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-action-tabindex-removed-export-twin.patch"
+    "patch": "acrm-action-tabindex-removed-add-tag-twin.patch"
   },
   "expected": {
     "kind": "benign",

@@ -1,20 +1,20 @@
 {
-  "id": "acrm-action-tabindex-removed-export",
+  "id": "acrm-action-tabindex-removed-add-tag",
   "patternId": "atomic-crm--action-tabindex-removed",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-companies-list-actions",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-action-tabindex-removed-export.patch"
+    "patch": "acrm-action-tabindex-removed-add-tag.patch"
   },
   "expected": {
     "kind": "regression",
     "symptom": "NAV_TARGET_UNREACHABLE",
-    "mechanism": "action-tabindex-removed: Primary action given tabindex=-1 (Shared ExportButton: given tabindex=-1, so the list's Export action is out of the tab order)"
+    "mechanism": "action-tabindex-removed: Primary action given tabindex=-1 (Contact page: the Add tag button given tabindex=-1, so it is out of the tab order)"
   },
   "provenance": {
     "origin": "seeded by Claude with operator action-tabindex-removed",

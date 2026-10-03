@@ -1,20 +1,20 @@
 {
-  "id": "acrm-pointer-only-activation-new-company",
+  "id": "acrm-pointer-only-activation-edit-contact",
   "patternId": "atomic-crm--pointer-only-activation",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-companies-list-actions",
+  "journeyId": "acrm-contact-show-actions",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-pointer-only-activation-new-company.patch"
+    "patch": "acrm-pointer-only-activation-edit-contact.patch"
   },
   "expected": {
     "kind": "regression",
     "symptom": "INTERACTION_FAILS_UNDER_AT",
-    "mechanism": "pointer-only-activation: Activation bound to mousedown or pointerdown only (Companies list: the New Company link navigates on pointerdown only; its click (Enter) is cancelled)"
+    "mechanism": "pointer-only-activation: Activation bound to mousedown or pointerdown only (Contact page: the Edit contact link navigates on pointerdown only; its click (Enter) is cancelled)"
   },
   "provenance": {
     "origin": "seeded by Claude with operator pointer-only-activation",

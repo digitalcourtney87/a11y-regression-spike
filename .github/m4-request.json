@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, Atomic CRM round 2: the eight journeys of the 26 test patterns on the base build only, both legs, one attempt, no item and no candidate (DR-0082)",
+  "purpose": "Test-pattern journey development, Atomic CRM round 3: the eight journeys on the base build only, both legs, one attempt; list pages replaced as entry pages (their handover focus read fails) (DR-0082)",
   "apps": [
     "atomic-crm"
   ],
@@ -15,7 +15,7 @@
     "acrm-contact-add-task-dialog",
     "acrm-theme-menu",
     "acrm-landmarks",
-    "acrm-companies-list-actions",
+    "acrm-contact-show-actions",
     "acrm-contact-show-details",
     "acrm-contact-merge-dialog"
   ],
