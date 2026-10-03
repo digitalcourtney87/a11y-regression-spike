@@ -2761,3 +2761,33 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 | D. Bring Prompt to Page back | Depends on exports | – | Needs the owner's exports (P18) |
 
 **Consequences.** No split is run until P19 is answered. Building the dev-split specs on Atomic CRM continues meanwhile, because their patterns exist under every option.
+
+## DR-0059 A second SPA, and the dev-split specs
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 (P19); Decided by Claude under DR-0045 (method details) |
+| HANDOFF v1.6 | §9 (M3), R5 |
+
+**Context.** Claude reported that P15's 110 regression patterns were not reachable from Atomic CRM and mined pairs alone, and proposed a second SPA context (P19, DR-0058).
+
+**Decision.**
+
+> Yes to P19; start the dev-split specs
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Second SPA | react-admin's `examples/simple` at `4789067` vendored into `fixtures/spa/react-admin-simple/` by a sparse, blob-filtered fetch (284 KB, 50 files, no agent instruction files), with the repository's MIT `LICENSE.md`. Integration: the Google web-font loader removed, telemetry off. Its data are static. It has no lockfile; CI generates one with `--package-lock-only` and it is committed after review |
+| Pattern registry | `corpus/patterns.json` lists every planned pattern before any item exists: one per catalogue mechanism per context. Seeded specs and items must name a planned pattern |
+| Split in batches | P15's split (stratified, seed 20261004, test fraction 0.7) is applied per batch: first the SPA regression patterns, later the mined pairs once verified, and benign patterns once planned. A batch never changes an earlier assignment, so dev work can start without leaking into the test split |
+| Drops before the split | Five SPA regression patterns are dropped from the base alone, before the split: `route-focus-removed` and `route-change-silent` in both apps (neither base conveys a route change: no focus move, no announcement), and `drag-only-reorder` in react-admin (no drag-and-drop). A later drop must also rest on the base alone, never on a run's result |
+| Dev only | Specs are written only for dev patterns; test patterns wait for M5's power table (P15) |
+
+**Consequences.**
+
+- The SPA regression batch has 69 planned patterns (74 less 5 dropped) and is split with seed 20261004 at a test fraction of 0.7 after this record is committed.
+- ROUTE_CHANGE_SILENT has no SPA pattern, because neither base conveys route changes. Seeding it would mean adding a route announcer to a base, which changes the application, so that would be a new owner decision. It is reported with the pattern count.
