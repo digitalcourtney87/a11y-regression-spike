@@ -106,6 +106,7 @@ Conventions:
 | [DR-0067](#dr-0067-owner-approval-of-p23-p25) | Owner approval of P23–P25 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0068](#dr-0068-m4-build-runner-journeys-and-unchanged-controls) | M4 build: runner, journeys and unchanged controls | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0069](#dr-0069-m4-journey-development-the-page-date-and-the-tab-journey) | M4 journey development: the page date and the tab journey | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted (findings); P26 Proposed | 2026-10-03 | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P26 | — | Yes (P26) |
 
 ## Pending owner items (hard rule 12)
 
@@ -140,6 +141,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P23 | **Resolved (approved by the owner 2026-10-03, DR-0067).** How journeys run in the NVDA-absent leg: focus strategies and actions use Playwright input on the focused element (DR-0053); browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets, so A, B and B2 are measured at the same journey states as C, and reachability there is evidenced from the tree | DR-0066; DR-0067 | What is measured (the states at which A, B and B2 are measured; whether they can show NAV_TARGET_UNREACHABLE) | No longer pending | Approved as recommended |
 | P24 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Goal-based steps: repeat the strategy up to `maxAttempts`; goal checked by the MSAA focus read (TAB, SHIFT_TAB) or NVDA's queued speech (browse strategies) in the NVDA-present leg, and by the accessibility-tree node in the NVDA-absent leg. REACHED; UNREACHABLE, after which the journey stops with no fallback; PATH_CHANGED, reached at a different attempt count from the base side's most common count in the same leg (REVIEW in M5); ENV_FAILURE, a setup error before the step's first action | DR-0066; DR-0067 | What counts as detection (step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing) | No longer pending | Approved as recommended |
 | P25 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Add a PRESS strategy: one documented key (Escape, Space, Enter, arrows, Home, End) on the focused element, sent through NVDA in the NVDA-present leg, because KEYBOARD_TRAP is defined by a component's documented keys | DR-0066; DR-0067 | What is measured (the journey vocabulary) | No longer pending | Approved as recommended |
+| P26 | **Proposed by Claude (not yet owner-approved).** Two NVDA browse-mode commands as journey strategies. FOCUS_MODE_TOGGLE is NVDA+Space, the key an NVDA user presses to pass keys to a widget such as a keyboard drag handle. DOCUMENT_TOP is Control+Home in browse mode, which reads a new page from its top. In the NVDA-absent leg the first does nothing and the second puts the simulated cursor before the first line | DR-0070 | What is measured (the journey vocabulary, and which NVDA interactions C exercises) | Before M4 item results are used | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3117,4 +3119,33 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 | Anchors the drafts guessed (`#post_id`, a mobile-only Edit button) do not exist | Anchors are taken from the probe's accessibility trees and focus traces. Goals then reach targets by Tab or browse strategies from there |
 
 **Consequences.** Journey development continues on the base builds until every journey completes and its expectations can be judged. It then runs in the NVDA-present leg.
+
+## DR-0070 M4 journeys in the NVDA-present leg, and NVDA's modes
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted (findings and fixes, Decided by Claude under DR-0045); P26 Proposed by Claude (not yet owner-approved) |
+| Owner label | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P26 |
+| HANDOFF v1.8 | §7.2, §9 (M4), §10.2; P23–P25 |
+
+**Context.** Journey rounds 3 and 4 (runs 37140040580, 37140786020) ran each journey once on its base build in both legs. All 64 attempts were valid. NVDA's queued speech showed where the journeys and the simulated cursor departed from NVDA.
+
+| Finding (NVDA-present leg) | Decision |
+|---|---|
+| NVDA reads a list item's content as one line, and after a load its cursor starts on the first line | The simulated cursor moves by line (DR-0068's model, refined): a control, a heading, or the content of one list item, paragraph, cell, option or menu item. A browse goal matches any node on the line, and READ_CURRENT with no position reads the first line |
+| NVDA speaks "/" as "slash" | Goal names avoid punctuation |
+| NVDA's Enter in browse mode clicks a menu trigger, so the menu, not its first item, takes focus. NVDA enters focus mode in the menu, and its first Escape returns to browse mode without reaching the page | The menu journey expects focus within the menu, and presses Escape twice, as an NVDA user does. In the NVDA-absent leg the first Escape closes the menu and the second does nothing |
+| After a form, NVDA stays in focus mode, so "h" reaches the page | Escape before heading navigation (it is harmless in either mode) |
+| After an in-app navigation, NVDA's cursor is at the bottom of the new page, so NEXT_HEADING finds nothing below it | Needs DOCUMENT_TOP (P26) |
+| In browse mode, Space on the focused deal card clicks it, which opened the deal and then archived it. A keyboard drag needs focus mode, so the keys reach the drag handle | Needs FOCUS_MODE_TOGGLE (P26) |
+
+**Proposed by Claude (not yet owner-approved): P26.** Two NVDA browse-mode commands as journey strategies:
+
+- **FOCUS_MODE_TOGGLE** is NVDA+Space, sent through Guidepup's `toggleBetweenBrowseAndFocusMode` command. In the NVDA-absent leg it does nothing.
+- **DOCUMENT_TOP** is Control+Home in browse mode. In the NVDA-absent leg it puts the simulated cursor before the first line.
+
+The deals journey would toggle to focus mode before the drag and back after it. The contact-save journey would go to the top before heading navigation. Without P26, both journeys' base runs fail in the NVDA-present leg, so C could not be judged on their patterns. This extends the journey vocabulary, which decides which NVDA interactions C exercises (hard rule 12). The recommendation is yes.
+
+**Consequences.** Until P26 is decided, the deals and contact-save journeys are complete only in the NVDA-absent leg. Every other journey completes in both legs.
 
