@@ -613,10 +613,9 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| P12 | Operational B2 signature definitions: identity by AutomationId (name, AriaRole or MSAA role only without one; no LiveSetting; browser-frame events excluded), the K1–K5 components, the K6 and K7 record-only traces, and "same frame" as the same task or a rAF fill within one frame | As in DR-0053, narrowed by the G2 gate review | Decides what counts as a B2 match (what counts as detection) | At the G2 gate | §2.2 |
-| P13 | Only setup errors before activation are INCONCLUSIVE (`ENV_FAILURE`); listener failures and errors after activation count as failures | As in DR-0053 | Decides what counts as INCONCLUSIVE | At the G2 gate | §2.2 |
+| — | None pending | — | — | — | — |
 
-P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). Making P9 final, as tested by G2, is also in the G2 brief. P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
+P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
 Conditional hard-rule-12 questions, which arise only if a later result triggers them:
 

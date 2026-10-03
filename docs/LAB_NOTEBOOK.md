@@ -230,3 +230,19 @@ This entry corrects the "M2 listener smoke run and pilot" and "G2 run and NVDA o
 - every gating signature matched (5 of 5).
 
 NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF silent (0 of 10), 50 ms announced (10 of 10), K7a 20 of 20. Re-scoring every earlier M2 run with this code changed no gating verdict and no record-only trace.
+
+### Follow-up verification after the G2 merge (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` run [37125153236](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37125153236): both legs, K1–K5 twice each, one shard per leg, seed 20261015, commit `8e31c00`, image `win25-vs2026` 20260925.250.1. Archived as `g2/g2-followup-evidence.tar.zst` on the `results` branch (SHA-256 `36b75dd1…a36cf5`).
+**Affects:** DR-0055 (follow-up fixes; P13's malformed-line rule).
+**Confidence:** observed; a small check, not a gate sample.
+
+| Observation | Result |
+|---|---|
+| Listener 0.3.1 | Ready, drained and 0 malformed lines in 10 of 10 NVDA-absent attempts; wall anchor adopted from the listener |
+| Child identity | K4's focus event resolved to `dialog-first` in 2 of 2, as before the resolver change |
+| Timeline version 3 | Recorded in all 20 attempts; no canary uses shadow DOM, so the shadow-root focus path is covered by unit tests only |
+| B2 signatures | 10 of 10 matched; every platform component by AutomationId |
+| NVDA-present leg (speech) | K1–K5 conveyed in 10 of 10 |
+| Re-scoring the five earlier M2 runs | No verdict, grade or order changed; the record-only table gains the "No B2 trace" column (0 everywhere) |
