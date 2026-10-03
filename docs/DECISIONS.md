@@ -102,6 +102,7 @@ Conventions:
 | [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P21 and P22 approved by the owner 2026-10-03 (DR-0064) | DR-0064 | Resolved (P21, P22, DR-0064) |
 | [DR-0064](#dr-0064-owner-approval-of-p21-and-p22-and-the-oss-regression-split) | Owner approval of P21 and P22, and the oss-regression split | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0065](#dr-0065-m3-merged-and-m4-authorised) | M3 merged and M4 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0066](#dr-0066-m4-design-journeys-runner-and-side-aware-validity) | M4 design: journeys, runner and side-aware validity | Accepted (design); P23–P25 Proposed | 2026-10-03 | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P23, P24, P25 | — | Yes (P23–P25) |
 
 ## Pending owner items (hard rule 12)
 
@@ -133,6 +134,9 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P20 | **Resolved (approved by the owner 2026-10-03, DR-0062).** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | No longer pending | Approved as recommended |
 | P21 | **Resolved (approved by the owner 2026-10-03, DR-0064).** accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; DR-0064; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | No longer pending | Approved as recommended |
 | P22 | **Resolved (approved by the owner 2026-10-03, DR-0064).** keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063; DR-0064 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | No longer pending | Approved as recommended |
+| P23 | **Proposed by Claude (not yet owner-approved).** How journeys run in the NVDA-absent leg: focus strategies and actions use Playwright input on the focused element (DR-0053); browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets, so A, B and B2 are measured at the same journey states as C, and reachability there is evidenced from the tree | DR-0066 | What is measured (the states at which A, B and B2 are measured; whether they can show NAV_TARGET_UNREACHABLE) | Before M4 item results are used | Yes |
+| P24 | **Proposed by Claude (not yet owner-approved).** Goal-based steps: repeat the strategy up to `maxAttempts`; goal checked by the MSAA focus read (TAB, SHIFT_TAB) or NVDA's queued speech (browse strategies) in the NVDA-present leg, and by the accessibility-tree node in the NVDA-absent leg. REACHED; UNREACHABLE, after which the journey stops with no fallback; PATH_CHANGED, reached at a different attempt count from the base side's most common count in the same leg (REVIEW in M5); ENV_FAILURE, a setup error before the step's first action | DR-0066 | What counts as detection (step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing) | Before M4 item results are used | Yes |
+| P25 | **Proposed by Claude (not yet owner-approved).** Add a PRESS strategy: one documented key (Escape, Space, Enter, arrows, Home, End) on the focused element, sent through NVDA in the NVDA-present leg, because KEYBOARD_TRAP is defined by a component's documented keys | DR-0066 | What is measured (the journey vocabulary) | Before M4 item results are used | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2999,4 +3003,47 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 
 - M3 is merged (PR #6). The authorised scope is M0–M4. M5 onwards needs the owner's go-ahead. HANDOFF moves to v1.7, and CLAUDE.md's current authorisation follows it.
 - M4 work is on branch `m4-journeys`. Before any item runs, M4 implements the execution guard (DR-0034, already in place) and the side-aware validity rule (DR-0035). Choices that change what is measured go to the owner when first needed, as yes/no items with Claude's recommendation (DR-0045).
+
+## DR-0066 M4 design: journeys, runner and side-aware validity
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted (design, Decided by Claude under DR-0045); P23, P24 and P25 Proposed by Claude (not yet owner-approved) |
+| Owner label | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P23–P25 |
+| HANDOFF v1.7 | §4 rules 5 and 8, R5, R8, R9, §7.2, §7.4, §8.4, §9 (M4), §10.2 |
+
+**Context.** M4 builds the journeys and the runner: goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE, paired and counterbalanced execution, and evidence packages uploaded as artefacts (HANDOFF §9). Before any item runs, the runner calls `assertItemExecutable` (DR-0034) and applies the side-aware validity rule (DR-0035). The dev split references 16 journeys: 7 in Atomic CRM, 6 in react-admin "simple" and one per dev mined pair.
+
+**Side-aware validity (implemented, `harness/src/runner/itemValidity.ts`).** Per item and per leg, over that leg's attempts:
+- A check fails on a side when it fails in any attempt of that side. With k = n, one invalid attempt already leaves fewer than k valid ones.
+- The manifest counts as both sides. The pre-block canary counts as the block (unchanged rule).
+- A setup error before activation counts for its side. A candidate whose page cannot load is therefore a finding, not INCONCLUSIVE, because the candidate may have caused it (DR-0032).
+
+**Design (Decided by Claude under DR-0045).**
+
+| Part | Decision |
+|---|---|
+| Journeys | `journeys/<id>.json`, validated by `JourneySchema`, one per journey id in the corpus. `entryUrl` is a path inside the app's build; `anchor` is the handover selector. Setup steps name functions in a registry (`harness/src/runner/setups.ts`); they never run inside an AT segment |
+| Unchanged controls (P15) | One base-against-base item per journey: id `<journey>-unchanged`, `expected: unchanged`, candidate ref = base ref, in the pattern and split of the journey's first pattern. Written with the journeys |
+| Builds | One job per app and leg. It builds the base and every dev candidate of the app: SPA patches, and for mined pairs the fixture at each release plus the twin patch. Each is served from 127.0.0.1 with outside hosts blocked |
+| Order | Per item and per leg: a pre-block canary (K1), then the sides in ABBA order (n = 3 per side: base, candidate, candidate, base, base, candidate; n = 5 for absence-based symptoms), then a post-block canary (K1). Exploratory defaults of HANDOFF §6, k = n |
+| Attempt | A fresh-profile Chrome per attempt with the locked accessibility mode, and the timeline and handover as in the canary runner (§7.2). Then the steps: each AT step is one segment with its own segment id and observation window. No key is pressed inside a window |
+| Arm A | axe runs in its own browser context, never near an AT segment (DR-0024). After each NVDA-absent attempt, a Playwright-only replay of the journey in a new context runs axe at the end of each AT step. `@axe-core/playwright` and `axe-core` are pinned exactly as dev dependencies (MPL-2.0, used unmodified) |
+| Arm B evidence | At the end of each AT step: `ariaSnapshot` of the page, and Chrome's accessibility tree through `Accessibility.getFullAXTree`, pruned to role, name, value, states, live properties, ids and parent links. Stored gzipped |
+| Evidence | One evidence package per attempt (`EvidencePackageSchema`, with `leg`, `preflight` and a `segmentId` on every step). Raw collector output is in the attempt record, as in M2. Packages are uploaded as artefacts |
+| Execution guard | `assertItemExecutable` is called before each item. Test-split items are never built or run before the freeze |
+| Base check | An item whose base journey does not complete in a leg is reported; a seeded item is dropped only on that base-only evidence (corpus plan §6) |
+
+**Proposed by Claude (not yet owner-approved): P23–P25.** These change what is measured or what counts as detection (hard rule 12), so they go to the owner before item results are used.
+
+| # | Proposal | Why it goes to the owner |
+|---|---|---|
+| P23 | **How journeys run in the NVDA-absent leg.** Focus strategies (TAB, SHIFT_TAB) and actions (ACTIVATE, TYPE, PRESS) use Playwright input on the focused element, as the canary leg does (DR-0053; that leg has no AT segment). Browse strategies (NEXT_HEADING, NEXT_FORM_FIELD, NEXT_BUTTON, NEXT_LANDMARK, BROWSE_NEXT, READ_CURRENT) move a simulated virtual cursor over Chrome's accessibility tree, using NVDA's quick-navigation role sets. ACTIVATE after a browse step acts on the cursor's element. A, B and B2 evidence is then taken at the same journey states as C's, and reachability in that leg is evidenced from the accessibility tree. The alternative is not to run browse steps in that leg, so that A, B and B2 judge only whether the target is present | It decides the states at which A, B and B2 are measured, and whether they can show NAV_TARGET_UNREACHABLE |
+| P24 | **Goal-based steps and their outcomes.** A step with `until` repeats its strategy up to `maxAttempts`, checking the goal after each attempt. In the NVDA-present leg the check is the MSAA focus read for TAB and SHIFT_TAB, and NVDA's queued speech for browse strategies: the P11 matching on the name, plus NVDA's spoken role word when a role is given. In the NVDA-absent leg it is the accessibility-tree node at the focus or the cursor. The outcomes: **REACHED**, the goal is met. **UNREACHABLE**, it is not met within `maxAttempts`; the journey then stops, with no fallback (hard rule 8), and later steps are recorded as not run. **PATH_CHANGED**, the goal is met at a different attempt count from the base side's most common count in the same leg; M5 routes it to REVIEW ("unexpected but functional navigation", PRD §21). **ENV_FAILURE**, a setup error before the step's first action | Step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing, so they decide what counts as detection |
+| P25 | **A PRESS strategy for a documented key.** A journey can press one key on the focused element: Escape, Space, Enter, the arrow keys, Home or End. KEYBOARD_TRAP is defined by a component's documented keys, and two dev journeys need them (Escape out of a menu; a keyboard drag). In the NVDA-present leg the key goes through NVDA like every other key, so NVDA's browse or focus mode decides what the page receives, as it would for a user. This adds one value to HANDOFF §10.2's `Strategy` | It extends the journey vocabulary, which decides which behaviours can be measured |
+
+**Consequences.**
+- The runner is built under P23–P25 as proposed and marked Proposed until the owner rules. Item runs before then are exploratory and are not used in any report.
+- M5 (oracles, scoring and the power table) is not started without the owner's go-ahead.
 
