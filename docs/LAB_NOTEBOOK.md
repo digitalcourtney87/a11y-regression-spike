@@ -295,3 +295,18 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Full run | 112 blocks, 0 INCONCLUSIVE; 736 attempts, all packages valid; all canaries passed; all base journeys complete; no PATH_CHANGED on any benign twin or unchanged control |
 | Imprecise goal | A name-only goal ("Comments") matched a table header after the hidden menu; with its role, the candidate is UNREACHABLE in both legs |
 
+
+### M4: frame gaps under P27, and an announcement that did not repeat (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** repeated full run [37148660221](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37148660221); P27 full run [37151537838](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37151537838); post-edit re-run [37154136328](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37154136328).
+**Affects:** DR-0074 to DR-0077 (P27).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| react-admin's save and redirect | Stall the main thread for 109–188 ms on base and candidate alike, in 89 of the post-edit journey's 124 attempts; Long Animation Frames and Long Tasks cover every stall (largest uncovered part 62.5 ms). No other journey has a gap over 100 ms |
+| Two long stalls | 7.0 s (NVDA-absent) and 3.75 s (NVDA-present) on the first base attempt of one block, starting about 0.6 s into the save step and ending before the observation window; long tasks cover both. None of the run's 113 gaps over 100 ms overlaps an observation window |
+| react-admin's own announcement | "alert Post updated" in all 62 base attempts of the post-edit journey (NVDA-present, both runs), spoken a median of 0.56 s into the save step (range 0.46–1.02 s) |
+| A duplicated announcement must repeat the same text | The first spec's second announcer said "Element updated", so the candidate announced two messages, not one twice. With "Post updated", NVDA says it twice in every candidate attempt |
+| Absence-based regressions | With the live region removed, or created already populated, NVDA says nothing on save in any candidate attempt |

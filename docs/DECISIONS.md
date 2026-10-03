@@ -3200,7 +3200,7 @@ The deals journey toggles focus mode around the keyboard drag. The contact-save 
 | | |
 |---|---|
 | Date | 2026-10-03 |
-| Status | Accepted |
+| Status | Accepted; its evidence runs superseded by DR-0075 and DR-0077 |
 | Owner label | Decided by Claude under DR-0045 |
 | HANDOFF v1.9 | §9 (M4) |
 
@@ -3297,3 +3297,38 @@ The first run's validity for the post-edit journey was wrong. Restarting the rAF
 - Canary runs keep DR-0010's rule unchanged.
 - HANDOFF moves to v1.10.
 
+
+## DR-0077 M4 full run under P27, and the duplicated-announcement spec
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.10 | §7.3, §9 (M4); DR-0032, DR-0035, DR-0059 |
+
+**Context.** The full run was repeated with P27 in the runner and the P10 retry in the K1 focus read (run 37151537838): 112 blocks and 736 attempts. It is M4's evidence run, with the re-run below. Every result is EXPLORATORY, and no expectation was judged (M5).
+
+| Measure | Result |
+|---|---|
+| Blocks | 112; none INCONCLUSIVE; no candidate-only findings |
+| Evidence and canaries | Every package valid; no attempt missing B2 events; every K1 canary passed, in both legs |
+| Base journeys | Complete in every attempt of all 56 items, in both legs |
+| Reachability regressions | The candidate stops UNREACHABLE in every attempt, in both legs, for the same five items as DR-0073 |
+| Frame gaps | 89 attempts had a raw gap over 100 ms, all on the react-admin post-edit journey (of its 124 attempts) and spread evenly over the sides (44 base, 45 candidate). The page's own long work covered every one: the largest uncovered part was 62.5 ms |
+
+**Two long stalls.** The first base attempt of ras-live-region-removed-notification-twin stalled for 7.0 s in the NVDA-absent leg and 3.75 s in the NVDA-present leg. Each was its block's first attempt, began about 0.6 s into the save step, and ended before the observation window. In the NVDA-present leg, NVDA had already spoken "alert Post updated" 563 ms after the step began. Long tasks covered both stalls, so under P27 they do not void the attempts. This shows a limit of P27 that was known when it was proposed: a stall inside a page task looks the same whether the page's own work causes it, or the operating system starves the browser during that task. The covered stalls are in the evidence, so M5 can see them. None of the run's 113 gaps over 100 ms overlapped an observation window, and no other attempt stalled for more than 188 ms. No change is made; this note records the limit.
+
+**Spec fix (Decided by Claude under DR-0045).** The run's speech showed a defect in the ras-toast-duplicated-announcer spec (DR-0059). react-admin "simple" announces "Post updated", from its English messages. The spec's second announcer wrote "Element updated", so the candidate announced two different messages, not one message twice: not the ANNOUNCEMENT_DUPLICATED the pattern defines. The announcer now writes "Post updated", and the post-edit journey's expectation is "Post updated", not "Element updated". The patch and item were regenerated (`npm run corpus -- mutate`), and the twin is unchanged. This corrects a fixture so that it shows its pattern. It tunes no oracle, trigger or threshold, and it uses no test data.
+
+**Re-run.** The post-edit journey's seven items ran again in both legs (run 37154136328).
+
+| Measure | Result |
+|---|---|
+| Blocks | 14; none INCONCLUSIVE; every canary passed |
+| ras-toast-duplicated-announcer (NVDA-present) | NVDA says "Post updated" twice in every candidate attempt, and once in every base attempt |
+| Absence-based regressions (NVDA-present) | ras-live-region-removed-notification and ras-toast-status-created-populated: no "Post updated" in any candidate attempt; once in every base attempt |
+| Twins and the unchanged control (NVDA-present) | "Post updated" once on both sides, in every attempt |
+| NVDA-absent leg | Every journey complete; no attempt missing B2 events; largest uncovered frame gap 62.5 ms. In the DOM timeline's save step, the duplicated-announcement candidate has three live-region mutations in every attempt against the base's two, and the removed live region has none |
+
+**M4 status.** DR-0073's list of M4 deliverables stands. M4's evidence is now runs 37151537838 and 37154136328; their artefacts expire after 30 days. M5 needs the owner's go-ahead.
