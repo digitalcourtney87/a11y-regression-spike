@@ -260,6 +260,7 @@ const ALL_ARMS: readonly Arm[] = ["A", "B", "B2", "C_UNION", "C_ADJUDICATED", "D
 const ALL_STRATEGIES: readonly Strategy[] = [
   "TAB", "SHIFT_TAB", "NEXT_HEADING", "NEXT_FORM_FIELD", "NEXT_BUTTON",
   "NEXT_LANDMARK", "BROWSE_NEXT", "ACTIVATE", "TYPE", "READ_CURRENT",
+  "PRESS",
 ];
 const ALL_VERDICTS: readonly Verdict[] = ["PASS", "FAIL", "REVIEW", "INCONCLUSIVE"];
 
@@ -268,7 +269,7 @@ describe("vocabulary enums", () => {
     { name: "symptoms", schema: SymptomSchema, values: ALL_SYMPTOMS, count: 15, rejected: ["ANNOUNCEMENT_LATE", "name_not_conveyed"] },
     { name: "benign types", schema: BenignTypeSchema, values: ALL_BENIGN_TYPES, count: 7, rejected: ["REFACTOR", "css_only"] },
     { name: "arms", schema: ArmSchema, values: ALL_ARMS, count: 7, rejected: ["C", "D", "b2"] },
-    { name: "strategies", schema: StrategySchema, values: ALL_STRATEGIES, count: 10, rejected: ["CLICK", "tab"] },
+    { name: "strategies", schema: StrategySchema, values: ALL_STRATEGIES, count: 11, rejected: ["CLICK", "tab"] },
     { name: "verdicts", schema: VerdictSchema, values: ALL_VERDICTS, count: 4, rejected: ["WARN", "pass"] },
   ] as const;
 
@@ -381,6 +382,14 @@ describe("AtStep versus SetupStep", () => {
       delete step[key];
       expect(issuePaths(JourneySchema.safeParse({ ...journey(), steps: [step] }))).toContain(`steps.0.${key}`);
     }
+  });
+
+  test("a PRESS step names one documented key, and only a PRESS step may (P25)", () => {
+    const press = { ...atStep(), id: "escape", strategy: "PRESS", key: "Escape" };
+    expect(JourneySchema.safeParse({ ...journey(), steps: [press] }).success).toBe(true);
+    expect(issuePaths(JourneySchema.safeParse({ ...journey(), steps: [{ ...press, key: undefined }] }))).toContain("steps.0.key");
+    expect(issuePaths(JourneySchema.safeParse({ ...journey(), steps: [{ ...atStep(), key: "Escape" }] }))).toContain("steps.0.key");
+    expect(JourneySchema.safeParse({ ...journey(), steps: [{ ...press, key: "F4" }] }).success).toBe(false);
   });
 
   test("a setup step requires fn", () => {

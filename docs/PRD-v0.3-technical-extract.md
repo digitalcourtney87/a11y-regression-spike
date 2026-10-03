@@ -613,11 +613,9 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| P23 | How journeys run in the NVDA-absent leg | Focus strategies and actions by Playwright input on the focused element; browse strategies by a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets (DR-0066) | It decides the states at which A, B and B2 are measured, and whether they can show NAV_TARGET_UNREACHABLE | Before M4 item results are used | §2.2 |
-| P24 | Goal-based steps and their outcomes | Goal checked per attempt (MSAA focus read or NVDA speech in the NVDA-present leg; accessibility-tree node in the NVDA-absent leg). REACHED; UNREACHABLE stops the journey with no fallback; PATH_CHANGED at a different attempt count from the base side's most common count in the same leg (REVIEW in M5); ENV_FAILURE for a setup error before the first action (DR-0066) | Step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing | Before M4 item results are used | §4.2 |
-| P25 | A PRESS strategy for a documented key | Escape, Space, Enter, arrows, Home or End on the focused element, through NVDA in the NVDA-present leg (DR-0066) | It extends the journey vocabulary, which decides which behaviours can be measured | Before M4 item results are used | §4.2 |
+| — | None pending | — | — | — | — |
 
-P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
+P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P23–P25 (the M4 journey model: execution per leg, goal-based step outcomes and the PRESS strategy) were approved on 2026-10-03 (DR-0067). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
 Conditional hard-rule-12 questions, which arise only if a later result triggers them:
 

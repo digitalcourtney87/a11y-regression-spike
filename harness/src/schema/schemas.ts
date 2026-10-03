@@ -61,7 +61,11 @@ export const ArmSchema = z.enum([
 export const StrategySchema = z.enum([
   "TAB", "SHIFT_TAB", "NEXT_HEADING", "NEXT_FORM_FIELD", "NEXT_BUTTON",
   "NEXT_LANDMARK", "BROWSE_NEXT", "ACTIVATE", "TYPE", "READ_CURRENT",
+  "PRESS",
 ]);
+
+/** The documented keys a PRESS step may send (P25; DR-0067). */
+export const PressKeySchema = z.enum(["Escape", "Space", "Enter", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End"]);
 
 /** D4, DR-0013; DR-0026. */
 export const CanaryIdSchema = z.enum([
@@ -100,9 +104,13 @@ export const AtStepSchema = z.strictObject({
     })
     .optional(),
   text: z.string().optional(),
+  key: PressKeySchema.optional(),
   observeMs: DurationMsSchema,
   expectations: z.array(ExpectationSchema),
   manualTriggers: z.array(z.string()).optional(),
+}).superRefine((step, ctx) => {
+  // A PRESS step names its key, and only a PRESS step may (P25; DR-0067).
+  if ((step.strategy === "PRESS") !== (step.key !== undefined)) ctx.addIssue({ code: "custom", path: ["key"], message: "key is required for PRESS and allowed only for PRESS" });
 });
 
 export const SetupStepSchema = z.strictObject({

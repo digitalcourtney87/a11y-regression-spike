@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.7 (2026-10-03)
+**Version:** 1.8 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -9,6 +9,16 @@
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.8
+
+v1.8 records the owner's approval of P23–P25, the M4 journey model (DR-0067; DR-0066). No owner items are pending. The v1.7 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.8 | DR-0067 |
+| §9 (M4) | Journey execution per leg (P23) and goal-based step outcomes (P24) | DR-0067; DR-0066 |
+| §10.2 | `Strategy` gains `PRESS`; `AtStep` gains `key` for it (P25) | DR-0067; DR-0066 |
 
 ## Changes in v1.7
 
@@ -478,7 +488,7 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
   - Assign the split by `patternId`.
   - (v1.1: the pre-registered K6a rule in §9.1 can remove the creation-time regression family from the catalogue; DR-0013.)
   - (v1.7: M3 merged in PR #6. The corpus holds 79 regression patterns, 20 dev and 59 test: 68 in two SPA contexts, Atomic CRM and react-admin "simple", and 11 verified mined pairs, with 40 dev items including benign twins. Prompt to Page exports were set aside (P18). P14–P22; DR-0056 to DR-0064.)
-- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.)
+- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.8, approved by the owner 2026-10-03, DR-0067: in the NVDA-absent leg, focus strategies and actions use Playwright input on the focused element and browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets (P23). A goal-based step repeats its strategy up to `maxAttempts`, with the goal checked by the MSAA focus read or NVDA's speech in the NVDA-present leg and by the accessibility-tree node in the NVDA-absent leg. Its outcome is REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) or ENV_FAILURE (P24). A PRESS step sends one documented key (P25).) (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.)
 - **M5 — Oracles and scoring (dev split only).** Rules per arm (A, B, B2, and C and D under both UNION and ADJUDICATED); the scorer and statistics in §10.3; a dev report; a power table. (v1.2: C and D combine legs at item level, DR-0031; ANNOUNCEMENT_DUPLICATED needs NVDA-log corroboration or routes to REVIEW, §6 note, DR-0042.)
 - **M6 — Freeze (Gate G3).** Complete `protocol/PROTOCOL.md` and compute the SHA-256 of `protocol/`. The owner reviews, tags and publishes. The scorer refuses to score the test split unless the protocol hash matches the tagged freeze. (v1.1: the freeze tag format is defined in DR-0028; pre-register the rule-model secondary analysis in DR-0023. v1.2: the protocol hash covers every path listed in `protocol/frozen-paths.txt`, not `protocol/` alone, DR-0033.)
 - **M7 — Confirmatory run and soak (Gate G4).** Run the test split and a soak test sized per §10.3, then draft the results report, including negative findings.
@@ -644,7 +654,8 @@ export type Arm =
 
 export type Strategy =
   | "TAB" | "SHIFT_TAB" | "NEXT_HEADING" | "NEXT_FORM_FIELD" | "NEXT_BUTTON"
-  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT";
+  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT"
+  | "PRESS";                    // v1.8: one documented key (P25; DR-0067)
 
 export interface Expectation {
   type: "announcementContains" | "focusOn" | "stateIs" | "orderBefore";
@@ -658,6 +669,7 @@ export interface AtStep {
   strategy: Strategy;
   until?: { name?: string; role?: string; maxAttempts: number }; // goal-based and bounded
   text?: string;                // TYPE only
+  key?: "Escape" | "Space" | "Enter" | "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | "Home" | "End"; // PRESS only (v1.8; P25)
   observeMs: number;            // observation window after the action
   expectations: Expectation[];
   manualTriggers?: string[];    // owner overrides; automatic triggers come from triggers.v1.json
