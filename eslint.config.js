@@ -4,7 +4,8 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig(
   {
-    ignores: ["node_modules/", "artefacts/", "coverage/", "listener/**/bin/", "listener/**/obj/"],
+    // fixtures/spa/ holds vendored third-party applications (DR-0057), linted by their own tooling.
+    ignores: ["node_modules/", "artefacts/", "coverage/", "listener/**/bin/", "listener/**/obj/", "fixtures/spa/"],
   },
   js.configs.recommended,
   tseslint.configs.strictTypeChecked,
