@@ -1,0 +1,475 @@
+{
+  "label": "EXPLORATORY",
+  "method": "DR-0062",
+  "candidates": [
+    {
+      "id": "radix-4014",
+      "repo": "radix-ui/primitives",
+      "refs": [
+        "#4014",
+        "PR #4015"
+      ],
+      "stack": "react",
+      "package": "@radix-ui/react-dismissable-layer",
+      "good": "1.1.13",
+      "broken": "1.1.14",
+      "fixed": "1.1.15",
+      "symptom": "KEYBOARD_TRAP",
+      "documentary": "accept",
+      "note": "Escape handlers go stale on React 19.2, so a modal menu cannot be closed with Escape. Needs React 19.2"
+    },
+    {
+      "id": "radix-1528",
+      "repo": "radix-ui/primitives",
+      "refs": [
+        "PR #1528",
+        "PR #1468"
+      ],
+      "stack": "react",
+      "package": "@radix-ui/react-toast",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "ANNOUNCEMENT_MISSING",
+      "documentary": "pending",
+      "note": "PR #1468 lost the toast's altText announcement; #1528 restored it. Releases to resolve"
+    },
+    {
+      "id": "radix-584",
+      "repo": "radix-ui/primitives",
+      "refs": [
+        "#584",
+        "PR #587",
+        "PR #505"
+      ],
+      "stack": "react",
+      "package": "@radix-ui/react-roving-focus",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "NAV_TARGET_UNREACHABLE",
+      "documentary": "pending",
+      "note": "Roving tabIndex not updated (introduced in #505); pre-1.0 releases to resolve"
+    },
+    {
+      "id": "headlessui-3821",
+      "repo": "tailwindlabs/headlessui",
+      "refs": [
+        "#3821"
+      ],
+      "stack": "react",
+      "package": "@headlessui/react",
+      "good": "2.2.2",
+      "broken": "2.2.3",
+      "fixed": null,
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Opening a nested Menu closes every menu"
+    },
+    {
+      "id": "rac-8697",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "#8697",
+        "PR #8721"
+      ],
+      "stack": "react",
+      "package": "react-aria-components",
+      "good": "1.10.0",
+      "broken": "1.11.0",
+      "fixed": "1.12.0",
+      "symptom": "INTERACTION_FAILS_UNDER_AT",
+      "documentary": "accept",
+      "note": "Menu item links do nothing on Enter"
+    },
+    {
+      "id": "rac-8298",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "#8298",
+        "PR #8301"
+      ],
+      "stack": "react",
+      "package": "react-aria-components",
+      "good": "1.8.0",
+      "broken": "1.9.0",
+      "fixed": "1.10.0",
+      "symptom": "INTERACTION_FAILS_UNDER_AT",
+      "documentary": "accept",
+      "note": "ComboBox closes while navigating its items with the keyboard (May 2025 release)"
+    },
+    {
+      "id": "rac-6807",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "PR #6807",
+        "#6804"
+      ],
+      "stack": "react",
+      "package": "react-aria-components",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "INTERACTION_FAILS_UNDER_AT",
+      "documentary": "pending",
+      "note": "useMenuItem onAction regression; whether it affects keyboard activation to confirm in #6804"
+    },
+    {
+      "id": "mui-30012",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#30012"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "good": "5.0.6",
+      "broken": null,
+      "fixed": null,
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Disabled Chip no longer has aria-disabled; first broken release between 5.0.6 and 5.2.2 to bisect"
+    },
+    {
+      "id": "mui-18484",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#18484"
+      ],
+      "stack": "react",
+      "package": "@material-ui/core",
+      "good": "4.4.3",
+      "broken": "4.5.0",
+      "fixed": null,
+      "symptom": "FOCUS_NOT_MOVED",
+      "documentary": "accept",
+      "note": "Programmatic focus() on a select TextField throws, so focus does not move"
+    },
+    {
+      "id": "sonner-519",
+      "repo": "emilkowalski/sonner",
+      "refs": [
+        "#519"
+      ],
+      "stack": "react",
+      "package": "sonner",
+      "good": null,
+      "broken": "1.6.0",
+      "fixed": null,
+      "symptom": "ANNOUNCEMENT_MISSING",
+      "documentary": "accept",
+      "note": "toast.custom no longer applies role and aria attributes from 1.6; last good 1.5.x to confirm"
+    },
+    {
+      "id": "bootstrap-35496",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#35496",
+        "PR #35500"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "good": "5.0.2",
+      "broken": "5.1.0",
+      "fixed": "5.2.0",
+      "symptom": "FOCUS_NOT_RESTORED",
+      "documentary": "accept",
+      "note": "Escape in a dropdown no longer returns focus to the toggle"
+    },
+    {
+      "id": "bootstrap-36947",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#36947",
+        "PR #37151"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "good": "5.1.3",
+      "broken": "5.2.0",
+      "fixed": "5.2.2",
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Tabs inside a dropdown keep their active state when another tab is chosen"
+    },
+    {
+      "id": "floating-2874",
+      "repo": "floating-ui/floating-ui",
+      "refs": [
+        "#2874",
+        "PR #2876"
+      ],
+      "stack": "react",
+      "package": "@floating-ui/react",
+      "good": "0.26.9",
+      "broken": "0.26.10",
+      "fixed": "0.26.13",
+      "symptom": "FOCUS_NOT_RESTORED",
+      "documentary": "accept",
+      "note": "FloatingFocusManager stops returning focus to the reference"
+    },
+    {
+      "id": "ng-25676",
+      "repo": "angular/components",
+      "refs": [
+        "#25676",
+        "PR #25697"
+      ],
+      "stack": "angular",
+      "package": "@angular/material",
+      "good": "13.x",
+      "broken": "14.1.1",
+      "fixed": "14.2.3",
+      "symptom": "FOCUS_ESCAPES_DIALOG",
+      "documentary": "accept",
+      "note": "MatDialog container lost aria-modal in v14"
+    },
+    {
+      "id": "fluent-35927",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "PR #35927",
+        "PR #35811"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react-badge",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "NAME_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "PresenceBadge always labelled 'available' whatever its status; releases around PR #35811 to resolve"
+    },
+    {
+      "id": "fluent-7796",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "PR #7796"
+      ],
+      "stack": "react",
+      "package": "office-ui-fabric-react",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "ROLE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "DocumentCard ignores props.role after commit 5b8befe (2019); releases to resolve"
+    },
+    {
+      "id": "fluent-27510",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#27510"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "FOCUS_NOT_MOVED",
+      "documentary": "pending",
+      "note": "DatePicker does not focus the current date after a programmatic set (v8 regression); releases to resolve"
+    },
+    {
+      "id": "carbon-19563",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#19563",
+        "PR #20070"
+      ],
+      "stack": "web-components",
+      "package": "@carbon/web-components",
+      "good": "2.27.1",
+      "broken": null,
+      "fixed": null,
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Checkbox checked state no longer updates (`?checked`); first broken between 2.27.1 and 2.30.0 to bisect"
+    },
+    {
+      "id": "carbon-18824",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#18824"
+      ],
+      "stack": "react",
+      "package": "@carbon/react",
+      "good": null,
+      "broken": "1.78.0",
+      "fixed": null,
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Icon-only ghost button with isSelected no longer emits aria-pressed; last good to bisect"
+    },
+    {
+      "id": "carbon-7253",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "PR #7253",
+        "#7233"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "NAME_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Icon-only button assistive text hidden by a tooltip-style regression (#7029), so pagination buttons lost their labels; releases to resolve"
+    },
+    {
+      "id": "carbon-4232",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#4232"
+      ],
+      "stack": "vanilla",
+      "package": "carbon-components",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "FOCUS_NOT_MOVED",
+      "documentary": "accept",
+      "note": "Interactive tooltip without interactive content no longer takes focus on open; releases to resolve"
+    },
+    {
+      "id": "carbon-5623",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#5623"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "good": "7.9.x",
+      "broken": "7.10.0",
+      "fixed": null,
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Controlled ComboBox no longer accepts typing (carbon-components-react 7.10)"
+    },
+    {
+      "id": "vuetify-9627",
+      "repo": "vuetifyjs/vuetify",
+      "refs": [
+        "#9627"
+      ],
+      "stack": "vue",
+      "package": "vuetify",
+      "good": null,
+      "broken": "2.1.9",
+      "fixed": null,
+      "symptom": "FOCUS_ESCAPES_DIALOG",
+      "documentary": "accept",
+      "note": "Tab moves focus out of VDialog (commit fa0a893); last good to resolve"
+    },
+    {
+      "id": "blueprint-6163",
+      "repo": "palantir/blueprint",
+      "refs": [
+        "PR #6163",
+        "PR #6149"
+      ],
+      "stack": "react",
+      "package": "@blueprintjs/select",
+      "good": null,
+      "broken": null,
+      "fixed": null,
+      "symptom": "KEYBOARD_TRAP",
+      "documentary": "pending",
+      "note": "Select2 keyboard closing broke in #6149; behaviour and releases to confirm"
+    }
+  ],
+  "rejected": [
+    {
+      "id": "radix-1615",
+      "reason": "no library fix; resolved as 'solution provided'"
+    },
+    {
+      "id": "headlessui-3467",
+      "reason": "visual (transition backdrop)"
+    },
+    {
+      "id": "rac-9874",
+      "reason": "behaviour change, not an accessibility symptom"
+    },
+    {
+      "id": "mui-17366",
+      "reason": "pointer click area (zIndex), not an accessibility symptom"
+    },
+    {
+      "id": "mui-18236",
+      "reason": "duplicate click events on key repeat; no primary symptom"
+    },
+    {
+      "id": "mui-36018",
+      "reason": "closed as not planned"
+    },
+    {
+      "id": "chakra-2982",
+      "reason": "v0 to v1 rewrite; aria-selected=false absent has no conveyed effect"
+    },
+    {
+      "id": "chakra-10809",
+      "reason": "pointer-events left on body; not an assistive-technology symptom"
+    },
+    {
+      "id": "downshift-1680",
+      "reason": "app-specific onStateChange logic"
+    },
+    {
+      "id": "bootstrap-28914",
+      "reason": "regression across a major version in pre-release v5; same mechanism as bootstrap-35496"
+    },
+    {
+      "id": "bootstrap-34982",
+      "reason": "nested modals are unsupported"
+    },
+    {
+      "id": "ariakit-7092",
+      "reason": "closed as not planned"
+    },
+    {
+      "id": "ariakit-3382",
+      "reason": "show/hide timing, not an accessibility symptom"
+    },
+    {
+      "id": "ariakit-2773",
+      "reason": "menu defaultOpen behaviour, not an accessibility symptom"
+    },
+    {
+      "id": "floating-3375",
+      "reason": "extra focus guards; no primary symptom"
+    },
+    {
+      "id": "zag-3263",
+      "reason": "pointer focus design change"
+    },
+    {
+      "id": "fluent-30436",
+      "reason": "app onFocus/onBlur props ignored; no primary symptom"
+    },
+    {
+      "id": "fluent-1915",
+      "reason": "2017 (React 15 era); not buildable with the pinned toolchain"
+    },
+    {
+      "id": "shoelace-845",
+      "reason": "design change"
+    },
+    {
+      "id": "blueprint-5203",
+      "reason": "extra tab stop; no primary symptom"
+    },
+    {
+      "id": "blueprint-2155",
+      "reason": "broke during an unreleased merge"
+    },
+    {
+      "id": "eui-1101",
+      "reason": "extra tab stop; no primary symptom"
+    },
+    {
+      "id": "angular, unticked",
+      "reason": "15 Angular Components issues whose 'Is this a regression?' box is unticked: long-standing bugs, not regressions"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mui-18484",
+  "stack": "react",
+  "package": "@material-ui/core",
+  "versions": [
+    "4.4.3",
+    "4.5.0"
+  ],
+  "dependencies": {
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  },
+  "issue": "https://github.com/mui/material-ui/issues/18484"
+}

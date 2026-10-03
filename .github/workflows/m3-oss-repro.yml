@@ -1,0 +1,87 @@
+name: m3-oss-repro
+# M3 mining (DR-0062, DR-0063): builds each fixture in fixtures/oss/ against
+# every listed release of the package under test and runs its check, written
+# from the issue's own description. Third-party code runs here only with
+# contents: read and no secrets at all, install scripts off, and a separate
+# npm cache that is never saved. Runs on pushes to m3-corpus that touch the
+# fixtures or the check harness.
+on:
+  workflow_dispatch:
+  push:
+    branches: [m3-corpus]
+    paths:
+      - .github/workflows/m3-oss-repro.yml
+      - fixtures/oss/**
+      - harness/src/probes/ossCheck.ts
+      - harness/src/probes/ossFixture.ts
+permissions:
+  contents: read
+concurrency:
+  group: m3-oss-repro-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  list:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      fixtures: ${{ steps.list.outputs.fixtures }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: list
+        run: echo "fixtures=$(ls fixtures/oss | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+  fixture:
+    needs: list
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJSON(needs.list.outputs.fixtures) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install harness dependencies
+        run: npm ci
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        run: npx --no-install playwright install chromium
+      - name: Build and check each release
+        shell: pwsh
+        env:
+          ID: ${{ matrix.id }}
+        run: |
+          $repo = $PWD
+          $fixture = Join-Path $repo "fixtures/oss/$env:ID"
+          $out = Join-Path $repo "artefacts/oss/$env:ID"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-oss"
+          $meta = Get-Content (Join-Path $fixture "fixture.json") -Raw | ConvertFrom-Json
+          $results = @()
+          foreach ($version in $meta.versions) {
+            $work = Join-Path $env:RUNNER_TEMP "oss-$version"
+            node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work
+            Push-Location $work
+            npm install --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out "$version.install.log")
+            $installExit = $LASTEXITCODE
+            Copy-Item package-lock.json (Join-Path $out "$version.package-lock.json") -ErrorAction SilentlyContinue
+            npx --no-install vite build 2>&1 | Out-File (Join-Path $out "$version.build.log")
+            $buildExit = $LASTEXITCODE
+            Pop-Location
+            if ($buildExit -eq 0) {
+              node harness/src/probes/ossCheck.ts --dist (Join-Path $work "dist") --check (Join-Path $fixture "check.mjs") --version $version --out (Join-Path $out "$version.check.json")
+            }
+            $results += [ordered]@{ version = $version; installExit = $installExit; buildExit = $buildExit }
+          }
+          $results | ConvertTo-Json | Out-File (Join-Path $out "builds.json")
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: oss-${{ matrix.id }}
+          path: artefacts/oss/
+          retention-days: 30

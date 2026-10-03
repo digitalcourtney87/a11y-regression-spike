@@ -1,0 +1,14 @@
+{
+  "id": "headlessui-3821",
+  "stack": "react",
+  "package": "@headlessui/react",
+  "versions": [
+    "2.2.2",
+    "2.2.3"
+  ],
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "issue": "https://github.com/tailwindlabs/headlessui/issues/3821"
+}

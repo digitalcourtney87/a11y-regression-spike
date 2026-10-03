@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>bootstrap-36947</title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs m-3" role="tablist">
+      <li class="nav-item"><a class="nav-link active" id="tab-a" data-bs-toggle="tab" href="#pane-a" role="tab" aria-selected="true">A</a></li>
+      <li class="nav-item"><a class="nav-link" id="tab-b" data-bs-toggle="tab" href="#pane-b" role="tab" aria-selected="false">B</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="menu" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" id="tab-c" data-bs-toggle="tab" href="#pane-c" role="tab" aria-selected="false">C</a></li>
+          <li><a class="dropdown-item" id="tab-d" data-bs-toggle="tab" href="#pane-d" role="tab" aria-selected="false">D</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="tab-content m-3">
+      <div class="tab-pane active" id="pane-a" role="tabpanel">Content A</div>
+      <div class="tab-pane" id="pane-b" role="tabpanel">Content B</div>
+      <div class="tab-pane" id="pane-c" role="tabpanel">Content C</div>
+      <div class="tab-pane" id="pane-d" role="tabpanel">Content D</div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
