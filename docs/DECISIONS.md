@@ -92,13 +92,15 @@ Conventions:
 | [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P12 and P13 approved by the owner (DR-0055) | DR-0055 | Resolved (P12, P13, DR-0055) |
 | [DR-0054](#dr-0054-g2-runs-diagnostic-and-evidence-archive) | G2 runs, diagnostic and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0055](#dr-0055-owner-approvals-at-the-g2-gate) | Owner approvals at the G2 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
-| [DR-0056](#dr-0056-m3-start-spa-evaluation-corpus-scaffolding-and-the-corpus-plan) | M3 start: SPA evaluation, corpus scaffolding and the corpus plan | Accepted, except P14–P18 | 2026-10-03 | Decided by Claude under DR-0045; P14–P18 pending | — | Pending: P14–P18 |
+| [DR-0056](#dr-0056-m3-start-spa-evaluation-corpus-scaffolding-and-the-corpus-plan) | M3 start: SPA evaluation, corpus scaffolding and the corpus plan | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P14–P17 approved, P18 skipped (DR-0057) | DR-0057 | Resolved (DR-0057) |
+| [DR-0057](#dr-0057-owner-approvals-for-the-m3-corpus) | Owner approvals for the M3 corpus | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0058](#dr-0058-m3-spa-integrated-tooling-and-the-pattern-count) | M3: SPA integrated, tooling, and the pattern count | Accepted, except P19 | 2026-10-03 | Decided by Claude under DR-0045; P19 pending | — | Pending: P19 |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). Five items are pending, needed before M3 builds corpus items: P14–P18 (DR-0056).
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). One item is pending, needed before the split: P19 (DR-0058).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -115,11 +117,12 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P11 | **Resolved (approved by the owner 2026-10-03, DR-0052).** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | No longer pending | Approved as recommended |
 | P12 | **Resolved (approved by the owner 2026-10-03, DR-0055).** the operational B2 signatures of DR-0053 as narrowed by the G2 gate review: identity by AutomationId, with name, AriaRole or MSAA role only for events without one, no LiveSetting, and browser-frame events excluded (P3); the gating components for K1–K5 (K4 including SHOW on the dialog); the record-only traces for K6 and K7 ("separate update"; K7 order per event type); and "same frame" as the same task or a rAF fill within one 60 Hz frame, with other fills under 50 ms routed to REVIEW (timeline version 2; version 1 records keep the pre-registered one-frame threshold). Every listener event and the whole DOM timeline are kept per attempt, so another reading can be re-scored without new runs | DR-0053 | What counts as detection (G2's result rests on it) | No longer pending | Approved as recommended |
 | P13 | **Resolved (approved by the owner 2026-10-03, DR-0055).** only a setup error before activation (browser launch, page load, process or window lookup) makes an attempt INCONCLUSIVE (`ENV_FAILURE`); a failure of the B2 listener (start, fewer hooks than ranges, ping, stop, not drained) or any error after activation counts as a failure. Implemented in the G2 gate-review fix; `ENV_FAILURE` for setup errors has been in the runner since M1 without an owner decision | DR-0053 | What counts as INCONCLUSIVE (D12, DR-0032) | No longer pending | Approved as recommended |
-| P14 | **Proposed by Claude (not yet owner-approved):** the M3 SPA is Atomic CRM's demo build (`marmelab/atomic-crm` at `b23289b`, MIT), with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones | DR-0056; `docs/research/2026-10-03-spa-candidates.md` | What is measured (the application the seeded regressions live in) | Before any seeded SPA item | Yes |
-| P15 | **Proposed by Claude (not yet owner-approved):** corpus sizes and split: 110 regression patterns (33 dev, 77 test), benign patterns about 1:1 in each split, one unchanged control per journey, test fraction 0.7 stratified by pattern stratum with seed 20261004; M3 builds the dev split only, and test patterns are built after M5's power table, before the freeze | DR-0056; corpus plan §3 | What is measured (sample sizes and the confirmatory split) | Before the split is run | Yes |
-| P16 | **Proposed by Claude (not yet owner-approved):** the regression catalogue (37 mechanisms across the 13 primary-analysis symptoms, creation-time family kept) and the benign catalogue (operators per BenignType) of the corpus plan | DR-0056; corpus plan §4–§5 | What is measured (which regressions and benign changes the corpus holds) | Before any corpus item | Yes |
-| P17 | **Proposed by Claude (not yet owner-approved):** vendor about 3 MB of Atomic CRM's source at the pinned commit into `fixtures/spa/atomic-crm/` (agent instruction files excluded), and install its locked dependency tree in CI with install scripts off, `contents: read`, no secrets and a separate npm cache | DR-0056 | Security (third-party code in the repository and in CI) | With P14 | Yes |
-| P18 | **Proposed by Claude (not yet owner-approved):** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | Before P2P and reconstructed items | Yes |
+| P14 | **Resolved (approved by the owner 2026-10-03, DR-0057).** the M3 SPA is Atomic CRM's demo build (`marmelab/atomic-crm` at `b23289b`, MIT), with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones | DR-0056; `docs/research/2026-10-03-spa-candidates.md` | What is measured (the application the seeded regressions live in) | No longer pending | Approved as recommended |
+| P15 | **Resolved (approved by the owner 2026-10-03, DR-0057).** corpus sizes and split: 110 regression patterns (33 dev, 77 test), benign patterns about 1:1 in each split, one unchanged control per journey, test fraction 0.7 stratified by pattern stratum with seed 20261004; M3 builds the dev split only, and test patterns are built after M5's power table, before the freeze | DR-0056; corpus plan §3 | What is measured (sample sizes and the confirmatory split) | No longer pending | Approved as recommended |
+| P16 | **Resolved (approved by the owner 2026-10-03, DR-0057).** the regression catalogue (37 mechanisms across the 13 primary-analysis symptoms, creation-time family kept) and the benign catalogue (operators per BenignType) of the corpus plan | DR-0056; corpus plan §4–§5 | What is measured (which regressions and benign changes the corpus holds) | No longer pending | Approved as recommended |
+| P17 | **Resolved (approved by the owner 2026-10-03, DR-0057).** vendor about 3 MB of Atomic CRM's source at the pinned commit into `fixtures/spa/atomic-crm/` (agent instruction files excluded), and install its locked dependency tree in CI with install scripts off, `contents: read`, no secrets and a separate npm cache | DR-0056 | Security (third-party code in the repository and in CI) | No longer pending | Approved as recommended |
+| P18 | **Resolved (owner reply 2026-10-03, DR-0057): Prompt to Page exports are skipped for now; no customer defects were offered, so there are no reconstructed items for now.** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | No longer pending | Not adopted for now |
+| P19 | **Proposed by Claude (not yet owner-approved):** to close the expected shortfall against P15's 110 regression patterns (about 57–67 reachable from the SPA and mined pairs), add react-admin's "simple" example (MIT; evaluated in DR-0056, meets every criterion) as a second SPA context: vendor about 1 MB of its source at the pinned commit, generate its lockfile in CI, and install it in CI under the P17 safeguards. The achievable count is reported again before the split | DR-0058; `docs/research/2026-10-03-oss-regression-survey.md` | What is measured (sample size and the independence of patterns); security (more third-party code) | Before the split | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2701,3 +2704,59 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 
 - Atomic CRM is recommended (P14). react-admin's example also meets every criterion; TanStack's kitchen sink fails "deterministic data" and lacks a dialog, a status update and a composite widget.
 - No corpus item is built until P14–P18 are answered. Meanwhile Claude builds app-agnostic tooling and the mining search, which run read-only.
+
+## DR-0057 Owner approvals for the M3 corpus
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** Claude put five items to the owner before building corpus items (DR-0056): P14 (Atomic CRM as the SPA), P15 (sizes and split), P16 (regression and benign catalogues), P17 (vendoring Atomic CRM and installing its dependencies in CI) and P18 (Prompt to Page exports and customer defects).
+
+**Decision.**
+
+> Yes to P14–P17; skip P2P for now
+
+**Consequences.**
+
+- P14: the M3 SPA is Atomic CRM's demo build at `b23289b`, with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones.
+- P15: 110 regression patterns (33 dev, 77 test), benign about 1:1, one unchanged control per journey, test fraction 0.7, stratified, seed 20261004; M3 builds the dev split only.
+- P16: the catalogues of the corpus plan are in force. Without Prompt to Page exports, patterns come from two contexts: the SPA and mined open-source pairs. Whether 110 regression patterns can be reached from those two contexts is reported to the owner once the patterns are enumerated, before the split is run, because a shortfall changes the sample size (what is measured).
+- P17: about 3 MB of Atomic CRM's source is vendored into `fixtures/spa/atomic-crm/` without its agent instruction files, and CI installs its locked dependencies with install scripts off, `contents: read`, no secrets and a separate npm cache.
+- P18: Prompt to Page exports are skipped for now, and there are no reconstructed items for now. Either can be added later as a new owner decision.
+
+## DR-0058 M3: SPA integrated, tooling, and the pattern count
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except P19 (pending) |
+| Owner label | Decided by Claude under DR-0045; P19 pending |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** After the owner's approvals (DR-0057), Claude vendored and integrated Atomic CRM, built the mutation tooling and surveyed open-source regressions. DR-0057 asks for the achievable pattern count to be reported before the split, because a shortfall changes the sample size.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Vendoring | Atomic CRM at `b23289b` in `fixtures/spa/atomic-crm/`, unmodified in one commit, integration changes in the next (`UPSTREAM.md` lists them), so every change from upstream is reviewable. Upstream's agent instruction files are left out. The app imports its `CHANGELOG.md` as text, so that file was added after the first CI build failed without it |
+| Integration (P14) | Both `faker` locale instances seeded with 20261004; the CRM's telemetry request off; local placeholder logos and avatars, generated in this repository, replace `marmelab.com` images. The clock is fixed in journey setup |
+| CI build | `m3-spa-build.yml` builds the vendored demo on `windows-2025` and probes it offline with the clock fixed. Run 37129009688: install 23.4 s, build 9.3 s, no outside requests, no console errors, and identical ARIA snapshots across two fresh loads on all four paths probed |
+| Lint scope | ESLint ignores `fixtures/spa/` (third-party code under its own conventions) |
+| Mutation tooling | `harness/src/corpus/catalogue.ts` holds the approved catalogue as data (37 regression operators over the 13 primary-analysis symptoms; one benign operator per BenignType). A spec in `corpus/specs/` names an operator and anchored edits; `npm run corpus -- mutate` writes the patch (paths relative to the repository root) and the corpus item, and checks the patch with `git apply --check` |
+| Mining survey | A first, title-only survey of 12 libraries (`docs/research/2026-10-03-oss-regression-survey.md`): about 15 plausible pairs; 20–30 usable pairs expected after a deeper search and verification |
+
+**The pattern count (P19).** With Prompt to Page set aside, patterns come from the SPA, at most one per mechanism (37), and from mined pairs (about 20–30): about 57–67 regression patterns against P15's 110. At a test fraction of 0.7 that is about 43 test patterns, so the 95% margin at p = 0.15 is about ±0.107, against ±0.08 for 77. The options:
+
+| Option | Patterns (approx.) | Margin at p = 0.15 | Note |
+|---|---|---|---|
+| A. Add react-admin's "simple" example as a second SPA context | 94–104 | about ±0.084 (69 test) | Different component library (MUI) and app, so its patterns are independent of Atomic CRM's; meets every criterion (DR-0056). Recommended |
+| B. Keep two contexts | 57–67 | about ±0.107 (43 test) | Less work; wider intervals |
+| C. Count each component family in the SPA as its own pattern | Over 110 | Looks narrower | Rejected: patterns in one app share code and conventions, so they are not independent, and the bootstrap intervals would be too narrow |
+| D. Bring Prompt to Page back | Depends on exports | – | Needs the owner's exports (P18) |
+
+**Consequences.** No split is run until P19 is answered. Building the dev-split specs on Atomic CRM continues meanwhile, because their patterns exist under every option.
