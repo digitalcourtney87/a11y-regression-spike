@@ -1,14 +1,24 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.10 (2026-10-03)
+**Version:** 1.11 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
-**Authorised scope:** Milestones M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 (PR #6) and authorised M4 on 2026-10-03 (DR-0065). M5–M7 are specified for context; Claude asks the owner before starting M5, and the Phase 1 proceed/stop decision stays on 27 November 2026 (DR-0003).
+**Authorised scope:** Milestones M0–M5. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 (PR #6) and authorised M4 on 2026-10-03 (DR-0065), and merged M4 (PR #7) and authorised M5 on 2026-10-03 (DR-0078). M6 and M7 are specified for context; Claude asks the owner before starting M6, and the Phase 1 proceed/stop decision stays on 27 November 2026 (DR-0003).
 
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.11
+
+v1.11 records the owner's merge of M4 and authorisation of M5 (DR-0078). The v1.10 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.11; authorised scope M0–M5; ask before M6 | DR-0078 |
+| §9 | M4 merged (PR #7); M5 authorised | DR-0078 |
+| §12 | Current authorisation: M0–M5 | DR-0078 |
 
 ## Changes in v1.10
 
@@ -497,7 +507,7 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
 
 **G2 outcome (DR-0055).** The owner accepted G2 on 2026-10-03 (`docs/gates/G2.md`): 260 valid NVDA-absent runs of K1–K5 with 0 signature failures and INCONCLUSIVE 0%. M2 is merged and M3 is unlocked.
 
-### M3–M7 — M3 merged (PR #6) and M4 authorised (DR-0065); ask the owner before M5
+### M3–M7 — M3 and M4 merged (PRs #6 and #7) and M5 authorised (DR-0078); ask the owner before M6
 
 - **M3 — Corpus scaffolding (dev split only).**
   - Select the SPA after evaluating at least three candidates against these criteria: runs natively on Windows via Node; no external credentials; permissive licence; client-side routing; form validation; a dialog; a status update; at least one composite widget; deterministic data; builds in under five minutes.
@@ -507,7 +517,7 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
   - Assign the split by `patternId`.
   - (v1.1: the pre-registered K6a rule in §9.1 can remove the creation-time regression family from the catalogue; DR-0013.)
   - (v1.7: M3 merged in PR #6. The corpus holds 79 regression patterns, 20 dev and 59 test: 68 in two SPA contexts, Atomic CRM and react-admin "simple", and 11 verified mined pairs, with 40 dev items including benign twins. Prompt to Page exports were set aside (P18). P14–P22; DR-0056 to DR-0064.)
-- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.8, approved by the owner 2026-10-03, DR-0067: in the NVDA-absent leg, focus strategies and actions use Playwright input on the focused element and browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets (P23). A goal-based step repeats its strategy up to `maxAttempts`, with the goal checked by the MSAA focus read or NVDA's speech in the NVDA-present leg and by the accessibility-tree node in the NVDA-absent leg. Its outcome is REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) or ENV_FAILURE (P24). A PRESS step sends one documented key (P25).) (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.)
+- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.8, approved by the owner 2026-10-03, DR-0067: in the NVDA-absent leg, focus strategies and actions use Playwright input on the focused element and browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets (P23). A goal-based step repeats its strategy up to `maxAttempts`, with the goal checked by the MSAA focus read or NVDA's speech in the NVDA-present leg and by the accessibility-tree node in the NVDA-absent leg. Its outcome is REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) or ENV_FAILURE (P24). A PRESS step sends one documented key (P25).) (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.) (v1.11: M4 merged in PR #7: 16 journeys with 16 unchanged controls; in evidence runs 37151537838 and 37154136328 all 112 item blocks were valid. P23–P27; DR-0066 to DR-0077.)
 - **M5 — Oracles and scoring (dev split only).** Rules per arm (A, B, B2, and C and D under both UNION and ADJUDICATED); the scorer and statistics in §10.3; a dev report; a power table. (v1.2: C and D combine legs at item level, DR-0031; ANNOUNCEMENT_DUPLICATED needs NVDA-log corroboration or routes to REVIEW, §6 note, DR-0042.)
 - **M6 — Freeze (Gate G3).** Complete `protocol/PROTOCOL.md` and compute the SHA-256 of `protocol/`. The owner reviews, tags and publishes. The scorer refuses to score the test split unless the protocol hash matches the tagged freeze. (v1.1: the freeze tag format is defined in DR-0028; pre-register the rule-model secondary analysis in DR-0023. v1.2: the protocol hash covers every path listed in `protocol/frozen-paths.txt`, not `protocol/` alone, DR-0033.)
 - **M7 — Confirmatory run and soak (Gate G4).** Run the test split and a soak test sized per §10.3, then draft the results report, including negative findings.
@@ -870,7 +880,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065). M5 onwards is not authorised: ask the owner before starting M5. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
+M0–M5. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065), and merged M4 and authorised M5 on 2026-10-03 (DR-0078). M6 onwards is not authorised: ask the owner before starting M6. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
 
 ## Logs
 - docs/DECISIONS.md — decisions

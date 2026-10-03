@@ -1,0 +1,46 @@
+{
+  "version": "1",
+  "label": "EXPLORATORY until the M6 freeze",
+  "source": "PRD v0.3 §14 'Automatic AT triggers' (HANDOFF R5: trigger rules v1 are fixed in advance from PRD §14). The list is the PRD's; the operational definitions are Claude's, proposed to the owner (hard rule 12) and written before any Arm D result was scored.",
+  "appliesTo": "Arm D. Each AT step of a journey, judged on the NVDA-absent leg's B2 evidence for that step (the DOM mutation timeline, the platform events and the accessibility tree), from the step's start to the end of its observation window.",
+  "stepTriggered": "A step is triggered for an item when any trigger below fires on that step in any valid NVDA-absent attempt, on either side. Arm D then takes NVDA evidence for that step from the NVDA-present leg; it takes none for untriggered steps.",
+  "manualTriggers": "A journey step's manualTriggers (owner overrides, HANDOFF §10.2) list trigger ids to force on for that step; none are set in v1.",
+  "excluded": "PRD §14's last entry, 'other patterns demonstrated by the falsification spike to benefit from AT adjudication', is not in v1: it can only come from results.",
+  "triggers": [
+    {
+      "id": "T1-live-region",
+      "prd": "Live regions",
+      "fires": "A timeline record inside a live region (inLive) or inserting a populated live region (liveWithContent), or a platform EVENT_OBJECT_LIVEREGIONCHANGED event."
+    },
+    {
+      "id": "T2-role-status",
+      "prd": "role=status",
+      "fires": "A timeline record whose target or live root has role status, or a platform event whose object's ARIA role is status."
+    },
+    {
+      "id": "T3-role-alert",
+      "prd": "role=alert",
+      "fires": "A platform EVENT_SYSTEM_ALERT event, a platform event whose object's ARIA role is alert, or a timeline record whose target or live root has role alert."
+    },
+    {
+      "id": "T4-dialog-opening",
+      "prd": "Dialog opening",
+      "fires": "A platform EVENT_OBJECT_SHOW event whose object's role or ARIA role is dialog or alertdialog, a timeline insert or attribute record whose target has role dialog or alertdialog, or a dialog or alertdialog node in the step's end tree that was not in the previous AT step's end tree."
+    },
+    {
+      "id": "T5-route-transition",
+      "prd": "Route transitions",
+      "fires": "A timeline history record (pushState, replaceState or popstate) or title record, or a new document."
+    },
+    {
+      "id": "T6-programmatic-focus",
+      "prd": "Programmatic focus changes",
+      "fires": "A timeline focusin record, or a platform EVENT_OBJECT_FOCUS event, in a step whose strategy does not itself move focus or the reading position (any strategy except TAB, SHIFT_TAB and the browse strategies NEXT_HEADING, NEXT_FORM_FIELD, NEXT_BUTTON, NEXT_LANDMARK, BROWSE_NEXT and READ_CURRENT)."
+    },
+    {
+      "id": "T7-active-descendant",
+      "prd": "aria-activedescendant widgets",
+      "fires": "The focused node in the step's end tree has an activedescendant property, or a timeline attribute record for aria-activedescendant."
+    }
+  ]
+}

@@ -109,10 +109,13 @@ Conventions:
 | [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) | DR-0071 | Resolved (P26, DR-0071) |
 | [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
-| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0075, DR-0077 (evidence runs) | No |
 | [DR-0074](#dr-0074-m4-pr-review-findings) | M4 PR review findings | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0075](#dr-0075-m4-repeated-full-run-and-frame-gaps-in-real-apps) | M4 repeated full run, and frame gaps in real apps | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P27 approved by the owner 2026-10-03 (DR-0076) | DR-0076 | Resolved (P27, DR-0076) |
 | [DR-0076](#dr-0076-owner-approval-of-p27) | Owner approval of P27 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0077](#dr-0077-m4-full-run-under-p27-and-the-duplicated-announcement-spec) | M4 full run under P27, and the duplicated-announcement spec | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0078](#dr-0078-m4-merged-and-m5-authorised) | M4 merged and M5 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0079](#dr-0079-m5-evidence-additions-and-the-pre-registered-triggers) | M5 evidence additions, and the pre-registered triggers | Accepted | 2026-10-03 | Decided by Claude under DR-0045; trigger definitions pending owner approval | — | Trigger definitions (with the M5 oracle items) |
 
 ## Pending owner items (hard rule 12)
 
@@ -3332,3 +3335,53 @@ The first run's validity for the post-edit journey was wrong. Restarting the rAF
 | NVDA-absent leg | Every journey complete; no attempt missing B2 events; largest uncovered frame gap 62.5 ms. In the DOM timeline's save step, the duplicated-announcement candidate has three live-region mutations in every attempt against the base's two, and the removed live region has none |
 
 **M4 status.** DR-0073's list of M4 deliverables stands. M4's evidence is now runs 37151537838 and 37154136328; their artefacts expire after 30 days. M5 needs the owner's go-ahead.
+
+## DR-0078 M4 merged and M5 authorised
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.11 | Header, §9 (M5), §12 |
+
+**Decision.**
+
+> Yes, reply and resolve the thread; merged #7, start M5
+
+**Consequences.**
+
+- M4 is merged (PR #7). The authorised scope is M0–M5. M6 (the freeze, Gate G3) needs the owner's go-ahead. HANDOFF moves to v1.11, and CLAUDE.md's current authorisation follows it.
+- Devin's review comment on the NVDA log (DR-0074) was answered with the reason it was not adopted, and the thread resolved.
+- M5 work is on branch `m5-oracles`, on the dev split only. Choices that change what counts as detection go to the owner when first needed, as yes/no items with Claude's recommendation (DR-0045). Two are already known: which FAIL rules cover candidate-only check failures (DR-0035), and how ANNOUNCEMENT_DUPLICATED is handled (DR-0042).
+
+## DR-0079 M5 evidence additions, and the pre-registered triggers
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; the trigger definitions are Proposed by Claude (not yet owner-approved) and go to the owner with the M5 oracle items |
+| HANDOFF v1.11 | §6, §8.4, §9 (M5), §10.2; R5 |
+
+**Context.** M5 judges each journey expectation in every arm. Checking the M4 evidence against the 16 journeys showed four gaps:
+- After a browse step, `focusAtEnd` is the system focus, not NVDA's reading position, so the oracles need the simulated cursor's node.
+- An expectation target named by DOM id (`#id`, P12) cannot be found in the recorded tree, which has no DOM ids.
+- In the NVDA-present leg, the speech of a goal step's last attempt cannot be separated from that of earlier attempts, because attempt times were not recorded.
+- Toasts hide after about 4 s, but the tree is read only at each step's end (5–8 s later). Arm B could therefore never see a message that a tree assertion would catch, for example Playwright's auto-waiting `toContainText`.
+
+**Decision (Decided by Claude under DR-0045).** The runner records, from the M5 evidence run onwards:
+
+| Field | Leg | Content |
+|---|---|---|
+| `goalTrace[].t` | Both | QPC ns when each goal attempt's action began |
+| Backend node ids | NVDA-absent | On `focusAtEnd` and on the goal trace's nodes and lines |
+| `cursorAtEnd` | NVDA-absent | For browse strategies, the node or line under the simulated cursor at the step's end |
+| `targets` | Both | Each `#id` expectation target resolved at the step's end to its backend node id (null when absent) |
+| `settled` | NVDA-absent | The accessibility tree and ARIA snapshot 1 s into each observation window longer than 1 s. No input is sent, so D4 holds. The NVDA-present leg reads nothing inside a window |
+
+These fields add evidence and change no existing measurement. Whether Arm B may use the settled tree decides what B can detect, so it goes to the owner with the B oracle.
+
+**Pre-registered triggers.** HANDOFF R5 fixes Arm D's trigger rules v1 in advance, from PRD §14. `protocol/triggers.v1.json` sets them now, before any Arm D result is scored. It gives seven triggers: live regions, role status, role alert, dialog opening, route transitions, programmatic focus changes and aria-activedescendant widgets, each judged on the NVDA-absent B2 evidence of a step. A step is triggered when any trigger fires on it in any valid NVDA-absent attempt, on either side. PRD §14's last entry, patterns the spike shows to benefit from AT, is excluded, because it can only come from results. The list is the PRD's, but the operational definitions are Claude's. They decide which steps Arm D sees NVDA evidence for, so they go to the owner (hard rule 12) with the M5 oracle items.
+
+**Consequences.** The M5 evidence run repeats every dev item in both legs with the new fields. The M4 evidence runs stay as M4's record.
