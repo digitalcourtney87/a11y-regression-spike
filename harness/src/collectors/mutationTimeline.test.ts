@@ -2,7 +2,7 @@ import { Script } from "node:vm";
 
 import { describe, expect, test } from "vitest";
 
-import { insertionToContentMs, TIMELINE_DRAIN_SCRIPT, TIMELINE_INIT_SCRIPT } from "./mutationTimeline.ts";
+import { changedRegion, insertionToContentMs, TIMELINE_DRAIN_SCRIPT, TIMELINE_INIT_SCRIPT } from "./mutationTimeline.ts";
 import type { TimelineEntry } from "./mutationTimeline.ts";
 
 describe("timeline scripts", () => {
@@ -28,5 +28,14 @@ describe("insertionToContentMs (DR-0037)", () => {
   });
   test("is null when the region is never filled", () => {
     expect(insertionToContentMs([{ t: 100, kind: "insert", target: "div#region", liveWithContent: false }], "div#region")).toBeNull();
+  });
+});
+
+describe("changedRegion", () => {
+  test("is the target of a text change and the parent of an insertion inside a live region", () => {
+    expect(changedRegion({ t: 0, kind: "text", target: "div#live", inLive: true })).toBe("div#live");
+    expect(changedRegion({ t: 0, kind: "insert", target: "#text", parent: "div#live", inLive: true })).toBe("div#live");
+    expect(changedRegion({ t: 0, kind: "insert", target: "div#region", parent: "div#stage", inLive: false })).toBeNull();
+    expect(changedRegion({ t: 0, kind: "focusin", target: "button#target" })).toBeNull();
   });
 });

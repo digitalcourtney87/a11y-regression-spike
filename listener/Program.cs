@@ -68,7 +68,7 @@ internal static class Program
         var (anchorQpc, anchorWall) = WallAnchor.Capture();
         int installed = hooks.FindAll(h => h != IntPtr.Zero).Count;
         Console.Out.WriteLine(
-            $"{{\"ready\":true,\"pid\":{pid},\"hooks\":{installed},\"ranges\":{Events.Ranges.Length},\"frequency\":{Stopwatch.Frequency},\"anchorQpcNs\":{anchorQpc},\"anchorWall\":\"{anchorWall}\",\"version\":\"0.1.0\"}}");
+            $"{{\"ready\":true,\"pid\":{pid},\"hooks\":{installed},\"ranges\":{Events.Ranges.Length},\"frequency\":{Stopwatch.Frequency},\"anchorQpcNs\":{anchorQpc},\"anchorWall\":\"{anchorWall}\",\"version\":\"0.2.0\",\"runtime\":\"{Environment.Version}\"}}");
         Console.Out.Flush();
 
         string? line;

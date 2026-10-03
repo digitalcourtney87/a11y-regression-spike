@@ -10,7 +10,8 @@
  * `attachShadow` is patched so that shadow roots are observed too, and
  * `takeRecords()` runs before focus and history entries so records keep
  * causal order. Entries are buffered in `window.__a11yTimeline` and drained
- * by `drainTimeline` after the observation window.
+ * with `TIMELINE_DRAIN_SCRIPT` after the observation window. Each entry's `t`
+ * is the observer callback's time, so records delivered in one batch share it.
  */
 
 /** One timeline entry, as the init script records it. */
@@ -20,6 +21,8 @@ export interface TimelineEntry {
   kind: "insert" | "remove" | "text" | "attr" | "focusin" | "focusout" | "history" | "title";
   /** A short descriptor: tag, #id and [role]. */
   target: string;
+  /** For insert and remove: the descriptor of the node the child was added to or removed from. */
+  parent?: string;
   /** For attr: the attribute; for history: the method; for title: the new title. */
   detail?: string;
   /** For insert: the inserted node is a live region (or contains one) with non-empty text. */
@@ -58,8 +61,9 @@ export const TIMELINE_INIT_SCRIPT = `(() => {
     const t = now();
     for (const m of records) {
       if (m.type === "childList") {
-        for (const n of m.addedNodes) out.push({ t, kind: "insert", target: describe(n), liveWithContent: liveWithContent(n), inLive: inLive(m.target) });
-        for (const n of m.removedNodes) out.push({ t, kind: "remove", target: describe(n) });
+        const parent = describe(m.target);
+        for (const n of m.addedNodes) out.push({ t, kind: "insert", target: describe(n), parent, liveWithContent: liveWithContent(n), inLive: inLive(m.target) });
+        for (const n of m.removedNodes) out.push({ t, kind: "remove", target: describe(n), parent });
         if (m.target && m.target.nodeName === "TITLE") out.push({ t, kind: "title", target: "title", detail: document.title });
       } else if (m.type === "characterData") {
         const parent = m.target.parentElement;
@@ -109,4 +113,21 @@ export function insertionToContentMs(entries: readonly TimelineEntry[], target: 
   if (insert === undefined || insert.liveWithContent === true) return null;
   const fill = entries.find((e) => (e.kind === "text" || e.kind === "insert") && e.t >= insert.t && e !== insert && e.inLive === true);
   return fill === undefined ? null : fill.t - insert.t;
+}
+
+/** A timeline entry with its time on the QPC base (D1). */
+export interface MappedTimelineEntry extends TimelineEntry {
+  /** QPC nanoseconds, from `pageToQpcNs`. */
+  tQpc: number;
+}
+
+/**
+ * The live region a timeline entry changes: for a text change its target, for
+ * an insertion into a live region the parent it was inserted into.
+ */
+export function changedRegion(entry: TimelineEntry): string | null {
+  if (entry.inLive !== true) return null;
+  if (entry.kind === "text") return entry.target;
+  if (entry.kind === "insert") return entry.parent ?? null;
+  return null;
 }

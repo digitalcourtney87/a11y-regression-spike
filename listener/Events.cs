@@ -1,5 +1,6 @@
-// Hooked WinEvent ranges and names (DR-0019 D10; pending owner item P3 for
-// the final scope). MSAA events and the IA2 range (0x0101-0x0123, from the
+// Hooked WinEvent ranges and names (DR-0019 D10; the scope was approved by
+// the owner on 2026-10-03, P3, DR-0052, with the final ranges confirmed from
+// M2 data). MSAA events and the IA2 range (0x0101-0x0123, from the
 // IAccessible2 AccessibleEventID.idl) are recorded on the "MSAA" and "IA2"
 // channels; UIA events are not hooked here and would be diagnostic only.
 using System.Collections.Generic;
