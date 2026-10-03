@@ -84,12 +84,13 @@ Conventions:
 | [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
 | [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0047](#dr-0047-scream-pinned-from-m1a-in-repository-installer-both-legs) | Scream pinned from M1a; in-repository installer; both legs | Accepted | 2026-10-03 | Decided by Claude under DR-0040 and DR-0045 | — | No |
+| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | Pending: P8 |
 
 ## Pending owner items (hard rule 12)
 
 These parts still carry **Proposed by Claude (not yet owner-approved)**. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. Three items remain pending: P3, P6 and P7.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. Four items remain pending: P3, P6, P7 and P8 (P8 added on 2026-10-03 by DR-0048).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -100,6 +101,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P5 | **Resolved (decided by Claude under DR-0045, 2026-10-03).** The `yaml` 2.9.1 dev dependency, used by the workflow policy test to parse workflow files | DR-0007 | Listed on 2026-10-03 as security (third-party code that runs in CI; no owner-authored text names it) | No longer pending | Decided, not asked: the package is dev-only and has no dependencies of its own. It is exactly pinned, with a sha512 integrity hash in `package-lock.json`, and carries the ISC licence. It runs only in the Linux CI job (`ci.yml`), under `contents: read` with no secrets, and it parses only this repository's workflow files. It exists to enforce hard rule 3 (supply chain): the workflow policy test uses it to check Action pins, permissions, secrets and input handling |
 | P6 | Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | Before any G1 run | Yes, the methods in DR-0010's table, with any change that M1a data require stated in the item (lab notebook 2026-10-03, question 14) |
 | P7 | The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | The G1 brief; meanwhile Claude flags token-heavy work before running it and estimates spend | Yes; Claude's estimates in each gate report support it |
+| P8 | In Phase 0 canary runs, the pre-canary check is not applicable: each canary is itself the known-answer check, so `preCanaryOk` is always true and a capture failure counts as a canary failure, not INCONCLUSIVE. The anchor's focus announcement before activation is recorded per attempt, so the alternative (using it as the pre-canary) can be computed from the data | DR-0048 | What counts as INCONCLUSIVE (it decides whether an instrument failure can be absorbed as INCONCLUSIVE in G1) | Before the G1 runs | Yes: it keeps G1 strict, because G1 measures the instrument itself |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), K6e data that contradict the 150 ms and 350 ms serialisation boundaries (DR-0037), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2441,3 +2443,31 @@ The four additions each control what runs or how it runs, so each can change a v
 - The effective eSpeak NG rate was 30 with rate boost off, as DR-0041 predicted, so its conditional owner question does not arise.
 - The M1a checks behind P4 (MSAA-only focus read: 80 of 80) and D8 (injection marker and virtual buffer: 40 of 40) passed; P6's clock data are in the lab notebook and go to the owner with the segment-drift data from the M1b pilot, before any G1 run.
 - The Scream signer certificate expired in 2023 and validates through its timestamp; Windows loaded the driver on both images. If a future image refused it, the audio preflight would make every NVDA-present attempt INCONCLUSIVE rather than silently changing the synth.
+
+## DR-0048 M1b canary-run design
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except the part pending as P8 |
+| Owner label | Decided by Claude under DR-0045; P8 pending |
+| HANDOFF v1.4 | §7.2, §8.1, §9 (M1b, M1d), §9.1 (implemented as stated) |
+
+**Context.** M1b builds the canary runner, the relay tap and the report. The smoke pilot (run 37114407343, `windows-2025`, K1–K5 twice each) showed the instrument path working end to end: every preflight valid, every evidence package valid, tap-versus-log parity 76 of 76. All 10 gating attempts were scored FAIL only because NVDA's speech dictionaries rewrite text before it is queued ("K1" arrives as "K 1"); re-scored with the matching below, all 10 pass, 557–636 ms after activation.
+
+**Decision.**
+
+| Item | Decision |
+|---|---|
+| Speech matching | An utterance "contains the text" when its letters and digits, lower-cased, contain the expected text's letters and digits (`speechKey`). K3 requires the name immediately followed by the role ("K3 target button" then "button"). This implements HANDOFF §9.1's expected outcomes; it does not relax them |
+| Relay tap | Attached once per NVDA run, right after NVDA starts, so it is attached before every segment (D2) and tap-versus-log parity covers the whole run |
+| Activation | OS-level Enter through NVDA on the focused "Start canary" button; the canary behaviour runs 500 ms later (D4); the observation window is 4000 ms from activation; K1's deadline is 3.5 s after activation (3 s after insertion) |
+| Handover order | Foreground and verify; DOM-focus the anchor in setup; MSAA-only focus read (P4); injection marker and virtual buffer (D8); clock checks; 1.5 s settle; segment |
+| Evidence | One gate evidence package per attempt (DR-0026 amendment a), `side: "base"` (canaries have no candidate), item id with any variant suffix (for example `K6a:polite`) |
+| K6a | Run once, in the G1 dispatch, so the pre-registered rule (DR-0013) has a single look; pilots exclude K6a |
+| Pre-canary (P8, pending) | **Proposed by Claude (not yet owner-approved):** in Phase 0 canary runs `preCanaryOk` is always true, because each canary is itself the known-answer check (PRD §19); a capture failure therefore counts as a canary failure. The anchor's focus announcement is recorded per attempt (`anchorSpeech`) so the alternative can be computed |
+
+**Consequences.**
+
+- `report:phase0` scores G1 from the recorded tap events with these rules; the decision does not change any gate number.
+- Until the owner answers P8, G1 runs use the conservative reading above. If the owner prefers the anchor announcement as the pre-canary, it can be applied to the recorded data without re-running.

@@ -104,3 +104,26 @@ Dated observations for the Accessibility Regression CI falsification spike. Deci
 - NVDA speaks at startup (the runner console window, then "Connected as controlled computer" when a relay client joins). The relay tap must attach, and these must pass, before an observation window opens; a declared quiet window after attaching covers it.
 - NVDA's relay logs one "Error accepting connection" (TLS) at startup, consistent with Guidepup's TCP readiness check on the relay port (inferred).
 - Not yet measured: segment drift within a segment, DEBUG-logging overhead, and canary durations in each leg (question 13). These need canary segments and come from the M1b pilot.
+
+### M1b smoke run and M1d strict pilot (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37114407343](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407343) (smoke: K1–K5 twice each, one shard) and [37114709402](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114709402) (strict pilot, retries off: K1–K5 ten times each, plus K6b, K6e and K7 at their D4 counts; 10 shards; seed 20261004), `windows-2025`, NVDA-present leg. K6a was excluded so the pre-registered rule has a single look, in the G1 run (DR-0048).
+**Confidence:** observed. Wilson 95% intervals in brackets.
+
+| Observation | Result |
+|---|---|
+| Speech text | NVDA's speech dictionaries rewrite text before it is queued: "K1" arrives as "K 1". The smoke run scored its 10 conveyed canaries as FAIL for this reason alone; matching on letters and digits fixes it (DR-0048). Re-scored, all 10 pass, 557–636 ms after activation |
+| Gating canaries (pilot) | K1–K5: 50 of 50 attempts valid, 0 failures [each canary 10/10 passes: 72.2–100%]. INCONCLUSIVE 0% |
+| Latency, DOM update to tap receipt | About 57–80 ms for live-region updates (K1, K2) and 100–150 ms for focus moves (K3–K5); the update runs 500 ms after activation |
+| Priorities | K1 polite update NORMAL; K2 alert update NEXT; K6b populated alert inserted NOW (20/20) |
+| K4 | The dialog name is queued twice per attempt ("K 4 settings dialog dialog" before and after the first control), a duplicate that bears on DR-0042 |
+| K6b | Announced 20 of 20 [83.9–100%], at NOW priority, as D4 expected |
+| K6e | Not announced when the fill lands in the same frame (0 ms: 0/10; one rAF: 0/10) [0–27.8%]; announced at every delay from 50 ms (50, 100, 150, 250, 500 ms: each 10/10) [72.2–100%]. The boundary lies between one frame and 50 ms, not at the 150 ms or 350 ms serialisation window DR-0037's grading assumes |
+| K7a | Polite text queued, then the button, no cancel after the update: 20 of 20 [83.9–100%] |
+| K7b | Polite text queued, then a cancel after focus entered the text field: 20 of 20. The tap counts the cancelled text as queued, which is the bias DR-0022 records |
+| Validity | No INCONCLUSIVE reasons; no errors; every evidence package valid |
+| Clocks (D1) | Native self-test disagreement 0 ms; page-mapping uncertainty 0.1 ms; segment drift at most 0.16 ms; rAF gap at most 31.2 ms; no low-resolution TimeTicks |
+| Parity (D2) | Run level: tap 127–136 against log 127–138, the log ahead by 0–2. The extra entries are NVDA's startup speech about the runner console, queued after the tap was asked to attach but before the relay confirmed its join, so the tap could not receive them. The parity window now starts at the join confirmation, and parity is also counted per segment (DR-0039) |
+
+**Bearing on open items.** P6 now has its M1b data (segment drift and the other three checks, all far inside the D1 limits). The K6e result triggers DR-0037's conditional owner question about the grading boundaries; it matters for B2 signatures (G2) and the M3 catalogue, not for G1.
