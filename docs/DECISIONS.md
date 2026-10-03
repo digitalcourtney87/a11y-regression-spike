@@ -120,6 +120,7 @@ Conventions:
 | [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0082](#dr-0082-building-the-test-patterns-without-executing-them) | Building the test patterns without executing them | Accepted | 2026-10-04 | Owner reply 2026-10-03; tooling decided by Claude under DR-0045 | — | No |
 | [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) | — | P38 |
+| [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3567,3 +3568,27 @@ The full report is `docs/reports/M5-dev.md`.
 - **Journey wording:** NVDA reads "linkedin.com" as "linkedin dot com", so the expectation names "URL must be from linkedin". The speech normaliser was not changed.
 
 **Owner item P38 (hard rule 12).** The approved rule (P28) gives KEYBOARD_TRAP only after Escape, so the tab-swallowed pattern can only score FOCUS_NOT_MOVED. P38 proposes the Tab case; see "Pending owner items".
+
+## DR-0084 M5 PR review findings
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §6, §10.3; R7; P13, P28–P36 |
+
+**Context.** Codex (2 comments) and Devin Review (8 comments) reviewed PR #8. Claude checked each against the code and the dev data. None changes the dev results: detection, false FAIL and REVIEW counts are as in DR-0080. The approved rules (P28–P36) are unchanged; the fixes make the code do what they say, and make missing evidence explicit.
+
+| Finding | Assessment | Change |
+|---|---|---|
+| Items with no block are silently left out of the split's metrics (Codex) | Valid | The scorer refuses when any item of the split has no block. `--allow-missing` scores them as INCONCLUSIVE in every arm (a miss, R7), and the report lists them |
+| Another split's block with no journey aborts scoring (Devin) | Valid | Only blocks of the split's corpus items are read; journey-development pseudo-items are skipped too |
+| A false state with an explicit NVDA label passes on silence (Codex; Devin) | Valid for states with a negative label: the code fell back to "positive label absent", against its own description | `checked`, `selected` and `pressed` need "not …", and `expanded` needs "collapsed". States NVDA conveys only when true (`required`, `invalid`, `disabled`, `busy`) are false when their label is absent |
+| Missing axe or B2 evidence reads as a pass (Devin) | Valid. DR-0074 said M5 counts a missing B2 listener record as a failure, never INCONCLUSIVE (P13) | Missing or failed axe results at a step, and B2 events missing in any attempt, give a REVIEW finding |
+| A truncated block lowers k (Devin) | Valid | k is the block's planned repetitions per side. A side with fewer attempts gives REVIEW, never a FAIL |
+| A step the base did not always reach skips axe (Devin) | Valid | axe is still compared at that step, as at a step where the candidate stopped |
+| Arm D passes without a valid NVDA leg when no step is triggered (Devin) | Not adopted. D uses NVDA only at triggered steps (HANDOFF R5, §8.4); with none triggered, D would not run NVDA, so its verdict is B2's. When the NVDA-absent leg is INCONCLUSIVE, D is INCONCLUSIVE too | None |
+| A partly unreachable step hides later steps (Devin) | Not adopted. With k = n, no later step can give FAIL once one candidate attempt stopped, and the item is already REVIEW. If the freeze sets k < n, this is revisited | None |
+| A message removed before the settled tree is missed by B2 (Devin) | A known limit of P31 and P32: the settled tree is read 1 s into the window, and both apps' toasts last about 4 s | Stated in the report's limits |
+| A state with no negative label passes on silence (Devin) | Not adopted for those states: silence is how NVDA conveys them as false | None (see the false-state row) |

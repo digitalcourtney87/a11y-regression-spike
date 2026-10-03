@@ -10,6 +10,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { scoreItem } from "../oracles/arms.ts";
+import type { ItemEvidence } from "../oracles/evidence.ts";
 import { itemEvidence, readBlocks, readJourneys } from "../oracles/load.ts";
 import { oracleRules } from "../oracles/rules.ts";
 import type { CorpusItem } from "../schema/index.ts";
@@ -24,6 +25,8 @@ export interface ScoreRequest {
   runs: string[];
   out?: string;
   json?: string;
+  /** Score split items with no block as INCONCLUSIVE in every arm, instead of refusing. */
+  allowMissing?: boolean;
 }
 
 export interface ScoreIo {
@@ -66,16 +69,34 @@ function headCommit(root: string): string {
 export function scoreRuns(req: ScoreRequest, io: ScoreIo, root: string = REPO_ROOT): number {
   const rules = oracleRules();
   const corpus = corpusItems(root);
-  const blocks = readBlocks(req.runs);
-  const evidence = itemEvidence(blocks, readJourneys(join(root, "journeys"))).filter((e) => corpus.get(e.item.id)?.split === req.split);
-  if (evidence.length === 0) {
+  const journeys = readJourneys(join(root, "journeys"));
+  // Only blocks of this split's corpus items: other splits' blocks and journey-development pseudo-items are skipped.
+  const blocks = new Map([...readBlocks(req.runs)].filter(([, b]) => corpus.get(b.item.id)?.split === req.split));
+  const found = itemEvidence(blocks, journeys);
+  if (found.length === 0) {
     io.err(`no ${req.split}-split item blocks under ${req.runs.join(", ")}`);
     return 2;
   }
+  // Every item of the split must be scored: a missing block is never silently left out (R7).
+  const foundIds = new Set(found.map((e) => e.item.id));
+  const missing = [...corpus.values()].filter((i) => i.split === req.split && !foundIds.has(i.id)).sort((a, b) => (a.id < b.id ? -1 : 1));
+  if (missing.length > 0 && req.allowMissing !== true) {
+    io.err(`${String(missing.length)} ${req.split}-split item(s) have no block: ${missing.map((i) => i.id).join(", ")}`);
+    io.err("pass --allow-missing to score them as INCONCLUSIVE in every arm");
+    return 2;
+  }
+  const evidence: ItemEvidence[] = [
+    ...found,
+    ...missing.map((item) => {
+      const journey = journeys.get(item.journeyId);
+      if (journey === undefined) throw new Error(`no journey ${item.journeyId} for ${item.id}`);
+      return { item, journey, absent: null, present: null };
+    }),
+  ];
   const scores = evidence.map((e) => scoreItem(e, rules));
   const testPatterns = testRegressionPatterns(root);
   const metrics = computeMetrics(scores, corpus, rules, testPatterns);
-  const report = renderDevReport(metrics, scores, corpus, rules, { split: req.split, runs: req.runs, harnessCommit: headCommit(root) });
+  const report = renderDevReport(metrics, scores, corpus, rules, { split: req.split, runs: req.runs, harnessCommit: headCommit(root), missing: missing.map((i) => i.id) });
   const first = req.runs[0] ?? ".";
   const out = resolve(req.out ?? join(first, `report-m5-${req.split}.md`));
   const json = resolve(req.json ?? join(first, `report-m5-${req.split}.json`));

@@ -1,10 +1,12 @@
 /**
  * Scorer entry point: `npm run score -- --split <dev|test> --runs <dir>[,<dir>…]
- * [--out <report.md>] [--json <scores.json>]` (DR-0028; the freeze covers the
+ * [--out <report.md>] [--json <scores.json>] [--allow-missing]` (DR-0028; the freeze covers the
  * frozen set listed in protocol/frozen-paths.txt, DR-0033). The run
  * directories are downloaded artefacts (`gh run download <run> -D
  * artefacts/<run>`); a later directory's blocks replace an earlier one's for
- * the same item and leg.
+ * the same item and leg. Every item of the split must have a block: the
+ * scorer refuses otherwise, unless `--allow-missing` scores the missing items
+ * as INCONCLUSIVE in every arm.
  *
  * This file only parses the arguments and applies the freeze guard; the
  * scoring code (`scoreRuns.ts`) is loaded only once the guard allows the split.
@@ -29,7 +31,7 @@ export const EXIT_OK = 0;
 export const EXIT_REFUSED = 1;
 export const EXIT_USAGE = 2;
 
-const USAGE = "usage: npm run score -- --split <dev|test> --runs <dir>[,<dir>...] [--out <report.md>] [--json <scores.json>]";
+const USAGE = "usage: npm run score -- --split <dev|test> --runs <dir>[,<dir>...] [--out <report.md>] [--json <scores.json>] [--allow-missing]";
 
 /** A scoring request that has passed the freeze guard (`scoreRuns.ts`). */
 export interface ScoreRequest {
@@ -37,6 +39,7 @@ export interface ScoreRequest {
   runs: string[];
   out?: string;
   json?: string;
+  allowMissing?: boolean;
 }
 
 export interface CliIo {
@@ -62,11 +65,11 @@ export function defaultDeps(repoRoot: string = REPO_ROOT): FreezeGuardDeps {
  * the CLI stops here, or the scoring request when the split is allowed.
  */
 export function runScoreCli(argv: readonly string[], deps: FreezeGuardDeps = defaultDeps(), io: CliIo = consoleIo): number | ScoreRequest {
-  let values: { split?: string; runs?: string; out?: string; json?: string };
+  let values: { split?: string; runs?: string; out?: string; json?: string; "allow-missing"?: boolean };
   try {
     const parsed = parseArgs({
       args: [...argv],
-      options: { split: { type: "string" }, runs: { type: "string" }, out: { type: "string" }, json: { type: "string" } },
+      options: { split: { type: "string" }, runs: { type: "string" }, out: { type: "string" }, json: { type: "string" }, "allow-missing": { type: "boolean" } },
       strict: true,
       allowPositionals: false,
     });
@@ -101,7 +104,7 @@ export function runScoreCli(argv: readonly string[], deps: FreezeGuardDeps = def
     io.err(USAGE);
     return EXIT_USAGE;
   }
-  return { split, runs, ...(values.out === undefined ? {} : { out: values.out }), ...(values.json === undefined ? {} : { json: values.json }) };
+  return { split, runs, ...(values.out === undefined ? {} : { out: values.out }), ...(values.json === undefined ? {} : { json: values.json }), ...(values["allow-missing"] === true ? { allowMissing: true } : {}) };
 }
 
 if (import.meta.main) {

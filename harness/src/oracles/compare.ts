@@ -202,19 +202,29 @@ export function compareFamily(family: Family, block: Block, journey: Journey, ru
   const expectations: ExpectationRecord[] = [];
   const base = sideAttempts(block, "base");
   const cand = sideAttempts(block, "candidate");
-  const k = kOverride ?? Math.min(base.length, cand.length);
-  // Without attempts on both sides there is nothing to compare.
-  if (base.length === 0 || cand.length === 0 || k < 1) return { family, findings: [], expectations: [] };
-  const anchorName = base[0]?.anchor?.name;
+  // k is the planned repetitions per side (k = n), never the attempts that happen to be present, so a truncated
+  // block cannot establish a FAIL from fewer runs than planned.
+  const k = kOverride ?? block.n;
   const steps = atSteps(journey);
   const push = (f: Omit<Finding, "family">): void => {
     findings.push({ ...f, family });
   };
+  if (k < 1 || base.length < k || cand.length < k) {
+    push({ verdict: "REVIEW", stepIndex: 0, stepId: steps[0]?.id ?? "", order: 0, rule: "attempts-missing", detail: `${String(base.length)} base and ${String(cand.length)} candidate attempts, ${String(k)} planned per side` });
+    return { family, findings, expectations };
+  }
+  // A failure of the B2 listener is a failure, never INCONCLUSIVE (P13); it is made explicit rather than read as a pass (DR-0074).
+  if (family === "B2" && [...base, ...cand].some((a) => a.b2Evidence === "missing")) {
+    push({ verdict: "REVIEW", stepIndex: 0, stepId: steps[0]?.id ?? "", order: 0, rule: "b2-evidence-missing", detail: `B2 platform events missing in ${String([...base, ...cand].filter((a) => a.b2Evidence === "missing").length)} attempt(s)` });
+  }
+  const anchorName = base[0]?.anchor?.name;
   for (const [index, step] of steps.entries()) {
     // 1. Reachability.
     const baseReached = base.filter((a) => reached(a, step.id)).length;
     if (baseReached < k) {
       if (REACH_FAMILIES.has(family)) push({ verdict: "REVIEW", stepIndex: index, stepId: step.id, order: 0, rule: "base-not-reached", detail: `base reached the step in ${String(baseReached)} of ${String(base.length)} attempts` });
+      // axe still ran at the state this step ended in, on both sides.
+      if (family === "A") for (const f of axeFindings(step.id, base, cand, k, rules)) push({ ...f, stepIndex: index, stepId: step.id, order: 100 });
       break;
     }
     const candUnreachable = cand.filter((a) => stepOf(a, step.id)?.outcome === "UNREACHABLE").length;

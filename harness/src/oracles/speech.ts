@@ -60,9 +60,11 @@ export function phraseSpoken(text: string, phrase: string, negations: readonly s
 
 /**
  * Whether NVDA's speech conveys `state=value`. A true value needs the state's
- * label (not negated); a false value needs its negative label where NVDA has
- * one, or else the absence of the positive label. Null when the state has no
- * NVDA label (the expectation is then not judgeable from speech).
+ * label (not negated). A false value needs its negative label where NVDA has
+ * one ("not checked", "collapsed"), so silence does not pass; where NVDA has
+ * none (required, invalid, unavailable, busy), it needs the positive label's
+ * absence, which is how NVDA conveys those states as false. Null when the
+ * state has no NVDA label (the expectation is then not judgeable from speech).
  */
 export function stateSpoken(utterances: readonly string[], state: string, value: string, rules: OracleRules): boolean | null {
   const phrases = rules.states[state];
@@ -70,6 +72,6 @@ export function stateSpoken(utterances: readonly string[], state: string, value:
   const text = utterances.join(" • ");
   const positive = phraseSpoken(text, phrases.true, phrases.negations);
   if (value === "true") return positive;
-  if (value === "false") return phrases.false !== undefined && phraseSpoken(text, phrases.false) ? true : !positive;
+  if (value === "false") return phrases.false !== undefined ? phraseSpoken(text, phrases.false) : !positive;
   return null;
 }

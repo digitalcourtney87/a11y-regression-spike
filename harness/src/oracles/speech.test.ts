@@ -46,3 +46,16 @@ describe("states", () => {
     expect(stateSpoken(["x"], "level", "2", rules)).toBeNull();
   });
 });
+
+describe("false states (PR #8 review)", () => {
+  test("a state with a negative label needs it: silence is not false", () => {
+    expect(stateSpoken([], "checked", "false", rules)).toBe(false);
+    expect(stateSpoken(["Show archived check box"], "checked", "false", rules)).toBe(false);
+    expect(stateSpoken(["menu button"], "expanded", "false", rules)).toBe(false);
+  });
+
+  test("a state NVDA conveys only when true is false when its label is absent", () => {
+    expect(stateSpoken(["First name edit"], "required", "false", rules)).toBe(true);
+    expect(stateSpoken(["First name edit required"], "required", "false", rules)).toBe(false);
+  });
+});

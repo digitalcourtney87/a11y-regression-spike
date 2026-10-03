@@ -227,3 +227,32 @@ describe("tree text", () => {
     expect(compareFamily("B", b, j, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "ANNOUNCEMENT_MISSING" }]);
   });
 });
+
+describe("missing evidence is explicit (PR #8 review)", () => {
+  const j = journey([at("reach", "TAB", [{ type: "focusOn", value: "button|Save" }], { until: { role: "button", maxAttempts: 3 } })]);
+  const tree = (name: string): AxNode[] => axTree({ role: "RootWebArea", kids: [{ role: "button", name, props: { focused: true } }] });
+
+  test("a block with fewer attempts than planned gives REVIEW, not a FAIL from fewer runs", () => {
+    const b = block(item("regression"), "nvda-absent", 3, (side) => attempt(side, steps(j, { reach: { tree: tree(side === "base" ? "Save" : "") } })));
+    const truncated = { ...b, attempts: b.attempts.filter((a) => a.side === "base" || a.repetition === 1) };
+    const r = compareFamily("B", truncated, j, rules);
+    expect(r.findings).toMatchObject([{ verdict: "REVIEW", rule: "attempts-missing" }]);
+  });
+
+  test("missing B2 platform events give REVIEW (P13, DR-0074)", () => {
+    const b = block(item("benign"), "nvda-absent", 3, (side, rep) => attempt(side, steps(j, { reach: { tree: tree("Save") } }), { b2Evidence: side === "candidate" && rep === 2 ? "missing" : "complete" }));
+    expect(compareFamily("B2", b, j, rules).findings).toMatchObject([{ verdict: "REVIEW", rule: "b2-evidence-missing" }]);
+  });
+
+  test("missing axe results at a step give REVIEW", () => {
+    const b = block(item("benign"), "nvda-absent", 3, (side, rep) => attempt(side, steps(j, {}), { axe: side === "base" && rep === 1 ? {} : { reach: { violations: [] } } }));
+    expect(compareFamily("A", b, j, rules).findings).toMatchObject([{ verdict: "REVIEW", rule: "axe-evidence-missing" }]);
+  });
+
+  test("axe is still compared at a step the base did not always reach", () => {
+    const b = block(item("regression"), "nvda-absent", 3, (side, rep) =>
+      attempt(side, steps(j, { reach: { outcome: side === "base" && rep === 1 ? "UNREACHABLE" : "REACHED" } }), { axe: { reach: { violations: side === "base" ? [] : [{ id: "button-name", targets: ["#x"] }] } } }),
+    );
+    expect(compareFamily("A", b, j, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "NAME_NOT_CONVEYED" }]);
+  });
+});
