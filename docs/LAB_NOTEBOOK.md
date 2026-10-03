@@ -78,3 +78,85 @@ Dated observations for the Accessibility Regression CI falsification spike. Deci
 | The Scream driver's signer certificate thumbprint | Extended by DR-0040: the Authenticode status, signer and issuer are recorded too (question 11) |
 | `ImageOS`, `ImageVersion` and the image name for each label | Approved by the owner 2026-10-02 (DR-0030, PR #1 item 10) |
 | Tap reception alongside Guidepup; tap-versus-log message-count parity; the overhead of DEBUG logging | Parity is required by D2 (DR-0011), and per-segment parity may use wall-anchor bucketing (DR-0039). The tap-reception check and the overhead measurement are decided by Claude under DR-0045 (2026-10-03) |
+
+### M1a runner probes (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-probe.yml` runs [37111758115](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111758115) (failed: the Scream step looked for an `x64` folder that the archive does not have), [37111906022](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111906022) (no audio driver) and [37112285497](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37112285497) (Scream installed). Images: `windows-2025` = `win25-vs2026` 20260925.250.1, Windows Server 2025 build 26100.33438; `windows-2022` = `win22` 20260927.320.1, Windows Server 2022 build 20348.5622. Each run: 10 fresh-profile Chrome launches without NVDA, then 10 with NVDA, per label. Artefacts are kept locally until the G1 archive (DR-0015).
+**Confidence:** observed, except where a row says inferred. Counts are small (10 per leg per label per run), so they bound gross failure rates only: 20 of 20 successes gives a Wilson 95% interval of 83.9–100%.
+
+| # | Question | Observation | Affects |
+|---|---|---|---|
+| 1, 11 | Audio, and the Scream signature | No sound device or audio endpoint on either image. Audio services run on `windows-2025` (automatic) and are stopped on `windows-2022` (manual). Scream 3.6's archive matches the pinned SHA-256. `Scream.sys` and `scream.cat` are Authenticode `Valid`, signed by Tom Kistner (the release author, GitHub user `duncanthrax`) through Sectigo RSA Code Signing CA, chaining to USERTrust RSA Certification Authority. Not self-signed; timestamped by Symantec; the signer certificate expired on 2023-07-06 and validates through the timestamp, as the 3.6 release notes say. The driver is x64. The archive's bundled `devcon.exe` is **not signed**. After installing with the in-repository SetupAPI installer (DR-0047): "Scream (WDM)" and the endpoint "Speakers (Scream (WDM))", both OK, on both images. | DR-0040, DR-0047, DR-0012 |
+| 2, 12 | Synth and effective eSpeak rate | Without an audio device, eSpeak NG fails to open audio and NVDA falls back to oneCore ("Couldn't open specified or default audio device"), which D8 makes INCONCLUSIVE. With Scream, NVDA loads `espeak` with no audio errors. The saved session configuration has `[speech] [[espeak]] rate = 30`, with rate boost absent (the driver default, off). Speech carries `LangChangeCommand('en_GB')`. | DR-0041, DR-0017 |
+| 3 | Injection marker | `nvdaHelperRemote.dll` is loaded in Chrome's browser process in 40 of 40 NVDA-present launches (two runs, two labels); never in sandboxed renderers, as expected. "Buffer load took" appears in 40 of 40, 3.1 to 4.2 s after launch, including page load. | DR-0017 |
+| 4 | Foreground handover | `SetForegroundWindow` alone made Chrome the foreground window in 80 of 80 launches (both legs, both labels, two runs); no Alt keypress was needed. `ForegroundLockTimeout` reads 2147483647 through `SystemParametersInfo` on `windows-2025` and 200000 on `windows-2022` (the registry holds 200000 on both); it made no difference. | DR-0024 |
+| 5 | CfT infobars | No speech mentioning an infobar or alert in any NVDA-present launch. Screenshots of the first launch per leg are in the artefacts. | DR-0007 |
+| 6, 14 | Clocks (D1) | QPC at 10 MHz, high resolution, on both labels. Native self-test (Node against a PowerShell helper over a pipe, 50 pings): every reading inside its bracket; offset 60–97 µs with uncertainty 133–212 µs (limit 0.5 ms). CDP `Timestamp` against Node's QPC: offset within ±25 µs (uncertainty up to 368 µs), so Chrome TimeTicks and `process.hrtime.bigint()` share an epoch. `performance.now()` steps are 0.1 ms in every launch (high resolution). | DR-0010, P6 |
+| 7, 14 | Page mapping (D1) | `NavigationStart + performance.now()` against a 16-ping minimum-RTT bracket: worst \|offset\| + uncertainty 441–656 µs per run and label (limit 2 ms). | DR-0010, P6 |
+| 8 | Display | 1024 × 768 at 96 DPI; interactive input desktop; session 2. | DR-0025 |
+| 9 | First-launch virtual buffer | No launch without a virtual buffer in 40 NVDA-present fresh-profile launches. | DR-0021 |
+| 10 | Integrity and session | Node, the helper, Chrome's browser process and NVDA all run at high integrity in session 2, so window-message isolation between integrity levels cannot block input or reads. | DR-0024 |
+| 14 | rAF gaps | Largest rAF gap per launch mostly 15.7 ms; at most 46.9 ms (one launch); none over 100 ms. | DR-0010, P6 |
+| 15 | MSAA-only focus read | Identified the anchor ("Probe anchor", push button) in 80 of 80 launches, with and without NVDA, with no UIA client. | DR-0020, DR-0024 |
+
+**Design inputs for M1b (observed).**
+- NVDA speaks at startup (the runner console window, then "Connected as controlled computer" when a relay client joins). The relay tap must attach, and these must pass, before an observation window opens; a declared quiet window after attaching covers it.
+- NVDA's relay logs one "Error accepting connection" (TLS) at startup, consistent with Guidepup's TCP readiness check on the relay port (inferred).
+- Not yet measured: segment drift within a segment, DEBUG-logging overhead, and canary durations in each leg (question 13). These need canary segments and come from the M1b pilot.
+
+### M1b smoke run and M1d strict pilot (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37114407343](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407343) (smoke: K1–K5 twice each, one shard) and [37114709402](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114709402) (strict pilot, retries off: K1–K5 ten times each, plus K6b, K6e and K7 at their D4 counts; 10 shards; seed 20261004), `windows-2025`, NVDA-present leg. K6a was excluded so the pre-registered rule has a single look, in the G1 run (DR-0048).
+**Confidence:** observed. Wilson 95% intervals in brackets.
+
+| Observation | Result |
+|---|---|
+| Speech text | NVDA's speech dictionaries rewrite text before it is queued: "K1" arrives as "K 1". The smoke run scored its 10 conveyed canaries as FAIL for this reason alone; matching on letters and digits fixes it (DR-0048). Re-scored, all 10 pass, 557–636 ms after activation |
+| Gating canaries (pilot) | K1–K5: 50 of 50 attempts valid, 0 failures [each canary 10/10 passes: 72.2–100%]. INCONCLUSIVE 0% |
+| Latency, DOM update to tap receipt | About 57–80 ms for live-region updates (K1, K2) and 100–150 ms for focus moves (K3–K5); the update runs 500 ms after activation |
+| Priorities | K1 polite update NORMAL; K2 alert update NEXT; K6b populated alert inserted NOW (20/20) |
+| K4 | The dialog name is queued twice per attempt ("K 4 settings dialog dialog" before and after the first control), a duplicate that bears on DR-0042 |
+| K6b | Announced 20 of 20 [83.9–100%], at NOW priority, as D4 expected |
+| K6e | Not announced when the fill lands in the same frame (0 ms: 0/10; one rAF: 0/10) [0–27.8%]; announced at every delay from 50 ms (50, 100, 150, 250, 500 ms: each 10/10) [72.2–100%]. The boundary lies between one frame and 50 ms, not at the 150 ms or 350 ms serialisation window DR-0037's grading assumes |
+| K7a | Polite text queued, then the button, no cancel after the update: 20 of 20 [83.9–100%] |
+| K7b | Polite text queued, then a cancel after focus entered the text field: 20 of 20. The tap counts the cancelled text as queued, which is the bias DR-0022 records |
+| Validity | No INCONCLUSIVE reasons; no errors; every evidence package valid |
+| Clocks (D1) | Native self-test disagreement 0 ms; page-mapping uncertainty 0.1 ms; segment drift at most 0.16 ms; rAF gap at most 31.2 ms; no low-resolution TimeTicks |
+| Parity (D2) | Run level: tap 127–136 against log 127–138, the log ahead by 0–2. The extra entries are NVDA's startup speech about the runner console, queued after the tap was asked to attach but before the relay confirmed its join, so the tap could not receive them. The parity window now starts at the join confirmation, and parity is also counted per segment (DR-0039) |
+
+**Bearing on open items.** P6 now has its M1b data (segment drift and the other three checks, all far inside the D1 limits). The K6e result triggers DR-0037's conditional owner question about the grading boundaries; it matters for B2 signatures (G2) and the M3 catalogue, not for G1.
+
+### G1 runs (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37115887572](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37115887572) (G1: K1–K5 50 times each and every record-only canary, 10 shards, seed 20261005) and [37116418050](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37116418050) (K2 top-up, 3 attempts, seed 20261006), commit `f81bcd7`, image `win25-vs2026` 20260925.250.1, NVDA-present leg. Archived as `g1/g1-evidence.tar.zst` on the `results` branch (DR-0050).
+**Confidence:** observed. Full tables in `docs/gates/G1.md`.
+
+| Observation | Result |
+|---|---|
+| Gating canaries | 253 attempts, 252 valid, 0 failures; each canary 100% among valid (Wilson lower bounds 92.9–93.1%) |
+| INCONCLUSIVE | 2 of 443 attempts, both `FOREGROUND_HWND`: Chrome in the foreground, but the MSAA read 300 ms after DOM focus still returned the document |
+| Latency (DOM update to tap) | Live-region updates: median 57–61 ms, maximum 92 ms. Focus moves: median 106–127 ms, maximum 159 ms |
+| K6a | 0 of 20 in each variant: the pre-registered rule is not triggered |
+| K6b, K6e, K7 | As in the pilot: K6b NOW 20 of 20; K6e silent for same-frame fills (0 of 19) and announced from 50 ms (50 of 50); K7a no cancel 20 of 20; K7b cancel 20 of 20 |
+| Parity | Per segment exact (553 against 553 over 443 segments); per run equal in 8 of 11 runs, the log one ahead in 3 (inferred: speech at the run window's start, within the Node wall anchor's resolution of the join) |
+| Clocks | Native self-test 0 ms; page mapping 0.1 ms; drift at most 0.19 ms; rAF gap at most 31.3 ms |
+
+### Corrections after the G1 gate review (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** the G1 gate review of 2026-10-03, which recomputed every figure from the raw evidence; probe run [37114407991](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407991), which was missing from the M1 tally.
+**Affects:** DR-0021 (G1), DR-0037 (P9), DR-0048 (P11), DR-0050, DR-0051 (P10), DR-0042, DR-0022.
+
+This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" sections above; those sections stay as written.
+
+| Corrected text | Correction |
+|---|---|
+| M1b section, "Latency, DOM update to tap receipt" row | Those ranges were the smoke run's. The pilot, as an upper bound (key dispatch to tap receipt, minus the page's activation-to-update delay; it includes key delivery), gave: live-region updates (K1, K2) median 55–57 ms, range 35–75 ms; focus moves (K3–K5) median 99–120 ms, range 62–157 ms |
+| M1b section, K6e row: "not at the 150 ms or 350 ms serialisation window" | Only polite regions filled after page load were tested, so the data contradict DR-0037's 150 ms post-load boundary only. The 350 ms pre-load boundary and other roles were not tested (P9) |
+| M1b section, K7b row: "counts the cancelled text as queued" | It counts the cancelled text as spoken (D13, DR-0022) |
+| G1 section, "Latency (DOM update to tap)" row | It is an upper bound, not DOM-to-tap latency, and the K2 figure left out the top-up. Corrected (252 valid passing runs, from `report:phase0`): live-region updates median 56.5–60.8 ms, maximum 91.2 ms; focus moves median 101.4–123.7 ms, maximum 154.5 ms. The page-to-QPC mapping needed for P4's DOM-mutation latency is recorded per attempt from M2 onwards |
+| G1 section, counts without intervals | INCONCLUSIVE 2 of 443 (0.1–1.6%); K6a 0 of 20 per variant (0–16.1%); K6e same-frame fills 0 of 19 (0–16.8%); fills from 50 ms 50 of 50 (92.9–100%) |
+| M1 tally | Probe run 37114407991 (push-triggered by commit 8992346, both labels, success) repeated the M1a probes: every check 10 of 10 per leg per label, eSpeak NG loaded at rate 30, Scream installed. It is now in the G1 archive |

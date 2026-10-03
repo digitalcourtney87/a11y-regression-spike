@@ -20,4 +20,21 @@ export default defineConfig(
     files: ["**/*.js"],
     extends: [tseslint.configs.disableTypeChecked],
   },
+  {
+    // Canary pages run in the browser as classic scripts.
+    files: ["fixtures/**/*.js"],
+    languageOptions: {
+      sourceType: "script",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        location: "readonly",
+        history: "readonly",
+        performance: "readonly",
+        requestAnimationFrame: "readonly",
+        setTimeout: "readonly",
+        URLSearchParams: "readonly",
+      },
+    },
+  },
 );

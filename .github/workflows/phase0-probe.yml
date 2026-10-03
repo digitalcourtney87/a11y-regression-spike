@@ -1,15 +1,63 @@
 name: phase0-probe
-# Placeholder on main (DR-0046). GitHub dispatches a workflow only if its file
-# exists on the default branch; `gh workflow run phase0-probe.yml --ref <branch>` then
-# runs that branch's version of this file.
+# M1a runner probes (DR-0025; HANDOFF §9 M1a). windows-2025 is the gate label;
+# windows-2022 runs here as a probe only (DR-0006). Runs on pushes to m1-nvda
+# that touch the probe files, so probes do not wait for a merge to main
+# (DR-0046), and by dispatch with --ref.
 on:
   workflow_dispatch:
+  push:
+    branches: [m1-nvda]
+    paths:
+      - .github/workflows/phase0-probe.yml
+      - harness/src/probes/**
+      - harness/src/adapters/nvda-settings.ts
 permissions:
   contents: read
+concurrency:
+  group: phase0-probe-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  placeholder:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        label: [windows-2025, windows-2022]
+    runs-on: ${{ matrix.label }}
+    timeout-minutes: 45
     steps:
-      - name: Explain
-        run: echo "Placeholder on main; dispatch with --ref <branch> to run that branch's version (DR-0046)."
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Environment before audio
+        shell: pwsh
+        run: ./harness/src/probes/env.ps1 -Out artefacts/m1a/env-before.json
+      - name: Scream signature record (installs only once the thumbprint is pinned)
+        shell: pwsh
+        run: ./harness/src/probes/scream.ps1 -Lock env/env.lock.json -OutDir artefacts/m1a
+      - name: Environment after audio
+        if: always()
+        shell: pwsh
+        run: ./harness/src/probes/env.ps1 -Out artefacts/m1a/env-after.json
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        if: always()
+        run: npx --no-install playwright install chromium
+      - name: Install NVDA 2026.2 (Guidepup 0.35.0 manifest, sha256-checked)
+        if: always()
+        run: npx --no-install guidepup install
+      - name: Run probes
+        if: always()
+        env:
+          LABEL: ${{ matrix.label }}
+        run: npm run phase0:probe -- --out artefacts/m1a --label "$env:LABEL"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: m1a-${{ matrix.label }}
+          path: artefacts/m1a/
+          retention-days: 30

@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.3 (2026-10-03)
+**Version:** 1.4 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -9,6 +9,16 @@
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.4
+
+v1.4 records the M1a results that change the execution model (DR-0047). The v1.3, v1.2 and v1.1 change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.4 | DR-0047 |
+| §7.1 (audio) | Scream installed in both legs with an in-repository SetupAPI installer; the archive's unsigned `devcon.exe` is never run; M1a showed audio is required for eSpeak NG | DR-0047; DR-0040 |
+| §9.2 | Skeleton runs `scream.ps1` in both legs and the local Guidepup CLI; prose records the pinned signature and the installer | DR-0047; DR-0009 |
 
 ## Changes in v1.3
 
@@ -258,7 +268,7 @@ Exact pins live in `env/env.lock.json`; an entry marked `pending-M1a` is settled
 - **NVDA:** NVDA 2026.2 from the Guidepup 0.35.0 manifest (asset `guidepup/nvda` 0.2.1-2026.2, sha256 `7df0ca3c1c9e8c6521bc7553486ca360ed6f0b4f9bdbd6603131e38b5c1497a1`), installed with the pinned `@guidepup/setup` 0.29.1 CLI, not `guidepup/setup-action`, which was archived on 2026-09-26 (DR-0009). Record NVDA's real version from the executable or its log, not from Guidepup. The relay certificate in this build is valid from 2026-06-28 to 2027-06-28, so the exact pin has a shelf life.
 - **NVDA configuration (DR-0017, D8):** committed; locale en-GB; `[UIA] allowInChromium=3` (IA2); eSpeak NG bundled with NVDA at NVDA's default rate, rate boost off (DR-0041); say-all on page load off; speech viewer off. The NVDA log runs at DEBUG with `[debugLog]` speech, speechManager, events, UIA and synthDriver enabled (DR-0011, D2). Do not change the configuration without a decision record.
 - **eSpeak NG rate (DR-0041):** on a fresh configuration, NVDA's default eSpeak NG rate is 30 on its 0–100 scale (NVDA release-2026.2 source). The `nvda.ini` committed in M1 must not set an eSpeak rate; the effective rate is read from the running synth and recorded in each run's manifest (`EnvManifest.synth.rate`), and `env/env.lock.json` records `nvda.synth` as eSpeak at `"nvda-default"` with rate boost off. The rate is revisited only if M1a gives a reason, such as an effective rate other than 30, and any change goes to the owner, because it changes what is observed (hard rule 12). A rate other than 30 is not a synth fallback, so `SYNTH_FALLBACK` is unchanged.
-- **Audio (DR-0012, D3):** the Scream 3.6 virtual audio driver, pinned by SHA-256, with its signer certificate thumbprint verified before the certificate is added to TrustedPublisher; ephemeral hosted runners only. Product-risk note: requiring a kernel driver in customer CI is a hard sell.
+- **Audio (DR-0012, D3):** the Scream 3.6 virtual audio driver, pinned by SHA-256, with its signer certificate thumbprint verified before the certificate is added to TrustedPublisher; ephemeral hosted runners only. Installed in both legs with an in-repository SetupAPI installer, never the archive's unsigned `devcon.exe` (DR-0047). M1a showed it is required: without an audio device eSpeak NG cannot open audio and NVDA falls back to oneCore (lab notebook 2026-10-03). Product-risk note: requiring a kernel driver in customer CI is a hard sell.
 - **Scream signature (DR-0040):** the install checks the driver's Authenticode signature status, not just the thumbprint, and records the signer and issuer. If M1a finds a valid chain and a signer consistent with the release, Claude pins the thumbprint without asking the owner. If the certificate is self-signed, DR-0012 states that authenticity rests on trust on first use, and Claude asks the owner before anything is added to TrustedPublisher. Any other result, such as an unsigned driver or a chain that fails for another reason, is treated like the self-signed case (Decided by Claude under DR-0045 (2026-10-03); DR-0040).
 - **Runner image:** as §2 (`windows-2025` for gates; DR-0006).
 - **Manifest per run:** harness commit, `ImageOS`, `ImageVersion`, image name, Windows build, Chrome version and flags, accessibility mode, sandbox setting, Playwright version, NVDA version and configuration hash, NVDA channel, active synth (name, voice, rate, rate boost), audio state (endpoint count, Audiosrv running, driver), adapter name and version, listener version, .NET version, Node version, locale. The v1.1 fields are defined in DR-0026, which the owner accepted with amendments on 2026-10-02 (§10.2).
@@ -491,36 +501,12 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - name: Install Scream 3.6 virtual audio (D3, DR-0040)
-        if: matrix.leg == 'nvda-present' # both legs if M1a shows it is needed
-        shell: pwsh
-        run: |
-          $s = (Get-Content env/env.lock.json -Raw | ConvertFrom-Json).scream
-          Start-Service audio*
-          $zip = Join-Path $env:RUNNER_TEMP 'Scream3.6.zip'
-          Invoke-WebRequest -Uri $s.url -OutFile $zip
-          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
-          if ($hash -ne $s.sha256) { throw "Scream SHA-256 mismatch: $hash" }
-          $dir = Join-Path $env:RUNNER_TEMP 'scream'
-          Expand-Archive $zip -DestinationPath $dir
-          $inf = Get-ChildItem $dir -Recurse -Filter Scream.inf | Where-Object FullName -match 'x64' | Select-Object -First 1
-          if ($null -eq $inf) { throw 'Scream x64 Scream.inf not found in the archive' }
-          $sig = Get-AuthenticodeSignature (Join-Path $inf.DirectoryName 'Scream.sys')
-          $cert = $sig.SignerCertificate
-          New-Item -ItemType Directory -Force artefacts | Out-Null
-          [ordered]@{ status = "$($sig.Status)"; signer = $cert.Subject; issuer = $cert.Issuer; thumbprint = $cert.Thumbprint } |
-            ConvertTo-Json | Set-Content artefacts/scream-signature.json
-          if ($s.signerThumbprint.status -ne 'pinned') { throw 'Scream signer thumbprint is pending M1a' }
-          if (-not ($sig.Status -eq 'Valid')) { throw "Scream signature status is $($sig.Status), not Valid" }
-          if ("$($sig.Status)" -ne $s.signatureStatus.value) { throw 'Scream signature status differs from env.lock' }
-          if ($cert.Subject -ne $s.signer.value -or $cert.Issuer -ne $s.issuer.value) { throw 'Scream signer or issuer mismatch' }
-          if ($cert.Thumbprint -ne $s.signerThumbprint.value) { throw 'Scream signer thumbprint mismatch' }
-          $store = New-Object System.Security.Cryptography.X509Certificates.X509Store 'TrustedPublisher', 'LocalMachine'
-          $store.Open('ReadWrite'); $store.Add($cert); $store.Close()
-          devcon install $inf.FullName '*Scream'
+      - name: Install Scream 3.6 virtual audio (D3, DR-0040, DR-0047)
+        shell: pwsh # both legs (DR-0047); checks SHA-256, records then verifies the signature, trusts, installs
+        run: ./harness/src/probes/scream.ps1 -Lock env/env.lock.json -OutDir artefacts/scream
       - name: Install NVDA 2026.2 with the pinned Guidepup CLI (D2)
         if: matrix.leg == 'nvda-present'
-        run: npx @guidepup/setup@0.29.1 install
+        run: npx --no-install guidepup install
       - name: Preflight (D3, D8, D12)
         env:
           LEG: ${{ matrix.leg }}
@@ -540,7 +526,7 @@ jobs:
           retention-days: 30
 ```
 
-The SHAs are recorded in DR-0008 and `env/env.lock.json`; the workflow-policy tests check every workflow against rules W1–W8 and against those SHAs (DR-0016). `@guidepup/guidepup` 0.35.0 and `@guidepup/setup` 0.29.1 are pinned exactly in `package.json` in M1b, because the setup CLI reads the NVDA manifest (and its sha256) from the installed `@guidepup/guidepup` (DR-0009). The Scream step fails closed, after writing its signature record, until M1a records the signer thumbprint; `devcon` follows ARIA-AT's windows-2025 workflow, and its location on the image is confirmed in M1a (DR-0012); if M1a shows that `devcon` comes neither from the runner image nor from the pinned Scream archive, the separate download it needs is a security item for the owner (hard rule 12; DR-0012, DR-0045). The step checks the archive's SHA-256 first, before anything is expanded; a mismatch fails the step and logs the digest it found. It then reads the expanded `Scream.sys` with `Get-AuthenticodeSignature` and writes its status, signer, issuer and thumbprint to `artefacts/scream-signature.json` before any pin or signature check, so a failed check still leaves evidence; the leg's upload step runs `if: always()`, so the record is kept. Only then does it compare: before the certificate is added to TrustedPublisher, it requires the signer thumbprint to be pinned in env.lock, requires the status to equal `Valid` and verifies the status, signer, issuer and thumbprint against `env/env.lock.json`, failing on any mismatch; env.lock refuses a pinned thumbprint until the other three are pinned (DR-0040). If M1a finds the certificate self-signed, or any result other than a valid chain, the status check cannot pass, nothing is added to TrustedPublisher, and the step changes only after the owner decides (DR-0040). M2 adds `actions/setup-dotnet` (v6.0.0, SHA in DR-0008) with SDK 10.0.401 to build the listener; the owner approved this Action on 2026-10-03 (P2; DR-0046), and `env/env.lock.json` now gives it the status `pinned`. The env-lock cross-check test still requires every Action that a workflow uses to have the status `pinned`, so any future `pending-owner` Action fails CI until the owner approves it (DR-0008). Because M2 is built in parallel with M1 (DR-0043), the M2 workflow changes may land and run before G1. M1a uses a separate `.github/workflows/phase0-probe.yml`, the only workflow in which `windows-2022` may appear (DR-0025). Step names, the `phase0:preflight` script, the `canaries` input and the Scream install sequence (DR-0012) were Decided by Claude under DR-0045 (2026-10-03); the signature check in that sequence is the owner's (DR-0040).
+The SHAs are recorded in DR-0008 and `env/env.lock.json`; the workflow-policy tests check every workflow against rules W1–W8 and against those SHAs (DR-0016). `@guidepup/guidepup` 0.35.0 and `@guidepup/setup` 0.29.1 are pinned exactly in `package.json` (since M1a), and the step runs the local CLI with `npx --no-install`, because the setup CLI reads the NVDA manifest (and its sha256) from the installed `@guidepup/guidepup` (DR-0009). The Scream step runs `harness/src/probes/scream.ps1` in both legs (DR-0047). M1a pinned the signature (status `Valid`, signer, issuer and thumbprint; DR-0040, DR-0047). The archive's bundled `devcon.exe` is unsigned and is never run: the script creates the device with an in-repository SetupAPI installer that makes the same calls as `devcon install` (DR-0047). The step checks the archive's SHA-256 first, before anything is expanded; a mismatch fails the step and logs the digest it found. It then reads the expanded `Scream.sys` with `Get-AuthenticodeSignature` and writes its status, signer, issuer and thumbprint to `artefacts/scream-signature.json` before any pin or signature check, so a failed check still leaves evidence; the leg's upload step runs `if: always()`, so the record is kept. Only then does it compare: before the certificate is added to TrustedPublisher, it requires the signer thumbprint to be pinned in env.lock, requires the status to equal `Valid` and verifies the status, signer, issuer and thumbprint against `env/env.lock.json`, failing on any mismatch; env.lock refuses a pinned thumbprint until the other three are pinned (DR-0040). Any future result other than the pinned valid signature fails the step before anything is trusted (DR-0040). M2 adds `actions/setup-dotnet` (v6.0.0, SHA in DR-0008) with SDK 10.0.401 to build the listener; the owner approved this Action on 2026-10-03 (P2; DR-0046), and `env/env.lock.json` now gives it the status `pinned`. The env-lock cross-check test still requires every Action that a workflow uses to have the status `pinned`, so any future `pending-owner` Action fails CI until the owner approves it (DR-0008). Because M2 is built in parallel with M1 (DR-0043), the M2 workflow changes may land and run before G1. M1a uses a separate `.github/workflows/phase0-probe.yml`, the only workflow in which `windows-2022` may appear (DR-0025). Step names, the `phase0:preflight` script, the `canaries` input and the Scream install sequence (DR-0012) were Decided by Claude under DR-0045 (2026-10-03); the signature check in that sequence is the owner's (DR-0040).
 
 ---
 

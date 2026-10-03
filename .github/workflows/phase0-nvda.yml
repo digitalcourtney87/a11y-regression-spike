@@ -1,15 +1,85 @@
 name: phase0-nvda
-# Placeholder on main (DR-0046). GitHub dispatches a workflow only if its file
-# exists on the default branch; `gh workflow run phase0-nvda.yml --ref <branch>` then
-# runs that branch's version of this file.
+# Canary runs for M1b, the M1d pilot and the G1 runs (HANDOFF §9.2; DR-0021
+# D12). Dispatch with --ref <branch>; the placeholder on main makes the file
+# dispatchable (DR-0046). The NVDA-absent leg joins the matrix with M2.
 on:
   workflow_dispatch:
+    inputs:
+      runs:
+        description: Runs per gating canary (K1–K5)
+        type: string
+        default: "1"
+      canaries:
+        description: Comma-separated canary or item ids, or "all"
+        type: string
+        default: all
+      record_only:
+        description: Include the record-only canaries at their D4 run counts
+        type: boolean
+        default: false
+      shard_list:
+        description: JSON list of shard numbers to run, e.g. [1,2,3]
+        type: string
+        default: "[1,2,3,4,5,6,7,8,9,10]"
+      shards:
+        description: Total number of shards the plan is dealt into
+        type: string
+        default: "10"
+      seed:
+        description: Recorded seed for the attempt order
+        type: string
+        default: "20261003"
 permissions:
   contents: read
+concurrency:
+  group: phase0-nvda-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  placeholder:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
+  canaries:
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        leg: [nvda-present]
+        shard: ${{ fromJSON(inputs.shard_list) }}
     steps:
-      - name: Explain
-        run: echo "Placeholder on main; dispatch with --ref <branch> to run that branch's version (DR-0046)."
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Scream 3.6 virtual audio (D3, DR-0040, DR-0047)
+        shell: pwsh
+        run: ./harness/src/probes/scream.ps1 -Lock env/env.lock.json -OutDir artefacts/canaries
+      - name: Environment snapshot
+        shell: pwsh
+        run: ./harness/src/probes/env.ps1 -Out artefacts/canaries/env.json
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        run: npx --no-install playwright install chromium
+      - name: Install NVDA 2026.2 (Guidepup 0.35.0 manifest, sha256-checked)
+        if: matrix.leg == 'nvda-present'
+        run: npx --no-install guidepup install
+      - name: Run canaries
+        env:
+          LEG: ${{ matrix.leg }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ inputs.shards }}
+          RUNS: ${{ inputs.runs }}
+          CANARIES: ${{ inputs.canaries }}
+          RECORD_ONLY: ${{ inputs.record_only }}
+          SEED: ${{ inputs.seed }}
+        run: |
+          $recordOnly = @()
+          if ($env:RECORD_ONLY -eq 'true') { $recordOnly = @('--record-only') }
+          npm run phase0:canaries -- --leg "$env:LEG" --runs "$env:RUNS" --canaries "$env:CANARIES" --shard "$env:SHARD/$env:SHARDS" --seed "$env:SEED" --out artefacts/canaries --env artefacts/canaries/env.json @recordOnly
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: canaries-${{ matrix.leg }}-shard${{ matrix.shard }}
+          path: artefacts/canaries/
+          retention-days: 30
