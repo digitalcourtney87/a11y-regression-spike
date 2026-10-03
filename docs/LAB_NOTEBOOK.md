@@ -201,3 +201,32 @@ This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" secti
 | Speech with the listener present | NVDA conveyed all 100 gating attempts; per-segment parity exact (160 against 160) |
 | Clocks (G2 run) | Native self-test 0 ms for both collectors; page mapping 0.1 ms; drift median 0.04 ms, maximum 0.17 ms; rAF gap median 15.8 ms, maximum 47.0 ms |
 | P10 | 2 of 450 G2 attempts needed four reads; both valid |
+
+### Corrections after the G2 gate review, and the verification run (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** the G2 gate review of 2026-10-03, which recomputed the figures from the raw evidence (50 findings confirmed); `phase0-nvda.yml` run [37122536874](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37122536874) (verification of the gate-review code: both legs, K1–K5 once, K6e one rAF and 50 ms, K7a, seed 20261014, commit `3076d67`).
+**Affects:** DR-0053 (P12, P13), DR-0054, DR-0037 and P9 (DR-0052), DR-0041.
+
+This entry corrects the "M2 listener smoke run and pilot" and "G2 run and NVDA on/off diagnostic" sections above; those sections stay as written.
+
+| Corrected text | Correction |
+|---|---|
+| Smoke and pilot, "K1–K5 B2 signatures": "14 of 14" | 20 of 20 (smoke 10, pilot 10) |
+| Smoke and pilot, "DOM change to WinEvent": "smoke 7.8–20.0 ms" | Smoke medians 7.8–16.2 ms, maximum 20.0 ms |
+| Smoke and pilot, K6 row: "SHOW, then REORDER, IA2 TEXT_INSERTED and LIVEREGIONCHANGED" | SHOW at the insertion; at the fill, IA2 TEXT_INSERTED, then REORDER and LIVEREGIONCHANGED |
+| Smoke and pilot, "eSpeak NG": "rate 30 … recorded in each of the 10 NVDA runs" | What was read is a session `nvda.ini` with no `[[espeak]]` section; 30 with rate boost off is NVDA's default (DR-0041), not a value read |
+| G2 entry, "K6 and K7": "the K7 update precedes the focus move in both channels (40 of 40)" | In the DOM the order is fixed by the canary's construction. On the platform IA2 TEXT_INSERTED preceded EVENT_OBJECT_FOCUS (40 of 40) but LIVEREGIONCHANGED followed it (40 of 40), all within about 0.6 ms in one batch |
+| G2 entry, "Chrome's serialisation window": "the region's SHOW arrived 9–11 ms after the DOM insertion" | Medians 8.8–11.4 ms, per-attempt range 5.1–13.8 ms (pilot and G2) |
+| G2 entry, on/off diagnostic: "The only systematic window difference is a STATECHANGE on the activating button" | Two, both NVDA-absent only: STATECHANGE on the "Start canary" button in every attempt, and STATECHANGE on `main` in every K5 attempt. Both are inferred pointer-state effects of Playwright's click, so the diagnostic changes NVDA presence and activation together |
+| Both entries, identity: "every platform signature component matched through AutomationId" | True for gating components. In K6e region traces the LiveSetting fallback attributed each fill's text node to the region (100 times); LiveSetting is no longer an identity (DR-0053) |
+| Both entries, hooks | Hook counts were recorded per job (the probe against Node), not per attempt; per-attempt readiness lines are recorded from the gate-review fix |
+
+**Verification run (gate-review code).** All 6 jobs succeeded on image `win25-vs2026` 20260925.250.1. NVDA-absent leg:
+- listener 0.3.0 ready, its readiness line recorded, and drained in 45 of 45 attempts;
+- the wall anchor was adopted from the listener in every NVDA-absent job;
+- timeline version 2 in every attempt;
+- one-rAF fills were tagged as rAF fills and graded populated insertions (10 of 10); 50 ms timer fills were untagged and graded separate updates (10 of 10);
+- every gating signature matched (5 of 5).
+
+NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF silent (0 of 10), 50 ms announced (10 of 10), K7a 20 of 20. Re-scoring every earlier M2 run with this code changed no gating verdict and no record-only trace.
