@@ -368,6 +368,8 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
       try {
         drained = await listener.stop();
         if (!drained.drained) failListener(`not drained (${String(drained.remaining)} events still queued)`);
+        // A malformed line is a lost event, so the trace is incomplete (P13, DR-0055).
+        else if (drained.malformed > 0) failListener(`${String(drained.malformed)} malformed output lines`);
       } catch (error) {
         failListener(`stop: ${errorText(error)}`);
       }

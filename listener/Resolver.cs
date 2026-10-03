@@ -16,6 +16,8 @@ internal readonly record struct RawEvent(long QpcTicks, uint EventId, IntPtr Hwn
 
 internal sealed class Resolver : IDisposable
 {
+    private const int CHILDID_SELF = 0;
+
     private readonly BlockingCollection<RawEvent> _queue = new();
     private readonly StreamWriter _out;
     private readonly int _pid;
@@ -63,10 +65,17 @@ internal sealed class Resolver : IDisposable
         {
             if (Native.AccessibleObjectFromEvent(raw.Hwnd, raw.IdObject, raw.IdChild, out var acc, out var child) == 0 && acc is not null)
             {
-                object childId = child ?? 0;
-                try { name = acc.get_accName(childId); } catch (COMException) { }
-                try { role = Native.RoleText(acc.get_accRole(childId)); } catch (COMException) { }
-                ReadUia(acc, childId is int c ? c : 0, ref automationId, ref liveSetting, ref ariaRole);
+                // The child comes back either as a numeric child ID of acc or as
+                // an accessible object of its own. An object is the event's
+                // target, read with CHILDID_SELF, so a child never takes its
+                // parent's identity.
+                IAccessible target = acc;
+                int childId = CHILDID_SELF;
+                if (child is IAccessible childObject) target = childObject;
+                else if (child is int numeric) childId = numeric;
+                try { name = target.get_accName(childId); } catch (COMException) { }
+                try { role = Native.RoleText(target.get_accRole(childId)); } catch (COMException) { }
+                ReadUia(target, childId, ref automationId, ref liveSetting, ref ariaRole);
             }
         }
         catch (Exception e)

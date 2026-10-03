@@ -12,13 +12,16 @@
  * causal order. From version 2, insertions and text changes inside a live
  * region record the region's root (`liveRoot`), and records flushed at the end
  * of a `requestAnimationFrame` callback are tagged `inRaf`, so a fill made in
- * a rAF callback can be told from a timer fill (P9). Entries are buffered in `window.__a11yTimeline` and drained
+ * a rAF callback can be told from a timer fill (P9). From version 3, focus
+ * entries name the element that actually took focus inside an open shadow
+ * root (`composedPath()[0]`), with the shadow host in `host`; inside a closed
+ * root only the host is visible. Entries are buffered in `window.__a11yTimeline` and drained
  * with `TIMELINE_DRAIN_SCRIPT` after the observation window. Each entry's `t`
  * is the observer callback's time, so records delivered in one batch share it.
  */
 
 /** Version of the init script's record format (attempt records carry it from version 2). */
-export const TIMELINE_VERSION = 2;
+export const TIMELINE_VERSION = 3;
 
 /** One timeline entry, as the init script records it. */
 export interface TimelineEntry {
@@ -39,6 +42,8 @@ export interface TimelineEntry {
   liveRoot?: string;
   /** Version 2: recorded by the flush at the end of a requestAnimationFrame callback. */
   inRaf?: boolean;
+  /** Version 3: for focusin and focusout inside an open shadow root, the shadow host the event was retargeted to. */
+  host?: string;
 }
 
 /** The init script (a classic script string; it reads performance.now() only). */
@@ -98,8 +103,15 @@ export const TIMELINE_INIT_SCRIPT = `(() => {
     observer.observe(root, options);
     return root;
   };
-  addEventListener("focusin", (e) => { flush(); out.push({ t: now(), kind: "focusin", target: describe(e.target) }); }, true);
-  addEventListener("focusout", (e) => { flush(); out.push({ t: now(), kind: "focusout", target: describe(e.target) }); }, true);
+  const focusEntry = (kind, e) => {
+    const path = typeof e.composedPath === "function" ? e.composedPath() : [];
+    const inner = path.length > 0 ? path[0] : e.target;
+    const entry = { t: now(), kind, target: describe(inner) };
+    if (inner !== e.target) entry.host = describe(e.target);
+    return entry;
+  };
+  addEventListener("focusin", (e) => { flush(); out.push(focusEntry("focusin", e)); }, true);
+  addEventListener("focusout", (e) => { flush(); out.push(focusEntry("focusout", e)); }, true);
   for (const method of ["pushState", "replaceState"]) {
     const original = history[method];
     history[method] = function (...args) { flush(); out.push({ t: now(), kind: "history", target: "history", detail: method }); return original.apply(this, args); };
