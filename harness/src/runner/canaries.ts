@@ -8,10 +8,15 @@
  */
 import type { CanaryId } from "../schema/types.ts";
 
-/** What a gating canary must produce in the NVDA-present leg (G1). */
+/**
+ * What a gating canary must produce in the NVDA-present leg (G1). Matching
+ * compares letters and digits only (`speechKey` in outcome.ts), because NVDA's
+ * speech dictionaries rewrite text before it is queued, for example splitting
+ * "K1" into "K 1" (observed in run 37114407343; DR-0048).
+ */
 export interface SpeechExpectation {
-  /** Pattern the normalised text of one queued utterance must match. */
-  pattern: RegExp;
+  /** Text one queued utterance must contain, compared by `speechKey`. */
+  contains: string;
   /** Latest acceptable receipt time after activation (ms). */
   deadlineMs: number;
 }
@@ -47,14 +52,14 @@ function spec(canary: CanaryId, fields: Omit<CanarySpec, "canary" | "itemId" | "
 /** The five gating canaries (K1–K5), whose NVDA outcome is scored in G1. */
 export const GATING_SPECS: readonly CanarySpec[] = [
   // K1: polite update within 3 s of the text insertion.
-  spec("K1", { gating: true, phrase: "K1 polite update arrived", expectation: { pattern: /k1 polite update arrived/, deadlineMs: FILL_DELAY_MS + 3000 } }),
-  spec("K2", { gating: true, phrase: "K2 alert update arrived", expectation: { pattern: /k2 alert update arrived/, deadlineMs: OBSERVE_MS } }),
-  // K3: name and role conveyed: the name followed by the role.
-  spec("K3", { gating: true, phrase: "K3 target button", expectation: { pattern: /k3 target button\b.*\bbutton\b/, deadlineMs: OBSERVE_MS } }),
+  spec("K1", { gating: true, phrase: "K1 polite update arrived", expectation: { contains: "K1 polite update arrived", deadlineMs: FILL_DELAY_MS + 3000 } }),
+  spec("K2", { gating: true, phrase: "K2 alert update arrived", expectation: { contains: "K2 alert update arrived", deadlineMs: OBSERVE_MS } }),
+  // K3: name and role conveyed: the name immediately followed by the role.
+  spec("K3", { gating: true, phrase: "K3 target button", expectation: { contains: "K3 target button button", deadlineMs: OBSERVE_MS } }),
   // K4: the dialog's name conveyed.
-  spec("K4", { gating: true, phrase: "K4 settings dialog", expectation: { pattern: /k4 settings dialog/, deadlineMs: OBSERVE_MS } }),
+  spec("K4", { gating: true, phrase: "K4 settings dialog", expectation: { contains: "K4 settings dialog", deadlineMs: OBSERVE_MS } }),
   // K5: the h1 text conveyed after the route change.
-  spec("K5", { gating: true, phrase: "K5 route heading", expectation: { pattern: /k5 route heading/, deadlineMs: OBSERVE_MS } }),
+  spec("K5", { gating: true, phrase: "K5 route heading", expectation: { contains: "K5 route heading", deadlineMs: OBSERVE_MS } }),
 ];
 
 /** The K6e fill delays (D4): 0 ms, one rAF, 50, 100, 150, 250 and 500 ms. */

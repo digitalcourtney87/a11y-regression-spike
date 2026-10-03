@@ -16,6 +16,16 @@ export function normaliseSpeech(text: string): string {
   return text.toLowerCase().replace(/\s+/g, " ").trim();
 }
 
+/**
+ * The comparison key for speech: lower-case letters and digits only. NVDA's
+ * speech dictionaries rewrite text before it is queued (for example "K1"
+ * becomes "K 1"), so spaces and punctuation are ignored when matching
+ * (DR-0048).
+ */
+export function speechKey(text: string): string {
+  return text.toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}]+/gu, "");
+}
+
 export interface UtteranceView {
   text: string;
   /** Receipt time relative to activation (ms). */
@@ -61,7 +71,8 @@ export function evaluateAttempt(spec: CanarySpec, events: readonly TapEvent[], a
   if (spec.gating) {
     const expectation = spec.expectation;
     if (expectation === undefined) throw new Error(`gating canary ${spec.itemId} has no expectation`);
-    const matches = speaks.filter((e) => expectation.pattern.test(normaliseSpeech(e.text)));
+    const wanted = speechKey(expectation.contains);
+    const matches = speaks.filter((e) => speechKey(e.text).includes(wanted));
     const inTime = matches.find((e) => (e.t - activationT) / 1e6 <= expectation.deadlineMs);
     return {
       kind: "gating",
@@ -70,16 +81,16 @@ export function evaluateAttempt(spec: CanarySpec, events: readonly TapEvent[], a
       late: inTime === undefined && matches.length > 0,
     };
   }
-  const phrase = normaliseSpeech(spec.phrase ?? "");
+  const phrase = speechKey(spec.phrase ?? "");
   const updateT = activationT + (FILL_DELAY_MS - 100) * 1e6;
-  const carrying = speaks.filter((e) => phrase !== "" && normaliseSpeech(e.text).includes(phrase));
+  const carrying = speaks.filter((e) => phrase !== "" && speechKey(e.text).includes(phrase));
   const first = carrying[0];
   const cancels = events.filter((e) => e.kind === "cancel" && e.t >= updateT).length;
   let politeBeforeFocus: boolean | null = null;
   let focusSpeech: string | null = null;
   if (spec.canary === "K7a" || spec.canary === "K7b") {
-    const focusPattern = spec.canary === "K7a" ? /k7a target button/ : /k7b text field/;
-    const focus = speaks.find((e) => focusPattern.test(normaliseSpeech(e.text)));
+    const focusKey = speechKey(spec.canary === "K7a" ? "K7a target button" : "K7b text field");
+    const focus = speaks.find((e) => speechKey(e.text).includes(focusKey));
     focusSpeech = focus?.text ?? null;
     politeBeforeFocus = first !== undefined && (focus === undefined || first.t <= focus.t);
   }

@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest";
 import type { TapEvent } from "../adapters/relayTap.ts";
 import { buildPlan, GATING_SPECS, mulberry32, RECORD_ONLY_SPECS, shardOf, specByItemId } from "./canaries.ts";
 import type { CanarySpec } from "./canaries.ts";
-import { evaluateAttempt, normaliseSpeech } from "./outcome.ts";
+import { evaluateAttempt, normaliseSpeech, speechKey } from "./outcome.ts";
 
 const T0 = 1_000_000_000;
 const ms = (n: number): number => T0 + n * 1e6;
@@ -34,6 +34,16 @@ describe("gating canaries", () => {
   test("K4 and K5 match their names", () => {
     expect(evaluateAttempt(gating("K4"), [speak(700, "K4 settings dialog  dialog  First control  button")], T0)).toMatchObject({ verdict: "PASS" });
     expect(evaluateAttempt(gating("K5"), [speak(700, "K5 route heading  heading  level 1")], T0)).toMatchObject({ verdict: "PASS" });
+  });
+  test("matches through NVDA's speech-dictionary rewrites, as observed in run 37114407343", () => {
+    expect(evaluateAttempt(gating("K1"), [speak(563, "K 1 polite update arrived")], T0)).toMatchObject({ verdict: "PASS" });
+    expect(evaluateAttempt(gating("K3"), [speak(618, "K 3 target button button")], T0)).toMatchObject({ verdict: "PASS" });
+    expect(evaluateAttempt(gating("K3"), [speak(618, "K 3 target button")], T0)).toMatchObject({ verdict: "FAIL" });
+    expect(evaluateAttempt(gating("K4"), [speak(636, "K 4 settings dialog dialog")], T0)).toMatchObject({ verdict: "PASS" });
+    expect(evaluateAttempt(gating("K5"), [speak(603, "K 5 route heading heading level 1")], T0)).toMatchObject({ verdict: "PASS" });
+  });
+  test("speechKey keeps letters and digits only", () => {
+    expect(speechKey("K 1, polite; update!")).toBe("k1politeupdate");
   });
   test("speech before activation never counts", () => {
     expect(evaluateAttempt(gating("K2"), [speak(-50, "K2 alert update arrived")], T0)).toMatchObject({ verdict: "FAIL" });
