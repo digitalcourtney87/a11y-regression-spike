@@ -1,0 +1,42 @@
+{
+  "id": "acrm-company-create-notification",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/companies/create",
+  "anchor": "input[name=\"name\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "fill-company",
+      "fn": "acrm.fill-company"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Save"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "save-company",
+      "strategy": "ACTIVATE",
+      "observeMs": 5000,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "Element created"
+        }
+      ]
+    }
+  ]
+}

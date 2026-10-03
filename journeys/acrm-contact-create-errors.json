@@ -1,0 +1,76 @@
+{
+  "id": "acrm-contact-create-errors",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/create",
+  "anchor": "input[name=\"first_name\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "invalid-linkedin",
+      "fn": "acrm.invalid-linkedin"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "role": "button",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "save-contact",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|First name"
+        },
+        {
+          "type": "stateIs",
+          "value": "textbox|First name|invalid=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-last-name",
+      "strategy": "TAB",
+      "until": {
+        "name": "Last name",
+        "role": "textbox",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Last name"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-linkedin",
+      "strategy": "TAB",
+      "until": {
+        "name": "LinkedIn URL",
+        "role": "textbox",
+        "maxAttempts": 12
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "URL must be from linkedin.com"
+        }
+      ]
+    }
+  ]
+}

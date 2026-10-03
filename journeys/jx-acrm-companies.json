@@ -1,0 +1,191 @@
+{
+  "id": "jx-acrm-companies",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/companies",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b1",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b2",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b3",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b4",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b5",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b6",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b7",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b8",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b9",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b10",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b11",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b12",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b13",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b14",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b15",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b16",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b17",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b18",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b19",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b20",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b21",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b22",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b23",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b24",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b25",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 300,
+      "expectations": []
+    }
+  ]
+}

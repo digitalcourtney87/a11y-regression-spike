@@ -1,0 +1,59 @@
+{
+  "id": "acrm-theme-menu",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-theme",
+      "strategy": "TAB",
+      "until": {
+        "name": "Toggle theme",
+        "role": "button",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Toggle theme"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-theme",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "button|Toggle theme|expanded=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-theme",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Toggle theme"
+        }
+      ]
+    }
+  ]
+}

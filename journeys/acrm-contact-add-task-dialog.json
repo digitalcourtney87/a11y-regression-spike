@@ -1,0 +1,115 @@
+{
+  "id": "acrm-contact-add-task-dialog",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/0/show",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-add-task",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add task",
+        "role": "button",
+        "maxAttempts": 80
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add task"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-task-dialog",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Create task"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "t1",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t2",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t3",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t4",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t5",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t6",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t7",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t8",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-task-dialog",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add task"
+        }
+      ]
+    }
+  ]
+}

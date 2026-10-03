@@ -24,6 +24,16 @@ export const SETUPS: Readonly<Record<string, SetupFn>> = {
     await page.locator('input[name="last_name"]').fill("Lovelace");
     await settle(page, 300);
   },
+  /** Atomic CRM, contact create: a LinkedIn URL that is a valid URL but not linkedin.com, so its validator reports an error on save. */
+  "acrm.invalid-linkedin": async (page) => {
+    await page.locator('input[name="linkedin_url"]').fill("https://example.com/ada");
+    await settle(page, 300);
+  },
+  /** Atomic CRM, company create: fill the required name with a fixed company, Ada Corp. */
+  "acrm.fill-company": async (page) => {
+    await page.locator('input[name="name"]').first().fill("Ada Corp");
+    await settle(page, 300);
+  },
   /** react-admin "simple", post edit: change the title, so that the Save button is enabled. */
   "ras.edit-post-title": async (page) => {
     const title = page.locator('input[name="title"]').first();

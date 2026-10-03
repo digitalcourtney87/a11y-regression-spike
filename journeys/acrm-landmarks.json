@@ -1,0 +1,49 @@
+{
+  "id": "acrm-landmarks",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-deals-link",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Deals",
+        "role": "link",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "link|Deals"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-main",
+      "strategy": "NEXT_LANDMARK",
+      "until": {
+        "role": "main",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "main|*"
+        }
+      ]
+    }
+  ]
+}

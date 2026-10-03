@@ -1,21 +1,27 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M5 evidence run: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app; the runner now also records goal-attempt times, the simulated cursor's nodes, DOM-id targets and a settled tree 1 s into each long observation window (DR-0079)",
+  "purpose": "Test-pattern journey development, Atomic CRM round 1: draft journeys and exploration journeys on the base build only, both legs, one attempt, no item and no candidate (DR-0082)",
   "apps": [
-    "atomic-crm",
-    "react-admin-simple",
-    "oss-carbon-19563",
-    "oss-fluent-35927",
-    "oss-rac-8697"
+    "atomic-crm"
   ],
   "legs": [
     "nvda-absent",
     "nvda-present"
   ],
   "items": [],
-  "sides": "both",
-  "reps": "",
-  "canaries": true,
-  "axe": true,
-  "shards": 3
+  "journeys": [
+    "acrm-contact-create-errors",
+    "acrm-company-create-notification",
+    "acrm-contact-add-task-dialog",
+    "acrm-theme-menu",
+    "acrm-landmarks",
+    "jx-acrm-contacts-list",
+    "jx-acrm-contact-show",
+    "jx-acrm-companies"
+  ],
+  "sides": "base",
+  "reps": "1",
+  "canaries": false,
+  "axe": false,
+  "shards": 2
 }
