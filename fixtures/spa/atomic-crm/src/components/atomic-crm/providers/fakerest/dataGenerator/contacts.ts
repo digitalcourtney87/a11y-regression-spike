@@ -52,9 +52,8 @@ export const generateContacts = (db: Db, size = 500): Required<Contact>[] => {
     ];
     const avatar = {
       src: has_avatar
-        ? "https://marmelab.com/posters/avatar-" +
-          (223 - numberOfContacts) +
-          ".jpeg"
+        ? // Accessibility-corpus integration (P14): local placeholder avatars.
+          `./demo-avatars/avatar-${(223 - numberOfContacts) % 12}.svg`
         : undefined,
     };
     const title = fakerCompany.bsAdjective();

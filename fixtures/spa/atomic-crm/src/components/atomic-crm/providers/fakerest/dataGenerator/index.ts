@@ -1,3 +1,6 @@
+import fakerEn from "faker/locale/en";
+import fakerEnUS from "faker/locale/en_US";
+
 import { generateCompanies } from "./companies";
 import { generateContactNotes } from "./contactNotes";
 import { generateContacts } from "./contacts";
@@ -9,7 +12,14 @@ import { generateTags } from "./tags";
 import { generateTasks } from "./tasks";
 import type { Db } from "./types";
 
+// Accessibility-corpus integration (P14): a fixed seed makes the demo data
+// identical on every load; journeys also fix the clock, because some values
+// are relative to the current date.
+const DEMO_SEED = 20261004;
+
 export default (): Db => {
+  fakerEnUS.seed(DEMO_SEED);
+  fakerEn.seed(DEMO_SEED);
   const db = {} as Db;
   db.sales = generateSales(db);
   db.tags = generateTags(db);

@@ -25,7 +25,8 @@ export const generateCompanies = (db: Db, size = 55): Required<Company>[] => {
       name: name,
       logo: {
         title: lorem.text(1),
-        src: `https://marmelab.com/react-admin-crm/logos/${id}.png`,
+        // Accessibility-corpus integration (P14): local placeholder logos.
+        src: `./demo-logos/logo-${id % 12}.svg`,
       } as RAFile,
       sector: random.arrayElement(defaultCompanySectors).value,
       size: random.arrayElement(sizes) as 1 | 10 | 50 | 250 | 500,

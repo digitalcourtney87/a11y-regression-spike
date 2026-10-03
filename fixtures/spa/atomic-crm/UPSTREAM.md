@@ -20,3 +20,10 @@ The commit after this file's first commit holds every change from upstream, so `
 ## Building
 
 The demo build runs only in CI (`npm ci --ignore-scripts`, then `npx --no-install vite build --config vite.demo.config.ts`), with `contents: read`, no secrets and a separate npm cache (P17).
+
+### Integration commit (P14)
+
+- `demo/App.tsx`: `disableTelemetry` on `<CRM>`, so the CRM's telemetry image request is never made (the admin kit's was already off).
+- `src/components/atomic-crm/providers/fakerest/dataGenerator/index.ts`: both `faker` locale instances seeded with 20261004 before the data are generated.
+- `companies.ts` and `contacts.ts`: company logos and contact avatars point to local placeholder SVGs in `public/demo-logos/` and `public/demo-avatars/` (generated for this repository) instead of `marmelab.com`.
+- The clock is fixed by each journey's setup (Playwright's clock API), not in the app.

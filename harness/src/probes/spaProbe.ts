@@ -2,14 +2,19 @@
  * M3 SPA candidate probe (HANDOFF §9 M3; DR-0056). Windows CI only.
  *
  *   node harness/src/probes/spaProbe.ts --name <candidate> --dist <built dir> --out <json> [--paths /,/#/contacts]
+ *     [--fixed-time 2026-10-05T09:00:00Z] [--repeat 2]
  *
  * Serves a candidate's production build from 127.0.0.1 (single-page fallback
  * to index.html), opens it in the pinned Chrome for Testing with the
  * screen-reader accessibility mode, blocks every request to another host and
  * records it (the "no external credentials" and "deterministic data"
  * criteria), and records console and page errors, the title, the accessibility
- * roles present and an ARIA snapshot for each path. Install and build times
- * are measured by the workflow. Every result is EXPLORATORY.
+ * roles present and an ARIA snapshot for each path. With `--fixed-time` the
+ * page clock is fixed before load (Playwright's clock API, as journey setup
+ * will do); with `--repeat n` each path is loaded n times in fresh contexts
+ * and the ARIA snapshots are compared (the "deterministic data" criterion).
+ * Install and build times are measured by the workflow. Every result is
+ * EXPLORATORY.
  */
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
@@ -26,6 +31,8 @@ const { values: args } = parseArgs({
     dist: { type: "string" },
     out: { type: "string" },
     paths: { type: "string", default: "/" },
+    "fixed-time": { type: "string" },
+    repeat: { type: "string", default: "1" },
   },
 });
 if (args.name === undefined || args.dist === undefined || args.out === undefined) throw new Error("--name, --dist and --out are required");
@@ -80,41 +87,51 @@ async function main(): Promise<void> {
   const consoleErrors: string[] = [];
   const pageErrors: string[] = [];
   const pages: Record<string, unknown>[] = [];
+  const repeat = Math.max(1, Number(args.repeat));
   try {
-    const context = await browser.newContext();
-    await context.route("**/*", async (route) => {
-      const url = route.request().url();
-      if (url.startsWith(base) || url.startsWith("data:") || url.startsWith("blob:")) await route.continue();
-      else {
-        external.push(url);
-        await route.abort();
-      }
-    });
-    const page = await context.newPage();
-    page.on("console", (m) => {
-      if (m.type() === "error") consoleErrors.push(m.text().slice(0, 300));
-    });
-    page.on("pageerror", (e) => pageErrors.push(e.message.slice(0, 300)));
     for (const path of args.paths.split(",")) {
-      await page.goto(`${base}${path}`, { waitUntil: "load", timeout: 60_000 });
-      await sleep(3000);
-      const cdp = await context.newCDPSession(page);
-      const { nodes } = (await cdp.send("Accessibility.getFullAXTree")) as { nodes: AxNode[] };
-      await cdp.detach();
-      const roles: Record<string, number> = {};
-      for (const n of nodes) {
-        const role = n.role?.value;
-        if (n.ignored !== true && role !== undefined) roles[role] = (roles[role] ?? 0) + 1;
+      const snapshots: string[] = [];
+      let record: Record<string, unknown> = {};
+      for (let r = 0; r < repeat; r++) {
+        // A fresh context per load, so nothing carries over between loads.
+        const context = await browser.newContext();
+        await context.route("**/*", async (route) => {
+          const url = route.request().url();
+          if (url.startsWith(base) || url.startsWith("data:") || url.startsWith("blob:")) await route.continue();
+          else {
+            external.push(url);
+            await route.abort();
+          }
+        });
+        const page = await context.newPage();
+        page.on("console", (m) => {
+          if (m.type() === "error") consoleErrors.push(m.text().slice(0, 300));
+        });
+        page.on("pageerror", (e) => pageErrors.push(e.message.slice(0, 300)));
+        if (args["fixed-time"] !== undefined) await page.clock.setFixedTime(args["fixed-time"]);
+        await page.goto(`${base}${path}`, { waitUntil: "load", timeout: 60_000 });
+        await sleep(3000);
+        const cdp = await context.newCDPSession(page);
+        const { nodes } = (await cdp.send("Accessibility.getFullAXTree")) as { nodes: AxNode[] };
+        await cdp.detach();
+        const roles: Record<string, number> = {};
+        for (const n of nodes) {
+          const role = n.role?.value;
+          if (n.ignored !== true && role !== undefined) roles[role] = (roles[role] ?? 0) + 1;
+        }
+        const snapshot = await page.locator("body").ariaSnapshot({ timeout: 10_000 }).catch((e: unknown) => `ariaSnapshot failed: ${String(e)}`);
+        snapshots.push(snapshot);
+        if (r === 0) record = { path, url: page.url(), title: await page.title(), roles, ariaSnapshot: snapshot.slice(0, 20_000) };
+        await context.close();
       }
-      const snapshot = await page.locator("body").ariaSnapshot({ timeout: 10_000 }).catch((e: unknown) => `ariaSnapshot failed: ${String(e)}`);
-      pages.push({ path, url: page.url(), title: await page.title(), roles, ariaSnapshot: snapshot.slice(0, 20_000) });
+      pages.push({ ...record, loads: repeat, identicalAcrossLoads: snapshots.every((s) => s === snapshots[0]) });
     }
   } finally {
     await browser.close();
     close();
   }
   mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(outPath, `${JSON.stringify({ label: "EXPLORATORY", name: args.name, external, consoleErrors, pageErrors, pages }, null, 2)}\n`);
+  writeFileSync(outPath, `${JSON.stringify({ label: "EXPLORATORY", name: args.name, fixedTime: args["fixed-time"] ?? null, external, consoleErrors, pageErrors, pages }, null, 2)}\n`);
 }
 
 await main();

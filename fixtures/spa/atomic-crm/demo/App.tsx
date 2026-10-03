@@ -10,6 +10,8 @@ const App = () => (
     dataProvider={dataProvider}
     authProvider={authProvider}
     store={memoryStore()}
+    // Accessibility-corpus integration (P14): no telemetry request leaves the page.
+    disableTelemetry
   />
 );
 
