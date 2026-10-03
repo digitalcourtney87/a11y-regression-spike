@@ -6,7 +6,7 @@
  * so a benign class rename cannot make a violation look new. A new violation
  * of a rule in `protocol/oracles/rules.v1.json` gives FAIL with that rule's
  * symptom; any other new violation gives REVIEW. axe's "incomplete" results
- * are not used.
+ * are not used. Missing or failed axe results at a step give REVIEW.
  */
 import type { BlockAttempt } from "./evidence.ts";
 import type { Finding } from "./compare.ts";
@@ -23,7 +23,11 @@ function counts(a: BlockAttempt, stepId: string): Map<string, number> | null {
 export function axeFindings(stepId: string, base: readonly BlockAttempt[], cand: readonly BlockAttempt[], k: number, rules: OracleRules): Omit<Finding, "family" | "stepIndex" | "stepId" | "order">[] {
   const b = base.map((a) => counts(a, stepId));
   const c = cand.map((a) => counts(a, stepId));
-  if (b.some((x) => x === null) || c.some((x) => x === null)) return [];
+  // Missing or failed axe evidence at a step every attempt reached is made explicit, never read as a pass.
+  if (b.some((x) => x === null) || c.some((x) => x === null)) {
+    const missing = [...b, ...c].filter((x) => x === null).length;
+    return [{ verdict: "REVIEW", rule: "axe-evidence-missing", detail: `axe results missing or failed in ${String(missing)} attempt(s) at this step` }];
+  }
   const bc = b as Map<string, number>[];
   const cc = c as Map<string, number>[];
   const ids = [...new Set(cc.flatMap((m) => [...m.keys()]))].sort();

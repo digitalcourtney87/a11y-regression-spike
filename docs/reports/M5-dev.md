@@ -1,6 +1,6 @@
 # M5 dev-split report (EXPLORATORY)
 
-Runs: artefacts/37157013736. Harness commit: 398566fef161. Oracle tables: `protocol/oracles/rules.v1.json`; triggers: `protocol/triggers.v1.json`. k = n per side and leg (DR-0031). Bootstrap: 10000 pattern-level resamples, seed 20261005. Detection needs a FAIL with the correct symptom; REVIEW is not detection and INCONCLUSIVE is a miss. "Any" credits an arm when any of its FAIL symptoms is correct; "earliest" only the earliest finding's. The reachability symptoms count as one family (P29). Rules approved by the owner 2026-10-03 (P28–P36, DR-0081). W = Wilson 95% over items; boot = pattern bootstrap 95%.
+Runs: artefacts/37157013736. Harness commit: fef0f381d47a. Oracle tables: `protocol/oracles/rules.v1.json`; triggers: `protocol/triggers.v1.json`. k = n per side and leg (DR-0031). Bootstrap: 10000 pattern-level resamples, seed 20261005. Detection needs a FAIL with the correct symptom; REVIEW is not detection and INCONCLUSIVE is a miss. "Any" credits an arm when any of its FAIL symptoms is correct; "earliest" only the earliest finding's. The reachability symptoms count as one family (P29). Rules approved by the owner 2026-10-03 (P28–P36, DR-0081). W = Wilson 95% over items; boot = pattern bootstrap 95%.
 
 ## Arms
 
@@ -239,3 +239,4 @@ Pairs needed for each paired comparison at α = 0.05 and power 0.8 (Connor 1987)
 - Speech is what NVDA queues plus global cancels, not audio: queued-then-cancelled text counts as spoken, and cancellations inside NVDA's speech manager never reach the relay (R10, DR-0022). This makes ANNOUNCEMENT_DUPLICATED anti-conservative; a duplicate seen only in speech is REVIEW (DR-0042; P36).
 - The oracles were developed on this split. Its results show the rules work as written; they are not estimates for the test split.
 - Every dev pattern has one regression item, so item-level and pattern-level counts agree; the bootstrap matters for the test split's mixed clusters (P20).
+- The tree and B2 tie an announcement's text to a live region read at the step's end or 1 s into its window (DR-0079). A message shown and removed within that second is missed by both.

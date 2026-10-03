@@ -42,6 +42,11 @@ describe("runScoreCli", () => {
     expect(c.err.join("\n")).toMatch(/missing --runs/);
   });
 
+  test("--allow-missing is passed through", () => {
+    const c = capture();
+    expect(runScoreCli(["--split", "dev", "--runs", "a", "--allow-missing"], unfrozen, c.io)).toEqual({ split: "dev", runs: ["a"], allowMissing: true });
+  });
+
   test("dev with runs returns the scoring request", () => {
     const c = capture();
     expect(runScoreCli(["--split", "dev", "--runs", "artefacts/1, artefacts/2", "--out", "r.md"], unfrozen, c.io)).toEqual({ split: "dev", runs: ["artefacts/1", "artefacts/2"], out: "r.md" });

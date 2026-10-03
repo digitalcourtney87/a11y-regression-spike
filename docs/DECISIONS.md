@@ -118,6 +118,7 @@ Conventions:
 | [DR-0079](#dr-0079-m5-evidence-additions-and-the-pre-registered-triggers) | M5 evidence additions, and the pre-registered triggers | Accepted | 2026-10-03 | Decided by Claude under DR-0045; trigger definitions approved by the owner 2026-10-03 (P34, DR-0081) | DR-0081 | Resolved (P34, DR-0081) |
 | [DR-0080](#dr-0080-m5-oracles-scorer-and-dev-results-and-owner-items-p28p37) | M5 oracles, scorer and dev results, and owner items P28–P37 | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) | DR-0081 | Resolved (P28–P37, DR-0081) |
 | [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3499,3 +3500,27 @@ The full report is `docs/reports/M5-dev.md`.
 - P37: no new pattern batch now. The 59 test patterns are built next (P15). At the M6 freeze, a second round is pre-registered, sized from DR-0080's power table and triggered if a headline comparison lands in the inconclusive range (PRD §38).
 - Building test patterns executes no test-split item: patches are applied and built, and journeys are developed on the base builds only. No test candidate runs before the freeze (hard rule 5, DR-0034).
 - HANDOFF moves to v1.12.
+
+## DR-0084 M5 PR review findings
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §6, §10.3; R7; P13, P28–P36 |
+
+**Context.** Codex (2 comments) and Devin Review (8 comments) reviewed PR #8. Claude checked each against the code and the dev data. None changes the dev results: detection, false FAIL and REVIEW counts are as in DR-0080. The approved rules (P28–P36) are unchanged; the fixes make the code do what they say, and make missing evidence explicit.
+
+| Finding | Assessment | Change |
+|---|---|---|
+| Items with no block are silently left out of the split's metrics (Codex) | Valid | The scorer refuses when any item of the split has no block. `--allow-missing` scores them as INCONCLUSIVE in every arm (a miss, R7), and the report lists them |
+| Another split's block with no journey aborts scoring (Devin) | Valid | Only blocks of the split's corpus items are read; journey-development pseudo-items are skipped too |
+| A false state with an explicit NVDA label passes on silence (Codex; Devin) | Valid for states with a negative label: the code fell back to "positive label absent", against its own description | `checked`, `selected` and `pressed` need "not …", and `expanded` needs "collapsed". States NVDA conveys only when true (`required`, `invalid`, `disabled`, `busy`) are false when their label is absent |
+| Missing axe or B2 evidence reads as a pass (Devin) | Valid. DR-0074 said M5 counts a missing B2 listener record as a failure, never INCONCLUSIVE (P13) | Missing or failed axe results at a step, and B2 events missing in any attempt, give a REVIEW finding |
+| A truncated block lowers k (Devin) | Valid | k is the block's planned repetitions per side. A side with fewer attempts gives REVIEW, never a FAIL |
+| A step the base did not always reach skips axe (Devin) | Valid | axe is still compared at that step, as at a step where the candidate stopped |
+| Arm D passes without a valid NVDA leg when no step is triggered (Devin) | Not adopted. D uses NVDA only at triggered steps (HANDOFF R5, §8.4); with none triggered, D would not run NVDA, so its verdict is B2's. When the NVDA-absent leg is INCONCLUSIVE, D is INCONCLUSIVE too | None |
+| A partly unreachable step hides later steps (Devin) | Not adopted. With k = n, no later step can give FAIL once one candidate attempt stopped, and the item is already REVIEW. If the freeze sets k < n, this is revisited | None |
+| A message removed before the settled tree is missed by B2 (Devin) | A known limit of P31 and P32: the settled tree is read 1 s into the window, and both apps' toasts last about 4 s | Stated in the report's limits |
+| A state with no negative label passes on silence (Devin) | Not adopted for those states: silence is how NVDA conveys them as false | None (see the false-state row) |

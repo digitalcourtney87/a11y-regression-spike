@@ -20,6 +20,7 @@ function evidence(candidateName: string, candidateSpeech: string[], liveEvents =
   const it = item("regression", "NAME_NOT_CONVEYED");
   const absent = block(it, "nvda-absent", 3, (side) =>
     attempt(side, steps(j, { reach: { tree: focused(side === "base" ? "Save" : candidateName) }, save: { tree: focused("Save") } }), {
+      axe: { reach: { violations: [] }, save: { violations: [] } },
       ...(liveEvents ? { listenerEvents: eventsAt(j, "save", [{ event: "EVENT_SYSTEM_ALERT", role: "alert", ariaRole: "alert" }]) } : {}),
     }),
   );
