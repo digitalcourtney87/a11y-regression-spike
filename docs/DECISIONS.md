@@ -92,12 +92,13 @@ Conventions:
 | [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P12 and P13 approved by the owner (DR-0055) | DR-0055 | Resolved (P12, P13, DR-0055) |
 | [DR-0054](#dr-0054-g2-runs-diagnostic-and-evidence-archive) | G2 runs, diagnostic and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0055](#dr-0055-owner-approvals-at-the-g2-gate) | Owner approvals at the G2 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0056](#dr-0056-m3-start-spa-evaluation-corpus-scaffolding-and-the-corpus-plan) | M3 start: SPA evaluation, corpus scaffolding and the corpus plan | Accepted, except P14–P18 | 2026-10-03 | Decided by Claude under DR-0045; P14–P18 pending | — | Pending: P14–P18 |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). No items are pending; a new hard-rule-12 item is added here when it arises.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). Five items are pending, needed before M3 builds corpus items: P14–P18 (DR-0056).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -114,6 +115,11 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P11 | **Resolved (approved by the owner 2026-10-03, DR-0052).** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | No longer pending | Approved as recommended |
 | P12 | **Resolved (approved by the owner 2026-10-03, DR-0055).** the operational B2 signatures of DR-0053 as narrowed by the G2 gate review: identity by AutomationId, with name, AriaRole or MSAA role only for events without one, no LiveSetting, and browser-frame events excluded (P3); the gating components for K1–K5 (K4 including SHOW on the dialog); the record-only traces for K6 and K7 ("separate update"; K7 order per event type); and "same frame" as the same task or a rAF fill within one 60 Hz frame, with other fills under 50 ms routed to REVIEW (timeline version 2; version 1 records keep the pre-registered one-frame threshold). Every listener event and the whole DOM timeline are kept per attempt, so another reading can be re-scored without new runs | DR-0053 | What counts as detection (G2's result rests on it) | No longer pending | Approved as recommended |
 | P13 | **Resolved (approved by the owner 2026-10-03, DR-0055).** only a setup error before activation (browser launch, page load, process or window lookup) makes an attempt INCONCLUSIVE (`ENV_FAILURE`); a failure of the B2 listener (start, fewer hooks than ranges, ping, stop, not drained) or any error after activation counts as a failure. Implemented in the G2 gate-review fix; `ENV_FAILURE` for setup errors has been in the runner since M1 without an owner decision | DR-0053 | What counts as INCONCLUSIVE (D12, DR-0032) | No longer pending | Approved as recommended |
+| P14 | **Proposed by Claude (not yet owner-approved):** the M3 SPA is Atomic CRM's demo build (`marmelab/atomic-crm` at `b23289b`, MIT), with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones | DR-0056; `docs/research/2026-10-03-spa-candidates.md` | What is measured (the application the seeded regressions live in) | Before any seeded SPA item | Yes |
+| P15 | **Proposed by Claude (not yet owner-approved):** corpus sizes and split: 110 regression patterns (33 dev, 77 test), benign patterns about 1:1 in each split, one unchanged control per journey, test fraction 0.7 stratified by pattern stratum with seed 20261004; M3 builds the dev split only, and test patterns are built after M5's power table, before the freeze | DR-0056; corpus plan §3 | What is measured (sample sizes and the confirmatory split) | Before the split is run | Yes |
+| P16 | **Proposed by Claude (not yet owner-approved):** the regression catalogue (37 mechanisms across the 13 primary-analysis symptoms, creation-time family kept) and the benign catalogue (operators per BenignType) of the corpus plan | DR-0056; corpus plan §4–§5 | What is measured (which regressions and benign changes the corpus holds) | Before any corpus item | Yes |
+| P17 | **Proposed by Claude (not yet owner-approved):** vendor about 3 MB of Atomic CRM's source at the pinned commit into `fixtures/spa/atomic-crm/` (agent instruction files excluded), and install its locked dependency tree in CI with install scripts off, `contents: read`, no secrets and a separate npm cache | DR-0056 | Security (third-party code in the repository and in CI) | With P14 | Yes |
+| P18 | **Proposed by Claude (not yet owner-approved):** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | Before P2P and reconstructed items | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2670,3 +2676,28 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 - P13: only setup errors before activation are INCONCLUSIVE (`ENV_FAILURE`); a B2 listener failure (start, fewer hooks than ranges, ping, stop, not drained, or malformed output lines) or any error after activation counts as a failure.
 - **Follow-up fixes (Decided by Claude under DR-0045, except the malformed-line rule, approved as part of P13):** the listener reads an event's child object with CHILDID_SELF when MSAA returns one, so a child never takes its parent's identity (listener 0.3.1); timeline version 3 names the element that took focus inside an open shadow root, with the host recorded (a closed root shows only the host); in `report:phase0`, valid attempts with no B2 outcome stay in every component denominator, record-only rows show a "No B2 trace" count, and the re-scoring comparison checks every K7 order field the run-time outcome recorded. Re-scoring the five M2 runs with this code changes no verdict, grade or order; the record-only table gains one column, so a report rebuilt with this code differs from the archived G2 reports only in that column. A Windows verification run checked the code before the follow-up pull request (lab notebook).
 - No owner items are pending after this record.
+
+## DR-0056 M3 start: SPA evaluation, corpus scaffolding and the corpus plan
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except P14–P18 (pending) |
+| Owner label | Decided by Claude under DR-0045; P14–P18 pending |
+| HANDOFF v1.6 | §9 (M3), §10.2 (`CorpusItem`), R1, R5, R6 |
+
+**Context.** The owner unlocked M3 (DR-0055) and asked Claude to start it. M3 selects the SPA after evaluating at least three candidates, integrates de-branded Prompt to Page exports, builds mutation tooling, mines open-source regressions and assigns the split by `patternId`.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| SPA evaluation | Four candidates against the ten HANDOFF criteria (`docs/research/2026-10-03-spa-candidates.md`). Three were built and probed on the gate runner by `m3-spa-probe.yml` (run 37126215365): pinned commits; install and build timed; the production build loaded offline in the pinned Chrome with every outside request blocked and recorded. Angular's Tour of Heroes was assessed from its source only |
+| Probe security | Third-party code runs only on standard runners, with `contents: read`, no secrets, install scripts off, and an npm cache separate from the harness's (never saved). Nothing from the candidates ran on the owner's machine; their metadata were read through the GitHub API |
+| Corpus scaffolding | `harness/src/corpus/`: `validate.ts` checks every item (schema, ids, candidate, patches, split consistency, against `corpus/split.json`); `split.ts` assigns dev or test by pattern, stratified by the pattern's modal expected class, with a recorded seed and mulberry32; `npm run corpus -- validate | split`. The seed and test fraction are an owner decision (P15) and are recorded before the split is run |
+| Corpus plan | Drafted as a proposal (`docs/research/2026-10-03-m3-corpus-plan.md`): scope, sources, sizes, split, catalogues, mutation tooling and mining method. The parts that decide what is measured go to the owner as P14–P18 |
+
+**Consequences.**
+
+- Atomic CRM is recommended (P14). react-admin's example also meets every criterion; TanStack's kitchen sink fails "deterministic data" and lacks a dialog, a status update and a composite widget.
+- No corpus item is built until P14–P18 are answered. Meanwhile Claude builds app-agnostic tooling and the mining search, which run read-only.
