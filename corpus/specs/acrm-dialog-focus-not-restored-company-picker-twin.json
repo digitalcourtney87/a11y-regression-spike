@@ -1,0 +1,16 @@
+{
+  "id": "acrm-dialog-focus-not-restored-company-picker-twin",
+  "patternId": "atomic-crm--dialog-focus-not-restored",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-picker-dialog",
+  "target": "Shared AutocompleteInput: a stronger shadow on its popover",
+  "edits": [
+    {
+      "file": "src/components/admin/autocomplete-input.tsx",
+      "find": "            <PopoverContent className=\"w-full max-w-(--radix-popover-trigger-width) p-0\">\n",
+      "replace": "            <PopoverContent className=\"w-full max-w-(--radix-popover-trigger-width) p-0 shadow-lg\">\n"
+    }
+  ],
+  "twinOf": "acrm-dialog-focus-not-restored-company-picker"
+}

@@ -1,15 +1,15 @@
 {
-  "id": "acrm-dialog-focus-not-restored-merge-twin",
+  "id": "acrm-dialog-focus-not-restored-company-picker-twin",
   "patternId": "atomic-crm--dialog-focus-not-restored",
   "split": "test",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-merge-dialog",
+  "journeyId": "acrm-company-picker-dialog",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
   "candidate": {
-    "patch": "acrm-dialog-focus-not-restored-merge-twin.patch"
+    "patch": "acrm-dialog-focus-not-restored-company-picker-twin.patch"
   },
   "expected": {
     "kind": "benign",

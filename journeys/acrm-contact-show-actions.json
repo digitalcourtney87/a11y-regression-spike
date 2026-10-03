@@ -72,6 +72,14 @@
     },
     {
       "kind": "at",
+      "id": "first-tag",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
       "id": "pick-tag",
       "strategy": "PRESS",
       "key": "Enter",

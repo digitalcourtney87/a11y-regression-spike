@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/autocomplete-input.tsx b/fixtures/spa/atomic-crm/src/components/admin/autocomplete-input.tsx
+index 0a7652c..72ff1ab 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/autocomplete-input.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/autocomplete-input.tsx
+@@ -253,7 +253,7 @@ export const AutocompleteInput = (
+                 </button>
+               )}
+             </div>
+-            <PopoverContent className="w-full max-w-(--radix-popover-trigger-width) p-0">
++            <PopoverContent className="w-full max-w-(--radix-popover-trigger-width) p-0 shadow-lg">
+               {/* We handle the filtering ourselves */}
+               <Command shouldFilter={!isFromReference}>
+                 <CommandInput

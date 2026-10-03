@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, Atomic CRM round 3: the eight journeys on the base build only, both legs, one attempt; list pages replaced as entry pages (their handover focus read fails) (DR-0082)",
+  "purpose": "Test-pattern journey development, Atomic CRM round 4: the eight journeys on the base build only, three attempts each to check the base is stable (k = n), both legs (DR-0082)",
   "apps": [
     "atomic-crm"
   ],
@@ -17,11 +17,11 @@
     "acrm-landmarks",
     "acrm-contact-show-actions",
     "acrm-contact-show-details",
-    "acrm-contact-merge-dialog"
+    "acrm-company-picker-dialog"
   ],
   "sides": "base",
-  "reps": "1",
+  "reps": "3",
   "canaries": false,
   "axe": false,
-  "shards": 2
+  "shards": 3
 }

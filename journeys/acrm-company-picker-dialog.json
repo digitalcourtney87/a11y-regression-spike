@@ -1,38 +1,33 @@
 {
-  "id": "acrm-contact-merge-dialog",
+  "id": "acrm-company-picker-dialog",
   "version": "1",
   "app": "atomic-crm",
-  "entryUrl": "/#/contacts/0",
-  "anchor": "header a[href=\"#/deals\"]",
+  "entryUrl": "/#/contacts/create",
+  "anchor": "input[name=\"first_name\"]",
   "steps": [
     {
       "kind": "at",
-      "id": "reach-merge",
+      "id": "reach-company",
       "strategy": "TAB",
       "until": {
-        "name": "Merge with another contact",
-        "role": "button",
-        "maxAttempts": 100
+        "name": "Company",
+        "role": "combobox",
+        "maxAttempts": 10
       },
       "observeMs": 1000,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Merge with another contact"
+          "value": "combobox|Company"
         }
       ]
     },
     {
       "kind": "at",
-      "id": "open-merge",
+      "id": "open-company",
       "strategy": "ACTIVATE",
-      "observeMs": 2000,
-      "expectations": [
-        {
-          "type": "focusOn",
-          "value": "dialog|Merge Contact"
-        }
-      ]
+      "observeMs": 1500,
+      "expectations": []
     },
     {
       "kind": "at",
@@ -44,14 +39,14 @@
     },
     {
       "kind": "at",
-      "id": "close-merge",
+      "id": "close-company",
       "strategy": "PRESS",
       "key": "Escape",
       "observeMs": 1500,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "button|Merge with another contact"
+          "value": "combobox|Company"
         }
       ]
     }
