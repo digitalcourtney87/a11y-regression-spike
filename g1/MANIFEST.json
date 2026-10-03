@@ -2,15 +2,20 @@
   "gate": "G1",
   "label": "EXPLORATORY",
   "bundle": "g1-evidence.tar.zst",
-  "bundleSha256": "2f064c9dfd9124a4218f76c3be57e9f39b27477d25faa026e6d50f04b4995fd9",
-  "bundleBytes": 1002996,
+  "bundleSha256": "9e8a6d7b0e21a71e8237b8de4b6d5e9ab8999bf7757478e9f0e554ab5e3c4ca0",
+  "bundleBytes": 1128179,
   "record": "DR-0015 (D6); DR-0021 (D12); DR-0050",
-  "note": "Archived from the local machine with gh run download, so workflows stay contents: read (D6). Contains logs, JSON, INI and screenshots only; no NVDA binaries.",
+  "note": "Archived from the local machine with gh run download, so workflows stay contents: read (D6). All eight M1 workflow runs; logs, JSON, INI and screenshots only; no NVDA binaries. G1 numbers come from runs 37115887572 and 37116418050 only.",
+  "g1Runs": [
+    "37115887572",
+    "37116418050"
+  ],
   "runs": [
     {
       "runId": "37111758115",
       "label": "M1a probe (failed: Scream folder lookup)",
       "workflow": "phase0-probe",
+      "event": "push",
       "headSha": "09f050d59fe107160013bcc8ee7e84dc0183f967",
       "conclusion": "failure",
       "createdAt": "2026-10-03T09:03:26Z",
@@ -24,6 +29,7 @@
       "runId": "37111906022",
       "label": "M1a probe (no audio driver)",
       "workflow": "phase0-probe",
+      "event": "push",
       "headSha": "809e2bac89db849f8ea904b69855f1c75f0cde89",
       "conclusion": "success",
       "createdAt": "2026-10-03T09:06:04Z",
@@ -37,6 +43,7 @@
       "runId": "37112285497",
       "label": "M1a probe (Scream installed)",
       "workflow": "phase0-probe",
+      "event": "push",
       "headSha": "29f49510b4ca781a290bcd4fce0faacb1200794d",
       "conclusion": "success",
       "createdAt": "2026-10-03T09:12:50Z",
@@ -50,6 +57,7 @@
       "runId": "37114407343",
       "label": "M1b smoke",
       "workflow": "phase0-nvda",
+      "event": "workflow_dispatch",
       "headSha": "89923461740939a3f893d76dd0016afce76bc265",
       "conclusion": "success",
       "createdAt": "2026-10-03T09:50:39Z",
@@ -59,9 +67,24 @@
       "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407343"
     },
     {
+      "runId": "37114407991",
+      "label": "Probe repeat (push-triggered by the M1b commit 8992346)",
+      "workflow": "phase0-probe",
+      "event": "push",
+      "headSha": "89923461740939a3f893d76dd0016afce76bc265",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T09:50:39Z",
+      "images": [
+        "win22 20260927.320.1 build 20348.5622",
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407991"
+    },
+    {
       "runId": "37114709402",
       "label": "M1d strict pilot",
       "workflow": "phase0-nvda",
+      "event": "workflow_dispatch",
       "headSha": "4277178503f9bdd949a84db3be3a39c3d360fdd5",
       "conclusion": "success",
       "createdAt": "2026-10-03T09:56:09Z",
@@ -74,6 +97,7 @@
       "runId": "37115887572",
       "label": "G1 run",
       "workflow": "phase0-nvda",
+      "event": "workflow_dispatch",
       "headSha": "f81bcd70a0d1c95f2f7e062d1c2cb9a4d208b167",
       "conclusion": "success",
       "createdAt": "2026-10-03T10:16:48Z",
@@ -86,6 +110,7 @@
       "runId": "37116418050",
       "label": "G1 top-up (K2)",
       "workflow": "phase0-nvda",
+      "event": "workflow_dispatch",
       "headSha": "f81bcd70a0d1c95f2f7e062d1c2cb9a4d208b167",
       "conclusion": "success",
       "createdAt": "2026-10-03T10:26:19Z",
