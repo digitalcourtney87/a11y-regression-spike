@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import type { B2Component } from "../runner/b2Signature.ts";
-import { buildReport } from "./report.ts";
+import { buildReport, renderReport } from "./report.ts";
 import { buildG2Report, renderG2Report } from "./reportG2.ts";
 import type { B2Attempt } from "./reportG2.ts";
 
@@ -54,6 +54,7 @@ describe("buildG2Report", () => {
     expect(g2.gating.find((g) => g.canary === "K1")).toMatchObject({ attempts: 1, failures: 0 });
     expect(g2.onOff.find((o) => o.canary === "K1")).toMatchObject({ absent: { valid: 1, pass: 1 }, present: { valid: 1, pass: 0 } });
     expect(buildReport([diag], []).gating.find((g) => g.canary === "K1")?.attempts).toBe(0);
+    expect(renderReport(buildReport([diag], []))).toContain("**G1 rule (D12):** not applicable");
   });
 
   test("summarises K6 grades, separate updates and region events", () => {

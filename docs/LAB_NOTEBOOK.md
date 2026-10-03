@@ -183,3 +183,21 @@ This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" secti
 | P10 retry | 1 of 410 attempts needed more than one focus read: NVDA-present leg, K6e:raf, anchor returned on the fifth read (about 400 ms after the first). Under G1's single read it would have been INCONCLUSIVE; with P10 it is valid |
 | Clocks | Native self-test 0 ms for both native collectors; page mapping 0.1 ms; drift at most 0.19 ms; rAF gap at most 46.9 ms |
 | Listener build | The executable's SHA-256 is identical across jobs of one run but differs between commits with the same listener source (inferred: the SDK embeds the source revision); the hash identifies a build, not the source |
+
+### G2 run and NVDA on/off diagnostic (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37119632093](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119632093) (G2: NVDA-absent leg, K1–K5 52 times each and every record-only canary, 10 shards, seed 20261012) and [37119638620](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119638620) (diagnostic: both legs, K1–K5 20 times each, listener in the NVDA-present leg, seed 20261013), commit `14fd612`, image `win25-vs2026` 20260925.250.1 in every job. Archived as `g2/g2-evidence.tar.zst` on the `results` branch (DR-0054).
+**Affects:** DR-0053 (P12), DR-0037 and P9 (DR-0052), DR-0019 (P3), DR-0020 (diagnostic).
+**Confidence:** observed, except where marked inferred. Full tables in `docs/gates/G2.md`.
+
+| Observation | Result |
+|---|---|
+| Gating B2 signatures | 260 attempts, 260 valid, 0 failures; each canary 52 of 52 (Wilson lower bound 93.1%); every platform component matched by AutomationId |
+| DOM change to WinEvent | Medians 9.8–11.6 ms; maximum 14.7 ms |
+| K6 and K7 | As in the pilot: K6a and the same-frame K6e fills show only SHOW (0 of 80 with a separate update); K6b shows SHOW and EVENT_SYSTEM_ALERT (20 of 20, no separate update); fills from 50 ms give a separate update (50 of 50); the K7 update precedes the focus move in both channels (40 of 40) |
+| Chrome's serialisation window | Pilot and G2 combined (n = 20 per delay): the region's SHOW arrived 9–11 ms after the DOM insertion; the fill's TEXT_INSERTED arrived at a median 165–166 ms for fills at 50, 100 and 150 ms, and about 10 ms after the fill for 250 and 500 ms. The window delays a follow-up change rather than merging it with the insertion (inferred mechanism) |
+| On/off diagnostic | Matches 99 of 99 with NVDA absent (one K5 attempt INCONCLUSIVE, rAF gap 125 ms) and 100 of 100 with NVDA present; the signature events are the same. The only systematic window difference is a STATECHANGE on the activating button in the NVDA-absent leg, inferred to be the pressed state from Playwright's click |
+| Speech with the listener present | NVDA conveyed all 100 gating attempts; per-segment parity exact (160 against 160) |
+| Clocks (G2 run) | Native self-test 0 ms for both collectors; page mapping 0.1 ms; drift median 0.04 ms, maximum 0.17 ms; rAF gap median 15.8 ms, maximum 47.0 ms |
+| P10 | 2 of 450 G2 attempts needed four reads; both valid |

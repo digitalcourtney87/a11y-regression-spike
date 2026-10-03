@@ -270,7 +270,13 @@ function pct(i: WilsonInterval | null): string {
 export function renderReport(report: Phase0Report): string {
   const lines: string[] = [];
   lines.push("# Phase 0 canary report (EXPLORATORY)", "");
-  lines.push(`**G1 rule (D12):** ${report.gate.pass ? "PASS" : "FAIL"}${report.gate.reasons.length > 0 ? ` (${report.gate.reasons.map((r) => r.code).join(", ")})` : ""}`, "");
+  const noG1Attempts = report.gating.every((g) => g.attempts === 0);
+  lines.push(
+    noG1Attempts
+      ? "**G1 rule (D12):** not applicable (no NVDA-present G1 attempts here; on/off diagnostic attempts are excluded)"
+      : `**G1 rule (D12):** ${report.gate.pass ? "PASS" : "FAIL"}${report.gate.reasons.length > 0 ? ` (${report.gate.reasons.map((r) => r.code).join(", ")})` : ""}`,
+    "",
+  );
   lines.push("| Canary | Attempts | Valid | Failures | Late | Not activated | Pass rate among valid (Wilson 95%) | INCONCLUSIVE rate |", "|---|---|---|---|---|---|---|---|");
   for (const g of report.gating) {
     const inc = report.gate.perCanary.find((p) => p.canary === g.canary);

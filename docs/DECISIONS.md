@@ -90,12 +90,13 @@ Conventions:
 | [DR-0051](#dr-0051-handover-focus-read-retry) | Handover focus-read retry | Accepted | 2026-10-03 | P10, approved by the owner 2026-10-03 (DR-0052) | — | Resolved (P10, DR-0052) |
 | [DR-0052](#dr-0052-owner-approvals-at-the-g1-gate) | Owner approvals at the G1 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted, except P12 | 2026-10-03 | Decided by Claude under DR-0045; P12 pending | — | Pending: P12 |
+| [DR-0054](#dr-0054-g2-runs-diagnostic-and-evidence-archive) | G2 runs, diagnostic and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). One item is pending, for the G2 brief: P12.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). One item is pending, for the G2 brief: P12. The G2 brief also asks the owner to make P9 final, since G2 confirmed it (DR-0054).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -2608,3 +2609,28 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 
 - G2 is scored with these definitions; P12 asks the owner to ratify them at the G2 gate, as P11 did for speech matching at G1. The raw evidence allows re-scoring under another reading without new runs.
 - K4's platform SHOW component was made required after the smoke run, where it was present in 2 of 2; it was fixed before the pilot and the G2 runs.
+
+## DR-0054 G2 runs, diagnostic and evidence archive
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.5 | §9 (M2 and the G2 report), §9.2 (dispatch inputs) |
+
+**Context.** M2's signature definitions and run size were fixed in DR-0053 (commit `68019bc`) before the G2 runs. The G2 rule reads B2 signature matches for K1–K5 in the NVDA-absent leg (HANDOFF §9).
+
+**Decision.**
+
+- **G2 run.** [37119632093](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119632093): NVDA-absent leg, 52 runs per gating canary and every record-only canary at its D4 count, 10 shards, seed 20261012, commit `14fd612`. No top-up was needed: every gating canary had 52 valid runs.
+- **On/off diagnostic.** [37119638620](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119638620): both legs, K1–K5 20 times each, `present_listener` on, seed 20261013, commit `14fd612`. It is reported in G2 and never feeds the G2 rule (DR-0020).
+- **Archive.** All four M2 runs (smoke 37119067877, pilot 37119295670, G2 37119632093, diagnostic 37119638620), with the reports `report:phase0` writes, are in `g2/g2-evidence.tar.zst` on the orphan `results` branch, with `MANIFEST.json` (run IDs, head commits, image versions, listener builds, pins, the G2 result and the on/off table) and `SHA256SUMS`. The bundle holds JSON, JSON lines, NVDA logs and Markdown only, no NVDA binaries, and was scanned for token-shaped secrets before commit. Rebuilding the G2 run's report from the bundle gives an identical `report-g2.md`.
+- **Report code.** `report:phase0` writes the G2 report (`report-g2.*`) beside the G1 report. With the M2 code it still rebuilds the G1 report from the G1 bundle unchanged. Where a directory holds no G1 attempts it says that the G1 rule is not applicable.
+
+**Consequences.**
+
+- G2 rule: PASS, with 260 valid of 260 attempts, 0 failures and INCONCLUSIVE at 0% (`docs/gates/G2.md`).
+- The NVDA-absent K6e signatures confirm P9's boundary for polite regions after load. The G2 brief asks the owner to make P9 final; until then it stays provisional (DR-0052).
+- The approved P3 ranges covered every signature event, so they are unchanged and nothing goes back to the owner under DR-0052.
+- Pending owner item for the G2 brief: P12.
