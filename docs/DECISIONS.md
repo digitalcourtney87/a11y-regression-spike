@@ -2915,7 +2915,7 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 | Rejected by reproduction | 2: floating-2874 (keyboard path holds on both releases), rac-8298 (not reproduced in three fixtures, including the component the fix's own test steps use) |
 | **Verified** | **11**: radix-4014, rac-8697, bootstrap-35496, carbon-18824, carbon-19563, carbon-7253, carbon-5623, fluent-35927, fluent-7796, vuetify-9627, blueprint-6163 |
 
-Every verified pair reproduced on the keyboard path and as the issue describes. Where a fixed release was tested, it held again. Five pairs map to a catalogue mechanism. The other six have operator `mined`; for them the mechanism is recorded in the pattern's note, and the symptom is the scored unit (R2).
+Every verified pair reproduced on the keyboard path and as the issue describes, in at least two runs. The other ten gave identical results in 37133618945 and 37134051657; bootstrap-35496 reproduced in 37131615681, 37132740948 and 37134051657. Where a fixed release was tested, it held again. Five pairs map to a catalogue mechanism. The other six have operator `mined`; for them the mechanism is recorded in the pattern's note, and the symptom is the scored unit (R2).
 
 **The batch.** `npm run corpus -- plan oss-regression` planned the 11 patterns in `corpus/patterns.json`. They fall across 8 strata. Split as approved (seed 20261004, test fraction 0.7, stratified), they would give 8 test and 3 dev patterns. The split is not run until P21 is answered (DR-0057).
 
