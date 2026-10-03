@@ -1,0 +1,26 @@
+{
+  "id": "ras-custom-page-heading",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/custom2",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-page-heading",
+      "strategy": "NEXT_HEADING",
+      "until": {
+        "name": "custom2",
+        "role": "heading",
+        "maxAttempts": 6
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "heading|Posts from /custom2"
+        }
+      ]
+    }
+  ]
+}

@@ -32,3 +32,6 @@ nvda*.exe
 Thumbs.db
 .vscode/
 .idea/
+
+# Sync conflict copies ("name 2.ext") that iCloud Drive makes when ~/Documents is synced; never part of the repository.
+* 2.*

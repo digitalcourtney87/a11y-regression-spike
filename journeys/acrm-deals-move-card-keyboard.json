@@ -1,0 +1,69 @@
+{
+  "id": "acrm-deals-move-card-keyboard",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/deals",
+  "anchor": "a[href=\"#/deals/create\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-deal-card",
+      "strategy": "TAB",
+      "until": {
+        "name": "Inventore maxime provident",
+        "role": "button",
+        "maxAttempts": 5
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "focus-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "lift-card",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "lifted"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "move-card",
+      "strategy": "PRESS",
+      "key": "ArrowRight",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "drop-card",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 2500,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "dropped"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "browse-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    }
+  ]
+}

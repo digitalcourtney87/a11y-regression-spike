@@ -9,6 +9,10 @@
  * `npm run corpus -- oss-items` writes the version-pair regression item of
  * each dev pattern of the `oss-regression` batch (oss.ts; DR-0064).
  *
+ * `npm run corpus -- unchanged` writes one unchanged control per journey of
+ * the dev items (P15; DR-0066): `<journey>-unchanged`, base against base, in
+ * the pattern and split of the journey's first regression item (by id).
+ *
  * `npm run corpus -- plan spa-regression` adds the planned SPA regression
  * patterns to `corpus/patterns.json` (patterns.ts); `plan oss-regression`
  * adds one pattern per verified mined pair in `corpus/oss-candidates.json`
@@ -28,6 +32,7 @@ import { parseArgs } from "node:util";
 
 import { operatorById } from "./catalogue.ts";
 import { CorpusItemSchema } from "../schema/schemas.ts";
+import type { CorpusItem } from "../schema/index.ts";
 import { applyEdits, appDir, isSpaApp, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import type { MutationSpec } from "./mutate.ts";
 import { itemFromOssCandidate, OssCandidatesSchema, planOssRegressionPatterns } from "./oss.ts";
@@ -35,6 +40,8 @@ import { addPatterns, PatternRegistrySchema, planSpaRegressionPatterns } from ".
 import type { PatternRegistry } from "./patterns.ts";
 import { addBatch } from "./split.ts";
 import type { SplitAssignment } from "./split.ts";
+import { checkJourneys } from "../runner/journeys.ts";
+import { SETUP_NAMES } from "../runner/setups.ts";
 import { validateCorpus } from "./validate.ts";
 import type { CorpusFiles } from "./validate.ts";
 
@@ -80,7 +87,14 @@ function patchFor(spec: MutationSpec): string {
 }
 
 function list(dir: string, suffix: string): string[] {
-  return existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(suffix)).sort() : [];
+  // Sync conflict copies ("name 2.json", see .gitignore) are never corpus files.
+  return existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(suffix) && !f.includes(" 2.")).sort() : [];
+}
+
+function readJourneys(): Map<string, unknown> {
+  const files = new Map<string, unknown>();
+  for (const f of list(JOURNEYS, ".json")) files.set(f, JSON.parse(readFileSync(join(JOURNEYS, f), "utf8")) as unknown);
+  return files;
 }
 
 function readFiles(): CorpusFiles {
@@ -103,7 +117,9 @@ if (command === "validate") {
   process.stdout.write(`${JSON.stringify(report.summary, null, 2)}\n`);
   for (const w of report.warnings) process.stdout.write(`warning: ${w}\n`);
   for (const e of report.errors) process.stderr.write(`error: ${e}\n`);
-  if (report.errors.length > 0) process.exitCode = 1;
+  const journeyErrors = checkJourneys(readJourneys(), report.valid, SETUP_NAMES).errors;
+  for (const e of journeyErrors) process.stderr.write(`error: ${e}\n`);
+  if (report.errors.length > 0 || journeyErrors.length > 0) process.exitCode = 1;
 } else if (command === "mutate") {
   for (const file of list(SPECS, ".json")) {
     const spec = MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, file), "utf8")));
@@ -136,6 +152,27 @@ if (command === "validate") {
     writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, baseRef, "dev", licence), null, 2)}\n`);
     process.stdout.write(`${spec.id}: patch and item written (${spec.operator})\n`);
   }
+} else if (command === "unchanged") {
+  const items = validateCorpus(files).valid;
+  const journeyIds = [...new Set(items.filter((i) => i.split === "dev" && i.expected.kind !== "unchanged").map((i) => i.journeyId))].sort();
+  for (const journeyId of journeyIds) {
+    const first = items.filter((i) => i.journeyId === journeyId && i.expected.kind === "regression").sort((a, b) => (a.id < b.id ? -1 : 1))[0];
+    if (first === undefined) throw new Error(`journey ${journeyId}: no regression item`);
+    const item: CorpusItem = {
+      id: `${journeyId}-unchanged`,
+      patternId: first.patternId,
+      split: first.split,
+      source: first.source,
+      app: first.app,
+      journeyId,
+      base: { ref: first.base.ref },
+      candidate: { ref: first.base.ref },
+      expected: { kind: "unchanged" },
+      provenance: { origin: `unchanged control for journey ${journeyId} (P15)`, ...(first.provenance.licence === undefined ? {} : { licence: first.provenance.licence }) },
+    };
+    writeFileSync(join(ITEMS, `${item.id}.json`), `${JSON.stringify(item, null, 2)}\n`);
+    process.stdout.write(`${item.id}: unchanged control in pattern ${item.patternId} (${item.split})\n`);
+  }
 } else if (command === "oss-items") {
   // The regression item of each dev pattern of the oss-regression batch (DR-0064); test patterns wait for M5's power table (P15).
   const registry = OssCandidatesSchema.parse(JSON.parse(readFileSync(OSS_CANDIDATES, "utf8")));
@@ -167,6 +204,6 @@ if (command === "validate") {
   writeFileSync(SPLIT, `${JSON.stringify(assignment, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify(assignment.batches.at(-1), null, 2)}\n`);
 } else {
-  process.stderr.write("usage: npm run corpus -- validate | mutate | oss-items | plan <batch> | split --batch <name> --seed <n> --test-fraction <f>\n");
+  process.stderr.write("usage: npm run corpus -- validate | mutate | oss-items | unchanged | plan <batch> | split --batch <name> --seed <n> --test-fraction <f>\n");
   process.exitCode = 2;
 }

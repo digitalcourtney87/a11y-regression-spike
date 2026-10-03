@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.6). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.10). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -38,7 +38,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M3. The owner approved Gate G2 on 2026-10-03 and confirmed that it unlocks M3 (DR-0055). M4 onwards was not part of that approval: ask the owner before starting M4. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
+M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065). M5 onwards is not authorised: ask the owner before starting M5. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
 
 ## Logs
 - docs/DECISIONS.md — decisions

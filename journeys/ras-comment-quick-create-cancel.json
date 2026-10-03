@@ -1,0 +1,59 @@
+{
+  "id": "ras-comment-quick-create-cancel",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/comments/create",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-post-select",
+      "strategy": "TAB",
+      "until": {
+        "role": "combobox",
+        "maxAttempts": 40
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-post-select",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "last-option",
+      "strategy": "PRESS",
+      "key": "End",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-quick-create",
+      "strategy": "ACTIVATE",
+      "observeMs": 2500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-cancel",
+      "strategy": "TAB",
+      "until": {
+        "name": "Cancel",
+        "maxAttempts": 8
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Cancel"
+        }
+      ]
+    }
+  ]
+}

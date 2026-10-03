@@ -1,0 +1,181 @@
+name: m4-items
+# M4 item runs (HANDOFF §9 M4; DR-0066, DR-0067). Dispatch with --ref <branch>.
+# Each job builds one app's base and dev candidates (third-party code installed
+# with scripts off, contents: read, no secrets, a separate npm cache that is
+# never saved; P17, P19), then runs that app's dev items in one leg: K1
+# bracketing canaries, ABBA attempts and evidence packages. Both legs run in one
+# dispatch so they share an image version (R8, DR-0006). Test-split items are
+# never built or run before the freeze (hard rule 5, DR-0034). A push that
+# changes .github/m4-request.json runs the request it holds (the same fields as
+# the dispatch inputs), so runs can be requested from a branch before the
+# workflow reaches the default branch.
+on:
+  push:
+    paths:
+      - .github/m4-request.json
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: JSON list of app keys (oss/<id> written oss-<id>)
+        type: string
+        default: '["atomic-crm","react-admin-simple","oss-carbon-19563","oss-fluent-35927","oss-rac-8697"]'
+      legs:
+        description: JSON list of legs
+        type: string
+        default: '["nvda-absent","nvda-present"]'
+      items:
+        description: Comma-separated item ids (empty for every dev item of the app)
+        type: string
+        default: ""
+      sides:
+        description: both, or base (journey development on the base build only)
+        type: string
+        default: both
+      reps:
+        description: Attempts per side (empty for the item's default, 3 or 5)
+        type: string
+        default: ""
+      canaries:
+        description: Run the K1 bracketing canaries
+        type: boolean
+        default: true
+      axe:
+        description: Run Arm A (axe) in the NVDA-absent leg
+        type: boolean
+        default: true
+      shards:
+        description: Shards per app and leg (each job runs every Nth item)
+        type: string
+        default: "1"
+permissions:
+  contents: read
+concurrency:
+  group: m4-items-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      apps: ${{ steps.plan.outputs.apps }}
+      legs: ${{ steps.plan.outputs.legs }}
+      items: ${{ steps.plan.outputs.items }}
+      sides: ${{ steps.plan.outputs.sides }}
+      reps: ${{ steps.plan.outputs.reps }}
+      canaries: ${{ steps.plan.outputs.canaries }}
+      axe: ${{ steps.plan.outputs.axe }}
+      shards: ${{ steps.plan.outputs.shards }}
+      shard_list: ${{ steps.plan.outputs.shard_list }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          IN_APPS: ${{ inputs.apps }}
+          IN_LEGS: ${{ inputs.legs }}
+          IN_ITEMS: ${{ inputs.items }}
+          IN_SIDES: ${{ inputs.sides }}
+          IN_REPS: ${{ inputs.reps }}
+          IN_CANARIES: ${{ inputs.canaries }}
+          IN_AXE: ${{ inputs.axe }}
+          IN_SHARDS: ${{ inputs.shards }}
+        run: |
+          if [ "$EVENT" = "push" ]; then
+            f=.github/m4-request.json
+            {
+              echo "apps=$(jq -c '.apps' "$f")"
+              echo "legs=$(jq -c '.legs' "$f")"
+              echo "items=$(jq -r '.items | join(",")' "$f")"
+              echo "sides=$(jq -r '.sides' "$f")"
+              echo "reps=$(jq -r '.reps' "$f")"
+              echo "canaries=$(jq -r '.canaries' "$f")"
+              echo "axe=$(jq -r '.axe' "$f")"
+              echo "shards=$(jq -r '.shards // 1' "$f")"
+            } >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "apps=$IN_APPS"
+              echo "legs=$IN_LEGS"
+              echo "items=$IN_ITEMS"
+              echo "sides=$IN_SIDES"
+              echo "reps=$IN_REPS"
+              echo "canaries=$IN_CANARIES"
+              echo "axe=$IN_AXE"
+              echo "shards=${IN_SHARDS:-1}"
+            } >> "$GITHUB_OUTPUT"
+          fi
+          n=$(grep '^shards=' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2)
+          echo "shard_list=$(seq 1 "$n" | jq -cs .)" >> "$GITHUB_OUTPUT"
+  items:
+    needs: plan
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(needs.plan.outputs.apps) }}
+        leg: ${{ fromJSON(needs.plan.outputs.legs) }}
+        shard: ${{ fromJSON(needs.plan.outputs.shard_list) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install harness dependencies
+        run: npm ci
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        if: matrix.leg == 'nvda-absent'
+        with:
+          dotnet-version: 10.0.401
+      - name: Build the B2 listener (DR-0019)
+        if: matrix.leg == 'nvda-absent'
+        run: dotnet build listener/Listener.csproj -c Release -warnaserror
+      - name: Install Scream 3.6 virtual audio (D3, DR-0040, DR-0047)
+        shell: pwsh
+        run: ./harness/src/probes/scream.ps1 -Lock env/env.lock.json -OutDir artefacts/items
+      - name: Environment snapshot
+        shell: pwsh
+        run: ./harness/src/probes/env.ps1 -Out artefacts/items/env.json
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        run: npx --no-install playwright install chromium
+      - name: Install NVDA 2026.2 (Guidepup 0.35.0 manifest, sha256-checked)
+        if: matrix.leg == 'nvda-present'
+        run: npx --no-install guidepup install
+      - name: Build the app's base and dev candidates
+        shell: pwsh
+        env:
+          APP_KEY: ${{ matrix.app }}
+          ITEMS: ${{ needs.plan.outputs.items }}
+        run: |
+          $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
+          ./harness/src/runner/buildApp.ps1 -App $app -Out builds -Items "$env:ITEMS"
+          Copy-Item -Recurse -Force (Join-Path "builds" $env:APP_KEY "_logs") (Join-Path "artefacts/items" "build-logs") -ErrorAction SilentlyContinue
+      - name: Run the app's dev items
+        shell: pwsh
+        env:
+          APP_KEY: ${{ matrix.app }}
+          LEG: ${{ matrix.leg }}
+          ITEMS: ${{ needs.plan.outputs.items }}
+          SIDES: ${{ needs.plan.outputs.sides }}
+          REPS: ${{ needs.plan.outputs.reps }}
+          CANARIES: ${{ needs.plan.outputs.canaries }}
+          AXE: ${{ needs.plan.outputs.axe }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ needs.plan.outputs.shards }}
+        run: |
+          $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
+          $extra = @()
+          if ($env:CANARIES -ne 'true') { $extra += '--no-canaries' }
+          if ($env:AXE -ne 'true') { $extra += '--no-axe' }
+          npm run m4:items -- --leg "$env:LEG" --app "$app" --builds builds --out artefacts/items --env artefacts/items/env.json --items "$env:ITEMS" --sides "$env:SIDES" --reps "$env:REPS" --shard "$env:SHARD/$env:SHARDS" @extra
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: items-${{ matrix.app }}-${{ matrix.leg }}-shard${{ matrix.shard }}
+          path: artefacts/items/
+          retention-days: 30

@@ -1,0 +1,69 @@
+{
+  "id": "acrm-dashboard-task-actions-escape",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/",
+  "anchor": "header a[href=\"#/contacts\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-task-checkbox",
+      "strategy": "TAB",
+      "until": {
+        "role": "checkbox",
+        "maxAttempts": 90
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-task-actions",
+      "strategy": "TAB",
+      "until": {
+        "role": "button",
+        "maxAttempts": 4
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|task actions"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-task-actions",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "menu|task actions"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-task-actions",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|task actions"
+        }
+      ]
+    }
+  ]
+}

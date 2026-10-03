@@ -1,0 +1,21 @@
+{
+  "id": "oss-fluent-35927-unchanged",
+  "patternId": "oss--fluent-35927",
+  "split": "dev",
+  "source": "oss-history",
+  "app": "oss/fluent-35927",
+  "journeyId": "oss-fluent-35927",
+  "base": {
+    "ref": "oss/fluent-35927@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@fluentui/react-badge@9.4.15"
+  },
+  "candidate": {
+    "ref": "oss/fluent-35927@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@fluentui/react-badge@9.4.15"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-fluent-35927 (P15)",
+    "licence": "MIT (@fluentui/react-badge)"
+  }
+}

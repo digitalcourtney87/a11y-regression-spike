@@ -1,0 +1,64 @@
+{
+  "id": "acrm-contact-create-save",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/create",
+  "anchor": "input[name=\"first_name\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "fill-contact",
+      "fn": "acrm.fill-contact"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "role": "button",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "save-contact",
+      "strategy": "ACTIVATE",
+      "observeMs": 3000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "leave-form",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-new-contact",
+      "strategy": "NEXT_HEADING",
+      "until": {
+        "name": "Ada Lovelace",
+        "maxAttempts": 8
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "heading|Ada Lovelace"
+        }
+      ]
+    }
+  ]
+}

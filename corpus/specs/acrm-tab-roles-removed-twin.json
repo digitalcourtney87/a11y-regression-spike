@@ -3,13 +3,13 @@
   "patternId": "atomic-crm--tab-roles-removed",
   "operator": "a11y-improvement",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
-  "target": "Contact page tab list given an accessible name (aria-label=\"Contact sections\")",
+  "journeyId": "acrm-company-show-tabs",
+  "target": "Company page tab list given an accessible name (aria-label=\"Company sections\")",
   "edits": [
     {
-      "file": "src/components/atomic-crm/contacts/ContactShow.tsx",
-      "find": "<TabsList className=\"grid w-full grid-cols-3 h-10\">",
-      "replace": "<TabsList className=\"grid w-full grid-cols-3 h-10\" aria-label=\"Contact sections\">"
+      "file": "src/components/atomic-crm/companies/CompanyShow.tsx",
+      "find": "<TabsList className=\"grid w-full grid-cols-3\">",
+      "replace": "<TabsList className=\"grid w-full grid-cols-3\" aria-label=\"Company sections\">"
     }
   ],
   "twinOf": "acrm-tab-roles-removed"

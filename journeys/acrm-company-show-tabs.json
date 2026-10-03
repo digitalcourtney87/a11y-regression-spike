@@ -1,0 +1,46 @@
+{
+  "id": "acrm-company-show-tabs",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/companies/0/show",
+  "anchor": "header a[href=\"#/contacts\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-activity-tab",
+      "strategy": "TAB",
+      "until": {
+        "name": "Activity",
+        "maxAttempts": 60
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "tab|Activity"
+        },
+        {
+          "type": "stateIs",
+          "value": "tab|Activity|selected=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "next-tab",
+      "strategy": "PRESS",
+      "key": "ArrowRight",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "tab|*"
+        },
+        {
+          "type": "stateIs",
+          "value": "tab|*|selected=true"
+        }
+      ]
+    }
+  ]
+}

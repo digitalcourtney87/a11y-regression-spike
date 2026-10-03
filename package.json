@@ -17,7 +17,9 @@
     "phase0:probe": "node harness/src/probes/m1a.ts",
     "phase0:canaries": "node harness/src/runner/canaryRun.ts",
     "report:phase0": "node harness/src/score/reportCli.ts",
-    "corpus": "node harness/src/corpus/corpusCli.ts"
+    "corpus": "node harness/src/corpus/corpusCli.ts",
+    "m4:items": "node harness/src/runner/itemRun.ts",
+    "m4:report": "node harness/src/runner/m4Report.ts"
   },
   "dependencies": {
     "zod": "4.6.5"
@@ -27,6 +29,7 @@
     "@guidepup/guidepup": "0.35.0",
     "@guidepup/setup": "0.29.1",
     "@types/node": "24.19.1",
+    "axe-core": "4.13.0",
     "eslint": "10.11.0",
     "playwright": "1.63.0",
     "typescript": "6.0.3",

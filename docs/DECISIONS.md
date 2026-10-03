@@ -101,6 +101,18 @@ Conventions:
 | [DR-0062](#dr-0062-owner-approval-of-p20-and-the-mining-pass) | Owner approval of P20, and the mining pass | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
 | [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P21 and P22 approved by the owner 2026-10-03 (DR-0064) | DR-0064 | Resolved (P21, P22, DR-0064) |
 | [DR-0064](#dr-0064-owner-approval-of-p21-and-p22-and-the-oss-regression-split) | Owner approval of P21 and P22, and the oss-regression split | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0065](#dr-0065-m3-merged-and-m4-authorised) | M3 merged and M4 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0066](#dr-0066-m4-design-journeys-runner-and-side-aware-validity) | M4 design: journeys, runner and side-aware validity | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P23–P25 approved by the owner 2026-10-03 (DR-0067) | DR-0067 | Resolved (P23–P25, DR-0067) |
+| [DR-0067](#dr-0067-owner-approval-of-p23-p25) | Owner approval of P23–P25 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0068](#dr-0068-m4-build-runner-journeys-and-unchanged-controls) | M4 build: runner, journeys and unchanged controls | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0069](#dr-0069-m4-journey-development-the-page-date-and-the-tab-journey) | M4 journey development: the page date and the tab journey | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) | DR-0071 | Resolved (P26, DR-0071) |
+| [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0074](#dr-0074-m4-pr-review-findings) | M4 PR review findings | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0075](#dr-0075-m4-repeated-full-run-and-frame-gaps-in-real-apps) | M4 repeated full run, and frame gaps in real apps | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P27 approved by the owner 2026-10-03 (DR-0076) | DR-0076 | Resolved (P27, DR-0076) |
+| [DR-0076](#dr-0076-owner-approval-of-p27) | Owner approval of P27 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -132,6 +144,11 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P20 | **Resolved (approved by the owner 2026-10-03, DR-0062).** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | No longer pending | Approved as recommended |
 | P21 | **Resolved (approved by the owner 2026-10-03, DR-0064).** accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; DR-0064; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | No longer pending | Approved as recommended |
 | P22 | **Resolved (approved by the owner 2026-10-03, DR-0064).** keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063; DR-0064 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | No longer pending | Approved as recommended |
+| P23 | **Resolved (approved by the owner 2026-10-03, DR-0067).** How journeys run in the NVDA-absent leg: focus strategies and actions use Playwright input on the focused element (DR-0053); browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets, so A, B and B2 are measured at the same journey states as C, and reachability there is evidenced from the tree | DR-0066; DR-0067 | What is measured (the states at which A, B and B2 are measured; whether they can show NAV_TARGET_UNREACHABLE) | No longer pending | Approved as recommended |
+| P24 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Goal-based steps: repeat the strategy up to `maxAttempts`; goal checked by the MSAA focus read (TAB, SHIFT_TAB) or NVDA's queued speech (browse strategies) in the NVDA-present leg, and by the accessibility-tree node in the NVDA-absent leg. REACHED; UNREACHABLE, after which the journey stops with no fallback; PATH_CHANGED, reached at a different attempt count from the base side's most common count in the same leg (REVIEW in M5); ENV_FAILURE, a setup error before the step's first action | DR-0066; DR-0067 | What counts as detection (step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing) | No longer pending | Approved as recommended |
+| P25 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Add a PRESS strategy: one documented key (Escape, Space, Enter, arrows, Home, End) on the focused element, sent through NVDA in the NVDA-present leg, because KEYBOARD_TRAP is defined by a component's documented keys | DR-0066; DR-0067 | What is measured (the journey vocabulary) | No longer pending | Approved as recommended |
+| P26 | **Resolved (approved by the owner 2026-10-03, DR-0071).** Two NVDA browse-mode commands as journey strategies. FOCUS_MODE_TOGGLE is NVDA+Space, the key an NVDA user presses to pass keys to a widget such as a keyboard drag handle. DOCUMENT_TOP is Control+Home in browse mode, which reads a new page from its top. In the NVDA-absent leg the first does nothing and the second puts the simulated cursor before the first line | DR-0070; DR-0071 | What is measured (the journey vocabulary, and which NVDA interactions C exercises) | No longer pending | Approved as recommended |
+| P27 | **Resolved (approved by the owner 2026-10-03, DR-0076).** In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part that the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames and Long Tasks APIs. An attempt is INCONCLUSIVE when the uncovered part of a gap exceeds 100 ms. The covered stalls are recorded with the evidence. Canary runs keep DR-0010's rule unchanged | DR-0075; DR-0076 | What is measured (which attempts are INCONCLUSIVE: DR-0010's clock limit applied to real apps) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2981,3 +2998,337 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 
 **Check (run 37134734243).** Only the three dev fixtures ran. Each pair reproduced again: the check holds on the last good release and fails on the first broken one, on both paths. Each twin applied, built and reverted cleanly, and its check held on both paths at the base release.
 
+## DR-0065 M3 merged and M4 authorised
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.7 | Header, §9 (M3, M4), §12 |
+
+**Decision.**
+
+> Merged #6; start M4
+
+**Consequences.**
+
+- M3 is merged (PR #6). The authorised scope is M0–M4. M5 onwards needs the owner's go-ahead. HANDOFF moves to v1.7, and CLAUDE.md's current authorisation follows it.
+- M4 work is on branch `m4-journeys`. Before any item runs, M4 implements the execution guard (DR-0034, already in place) and the side-aware validity rule (DR-0035). Choices that change what is measured go to the owner when first needed, as yes/no items with Claude's recommendation (DR-0045).
+
+## DR-0066 M4 design: journeys, runner and side-aware validity
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; P23–P25 approved by the owner 2026-10-03 (DR-0067) |
+| HANDOFF v1.7 | §4 rules 5 and 8, R5, R8, R9, §7.2, §7.4, §8.4, §9 (M4), §10.2 |
+
+**Context.** M4 builds the journeys and the runner: goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE, paired and counterbalanced execution, and evidence packages uploaded as artefacts (HANDOFF §9). Before any item runs, the runner calls `assertItemExecutable` (DR-0034) and applies the side-aware validity rule (DR-0035). The dev split references 16 journeys: 7 in Atomic CRM, 6 in react-admin "simple" and one per dev mined pair.
+
+**Side-aware validity (implemented, `harness/src/runner/itemValidity.ts`).** Per item and per leg, over that leg's attempts:
+- A check fails on a side when it fails in any attempt of that side. With k = n, one invalid attempt already leaves fewer than k valid ones.
+- The manifest counts as both sides. The pre-block canary counts as the block (unchanged rule).
+- A setup error before activation counts for its side. A candidate whose page cannot load is therefore a finding, not INCONCLUSIVE, because the candidate may have caused it (DR-0032).
+
+**Design (Decided by Claude under DR-0045).**
+
+| Part | Decision |
+|---|---|
+| Journeys | `journeys/<id>.json`, validated by `JourneySchema`, one per journey id in the corpus. `entryUrl` is a path inside the app's build; `anchor` is the handover selector. Setup steps name functions in a registry (`harness/src/runner/setups.ts`); they never run inside an AT segment |
+| Unchanged controls (P15) | One base-against-base item per journey: id `<journey>-unchanged`, `expected: unchanged`, candidate ref = base ref, in the pattern and split of the journey's first pattern. Written with the journeys |
+| Builds | One job per app and leg. It builds the base and every dev candidate of the app: SPA patches, and for mined pairs the fixture at each release plus the twin patch. Each is served from 127.0.0.1 with outside hosts blocked |
+| Order | Per item and per leg: a pre-block canary (K1), then the sides in ABBA order (n = 3 per side: base, candidate, candidate, base, base, candidate; n = 5 for absence-based symptoms), then a post-block canary (K1). Exploratory defaults of HANDOFF §6, k = n |
+| Attempt | A fresh-profile Chrome per attempt with the locked accessibility mode, and the timeline and handover as in the canary runner (§7.2). Then the steps: each AT step is one segment with its own segment id and observation window. No key is pressed inside a window |
+| Arm A | axe runs in its own browser context, never near an AT segment (DR-0024). After each NVDA-absent attempt, a Playwright-only replay of the journey in a new context runs axe at the end of each AT step. `@axe-core/playwright` and `axe-core` are pinned exactly as dev dependencies (MPL-2.0, used unmodified) |
+| Arm B evidence | At the end of each AT step: `ariaSnapshot` of the page, and Chrome's accessibility tree through `Accessibility.getFullAXTree`, pruned to role, name, value, states, live properties, ids and parent links. Stored gzipped |
+| Evidence | One evidence package per attempt (`EvidencePackageSchema`, with `leg`, `preflight` and a `segmentId` on every step). Raw collector output is in the attempt record, as in M2. Packages are uploaded as artefacts |
+| Execution guard | `assertItemExecutable` is called before each item. Test-split items are never built or run before the freeze |
+| Base check | An item whose base journey does not complete in a leg is reported; a seeded item is dropped only on that base-only evidence (corpus plan §6) |
+
+**P23–P25 (approved by the owner 2026-10-03, DR-0067).** These change what is measured or what counts as detection (hard rule 12), so they went to the owner before item results are used.
+
+| # | Proposal | Why it goes to the owner |
+|---|---|---|
+| P23 | **How journeys run in the NVDA-absent leg.** Focus strategies (TAB, SHIFT_TAB) and actions (ACTIVATE, TYPE, PRESS) use Playwright input on the focused element, as the canary leg does (DR-0053; that leg has no AT segment). Browse strategies (NEXT_HEADING, NEXT_FORM_FIELD, NEXT_BUTTON, NEXT_LANDMARK, BROWSE_NEXT, READ_CURRENT) move a simulated virtual cursor over Chrome's accessibility tree, using NVDA's quick-navigation role sets. ACTIVATE after a browse step acts on the cursor's element. A, B and B2 evidence is then taken at the same journey states as C's, and reachability in that leg is evidenced from the accessibility tree. The alternative is not to run browse steps in that leg, so that A, B and B2 judge only whether the target is present | It decides the states at which A, B and B2 are measured, and whether they can show NAV_TARGET_UNREACHABLE |
+| P24 | **Goal-based steps and their outcomes.** A step with `until` repeats its strategy up to `maxAttempts`, checking the goal after each attempt. In the NVDA-present leg the check is the MSAA focus read for TAB and SHIFT_TAB, and NVDA's queued speech for browse strategies: the P11 matching on the name, plus NVDA's spoken role word when a role is given. In the NVDA-absent leg it is the accessibility-tree node at the focus or the cursor. The outcomes: **REACHED**, the goal is met. **UNREACHABLE**, it is not met within `maxAttempts`; the journey then stops, with no fallback (hard rule 8), and later steps are recorded as not run. **PATH_CHANGED**, the goal is met at a different attempt count from the base side's most common count in the same leg; M5 routes it to REVIEW ("unexpected but functional navigation", PRD §21). **ENV_FAILURE**, a setup error before the step's first action | Step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing, so they decide what counts as detection |
+| P25 | **A PRESS strategy for a documented key.** A journey can press one key on the focused element: Escape, Space, Enter, the arrow keys, Home or End. KEYBOARD_TRAP is defined by a component's documented keys, and two dev journeys need them (Escape out of a menu; a keyboard drag). In the NVDA-present leg the key goes through NVDA like every other key, so NVDA's browse or focus mode decides what the page receives, as it would for a user. This adds one value to HANDOFF §10.2's `Strategy` | It extends the journey vocabulary, which decides which behaviours can be measured |
+
+**Consequences.**
+- The runner is built under P23–P25 as approved (DR-0067). Item runs are exploratory.
+- M5 (oracles, scoring and the power table) is not started without the owner's go-ahead.
+
+## DR-0067 Owner approval of P23–P25
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.8 | §9 (M4), §10.2 |
+
+**Decision.**
+
+> Yes to P23–P25; carry on with the journeys
+
+**Consequences.**
+
+- **P23:** in the NVDA-absent leg, focus strategies and actions use Playwright input on the focused element. Browse strategies move a simulated virtual cursor over Chrome's accessibility tree, with NVDA's quick-navigation role sets.
+- **P24:** goal-based steps have the outcomes REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) and ENV_FAILURE.
+- **P25:** `Strategy` gains `PRESS`, and `AtStep` gains `key` (Escape, Space, Enter, the arrow keys, Home, End).
+- HANDOFF moves to v1.8, and the schema follows (`harness/src/schema`).
+
+## DR-0068 M4 build: runner, journeys and unchanged controls
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.8 | §7.2, §7.4, §8.4, §9 (M4), §10.2 |
+
+**Context.** The build of the M4 design (DR-0066) under P23–P25 (DR-0067).
+
+| Part | Decision |
+|---|---|
+| Runner | `npm run m4:items` (`harness/src/runner/itemRun.ts`): one app and one leg per job; K1 bracketing canaries; ABBA attempts; one segment per AT step; PATH_CHANGED after the block; packages validated by `GateEvidencePackageSchema`; side-aware validity. Output is one gzipped block file per item, plus a summary line |
+| Builds | `harness/src/runner/buildApp.ps1`. For a SPA: the base build, then each patch built and reverted. For a mined pair: the fixture at the last good release (base), at the first broken release, and at the last good release with the twin's patch, each installed as of its own publish date (DR-0063). Workflow `m4-items.yml`: `contents: read`, no secrets, install scripts off, a separate npm cache |
+| Repetitions | n is 3, or 5 when the item's pattern, or for an unchanged control its journey, holds an absence-based regression (ANNOUNCEMENT_MISSING). A twin and an unchanged control are thus judged under the same n as the regression beside them |
+| Simulated cursor | NVDA release-2026.2's quick-navigation role sets, read from its source (`gecko_ia2.py`, `aria.py`). ACTIVATE after a browse step clicks the cursor's element without pointer events, as NVDA's Enter does in browse mode; otherwise it presses Enter on the focused element |
+| Goals | A goal names what the item's regression does not change, so the regression shows in an expectation, not as UNREACHABLE. The exceptions are patterns whose symptom is reachability (NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED) |
+| Expectation grammar | `focusOn` `<role>\|<name>` (after a browse step, the element under the virtual cursor); `stateIs` `<role>\|<name>\|<state>=<value>`; `*` matches any name. Checked by `checkJourneys` and by `npm run corpus -- validate` |
+| Anchor | A CSS selector for a named, focusable element. The handover compares Chrome's accessible name for it with the MSAA focus read. `body` stands for the document, on pages with nothing focusable; its expected name is the title |
+| Arm A | axe-core 4.13.0 (MPL-2.0, exact dev dependency, no install scripts), evaluated in the page of a separate replay context. Its Playwright helper is not used, because it opens a tab (DR-0024) |
+| Unchanged controls (P15) | `npm run corpus -- unchanged`: `<journey>-unchanged`, base against base, in the pattern and split of the journey's first regression item by id. Sixteen, all dev |
+| NVDA input | Guidepup key names. READ_CURRENT is NVDA+Up, sent with Guidepup's `readLine` command (`AtAdapter.readCurrent`), because the plain key syntax has no NVDA modifier. TYPE presses one character at a time (DR-0011 advises against `type()`) |
+| Known limit | A full page load inside a journey (oss-rac-8697's link) restarts the in-page timeline, so mutations before the load are not drained. The step records keep their own trees and focus reads |
+| Sync copies | The repository sits in an iCloud-synced folder, which made 548 byte-identical "name 2.ext" copies of tracked files. They were moved out of the tree (none was ever committed); `.gitignore` and the corpus tools now skip such names |
+
+**Consequences.** Journeys are developed on the base builds in the NVDA-absent leg first (`m4-items.yml` with `sides: base`), then in both legs, before full item runs. Every M4 result is exploratory.
+
+## DR-0069 M4 journey development: the page date and the tab journey
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.8 | §7.3, §9 (M4); P14, P20 |
+
+**Context.** The first journey probe (run 37139054732) ran each journey once on its base build, in the NVDA-absent leg.
+
+| Finding | Decision |
+|---|---|
+| Playwright's clock API, used to fix Atomic CRM's date (P14), also fakes `performance.now()` and `requestAnimationFrame`. Every Atomic CRM attempt was INCONCLUSIVE (low-resolution TimeTicks, and once a rAF gap). The fake timers also seem to delay Radix's focus restoration | Fix only `Date`, with an init script that starts it at 2026-10-05T09:00:00Z and advances it with `performance.now()`. Page timing, the DOM timeline and rAF stay real |
+| The simulated cursor kept its last browse position after an activation moved focus, so a later ACTIVATE clicked a stale element | The cursor follows focus after every action, and whenever the page moves focus, as NVDA's browse cursor does |
+| Atomic CRM's contact page renders tabs only in its mobile layout. The M3 tab specs mutate the shared Tabs, which the desktop company page renders | The tab journey becomes `acrm-company-show-tabs` (`/#/companies/0/show`). Its four specs and its unchanged control follow. The a11y-improvement twin names the company tab list, so it acts on the journey's target (P20). The patches of the regression specs are unchanged |
+| Anchors the drafts guessed (`#post_id`, a mobile-only Edit button) do not exist | Anchors are taken from the probe's accessibility trees and focus traces. Goals then reach targets by Tab or browse strategies from there |
+
+**Consequences.** Journey development continues on the base builds until every journey completes and its expectations can be judged. It then runs in the NVDA-present leg.
+
+## DR-0070 M4 journeys in the NVDA-present leg, and NVDA's modes
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) |
+| HANDOFF v1.8 | §7.2, §9 (M4), §10.2; P23–P25 |
+
+**Context.** Journey rounds 3 and 4 (runs 37140040580, 37140786020) ran each journey once on its base build in both legs. All 64 attempts were valid. NVDA's queued speech showed where the journeys and the simulated cursor departed from NVDA.
+
+| Finding (NVDA-present leg) | Decision |
+|---|---|
+| NVDA reads a list item's content as one line, and after a load its cursor starts on the first line | The simulated cursor moves by line (DR-0068's model, refined): a control, a heading, or the content of one list item, paragraph, cell, option or menu item. A browse goal matches any node on the line, and READ_CURRENT with no position reads the first line |
+| NVDA speaks "/" as "slash" | Goal names avoid punctuation |
+| NVDA's Enter in browse mode clicks a menu trigger, so the menu, not its first item, takes focus. NVDA enters focus mode in the menu, and its first Escape returns to browse mode without reaching the page | The menu journey expects focus within the menu, and presses Escape twice, as an NVDA user does. In the NVDA-absent leg the first Escape closes the menu and the second does nothing |
+| After a form, NVDA stays in focus mode, so "h" reaches the page | Escape before heading navigation (it is harmless in either mode) |
+| After an in-app navigation, NVDA's cursor is at the bottom of the new page, so NEXT_HEADING finds nothing below it | Needs DOCUMENT_TOP (P26) |
+| In browse mode, Space on the focused deal card clicks it, which opened the deal and then archived it. A keyboard drag needs focus mode, so the keys reach the drag handle | Needs FOCUS_MODE_TOGGLE (P26) |
+
+**P26 (approved by the owner 2026-10-03, DR-0071).** Two NVDA browse-mode commands as journey strategies:
+
+- **FOCUS_MODE_TOGGLE** is NVDA+Space, sent through Guidepup's `toggleBetweenBrowseAndFocusMode` command. In the NVDA-absent leg it does nothing.
+- **DOCUMENT_TOP** is Control+Home in browse mode. In the NVDA-absent leg it puts the simulated cursor before the first line.
+
+The deals journey would toggle to focus mode before the drag and back after it. The contact-save journey would go to the top before heading navigation. Without P26, both journeys' base runs fail in the NVDA-present leg, so C could not be judged on their patterns. This extends the journey vocabulary, which decides which NVDA interactions C exercises (hard rule 12). The recommendation is yes.
+
+**Consequences.** With P26 approved, the deals and contact-save journeys use the two commands (DR-0071).
+
+## DR-0071 Owner approval of P26
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.9 | §10.2 |
+
+**Decision.**
+
+> Yes to P26; carry on with the journeys
+
+**Consequences.** `Strategy` gains two values:
+- **FOCUS_MODE_TOGGLE:** NVDA+Space in the NVDA-present leg; nothing in the NVDA-absent leg.
+- **DOCUMENT_TOP:** Control+Home in browse mode in the NVDA-present leg; the simulated cursor before the first line in the NVDA-absent leg.
+
+The deals journey toggles focus mode around the keyboard drag. The contact-save journey goes to the top of the new page before heading navigation. HANDOFF moves to v1.9, and the schema follows.
+
+## DR-0072 M4: journeys complete, smoke tests and the first full run
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §7.4, §9 (M4) |
+
+**Context.** With P26 (DR-0071), journey round 5 (run 37141599755) completed every journey on its base build in both legs, with all 32 attempts valid. NVDA's speech confirms the keyboard drag ("You have lifted an item…", "…dropped the item") and the heading on the saved contact's page.
+
+| Part | Decision |
+|---|---|
+| Sharding | `itemRun --shard i/N` and the request's `shards`: each job runs every Nth item of its app (items sorted by id). An Atomic CRM block in the NVDA-present leg takes about 75 s per attempt, since each Tab waits 0.9 s for NVDA, so one job per app would exceed the job limit. The limit is 340 minutes |
+| Report | `npm run m4:report -- artefacts/<run>`: per item and leg, side-aware validity, the bracketing canaries, journey completion per side, and step outcomes. It judges no expectation; that is M5 |
+| Build fix | Smoke run 37142093929 built a mined pair's candidate at the last good release. `buildApp.ps1` had taken the version pair from the first `oss-history` item, the unchanged control, whose candidate is its base. The pair now comes from the regression item, and the build refuses a pair whose releases match. Smoke run 37142491385 confirmed the fix: each candidate is built at its first broken release, and the raw evidence shows each regression (NVDA speaks "available" for fluent-35927; rac-8697's candidate journey stops UNREACHABLE; carbon-19563's checkbox stays checked) |
+| Full run | Every dev item (56), both sides in ABBA order, n = 3 (5 beside an absence-based regression), K1 bracketing canaries, axe, both legs, three shards per app |
+
+**Consequences.** The full run is M4's evidence: exploratory, dev split only, with no verdicts (M5).
+
+## DR-0073 M4 full run results, and M4 status
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted; its evidence runs superseded by DR-0075 and DR-0077 |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §9 (M4) |
+
+**Context.** The first full M4 run (run 37143043955) ran every dev item: 56 items in both legs, ABBA order, n = 3 (5 beside an absence-based regression), with K1 bracketing canaries and axe. It used 30 jobs, all successful. Every result is EXPLORATORY, and no expectation was judged (M5).
+
+| Measure | Result |
+|---|---|
+| Blocks (item × leg) | 112; none INCONCLUSIVE (side-aware rule, DR-0035); no candidate-only findings |
+| Attempts | 736; every evidence package valid against `GateEvidencePackageSchema`; no page errors; no request to another host |
+| Canaries | Every pre-block and post-block K1 canary passed, in both legs |
+| Base journeys | Complete in every attempt of all 56 items, in both legs |
+| Benign twins and unchanged controls | Complete on both sides in every attempt, in both legs; no PATH_CHANGED anywhere |
+| Reachability regressions | The candidate stops UNREACHABLE in every attempt, in both legs: acrm-drag-only-deal-card, acrm-submit-pointer-only-save, oss-rac-8697, ras-heading-removed-custom-page and ras-navigation-hidden-menu (the last after the fix below) |
+| Other regressions | Journeys complete on both sides. The regression is in the evidence (names, roles, states, focus, announcements), which M5's oracles judge |
+
+**Goal fix (Decided by Claude under DR-0045).** In the NVDA-present leg, ras-navigation-hidden-menu's candidate reached its goal as PATH_CHANGED. With the menu hidden, NVDA browsed into the posts table and matched the column header "Nb comments", because the goal named only "Comments". The role is not what this regression changes, so the goal now requires `menuitem` (DR-0068's goal principle). Re-run 37145610510: the candidate is UNREACHABLE in both legs, and the twin and unchanged control are reached in every attempt.
+
+**M4 status.** The M4 deliverables are in place:
+- goal-based steps with the four outcomes (P24);
+- journeys for every dev item (16), with unchanged controls (16);
+- paired, counterbalanced execution with bracketing canaries;
+- evidence packages uploaded as artefacts (30-day retention);
+- the execution guard (DR-0034) and side-aware validity (DR-0035).
+
+M5 (oracles, scoring, the dev report and the power table) needs the owner's go-ahead. The full run's artefacts expire after 30 days, so if M5 starts later they are re-run rather than archived. M4 is not a gate (D6).
+
+## DR-0074 M4 PR review findings
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.9 | §7.3, §7.4, §9 (M4); P13 |
+
+**Context.** Devin Review (5 comments) and Codex (4 comments) reviewed PR #7. Claude checked each against the code and the full run's data (run 37143043955). That run had no listener failure and no missing package. However, 301 of its 736 attempts recorded more than one "document": Playwright's `framenavigated` fires on same-document (hash-route) navigations, so the runner treated those as new pages and restarted the rAF heartbeat.
+
+| Finding | Assessment | Change |
+|---|---|---|
+| A listener failure is metadata only, so a block can look complete without B2 events (Devin; Codex P1) | Valid. Under P13 a listener failure is a failure of the instrument, never INCONCLUSIVE, so it must not enter validity. It must be explicit, though | Each attempt records `b2Evidence` (`complete`, `missing` or `not-in-leg`). The report counts attempts with missing B2 events per item. M5 counts them as failures for B2 |
+| The K1 canary ignores an undrained or malformed listener (Codex P1) | Valid | An incomplete collector, a hook shortfall or a failed handover focus read fails the canary, which makes the block INCONCLUSIVE (HANDOFF §7.4) |
+| Navigation handling (Codex P2; Devin) | Valid in substance. Same-document navigations were treated as new documents, losing rAF readings since the last check. A full navigation lost the old document's undrained entries, and a document replaced before any reading kept zero drift. Devin's claim that new-document entries were mapped with the old clock is not borne out: the drain ran after the new clock was set | Each document gets an id at creation (an init script), so only a real document change switches the clock and heartbeat. The timeline is drained, and the heartbeat read, before each AT step's first action and after each action; drift is read at each step's start and end. A document replaced before any drift reading is counted as unmeasured, never as a failure (the page may cause navigations, DR-0032) |
+| A missing package counts as valid in the report (Devin) | Valid | A missing package is recorded as an error and counted |
+| `buildApp.ps1` always exits 0 (Devin) | Valid. A missing build is a harness failure, and it showed as a candidate-only setup error | The job fails when any side fails to install, apply, build or revert |
+| Skipped canaries are recorded as passing (Codex P2) | Valid | A skipped canary is not passed. Attempts then fail the pre-canary check (R9), and the block records `canariesSkipped` |
+| The NVDA log is uploaded unredacted (Devin) | Not adopted. The log is the protocol's second speech record (HANDOFF §8.1, D2). It comes from an ephemeral runner with no secrets, and gate bundles already include it (D6) | None |
+
+**Consequences.** The full run is repeated with the fixed runner, so M4's evidence reflects it. Journey-development runs without canaries are now INCONCLUSIVE by design.
+
+## DR-0075 M4 repeated full run, and frame gaps in real apps
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; P27 approved by the owner 2026-10-03 (DR-0076) |
+| HANDOFF v1.9 | §7.3, §9 (M4); DR-0010, DR-0049 (P6), DR-0032, DR-0035 |
+
+**Context.** The full run was repeated with the fixed runner (DR-0074; run 37148660221): 112 blocks and 736 attempts.
+
+| Measure | Result |
+|---|---|
+| Documents | Two per attempt only where a page really loads (30 attempts, rac-8697); no document went unmeasured; maximum drift 0.40 ms |
+| Evidence | Every package valid; no attempt missing B2 events; every base journey complete in both legs |
+| Reachability regressions | As in the first run: the candidate is UNREACHABLE in every attempt, in both legs |
+| INCONCLUSIVE | 14 of 112 blocks: 13 for CLOCK_RAF_GAP on both sides, all on the react-admin post-edit journey (gaps of 109–172 ms during the save and redirect, on base and candidate alike), and 1 for PRE_CANARY |
+| Canaries | Two of 224 failed only their handover focus read; their K1 signatures passed. The review fix had given that read no retry; it now follows P10 (fixed after this run) |
+
+The first run's validity for the post-edit journey was wrong. Restarting the rAF heartbeat on a hash route change had discarded these gaps.
+
+**The question (P27, hard rule 12).** DR-0010 limits the rAF gap to 100 ms, and P6 (DR-0049) fixed its computation for canary runs. On a canary page, a frame gap means the browser stopped producing frames, for example when it is throttled or occluded, so timing evidence cannot be trusted. In a real app, the page's own main-thread work also delays frames: react-admin's save and redirect stall it for well over 100 ms on both sides. Applied unchanged, the limit makes every item of that journey INCONCLUSIVE (three patterns: two ANNOUNCEMENT_MISSING, one ANNOUNCEMENT_DUPLICATED). Yet a long task does not corrupt QPC timestamps or the timeline. It is behaviour of the app being measured, and users experience it too.
+
+**P27 (approved by the owner 2026-10-03, DR-0076).** In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames API (and Long Tasks), recorded in the page from load. An attempt is INCONCLUSIVE when the uncovered part of any gap exceeds 100 ms. The covered stalls are recorded with the evidence, so the arms and M5 can see them. Canary runs keep DR-0010's rule unchanged. The check keeps its purpose, which is frames stopped without page work, while the app's own jank stops voiding attempts on both sides. The alternative is to keep the rule as it is, in which case the post-edit journey's three patterns are always INCONCLUSIVE and count as misses for every arm. The recommendation is yes.
+
+**Consequences.** With P27 approved, the runner applies the rule to corpus runs (DR-0076).
+
+## DR-0076 Owner approval of P27
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.10 | §7.3 |
+
+**Decision.**
+
+> Yes to P27; carry on
+
+**Consequences.**
+
+- In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part that the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames and Long Tasks APIs, recorded in each document from its creation.
+- An attempt is INCONCLUSIVE when the uncovered part of any gap exceeds 100 ms. The raw gaps and the covering stalls are recorded with the evidence.
+- Canary runs keep DR-0010's rule unchanged.
+- HANDOFF moves to v1.10.
+
+
+## DR-0077 M4 full run under P27, and the duplicated-announcement spec
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.10 | §7.3, §9 (M4); DR-0032, DR-0035, DR-0059 |
+
+**Context.** The full run was repeated with P27 in the runner and the P10 retry in the K1 focus read (run 37151537838): 112 blocks and 736 attempts. It is M4's evidence run, with the re-run below. Every result is EXPLORATORY, and no expectation was judged (M5).
+
+| Measure | Result |
+|---|---|
+| Blocks | 112; none INCONCLUSIVE; no candidate-only findings |
+| Evidence and canaries | Every package valid; no attempt missing B2 events; every K1 canary passed, in both legs |
+| Base journeys | Complete in every attempt of all 56 items, in both legs |
+| Reachability regressions | The candidate stops UNREACHABLE in every attempt, in both legs, for the same five items as DR-0073 |
+| Frame gaps | 89 attempts had a raw gap over 100 ms, all on the react-admin post-edit journey (of its 124 attempts) and spread evenly over the sides (44 base, 45 candidate). The page's own long work covered every one: the largest uncovered part was 62.5 ms |
+
+**Two long stalls.** The first base attempt of ras-live-region-removed-notification-twin stalled for 7.0 s in the NVDA-absent leg and 3.75 s in the NVDA-present leg. Each was its block's first attempt, began about 0.6 s into the save step, and ended before the observation window. In the NVDA-present leg, NVDA had already spoken "alert Post updated" 563 ms after the step began. Long tasks covered both stalls, so under P27 they do not void the attempts. This shows a limit of P27 that was known when it was proposed: a stall inside a page task looks the same whether the page's own work causes it, or the operating system starves the browser during that task. The covered stalls are in the evidence, so M5 can see them. None of the run's 113 gaps over 100 ms overlapped an observation window, and no other attempt stalled for more than 188 ms. No change is made; this note records the limit.
+
+**Spec fix (Decided by Claude under DR-0045).** The run's speech showed a defect in the ras-toast-duplicated-announcer spec (DR-0059). react-admin "simple" announces "Post updated", from its English messages. The spec's second announcer wrote "Element updated", so the candidate announced two different messages, not one message twice: not the ANNOUNCEMENT_DUPLICATED the pattern defines. The announcer now writes "Post updated", and the post-edit journey's expectation is "Post updated", not "Element updated". The patch and item were regenerated (`npm run corpus -- mutate`), and the twin is unchanged. This corrects a fixture so that it shows its pattern. It tunes no oracle, trigger or threshold, and it uses no test data.
+
+**Re-run.** The post-edit journey's seven items ran again in both legs (run 37154136328).
+
+| Measure | Result |
+|---|---|
+| Blocks | 14; none INCONCLUSIVE; every canary passed |
+| ras-toast-duplicated-announcer (NVDA-present) | NVDA says "Post updated" twice in every candidate attempt, and once in every base attempt |
+| Absence-based regressions (NVDA-present) | ras-live-region-removed-notification and ras-toast-status-created-populated: no "Post updated" in any candidate attempt; once in every base attempt |
+| Twins and the unchanged control (NVDA-present) | "Post updated" once on both sides, in every attempt |
+| NVDA-absent leg | Every journey complete; no attempt missing B2 events; largest uncovered frame gap 62.5 ms. In the DOM timeline's save step, the duplicated-announcement candidate has three live-region mutations in every attempt against the base's two, and the removed live region has none |
+
+**M4 status.** DR-0073's list of M4 deliverables stands. M4's evidence is now runs 37151537838 and 37154136328; their artefacts expire after 30 days. M5 needs the owner's go-ahead.

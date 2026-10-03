@@ -11,7 +11,7 @@ index 38e921c..a10b4da 100644
              <div class="initialLoader">
                  <div class="circle">
 diff --git a/fixtures/spa/react-admin-simple/src/dataProvider.tsx b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
-index 362c22e..06f381b 100644
+index 362c22e..e7a4214 100644
 --- a/fixtures/spa/react-admin-simple/src/dataProvider.tsx
 +++ b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
 @@ -10,6 +10,11 @@ const defaultDataProvider = fakeRestProvider(data, true, 300);
@@ -20,7 +20,7 @@ index 362c22e..06f381b 100644
          resource: 'posts',
 +        afterUpdate: async result => {
 +            const announcer = document.getElementById('save-announcer');
-+            if (announcer) announcer.textContent = 'Element updated';
++            if (announcer) announcer.textContent = 'Post updated';
 +            return result;
 +        },
          beforeDelete: async ({ id }, dp) => {

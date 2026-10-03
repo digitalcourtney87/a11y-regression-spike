@@ -6,8 +6,8 @@
 import { describe, expectTypeOf, test } from "vitest";
 import type { z } from "zod";
 import type {
-  ArmVerdict,
   Arm,
+  ArmVerdict,
   AtStep,
   BenignType,
   CanaryId,
@@ -24,6 +24,7 @@ import type {
   NvdaChannel,
   PlatformEvent,
   Preflight,
+  PressKey,
   SetupStep,
   StepEvidence,
   Strategy,
@@ -53,6 +54,7 @@ import type {
   NvdaChannelSchema,
   PlatformEventSchema,
   PreflightSchema,
+  PressKeySchema,
   QpcNsSchema,
   SetupStepSchema,
   StepEvidenceSchema,
@@ -70,6 +72,7 @@ describe("interfaces equal z.infer of their schemas", () => {
     expectTypeOf<z.infer<typeof BenignTypeSchema>>().toEqualTypeOf<BenignType>();
     expectTypeOf<z.infer<typeof ArmSchema>>().toEqualTypeOf<Arm>();
     expectTypeOf<z.infer<typeof StrategySchema>>().toEqualTypeOf<Strategy>();
+    expectTypeOf<z.infer<typeof PressKeySchema>>().toEqualTypeOf<PressKey>();
     expectTypeOf<z.infer<typeof CanaryIdSchema>>().toEqualTypeOf<CanaryId>();
     expectTypeOf<z.infer<typeof UtterancePrioritySchema>>().toEqualTypeOf<UtterancePriority>();
     expectTypeOf<z.infer<typeof NvdaChannelSchema>>().toEqualTypeOf<NvdaChannel>();

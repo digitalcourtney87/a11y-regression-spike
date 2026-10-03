@@ -54,7 +54,13 @@ export type Arm =
 
 export type Strategy =
   | "TAB" | "SHIFT_TAB" | "NEXT_HEADING" | "NEXT_FORM_FIELD" | "NEXT_BUTTON"
-  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT";
+  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT"
+  | "PRESS" // HANDOFF v1.8: one documented key (P25; DR-0067)
+  | "FOCUS_MODE_TOGGLE" // HANDOFF v1.9: NVDA+Space (P26; DR-0071)
+  | "DOCUMENT_TOP"; // HANDOFF v1.9: Control+Home in browse mode (P26; DR-0071)
+
+/** The documented keys a PRESS step may send (P25; DR-0067). */
+export type PressKey = "Escape" | "Space" | "Enter" | "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | "Home" | "End";
 
 export interface Expectation {
   type: "announcementContains" | "focusOn" | "stateIs" | "orderBefore";
@@ -71,6 +77,8 @@ export interface AtStep {
   until?: { name?: string; role?: string; maxAttempts: number };
   /** TYPE only. */
   text?: string;
+  /** PRESS only, and required for it (P25; DR-0067). */
+  key?: PressKey;
   /** Observation window after the action, in milliseconds. */
   observeMs: number;
   expectations: Expectation[];

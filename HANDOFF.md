@@ -1,14 +1,52 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.6 (2026-10-03)
+**Version:** 1.10 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
-**Authorised scope:** Milestones M0–M3. The owner approved Gate G2 on 2026-10-03 and confirmed that it unlocks M3 (DR-0055). M4–M7 are specified for context; Claude asks the owner before starting M4, and the Phase 1 proceed/stop decision stays on 27 November 2026 (DR-0003).
+**Authorised scope:** Milestones M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 (PR #6) and authorised M4 on 2026-10-03 (DR-0065). M5–M7 are specified for context; Claude asks the owner before starting M5, and the Phase 1 proceed/stop decision stays on 27 November 2026 (DR-0003).
 
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.10
+
+v1.10 records the owner's approval of P27, frame gaps in corpus runs (DR-0076; DR-0075). No owner items are pending. The v1.9 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.10 | DR-0076 |
+| §7.3 | In corpus runs, only the part of a rAF gap that the page's own long work does not cover counts towards the 100 ms limit; canary runs unchanged | DR-0076; DR-0075 |
+
+## Changes in v1.9
+
+v1.9 records the owner's approval of P26, two NVDA browse-mode commands as journey strategies (DR-0071; DR-0070). No owner items are pending. The v1.8 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.9 | DR-0071 |
+| §10.2 | `Strategy` gains `FOCUS_MODE_TOGGLE` (NVDA+Space) and `DOCUMENT_TOP` (Control+Home in browse mode) | DR-0071; DR-0070 |
+
+## Changes in v1.8
+
+v1.8 records the owner's approval of P23–P25, the M4 journey model (DR-0067; DR-0066). No owner items are pending. The v1.7 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.8 | DR-0067 |
+| §9 (M4) | Journey execution per leg (P23) and goal-based step outcomes (P24) | DR-0067; DR-0066 |
+| §10.2 | `Strategy` gains `PRESS`; `AtStep` gains `key` for it (P25) | DR-0067; DR-0066 |
+
+## Changes in v1.7
+
+v1.7 records the owner's authorisation of M4 after merging M3 (DR-0065), and the M3 outcome (P14–P22; DR-0056 to DR-0064). No owner items are pending. The v1.6 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.7; authorised scope M0–M4; ask before M5 | DR-0065 |
+| §9 (M3) | M3 merged (PR #6): 79 regression patterns, 20 dev and 59 test; Prompt to Page set aside | DR-0057; DR-0064 |
+| §12 | Current authorisation: M0–M4 | DR-0065 |
 
 ## Changes in v1.6
 
@@ -324,6 +362,7 @@ The checks in steps 3, 4 and 6 come from DR-0017 (D8), DR-0011 (D2) and DR-0010 
 - **Joining logs.** Join the speech, platform-event, mutation and NVDA-log records by QPC and by the orchestrator-issued segment ID (`segmentId`). Measure latency from the canary events themselves.
 - **NVDA log bucketing (DR-0039).** NVDA's log lines carry wall-clock times, not QPC. They may be bucketed into segments through the wall anchor for parity counts and diagnostics. That bucketing is never used for latency, ordering or validity.
 - **INCONCLUSIVE only for:** native self-test disagreement (method approved by the owner 2026-10-02, DR-0030; DR-0010) > 0.5 ms; page-mapping uncertainty > 2 ms; drift > 1 ms within a segment; low-resolution TimeTicks in Chrome; a requestAnimationFrame gap > 100 ms. A value equal to its limit passes. The limits live in `harness/src/runner/validity.ts`.
+- **Frame gaps in corpus runs (v1.10; P27, DR-0076).** From M4, a rAF gap counts towards the 100 ms limit only for the part that the page's own main-thread work does not cover, read from Chrome's Long Animation Frames and Long Tasks APIs. The raw gaps and the covering stalls are recorded with the evidence. Canary runs keep the rule above unchanged.
 - **`maxClockSkewMs`** in the evidence package (§10.2) records max(native self-test disagreement, page-mapping uncertainty). The owner approved this redefinition on 2026-10-02 as part of DR-0026, accepted with amendments (DR-0030).
 
 ### 7.4 Paired, counterbalanced runs
@@ -458,7 +497,7 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
 
 **G2 outcome (DR-0055).** The owner accepted G2 on 2026-10-03 (`docs/gates/G2.md`): 260 valid NVDA-absent runs of K1–K5 with 0 signature failures and INCONCLUSIVE 0%. M2 is merged and M3 is unlocked.
 
-### M3–M7 — M3 unlocked by the G2 approval (DR-0055); ask the owner before M4
+### M3–M7 — M3 merged (PR #6) and M4 authorised (DR-0065); ask the owner before M5
 
 - **M3 — Corpus scaffolding (dev split only).**
   - Select the SPA after evaluating at least three candidates against these criteria: runs natively on Windows via Node; no external credentials; permissive licence; client-side routing; form validation; a dialog; a status update; at least one composite widget; deterministic data; builds in under five minutes.
@@ -467,7 +506,8 @@ Develop each milestone on its own branch. At each gate, archive the evidence (R1
   - Mine open-source regressions from mature component libraries and applications: genuine break and fix commits, both buildable, licence recorded.
   - Assign the split by `patternId`.
   - (v1.1: the pre-registered K6a rule in §9.1 can remove the creation-time regression family from the catalogue; DR-0013.)
-- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.)
+  - (v1.7: M3 merged in PR #6. The corpus holds 79 regression patterns, 20 dev and 59 test: 68 in two SPA contexts, Atomic CRM and react-admin "simple", and 11 verified mined pairs, with 40 dev items including benign twins. Prompt to Page exports were set aside (P18). P14–P22; DR-0056 to DR-0064.)
+- **M4 — Journeys and runner.** Goal-based steps with outcomes REACHED, PATH_CHANGED, UNREACHABLE and ENV_FAILURE; paired, counterbalanced execution; evidence packages uploaded as artefacts. (v1.8, approved by the owner 2026-10-03, DR-0067: in the NVDA-absent leg, focus strategies and actions use Playwright input on the focused element and browse strategies move a simulated virtual cursor over Chrome's accessibility tree with NVDA's quick-navigation role sets (P23). A goal-based step repeats its strategy up to `maxAttempts`, with the goal checked by the MSAA focus read or NVDA's speech in the NVDA-present leg and by the accessibility-tree node in the NVDA-absent leg. Its outcome is REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) or ENV_FAILURE (P24). A PRESS step sends one documented key (P25).) (v1.2: the runner calls `assertItemExecutable`, which calls `assertSplitAllowed`, before executing any test-split item, DR-0034; the side-aware validity rule (R9) is implemented before M4, DR-0035.)
 - **M5 — Oracles and scoring (dev split only).** Rules per arm (A, B, B2, and C and D under both UNION and ADJUDICATED); the scorer and statistics in §10.3; a dev report; a power table. (v1.2: C and D combine legs at item level, DR-0031; ANNOUNCEMENT_DUPLICATED needs NVDA-log corroboration or routes to REVIEW, §6 note, DR-0042.)
 - **M6 — Freeze (Gate G3).** Complete `protocol/PROTOCOL.md` and compute the SHA-256 of `protocol/`. The owner reviews, tags and publishes. The scorer refuses to score the test split unless the protocol hash matches the tagged freeze. (v1.1: the freeze tag format is defined in DR-0028; pre-register the rule-model secondary analysis in DR-0023. v1.2: the protocol hash covers every path listed in `protocol/frozen-paths.txt`, not `protocol/` alone, DR-0033.)
 - **M7 — Confirmatory run and soak (Gate G4).** Run the test split and a soak test sized per §10.3, then draft the results report, including negative findings.
@@ -633,7 +673,10 @@ export type Arm =
 
 export type Strategy =
   | "TAB" | "SHIFT_TAB" | "NEXT_HEADING" | "NEXT_FORM_FIELD" | "NEXT_BUTTON"
-  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT";
+  | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT"
+  | "PRESS"                     // v1.8: one documented key (P25; DR-0067)
+  | "FOCUS_MODE_TOGGLE"         // v1.9: NVDA+Space; nothing in the NVDA-absent leg (P26; DR-0071)
+  | "DOCUMENT_TOP";             // v1.9: Control+Home in browse mode; the simulated cursor before the first line (P26)
 
 export interface Expectation {
   type: "announcementContains" | "focusOn" | "stateIs" | "orderBefore";
@@ -647,6 +690,7 @@ export interface AtStep {
   strategy: Strategy;
   until?: { name?: string; role?: string; maxAttempts: number }; // goal-based and bounded
   text?: string;                // TYPE only
+  key?: "Escape" | "Space" | "Enter" | "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | "Home" | "End"; // PRESS only (v1.8; P25)
   observeMs: number;            // observation window after the action
   expectations: Expectation[];
   manualTriggers?: string[];    // owner overrides; automatic triggers come from triggers.v1.json
@@ -826,7 +870,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M3. The owner approved Gate G2 on 2026-10-03 and confirmed that it unlocks M3 (DR-0055). M4 onwards was not part of that approval: ask the owner before starting M4. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
+M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065). M5 onwards is not authorised: ask the owner before starting M5. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
 
 ## Logs
 - docs/DECISIONS.md — decisions

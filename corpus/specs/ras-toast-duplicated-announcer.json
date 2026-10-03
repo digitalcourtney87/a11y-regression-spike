@@ -4,7 +4,7 @@
   "operator": "toast-duplicated",
   "app": "react-admin-simple",
   "journeyId": "ras-post-edit-save-notification",
-  "target": "A global save announcer (a role=\"status\" region in index.html, written by the posts afterUpdate callback) repeats react-admin's \"Element updated\" notification",
+  "target": "A global save announcer (a role=\"status\" region in index.html, written by the posts afterUpdate callback) repeats the app's \"Post updated\" notification (its English messages override react-admin's default \"Element updated\")",
   "edits": [
     {
       "file": "index.html",
@@ -14,7 +14,7 @@
     {
       "file": "src/dataProvider.tsx",
       "find": "        resource: 'posts',\n",
-      "replace": "        resource: 'posts',\n        afterUpdate: async result => {\n            const announcer = document.getElementById('save-announcer');\n            if (announcer) announcer.textContent = 'Element updated';\n            return result;\n        },\n"
+      "replace": "        resource: 'posts',\n        afterUpdate: async result => {\n            const announcer = document.getElementById('save-announcer');\n            if (announcer) announcer.textContent = 'Post updated';\n            return result;\n        },\n"
     }
   ]
 }

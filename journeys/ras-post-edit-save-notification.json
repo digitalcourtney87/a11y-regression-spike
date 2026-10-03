@@ -1,0 +1,26 @@
+{
+  "id": "ras-post-edit-save-notification",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1",
+  "anchor": "button[type=\"submit\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "edit-title",
+      "fn": "ras.edit-post-title"
+    },
+    {
+      "kind": "at",
+      "id": "save-post",
+      "strategy": "ACTIVATE",
+      "observeMs": 8000,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "Post updated"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "ras-menu-navigate-comments-unchanged",
+  "patternId": "react-admin-simple--navigation-hidden",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-menu-navigate-comments",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey ras-menu-navigate-comments (P15)",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

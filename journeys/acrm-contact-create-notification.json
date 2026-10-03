@@ -1,0 +1,38 @@
+{
+  "id": "acrm-contact-create-notification",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/create",
+  "anchor": "input[name=\"first_name\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "fill-contact",
+      "fn": "acrm.fill-contact"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "role": "button",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "save-contact",
+      "strategy": "ACTIVATE",
+      "observeMs": 5000,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "Element created"
+        }
+      ]
+    }
+  ]
+}

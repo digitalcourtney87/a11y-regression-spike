@@ -1,0 +1,57 @@
+{
+  "id": "oss-fluent-35927",
+  "version": "1",
+  "app": "oss/fluent-35927",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "first-badge",
+      "strategy": "READ_CURRENT",
+      "until": {
+        "role": "img",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "img|busy"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "second-badge",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "role": "img",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "img|away"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "third-badge",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "role": "img",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "img|offline"
+        }
+      ]
+    }
+  ]
+}

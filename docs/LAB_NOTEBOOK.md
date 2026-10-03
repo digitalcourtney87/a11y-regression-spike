@@ -279,3 +279,34 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Outside requests | None, except carbon-7253 (2 font requests from the Carbon CSS, blocked, no page error) |
 | After the split (run [37134734243](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134734243)) | Only the 3 dev fixtures ran. Each pair reproduced a third time, and the three benign twins (wrapper-added, css-only, css-only) kept the checked behaviour on both paths |
 
+### M4: journeys and the first full item run (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m4-items.yml` journey rounds 37139054732, 37139594634, 37140040580, 37140786020 and 37141599755; smoke runs 37142093929 and 37142491385; full run [37143043955](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37143043955); re-run [37145610510](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37145610510).
+**Affects:** DR-0066 to DR-0073 (P23–P26).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| Playwright's clock API | Also fakes `performance.now()` and rAF: every Atomic CRM attempt was INCONCLUSIVE (low-resolution TimeTicks), and Radix's focus restoration after Escape failed. A Date-only shim fixed both |
+| NVDA browse mode (base builds) | A list item is one line ("bullet Ana graphic busy"); "/" is spoken "slash"; Enter clicks a menu trigger, so the menu, not its first item, takes focus; the first Escape in a menu leaves focus mode without reaching the page; focus mode persists after a form; after an in-app navigation the cursor is at the bottom; Space on a focused drag handle clicks it. The last of these opened a deal and archived it |
+| NVDA and the keyboard drag (with focus mode) | "You have lifted an item in position 1", "You have moved the item from position 1 in list opportunity to list proposal-sent…", "You have dropped the item…" |
+| Mined pairs, raw evidence | fluent-35927: NVDA says "graphic available" on the candidate against "graphic busy" on the base; rac-8697: the candidate's link never opens; carbon-19563: the candidate's checkbox stays checked after the clear |
+| Full run | 112 blocks, 0 INCONCLUSIVE; 736 attempts, all packages valid; all canaries passed; all base journeys complete; no PATH_CHANGED on any benign twin or unchanged control |
+| Imprecise goal | A name-only goal ("Comments") matched a table header after the hidden menu; with its role, the candidate is UNREACHABLE in both legs |
+
+
+### M4: frame gaps under P27, and an announcement that did not repeat (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** repeated full run [37148660221](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37148660221); P27 full run [37151537838](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37151537838); post-edit re-run [37154136328](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37154136328).
+**Affects:** DR-0074 to DR-0077 (P27).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| react-admin's save and redirect | Stall the main thread for 109–188 ms on base and candidate alike, in 89 of the post-edit journey's 124 attempts; Long Animation Frames and Long Tasks cover every stall (largest uncovered part 62.5 ms). No other journey has a gap over 100 ms |
+| Two long stalls | 7.0 s (NVDA-absent) and 3.75 s (NVDA-present) on the first base attempt of one block, starting about 0.6 s into the save step and ending before the observation window; long tasks cover both. None of the run's 113 gaps over 100 ms overlaps an observation window |
+| react-admin's own announcement | "alert Post updated" in all 62 base attempts of the post-edit journey (NVDA-present, both runs), spoken a median of 0.56 s into the save step (range 0.46–1.02 s) |
+| A duplicated announcement must repeat the same text | The first spec's second announcer said "Element updated", so the candidate announced two messages, not one twice. With "Post updated", NVDA says it twice in every candidate attempt |
+| Absence-based regressions | With the live region removed, or created already populated, NVDA says nothing on save in any candidate attempt |
