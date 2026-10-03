@@ -17,6 +17,14 @@ function section(lock: Record<string, unknown>, key: string): Record<string, unk
   return lock[key] as Record<string, unknown>;
 }
 
+/** Turns the setup-dotnet pin into a pending-owner pin, then applies a mutation. */
+function pendingOwner(lock: Record<string, unknown>, mutate: (action: Record<string, unknown>) => void): void {
+  const action = section(section(lock, "actions"), "setup-dotnet");
+  action.status = "pending-owner";
+  action.note = "Adoption is pending owner item P9.";
+  mutate(action);
+}
+
 describe("EnvLockSchema", () => {
   test("accepts the committed env.lock", () => {
     expect(() => parseEnvLock(lockText)).not.toThrow();
@@ -33,9 +41,9 @@ describe("EnvLockSchema", () => {
     ["an uppercase action SHA", (l) => (section(section(l, "actions"), "checkout").sha = "3D3C42E5AAC5BA805825DA76410C181273BA90B1")],
     ["an action version without v", (l) => (section(section(l, "actions"), "checkout").version = "7.0.1")],
     ["an unknown action status", (l) => (section(section(l, "actions"), "checkout").status = "pending-M1a")],
-    ["a pending-owner action without a note", (l) => delete section(section(l, "actions"), "setup-dotnet").note],
-    ["a pending-owner note that names no owner item", (l) => (section(section(l, "actions"), "setup-dotnet").note = "awaiting approval")],
-    ["a pending-owner action without a SHA", (l) => delete section(section(l, "actions"), "setup-dotnet").sha],
+    ["a pending-owner action without a note", (l) => { pendingOwner(l, (a) => delete a.note); }],
+    ["a pending-owner note that names no owner item", (l) => { pendingOwner(l, (a) => (a.note = "awaiting approval")); }],
+    ["a pending-owner action without a SHA", (l) => { pendingOwner(l, (a) => delete a.sha); }],
     ["a pending-owner status on a toolchain pin", (l) => (section(l, "node").status = "pending-owner")],
     ["a malformed SHA-256", (l) => (section(l, "nvda").sha256 = "abc")],
     ["an http Scream URL", (l) => (section(l, "scream").url = "http://example.com/Scream3.6.zip")],
@@ -101,11 +109,15 @@ describe("EnvLockSchema", () => {
     ]);
   });
 
-  test("records actions/setup-dotnet as pending owner item P2 (DR-0008)", () => {
+  test("records actions/setup-dotnet as pinned after the owner approved P2 (DR-0046)", () => {
     expect(findActionPin(parseEnvLock(lockText), "actions/setup-dotnet")).toMatchObject({
-      status: "pending-owner",
-      note: expect.stringMatching(/\bP2\b/) as unknown,
+      status: "pinned",
+      sha: "a98b56852c35b8e3190ac28c8c2271da59106c68",
     });
+  });
+
+  test("still accepts a pending-owner pin whose note names the owner item", () => {
+    expect(EnvLockSchema.safeParse(mutated((l) => { pendingOwner(l, () => undefined); })).success).toBe(true);
   });
 
   test("action pin statuses are pinned and pending-owner", () => {
