@@ -55,6 +55,45 @@
           "test": 6
         }
       }
+    },
+    {
+      "name": "oss-regression",
+      "seed": 20261004,
+      "testFraction": 0.7,
+      "strata": {
+        "regression:FOCUS_ESCAPES_DIALOG": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:FOCUS_NOT_RESTORED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:INTERACTION_FAILS_UNDER_AT": {
+          "dev": 1,
+          "test": 1
+        },
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:KEYBOARD_TRAP": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:NAME_NOT_CONVEYED": {
+          "dev": 1,
+          "test": 1
+        },
+        "regression:ROLE_NOT_CONVEYED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:STATE_NOT_CONVEYED": {
+          "dev": 1,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -93,6 +132,17 @@
     "atomic-crm--tab-swallowed": "test",
     "atomic-crm--toast-duplicated": "test",
     "atomic-crm--toast-region-created-populated": "test",
+    "oss--blueprint-6163": "test",
+    "oss--bootstrap-35496": "test",
+    "oss--carbon-18824": "test",
+    "oss--carbon-19563": "dev",
+    "oss--carbon-5623": "test",
+    "oss--carbon-7253": "test",
+    "oss--fluent-35927": "dev",
+    "oss--fluent-7796": "test",
+    "oss--rac-8697": "dev",
+    "oss--radix-4014": "test",
+    "oss--vuetify-9627": "test",
     "react-admin-simple--action-tabindex-removed": "test",
     "react-admin-simple--aria-modal-removed": "test",
     "react-admin-simple--busy-left-true": "test",
