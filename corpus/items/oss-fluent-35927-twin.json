@@ -1,0 +1,22 @@
+{
+  "id": "oss-fluent-35927-twin",
+  "patternId": "oss--fluent-35927",
+  "split": "dev",
+  "source": "seeded",
+  "app": "oss/fluent-35927",
+  "journeyId": "oss-fluent-35927",
+  "base": {
+    "ref": "oss/fluent-35927@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@fluentui/react-badge@9.4.15"
+  },
+  "candidate": {
+    "patch": "oss-fluent-35927-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (@fluentui/react-badge)"
+  }
+}

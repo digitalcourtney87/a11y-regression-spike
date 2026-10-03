@@ -5,7 +5,9 @@ name: m3-oss-repro
 # contents: read and no secrets at all, install scripts off, and a separate
 # npm cache that is never saved. Each release installs with --before set to its
 # own publish date plus one day, so it resolves its dependencies as a user
-# installing it then would have; the build tools come from their own directory. Runs on pushes to m3-corpus that touch the
+# installing it then would have; the build tools come from their own directory.
+# After the oss-regression split (DR-0064) only unsplit and dev-split fixtures
+# run, and each dev fixture also builds and checks its benign twin. Runs on pushes to m3-corpus that touch the
 # fixtures or the check harness.
 on:
   workflow_dispatch:
@@ -17,6 +19,8 @@ on:
       - harness/src/probes/ossCheck.ts
       - harness/src/probes/ossFixture.ts
       - fixtures/oss-tools/**
+      - corpus/patches/oss-*
+      - corpus/split.json
 permissions:
   contents: read
 concurrency:
@@ -33,7 +37,8 @@ jobs:
         with:
           persist-credentials: false
       - id: list
-        run: echo "fixtures=$(ls fixtures/oss | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+        # Test-split pairs were verified before the split and are not run again before the freeze (DR-0064).
+        run: echo "fixtures=$(ls fixtures/oss | jq -R . | jq -cs --slurpfile split corpus/split.json '[.[] | select($split[0].assignments["oss--" + .] != "test")]')" >> "$GITHUB_OUTPUT"
   fixture:
     needs: list
     runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
@@ -72,22 +77,39 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
           $meta = Get-Content (Join-Path $fixture "fixture.json") -Raw | ConvertFrom-Json
           $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
-          $results = @()
-          foreach ($version in $meta.versions) {
+          # Installs, builds and checks the fixture at one release; $label names the artefacts.
+          function Invoke-Release([string]$version, [string]$label) {
             $before = ([datetime]$times[$version]).ToUniversalTime().AddDays(1).ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            $work = Join-Path $env:RUNNER_TEMP "oss-$version"
-            node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work
+            $work = Join-Path $env:RUNNER_TEMP "oss-$label"
+            node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work 2>&1 | Out-Host
             Push-Location $work
-            npm install --ignore-scripts --no-audit --no-fund "--before=$before" 2>&1 | Out-File (Join-Path $out "$version.install.log")
+            npm install --ignore-scripts --no-audit --no-fund "--before=$before" 2>&1 | Out-File (Join-Path $out "$label.install.log")
             $installExit = $LASTEXITCODE
-            Copy-Item package-lock.json (Join-Path $out "$version.package-lock.json") -ErrorAction SilentlyContinue
+            Copy-Item package-lock.json (Join-Path $out "$label.package-lock.json") -ErrorAction SilentlyContinue
             Pop-Location
-            node (Join-Path $tools "ossBuild.mjs") $work $meta.stack 2>&1 | Out-File (Join-Path $out "$version.build.log")
+            node (Join-Path $tools "ossBuild.mjs") $work $meta.stack 2>&1 | Out-File (Join-Path $out "$label.build.log")
             $buildExit = $LASTEXITCODE
             if ($buildExit -eq 0) {
-              node harness/src/probes/ossCheck.ts --dist (Join-Path $work "dist") --check (Join-Path $fixture "check.mjs") --version $version --out (Join-Path $out "$version.check.json")
+              node harness/src/probes/ossCheck.ts --dist (Join-Path $work "dist") --check (Join-Path $fixture "check.mjs") --version $version --out (Join-Path $out "$label.check.json") 2>&1 | Out-Host
             }
-            $results += [ordered]@{ version = $version; before = $before; installExit = $installExit; buildExit = $buildExit }
+            return [ordered]@{ label = $label; version = $version; before = $before; installExit = $installExit; buildExit = $buildExit }
+          }
+          $results = @()
+          foreach ($version in $meta.versions) { $results += Invoke-Release $version $version }
+          # A dev pattern's benign twin (DR-0064): its patch on the fixture, at the regression item's base release.
+          # The check must still hold. Patch paths are relative to the repository root; the patch is reverted after.
+          foreach ($file in Get-ChildItem corpus/items -Filter *.json | Sort-Object Name) {
+            $item = Get-Content $file.FullName -Raw | ConvertFrom-Json
+            if ($item.app -ne "oss/$env:ID" -or -not $item.candidate.patch) { continue }
+            $patch = Join-Path $repo "corpus/patches/$($item.candidate.patch)"
+            $version = $item.base.ref -replace '^.*@', ''
+            git apply $patch 2>&1 | Out-File (Join-Path $out "$($item.id).apply.log")
+            $applyExit = $LASTEXITCODE
+            $r = Invoke-Release $version $item.id
+            git apply -R $patch 2>&1 | Out-File -Append (Join-Path $out "$($item.id).apply.log")
+            $r.applyExit = $applyExit
+            $r.revertExit = $LASTEXITCODE
+            $results += $r
           }
           $results | ConvertTo-Json | Out-File (Join-Path $out "builds.json")
           # A release that fails to install or build is recorded in builds.json, not as a job failure.

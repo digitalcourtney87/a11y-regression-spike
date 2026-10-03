@@ -7,9 +7,16 @@
  * operator is the catalogue mechanism it matches, or "mined" when no
  * catalogue mechanism describes it (the mechanism is metadata; the symptom is
  * the scored unit, R2).
+ *
+ * A dev pattern's regression item is a version pair (DR-0064): app
+ * "oss/<id>" (the fixture in `fixtures/oss/<id>`), base = the fixture built
+ * against the last good release, candidate = the same fixture built against
+ * the first broken one. Its benign twin is a mutation spec on the fixture at
+ * the last good release (mutate.ts).
  */
 import { z } from "zod";
 
+import type { CorpusItem } from "../schema/index.ts";
 import { SymptomSchema } from "../schema/schemas.ts";
 import { REGRESSION_OPERATORS } from "./catalogue.ts";
 import type { PlannedPattern } from "./patterns.ts";
@@ -79,4 +86,45 @@ export function planOssRegressionPatterns(registry: OssCandidates, batch = "oss-
       note: `${c.package} ${String(c.good)} to ${String(c.broken)}: ${c.note}`,
     };
   });
+}
+
+/** The journey of a mined pair's fixture: one per fixture (journeys come in M4). */
+export function ossJourneyId(id: string): string {
+  return `oss-${id}`;
+}
+
+/** "oss/<id>@<fixture commit>+<package>@<version>": the fixture at a commit, built against one release. */
+export function ossRef(id: string, fixtureCommit: string, pkg: string, version: string): string {
+  return `oss/${id}@${fixtureCommit}+${pkg}@${version}`;
+}
+
+export function parseOssRef(ref: string): { app: string; fixtureCommit: string; package: string; version: string } | null {
+  const m = /^(oss\/[a-z0-9][a-z0-9-]*)@([0-9a-f]{40})\+(.+)@([^@]+)$/.exec(ref);
+  return m === null ? null : { app: m[1] ?? "", fixtureCommit: m[2] ?? "", package: m[3] ?? "", version: m[4] ?? "" };
+}
+
+/** The regression item of a verified pair: the fixture at the last good release against the first broken one. */
+export function itemFromOssCandidate(c: OssCandidate, fixtureCommit: string, split: "dev" | "test"): CorpusItem {
+  if (!isVerified(c) || c.good === null || c.broken === null || c.reproduction === undefined) throw new Error(`${c.id}: not a verified pair`);
+  const operator = c.operator ?? MINED_OPERATOR;
+  const op = REGRESSION_OPERATORS.find((o) => o.id === operator);
+  const mechanism = op === undefined ? `${MINED_OPERATOR}: ${c.note}` : `${op.id}: ${op.mechanism} (${c.note})`;
+  const issue = /#(\d+)/.exec(c.refs[0] ?? "")?.[1];
+  if (issue === undefined) throw new Error(`${c.id}: its first ref must name the issue or pull request (#n)`);
+  return {
+    id: `oss-${c.id}`,
+    patternId: `oss--${c.id}`,
+    split,
+    source: "oss-history",
+    app: `oss/${c.id}`,
+    journeyId: ossJourneyId(c.id),
+    base: { ref: ossRef(c.id, fixtureCommit, c.package, c.good) },
+    candidate: { ref: ossRef(c.id, fixtureCommit, c.package, c.broken) },
+    expected: { kind: "regression", symptom: c.symptom, mechanism },
+    provenance: {
+      origin: `mined from ${c.repo} (${c.refs.join(", ")}); verified by m3-oss-repro run ${String(c.reproduction.run)} (DR-0063)`,
+      licence: `${c.licence} (${c.package})`,
+      url: `https://github.com/${c.repo}/issues/${issue}`,
+    },
+  };
 }

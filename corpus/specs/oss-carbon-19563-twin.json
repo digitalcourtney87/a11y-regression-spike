@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-19563-twin",
+  "patternId": "oss--carbon-19563",
+  "operator": "wrapper-added",
+  "app": "oss/carbon-19563",
+  "journeyId": "oss-carbon-19563",
+  "target": "The filter checkbox wrapped in a plain div",
+  "edits": [
+    {
+      "file": "index.html",
+      "find": "<cds-checkbox id=\"cb\">Show archived</cds-checkbox>",
+      "replace": "<div class=\"filters\"><cds-checkbox id=\"cb\">Show archived</cds-checkbox></div>"
+    }
+  ],
+  "twinOf": "oss-carbon-19563"
+}

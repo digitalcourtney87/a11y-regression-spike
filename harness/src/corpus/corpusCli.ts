@@ -6,6 +6,9 @@
  * patch and corpus item (mutate.ts), checking that each patch applies to the
  * current base with `git apply --check`.
  *
+ * `npm run corpus -- oss-items` writes the version-pair regression item of
+ * each dev pattern of the `oss-regression` batch (oss.ts; DR-0064).
+ *
  * `npm run corpus -- plan spa-regression` adds the planned SPA regression
  * patterns to `corpus/patterns.json` (patterns.ts); `plan oss-regression`
  * adds one pattern per verified mined pair in `corpus/oss-candidates.json`
@@ -24,9 +27,10 @@ import { dirname, join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 
 import { operatorById } from "./catalogue.ts";
-import { applyEdits, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
+import { CorpusItemSchema } from "../schema/schemas.ts";
+import { applyEdits, appDir, isSpaApp, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import type { MutationSpec } from "./mutate.ts";
-import { OssCandidatesSchema, planOssRegressionPatterns } from "./oss.ts";
+import { itemFromOssCandidate, OssCandidatesSchema, planOssRegressionPatterns } from "./oss.ts";
 import { addPatterns, PatternRegistrySchema, planSpaRegressionPatterns } from "./patterns.ts";
 import type { PatternRegistry } from "./patterns.ts";
 import { addBatch } from "./split.ts";
@@ -54,7 +58,7 @@ function patchFor(spec: MutationSpec): string {
     const byFile = new Map<string, MutationSpec["edits"]>();
     for (const edit of spec.edits) byFile.set(edit.file, [...(byFile.get(edit.file) ?? []), edit]);
     for (const [file, edits] of byFile) {
-      const rel = `fixtures/spa/${spec.app}/${file}`;
+      const rel = `${appDir(spec.app)}/${file}`;
       const text = readFileSync(join(repoRoot, rel), "utf8");
       for (const [side, content] of [["orig", text], ["mut", applyEdits(text, edits, rel)]] as const) {
         mkdirSync(dirname(join(work, side, rel)), { recursive: true });
@@ -105,21 +109,45 @@ if (command === "validate") {
     const spec = MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, file), "utf8")));
     if (`${spec.id}.json` !== file) throw new Error(`${file}: id "${spec.id}" must match the file name`);
     const planned = files.patterns?.patterns.find((p) => p.id === spec.patternId);
-    const twin = spec.twinOf === undefined ? null : MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, `${spec.twinOf}.json`), "utf8")));
-    if (twin !== null) {
+    if (spec.twinOf !== undefined && operatorById(spec.operator)?.kind !== "benign") throw new Error(`${file}: a twin needs a benign operator, not ${spec.operator}`);
+    let baseRef: string;
+    let licence: string | undefined;
+    if (isSpaApp(spec.app)) {
+      const twin = spec.twinOf === undefined ? null : MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, `${spec.twinOf}.json`), "utf8")));
       // A benign twin (P20): a benign operator on the same pattern, app and journey as its regression spec.
-      if (operatorById(spec.operator)?.kind !== "benign") throw new Error(`${file}: a twin needs a benign operator, not ${spec.operator}`);
-      if (twin.patternId !== spec.patternId || twin.app !== spec.app || twin.journeyId !== spec.journeyId) throw new Error(`${file}: a twin shares its regression spec's pattern, app and journey`);
+      if (twin !== null && (twin.patternId !== spec.patternId || twin.app !== spec.app || twin.journeyId !== spec.journeyId)) throw new Error(`${file}: a twin shares its regression spec's pattern, app and journey`);
+      const expectedOperator = twin === null ? spec.operator : twin.operator;
+      if (planned?.status !== "planned" || planned.operator !== expectedOperator || planned.context !== spec.app) throw new Error(`${file}: pattern "${spec.patternId}" is not a planned ${spec.app} pattern for operator ${expectedOperator}`);
+      baseRef = `${spec.app}@${execFileSync("git", ["log", "-1", "--format=%H", "--", appDir(spec.app)], { cwd: repoRoot, encoding: "utf8" }).trim()}`;
+    } else {
+      // A mined pair's regression is a version pair, so a spec on its fixture is only ever a benign twin (DR-0064),
+      // on the regression item's base: same pattern, app and journey.
+      if (spec.twinOf === undefined) throw new Error(`${file}: a spec on a mined pair's fixture must be a benign twin (twinOf its regression item)`);
+      const regression = CorpusItemSchema.parse(JSON.parse(readFileSync(join(ITEMS, `${spec.twinOf}.json`), "utf8")));
+      if (regression.source !== "oss-history" || regression.patternId !== spec.patternId || regression.app !== spec.app || regression.journeyId !== spec.journeyId) throw new Error(`${file}: a twin shares its regression item's pattern, app and journey`);
+      if (planned?.status !== "planned" || planned.batch !== "oss-regression" || planned.id !== `oss--${spec.app.slice("oss/".length)}`) throw new Error(`${file}: pattern "${spec.patternId}" is not the planned pattern of ${spec.app}`);
+      baseRef = regression.base.ref;
+      licence = regression.provenance.licence;
     }
-    const expectedOperator = twin === null ? spec.operator : twin.operator;
-    if (planned?.status !== "planned" || planned.operator !== expectedOperator || planned.context !== spec.app) throw new Error(`${file}: pattern "${spec.patternId}" is not a planned ${spec.app} pattern for operator ${expectedOperator}`);
     if (files.split?.assignments[spec.patternId] !== "dev") throw new Error(`${file}: pattern "${spec.patternId}" is not in the dev split; test patterns are not built in M3 (P15)`);
-    const baseCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `fixtures/spa/${spec.app}`], { cwd: repoRoot, encoding: "utf8" }).trim();
     const patchPath = join(PATCHES, `${spec.id}.patch`);
     writeFileSync(patchPath, patchFor(spec));
     execFileSync("git", ["apply", "--check", patchPath], { cwd: repoRoot });
-    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, `${spec.app}@${baseCommit}`, "dev"), null, 2)}\n`);
+    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, baseRef, "dev", licence), null, 2)}\n`);
     process.stdout.write(`${spec.id}: patch and item written (${spec.operator})\n`);
+  }
+} else if (command === "oss-items") {
+  // The regression item of each dev pattern of the oss-regression batch (DR-0064); test patterns wait for M5's power table (P15).
+  const registry = OssCandidatesSchema.parse(JSON.parse(readFileSync(OSS_CANDIDATES, "utf8")));
+  for (const pattern of (files.patterns?.patterns ?? []).filter((p) => p.batch === "oss-regression" && p.status === "planned")) {
+    if (files.split?.assignments[pattern.id] !== "dev") continue;
+    const candidate = registry.candidates.find((c) => `oss--${c.id}` === pattern.id);
+    if (candidate === undefined) throw new Error(`${pattern.id}: no candidate in corpus/oss-candidates.json`);
+    const fixtureCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `fixtures/oss/${candidate.id}`], { cwd: repoRoot, encoding: "utf8" }).trim();
+    if (fixtureCommit === "") throw new Error(`${candidate.id}: fixtures/oss/${candidate.id} is not committed`);
+    const item = itemFromOssCandidate(candidate, fixtureCommit, "dev");
+    writeFileSync(join(ITEMS, `${item.id}.json`), `${JSON.stringify(item, null, 2)}\n`);
+    process.stdout.write(`${item.id}: item written (${candidate.package} ${String(candidate.good)} to ${String(candidate.broken)})\n`);
   }
 } else if (command === "plan") {
   const [batch] = rest;
@@ -139,6 +167,6 @@ if (command === "validate") {
   writeFileSync(SPLIT, `${JSON.stringify(assignment, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify(assignment.batches.at(-1), null, 2)}\n`);
 } else {
-  process.stderr.write("usage: npm run corpus -- validate | mutate | plan <batch> | split --batch <name> --seed <n> --test-fraction <f>\n");
+  process.stderr.write("usage: npm run corpus -- validate | mutate | oss-items | plan <batch> | split --batch <name> --seed <n> --test-fraction <f>\n");
   process.exitCode = 2;
 }

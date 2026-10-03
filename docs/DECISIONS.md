@@ -2956,3 +2956,26 @@ The shortfall comes from verification. 24 documentary accepts left 11 pairs, aga
 - The `oss-regression` batch is split once this record is committed: `npm run corpus -- split --batch oss-regression --seed 20261004 --test-fraction 0.7`. The seed and fraction are those of P15, and the split is stratified by pattern stratum. Its result is recorded below.
 - Dev patterns of the batch get version-pair items (`source: "oss-history"`; base = the fixture at the last good release, candidate = the fixture at the first broken one) and benign twins (P20) in M3. Test patterns are built after M5's power table (P15).
 
+**The split (run 2026-10-03, after this record's decision was committed).** `oss-regression` with seed 20261004 and test fraction 0.7, stratified, recorded in `corpus/split.json`:
+
+| Stratum | Dev | Test |
+|---|---|---|
+| FOCUS_ESCAPES_DIALOG | — | vuetify-9627 |
+| FOCUS_NOT_RESTORED | — | bootstrap-35496 |
+| INTERACTION_FAILS_UNDER_AT | rac-8697 | blueprint-6163 |
+| JOURNEY_BLOCKED | — | carbon-5623 |
+| KEYBOARD_TRAP | — | radix-4014 |
+| NAME_NOT_CONVEYED | fluent-35927 | carbon-7253 |
+| ROLE_NOT_CONVEYED | — | fluent-7796 |
+| STATE_NOT_CONVEYED | carbon-19563 | carbon-18824 |
+
+With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 dev and 59 test.
+
+**Building the dev patterns (Decided by Claude under DR-0045).**
+
+| Part | Decision |
+|---|---|
+| Regression items | `npm run corpus -- oss-items` writes `oss-<id>` for each dev pattern, with `source: "oss-history"` and app `oss/<id>`. Base and candidate are refs of the form `oss/<id>@<fixture commit>+<package>@<version>`: the last good and the first broken release. Journey `oss-<id>`, one per fixture (journeys come in M4). Provenance gives the repository, the refs, the verifying run and the library's licence |
+| Twins (P20) | A mutation spec on the fixture at the last good release (`twinOf` the regression item), made by `npm run corpus -- mutate`: carbon-19563 wrapper-added (the checkbox wrapped in a div), fluent-35927 css-only (a margin on each badge), rac-8697 css-only (rounded corners and padding on the popover, with no animation, since an exit animation would hide the regression) |
+| CI | `m3-oss-repro.yml` runs only unsplit and dev-split fixtures. Test-split pairs were verified before the split, and running them again before the freeze would execute test items. Each dev fixture also builds its twin at the base release, and the check must still hold there. A twin that fails the check is rewritten before M4, because the twin is meant to keep the behaviour |
+

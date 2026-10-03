@@ -1,0 +1,24 @@
+{
+  "id": "oss-rac-8697",
+  "patternId": "oss--rac-8697",
+  "split": "dev",
+  "source": "oss-history",
+  "app": "oss/rac-8697",
+  "journeyId": "oss-rac-8697",
+  "base": {
+    "ref": "oss/rac-8697@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+react-aria-components@1.10.0"
+  },
+  "candidate": {
+    "ref": "oss/rac-8697@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+react-aria-components@1.11.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "INTERACTION_FAILS_UNDER_AT",
+    "mechanism": "mined: Menu item links do nothing on Enter"
+  },
+  "provenance": {
+    "origin": "mined from adobe/react-spectrum (#8697, PR #8721); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (react-aria-components)",
+    "url": "https://github.com/adobe/react-spectrum/issues/8697"
+  }
+}

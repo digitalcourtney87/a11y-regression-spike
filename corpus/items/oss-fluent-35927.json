@@ -1,0 +1,24 @@
+{
+  "id": "oss-fluent-35927",
+  "patternId": "oss--fluent-35927",
+  "split": "dev",
+  "source": "oss-history",
+  "app": "oss/fluent-35927",
+  "journeyId": "oss-fluent-35927",
+  "base": {
+    "ref": "oss/fluent-35927@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@fluentui/react-badge@9.4.15"
+  },
+  "candidate": {
+    "ref": "oss/fluent-35927@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@fluentui/react-badge@9.5.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "mined: PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)"
+  },
+  "provenance": {
+    "origin": "mined from microsoft/fluentui (PR #35927, PR #35811); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "MIT (@fluentui/react-badge)",
+    "url": "https://github.com/microsoft/fluentui/issues/35927"
+  }
+}

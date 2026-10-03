@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
 import { BENIGN_OPERATORS, operatorById, REGRESSION_OPERATORS } from "./catalogue.ts";
-import { applyEdits, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
+import { appDir, applyEdits, isSpaApp, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import { CorpusItemSchema } from "../schema/schemas.ts";
 
 describe("catalogue (P16)", () => {
@@ -51,3 +51,22 @@ describe("itemFromSpec", () => {
     expect(operatorById("css-only")?.kind).toBe("benign");
   });
 });
+
+describe("apps", () => {
+  test("an app is an SPA or a mined pair's fixture, each with its own directory", () => {
+    expect(appDir("atomic-crm")).toBe("fixtures/spa/atomic-crm");
+    expect(appDir("oss/carbon-19563")).toBe("fixtures/oss/carbon-19563");
+    expect(isSpaApp("react-admin-simple")).toBe(true);
+    expect(isSpaApp("oss/carbon-19563")).toBe(false);
+    const base = { id: "t", patternId: "p", operator: "css-only", journeyId: "j", target: "x", edits: [{ file: "f", find: "a", replace: "b" }] };
+    expect(MutationSpecSchema.safeParse({ ...base, app: "oss/carbon-19563" }).success).toBe(true);
+    expect(MutationSpecSchema.safeParse({ ...base, app: "oss/../spa" }).success).toBe(false);
+    expect(MutationSpecSchema.safeParse({ ...base, app: "other-app" }).success).toBe(false);
+  });
+  test("a twin on a mined pair's fixture takes its library's licence, and needs one", () => {
+    const spec = MutationSpecSchema.parse({ id: "oss-x-twin", patternId: "oss--x", operator: "css-only", app: "oss/x", journeyId: "oss-x", target: "t", edits: [{ file: "f", find: "a", replace: "b" }], twinOf: "oss-x" });
+    expect(itemFromSpec(spec, "r", "dev", "MIT (lib)").provenance.licence).toBe("MIT (lib)");
+    expect(() => itemFromSpec(spec, "r", "dev")).toThrow(/needs its library's licence/);
+  });
+});
+

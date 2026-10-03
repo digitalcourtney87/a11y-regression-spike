@@ -1,0 +1,24 @@
+{
+  "id": "oss-carbon-19563",
+  "patternId": "oss--carbon-19563",
+  "split": "dev",
+  "source": "oss-history",
+  "app": "oss/carbon-19563",
+  "journeyId": "oss-carbon-19563",
+  "base": {
+    "ref": "oss/carbon-19563@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@carbon/web-components@2.28.0"
+  },
+  "candidate": {
+    "ref": "oss/carbon-19563@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@carbon/web-components@2.29.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "checked-stale: aria-checked or aria-pressed stale on a checkbox, switch or toggle (Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070))"
+  },
+  "provenance": {
+    "origin": "mined from carbon-design-system/carbon (#19563, PR #20070); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (@carbon/web-components)",
+    "url": "https://github.com/carbon-design-system/carbon/issues/19563"
+  }
+}

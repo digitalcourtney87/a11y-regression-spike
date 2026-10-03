@@ -1,0 +1,16 @@
+{
+  "id": "oss-fluent-35927-twin",
+  "patternId": "oss--fluent-35927",
+  "operator": "css-only",
+  "app": "oss/fluent-35927",
+  "journeyId": "oss-fluent-35927",
+  "target": "Each presence badge given a small inline-start margin",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<PresenceBadge status={status} />",
+      "replace": "<PresenceBadge status={status} style={{ marginInlineStart: 4 }} />"
+    }
+  ],
+  "twinOf": "oss-fluent-35927"
+}
