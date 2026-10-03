@@ -611,9 +611,17 @@ Record-only volume is therefore 190 runs per leg (K6a 60, K6b 20, K6e 70, K7a 20
 
 Only hard-rule-12 items still pending remain here: what is measured, what counts as detection, cost or security (DR-0045). The IDs are those of "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`, which keeps them stable when an item is resolved. They go in the G1 brief; an item needed earlier is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045). The other open points of 2026-10-02 were resolved by the owner review of M0 (DR-0031, DR-0032, DR-0038 and the approvals in DR-0030) or decided by Claude under DR-0045; DR-0030 maps each one to its outcome.
 
-| ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
+| ID | Point | Claude's recommendation | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| — | None pending | — | — | — | — |
+| P28 | The M5 oracle model: per-leg, per-family comparison with k = n; unobservable expectations give nothing; ambiguity gives REVIEW; failure classes become symptoms by `protocol/oracles/README.md`; arms nest | Yes | What counts as detection | M5 dev report | §3, §4.2 |
+| P29 | Detection credit: any of an arm's FAIL symptoms; the three reachability symptoms count as one family | Yes | What counts as detection | M5 dev report | §3.4, §3.5, §4.2 |
+| P30 | Arm A: new axe violations by count, mapped to symptoms by `rules.v1.json`; unmapped ones give REVIEW | Yes | What counts as detection | M5 dev report | §2.2 |
+| P31 | Arm B: the settled tree, and announcements inferred from live regions holding the text | Yes | What is measured | M5 dev report | §2.2 |
+| P32 | Arm B2: announcements from alert and live-region events tied to the text; ROUTE_CHANGE_SILENT from route changes and what conveys them | Yes | What counts as detection | M5 dev report | §2.2 |
+| P33 | NVDA's evidence: speech after the speech normaliser, role words and state labels, and the NVDA-present step outcomes; ADJUDICATED's "unchanged" | Yes | What counts as detection | M5 dev report | §2.3, §3.7 |
+| P34 | Arm D's trigger definitions (`protocol/triggers.v1.json`) | Yes | What counts as detection | M5 dev report | §2.2 |
+| P35 | Candidate-only check failures route to REVIEW; no FAIL rule covers them | Yes | What counts as detection | M5 dev report | §3.6 |
+| P36 | Duplicates seen only in speech route to REVIEW; no NVDA-log corroboration | Yes | What counts as detection | M5 dev report | §4.2 |
 
 P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P23–P25 (the M4 journey model: execution per leg, goal-based step outcomes and the PRESS strategy) were approved on 2026-10-03 (DR-0067). P26 (the NVDA browse-mode commands FOCUS_MODE_TOGGLE and DOCUMENT_TOP) was approved on 2026-10-03 (DR-0071). P27 (frame gaps in corpus runs: only the part the page's own long work does not cover counts towards the 100 ms rAF limit) was approved on 2026-10-03 (DR-0076). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
@@ -623,7 +631,5 @@ Conditional hard-rule-12 questions, which arise only if a later result triggers 
 |---|---|---|
 | A change to any G1 or G2 criterion | M2 data, including the desk-research predictions in §5.3 | DR-0013 |
 | The K6 delay-grading boundaries | M2's NVDA-absent K6e signatures contradict the P9 post-load boundary for polite regions, or data contradict the 350 ms pre-load boundary or the boundary for other roles | DR-0037; DR-0052 |
-| The FAIL rules that cover candidate-only check failures | Set with the M5 oracles | DR-0035 |
-| The M5 handling of ANNOUNCEMENT_DUPLICATED (NVDA-log corroboration or REVIEW) | M5 | DR-0042 |
 | The eSpeak NG rate | M1a finds an effective rate other than 30, or another reason to change it | DR-0041 |
 | The final BenignType descriptions | The M6 freeze review | DR-0030 |
