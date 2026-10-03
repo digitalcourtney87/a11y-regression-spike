@@ -101,6 +101,7 @@ Conventions:
 | [DR-0062](#dr-0062-owner-approval-of-p20-and-the-mining-pass) | Owner approval of P20, and the mining pass | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
 | [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P21 and P22 approved by the owner 2026-10-03 (DR-0064) | DR-0064 | Resolved (P21, P22, DR-0064) |
 | [DR-0064](#dr-0064-owner-approval-of-p21-and-p22-and-the-oss-regression-split) | Owner approval of P21 and P22, and the oss-regression split | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0065](#dr-0065-m3-merged-and-m4-authorised) | M3 merged and M4 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -2980,4 +2981,22 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 | CI | `m3-oss-repro.yml` runs only unsplit and dev-split fixtures. Test-split pairs were verified before the split, and running them again before the freeze would execute test items. Each dev fixture also builds its twin at the base release, and the check must still hold there. A twin that fails the check is rewritten before M4, because the twin is meant to keep the behaviour |
 
 **Check (run 37134734243).** Only the three dev fixtures ran. Each pair reproduced again: the check holds on the last good release and fails on the first broken one, on both paths. Each twin applied, built and reverted cleanly, and its check held on both paths at the base release.
+
+## DR-0065 M3 merged and M4 authorised
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.7 | Header, §9 (M3, M4), §12 |
+
+**Decision.**
+
+> Merged #6; start M4
+
+**Consequences.**
+
+- M3 is merged (PR #6). The authorised scope is M0–M4. M5 onwards needs the owner's go-ahead. HANDOFF moves to v1.7, and CLAUDE.md's current authorisation follows it.
+- M4 work is on branch `m4-journeys`. Before any item runs, M4 implements the execution guard (DR-0034, already in place) and the side-aware validity rule (DR-0035). Choices that change what is measured go to the owner when first needed, as yes/no items with Claude's recommendation (DR-0045).
 
