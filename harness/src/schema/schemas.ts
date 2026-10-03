@@ -302,6 +302,7 @@ interface RefinedPackage {
   leg?: z.infer<typeof LegSchema>;
   preflight?: z.infer<typeof PreflightSchema>;
   maxClockSkewMs: number;
+  canaries: { pre: boolean; post: boolean };
   steps: ReadonlyArray<{ speech?: ReadonlyArray<{ priority?: z.infer<typeof UtterancePrioritySchema> }> }>;
 }
 
@@ -343,6 +344,16 @@ function refineEvidencePackage(pkg: RefinedPackage, ctx: z.RefinementCtx): void 
         message:
           "maxClockSkewMs must equal max(preflight.clock.nativeSelfTestDisagreementMs, " +
           "preflight.clock.pageMappingUncertaintyMs) (D1)",
+      });
+    }
+    // D12 (DR-0021): canaries.pre and preflight.preCanaryOk record the same
+    // pre-block canary, so they must agree; otherwise a failed known-answer
+    // canary could be counted as a valid attempt.
+    if (pkg.canaries.pre !== pkg.preflight.preCanaryOk) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["preflight", "preCanaryOk"],
+        message: "preflight.preCanaryOk must equal canaries.pre (D12)",
       });
     }
   }
