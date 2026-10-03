@@ -16,7 +16,7 @@
       "fixed": "1.1.15",
       "symptom": "KEYBOARD_TRAP",
       "documentary": "accept",
-      "note": "Escape handlers go stale on React 19.2, so a modal menu cannot be closed with Escape. Needs React 19.2"
+      "note": "Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2"
     },
     {
       "id": "radix-1528",
@@ -50,21 +50,6 @@
       "symptom": "NAV_TARGET_UNREACHABLE",
       "documentary": "pending",
       "note": "Roving tabIndex not updated (introduced in #505); pre-1.0 releases to resolve"
-    },
-    {
-      "id": "headlessui-3821",
-      "repo": "tailwindlabs/headlessui",
-      "refs": [
-        "#3821"
-      ],
-      "stack": "react",
-      "package": "@headlessui/react",
-      "good": "2.2.2",
-      "broken": "2.2.3",
-      "fixed": null,
-      "symptom": "JOURNEY_BLOCKED",
-      "documentary": "accept",
-      "note": "Opening a nested Menu closes every menu"
     },
     {
       "id": "rac-8697",
@@ -145,21 +130,6 @@
       "note": "Programmatic focus() on a select TextField throws, so focus does not move"
     },
     {
-      "id": "sonner-519",
-      "repo": "emilkowalski/sonner",
-      "refs": [
-        "#519"
-      ],
-      "stack": "react",
-      "package": "sonner",
-      "good": null,
-      "broken": "1.6.0",
-      "fixed": null,
-      "symptom": "ANNOUNCEMENT_MISSING",
-      "documentary": "accept",
-      "note": "toast.custom no longer applies role and aria attributes from 1.6; last good 1.5.x to confirm"
-    },
-    {
       "id": "bootstrap-35496",
       "repo": "twbs/bootstrap",
       "refs": [
@@ -174,22 +144,6 @@
       "symptom": "FOCUS_NOT_RESTORED",
       "documentary": "accept",
       "note": "Escape in a dropdown no longer returns focus to the toggle"
-    },
-    {
-      "id": "bootstrap-36947",
-      "repo": "twbs/bootstrap",
-      "refs": [
-        "#36947",
-        "PR #37151"
-      ],
-      "stack": "vanilla",
-      "package": "bootstrap",
-      "good": "5.1.3",
-      "broken": "5.2.0",
-      "fixed": "5.2.2",
-      "symptom": "STATE_NOT_CONVEYED",
-      "documentary": "accept",
-      "note": "Tabs inside a dropdown keep their active state when another tab is chosen"
     },
     {
       "id": "floating-2874",
@@ -293,12 +247,12 @@
       ],
       "stack": "react",
       "package": "@carbon/react",
-      "good": null,
-      "broken": "1.78.0",
+      "good": "1.53.1",
+      "broken": "1.54.0",
       "fixed": null,
       "symptom": "STATE_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "Icon-only ghost button with isSelected no longer emits aria-pressed; last good to bisect"
+      "note": "Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported"
     },
     {
       "id": "carbon-7253",
@@ -470,6 +424,18 @@
     {
       "id": "angular, unticked",
       "reason": "15 Angular Components issues whose 'Is this a regression?' box is unticked: long-standing bugs, not regressions"
+    },
+    {
+      "id": "headlessui-3821",
+      "reason": "maintainers: nested menus were never supported nor accessible to screen readers, and the break began in 2.2.2; the last-good construct is not accessible (DR-0063)"
+    },
+    {
+      "id": "bootstrap-36947",
+      "reason": "maintainers: tabs inside a dropdown are documented as unsupported because they cannot map to an ARIA tab pattern; the last-good construct is not accessible (DR-0063)"
+    },
+    {
+      "id": "sonner-519",
+      "reason": "no user-facing symptom: 1.6 moved the live region to the Toaster section (aria-live=polite), so toasts are still announced (DR-0063)"
     }
   ]
 }

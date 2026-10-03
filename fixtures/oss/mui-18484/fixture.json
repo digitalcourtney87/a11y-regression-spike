@@ -7,8 +7,8 @@
     "4.5.0"
   ],
   "dependencies": {
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "16.10.2",
+    "react-dom": "16.10.2"
   },
   "issue": "https://github.com/mui/material-ui/issues/18484"
 }

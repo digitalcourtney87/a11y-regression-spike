@@ -7,7 +7,12 @@
  * `fixture.json` names the package, the releases to test and the other
  * dependencies (exact versions). The package goes into `dependencies`, or
  * into npm `overrides` when it is a transitive dependency (`"mode": "override"`).
- * The fixture's `index.html`, `src/` and `vite.config.js` are copied as they are.
+ * The fixture's `index.html` and `src/` are copied as they are. The build
+ * tools are not listed: CI installs this package.json with `npm install
+ * --before=<newest listed release's date + 2 days>`, the same date for every
+ * release of one fixture, so the builds differ only in the package under test
+ * and no later fix can arrive through a transitive dependency; it builds them
+ * with `ossBuild.mjs` from a separate tools directory.
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -30,13 +35,7 @@ export type Fixture = z.infer<typeof FixtureSchema>;
 /** The package.json for one release. */
 export function packageJsonFor(fixture: Fixture, version: string): Record<string, unknown> {
   const deps: Record<string, string> = { ...fixture.dependencies };
-  const pkg: Record<string, unknown> = {
-    name: `oss-fixture-${fixture.id}`,
-    private: true,
-    type: "module",
-    scripts: { build: "vite build" },
-    devDependencies: { vite: "8.3.2", ...(fixture.stack === "react" ? { "@vitejs/plugin-react": "6.0.1" } : {}) },
-  };
+  const pkg: Record<string, unknown> = { name: `oss-fixture-${fixture.id}`, private: true, type: "module" };
   if (fixture.mode === "override") pkg.overrides = { [fixture.package]: version };
   else deps[fixture.package] = version;
   pkg.dependencies = deps;
@@ -49,6 +48,6 @@ if (process.argv[1] !== undefined && resolve(process.argv[1]) === resolve(import
   const dir = resolve(values.fixture);
   const fixture = FixtureSchema.parse(JSON.parse(readFileSync(join(dir, "fixture.json"), "utf8")));
   mkdirSync(values.out, { recursive: true });
-  for (const name of ["index.html", "src", "vite.config.js"]) if (existsSync(join(dir, name))) cpSync(join(dir, name), join(values.out, name), { recursive: true });
+  for (const name of ["index.html", "src"]) if (existsSync(join(dir, name))) cpSync(join(dir, name), join(values.out, name), { recursive: true });
   writeFileSync(join(values.out, "package.json"), `${JSON.stringify(packageJsonFor(fixture, values.version), null, 2)}\n`);
 }

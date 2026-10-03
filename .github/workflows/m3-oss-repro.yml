@@ -3,7 +3,9 @@ name: m3-oss-repro
 # every listed release of the package under test and runs its check, written
 # from the issue's own description. Third-party code runs here only with
 # contents: read and no secrets at all, install scripts off, and a separate
-# npm cache that is never saved. Runs on pushes to m3-corpus that touch the
+# npm cache that is never saved. Each fixture installs with --before set to its
+# newest listed release's date plus two days, so its builds differ only in the
+# package under test; the build tools come from their own directory. Runs on pushes to m3-corpus that touch the
 # fixtures or the check harness.
 on:
   workflow_dispatch:
@@ -14,6 +16,7 @@ on:
       - fixtures/oss/**
       - harness/src/probes/ossCheck.ts
       - harness/src/probes/ossFixture.ts
+      - fixtures/oss-tools/**
 permissions:
   contents: read
 concurrency:
@@ -61,22 +64,31 @@ jobs:
           $out = Join-Path $repo "artefacts/oss/$env:ID"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
           $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-oss"
+          $tools = Join-Path $env:RUNNER_TEMP "oss-tools"
+          New-Item -ItemType Directory -Force -Path $tools | Out-Null
+          '{"private":true,"dependencies":{"vite":"8.3.2","@vitejs/plugin-react":"6.0.1"}}' | Out-File -Encoding utf8NoBOM (Join-Path $tools "package.json")
+          Copy-Item fixtures/oss-tools/ossBuild.mjs $tools
+          npm install --prefix $tools --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
           $meta = Get-Content (Join-Path $fixture "fixture.json") -Raw | ConvertFrom-Json
+          $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
+          $newest = ($meta.versions | ForEach-Object { [datetime]$times[$_] } | Measure-Object -Maximum).Maximum
+          $before = $newest.ToUniversalTime().AddDays(2).ToString("yyyy-MM-dd")
           $results = @()
           foreach ($version in $meta.versions) {
             $work = Join-Path $env:RUNNER_TEMP "oss-$version"
             node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work
             Push-Location $work
-            npm install --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out "$version.install.log")
+            npm install --ignore-scripts --no-audit --no-fund "--before=$before" 2>&1 | Out-File (Join-Path $out "$version.install.log")
             $installExit = $LASTEXITCODE
             Copy-Item package-lock.json (Join-Path $out "$version.package-lock.json") -ErrorAction SilentlyContinue
-            npx --no-install vite build 2>&1 | Out-File (Join-Path $out "$version.build.log")
-            $buildExit = $LASTEXITCODE
             Pop-Location
+            node (Join-Path $tools "ossBuild.mjs") $work $meta.stack 2>&1 | Out-File (Join-Path $out "$version.build.log")
+            $buildExit = $LASTEXITCODE
             if ($buildExit -eq 0) {
               node harness/src/probes/ossCheck.ts --dist (Join-Path $work "dist") --check (Join-Path $fixture "check.mjs") --version $version --out (Join-Path $out "$version.check.json")
             }
-            $results += [ordered]@{ version = $version; installExit = $installExit; buildExit = $buildExit }
+            $results += [ordered]@{ version = $version; before = $before; installExit = $installExit; buildExit = $buildExit }
           }
           $results | ConvertTo-Json | Out-File (Join-Path $out "builds.json")
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
