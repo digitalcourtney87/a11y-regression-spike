@@ -160,3 +160,26 @@ This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" secti
 | G1 section, "Latency (DOM update to tap)" row | It is an upper bound, not DOM-to-tap latency, and the K2 figure left out the top-up. Corrected (252 valid passing runs, from `report:phase0`): live-region updates median 56.5–60.8 ms, maximum 91.2 ms; focus moves median 101.4–123.7 ms, maximum 154.5 ms. The page-to-QPC mapping needed for P4's DOM-mutation latency is recorded per attempt from M2 onwards |
 | G1 section, counts without intervals | INCONCLUSIVE 2 of 443 (0.1–1.6%); K6a 0 of 20 per variant (0–16.1%); K6e same-frame fills 0 of 19 (0–16.8%); fills from 50 ms 50 of 50 (92.9–100%) |
 | M1 tally | Probe run 37114407991 (push-triggered by commit 8992346, both labels, success) repeated the M1a probes: every check 10 of 10 per leg per label, eSpeak NG loaded at rate 30, Scream installed. It is now in the G1 archive |
+
+### M2 listener smoke run and pilot (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37119067877](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119067877) (smoke: NVDA-absent leg, K1–K5 twice each, one shard, seed 20261010, commit `8e7bce1`) and [37119295670](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119295670) (pilot: both legs, K1–K5 twice each and every record-only canary, 10 shards per leg, seed 20261011, commit `a34782d`), image `win25-vs2026` 20260925.250.1 in every job.
+**Affects:** DR-0053 (P12), DR-0019 (P3 final ranges), DR-0037 and P9 (DR-0052), DR-0041, DR-0046 (P4 latency).
+**Confidence:** observed, except where marked inferred. Small samples: the gating canaries ran twice per leg in each run.
+
+| Observation | Result |
+|---|---|
+| Listener health | All 6 hook ranges installed in every job; UIA self-check validated in 210 of 210 attempts; no attempt without events; no malformed lines |
+| Identity | Chrome exposes each DOM id as the UIA AutomationId; every platform signature component matched through it |
+| K1–K5 B2 signatures (NVDA-absent) | 14 of 14 attempts matched across both runs; EVENT_SYSTEM_ALERT never fired for K2's content update (0 of 4) |
+| DOM change to WinEvent | Pilot medians 8.7–12.1 ms, maximum 12.8 ms; smoke 7.8–20.0 ms |
+| K6 platform signatures | Populated insertions (K6a, K6e at 0 ms and one rAF): EVENT_OBJECT_SHOW only, no live-region or text event on the region (0 of 80). Fills from 50 ms: SHOW, then REORDER, IA2 TEXT_INSERTED and LIVEREGIONCHANGED on the region (50 of 50). K6b: EVENT_SYSTEM_ALERT and SHOW (20 of 20) |
+| P9 against B2 | The NVDA-absent B2 signatures agree with NVDA's speech and with P9's boundary: one-rAF fills (DOM delay 5–10 ms) look like populated insertions on the platform; fills from 50 ms reach it as separate updates |
+| K7 order | Polite update before the focus move in the DOM and on the platform, 20 of 20 for each of K7a and K7b |
+| NVDA-present leg (speech) | As in G1: K1–K5 10 of 10; K6a 0 of 60; K6b NOW 20 of 20; K6e silent at 0 ms and one rAF (0 of 20), announced from 50 ms (50 of 50); K7b cancel 20 of 20. Parity per segment exact (166 against 166) |
+| P4 latency (DOM change to tap) | Pilot medians: K1 33.5 ms, K2 24.4 ms, K3 68.3 ms, K4 95.0 ms, K5 71.5 ms (n = 2 each) |
+| eSpeak NG | Effective rate 30, rate boost off, recorded in each of the 10 NVDA runs (DR-0041) |
+| P10 retry | No attempt needed a second focus read (0 of 410) |
+| Clocks | Native self-test 0 ms for both native collectors; page mapping 0.1 ms; drift at most 0.19 ms; rAF gap at most 46.9 ms |
+| Listener build | The executable's SHA-256 is identical across jobs of one run but differs between commits with the same listener source (inferred: the SDK embeds the source revision); the hash identifies a build, not the source |

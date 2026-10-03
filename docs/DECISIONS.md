@@ -89,12 +89,13 @@ Conventions:
 | [DR-0050](#dr-0050-g1-top-up-and-evidence-archive) | G1 top-up and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0051](#dr-0051-handover-focus-read-retry) | Handover focus-read retry | Accepted | 2026-10-03 | P10, approved by the owner 2026-10-03 (DR-0052) | — | Resolved (P10, DR-0052) |
 | [DR-0052](#dr-0052-owner-approvals-at-the-g1-gate) | Owner approvals at the G1 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted, except P12 | 2026-10-03 | Decided by Claude under DR-0045; P12 pending | — | Pending: P12 |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). No items are pending; a new hard-rule-12 item is added here when it arises.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). One item is pending, for the G2 brief: P12.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -109,6 +110,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P9 | **Resolved (approved by the owner 2026-10-03, DR-0052).** for polite live regions filled after page load, replace DR-0037's 150 ms grading boundary with the observed one: a fill in the same frame (0 ms or one rAF) counts as a populated insertion; a fill 50 ms or more after insertion counts as a fill; between one frame and 50 ms (untested) routes to REVIEW. The 350 ms pre-load boundary and other region roles keep DR-0037's grading until tested; the boundary is confirmed against M2's NVDA-absent K6e signatures before G2 | DR-0037 (triggered by the M1d pilot and G1; lab notebook 2026-10-03) | What counts as detection (B2 signatures and the M3 catalogue) | No longer pending | Approved as recommended |
 | P10 | **Resolved (approved by the owner 2026-10-03, DR-0052).** the handover's platform-focus check retries the MSAA focus read for up to 1 s before ruling `FOREGROUND_HWND`, from M2 onwards; G1 is unchanged | DR-0051 | What counts as INCONCLUSIVE (a pre-outcome check's timing) | No longer pending | Approved as recommended |
 | P11 | **Resolved (approved by the owner 2026-10-03, DR-0052).** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | No longer pending | Approved as recommended |
+| P12 | **Proposed by Claude (not yet owner-approved):** the operational B2 signatures of DR-0053: the components and identity rule for K1–K5, the record-only traces for K6 and K7 (including "separate update"), and the one-frame threshold (1000/60 ms) that implements P9's "same frame". Fixed before the G2 runs; every listener event and the whole DOM timeline are kept per attempt, so another reading can be re-scored without new runs | DR-0053 | What counts as detection (G2's result rests on it) | At the G2 gate | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2563,3 +2565,46 @@ The four additions each control what runs or how it runs, so each can change a v
 - P10: from M2 the handover's MSAA focus read is retried every 100 ms for up to 1 s (DR-0051). G1's results are unchanged.
 - P11: the canary speech-matching rule of DR-0048 is ratified.
 - No owner items are pending after this record.
+
+## DR-0053 M2 build: listener integration and B2 signatures
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except the signature definitions, pending as P12 |
+| Owner label | Decided by Claude under DR-0045; P12 pending |
+| HANDOFF v1.5 | §7.2, §7.3, §8.2, §8.3, §8.4, §9 (M2), §9.1, §9.2 (implemented as stated) |
+
+**Context.** M2 integrates the B2 listener (DR-0019) and the DOM mutation timeline (HANDOFF §8.3) with the canary runs, and verifies the expected B2 signature of each gating canary in the NVDA-absent leg (G2). The smoke run [37119067877](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37119067877) (NVDA-absent leg, K1–K5 twice each, commit `8e7bce1`) was the listener's first Windows run: all six hook ranges installed, the UIA self-check validated in 10 of 10 attempts, Chrome exposed each DOM id as the UIA AutomationId, and all 10 attempts matched their signatures.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Listener lifetime | One listener per attempt, started for that attempt's browser process after launch and before the handover, stopped after the observation window. Each job first starts and stops it against the Node process, so a broken build fails the job before any attempt |
+| Native self-test | The approved method (DR-0010) pings each native collector: in the NVDA-absent leg the Windows helper and the listener, over stdin and stdout; the recorded disagreement is the larger of the two. Both values are kept |
+| Timeline | Installed with `addInitScript` in both legs (P4). Insertions record their parent, so a text change inside a region can be attributed. Page times map to QPC as NavigationStart + `performance.now()` minus the minimum-RTT offset (HANDOFF §7.3) |
+| Raw evidence | Every listener event of the attempt and the whole DOM timeline are written to the attempt record, and the evidence package carries those inside the observation window, so signatures can be re-scored offline |
+| P10 | The MSAA focus read is retried every 100 ms for up to 1 s after the first read at 300 ms; the number of reads is recorded |
+| eSpeak rate | Read from the session `nvda.ini` at each NVDA start, as in M1a (DR-0041); with no `[[espeak]]` section the effective rate is 30 and rate boost off. Recorded in the manifest and the job summary |
+| P4 latency | Each gating attempt records the time of the canary's own DOM change (the first DOM component of its signature), so the G1 report gives DOM-change-to-tap latency, QPC on both sides |
+| Workflow | Both legs in one dispatch (R8); the listener is built in each job with the pinned `actions/setup-dotnet` (P2); the `present_listener` input runs it in the NVDA-present leg for the on/off diagnostic only (P4), and those attempts are marked and excluded from G1 |
+| On/off diagnostic | A separate dispatch of both legs, K1–K5 20 times each, with `present_listener` on, compared within that dispatch (DR-0020). It never feeds the G2 rule |
+| G2 sizing | 52 runs per gating canary (DR-0050's margin of two, applied before dispatch), with DR-0050's top-up rule if a canary is still short of 50 valid runs |
+
+**Proposed by Claude (not yet owner-approved): signature definitions (P12).** A platform event is attributed to a canary element by UIA AutomationId (the DOM id), then MSAA name, UIA AriaRole, UIA LiveSetting or MSAA role; the path used is recorded. Evidence counts only inside the observation window (activation to 4 s). EVENT_SYSTEM_ALERT on `Chrome_WidgetWin_1` is browser UI and excluded (P3). A gating attempt matches when every required component is found.
+
+| Canary | HANDOFF §9.1 | Required components |
+|---|---|---|
+| K1 | Text mutation inside the live region; live-region or text events | DOM text change inside `#live`; EVENT_OBJECT_LIVEREGIONCHANGED or an IA2 text event (inserted, updated, changed) on the region |
+| K2 | EVENT_OBJECT_LIVEREGIONCHANGED plus IA2 TEXT_INSERTED on the alert (not EVENT_SYSTEM_ALERT) | Both platform events on the alert. EVENT_SYSTEM_ALERT and the DOM text change are recorded, not required |
+| K3 | focusin; focus WinEvent | DOM `focusin` on the button; EVENT_OBJECT_FOCUS on it |
+| K4 | Dialog inserted or shown; focus events | The dialog shown in the DOM (`hidden` removed, or inserted) and EVENT_OBJECT_SHOW on it; DOM `focusin` on its first control and EVENT_OBJECT_FOCUS on it |
+| K5 | History event; focus events. No title dependency | DOM `pushState`; DOM `focusin` on the `h1`; EVENT_OBJECT_FOCUS on it. The title is not read |
+
+Record-only canaries are described, not scored: for K6, the region's insertion-to-content delay and grade (DR-0037 with P9), the platform events attributed to it, and whether a live-region or text event on the region follows its insertion ("separate update"); for K7, whether the polite update precedes the focus move in the DOM (timeline order) and on the platform (QPC). P9's "same frame" is implemented as a fill at most one 60 Hz frame (1000/60 ms) after the insertion; G1's K6e page logs put every one-rAF fill at 4.9–14.9 ms.
+
+**Consequences.**
+
+- G2 is scored with these definitions; P12 asks the owner to ratify them at the G2 gate, as P11 did for speech matching at G1. The raw evidence allows re-scoring under another reading without new runs.
+- K4's platform SHOW component was made required after the smoke run, where it was present in 2 of 2; it was fixed before the pilot and the G2 runs.
