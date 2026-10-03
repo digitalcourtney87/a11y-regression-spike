@@ -105,6 +105,7 @@ Conventions:
 | [DR-0066](#dr-0066-m4-design-journeys-runner-and-side-aware-validity) | M4 design: journeys, runner and side-aware validity | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P23–P25 approved by the owner 2026-10-03 (DR-0067) | DR-0067 | Resolved (P23–P25, DR-0067) |
 | [DR-0067](#dr-0067-owner-approval-of-p23-p25) | Owner approval of P23–P25 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0068](#dr-0068-m4-build-runner-journeys-and-unchanged-controls) | M4 build: runner, journeys and unchanged controls | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0069](#dr-0069-m4-journey-development-the-page-date-and-the-tab-journey) | M4 journey development: the page date and the tab journey | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3096,4 +3097,24 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 | Sync copies | The repository sits in an iCloud-synced folder, which made 548 byte-identical "name 2.ext" copies of tracked files. They were moved out of the tree (none was ever committed); `.gitignore` and the corpus tools now skip such names |
 
 **Consequences.** Journeys are developed on the base builds in the NVDA-absent leg first (`m4-items.yml` with `sides: base`), then in both legs, before full item runs. Every M4 result is exploratory.
+
+## DR-0069 M4 journey development: the page date and the tab journey
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.8 | §7.3, §9 (M4); P14, P20 |
+
+**Context.** The first journey probe (run 37139054732) ran each journey once on its base build, in the NVDA-absent leg.
+
+| Finding | Decision |
+|---|---|
+| Playwright's clock API, used to fix Atomic CRM's date (P14), also fakes `performance.now()` and `requestAnimationFrame`. Every Atomic CRM attempt was INCONCLUSIVE (low-resolution TimeTicks, and once a rAF gap). The fake timers also seem to delay Radix's focus restoration | Fix only `Date`, with an init script that starts it at 2026-10-05T09:00:00Z and advances it with `performance.now()`. Page timing, the DOM timeline and rAF stay real |
+| The simulated cursor kept its last browse position after an activation moved focus, so a later ACTIVATE clicked a stale element | The cursor follows focus after every action, and whenever the page moves focus, as NVDA's browse cursor does |
+| Atomic CRM's contact page renders tabs only in its mobile layout. The M3 tab specs mutate the shared Tabs, which the desktop company page renders | The tab journey becomes `acrm-company-show-tabs` (`/#/companies/0/show`). Its four specs and its unchanged control follow. The a11y-improvement twin names the company tab list, so it acts on the journey's target (P20). The patches of the regression specs are unchanged |
+| Anchors the drafts guessed (`#post_id`, a mobile-only Edit button) do not exist | Anchors are taken from the probe's accessibility trees and focus traces. Goals then reach targets by Tab or browse strategies from there |
+
+**Consequences.** Journey development continues on the base builds until every journey completes and its expectations can be judged. It then runs in the NVDA-present leg.
 
