@@ -16,7 +16,13 @@
       "fixed": "1.1.15",
       "symptom": "KEYBOARD_TRAP",
       "documentary": "accept",
-      "note": "Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2"
+      "note": "Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2",
+      "operator": "escape-not-closing",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "rac-8697",
@@ -32,7 +38,13 @@
       "fixed": "1.12.0",
       "symptom": "INTERACTION_FAILS_UNDER_AT",
       "documentary": "accept",
-      "note": "Menu item links do nothing on Enter"
+      "note": "Menu item links do nothing on Enter",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "rac-8298",
@@ -42,13 +54,14 @@
         "PR #8301"
       ],
       "stack": "react",
-      "package": "react-aria-components",
-      "good": "1.8.0",
-      "broken": "1.9.0",
-      "fixed": "1.10.0",
+      "package": "@adobe/react-spectrum",
+      "good": "3.41.0",
+      "broken": "3.42.0",
+      "fixed": "3.42.1",
       "symptom": "INTERACTION_FAILS_UNDER_AT",
       "documentary": "accept",
-      "note": "ComboBox closes while navigating its items with the keyboard (May 2025 release)"
+      "note": "Navigating past the last visible item of a scrollable ComboBox dropdown scrolls the window and closes it (May 2025 release; fixed by PR #8301). Two React Aria Components fixtures did not reproduce; the fix's own test steps use React Spectrum's ComboBox",
+      "operator": "combobox-keyboard-broken"
     },
     {
       "id": "bootstrap-35496",
@@ -64,23 +77,8 @@
       "fixed": "5.2.0",
       "symptom": "FOCUS_NOT_RESTORED",
       "documentary": "accept",
-      "note": "Escape in a dropdown no longer returns focus to the toggle"
-    },
-    {
-      "id": "floating-2874",
-      "repo": "floating-ui/floating-ui",
-      "refs": [
-        "#2874",
-        "PR #2876"
-      ],
-      "stack": "react",
-      "package": "@floating-ui/react",
-      "good": "0.26.9",
-      "broken": "0.26.10",
-      "fixed": "0.26.13",
-      "symptom": "FOCUS_NOT_RESTORED",
-      "documentary": "accept",
-      "note": "FloatingFocusManager stops returning focus to the reference"
+      "note": "Escape in a dropdown no longer returns focus to the toggle",
+      "operator": "menu-focus-not-restored"
     },
     {
       "id": "fluent-35927",
@@ -96,7 +94,13 @@
       "fixed": "9.5.1",
       "symptom": "NAME_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)"
+      "note": "PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "fluent-7796",
@@ -111,7 +115,13 @@
       "fixed": "6.129.4",
       "symptom": "ROLE_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)"
+      "note": "DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "carbon-19563",
@@ -127,13 +137,20 @@
       "fixed": null,
       "symptom": "STATE_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070)"
+      "note": "Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070)",
+      "operator": "checked-stale",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "carbon-18824",
       "repo": "carbon-design-system/carbon",
       "refs": [
-        "#18824"
+        "#18824",
+        "PR #18829"
       ],
       "stack": "react",
       "package": "@carbon/react",
@@ -142,7 +159,13 @@
       "fixed": null,
       "symptom": "STATE_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported"
+      "note": "Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported",
+      "operator": "checked-stale",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "carbon-7253",
@@ -158,13 +181,20 @@
       "fixed": "10.24.0",
       "symptom": "NAME_NOT_CONVEYED",
       "documentary": "accept",
-      "note": "Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253"
+      "note": "Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253",
+      "operator": "icon-button-label-removed",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "carbon-5623",
       "repo": "carbon-design-system/carbon",
       "refs": [
-        "#5623"
+        "#5623",
+        "PR #5784"
       ],
       "stack": "react",
       "package": "carbon-components-react",
@@ -173,13 +203,21 @@
       "fixed": "7.11.0",
       "symptom": "JOURNEY_BLOCKED",
       "documentary": "accept",
-      "note": "Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)"
+      "note": "Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "vuetify-9627",
       "repo": "vuetifyjs/vuetify",
       "refs": [
-        "#9627"
+        "#9627",
+        "#9144",
+        "commit fa0a893"
       ],
       "stack": "vue",
       "package": "vuetify",
@@ -188,7 +226,13 @@
       "fixed": "2.1.10",
       "symptom": "FOCUS_ESCAPES_DIALOG",
       "documentary": "accept",
-      "note": "VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10)"
+      "note": "VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10)",
+      "operator": "dialog-containment-removed",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     },
     {
       "id": "blueprint-6163",
@@ -204,7 +248,13 @@
       "fixed": "4.9.16",
       "symptom": "INTERACTION_FAILS_UNDER_AT",
       "documentary": "accept",
-      "note": "Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it"
+      "note": "Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [
@@ -343,6 +393,10 @@
     {
       "id": "fluent-27510",
       "reason": "spans a major version and a package rename (office-ui-fabric-react 7 to @fluentui/react 8), so no release pair of one package; reporter marked it as not an accessibility issue (DR-0063)"
+    },
+    {
+      "id": "floating-2874",
+      "reason": "the keyboard path does not reproduce (run 37133618945: focus returns to the menu button on both releases); by the fix (PR #2876) the bug needs a menu opened on mousedown while focus is elsewhere, which a keyboard journey cannot produce (keyboard rule, DR-0063)"
     }
   ]
 }

@@ -7,7 +7,9 @@
  * current base with `git apply --check`.
  *
  * `npm run corpus -- plan spa-regression` adds the planned SPA regression
- * patterns to `corpus/patterns.json` (patterns.ts).
+ * patterns to `corpus/patterns.json` (patterns.ts); `plan oss-regression`
+ * adds one pattern per verified mined pair in `corpus/oss-candidates.json`
+ * (oss.ts).
  *
  * `npm run corpus -- split --batch <name> --seed <n> --test-fraction <f>`
  * splits one batch of planned (not dropped) patterns into dev and test
@@ -24,6 +26,7 @@ import { parseArgs } from "node:util";
 import { operatorById } from "./catalogue.ts";
 import { applyEdits, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import type { MutationSpec } from "./mutate.ts";
+import { OssCandidatesSchema, planOssRegressionPatterns } from "./oss.ts";
 import { addPatterns, PatternRegistrySchema, planSpaRegressionPatterns } from "./patterns.ts";
 import type { PatternRegistry } from "./patterns.ts";
 import { addBatch } from "./split.ts";
@@ -38,6 +41,7 @@ const JOURNEYS = join(repoRoot, "journeys");
 const SPLIT = join(repoRoot, "corpus/split.json");
 const SPECS = join(repoRoot, "corpus/specs");
 const PATTERNS = join(repoRoot, "corpus/patterns.json");
+const OSS_CANDIDATES = join(repoRoot, "corpus/oss-candidates.json");
 
 function readRegistry(): PatternRegistry | null {
   return existsSync(PATTERNS) ? PatternRegistrySchema.parse(JSON.parse(readFileSync(PATTERNS, "utf8"))) : null;
@@ -119,8 +123,11 @@ if (command === "validate") {
   }
 } else if (command === "plan") {
   const [batch] = rest;
-  if (batch !== "spa-regression") throw new Error("plan supports: spa-regression");
-  writeFileSync(PATTERNS, `${JSON.stringify(addPatterns(files.patterns ?? null, planSpaRegressionPatterns(batch)), null, 2)}\n`);
+  let patterns;
+  if (batch === "spa-regression") patterns = planSpaRegressionPatterns(batch);
+  else if (batch === "oss-regression") patterns = planOssRegressionPatterns(OssCandidatesSchema.parse(JSON.parse(readFileSync(OSS_CANDIDATES, "utf8"))), batch);
+  else throw new Error("plan supports: spa-regression, oss-regression");
+  writeFileSync(PATTERNS, `${JSON.stringify(addPatterns(files.patterns ?? null, patterns), null, 2)}\n`);
   process.stdout.write(`planned batch ${batch}\n`);
 } else if (command === "split") {
   const { values } = parseArgs({ args: rest, options: { batch: { type: "string" }, seed: { type: "string" }, "test-fraction": { type: "string" } } });

@@ -1,7 +1,7 @@
 // Issue #8298: navigating past the last visible item of a scrollable ComboBox
 // dropdown scrolls the window, which closes the dropdown. The issue's steps
 // are keyboard steps (open, then ArrowDown past the visible items), so both
-// outcomes come from the keyboard; the second run opens with the button.
+// outcomes come from the keyboard; the second run first clicks into the field.
 async function run(p, open) {
   await open(p);
   await p.waitForTimeout(300);
@@ -16,11 +16,11 @@ async function run(p, open) {
 }
 export default async function check({ page, fresh }) {
   const keyboard = await run(page, async (p) => {
-    await p.focus("#input");
+    await p.getByRole("combobox").focus();
     await p.keyboard.press("ArrowDown");
   });
   const pointer = await run(await fresh(), async (p) => {
-    await p.click("#input");
+    await p.getByRole("combobox").click();
     await p.keyboard.press("ArrowDown");
   });
   return { pointer, keyboard };
