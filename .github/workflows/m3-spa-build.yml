@@ -4,8 +4,8 @@ name: m3-spa-build
 # offline with the clock fixed, loading each path twice to check the data are
 # deterministic. Its dependencies install from the vendored lockfile with
 # install scripts off and a separate npm cache that is never saved; the job
-# has contents: read and no secrets. Runs on pushes to m3-corpus that touch
-# the SPA, the corpus or the probe.
+# has contents: read and uses no secrets at all. It runs on pushes to
+# m3-corpus that touch the SPA, the corpus or the probe.
 on:
   workflow_dispatch:
   push:
