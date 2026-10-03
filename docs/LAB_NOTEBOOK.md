@@ -277,3 +277,5 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Verified | 11 pairs reproduce on both paths; every fixed release tested holds again |
 | Not reproduced | rac-8298 in three fixtures; floating-2874 holds on the keyboard path (pointer-only by its mechanism) |
 | Outside requests | None, except carbon-7253 (2 font requests from the Carbon CSS, blocked, no page error) |
+| After the split (run [37134734243](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134734243)) | Only the 3 dev fixtures ran. Each pair reproduced a third time, and the three benign twins (wrapper-added, css-only, css-only) kept the checked behaviour on both paths |
+

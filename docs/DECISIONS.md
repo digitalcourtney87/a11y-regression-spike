@@ -2979,3 +2979,5 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 | Twins (P20) | A mutation spec on the fixture at the last good release (`twinOf` the regression item), made by `npm run corpus -- mutate`: carbon-19563 wrapper-added (the checkbox wrapped in a div), fluent-35927 css-only (a margin on each badge), rac-8697 css-only (rounded corners and padding on the popover, with no animation, since an exit animation would hide the regression) |
 | CI | `m3-oss-repro.yml` runs only unsplit and dev-split fixtures. Test-split pairs were verified before the split, and running them again before the freeze would execute test items. Each dev fixture also builds its twin at the base release, and the check must still hold there. A twin that fails the check is rewritten before M4, because the twin is meant to keep the behaviour |
 
+**Check (run 37134734243).** Only the three dev fixtures ran. Each pair reproduced again: the check holds on the last good release and fails on the first broken one, on both paths. Each twin applied, built and reverted cleanly, and its check held on both paths at the base release.
+
