@@ -1,6 +1,6 @@
 # Lab notebook
 
-Dated observations for the Accessibility Regression CI falsification spike. Decisions belong in `docs/DECISIONS.md`; post-freeze protocol changes belong in `protocol/AMENDMENTS.md`.
+Dated observations for the Accessibility Regression CI falsification spike. Decisions belong in `docs/DECISIONS.md`; post-freeze changes to the frozen set (the paths in `protocol/frozen-paths.txt`, DR-0033) belong in `protocol/AMENDMENTS.md`.
 
 ## Format
 
@@ -54,3 +54,27 @@ Dated observations for the Accessibility Regression CI falsification spike. Deci
 | Tap reception alongside Guidepup, and message-count parity between tap `speak` messages and NVDA log "Speaking" lines, plus the CPU and latency overhead of DEBUG logging | Validates the speech instrument before the canary runs | DR-0011 |
 
 **Not probed:** title latency. D1 removes the `document.title` marker (DR-0010, DR-0025).
+
+## 2026-10-03: Addendum after owner review
+
+**Label:** EXPLORATORY
+**Source:** the owner's review of M0 of 2 October 2026, recorded as DR-0030 to DR-0045; NVDA release-2026.2 source, read for the eSpeak NG default rate (DR-0041); pending owner items P4 and P6 in `docs/DECISIONS.md`
+**Confidence:** no runner observation. The expected rate is inferred from NVDA source; nothing has been observed on a runner by this project.
+
+**Observation.** No workflow has yet run on a GitHub-hosted Windows runner for this project. The owner's review adds three questions for M1a (11–13). Two pending owner items in `docs/DECISIONS.md` need M1a data before they go to the owner (14 for P6; 15 for P4). Questions 1–10 of the 2026-10-02 entry stand.
+
+| # | Question | Desk-research expectation | Why it matters | Affects |
+|---|---|---|---|---|
+| 11 | **Scream Authenticode signature.** For the Scream 3.6 driver files, what is the Authenticode signature status, who is the signer and who is the issuer, and what is the signer certificate thumbprint? Does the chain validate, or is the certificate self-signed? Where does `devcon` come from: the runner image or the pinned Scream archive? | Not established by desk research. ARIA-AT's recipe adds the signer certificate to TrustedPublisher before `devcon install`, which avoids an installation prompt but says nothing about whether the chain validates. Later Scream releases are reported to hang at `devcon` unless a self-signed certificate is trusted first (DR-0012), so a self-signed result for 3.6 is possible (inference, low confidence). | Chain valid and signer consistent with the release: Claude pins the thumbprint without asking. Self-signed or any other result: DR-0012 states that authenticity rests on trust on first use, nothing is added to TrustedPublisher, and the owner is asked. A separate `devcon` download would be a new hard-rule-12 security item. | DR-0040, DR-0012 |
+| 12 | **Effective eSpeak NG rate.** With a committed `nvda.ini` that sets no eSpeak rate, what rate and rate-boost setting does the running synth report? Does any inherited configuration (for example in the Guidepup build) already hold an eSpeak section? | 30 on NVDA's 0–100 scale, rate boost off, on a fresh eSpeak configuration section (NVDA release-2026.2 `espeak.py:216` and `:388`; `synthDriverHandler.py:365-385`). The Guidepup build's own configuration pins oneCore with rate 100 and rate boost on (DR-0017); whether it also carries an eSpeak section is not known. | D8's declared rate is NVDA's default (DR-0041), and the effective rate is recorded in every run's manifest. A value other than 30 is a reason to bring the rate back to the owner. Speech rate sets synth pacing, which shapes when NVDA pushes queued speech (K7). | DR-0041, DR-0017 |
+| 13 | **K6 and K7 in both legs.** How long does one canary attempt take in each leg (handover, observation window, teardown)? Does that leave room for 190 record-only runs per leg (380 in all) alongside the gating runs, within the 6 h job limit and the 23 Oct G1 target? | Not estimated by desk research. | K6 and K7 now run in both legs: speech outcomes from the NVDA-present leg, B2 signatures from the NVDA-absent leg; the K6a rule is read on the NVDA-present leg. The result sizes the run plan and feeds the G2 cost table (DR-0003). | DR-0036, DR-0043, DR-0003 |
+| 14 | **D1 clock-check computations.** What values do Claude's working definitions of page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap give on each label, with Chrome in the foreground, with and without NVDA running? Does the in-page `requestAnimationFrame` heartbeat show gaps over 100 ms that the canary page did not cause? | Page-mapping uncertainty within the 100 µs clamp plus half the minimum round trip (question 7); segment drift close to zero, because every clock involved is QPC-based (question 6; inference); `performance.now()` steps of about 100 µs (question 6). rAF gaps on the runner are not estimated by desk research. | These computations decide when an attempt is INCONCLUSIVE. Their final form is fixed from M1a data and goes to the owner before any G1 run (pending owner item P6). | DR-0010, DR-0021 |
+| 15 | **Platform focus in the NVDA-present leg.** With NVDA running and no WinEvent listener, does an MSAA-only focus read (`accFocus` through `AccessibleObjectFromWindow` on Chrome's window) identify the declared anchor after the handover, over 20 or more fresh launches, without registering a UIA client? | Not established by desk research. AXMode is locked with `--force-renderer-accessibility=screen-reader` (DR-0019), so the read should not change Chrome's accessibility mode (inference). | Pending owner item P4 proposes this read for the handover's platform-focus check in the NVDA-present leg, so that the leg producing C's evidence has no UIA client. A failed check is INCONCLUSIVE with `FOREGROUND_HWND`. | DR-0020, DR-0024, DR-0021 |
+
+**Status of the 2026-10-02 "Also recorded in M1a" items.** That table was labelled "Proposed by Claude, not yet owner-approved". This entry records how DR-0030 resolved it; the 2026-10-02 entry itself is unchanged.
+
+| Item (2026-10-02) | Status after the owner's review |
+|---|---|
+| The Scream driver's signer certificate thumbprint | Extended by DR-0040: the Authenticode status, signer and issuer are recorded too (question 11) |
+| `ImageOS`, `ImageVersion` and the image name for each label | Approved by the owner 2026-10-02 (DR-0030, PR #1 item 10) |
+| Tap reception alongside Guidepup; tap-versus-log message-count parity; the overhead of DEBUG logging | Parity is required by D2 (DR-0011), and per-segment parity may use wall-anchor bucketing (DR-0039). The tap-reception check and the overhead measurement are decided by Claude under DR-0045 (2026-10-03) |

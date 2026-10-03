@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.1). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.2). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -11,20 +11,23 @@ This is a research harness, not a product. It measures whether event observation
 - Actions pinned to full SHAs; read-only permissions by default; inputs passed via env, never interpolated into run.
 - Standard GitHub-hosted runners only.
 - QPC is the only timebase: process.hrtime.bigint() in Node, Stopwatch.GetTimestamp() in C#. No wall-clock reads in collectors; only the per-process wall-clock anchor may read the wall clock (DR-0027).
-- Exploratory until the protocol freeze; never execute or score the test split before it.
+- NVDA log lines may be bucketed into segments via the wall anchor only for parity counts and diagnostics, never for latency, ordering or validity (DR-0039).
+- Exploratory until the protocol freeze; never execute or score the test split before it. From M4, call assertItemExecutable before executing any test-split item (DR-0034).
 - Never tune oracles, triggers or thresholds on test data. Never hand-edit verdicts.
-- INCONCLUSIVE comes only from checks completed before the outcome is known (D12, DR-0021).
+- INCONCLUSIVE comes only from checks completed before the outcome is known (D12, DR-0021). A check may produce INCONCLUSIVE only if the thing being judged cannot cause it to fail (DR-0032).
 - Never switch navigation strategy on failure; report UNREACHABLE.
 - No page.keyboard or page.click inside AT segments, and no keypress inside any observation window (D4, DR-0013).
 - AT Driver is not used in Phase 0 (D2, DR-0011). Guidepup provides NVDA lifecycle and input only, with capture off; speech comes from the relay tap.
 - Harness never imports NVDA code; NVDA add-on code is GPL and lives in adapters/nvda-addon/.
 - Prompt to Page fixtures: de-branded only; no restricted fonts or protected marks.
-- Stop and ask when a choice changes what is measured, what counts as detection, or cost.
+- Stop and ask when a choice changes what is measured, what counts as detection, cost or security (hard rule 12); these are the only items brought to the owner. Decide and log everything else in docs/DECISIONS.md (DR-0045).
+- At each gate, put a one-page brief in the gate PR alongside the report: at most 10 yes/no items, each with your recommendation (DR-0045).
 
 ## Commands
 - npm run lint
 - npm run typecheck
 - npm test
+- npm run protocol:hash (prints the protocol-sha256 line over the frozen set in protocol/frozen-paths.txt; DR-0033)
 - gh workflow run phase0-nvda.yml --ref <branch> -f runs=50 (from M1)
 - gh run watch
 - gh run download <run-id> -D artefacts/<run-id>
@@ -34,7 +37,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M2 only. G2 report due by Fri 6 Nov 2026, otherwise stop and report; the Phase 1 proceed/stop decision is on Fri 27 Nov 2026 (DR-0003). M3 onwards is locked until the owner approves Gate G2 (docs/gates/G2.md).
+M0–M2 only. G1 report target Fri 23 Oct 2026; the M2 listener and the NVDA-absent leg are built in parallel with M1, and only the G2 report waits for G1 (DR-0043). G2 report due by Fri 6 Nov 2026, otherwise stop and report; the Phase 1 proceed/stop decision is on Fri 27 Nov 2026 (DR-0003). M3 onwards is locked until the owner approves Gate G2 (docs/gates/G2.md).
 
 ## Logs
 - docs/DECISIONS.md — decisions
