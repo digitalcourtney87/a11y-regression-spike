@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>M1a probe page</title>
+</head>
+<body>
+<main>
+  <h1>M1a probe page</h1>
+  <p>Fixed page for the M1a runner probes (DR-0025). It holds a named button as the handover anchor and an empty polite live region.</p>
+  <button id="anchor" type="button">Probe anchor</button>
+  <div id="live" aria-live="polite"></div>
+</main>
+<script>
+  // Page-side helpers called by harness/src/probes/m1a.ts through page.evaluate.
+  // They read performance.now() only, never the wall clock (D1, DR-0010).
+  window.__probe = {
+    // Consecutive positive performance.now() steps over a short busy loop.
+    steps: function (durationMs) {
+      var out = [];
+      var last = performance.now();
+      var end = last + durationMs;
+      while (out.length < 5000) {
+        var v = performance.now();
+        if (v !== last) { out.push(v - last); last = v; }
+        if (v > end) break;
+      }
+      return out;
+    },
+    // Largest gap between requestAnimationFrame callbacks over a window.
+    raf: function (durationMs) {
+      return new Promise(function (resolve) {
+        var start = performance.now();
+        var last = start;
+        var max = 0;
+        var frames = 0;
+        function frame(t) {
+          if (frames > 0) max = Math.max(max, t - last);
+          last = t;
+          frames++;
+          if (t - start < durationMs) requestAnimationFrame(frame);
+          else resolve({ maxGapMs: max, frames: frames });
+        }
+        requestAnimationFrame(frame);
+      });
+    }
+  };
+</script>
+</body>
+</html>
