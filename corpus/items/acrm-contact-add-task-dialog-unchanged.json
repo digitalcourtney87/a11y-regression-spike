@@ -1,0 +1,21 @@
+{
+  "id": "acrm-contact-add-task-dialog-unchanged",
+  "patternId": "atomic-crm--combobox-keyboard-broken",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey acrm-contact-add-task-dialog (P15)",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

@@ -329,3 +329,20 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | axe's knock-on findings | While a menu stays open, Radix hides the rest of the page, and axe reports a missing main landmark and level-one heading |
 | NVDA-leg flakiness after a full page load | In one of three base attempts of oss-rac-8697, READ_CURRENT did not reach the new page |
 | Triggers | Programmatic focus fires on 64 item steps, live regions on 22, route transitions on 21, dialogs on 9, alerts on 7, status on 2, active descendant on none; D runs NVDA on 70 of 159 steps, 23% of C's segment time |
+
+### M5: Atomic CRM base behaviour seen while building test journeys (appended 2026-10-04)
+
+**Label:** EXPLORATORY
+**Source:** journey-development runs 37161106040, 37161666333, 37162157850 and 37162479815 (base build only, no test item; DR-0082).
+**Affects:** DR-0082, DR-0083.
+**Confidence:** observed on the base build.
+
+| Observation | Result |
+|---|---|
+| Handover on list pages | On /#/contacts and /#/companies, the MSAA focus read returns the window pane (depth 0) in both legs, though NVDA follows focus and speaks it; elsewhere it returns the focused control |
+| Controlled dialogs | Closing a dialog opened by a plain button (Add task, Merge contact) sends focus to the document in both legs |
+| Radix popovers and menus | The Company picker and the theme and tag menus return focus to their trigger on close |
+| Opening a menu from NVDA | NVDA's browse-mode Enter clicks the trigger, so focus lands on the menu itself; ArrowDown reaches the first item |
+| Datetime fields | Each segment is a Tab stop (six, plus the picker button); NVDA speaks each as a spin button |
+| Validation errors | NVDA speaks a field's error with the field ("invalid entry Required"); the tree marks it invalid but keeps no description |
+| Symbols | "linkedin.com" is spoken "linkedin dot com"; "LinkedIn" is spoken "Linked In" |
