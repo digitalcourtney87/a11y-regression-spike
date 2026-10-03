@@ -1,21 +1,25 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M4 full run with P27 (frame gaps in corpus runs) and the K1 focus retry: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app (DR-0076)",
+  "purpose": "M4 re-run of the post-edit journey's items after aligning the duplicated announcer and the expectation with the app's 'Post updated' (DR-0077)",
   "apps": [
-    "atomic-crm",
-    "react-admin-simple",
-    "oss-carbon-19563",
-    "oss-fluent-35927",
-    "oss-rac-8697"
+    "react-admin-simple"
   ],
   "legs": [
     "nvda-absent",
     "nvda-present"
   ],
-  "items": [],
+  "items": [
+    "ras-live-region-removed-notification",
+    "ras-live-region-removed-notification-twin",
+    "ras-toast-duplicated-announcer",
+    "ras-toast-duplicated-announcer-twin",
+    "ras-toast-status-created-populated",
+    "ras-toast-status-created-populated-twin",
+    "ras-post-edit-save-notification-unchanged"
+  ],
   "sides": "both",
   "reps": "",
   "canaries": true,
   "axe": true,
-  "shards": 3
+  "shards": 1
 }

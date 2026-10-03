@@ -14,7 +14,7 @@
   "expected": {
     "kind": "regression",
     "symptom": "ANNOUNCEMENT_DUPLICATED",
-    "mechanism": "toast-duplicated: Two notification regions both announce the same toast (A global save announcer (a role=\"status\" region in index.html, written by the posts afterUpdate callback) repeats react-admin's \"Element updated\" notification)"
+    "mechanism": "toast-duplicated: Two notification regions both announce the same toast (A global save announcer (a role=\"status\" region in index.html, written by the posts afterUpdate callback) repeats the app's \"Post updated\" notification (its English messages override react-admin's default \"Element updated\"))"
   },
   "provenance": {
     "origin": "seeded by Claude with operator toast-duplicated",
