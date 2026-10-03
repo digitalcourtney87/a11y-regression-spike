@@ -100,7 +100,7 @@ jobs:
     # loaded before the freeze: it is applied and built only (hard rule 5,
     # DR-0082). Same safeguards as the base job.
     runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
-    timeout-minutes: 60
+    timeout-minutes: 240 # one build per item; the test patterns roughly triple the count (DR-0082)
     strategy:
       fail-fast: false
       matrix:
