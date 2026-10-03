@@ -111,6 +111,7 @@ Conventions:
 | [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0074](#dr-0074-m4-pr-review-findings) | M4 PR review findings | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0075](#dr-0075-m4-repeated-full-run-and-frame-gaps-in-real-apps) | M4 repeated full run, and frame gaps in real apps | Accepted (findings); P27 Proposed | 2026-10-03 | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P27 | — | Yes (P27) |
 
 ## Pending owner items (hard rule 12)
 
@@ -146,6 +147,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P24 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Goal-based steps: repeat the strategy up to `maxAttempts`; goal checked by the MSAA focus read (TAB, SHIFT_TAB) or NVDA's queued speech (browse strategies) in the NVDA-present leg, and by the accessibility-tree node in the NVDA-absent leg. REACHED; UNREACHABLE, after which the journey stops with no fallback; PATH_CHANGED, reached at a different attempt count from the base side's most common count in the same leg (REVIEW in M5); ENV_FAILURE, a setup error before the step's first action | DR-0066; DR-0067 | What counts as detection (step outcomes feed NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED and REVIEW routing) | No longer pending | Approved as recommended |
 | P25 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Add a PRESS strategy: one documented key (Escape, Space, Enter, arrows, Home, End) on the focused element, sent through NVDA in the NVDA-present leg, because KEYBOARD_TRAP is defined by a component's documented keys | DR-0066; DR-0067 | What is measured (the journey vocabulary) | No longer pending | Approved as recommended |
 | P26 | **Resolved (approved by the owner 2026-10-03, DR-0071).** Two NVDA browse-mode commands as journey strategies. FOCUS_MODE_TOGGLE is NVDA+Space, the key an NVDA user presses to pass keys to a widget such as a keyboard drag handle. DOCUMENT_TOP is Control+Home in browse mode, which reads a new page from its top. In the NVDA-absent leg the first does nothing and the second puts the simulated cursor before the first line | DR-0070; DR-0071 | What is measured (the journey vocabulary, and which NVDA interactions C exercises) | No longer pending | Approved as recommended |
+| P27 | **Proposed by Claude (not yet owner-approved).** In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part that the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames and Long Tasks APIs. An attempt is INCONCLUSIVE when the uncovered part of a gap exceeds 100 ms. The covered stalls are recorded with the evidence. Canary runs keep DR-0010's rule unchanged | DR-0075 | What is measured (which attempts are INCONCLUSIVE: DR-0010's clock limit applied to real apps) | Before M5 scoring | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3246,4 +3248,31 @@ M5 (oracles, scoring, the dev report and the power table) needs the owner's go-a
 | The NVDA log is uploaded unredacted (Devin) | Not adopted. The log is the protocol's second speech record (HANDOFF §8.1, D2). It comes from an ephemeral runner with no secrets, and gate bundles already include it (D6) | None |
 
 **Consequences.** The full run is repeated with the fixed runner, so M4's evidence reflects it. Journey-development runs without canaries are now INCONCLUSIVE by design.
+
+## DR-0075 M4 repeated full run, and frame gaps in real apps
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted (findings, Decided by Claude under DR-0045); P27 Proposed by Claude (not yet owner-approved) |
+| Owner label | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P27 |
+| HANDOFF v1.9 | §7.3, §9 (M4); DR-0010, DR-0049 (P6), DR-0032, DR-0035 |
+
+**Context.** The full run was repeated with the fixed runner (DR-0074; run 37148660221): 112 blocks and 736 attempts.
+
+| Measure | Result |
+|---|---|
+| Documents | Two per attempt only where a page really loads (30 attempts, rac-8697); no document went unmeasured; maximum drift 0.40 ms |
+| Evidence | Every package valid; no attempt missing B2 events; every base journey complete in both legs |
+| Reachability regressions | As in the first run: the candidate is UNREACHABLE in every attempt, in both legs |
+| INCONCLUSIVE | 14 of 112 blocks: 13 for CLOCK_RAF_GAP on both sides, all on the react-admin post-edit journey (gaps of 109–172 ms during the save and redirect, on base and candidate alike), and 1 for PRE_CANARY |
+| Canaries | Two of 224 failed only their handover focus read; their K1 signatures passed. The review fix had given that read no retry; it now follows P10 (fixed after this run) |
+
+The first run's validity for the post-edit journey was wrong. Restarting the rAF heartbeat on a hash route change had discarded these gaps.
+
+**The question (P27, hard rule 12).** DR-0010 limits the rAF gap to 100 ms, and P6 (DR-0049) fixed its computation for canary runs. On a canary page, a frame gap means the browser stopped producing frames, for example when it is throttled or occluded, so timing evidence cannot be trusted. In a real app, the page's own main-thread work also delays frames: react-admin's save and redirect stall it for well over 100 ms on both sides. Applied unchanged, the limit makes every item of that journey INCONCLUSIVE (three patterns: two ANNOUNCEMENT_MISSING, one ANNOUNCEMENT_DUPLICATED). Yet a long task does not corrupt QPC timestamps or the timeline. It is behaviour of the app being measured, and users experience it too.
+
+**Proposed by Claude (not yet owner-approved): P27.** In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames API (and Long Tasks), recorded in the page from load. An attempt is INCONCLUSIVE when the uncovered part of any gap exceeds 100 ms. The covered stalls are recorded with the evidence, so the arms and M5 can see them. Canary runs keep DR-0010's rule unchanged. The check keeps its purpose, which is frames stopped without page work, while the app's own jank stops voiding attempts on both sides. The alternative is to keep the rule as it is, in which case the post-edit journey's three patterns are always INCONCLUSIVE and count as misses for every arm. The recommendation is yes.
+
+**Consequences.** Until P27 is decided, the M4 runner applies DR-0010's rule unchanged.
 

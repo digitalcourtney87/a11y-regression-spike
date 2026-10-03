@@ -613,7 +613,7 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| — | None pending | — | — | — | — |
+| P27 | Frame gaps in corpus runs | A gap counts towards CLOCK_RAF_GAP only for the part the page's own main-thread work does not cover (Long Animation Frames and Long Tasks); INCONCLUSIVE when the uncovered part exceeds 100 ms; canary runs unchanged (DR-0075) | It decides which attempts are INCONCLUSIVE in real apps | Before M5 scoring | §3.6 |
 
 P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P23–P25 (the M4 journey model: execution per leg, goal-based step outcomes and the PRESS strategy) were approved on 2026-10-03 (DR-0067). P26 (the NVDA browse-mode commands FOCUS_MODE_TOGGLE and DOCUMENT_TOP) was approved on 2026-10-03 (DR-0071). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
