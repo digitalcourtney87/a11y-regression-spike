@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Arm B2 platform-event listener (DR-0019 D10; HANDOFF §8.2). C# on .NET 10.
+    Built on Linux CI with Windows targeting enabled, so interop errors surface
+    before a Windows run; it runs only on Windows.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>A11ySpike.Listener</RootNamespace>
+    <AssemblyName>a11y-listener</AssemblyName>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+</Project>
