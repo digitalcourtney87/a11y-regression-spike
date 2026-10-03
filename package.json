@@ -14,7 +14,9 @@
     "test": "vitest run",
     "score": "node harness/src/score/cli.ts",
     "protocol:hash": "node harness/src/score/protocolHash.ts",
-    "phase0:probe": "node harness/src/probes/m1a.ts"
+    "phase0:probe": "node harness/src/probes/m1a.ts",
+    "phase0:canaries": "node harness/src/runner/canaryRun.ts",
+    "report:phase0": "node harness/src/score/reportCli.ts"
   },
   "dependencies": {
     "zod": "4.6.5"
