@@ -44,19 +44,19 @@ Conventions:
 | [DR-0005](#dr-0005-spend) | Spend | Accepted | 2026-10-02 | §2 Spend | — | Pending: P7 |
 | [DR-0006](#dr-0006-runner-images) | Runner images | Accepted | 2026-10-02 | §2 Runner | — | Resolved |
 | [DR-0007](#dr-0007-toolchain-pins) | Toolchain pins | Accepted | 2026-10-02 | Approved as proposed (toolchain) | — | Resolved |
-| [DR-0008](#dr-0008-github-action-pins) | GitHub Action pins | Accepted | 2026-10-02 | HANDOFF hard rule 3, §9.2 | — | Pending: P2 |
+| [DR-0008](#dr-0008-github-action-pins) | GitHub Action pins | Accepted | 2026-10-02 | HANDOFF hard rule 3, §9.2 | DR-0046 | Resolved (DR-0046) |
 | [DR-0009](#dr-0009-nvda-provisioning-via-guidepup-setup-action-archived) | NVDA provisioning via Guidepup (setup-action archived) | Accepted | 2026-10-02 | D2 (provisioning) | — | Resolved |
 | [DR-0010](#dr-0010-d1-clock-alignment) | D1 Clock alignment | Accepted | 2026-10-02 | D1 | DR-0039 | Pending: P6 |
 | [DR-0011](#dr-0011-d2-speech-capture-incl-prd-48-at-driver-teardown) | D2 Speech capture (incl. PRD §48 AT Driver teardown) | Accepted | 2026-10-02 | D2 | DR-0039 | Resolved |
 | [DR-0012](#dr-0012-d3-virtual-audio) | D3 Virtual audio | Accepted | 2026-10-02 | D3 | DR-0040 | Resolved |
-| [DR-0013](#dr-0013-d4-canaries-incl-pre-registered-k6a-rule) | D4 Canaries (incl. pre-registered K6a rule) | Accepted | 2026-10-02 | D4 | DR-0036, DR-0037 | Pending: P1 |
+| [DR-0013](#dr-0013-d4-canaries-incl-pre-registered-k6a-rule) | D4 Canaries (incl. pre-registered K6a rule) | Accepted | 2026-10-02 | D4 | DR-0036, DR-0037, DR-0046 | Resolved (DR-0046) |
 | [DR-0014](#dr-0014-d5-prd-publication) | D5 PRD publication | Accepted | 2026-10-02 | D5 | — | Resolved |
 | [DR-0015](#dr-0015-d6-evidence-archive) | D6 Evidence archive | Accepted | 2026-10-02 | D6 | — | Resolved |
 | [DR-0016](#dr-0016-d7-sha-pinning-and-repository-settings) | D7 SHA pinning and repository settings | Accepted | 2026-10-02 | D7 | — | Resolved |
 | [DR-0017](#dr-0017-d8-nvda-channel-and-voice) | D8 NVDA channel and voice | Accepted | 2026-10-02 | D8 | DR-0041 | Resolved |
 | [DR-0018](#dr-0018-d9-arm-b-evidence) | D9 Arm B evidence | Accepted | 2026-10-02 | D9 | — | No |
-| [DR-0019](#dr-0019-d10-b2-scope-and-listener) | D10 B2 scope and listener | Accepted | 2026-10-02 | D10 | DR-0037 | Pending: P2, P3 |
-| [DR-0020](#dr-0020-d11-separate-legs) | D11 Separate legs | Accepted | 2026-10-02 | D11 | DR-0031 | Pending: P4 |
+| [DR-0019](#dr-0019-d10-b2-scope-and-listener) | D10 B2 scope and listener | Accepted | 2026-10-02 | D10 | DR-0037, DR-0046 | Pending: P3 (P2 resolved, DR-0046) |
+| [DR-0020](#dr-0020-d11-separate-legs) | D11 Separate legs | Accepted | 2026-10-02 | D11 | DR-0031, DR-0046 | Resolved (DR-0046) |
 | [DR-0021](#dr-0021-d12-gates-and-validity) | D12 Gates and validity | Accepted | 2026-10-02 | D12 | DR-0032, DR-0035, DR-0038 | Resolved |
 | [DR-0022](#dr-0022-d13-h2-scope) | D13 H2 scope | Accepted | 2026-10-02 | D13 | — (related: DR-0042) | Resolved |
 | [DR-0023](#dr-0023-m6-pre-registration-rule-model-secondary-analysis) | M6 pre-registration: rule-model secondary analysis | Accepted | 2026-10-02 | Pre-register at M6 | — | No |
@@ -81,20 +81,21 @@ Conventions:
 | [DR-0042](#dr-0042-m5-planning-note-announcement_duplicated-is-anti-conservative-relates-to-dr-0022) | M5 planning note: ANNOUNCEMENT_DUPLICATED is anti-conservative (relates to DR-0022) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, other rulings | — | No |
 | [DR-0043](#dr-0043-schedule-g1-target-23-oct-2026-m2-in-parallel-with-m1-amends-dr-0003) | Schedule: G1 target 23 Oct 2026; M2 in parallel with M1 (amends DR-0003) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, schedule | — | No |
 | [DR-0044](#dr-0044-auto-fix-fence-for-pr-1) | Auto-fix fence for PR #1 | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, auto-fix | — | No |
-| [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | — | No |
+| [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
+| [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 These parts still carry **Proposed by Claude (not yet owner-approved)**. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. Six items remain pending: P1, P2, P3, P4, P6 and P7.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. Three items remain pending: P3, P6 and P7.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
-| P1 | Membership of the creation-time regression family, and the mechanisms not affected, in the reading of the pre-registered K6a rule | DR-0013 | What is measured (what leaves the M3 catalogue if the rule triggers) | Before the first K6a runs (M1b), so the reading is fixed before any K6a data exist | Yes, as listed in DR-0013 |
-| P2 | `actions/setup-dotnet` v6.0.0 (`a98b56852c35b8e3190ac28c8c2271da59106c68`) to install the .NET 10 SDK for the listener build | DR-0008, DR-0019 | Security (a new third-party Action) | The first CI build of the listener (M2, now in parallel with M1, DR-0043) | Yes: GitHub-maintained, pinned by full SHA, used under `contents: read` with no secrets. Until the owner approves, `env/env.lock.json` gives it the status `pending-owner`, and the env.lock cross-check test fails any workflow or local action that uses it (DR-0008) |
+| P1 | **Resolved (approved by the owner 2026-10-03, DR-0046).** Membership of the creation-time regression family, and the mechanisms not affected, in the reading of the pre-registered K6a rule | DR-0013 | What is measured (what leaves the M3 catalogue if the rule triggers) | No longer pending | Approved as recommended |
+| P2 | **Resolved (approved by the owner 2026-10-03, DR-0046).** `actions/setup-dotnet` v6.0.0 (`a98b56852c35b8e3190ac28c8c2271da59106c68`) to install the .NET 10 SDK for the listener build | DR-0008, DR-0019 | Security (a new third-party Action) | No longer pending | Approved as recommended |
 | P3 | Listener event scope: hook ranges (EVENT_OBJECT_LOCATIONCHANGE excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | DR-0019 | What is measured (which platform events B2 observes) | Before any G2 run; the final ranges are fixed in M2 | Yes, with the final ranges confirmed from M2 data |
-| P4 | Collectors in the NVDA-present leg, and how platform focus is verified there. Proposal: the WinEvent listener runs in that leg only for the 20-run on/off diagnostic, not in G1 runs; the in-page DOM timeline runs in both legs; G1 capture latency is measured from DOM mutation (page QPC) to tap receipt; platform focus in that leg is verified by an MSAA-only focus read (`accFocus` on Chrome's window), with no UIA client | DR-0020 (affects DR-0010 and DR-0024) | What is measured (which events are captured in the leg that produces C's evidence) | Before the first M1b NVDA-present canary runs | Yes: the listener's UIA property reads would register a UIA client in the leg that produces C's evidence, and G1 does not then wait for the M2 listener, which is built in parallel (DR-0043). M1a checks that the MSAA focus read identifies the anchor (lab notebook 2026-10-03, question 15) |
+| P4 | **Resolved (approved by the owner 2026-10-03, DR-0046).** Collectors in the NVDA-present leg, and how platform focus is verified there. Proposal: the WinEvent listener runs in that leg only for the 20-run on/off diagnostic, not in G1 runs; the in-page DOM timeline runs in both legs; G1 capture latency is measured from DOM mutation (page QPC) to tap receipt; platform focus in that leg is verified by an MSAA-only focus read (`accFocus` on Chrome's window), with no UIA client | DR-0020 (affects DR-0010 and DR-0024) | What is measured (which events are captured in the leg that produces C's evidence) | No longer pending | Approved as recommended |
 | P5 | **Resolved (decided by Claude under DR-0045, 2026-10-03).** The `yaml` 2.9.1 dev dependency, used by the workflow policy test to parse workflow files | DR-0007 | Listed on 2026-10-03 as security (third-party code that runs in CI; no owner-authored text names it) | No longer pending | Decided, not asked: the package is dev-only and has no dependencies of its own. It is exactly pinned, with a sha512 integrity hash in `package-lock.json`, and carries the ISC licence. It runs only in the Linux CI job (`ci.yml`), under `contents: read` with no secrets, and it parses only this repository's workflow files. It exists to enforce hard rule 3 (supply chain): the workflow policy test uses it to check Action pins, permissions, secrets and input handling |
 | P6 | Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | Before any G1 run | Yes, the methods in DR-0010's table, with any change that M1a data require stated in the item (lab notebook 2026-10-03, question 14) |
 | P7 | The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | The G1 brief; meanwhile Claude flags token-heavy work before running it and estimates spend | Yes; Claude's estimates in each gate report support it |
@@ -351,6 +352,7 @@ The owner's request on 2 October 2026:
 |---|---|
 | Date | 2026-10-02 |
 | Status | Accepted |
+| Amended by | DR-0046 (2026-10-03): `actions/setup-dotnet` approved (P2); its env.lock status is `pinned` |
 | Proposed parts | One pending owner item (P2, `actions/setup-dotnet`), marked inline; the rest resolved by DR-0030 |
 | Owner label | HANDOFF hard rule 3, §9.2 |
 | HANDOFF v1.1 | §4 (rule 3), §9.2 |
@@ -384,13 +386,13 @@ The owner's request on 2 October 2026:
 
 - Every `uses:` line carries the full SHA and a trailing `# v<semver>` comment. Workflow policy rule W1 enforces this.
 - `env/env.lock.json` records the same four pins. A test fails if any workflow uses a SHA that differs from env.lock.
-- **Decided by Claude under DR-0045 (2026-10-03):** pending owner item P2 is enforced in code, not only by procedure. `env/env.lock.json` gives `actions/setup-dotnet` the status `pending-owner`, and the env.lock schema (`harness/src/policy/envLock.ts`) requires a `pending-owner` pin's note to name its pending owner item (here P2). The env.lock cross-check test (`harness/test/policy/envLock.test.ts`) requires every action that a workflow or local action uses to have the status `pinned`. No workflow can use `actions/setup-dotnet` until the owner approves P2 and its env.lock status becomes `pinned`. This only restricts.
+- **Decided by Claude under DR-0045 (2026-10-03):** pending owner item P2 is enforced in code, not only by procedure. `env/env.lock.json` gives `actions/setup-dotnet` the status `pending-owner`, and the env.lock schema (`harness/src/policy/envLock.ts`) requires a `pending-owner` pin's note to name its pending owner item (here P2). The env.lock cross-check test (`harness/test/policy/envLock.test.ts`) requires every action that a workflow or local action uses to have the status `pinned`. No workflow could use `actions/setup-dotnet` until the owner approved P2 and its env.lock status became `pinned`. This only restricts. The owner approved P2 on 2026-10-03 (DR-0046), so `actions/setup-dotnet` is now `pinned`; the mechanism stays for any future `pending-owner` Action.
 - Not used: `guidepup/setup-action`, which was archived on 2026-09-26 (DR-0009).
 - The desk research also resolved `actions/setup-python` v7.0.0, `actions/download-artifact` v8.0.1 and `actions/cache` v6.1.0. None is adopted. Adopting any action needs a new row here and in env.lock.
 - Relevant behaviour: checkout v7 refuses fork-PR checkouts under `pull_request_target` and `workflow_run`, and policy rule W5 forbids both triggers anyway. Every checkout sets `persist-credentials: false` (W8).
 - Pinning the latest release of each action as of 2026-10-02:
   - **Decided by Claude under DR-0045 (2026-10-03)** for `actions/checkout`, `actions/setup-node` and `actions/upload-artifact`. The owner-authored HANDOFF v1.0 skeleton already names these three, so the version choice adds no new third-party code.
-  - **Proposed by Claude (not yet owner-approved)** for `actions/setup-dotnet`, which no owner-authored text names. A new third-party Action is a security item under DR-0045 (pending owner item P2).
+  - `actions/setup-dotnet`: approved by the owner on 2026-10-03 (P2, a security item under DR-0045; DR-0046).
 - Not adopted in Phase 0: `actions/cache`, which the NVDA cache in DR-0009 would have needed (DR-0030).
 
 ## DR-0009 NVDA provisioning via Guidepup (setup-action archived)
@@ -705,7 +707,7 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 | Status | Accepted |
 | Proposed parts | One pending owner item (P1, the creation-time regression family), marked inline; the rest resolved by DR-0030 |
 | Owner label | D4 |
-| Amended by | DR-0036 (2026-10-02): K6 and K7 run in both legs; the K6a rule is evaluated on the NVDA-present leg. DR-0037 (2026-10-02): the insertion-to-content delay grading replaces the same-batch flag, so "flagged" in the K6a and K6b B2 signatures now refers to that grading. |
+| Amended by | DR-0036 (2026-10-02): K6 and K7 run in both legs; the K6a rule is evaluated on the NVDA-present leg. DR-0037 (2026-10-02): the insertion-to-content delay grading replaces the same-batch flag, so "flagged" in the K6a and K6b B2 signatures now refers to that grading. DR-0046 (2026-10-03): the creation-time family membership as listed here is approved (P1). |
 | HANDOFF v1.1 | §9 (M1, M2 run counts), §9.1 (rewritten) |
 
 **Context.** HANDOFF v1.0 §9.1 defined K1–K7. The desk research (premises, events and timing dimensions) found some premises partly wrong.
@@ -785,8 +787,8 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 |---|---|---|
 | Trigger | Any one K6a variant (polite, status or assertive) announced in 2 or more of its 20 runs | **Decided by Claude under DR-0045 (2026-10-03):** restates the owner's "more than 1 of 20" |
 | Announced | The tap records a `speak` message containing the region's text within the observation window | **Approved by the owner 2026-10-02 (DR-0030)**; amended by DR-0036: evaluated on the NVDA-present leg |
-| Creation-time regression family | Mechanisms that rely on content present at region creation being silent: a conditionally rendered, populated toast or status message; unhiding a populated region with `display:none` or the `hidden` attribute; re-mounting or re-keying the region element on each update; filling a region within the same accessibility snapshot as its insertion; downgrading a conditionally rendered message from `role=alert` to `role=status`; switching `aria-live` from off to polite on an already-populated node | **Proposed by Claude (not yet owner-approved).** Pending owner item P1: it decides what leaves the M3 catalogue, so it is a hard-rule-12 item. Needed before the first K6a runs. |
-| Not affected | Mechanisms that do not depend on K6 stay eligible: `aria-busy` left true; an `aria-hidden` or `inert` ancestor; `aria-live=off` descendants; `aria-relevant` exclusions; focus moving into an edit field and cancelling speech (K7b); loss of foreground | **Proposed by Claude (not yet owner-approved).** Pending owner item P1, with the row above |
+| Creation-time regression family | Mechanisms that rely on content present at region creation being silent: a conditionally rendered, populated toast or status message; unhiding a populated region with `display:none` or the `hidden` attribute; re-mounting or re-keying the region element on each update; filling a region within the same accessibility snapshot as its insertion; downgrading a conditionally rendered message from `role=alert` to `role=status`; switching `aria-live` from off to polite on an already-populated node | Approved by the owner 2026-10-03 (P1; DR-0046) |
+| Not affected | Mechanisms that do not depend on K6 stay eligible: `aria-busy` left true; an `aria-hidden` or `inert` ancestor; `aria-live=off` descendants; `aria-relevant` exclusions; focus moving into an edit field and cancelling speech (K7b); loss of foreground | Approved by the owner 2026-10-03 (P1; DR-0046) |
 
 **Consequences.**
 
@@ -1008,7 +1010,7 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 | Status | Accepted |
 | Proposed parts | Two pending owner items (P2, `actions/setup-dotnet`; P3, the listener's event scope), marked inline; the rest resolved by DR-0030 |
 | Owner label | D10 |
-| Amended by | DR-0037 (2026-10-02): the K6 insertion-to-content delay grading is approved and replaces the v1.0 same-batch flag now |
+| Amended by | DR-0037 (2026-10-02): the K6 insertion-to-content delay grading is approved and replaces the v1.0 same-batch flag now DR-0046 (2026-10-03): `actions/setup-dotnet` for the listener build is approved (P2). |
 | HANDOFF v1.1 | §5 (R4), §7.1, §8.2 (rewritten), §10.1 |
 
 **Context.** Desk research (events dimension, with verifier corrections):
@@ -1041,7 +1043,7 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 
 **Consequences.**
 
-- **Listener.** C# on .NET 10 in `listener/`: SDK 10.0.401, runtime 10.0.12. It is built with `actions/setup-dotnet` v6.0.0 (DR-0008). Using that Action is **Proposed by Claude (not yet owner-approved)**: pending owner item P2, a new third-party Action. Until the owner approves it, `env/env.lock.json` gives `actions/setup-dotnet` the status `pending-owner`, and the env.lock cross-check test fails any workflow or local action that uses it (DR-0008), so no workflow can install the SDK with it yet. `listener/**/bin` and `obj` are gitignored. It stamps with `Stopwatch.GetTimestamp()`, and `listener/**/WallAnchor.cs` is its only allowlisted wall-clock reader (DR-0027).
+- **Listener.** C# on .NET 10 in `listener/`: SDK 10.0.401, runtime 10.0.12. It is built with `actions/setup-dotnet` v6.0.0 (DR-0008). The owner approved that Action on 2026-10-03 (P2; DR-0046), and its env.lock status is `pinned` (DR-0008). `listener/**/bin` and `obj` are gitignored. It stamps with `Stopwatch.GetTimestamp()`, and `listener/**/WallAnchor.cs` is its only allowlisted wall-clock reader (DR-0027).
 - **Channels.** WinEvents are primary. UIA events are recorded with `channel: "UIA"` and `diagnostic: true`, and never form part of a G2 signature (DR-0026).
 - **Identity.** Resolved through MSAA (role, name, state) and UIA property reads: AutomationId, which is the HTML id, LiveSetting and AriaRole. No IA2 QueryService and no proxy registration anywhere.
 - **Text.** IA2 `get_newText` cannot work out of process, so inserted text is re-read after the event or taken from the DOM timeline.
@@ -1067,7 +1069,7 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 | Status | Accepted |
 | Proposed parts | One pending owner item (P4, collectors in the NVDA-present leg), marked inline; the rest resolved by DR-0030 |
 | Owner label | D11 |
-| Amended by | DR-0031 (2026-10-02): C uses the NVDA-absent B2 evidence, as D does; legs are combined at item level, each from its own repetitions, and repetition indices are never paired across legs |
+| Amended by | DR-0031 (2026-10-02): C uses the NVDA-absent B2 evidence, as D does; legs are combined at item level, each from its own repetitions, and repetition indices are never paired across legs DR-0046 (2026-10-03): the collectors in the NVDA-present leg and its MSAA-only focus read are approved (P4). |
 | HANDOFF v1.1 | §7.4, §8.4 (rewritten), §9 (M2) |
 
 **Context.**
@@ -1106,7 +1108,7 @@ DR-0040 adds `signatureStatus`, `signer` and `issuer` to the `scream` entry in `
 |---|---|---|
 | C's combination rules | D11 does not say which leg's B2 evidence C's UNION and ADJUDICATED rules (R3) use. Proposal: the NVDA-absent B2 evidence, as for D, so that C and D differ only in trigger masking. Needs owner confirmation before M5. | **Approved by the owner 2026-10-02 (DR-0030)**; amended by DR-0031 (combination at item level) |
 | Cross-leg matching | Evidence is matched across legs by item, side and repetition index (HANDOFF R8). | **Superseded by DR-0031:** legs are joined on the item; each leg derives its own per-item result from its own repetitions (k of n), and repetition indices are kept for traceability only |
-| B2 collectors in the present leg | B2 collectors also run in the NVDA-present leg, for the 20-run diagnostic and for latency joins. Their output never feeds G2 or arm verdicts. | **Proposed by Claude (not yet owner-approved)**, narrowed: the WinEvent listener runs in the NVDA-present leg only for the owner's 20-run on/off diagnostic (D11), not in G1 runs. Its UIA property reads register it as a UIA client, which can change what Chrome raises (see Context of DR-0019), so it stays out of the leg that produces C's evidence. The in-page DOM timeline runs in both legs, because latency is measured from the canary events themselves (D1). Platform focus in the NVDA-present leg is verified by an MSAA-only focus read, with no UIA client (DR-0024). Present-leg B2 output never feeds G2 or arm verdicts. Pending owner item P4: which collectors run alongside NVDA changes which events are captured in the leg that produces C's evidence, so it is a hard-rule-12 item (what is measured). PR #1 item 1 covered which leg's B2 evidence C uses, not which collectors run in this leg. |
+| B2 collectors in the present leg | B2 collectors also run in the NVDA-present leg, for the 20-run diagnostic and for latency joins. Their output never feeds G2 or arm verdicts. | Approved by the owner 2026-10-03 (P4; DR-0046), narrowed: the WinEvent listener runs in the NVDA-present leg only for the owner's 20-run on/off diagnostic (D11), not in G1 runs. Its UIA property reads register it as a UIA client, which can change what Chrome raises (see Context of DR-0019), so it stays out of the leg that produces C's evidence. The in-page DOM timeline runs in both legs, because latency is measured from the canary events themselves (D1). Platform focus in the NVDA-present leg is verified by an MSAA-only focus read, with no UIA client (DR-0024). Present-leg B2 output never feeds G2 or arm verdicts. It went to the owner as P4 because which collectors run alongside NVDA changes which events are captured in the leg that produces C's evidence, so it is a hard-rule-12 item (what is measured). PR #1 item 1 covered which leg's B2 evidence C uses, not which collectors run in this leg. |
 | Order | Leg order within a dispatch is counterbalanced or randomised with a recorded seed, as in §7.4. | **Decided by Claude under DR-0045 (2026-10-03)** |
 
 ## DR-0021 D12 Gates and validity
@@ -2370,3 +2372,39 @@ The four additions each control what runs or how it runs, so each can change a v
 - **Gate brief.** At each gate the PR carries a one-page brief, alongside `docs/gates/G<n>.md`, with at most 10 yes/no items, each with Claude's recommendation. An item needed before a gate is put to the owner when it is first needed, in the same yes/no form with a recommendation. Items not needed before the next gate wait, so that each brief stays within 10.
 - **Owner actions.** The owner applies the D7 settings (DR-0016) and merges PR #1 once CI is green. M1a starts after the merge.
 - Supersedes DR-0004's weekly-list proposal. HANDOFF v1.2 §11 adds the gate brief, and the CLAUDE.md golden rule on stopping to ask adds security.
+
+## DR-0046 Owner approvals of 2026-10-03
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.3 | Header; Changes in v1.3; §7.2 (step 2); §8.4; §9.1; §9.2; §12 |
+
+**Context.** After applying the owner review of M0, Claude put five hard-rule-12 questions to the owner, each with a recommendation (DR-0045). Four were needed before M1b and M2 work; the fifth concerned model spend against the £150 cap (DR-0005).
+
+| # | Question | Claude's recommendation |
+|---|---|---|
+| 1 | Add the `ghs_`, `ghu_` and `ghr_` GitHub token families to the repository-safety test (PR #1 review comment; outside the auto-fix fence, DR-0044) | Yes |
+| 2 | P1: fix the reading of the K6a rule (creation-time family membership) as listed in DR-0013, before any K6a data exist | Yes |
+| 3 | P2: adopt `actions/setup-dotnet` v6.0.0 (`a98b56852c35b8e3190ac28c8c2271da59106c68`) for the listener build | Yes |
+| 4 | P4: in the NVDA-present leg, run the WinEvent listener only for the 20-run on/off diagnostic, and verify platform focus there with an MSAA-only read (no UIA client) | Yes |
+| 5 | Cost: about 10 million subagent tokens were used by four multi-agent runs; use multi-agent review only at gates and work lighter in between | Yes |
+
+**Options considered.** Yes or no on each item.
+
+**Decision.**
+
+> Yes to all five; merged, start M1a
+
+**Consequences.**
+
+- Item 1: `harness/test/policy/repoSafety.test.ts` detects GitHub App installation (`ghs_`), user-to-server (`ghu_`) and refresh (`ghr_`) tokens, with token-shaped test samples.
+- Item 2: P1 is resolved; DR-0013's reading of the creation-time family is fixed before any K6a data exist (HANDOFF §9.1).
+- Item 3: P2 is resolved; `env/env.lock.json` gives `actions/setup-dotnet` the status `pinned`. The `pending-owner` mechanism and its tests stay for any future Action (DR-0008).
+- Item 4: P4 is resolved (HANDOFF §7.2, §8.4; DR-0020, DR-0024).
+- Item 5: multi-agent orchestration is used only for gate reviews; between gates Claude works single-agent, flags token-heavy work before running it, and estimates model spend in each gate report (golden rule in HANDOFF §12 and `CLAUDE.md`). P7 (who monitors the cap) stays pending for the G1 brief.
+- Pending owner items after this record: P3, P6 and P7.
+- PR #1 was merged on 2026-10-03 and M1a starts on branch `m1-nvda`.
+- **Decided by Claude under DR-0045 (2026-10-03):** placeholder `phase0-probe.yml` and `phase0-nvda.yml` workflows are added to `main` with only a `workflow_dispatch` trigger and a single echo step on `ubuntu-24.04`, because GitHub dispatches a workflow only if its file exists on the default branch; `gh workflow run <file> --ref <branch>` then runs the branch's version. The M1a probe workflow on `m1-nvda` also runs on pushes to that branch that touch its files, so probes do not wait for this pull request.

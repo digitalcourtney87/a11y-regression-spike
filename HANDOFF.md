@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.2 (2026-10-03)
+**Version:** 1.3 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -10,6 +10,20 @@
 
 ---
 
+## Changes in v1.3
+
+v1.3 records the owner's approvals of 3 October 2026 (DR-0046): pending owner items P1, P2 and P4 are approved; the repository-safety test detects the remaining GitHub token families; and multi-agent orchestration is used only for gate reviews. The v1.2 and v1.1 change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.3 | DR-0046 |
+| Changes in v1.2 (label legend) | Only P3 remains pending in this file | DR-0046 |
+| §7.2 (step 2) | MSAA-only focus read in the NVDA-present leg approved (P4) | DR-0046; DR-0020; DR-0024 |
+| §8.4 | Collectors in the NVDA-present leg approved (P4) | DR-0046; DR-0020 |
+| §9.1 | Creation-time family membership as listed in DR-0013 approved (P1) | DR-0046; DR-0013 |
+| §9.2 | `actions/setup-dotnet` approved and pinned (P2) | DR-0046; DR-0008 |
+| §12 | Golden rule on cost: multi-agent orchestration only for gate reviews | DR-0046 |
+
 ## Changes in v1.2
 
 v1.2 applies the owner's review of M0 (2 October 2026; recorded 2026-10-03). Decision records DR-0030 to DR-0045 are in `docs/DECISIONS.md`, and DR-0026 (schema v1.1) is now accepted with amendments. The owner approved every item of the M0 pull request's Proposed list, some with amendments (DR-0030); the amendments and the owner's new rulings are recorded in DR-0031 to DR-0045. Labels in this file:
@@ -18,7 +32,7 @@ v1.2 applies the owner's review of M0 (2 October 2026; recorded 2026-10-03). Dec
 |---|---|
 | "approved by the owner 2026-10-02 (DR-0030)", or a specific record | The owner approved the part in the review of M0 |
 | "Decided by Claude under DR-0045 (2026-10-03)" | Not a hard-rule-12 item; Claude decided it under the owner's delegation and logged it |
-| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. Four appear in this file: P1 (creation-time family membership, §9.1), P2 (`actions/setup-dotnet`, §9.2), P3 (listener event scope, §8.2) and P4 (collectors in the NVDA-present leg and how platform focus is verified there, §7.2 and §8.4) |
+| "Proposed by Claude (not yet owner-approved)" | A hard-rule-12 item awaiting the owner; listed under "Pending owner items (hard rule 12)" in `docs/DECISIONS.md`. In v1.2 four appeared in this file (P1, P2, P3, P4); the owner approved P1, P2 and P4 on 2026-10-03 (DR-0046), so only P3 (listener event scope, §8.2) remains |
 
 Sections §1, §3 and §13 are unchanged. The v1.1 change log below is kept as written for v1.1, with a one-line historical note added at its top.
 
@@ -257,7 +271,7 @@ Playwright always enables CDP focus emulation, so DOM focus signals (`document.h
 
 Handover protocol:
 1. Bring the browser window to the foreground and verify that `GetForegroundWindow()` returns Chrome's top-level HWND.
-2. Move focus to the journey's declared anchor and verify platform focus on it (the listener's focus WinEvent or an MSAA/UIA focus read), not DOM focus. Note (v1.2): in the NVDA-present leg, how platform focus is verified is pending P4 (the proposal is an MSAA-only focus read, so that no UIA client registers; §8.4, DR-0020, DR-0024).
+2. Move focus to the journey's declared anchor and verify platform focus on it (the listener's focus WinEvent or an MSAA/UIA focus read), not DOM focus. In the NVDA-present leg, platform focus is verified by an MSAA-only focus read, so that no UIA client registers (approved by the owner 2026-10-03, DR-0046; §8.4, DR-0020, DR-0024).
 3. In the NVDA-present leg, verify the D8 injection marker: `nvdaHelperRemote*.dll` loaded in `chrome.exe` and "Buffer load took" in the NVDA log (DR-0017).
 4. Attach the relay tap (§8.1).
 5. Wait for NVDA's virtual buffer to settle (a declared quiet window).
@@ -322,7 +336,7 @@ Patch `Element.prototype.attachShadow` before page scripts run so every shadow r
 ### 8.4 Arms from separate legs (DR-0020, D11; DR-0018, D9)
 
 - **NVDA-absent leg:** evidence for A, B and B2, as the product would run.
-- **NVDA-present leg:** C's NVDA evidence. Which collectors run in this leg, and how platform focus is verified there, are Proposed by Claude (not yet owner-approved; pending P4), because they change which events are captured in the leg that produces C's evidence (hard rule 12; DR-0020). The proposal: the in-page DOM timeline runs in both legs, because latency is measured from the canary events; the WinEvent listener runs in the NVDA-present leg only for the 20-run on/off diagnostic, not in G1 runs, because its UIA property reads register it as a UIA client; and platform focus in this leg is verified by an MSAA-only focus read, so that no UIA client registers (§7.2; DR-0024). P4 must be settled before the first M1b NVDA-present canary runs.
+- **NVDA-present leg:** C's NVDA evidence. Which collectors run in this leg, and how platform focus is verified there, were approved by the owner on 2026-10-03 (P4; DR-0046), because they change which events are captured in the leg that produces C's evidence (hard rule 12; DR-0020): the in-page DOM timeline runs in both legs, because latency is measured from the canary events; the WinEvent listener runs in the NVDA-present leg only for the 20-run on/off diagnostic, not in G1 runs, because its UIA property reads register it as a UIA client; and platform focus in this leg is verified by an MSAA-only focus read, so that no UIA client registers (§7.2; DR-0024).
 - **K6 and K7** run in both legs: speech outcomes from the NVDA-present leg, B2 signatures from the NVDA-absent leg (§9.1; DR-0036).
 - The invariance test is dropped. An NVDA on/off comparison of B2 signatures is a 20-run diagnostic, not a G2 criterion.
 - **Arm B evidence (D9):** Chrome's own accessibility tree via CDP `Accessibility.getFullAXTree`, including the live, atomic, relevant and busy properties, plus `ariaSnapshot` for structure. axe runs in its own browser context, never near an AT segment, because its Playwright helper opens a new tab that steals focus (DR-0024).
@@ -439,7 +453,7 @@ K6 and K7 are not pass/fail canaries. They test premises the corpus depends on.
 - No keypress inside any observation window; K7 is triggered by a timer, not a key.
 - K5 does not depend on the title; latency is measured from the canary events themselves (DR-0010, D1).
 
-**Pre-registered K6a rule (DR-0013, D4):** if any K6a variant is announced in more than 1 of 20 runs, the creation-time regression family leaves the M3 catalogue. The rule is evaluated on the NVDA-present leg (v1.2; DR-0036). "Announced" means the tap records a `speak` message containing the region's text within the observation window (DR-0013's reading, approved by the owner 2026-10-02, DR-0030). Which mechanisms belong to the creation-time regression family, and which are not affected, is Proposed by Claude (not yet owner-approved; pending owner item P1 in `docs/DECISIONS.md`, DR-0013) and must be settled before the first K6a runs.
+**Pre-registered K6a rule (DR-0013, D4):** if any K6a variant is announced in more than 1 of 20 runs, the creation-time regression family leaves the M3 catalogue. The rule is evaluated on the NVDA-present leg (v1.2; DR-0036). "Announced" means the tap records a `speak` message containing the region's text within the observation window (DR-0013's reading, approved by the owner 2026-10-02, DR-0030). Which mechanisms belong to the creation-time regression family, and which are not affected, is as listed in DR-0013 (P1, approved by the owner 2026-10-03, DR-0046), fixed before any K6a data exist.
 
 ### 9.2 Workflow skeleton (`.github/workflows/phase0-nvda.yml`)
 
@@ -526,7 +540,7 @@ jobs:
           retention-days: 30
 ```
 
-The SHAs are recorded in DR-0008 and `env/env.lock.json`; the workflow-policy tests check every workflow against rules W1–W8 and against those SHAs (DR-0016). `@guidepup/guidepup` 0.35.0 and `@guidepup/setup` 0.29.1 are pinned exactly in `package.json` in M1b, because the setup CLI reads the NVDA manifest (and its sha256) from the installed `@guidepup/guidepup` (DR-0009). The Scream step fails closed, after writing its signature record, until M1a records the signer thumbprint; `devcon` follows ARIA-AT's windows-2025 workflow, and its location on the image is confirmed in M1a (DR-0012); if M1a shows that `devcon` comes neither from the runner image nor from the pinned Scream archive, the separate download it needs is a security item for the owner (hard rule 12; DR-0012, DR-0045). The step checks the archive's SHA-256 first, before anything is expanded; a mismatch fails the step and logs the digest it found. It then reads the expanded `Scream.sys` with `Get-AuthenticodeSignature` and writes its status, signer, issuer and thumbprint to `artefacts/scream-signature.json` before any pin or signature check, so a failed check still leaves evidence; the leg's upload step runs `if: always()`, so the record is kept. Only then does it compare: before the certificate is added to TrustedPublisher, it requires the signer thumbprint to be pinned in env.lock, requires the status to equal `Valid` and verifies the status, signer, issuer and thumbprint against `env/env.lock.json`, failing on any mismatch; env.lock refuses a pinned thumbprint until the other three are pinned (DR-0040). If M1a finds the certificate self-signed, or any result other than a valid chain, the status check cannot pass, nothing is added to TrustedPublisher, and the step changes only after the owner decides (DR-0040). M2 adds `actions/setup-dotnet` (v6.0.0, SHA in DR-0008) with SDK 10.0.401 to build the listener; adopting this third-party Action is Proposed by Claude (not yet owner-approved; pending owner item P2 in `docs/DECISIONS.md`, a security item under hard rule 12), so no workflow uses it until the owner answers. This is enforced in code: `env/env.lock.json` gives `actions/setup-dotnet` the status `pending-owner` (P2), and the env-lock cross-check test requires every Action that a workflow uses to have the status `pinned`, so a workflow that uses it fails CI until the owner approves (Decided by Claude under DR-0045 (2026-10-03); DR-0008). Because M2 is built in parallel with M1 (DR-0043), the M2 workflow changes may land and run before G1. M1a uses a separate `.github/workflows/phase0-probe.yml`, the only workflow in which `windows-2022` may appear (DR-0025). Step names, the `phase0:preflight` script, the `canaries` input and the Scream install sequence (DR-0012) were Decided by Claude under DR-0045 (2026-10-03); the signature check in that sequence is the owner's (DR-0040).
+The SHAs are recorded in DR-0008 and `env/env.lock.json`; the workflow-policy tests check every workflow against rules W1–W8 and against those SHAs (DR-0016). `@guidepup/guidepup` 0.35.0 and `@guidepup/setup` 0.29.1 are pinned exactly in `package.json` in M1b, because the setup CLI reads the NVDA manifest (and its sha256) from the installed `@guidepup/guidepup` (DR-0009). The Scream step fails closed, after writing its signature record, until M1a records the signer thumbprint; `devcon` follows ARIA-AT's windows-2025 workflow, and its location on the image is confirmed in M1a (DR-0012); if M1a shows that `devcon` comes neither from the runner image nor from the pinned Scream archive, the separate download it needs is a security item for the owner (hard rule 12; DR-0012, DR-0045). The step checks the archive's SHA-256 first, before anything is expanded; a mismatch fails the step and logs the digest it found. It then reads the expanded `Scream.sys` with `Get-AuthenticodeSignature` and writes its status, signer, issuer and thumbprint to `artefacts/scream-signature.json` before any pin or signature check, so a failed check still leaves evidence; the leg's upload step runs `if: always()`, so the record is kept. Only then does it compare: before the certificate is added to TrustedPublisher, it requires the signer thumbprint to be pinned in env.lock, requires the status to equal `Valid` and verifies the status, signer, issuer and thumbprint against `env/env.lock.json`, failing on any mismatch; env.lock refuses a pinned thumbprint until the other three are pinned (DR-0040). If M1a finds the certificate self-signed, or any result other than a valid chain, the status check cannot pass, nothing is added to TrustedPublisher, and the step changes only after the owner decides (DR-0040). M2 adds `actions/setup-dotnet` (v6.0.0, SHA in DR-0008) with SDK 10.0.401 to build the listener; the owner approved this Action on 2026-10-03 (P2; DR-0046), and `env/env.lock.json` now gives it the status `pinned`. The env-lock cross-check test still requires every Action that a workflow uses to have the status `pinned`, so any future `pending-owner` Action fails CI until the owner approves it (DR-0008). Because M2 is built in parallel with M1 (DR-0043), the M2 workflow changes may land and run before G1. M1a uses a separate `.github/workflows/phase0-probe.yml`, the only workflow in which `windows-2022` may appear (DR-0025). Step names, the `phase0:preflight` script, the `canaries` input and the Scream install sequence (DR-0012) were Decided by Claude under DR-0045 (2026-10-03); the signature check in that sequence is the owner's (DR-0040).
 
 ---
 
@@ -772,6 +786,7 @@ This is a research harness, not a product. It measures whether event observation
 - Harness never imports NVDA code; NVDA add-on code is GPL and lives in adapters/nvda-addon/.
 - Prompt to Page fixtures: de-branded only; no restricted fonts or protected marks.
 - Stop and ask when a choice changes what is measured, what counts as detection, cost or security (hard rule 12); these are the only items brought to the owner. Decide and log everything else in docs/DECISIONS.md (DR-0045).
+- Cost (DR-0046): use multi-agent orchestration only for gate reviews; work single-agent between gates, flag token-heavy work before running it, and estimate model spend in each gate report.
 - At each gate, put a one-page brief in the gate PR alongside the report: at most 10 yes/no items, each with your recommendation (DR-0045).
 
 ## Commands

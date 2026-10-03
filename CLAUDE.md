@@ -21,6 +21,7 @@ This is a research harness, not a product. It measures whether event observation
 - Harness never imports NVDA code; NVDA add-on code is GPL and lives in adapters/nvda-addon/.
 - Prompt to Page fixtures: de-branded only; no restricted fonts or protected marks.
 - Stop and ask when a choice changes what is measured, what counts as detection, cost or security (hard rule 12); these are the only items brought to the owner. Decide and log everything else in docs/DECISIONS.md (DR-0045).
+- Cost (DR-0046): use multi-agent orchestration only for gate reviews; work single-agent between gates, flag token-heavy work before running it, and estimate model spend in each gate report.
 - At each gate, put a one-page brief in the gate PR alongside the report: at most 10 yes/no items, each with your recommendation (DR-0045).
 
 ## Commands

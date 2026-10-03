@@ -147,7 +147,7 @@ Combined from the sources named in each row. DR-0019 amends PRD §33's B2 "Inves
 Common to every arm:
 
 - Chrome's accessibility mode is locked with `--force-renderer-accessibility=screen-reader` in every arm, and logged; `chromiumSandbox: true` (DR-0019).
-- The handover checks the real foreground window (`GetForegroundWindow`) and platform focus, not page focus events, because Playwright always enables CDP focus emulation (DR-0024). In the NVDA-present leg, how platform focus is verified is pending owner item P4 (§2.4, §8).
+- The handover checks the real foreground window (`GetForegroundWindow`) and platform focus, not page focus events, because Playwright always enables CDP focus emulation (DR-0024). In the NVDA-present leg, platform focus is verified by an MSAA-only focus read (§2.4; approved by the owner 2026-10-03, DR-0046).
 - Paired legs run within one dispatch so they share a runner image version; gates run on `windows-2025` (DR-0006).
 
 ### 2.3 Combination rules (HANDOFF R3, verbatim)
@@ -166,7 +166,7 @@ This gives seven scored arms (HANDOFF §10.2 `Arm`): A, B, B2, C_UNION, C_ADJUDI
 - D applies triggers to the NVDA-absent B2 evidence and takes NVDA evidence from the NVDA-present leg (owner, DR-0020).
 - The invariance test in HANDOFF v1.0 §8.4 is dropped. The NVDA on/off B2 comparison becomes a 20-run diagnostic, not a G2 criterion (owner, DR-0020).
 - C uses the NVDA-absent B2 evidence, as D does: approved by the owner 2026-10-02 (DR-0031), confirming the DR-0020 proposal and HANDOFF v1.1 R8's reading. Owner wording: "C uses the NVDA-absent B2 evidence, as D does, so C and D differ only in trigger masking."
-- **B2 collectors in the NVDA-present leg, and how platform focus is verified there** (**Proposed by Claude (not yet owner-approved; pending P4)**; DR-0020, DR-0030). The in-page DOM timeline runs in both legs, because latency is measured from the canary events themselves (DR-0010), so G1 capture latency is measured from DOM mutation (page QPC) to tap receipt. The WinEvent listener runs in the NVDA-present leg only for the 20-run on/off diagnostic, not in G1 runs, because its UIA property reads register it as a UIA client, which can change what Chrome raises (DR-0019). Platform focus in that leg is verified at handover by an MSAA-only focus read (`accFocus` on Chrome's window), so that no UIA client registers (DR-0024). B2 output from the NVDA-present leg never feeds G2 or arm verdicts. Which collectors run alongside NVDA changes which events are captured in the leg that produces C's evidence, so this is a hard-rule-12 item (what is measured; §8).
+- **B2 collectors in the NVDA-present leg, and how platform focus is verified there** (approved by the owner 2026-10-03, P4; DR-0046, DR-0020). The in-page DOM timeline runs in both legs, because latency is measured from the canary events themselves (DR-0010), so G1 capture latency is measured from DOM mutation (page QPC) to tap receipt. The WinEvent listener runs in the NVDA-present leg only for the 20-run on/off diagnostic, not in G1 runs, because its UIA property reads register it as a UIA client, which can change what Chrome raises (DR-0019). Platform focus in that leg is verified at handover by an MSAA-only focus read (`accFocus` on Chrome's window), so that no UIA client registers (DR-0024). B2 output from the NVDA-present leg never feeds G2 or arm verdicts. Which collectors run alongside NVDA changes which events are captured in the leg that produces C's evidence, which is why it went to the owner (hard rule 12).
 
 **Item-level combination (DR-0031, amends DR-0020).** Owner wording: "combine legs at item level. Each leg derives its own per-item result from its own repetitions (k of n). Repetition indices are kept for traceability only and are never paired across legs."
 
@@ -298,7 +298,7 @@ The full set of pre-outcome checks (HANDOFF R9, v1.1 and v1.2), with the reason 
 
 | Check | INCONCLUSIVE when | Legs | Reason code | Source |
 |---|---|---|---|---|
-| Foreground window | Browser window is not the verified foreground HWND, or platform focus is not on the declared anchor, at handover (how platform focus is verified in the NVDA-present leg is pending P4, §2.4) | Both | `FOREGROUND_HWND` | DR-0021; HANDOFF §7.2; DR-0024 |
+| Foreground window | Browser window is not the verified foreground HWND, or platform focus is not on the declared anchor, at handover (in the NVDA-present leg, by an MSAA-only focus read, §2.4) | Both | `FOREGROUND_HWND` | DR-0021; HANDOFF §7.2; DR-0024 |
 | Pre-canary | Pre-block known-answer canary fails | Both | `PRE_CANARY` | DR-0021; PRD §19 |
 | Environment manifest | Manifest missing or invalid | Both | `MANIFEST_INVALID` | HANDOFF §4 rule 11 |
 | Clock: native self-test | Disagreement > 0.5 ms between the orchestrator's and each native collector's QPC readings (method approved by the owner 2026-10-02, DR-0030; DR-0010) | Both | `CLOCK_NATIVE_SELF_TEST` | DR-0010; DR-0030; HANDOFF v1.1 §7.3 |
@@ -451,7 +451,7 @@ The type names are fixed by HANDOFF §10.2. The descriptions are working descrip
 | K7 is triggered by a timer, not a key. | DR-0013 |
 | K5 has no title dependency; no `document.title` marker exists. | DR-0013; DR-0010 |
 | Latency is measured from the canary events themselves. | DR-0010 |
-| The handover verifies the real foreground window and platform focus, not page focus events. In the NVDA-present leg, how platform focus is verified is pending P4 (§2.4). | DR-0024; HANDOFF §7.2 |
+| The handover verifies the real foreground window and platform focus, not page focus events. In the NVDA-present leg, platform focus is verified by an MSAA-only focus read (§2.4; DR-0046). | DR-0024; HANDOFF §7.2 |
 | Known-answer canaries bracket every item block. | HANDOFF §7.4 |
 | Gate runs use `windows-2025` with retries off. | DR-0021 |
 | Fixtures live in `fixtures/canaries/`. | HANDOFF §9.1 |
@@ -511,10 +511,10 @@ How the rule is read (DR-0013, DR-0030, DR-0036):
 | Leg | The rule is evaluated on the NVDA-present leg | Owner (DR-0036) |
 | Trigger | Any one K6a variant (polite, status or assertive) announced in 2 or more of its 20 runs | Decided by Claude under DR-0045 (2026-10-03): restates the owner's "more than 1 of 20" |
 | Announced | The region's text appears in NVDA's queued speech (a relay tap `speak` message) during the observation window, consistent with the DR-0022 measurement basis | Approved by the owner 2026-10-02 (DR-0030); read from the NVDA-present leg only (DR-0036) |
-| Creation-time regression family | Mechanisms that rely on content present at region creation being silent: a conditionally rendered, populated toast or status message; unhiding a populated region with `display:none` or the `hidden` attribute; re-mounting or re-keying the region element on each update; filling a region within the same accessibility snapshot as its insertion; downgrading a conditionally rendered message from `role=alert` to `role=status`; switching `aria-live` from off to polite on an already-populated node. "Live region inserted pre-populated" (HANDOFF R2) is one such mechanism. | **Proposed by Claude (not yet owner-approved).** Pending owner item P1 (§8) |
-| Not affected | Mechanisms that do not depend on K6 stay eligible: `aria-busy` left true; an `aria-hidden` or `inert` ancestor; `aria-live=off` descendants; `aria-relevant` exclusions; focus moving into an edit field and cancelling speech (K7b); loss of foreground | **Proposed by Claude (not yet owner-approved).** Pending owner item P1, with the row above |
+| Creation-time regression family | Mechanisms that rely on content present at region creation being silent: a conditionally rendered, populated toast or status message; unhiding a populated region with `display:none` or the `hidden` attribute; re-mounting or re-keying the region element on each update; filling a region within the same accessibility snapshot as its insertion; downgrading a conditionally rendered message from `role=alert` to `role=status`; switching `aria-live` from off to polite on an already-populated node. "Live region inserted pre-populated" (HANDOFF R2) is one such mechanism. | Approved by the owner 2026-10-03 (P1; DR-0046) |
+| Not affected | Mechanisms that do not depend on K6 stay eligible: `aria-busy` left true; an `aria-hidden` or `inert` ancestor; `aria-live=off` descendants; `aria-relevant` exclusions; focus moving into an edit field and cancelling speech (K7b); loss of foreground | Approved by the owner 2026-10-03 (P1; DR-0046) |
 
-The family and its exclusions decide which mechanisms the M3 catalogue keeps if the rule triggers, so they are a hard-rule-12 item (what is measured). Because the rule is pre-registered, the reading must be fixed before the first K6a runs (M1b), before any K6a data exist.
+The family and its exclusions decide which mechanisms the M3 catalogue keeps if the rule triggers, so they went to the owner (hard rule 12) and were fixed on 2026-10-03, before any K6a data exist (DR-0046).
 
 ---
 
@@ -613,12 +613,10 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| P1 | Membership of the creation-time regression family, and the mechanisms not affected, in the reading of the pre-registered K6a rule | As listed in DR-0013 | Decides what leaves the M3 catalogue if the rule triggers (what is measured) | Before the first K6a runs (M1b) | §5.4 |
 | P3 | Listener event scope: hook ranges (`EVENT_OBJECT_LOCATIONCHANGE` excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | As listed in DR-0019, with the final ranges confirmed from M2 data | Sets which platform events Arm B2 observes (what is measured) | Before any G2 run | §2.2 |
-| P4 | Collectors in the NVDA-present leg, and how platform focus is verified there | As in DR-0020: the WinEvent listener runs in that leg only for the 20-run on/off diagnostic, not in G1 runs; the in-page DOM timeline runs in both legs; G1 capture latency is measured from DOM mutation (page QPC) to tap receipt; platform focus is verified by an MSAA-only focus read (`accFocus` on Chrome's window), so that no UIA client registers. M1a checks that the MSAA read identifies the anchor | Decides which events are captured in the leg that produces C's evidence (what is measured) | Before the first M1b NVDA-present canary runs | §2.4; §2.2; §3.6; §5.1 |
 | P6 | Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | The working methods in DR-0010, with any change that M1a data require stated in the item | Decides when an attempt is INCONCLUSIVE (what is measured) | Before any G1 run | §3.6; §6.2 |
 
-P2 (a new third-party Action for the listener build; security; DR-0008, DR-0019) and P7 (a cost item) are outside this extract's scope and are listed only in `docs/DECISIONS.md`.
+P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
 Conditional hard-rule-12 questions, which arise only if a later result triggers them:
 
