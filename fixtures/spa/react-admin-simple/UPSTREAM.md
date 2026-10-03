@@ -11,7 +11,7 @@ The example as upstream ships it, except `README.md`, `sandbox.config.json` and 
 
 ## Changes from upstream
 
-The commit after this file's first commit holds every change from upstream. The example has no lockfile of its own; one is generated in CI and committed separately.
+The commit after this file's first commit holds every change from upstream. The example has no lockfile of its own; `package-lock.json` was generated in CI run 37129580999 (`npm install --package-lock-only --ignore-scripts`) and committed separately.
 
 ## Building
 
