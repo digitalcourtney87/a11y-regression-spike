@@ -127,3 +127,36 @@ Dated observations for the Accessibility Regression CI falsification spike. Deci
 | Parity (D2) | Run level: tap 127–136 against log 127–138, the log ahead by 0–2. The extra entries are NVDA's startup speech about the runner console, queued after the tap was asked to attach but before the relay confirmed its join, so the tap could not receive them. The parity window now starts at the join confirmation, and parity is also counted per segment (DR-0039) |
 
 **Bearing on open items.** P6 now has its M1b data (segment drift and the other three checks, all far inside the D1 limits). The K6e result triggers DR-0037's conditional owner question about the grading boundaries; it matters for B2 signatures (G2) and the M3 catalogue, not for G1.
+
+### G1 runs (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `phase0-nvda.yml` runs [37115887572](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37115887572) (G1: K1–K5 50 times each and every record-only canary, 10 shards, seed 20261005) and [37116418050](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37116418050) (K2 top-up, 3 attempts, seed 20261006), commit `f81bcd7`, image `win25-vs2026` 20260925.250.1, NVDA-present leg. Archived as `g1/g1-evidence.tar.zst` on the `results` branch (DR-0050).
+**Confidence:** observed. Full tables in `docs/gates/G1.md`.
+
+| Observation | Result |
+|---|---|
+| Gating canaries | 253 attempts, 252 valid, 0 failures; each canary 100% among valid (Wilson lower bounds 92.9–93.1%) |
+| INCONCLUSIVE | 2 of 443 attempts, both `FOREGROUND_HWND`: Chrome in the foreground, but the MSAA read 300 ms after DOM focus still returned the document |
+| Latency (DOM update to tap) | Live-region updates: median 57–61 ms, maximum 92 ms. Focus moves: median 106–127 ms, maximum 159 ms |
+| K6a | 0 of 20 in each variant: the pre-registered rule is not triggered |
+| K6b, K6e, K7 | As in the pilot: K6b NOW 20 of 20; K6e silent for same-frame fills (0 of 19) and announced from 50 ms (50 of 50); K7a no cancel 20 of 20; K7b cancel 20 of 20 |
+| Parity | Per segment exact (553 against 553 over 443 segments); per run equal in 8 of 11 runs, the log one ahead in 3 (inferred: speech at the run window's start, within the Node wall anchor's resolution of the join) |
+| Clocks | Native self-test 0 ms; page mapping 0.1 ms; drift at most 0.19 ms; rAF gap at most 31.3 ms |
+
+### Corrections after the G1 gate review (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** the G1 gate review of 2026-10-03, which recomputed every figure from the raw evidence; probe run [37114407991](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407991), which was missing from the M1 tally.
+**Affects:** DR-0021 (G1), DR-0037 (P9), DR-0048 (P11), DR-0050, DR-0051 (P10), DR-0042, DR-0022.
+
+This entry corrects the "M1b smoke run and M1d strict pilot" and "G1 runs" sections above; those sections stay as written.
+
+| Corrected text | Correction |
+|---|---|
+| M1b section, "Latency, DOM update to tap receipt" row | Those ranges were the smoke run's. The pilot, as an upper bound (key dispatch to tap receipt, minus the page's activation-to-update delay; it includes key delivery), gave: live-region updates (K1, K2) median 55–57 ms, range 35–75 ms; focus moves (K3–K5) median 99–120 ms, range 62–157 ms |
+| M1b section, K6e row: "not at the 150 ms or 350 ms serialisation window" | Only polite regions filled after page load were tested, so the data contradict DR-0037's 150 ms post-load boundary only. The 350 ms pre-load boundary and other roles were not tested (P9) |
+| M1b section, K7b row: "counts the cancelled text as queued" | It counts the cancelled text as spoken (D13, DR-0022) |
+| G1 section, "Latency (DOM update to tap)" row | It is an upper bound, not DOM-to-tap latency, and the K2 figure left out the top-up. Corrected (252 valid passing runs, from `report:phase0`): live-region updates median 56.5–60.8 ms, maximum 91.2 ms; focus moves median 101.4–123.7 ms, maximum 154.5 ms. The page-to-QPC mapping needed for P4's DOM-mutation latency is recorded per attempt from M2 onwards |
+| G1 section, counts without intervals | INCONCLUSIVE 2 of 443 (0.1–1.6%); K6a 0 of 20 per variant (0–16.1%); K6e same-frame fills 0 of 19 (0–16.8%); fills from 50 ms 50 of 50 (92.9–100%) |
+| M1 tally | Probe run 37114407991 (push-triggered by commit 8992346, both labels, success) repeated the M1a probes: every check 10 of 10 per leg per label, eSpeak NG loaded at rate 30, Scream installed. It is now in the G1 archive |

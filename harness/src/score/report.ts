@@ -32,7 +32,8 @@ export interface AttemptRecord {
     politeBeforeFocus?: boolean | null;
   } | null;
   clock?: { native?: number; mappingUncertaintyMs?: number; driftMs?: number; highResolution?: boolean | null; raf?: { maxGapMs?: number | null } };
-  page?: { activatedAt?: number | null } | null;
+  page?: { activatedAt?: number | null; log?: { t: number; what: string }[] } | null;
+  package?: { steps: { startedAt: number; speechCancels?: { t: number }[] }[] };
 }
 
 export interface JobSummary {
@@ -63,6 +64,21 @@ export interface RecordRow {
   politeBeforeFocus: number | null;
 }
 
+export interface LatencyRow {
+  canary: GatingCanaryId;
+  n: number;
+  medianMs: number | null;
+  p90Ms: number | null;
+  maxMs: number | null;
+}
+
+export interface InconclusiveRow {
+  itemId: string;
+  attempts: number;
+  inconclusive: number;
+  interval: WilsonInterval | null;
+}
+
 export interface Phase0Report {
   label: "EXPLORATORY";
   gate: GateResult;
@@ -75,11 +91,40 @@ export interface Phase0Report {
   parity: { jobId: string; tap: number; log: number; difference: number }[];
   segmentParity: { segments: number; tap: number; log: number; mismatchedSegments: number } | null;
   clock: { maxNativeMs: number | null; maxMappingMs: number | null; maxDriftMs: number | null; maxRafGapMs: number | null; lowResolution: number };
+  /**
+   * Capture latency upper bounds for valid passing gating attempts: tap receipt
+   * after the harness's key dispatch, minus the page's own delay from
+   * activation to the update. Key delivery through NVDA and Chrome is not
+   * measured separately, so it is included (an upper bound).
+   */
+  latency: LatencyRow[];
+  /** INCONCLUSIVE per item, gating and record-only, with Wilson intervals (DR-0038). */
+  inconclusive: InconclusiveRow[];
+  /** The activation key's global cancel, after the key dispatch (ms). */
+  activationCancel: { n: number; medianMs: number | null };
   fatalJobs: string[];
 }
 
 function interval(successes: number, n: number): WilsonInterval | null {
   return n > 0 ? wilsonInterval(successes, n) : null;
+}
+
+/** Quantile by linear interpolation between order statistics (type 7). */
+export function quantile(values: readonly number[], p: number): number | null {
+  if (values.length === 0) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  const k = (sorted.length - 1) * p;
+  const i = Math.floor(k);
+  const lo = sorted[i] ?? 0;
+  const hi = sorted[Math.min(i + 1, sorted.length - 1)] ?? lo;
+  return lo + (hi - lo) * (k - i);
+}
+
+function pageDelayMs(a: AttemptRecord): number | null {
+  const log = a.page?.log ?? [];
+  const activated = log.find((e) => e.what === "activated");
+  const done = log.find((e) => e.what === "done");
+  return activated === undefined || done === undefined ? null : done.t - activated.t;
 }
 
 function max(values: (number | null | undefined)[]): number | null {
@@ -164,6 +209,32 @@ export function buildReport(attempts: readonly AttemptRecord[], summaries: reado
       lowResolution: present.filter((a) => a.clock?.highResolution === false).length,
     },
     fatalJobs: summaries.filter((s) => s.fatal !== undefined).map((s) => `${s.jobId}: ${s.fatal ?? ""}`),
+    latency: GATING_CANARIES.map((canary) => {
+      const values = present
+        .filter((a) => a.itemId === canary && a.valid === true && a.outcome?.verdict === "PASS")
+        .map((a) => {
+          const delay = pageDelayMs(a);
+          const at = (a.outcome as { matched?: { atMs?: number } } | null | undefined)?.matched?.atMs;
+          return delay === null || at === undefined ? null : at - delay;
+        })
+        .filter((v): v is number => v !== null);
+      return { canary, n: values.length, medianMs: quantile(values, 0.5), p90Ms: quantile(values, 0.9), maxMs: values.length === 0 ? null : Math.max(...values) };
+    }),
+    inconclusive: [...new Set(present.map((a) => a.itemId))].sort().map((itemId) => {
+      const rows = present.filter((a) => a.itemId === itemId);
+      const inconclusive = rows.filter((a) => a.valid !== true).length;
+      return { itemId, attempts: rows.length, inconclusive, interval: interval(inconclusive, rows.length) };
+    }),
+    activationCancel: (() => {
+      const values = present
+        .map((a) => {
+          const step = a.package?.steps[0];
+          const first = step?.speechCancels?.[0];
+          return step === undefined || first === undefined ? null : (first.t - step.startedAt) / 1e6;
+        })
+        .filter((v): v is number => v !== null);
+      return { n: values.length, medianMs: quantile(values, 0.5) };
+    })(),
   };
 }
 
@@ -196,6 +267,13 @@ export function renderReport(report: Phase0Report): string {
       lines.push(`**Pre-registered K6a rule:** ${report.k6aRule.some((k) => k.triggers) ? "TRIGGERED" : "not triggered"} (${report.k6aRule.map((k) => `${k.variant} ${String(k.announced)}/${String(k.valid)}`).join("; ")}).`, "");
     }
   }
+  lines.push("## Capture latency (upper bound: key dispatch to tap receipt, minus the page's activation-to-update delay)", "", "| Canary | n | Median | 90th percentile | Maximum |", "|---|---|---|---|---|");
+  const ms = (v: number | null): string => (v === null ? "–" : `${v.toFixed(1)} ms`);
+  for (const l of report.latency) lines.push(`| ${l.canary} | ${String(l.n)} | ${ms(l.medianMs)} | ${ms(l.p90Ms)} | ${ms(l.maxMs)} |`);
+  lines.push("", `Activation key's global cancel after the key dispatch: median ${ms(report.activationCancel.medianMs)} (n ${String(report.activationCancel.n)}).`, "");
+  lines.push("## INCONCLUSIVE per item (Wilson 95%; flag above 10%, DR-0038)", "", "| Item | Attempts | INCONCLUSIVE | Rate (Wilson 95%) |", "|---|---|---|---|");
+  for (const r of report.inconclusive) lines.push(`| ${r.itemId} | ${String(r.attempts)} | ${String(r.inconclusive)} | ${pct(r.interval)}${r.interval !== null && r.interval.point > 0.1 ? " (flag)" : ""} |`);
+  lines.push("");
   lines.push("## Validity and instruments", "");
   lines.push(`- INCONCLUSIVE reasons: ${Object.entries(report.inconclusiveReasons).map(([k, v]) => `${k} ${String(v)}`).join(", ") || "none"}`);
   lines.push(`- Errors: ${String(report.errors)}; invalid evidence packages: ${String(report.invalidPackages)}`);
