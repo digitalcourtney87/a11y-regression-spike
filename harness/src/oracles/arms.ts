@@ -17,7 +17,7 @@
  * INCONCLUSIVE (side-aware validity, DR-0035) or missing; FAIL when a family
  * FAILs, with the symptom of the earliest finding in journey order; REVIEW
  * when a finding is REVIEW or a check failed on the candidate only (DR-0035;
- * no FAIL rule covers those, proposed to the owner); PASS otherwise.
+ * no FAIL rule covers those, P35); PASS otherwise.
  * Combining legs, FAIL outranks INCONCLUSIVE, which outranks REVIEW and PASS.
  */
 import { speechKey } from "../runner/outcome.ts";
@@ -165,7 +165,7 @@ export function scoreItem(ev: ItemEvidence, rules: OracleRules): ItemScore {
   return { itemId: id, arms, comparisons, triggers, nvdaMs, legs: { "nvda-absent": legCounts(ev.absent), "nvda-present": legCounts(ev.present) } };
 }
 
-/** Whether a FAIL's symptom is the correct one: equal, or both in the reachability family (proposed to the owner). */
+/** Whether a FAIL's symptom is the correct one: equal, or both in the reachability family (P29, DR-0081). */
 export function correctSymptom(found: Symptom | undefined, expected: Symptom, rules: OracleRules): boolean {
   if (found === undefined) return false;
   return found === expected || (rules.reachabilityFamily.has(found) && rules.reachabilityFamily.has(expected));

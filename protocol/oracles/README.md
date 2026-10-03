@@ -1,6 +1,6 @@
 # Oracles v1 (EXPLORATORY until the M6 freeze)
 
-How evidence becomes a verdict per arm. The code is in `harness/src/oracles/`; the tables are in `rules.v1.json`; Arm D's triggers are in `../triggers.v1.json`. Everything here was developed on the dev split only (hard rule 6). The parts that decide what counts as detection are owner items P28–P36 (`docs/DECISIONS.md`, DR-0080). Until the owner rules, they carry **Proposed by Claude (not yet owner-approved)**.
+How evidence becomes a verdict per arm. The code is in `harness/src/oracles/`; the tables are in `rules.v1.json`; Arm D's triggers are in `../triggers.v1.json`. Everything here was developed on the dev split only (hard rule 6). The parts that decide what counts as detection were approved by the owner on 2026-10-03 (P28–P36; DR-0080, DR-0081).
 
 ## Families of evidence
 
@@ -72,4 +72,4 @@ The arms nest as PRD §33 defines them:
   - **UNION:** FAIL if B2 or NVDA FAILs. Combining legs, FAIL outranks INCONCLUSIVE, which outranks REVIEW and PASS.
   - **ADJUDICATED:** NVDA's FAILs stand. A B2 FAIL becomes REVIEW when NVDA's output at that step is unchanged. Unchanged means every candidate attempt's set of normalised utterances equals some base attempt's.
   - **D:** takes NVDA evidence only at triggered steps, and can adjudicate only there.
-- **Detection:** a FAIL with the correct symptom. Two readings are reported: any of the arm's FAIL symptoms (proposed as primary), and the earliest finding's only.
+- **Detection:** a FAIL with the correct symptom. Two readings are reported: any of the arm's FAIL symptoms (primary, P29), and the earliest finding's only (sensitivity).

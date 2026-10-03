@@ -34,7 +34,7 @@ function cell(score: ItemScore, item: CorpusItem, arm: Arm, rules: OracleRules):
 export function renderDevReport(metrics: Metrics, scores: readonly ItemScore[], items: ReadonlyMap<string, CorpusItem>, rules: OracleRules, meta: ReportMeta): string {
   const L: string[] = [];
   L.push(`# M5 ${meta.split}-split report (EXPLORATORY)`, "");
-  L.push(`Runs: ${meta.runs.join(", ")}. Harness commit: ${meta.harnessCommit}. Oracle tables: \`protocol/oracles/rules.v1.json\`; triggers: \`protocol/triggers.v1.json\`. k = n per side and leg (DR-0031). Bootstrap: ${String(BOOTSTRAP_RESAMPLES)} pattern-level resamples, seed ${String(BOOTSTRAP_SEED)}. Detection needs a FAIL with the correct symptom; REVIEW is not detection and INCONCLUSIVE is a miss. "Any" credits an arm when any of its FAIL symptoms is correct; "earliest" only the earliest finding's. The reachability symptoms count as one family (proposed). W = Wilson 95% over items; boot = pattern bootstrap 95%.`, "");
+  L.push(`Runs: ${meta.runs.join(", ")}. Harness commit: ${meta.harnessCommit}. Oracle tables: \`protocol/oracles/rules.v1.json\`; triggers: \`protocol/triggers.v1.json\`. k = n per side and leg (DR-0031). Bootstrap: ${String(BOOTSTRAP_RESAMPLES)} pattern-level resamples, seed ${String(BOOTSTRAP_SEED)}. Detection needs a FAIL with the correct symptom; REVIEW is not detection and INCONCLUSIVE is a miss. "Any" credits an arm when any of its FAIL symptoms is correct; "earliest" only the earliest finding's. The reachability symptoms count as one family (P29). Rules approved by the owner 2026-10-03 (P28–P36, DR-0081). W = Wilson 95% over items; boot = pattern bootstrap 95%.`, "");
   L.push("## Arms", "", "Primary: detection weighted uniformly by expected symptom (HANDOFF §10.3), the mean of the per-symptom rates, with a pattern-level bootstrap 95% interval. The item-level rates follow.", "");
   L.push("| Arm | Detection, uniform by symptom | Symptoms detected (any) |", "|---|---|---|");
   for (const m of metrics.arms) {
@@ -97,7 +97,7 @@ export function renderDevReport(metrics: Metrics, scores: readonly ItemScore[], 
   L.push("| Comparison | p10 | p01 | Patterns needed |", "|---|---|---|---|");
   for (const p of pw.paired) L.push(`| ${p.label} | ${p.p10.toFixed(2)} | ${p.p01.toFixed(2)} | ${Number.isFinite(p.needed) ? String(p.needed) : "∞ (no difference)"} |`);
   L.push("", "## Biases and limits", "");
-  L.push("- Speech is what NVDA queues plus global cancels, not audio: queued-then-cancelled text counts as spoken, and cancellations inside NVDA's speech manager never reach the relay (R10, DR-0022). This makes ANNOUNCEMENT_DUPLICATED anti-conservative; a duplicate seen only in speech is REVIEW (DR-0042, proposed).");
+  L.push("- Speech is what NVDA queues plus global cancels, not audio: queued-then-cancelled text counts as spoken, and cancellations inside NVDA's speech manager never reach the relay (R10, DR-0022). This makes ANNOUNCEMENT_DUPLICATED anti-conservative; a duplicate seen only in speech is REVIEW (DR-0042; P36).");
   L.push("- The oracles were developed on this split. Its results show the rules work as written; they are not estimates for the test split.");
   L.push("- Every dev pattern has one regression item, so item-level and pattern-level counts agree; the bootstrap matters for the test split's mixed clusters (P20).");
   return `${L.join("\n")}\n`;

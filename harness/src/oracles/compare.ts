@@ -22,7 +22,7 @@
  *    - announcementContains also gives ANNOUNCEMENT_DUPLICATED when the base
  *      carries the text exactly once in k of n attempts and the candidate at
  *      least twice in k of n. From speech alone, a duplicate is REVIEW, not
- *      FAIL (DR-0042; proposed to the owner).
+ *      FAIL (DR-0042; P36, DR-0081).
  * 3. Step rules that are not expectations: Arm A's new axe violations
  *    (`axe.ts`), at every step both sides ran, including the step where the
  *    candidate's journey stopped; and B2's ROUTE_CHANGE_SILENT (`route.ts`).
@@ -153,7 +153,7 @@ export function focusSymptom(
  * meets that name; INTERACTION_FAILS_UNDER_AT when an action (ACTIVATE, PRESS
  * or TYPE) came since the last navigation step, so the target depended on it;
  * NAV_TARGET_UNREACHABLE otherwise. The three form one family for scoring
- * (proposed to the owner), so this choice is for the report.
+ * (P29, DR-0081), so this choice is for the report.
  */
 export function reachSymptom(family: Family, journey: Journey, index: number, candidates: readonly BlockAttempt[], rules: OracleRules): Symptom {
   const steps = atSteps(journey);

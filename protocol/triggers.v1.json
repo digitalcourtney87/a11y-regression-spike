@@ -1,7 +1,7 @@
 {
   "version": "1",
   "label": "EXPLORATORY until the M6 freeze",
-  "source": "PRD v0.3 §14 'Automatic AT triggers' (HANDOFF R5: trigger rules v1 are fixed in advance from PRD §14). The list is the PRD's; the operational definitions are Claude's, proposed to the owner (hard rule 12) and written before any Arm D result was scored.",
+  "source": "PRD v0.3 §14 'Automatic AT triggers' (HANDOFF R5: trigger rules v1 are fixed in advance from PRD §14). The list is the PRD's; the operational definitions are Claude's, written before any Arm D result was scored and approved by the owner on 2026-10-03 (P34; DR-0079, DR-0081).",
   "appliesTo": "Arm D. Each AT step of a journey, judged on the NVDA-absent leg's B2 evidence for that step (the DOM mutation timeline, the platform events and the accessibility tree), from the step's start to the end of its observation window.",
   "stepTriggered": "A step is triggered for an item when any trigger below fires on that step in any valid NVDA-absent attempt, on either side. Arm D then takes NVDA evidence for that step from the NVDA-present leg; it takes none for untriggered steps.",
   "manualTriggers": "A journey step's manualTriggers (owner overrides, HANDOFF §10.2) list trigger ids to force on for that step; none are set in v1.",

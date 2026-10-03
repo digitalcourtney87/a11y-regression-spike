@@ -20,7 +20,7 @@
  * - Arm D's NVDA time against Arm C's, and how many of C's detections D keeps.
  *
  * "Correct symptom" is applied in two readings, both reported: any of the
- * arm's FAIL symptoms (proposed as primary) and the earliest finding's
+ * arm's FAIL symptoms (primary, P29) and the earliest finding's
  * symptom only.
  */
 import type { ItemScore } from "../oracles/arms.ts";

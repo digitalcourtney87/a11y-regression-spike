@@ -1,7 +1,7 @@
 {
   "version": "1",
   "label": "EXPLORATORY until the M6 freeze; developed on the dev split only (hard rule 6)",
-  "note": "Tables the M5 oracles read (harness/src/oracles/). The rules that use them are described in protocol/oracles/README.md. Every entry that decides what counts as detection is a hard-rule-12 item for the owner.",
+  "note": "Tables the M5 oracles read (harness/src/oracles/). The rules that use them are described in protocol/oracles/README.md. The entries that decide what counts as detection were approved by the owner on 2026-10-03 (P28–P36; DR-0081).",
   "axeSymptoms": {
     "note": "Arm A: an axe rule whose violation count at a step is higher in every candidate attempt than in every base attempt is a new violation. A rule listed here gives FAIL with its symptom; any other new violation gives REVIEW. Grouped by what the axe rule checks: an accessible name, a role, or a state or property; rules about headings, landmarks and hidden focusable content are grouped with navigation.",
     "NAME_NOT_CONVEYED": [
@@ -23,7 +23,7 @@
     ]
   },
   "reachabilityFamily": {
-    "note": "Proposed for scoring: the HANDOFF §6 definitions of these three symptoms overlap (a step the journey cannot get past), and the M3 catalogue assigns them by mechanism, not by evidence. A FAIL with any member counts as the correct symptom for an item labelled with any member. The oracle still names the member its structural rule finds.",
+    "note": "For scoring (approved by the owner 2026-10-03, P29; DR-0081): the HANDOFF §6 definitions of these three symptoms overlap (a step the journey cannot get past), and the M3 catalogue assigns them by mechanism, not by evidence. A FAIL with any member counts as the correct symptom for an item labelled with any member. The oracle still names the member its structural rule finds.",
     "members": ["NAV_TARGET_UNREACHABLE", "INTERACTION_FAILS_UNDER_AT", "JOURNEY_BLOCKED"]
   },
   "liveRoles": ["alert", "status", "log", "marquee", "timer"],

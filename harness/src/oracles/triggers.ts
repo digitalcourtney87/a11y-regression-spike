@@ -4,7 +4,7 @@
  * is triggered for an item when any trigger fires on it in any valid
  * NVDA-absent attempt, on either side; Arm D then takes NVDA evidence for that
  * step only (DR-0020, DR-0031). The definitions were written before any Arm D
- * result was scored (DR-0079) and are proposed to the owner.
+ * result was scored (DR-0079) and were approved by the owner (P34, DR-0081).
  */
 import type { AtStep, Journey } from "../schema/index.ts";
 import type { Block, BlockAttempt, BlockStep, TimelineRecord } from "./evidence.ts";

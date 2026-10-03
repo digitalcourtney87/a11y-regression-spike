@@ -154,7 +154,7 @@ Common to every arm:
 
 > C and D are each scored under **UNION** (FAIL if B2 or NVDA evidence FAILs) and **ADJUDICATED** (NVDA may downgrade a B2 FAIL to REVIEW when NVDA output is unchanged between base and candidate).
 
-This gives seven scored arms (HANDOFF §10.2 `Arm`): A, B, B2, C_UNION, C_ADJUDICATED, D_UNION, D_ADJUDICATED. Under DR-0022, "NVDA output" means queued speech plus global cancels (§1.3). Each rule combines per-item results, one from each leg (DR-0031, §2.4).
+This gives seven scored arms (HANDOFF §10.2 `Arm`): A, B, B2, C_UNION, C_ADJUDICATED, D_UNION, D_ADJUDICATED. Under ADJUDICATED, NVDA's output at a step is unchanged when every candidate attempt's set of normalised utterances equals some base attempt's; Arm D adjudicates only at its triggered steps (approved by the owner 2026-10-03, P33 and P34; DR-0081). Under DR-0022, "NVDA output" means queued speech plus global cancels (§1.3). Each rule combines per-item results, one from each leg (DR-0031, §2.4).
 
 ### 2.4 Separate legs (DR-0020, DR-0031)
 
@@ -280,6 +280,12 @@ In the spike, known-answer canaries bracket every item block (HANDOFF §7.4), an
 
 Under DR-0031, k of n is applied within each leg separately; repetitions are never pooled or paired across legs (§2.4).
 
+**M5 oracles (approved by the owner 2026-10-03, P28 and P29; DR-0080, DR-0081).**
+- The rules that turn evidence into verdicts per arm are in `protocol/oracles/README.md`, with their tables in `protocol/oracles/rules.v1.json`.
+- An arm detects a regression when any of its FAIL symptoms is the correct one; the earliest finding's symptom alone is reported as a sensitivity reading.
+- NAV_TARGET_UNREACHABLE, INTERACTION_FAILS_UNDER_AT and JOURNEY_BLOCKED count as one symptom for scoring.
+- The primary analysis weights detection uniformly by symptom (HANDOFF §10.3).
+
 ### 3.6 INCONCLUSIVE only from pre-outcome checks (DR-0021, DR-0032)
 
 Owner rule (DR-0021): INCONCLUSIVE is decided only by checks completed before the outcome is known (foreground HWND, injection marker, audio, clock, pre-canary), never by inspecting the outcome.
@@ -329,7 +335,7 @@ Clock basis (DR-0010): QPC is the only timebase (`process.hrtime.bigint()` in No
 
 - A check that covers both sides at once, such as the environment manifest, counts as failing on both sides (Decided by Claude under DR-0045 (2026-10-03); DR-0035).
 - Pre-block canaries are fixed pages, not sides, so their rule is unchanged; post-block canaries follow DR-0032.
-- Which FAIL rules cover which candidate-only check failures is set with the M5 oracles. That decides what counts as detection, so it comes to the owner (hard rule 12; DR-0035).
+- Which FAIL rules cover which candidate-only check failures was set with the M5 oracles: none in v1, so they route to REVIEW (approved by the owner 2026-10-03, P35; DR-0081).
 
 ### 3.7 Measurement basis for speech, and its bias (DR-0022)
 
@@ -399,7 +405,7 @@ For scoring, the HANDOFF §6 symptoms below are the unit (HANDOFF R2; HANDOFF ta
 | ROUTE_CHANGE_SILENT | Route change conveyed (focus or announcement) in base, nothing conveyed in candidate | Scored |
 | JOURNEY_BLOCKED | Journey completes in base, cannot complete in candidate | Scored |
 
-**M5 planning note (DR-0042, relates to DR-0022).** Claude's DR-0022 bias analysis shows that ANNOUNCEMENT_DUPLICATED is anti-conservative: a queued copy cancelled before it is heard still counts as spoken, so a duplicate can be credited that a listener would not hear. Owner wording: "Plan for duplicates to need NVDA-log corroboration or to route to REVIEW." M5 plans the oracle so that a duplicate seen only in the relay tap does one or the other. Which of the two, and what counts as corroboration, decides what counts as detection, so it comes to the owner at M5 (hard rule 12). DR-0039 allows wall-anchor bucketing of log lines only for parity counts and diagnostics, so corroboration would need another join method or a further owner decision. Until then the HANDOFF §6 definition above stands.
+**M5 planning note (DR-0042, relates to DR-0022).** Claude's DR-0022 bias analysis shows that ANNOUNCEMENT_DUPLICATED is anti-conservative: a queued copy cancelled before it is heard still counts as spoken, so a duplicate can be credited that a listener would not hear. Owner wording: "Plan for duplicates to need NVDA-log corroboration or to route to REVIEW." M5 plans the oracle so that a duplicate seen only in the relay tap does one or the other. Which of the two, and what counts as corroboration, decides what counts as detection, so it comes to the owner at M5 (hard rule 12). DR-0039 allows wall-anchor bucketing of log lines only for parity counts and diagnostics, so corroboration would need another join method or a further owner decision. Owner decision (approved 2026-10-03, P36; DR-0081): a duplicate seen only in NVDA's speech routes to REVIEW, with no NVDA-log corroboration. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2.
 
 ### 4.3 Symptoms versus mechanisms (HANDOFF R2, verbatim)
 
@@ -613,17 +619,9 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 
 | ID | Point | Claude's recommendation | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
-| P28 | The M5 oracle model: per-leg, per-family comparison with k = n; unobservable expectations give nothing; ambiguity gives REVIEW; failure classes become symptoms by `protocol/oracles/README.md`; arms nest | Yes | What counts as detection | M5 dev report | §3, §4.2 |
-| P29 | Detection credit: any of an arm's FAIL symptoms; the three reachability symptoms count as one family | Yes | What counts as detection | M5 dev report | §3.4, §3.5, §4.2 |
-| P30 | Arm A: new axe violations by count, mapped to symptoms by `rules.v1.json`; unmapped ones give REVIEW | Yes | What counts as detection | M5 dev report | §2.2 |
-| P31 | Arm B: the settled tree, and announcements inferred from live regions holding the text | Yes | What is measured | M5 dev report | §2.2 |
-| P32 | Arm B2: announcements from alert and live-region events tied to the text; ROUTE_CHANGE_SILENT from route changes and what conveys them | Yes | What counts as detection | M5 dev report | §2.2 |
-| P33 | NVDA's evidence: speech after the speech normaliser, role words and state labels, and the NVDA-present step outcomes; ADJUDICATED's "unchanged" | Yes | What counts as detection | M5 dev report | §2.3, §3.7 |
-| P34 | Arm D's trigger definitions (`protocol/triggers.v1.json`) | Yes | What counts as detection | M5 dev report | §2.2 |
-| P35 | Candidate-only check failures route to REVIEW; no FAIL rule covers them | Yes | What counts as detection | M5 dev report | §3.6 |
-| P36 | Duplicates seen only in speech route to REVIEW; no NVDA-log corroboration | Yes | What counts as detection | M5 dev report | §4.2 |
+| — | None pending | — | — | — | — |
 
-P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P23–P25 (the M4 journey model: execution per leg, goal-based step outcomes and the PRESS strategy) were approved on 2026-10-03 (DR-0067). P26 (the NVDA browse-mode commands FOCUS_MODE_TOGGLE and DOCUMENT_TOP) was approved on 2026-10-03 (DR-0071). P27 (frame gaps in corpus runs: only the part the page's own long work does not cover counts towards the 100 ms rAF limit) was approved on 2026-10-03 (DR-0076). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
+P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P3 (listener event scope), P9 (post-load K6 boundary for polite regions, provisional), P10 (focus-read retry) and P11 (canary speech matching) were approved at the G1 gate (DR-0052). P12 (the B2 signature definitions) and P13 (which errors may be INCONCLUSIVE) were approved at the G2 gate, and P9 was made final as tested (DR-0055). P23–P25 (the M4 journey model: execution per leg, goal-based step outcomes and the PRESS strategy) were approved on 2026-10-03 (DR-0067). P26 (the NVDA browse-mode commands FOCUS_MODE_TOGGLE and DOCUMENT_TOP) was approved on 2026-10-03 (DR-0071). P27 (frame gaps in corpus runs: only the part the page's own long work does not cover counts towards the 100 ms rAF limit) was approved on 2026-10-03 (DR-0076). P28–P37 (the M5 oracle rules, Arm D's triggers, and no new pattern batch before the freeze) were approved on 2026-10-03 (DR-0081). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
 Conditional hard-rule-12 questions, which arise only if a later result triggers them:
 

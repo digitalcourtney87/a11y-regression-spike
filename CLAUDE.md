@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.11). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.12). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -34,7 +34,7 @@ This is a research harness, not a product. It measures whether event observation
 - gh run download <run-id> -D artefacts/<run-id>
 - npm run report:phase0 -- artefacts/<run-id> (available from M1)
 - npm run phase0:canaries -- --leg <nvda-absent|nvda-present> --runs <n> (available from M1; Windows CI only)
-- npm run score -- --split dev (reports "not implemented" until M5)
+- npm run score -- --split dev --runs artefacts/<run-id>[,artefacts/<run-id>] (M5; writes report-m5-dev.md and .json beside the first run; the test split is refused until the freeze)
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
