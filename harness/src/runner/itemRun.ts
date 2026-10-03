@@ -76,7 +76,7 @@ import { flattenAxTree, pruneAxTree } from "./axTree.ts";
 import type { AxNode, CdpAxNode } from "./axTree.ts";
 import { evaluateGatingB2 } from "./b2Signature.ts";
 import { GATING_SPECS } from "./canaries.ts";
-import { nativeSelfTest, pageClock, pageToQpcNs, RAF_PEEK_SCRIPT, RAF_READ_SCRIPT, RAF_START_SCRIPT, segmentDriftMs } from "./clockChecks.ts";
+import { LONG_WORK_INIT_SCRIPT, LONG_WORK_READ_SCRIPT, nativeSelfTest, pageClock, pageToQpcNs, RAF_GAPS_START_SCRIPT, RAF_PEEK_SCRIPT, RAF_READ_SCRIPT, segmentDriftMs, uncoveredGapMs } from "./clockChecks.ts";
 import { goalOutcome, modalCount, nameMatches, nodeMatchesGoal, speechMatchesGoal } from "./goals.ts";
 import { itemValidity } from "./itemValidity.ts";
 import type { AttemptReason, Side } from "./itemValidity.ts";
@@ -727,6 +727,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     const chromeVersion = browser.version();
     const context = await newContext(browser, base, external);
     await context.addInitScript(DOC_ID_SCRIPT);
+    await context.addInitScript(LONG_WORK_INIT_SCRIPT);
     await context.addInitScript(TIMELINE_INIT_SCRIPT);
     const page = await openPage(context, base + journey.entryUrl, pageErrors);
     const cdp = await context.newCDPSession(page);
@@ -796,7 +797,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     }
     const native = Math.max(helperNative.disagreementMs, listenerNative?.disagreementMs ?? 0);
     const clockStart = await pageClock(page, PINGS, true);
-    await page.evaluate(RAF_START_SCRIPT);
+    await page.evaluate(RAF_GAPS_START_SCRIPT);
     await sleep(SETTLE_MS);
     // One page clock per document (HANDOFF §7.3: recompute the mapping after every full navigation;
     // DR-0074). A document is identified by the id DOC_ID_SCRIPT gives it, so a same-document
@@ -805,9 +806,11 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     // navigation loses at most the entries of the one action that caused it; drift is read at each
     // step's start and end. A document a navigation replaced before any drift reading is counted
     // as unmeasured, never as a failure (the page may have caused the navigation, DR-0032).
-    interface DocClock { index: number; id: string | null; clock: typeof clockStart; driftMs: number; rafGapMs: number; measured: boolean }
+    // P27 (DR-0076): each document keeps its frame gaps and its own long work; only the part of a gap
+    // that the work does not cover counts towards CLOCK_RAF_GAP.
+    interface DocClock { index: number; id: string | null; clock: typeof clockStart; driftMs: number; rafGapMs: number; measured: boolean; gaps: [number, number][]; work: [number, number][] }
     const docIdNow = async (): Promise<string | null> => (await page.evaluate<string | null>(DOC_ID_READ).catch(() => null)) ?? null;
-    let doc: DocClock = { index: 0, id: await docIdNow(), clock: clockStart, driftMs: 0, rafGapMs: 0, measured: false };
+    let doc: DocClock = { index: 0, id: await docIdNow(), clock: clockStart, driftMs: 0, rafGapMs: 0, measured: false, gaps: [], work: [] };
     const docs: DocClock[] = [doc];
     const timeline: MappedTimelineEntry[] = [];
     const drain = async (): Promise<void> => {
@@ -820,13 +823,16 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
         // A new document: the old one is gone with its last readings; this one gets its own clock.
         await page.waitForLoadState("load").catch(() => undefined);
         const clock = await pageClock(page, PINGS, true);
-        await page.evaluate(RAF_START_SCRIPT);
-        doc = { index: doc.index + 1, id, clock, driftMs: 0, rafGapMs: 0, measured: false };
+        await page.evaluate(RAF_GAPS_START_SCRIPT);
+        doc = { index: doc.index + 1, id, clock, driftMs: 0, rafGapMs: 0, measured: false, gaps: [], work: [] };
         docs.push(doc);
       }
       await drain();
-      const r = await page.evaluate<{ maxGapMs: number | null } | null>(RAF_PEEK_SCRIPT);
+      const r = await page.evaluate<{ maxGapMs: number | null; gaps?: [number, number][] } | null>(RAF_PEEK_SCRIPT);
       doc.rafGapMs = Math.max(doc.rafGapMs, r?.maxGapMs ?? Number.POSITIVE_INFINITY);
+      if (r === null) doc.gaps = [[0, Number.POSITIVE_INFINITY]];
+      else doc.gaps = r.gaps ?? [];
+      doc.work = await page.evaluate<[number, number][]>(LONG_WORK_READ_SCRIPT).catch(() => doc.work);
       if (withDrift) {
         doc.driftMs = Math.max(doc.driftMs, await segmentDriftMs(page, doc.clock, 8));
         doc.measured = true;
@@ -883,7 +889,9 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     const raf = await page.evaluate<{ maxGapMs: number | null; frames: number }>(RAF_READ_SCRIPT);
     doc.rafGapMs = Math.max(doc.rafGapMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY);
     const driftMs = worst((d) => d.driftMs);
-    const rafGapMs = worst((d) => d.rafGapMs);
+    // The gap judged is the uncovered one (P27); the raw largest gap is kept for the record.
+    const rawRafGapMs = worst((d) => d.rafGapMs);
+    const rafGapMs = worst((d) => uncoveredGapMs(d.gaps, d.work));
     let events: ListenerEvent[] | null = null;
     if (listener !== undefined) {
       try {
@@ -907,7 +915,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
       // B2's platform events are complete only when the listener ran without failure (P13: a listener
       // failure is a failure of the instrument, never INCONCLUSIVE; DR-0074).
       b2Evidence: listenerTmp === null ? "not-in-leg" : events === null ? "missing" : "complete",
-      clock: { native, driftMs, rafGapMs, raf, unmeasuredDocuments: docs.filter((d) => !d.measured).length, documents: docs.map((d) => ({ index: d.index, measured: d.measured, uncertaintyMs: d.clock.uncertaintyMs, highResolution: d.clock.highResolution, driftMs: d.driftMs, rafGapMs: d.rafGapMs, navigationStartS: d.clock.navigationStartS, mappingOffsetNs: d.clock.mappingOffsetNs })) },
+      clock: { native, driftMs, rafGapMs, rawRafGapMs, raf, unmeasuredDocuments: docs.filter((d) => !d.measured).length, documents: docs.map((d) => ({ index: d.index, measured: d.measured, uncertaintyMs: d.clock.uncertaintyMs, highResolution: d.clock.highResolution, driftMs: d.driftMs, rawRafGapMs: d.rafGapMs, uncoveredRafGapMs: uncoveredGapMs(d.gaps, d.work), gaps: d.gaps, longWork: d.work, navigationStartS: d.clock.navigationStartS, mappingOffsetNs: d.clock.mappingOffsetNs })) },
       preflight: buildPreflight(driftMs, rafGapMs),
       maxClockSkewMs: Math.max(native, worst((d) => d.clock.uncertaintyMs)),
       speechEvents: ctx.nvda === null ? null : ctx.nvda.tap.between(record.steps.find((s) => s.startedAt !== undefined)?.startedAt ?? 0, qpcNowNs()),

@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.9 (2026-10-03)
+**Version:** 1.10 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -9,6 +9,15 @@
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.10
+
+v1.10 records the owner's approval of P27, frame gaps in corpus runs (DR-0076; DR-0075). No owner items are pending. The v1.9 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.10 | DR-0076 |
+| §7.3 | In corpus runs, only the part of a rAF gap that the page's own long work does not cover counts towards the 100 ms limit; canary runs unchanged | DR-0076; DR-0075 |
 
 ## Changes in v1.9
 
@@ -353,6 +362,7 @@ The checks in steps 3, 4 and 6 come from DR-0017 (D8), DR-0011 (D2) and DR-0010 
 - **Joining logs.** Join the speech, platform-event, mutation and NVDA-log records by QPC and by the orchestrator-issued segment ID (`segmentId`). Measure latency from the canary events themselves.
 - **NVDA log bucketing (DR-0039).** NVDA's log lines carry wall-clock times, not QPC. They may be bucketed into segments through the wall anchor for parity counts and diagnostics. That bucketing is never used for latency, ordering or validity.
 - **INCONCLUSIVE only for:** native self-test disagreement (method approved by the owner 2026-10-02, DR-0030; DR-0010) > 0.5 ms; page-mapping uncertainty > 2 ms; drift > 1 ms within a segment; low-resolution TimeTicks in Chrome; a requestAnimationFrame gap > 100 ms. A value equal to its limit passes. The limits live in `harness/src/runner/validity.ts`.
+- **Frame gaps in corpus runs (v1.10; P27, DR-0076).** From M4, a rAF gap counts towards the 100 ms limit only for the part that the page's own main-thread work does not cover, read from Chrome's Long Animation Frames and Long Tasks APIs. The raw gaps and the covering stalls are recorded with the evidence. Canary runs keep the rule above unchanged.
 - **`maxClockSkewMs`** in the evidence package (§10.2) records max(native self-test disagreement, page-mapping uncertainty). The owner approved this redefinition on 2026-10-02 as part of DR-0026, accepted with amendments (DR-0030).
 
 ### 7.4 Paired, counterbalanced runs

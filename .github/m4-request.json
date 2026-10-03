@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M4 full run, repeated after the PR review fixes (DR-0074): every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app",
+  "purpose": "M4 full run with P27 (frame gaps in corpus runs) and the K1 focus retry: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app (DR-0076)",
   "apps": [
     "atomic-crm",
     "react-admin-simple",

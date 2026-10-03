@@ -145,11 +145,59 @@ export const RAF_START_SCRIPT = `(() => {
   window.__rafHeartbeat = state; requestAnimationFrame(frame); return true;
 })()`;
 
-/** Returns the heartbeat's largest gap so far (ms) and frame count, without stopping it; null when none runs. */
+/** Returns the heartbeat's largest gap so far (ms), frame count and recorded gaps, without stopping it; null when none runs. */
 export const RAF_PEEK_SCRIPT = `(() => {
   const s = window.__rafHeartbeat; if (!s) return null;
-  return { maxGapMs: s.max, frames: s.frames };
+  return { maxGapMs: s.max, frames: s.frames, gaps: s.gaps ? s.gaps.slice() : [] };
 })()`;
+
+/**
+ * Corpus runs (P27, DR-0076): a heartbeat that also records every gap over
+ * 50 ms as [start, end] in page time, so the part the page's own work does
+ * not cover can be computed. Canary runs keep RAF_START_SCRIPT.
+ */
+export const RAF_GAPS_START_SCRIPT = `(() => {
+  const state = { max: 0, last: null, frames: 0, running: true, gaps: [] };
+  const frame = (t) => { if (state.last !== null) { const g = t - state.last; if (g > state.max) state.max = g; if (g > 50) state.gaps.push([state.last, t]); } state.last = t; state.frames++; if (state.running) requestAnimationFrame(frame); };
+  window.__rafHeartbeat = state; requestAnimationFrame(frame); return true;
+})()`;
+
+/**
+ * Records the page's own long main-thread work from document creation
+ * (P27): Long Animation Frames and Long Tasks, as [start, duration] in page
+ * time. Installed as an init script.
+ */
+export const LONG_WORK_INIT_SCRIPT = `(() => {
+  const w = []; window.__a11yLongWork = w;
+  for (const type of ["long-animation-frame", "longtask"]) {
+    try { new PerformanceObserver((list) => { for (const e of list.getEntries()) w.push([e.startTime, e.duration]); }).observe({ type, buffered: true }); } catch (e) { /* type unsupported */ }
+  }
+})();`;
+
+/** Reads the page's long work recorded so far. */
+export const LONG_WORK_READ_SCRIPT = "window.__a11yLongWork ? window.__a11yLongWork.slice() : []";
+
+/**
+ * The largest part of any frame gap that the page's own long work does not
+ * cover, in ms (P27). Each gap is [start, end]; each piece of work is
+ * [start, duration], all in page time. Overlapping work is merged first.
+ */
+export function uncoveredGapMs(gaps: readonly (readonly [number, number])[], work: readonly (readonly [number, number])[]): number {
+  const spans = work.map(([s, d]) => [s, s + d] as const).sort((a, b) => a[0] - b[0]);
+  const merged: [number, number][] = [];
+  for (const [s, e] of spans) {
+    const last = merged[merged.length - 1];
+    if (last !== undefined && s <= last[1]) last[1] = Math.max(last[1], e);
+    else merged.push([s, e]);
+  }
+  let worst = 0;
+  for (const [a, b] of gaps) {
+    let covered = 0;
+    for (const [s, e] of merged) covered += Math.max(0, Math.min(b, e) - Math.max(a, s));
+    worst = Math.max(worst, b - a - covered);
+  }
+  return worst;
+}
 
 /** Stops the heartbeat and returns its largest gap (ms) and frame count. */
 export const RAF_READ_SCRIPT = `(() => {
