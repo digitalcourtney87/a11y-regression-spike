@@ -1,0 +1,22 @@
+{
+  "id": "oss-carbon-19563-twin",
+  "patternId": "oss--carbon-19563",
+  "split": "dev",
+  "source": "seeded",
+  "app": "oss/carbon-19563",
+  "journeyId": "oss-carbon-19563",
+  "base": {
+    "ref": "oss/carbon-19563@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@carbon/web-components@2.28.0"
+  },
+  "candidate": {
+    "patch": "oss-carbon-19563-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "WRAPPER_ELEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator wrapper-added",
+    "licence": "Apache-2.0 (@carbon/web-components)"
+  }
+}

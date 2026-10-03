@@ -1,0 +1,16 @@
+{
+  "id": "ras-heading-removed-custom-page-twin",
+  "patternId": "react-admin-simple--landmark-or-heading-removed",
+  "operator": "copy-edit",
+  "app": "react-admin-simple",
+  "journeyId": "ras-custom-page-heading",
+  "target": "Custom posts page: punctuation of the result count edited (no journey asserts it)",
+  "edits": [
+    {
+      "file": "src/customRouteLayout.tsx",
+      "find": "Found <span className=\"total\">{total}</span> posts !",
+      "replace": "Found <span className=\"total\">{total}</span> posts."
+    }
+  ],
+  "twinOf": "ras-heading-removed-custom-page"
+}

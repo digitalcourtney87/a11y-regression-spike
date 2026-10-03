@@ -1,0 +1,22 @@
+{
+  "id": "ras-navigation-hidden-menu-twin",
+  "patternId": "react-admin-simple--navigation-hidden",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-menu-navigate-comments",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-navigation-hidden-menu-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CLASS_RENAME"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator class-rename",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

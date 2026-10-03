@@ -1,0 +1,23 @@
+{
+  "id": "acrm-icon-button-label-task-actions",
+  "patternId": "atomic-crm--icon-button-label-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-icon-button-label-task-actions.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "icon-button-label-removed: Icon-only button loses its aria-label (Task actions button (icon only) in the dashboard task list loses its aria-label)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator icon-button-label-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

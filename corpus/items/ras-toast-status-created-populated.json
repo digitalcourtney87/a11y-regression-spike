@@ -1,0 +1,23 @@
+{
+  "id": "ras-toast-status-created-populated",
+  "patternId": "react-admin-simple--toast-region-created-populated",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-toast-status-created-populated.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "toast-region-created-populated: Toast region rendered only when populated (Admin notification: a custom notification downgrades the Snackbar content from role=\"alert\" to role=\"status\"; the Snackbar mounts its content populated, so a status region is created already filled (creation-time family))"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator toast-region-created-populated",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

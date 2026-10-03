@@ -1,0 +1,15 @@
+{
+  "id": "acrm-drag-only-deal-card",
+  "patternId": "atomic-crm--drag-only-reorder",
+  "operator": "drag-only-reorder",
+  "app": "atomic-crm",
+  "journeyId": "acrm-deals-move-card-keyboard",
+  "target": "Deal card on the deals board: the drag handle is taken out of the tab order, so it cannot be lifted from the keyboard",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/deals/DealCard.tsx",
+      "find": "      {...provided?.dragHandleProps}\n",
+      "replace": "      {...provided?.dragHandleProps}\n      tabIndex={-1}\n"
+    }
+  ]
+}

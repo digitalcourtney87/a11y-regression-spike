@@ -1,0 +1,16 @@
+{
+  "id": "acrm-tab-roles-removed-twin",
+  "patternId": "atomic-crm--tab-roles-removed",
+  "operator": "a11y-improvement",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "target": "Contact page tab list given an accessible name (aria-label=\"Contact sections\")",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactShow.tsx",
+      "find": "<TabsList className=\"grid w-full grid-cols-3 h-10\">",
+      "replace": "<TabsList className=\"grid w-full grid-cols-3 h-10\" aria-label=\"Contact sections\">"
+    }
+  ],
+  "twinOf": "acrm-tab-roles-removed"
+}

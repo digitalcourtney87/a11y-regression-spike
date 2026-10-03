@@ -1,0 +1,15 @@
+{
+  "id": "ras-heading-removed-custom-page",
+  "patternId": "react-admin-simple--landmark-or-heading-removed",
+  "operator": "landmark-or-heading-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-custom-page-heading",
+  "target": "Custom posts page (/custom2): its h1 is removed, so NEXT_HEADING cannot reach the page heading",
+  "edits": [
+    {
+      "file": "src/customRouteLayout.tsx",
+      "find": "            <h1>{title}</h1>\n",
+      "replace": ""
+    }
+  ]
+}

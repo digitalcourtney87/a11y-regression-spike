@@ -1,0 +1,14 @@
+{
+  "id": "carbon-18824",
+  "stack": "react",
+  "package": "@carbon/react",
+  "versions": [
+    "1.53.1",
+    "1.54.0"
+  ],
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "issue": "https://github.com/carbon-design-system/carbon/issues/18824"
+}

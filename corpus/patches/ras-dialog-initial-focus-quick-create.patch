@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
+index 35eae3b..8cbd6dd 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
+@@ -47,6 +47,7 @@ const PostQuickCreate = props => {
+     return (
+         <Dialog
+             data-testid="dialog-add-post"
++            disableAutoFocus
+             open
+             fullWidth
+             onClose={onCancel}

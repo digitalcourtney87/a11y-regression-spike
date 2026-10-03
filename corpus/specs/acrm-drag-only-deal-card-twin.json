@@ -1,0 +1,16 @@
+{
+  "id": "acrm-drag-only-deal-card-twin",
+  "patternId": "atomic-crm--drag-only-reorder",
+  "operator": "class-rename",
+  "app": "atomic-crm",
+  "journeyId": "acrm-deals-move-card-keyboard",
+  "target": "Deal card: its outer class gains a semantic-free name (cursor-pointer deal-card)",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/deals/DealCard.tsx",
+      "find": "      className=\"cursor-pointer\"\n",
+      "replace": "      className=\"cursor-pointer deal-card\"\n"
+    }
+  ],
+  "twinOf": "acrm-drag-only-deal-card"
+}

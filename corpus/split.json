@@ -1,0 +1,181 @@
+{
+  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment.",
+  "batches": [
+    {
+      "name": "spa-regression",
+      "seed": 20261004,
+      "testFraction": 0.7,
+      "strata": {
+        "regression:ANNOUNCEMENT_DUPLICATED": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:ANNOUNCEMENT_MISSING": {
+          "dev": 3,
+          "test": 7
+        },
+        "regression:FOCUS_ESCAPES_DIALOG": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:FOCUS_NOT_MOVED": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:FOCUS_NOT_RESTORED": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:INTERACTION_FAILS_UNDER_AT": {
+          "dev": 1,
+          "test": 4
+        },
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:KEYBOARD_TRAP": {
+          "dev": 1,
+          "test": 3
+        },
+        "regression:NAME_NOT_CONVEYED": {
+          "dev": 2,
+          "test": 6
+        },
+        "regression:NAV_TARGET_UNREACHABLE": {
+          "dev": 2,
+          "test": 4
+        },
+        "regression:ROLE_NOT_CONVEYED": {
+          "dev": 2,
+          "test": 6
+        },
+        "regression:STATE_NOT_CONVEYED": {
+          "dev": 2,
+          "test": 6
+        }
+      }
+    },
+    {
+      "name": "oss-regression",
+      "seed": 20261004,
+      "testFraction": 0.7,
+      "strata": {
+        "regression:FOCUS_ESCAPES_DIALOG": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:FOCUS_NOT_RESTORED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:INTERACTION_FAILS_UNDER_AT": {
+          "dev": 1,
+          "test": 1
+        },
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:KEYBOARD_TRAP": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:NAME_NOT_CONVEYED": {
+          "dev": 1,
+          "test": 1
+        },
+        "regression:ROLE_NOT_CONVEYED": {
+          "dev": 0,
+          "test": 1
+        },
+        "regression:STATE_NOT_CONVEYED": {
+          "dev": 1,
+          "test": 1
+        }
+      }
+    }
+  ],
+  "assignments": {
+    "atomic-crm--action-tabindex-removed": "test",
+    "atomic-crm--aria-modal-removed": "dev",
+    "atomic-crm--busy-left-true": "test",
+    "atomic-crm--button-to-div": "test",
+    "atomic-crm--checked-stale": "dev",
+    "atomic-crm--combobox-keyboard-broken": "test",
+    "atomic-crm--combobox-role-removed": "test",
+    "atomic-crm--dialog-containment-removed": "test",
+    "atomic-crm--dialog-focus-not-restored": "test",
+    "atomic-crm--dialog-initial-focus-removed": "test",
+    "atomic-crm--dialog-labelledby-removed": "test",
+    "atomic-crm--drag-only-reorder": "dev",
+    "atomic-crm--error-not-announced": "test",
+    "atomic-crm--escape-not-closing": "dev",
+    "atomic-crm--expanded-not-updated": "test",
+    "atomic-crm--field-label-disassociated": "test",
+    "atomic-crm--focus-left-on-removed": "test",
+    "atomic-crm--heading-to-div": "test",
+    "atomic-crm--icon-button-label-removed": "dev",
+    "atomic-crm--image-alt-removed": "test",
+    "atomic-crm--invalid-missing": "test",
+    "atomic-crm--landmark-or-heading-removed": "test",
+    "atomic-crm--live-region-hidden-ancestor": "dev",
+    "atomic-crm--live-region-removed": "test",
+    "atomic-crm--live-update-repeated": "test",
+    "atomic-crm--menu-focus-not-restored": "test",
+    "atomic-crm--navigation-hidden": "test",
+    "atomic-crm--pointer-only-activation": "test",
+    "atomic-crm--required-field-unnamed": "test",
+    "atomic-crm--selected-stale": "dev",
+    "atomic-crm--submit-pointer-only": "dev",
+    "atomic-crm--tab-roles-removed": "dev",
+    "atomic-crm--tab-swallowed": "test",
+    "atomic-crm--toast-duplicated": "test",
+    "atomic-crm--toast-region-created-populated": "test",
+    "oss--blueprint-6163": "test",
+    "oss--bootstrap-35496": "test",
+    "oss--carbon-18824": "test",
+    "oss--carbon-19563": "dev",
+    "oss--carbon-5623": "test",
+    "oss--carbon-7253": "test",
+    "oss--fluent-35927": "dev",
+    "oss--fluent-7796": "test",
+    "oss--rac-8697": "dev",
+    "oss--radix-4014": "test",
+    "oss--vuetify-9627": "test",
+    "react-admin-simple--action-tabindex-removed": "test",
+    "react-admin-simple--aria-modal-removed": "test",
+    "react-admin-simple--busy-left-true": "test",
+    "react-admin-simple--button-to-div": "dev",
+    "react-admin-simple--checked-stale": "test",
+    "react-admin-simple--combobox-keyboard-broken": "test",
+    "react-admin-simple--combobox-role-removed": "test",
+    "react-admin-simple--dialog-containment-removed": "test",
+    "react-admin-simple--dialog-focus-not-restored": "dev",
+    "react-admin-simple--dialog-initial-focus-removed": "dev",
+    "react-admin-simple--dialog-labelledby-removed": "dev",
+    "react-admin-simple--error-not-announced": "test",
+    "react-admin-simple--escape-not-closing": "test",
+    "react-admin-simple--expanded-not-updated": "test",
+    "react-admin-simple--field-label-disassociated": "test",
+    "react-admin-simple--focus-left-on-removed": "test",
+    "react-admin-simple--heading-to-div": "test",
+    "react-admin-simple--icon-button-label-removed": "test",
+    "react-admin-simple--image-alt-removed": "test",
+    "react-admin-simple--invalid-missing": "test",
+    "react-admin-simple--landmark-or-heading-removed": "dev",
+    "react-admin-simple--live-region-hidden-ancestor": "test",
+    "react-admin-simple--live-region-removed": "dev",
+    "react-admin-simple--live-update-repeated": "test",
+    "react-admin-simple--menu-focus-not-restored": "test",
+    "react-admin-simple--navigation-hidden": "dev",
+    "react-admin-simple--pointer-only-activation": "test",
+    "react-admin-simple--required-field-unnamed": "test",
+    "react-admin-simple--selected-stale": "test",
+    "react-admin-simple--submit-pointer-only": "test",
+    "react-admin-simple--tab-roles-removed": "test",
+    "react-admin-simple--tab-swallowed": "test",
+    "react-admin-simple--toast-duplicated": "dev",
+    "react-admin-simple--toast-region-created-populated": "dev"
+  }
+}

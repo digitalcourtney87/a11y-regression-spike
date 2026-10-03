@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/dataProvider.tsx b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
+index 362c22e..58ed20d 100644
+--- a/fixtures/spa/react-admin-simple/src/dataProvider.tsx
++++ b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
+@@ -10,6 +10,7 @@ const defaultDataProvider = fakeRestProvider(data, true, 300);
+ const dataProvider = withLifecycleCallbacks(defaultDataProvider, [
+     {
+         resource: 'posts',
++        afterUpdate: async result => result,
+         beforeDelete: async ({ id }, dp) => {
+             // delete related comments
+             const { data: comments } = await dp.getList('comments', {

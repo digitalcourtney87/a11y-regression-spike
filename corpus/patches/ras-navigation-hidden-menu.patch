@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/Layout.tsx b/fixtures/spa/react-admin-simple/src/Layout.tsx
+index 4935a4e..5f38d0a 100644
+--- a/fixtures/spa/react-admin-simple/src/Layout.tsx
++++ b/fixtures/spa/react-admin-simple/src/Layout.tsx
+@@ -17,7 +17,7 @@ const MyAppBar = () => (
+ );
+ 
+ const MyMenu = () => (
+-    <Menu>
++    <Menu aria-hidden="true">
+         <Menu.ResourceItem name="posts" keyboardShortcut="g>p" />
+         <Menu.ResourceItem name="comments" keyboardShortcut="g>c" />
+         <Menu.ResourceItem name="tags" keyboardShortcut="g>t" />

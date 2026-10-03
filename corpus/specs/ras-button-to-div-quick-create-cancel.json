@@ -1,0 +1,20 @@
+{
+  "id": "ras-button-to-div-quick-create-cancel",
+  "patternId": "react-admin-simple--button-to-div",
+  "operator": "button-to-div",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-cancel",
+  "target": "Cancel button of the post quick-create dialog becomes a focusable div with a click handler",
+  "edits": [
+    {
+      "file": "src/comments/PostQuickCreateCancelButton.tsx",
+      "find": "        <Button\n            sx={{ margin: '10px 24px', position: 'relative' }}\n            onClick={onClick}\n        >",
+      "replace": "        <div\n            tabIndex={0}\n            style={{ margin: '10px 24px', position: 'relative', cursor: 'pointer' }}\n            onClick={onClick}\n        >"
+    },
+    {
+      "file": "src/comments/PostQuickCreateCancelButton.tsx",
+      "find": "        </Button>\n",
+      "replace": "        </div>\n"
+    }
+  ]
+}

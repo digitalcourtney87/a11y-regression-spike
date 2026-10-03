@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Layout.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Layout.tsx
+index 7732c49..b843c88 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Layout.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/layout/Layout.tsx
+@@ -20,7 +20,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
+           </Suspense>
+         </ErrorBoundary>
+       </main>
+-      <Notification />
++      <div className="notification-container">
++        <Notification />
++      </div>
+     </DataImportProvider>
+   );
+ };

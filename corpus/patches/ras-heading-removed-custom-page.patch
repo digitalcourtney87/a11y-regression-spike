@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/customRouteLayout.tsx b/fixtures/spa/react-admin-simple/src/customRouteLayout.tsx
+index 63436a8..577b4aa 100644
+--- a/fixtures/spa/react-admin-simple/src/customRouteLayout.tsx
++++ b/fixtures/spa/react-admin-simple/src/customRouteLayout.tsx
+@@ -14,7 +14,6 @@ const CustomRouteLayout = ({ title = 'Posts' }) => {
+     return !isPending ? (
+         <div>
+             <Title title="Example Admin" />
+-            <h1>{title}</h1>
+             <p>
+                 Found <span className="total">{total}</span> posts !
+             </p>

@@ -1,0 +1,28 @@
+diff --git a/fixtures/spa/react-admin-simple/index.html b/fixtures/spa/react-admin-simple/index.html
+index 38e921c..a10b4da 100644
+--- a/fixtures/spa/react-admin-simple/index.html
++++ b/fixtures/spa/react-admin-simple/index.html
+@@ -88,6 +88,7 @@
+         </style>
+     </head>
+     <body>
++        <div id="save-announcer" role="status" style="position: absolute; left: -9999px"></div>
+         <div id="root">
+             <div class="initialLoader">
+                 <div class="circle">
+diff --git a/fixtures/spa/react-admin-simple/src/dataProvider.tsx b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
+index 362c22e..06f381b 100644
+--- a/fixtures/spa/react-admin-simple/src/dataProvider.tsx
++++ b/fixtures/spa/react-admin-simple/src/dataProvider.tsx
+@@ -10,6 +10,11 @@ const defaultDataProvider = fakeRestProvider(data, true, 300);
+ const dataProvider = withLifecycleCallbacks(defaultDataProvider, [
+     {
+         resource: 'posts',
++        afterUpdate: async result => {
++            const announcer = document.getElementById('save-announcer');
++            if (announcer) announcer.textContent = 'Element updated';
++            return result;
++        },
+         beforeDelete: async ({ id }, dp) => {
+             // delete related comments
+             const { data: comments } = await dp.getList('comments', {

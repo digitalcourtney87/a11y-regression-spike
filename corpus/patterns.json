@@ -1,0 +1,701 @@
+{
+  "patterns": [
+    {
+      "id": "atomic-crm--icon-button-label-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "icon-button-label-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--field-label-disassociated",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "field-label-disassociated",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--dialog-labelledby-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "dialog-labelledby-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--image-alt-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "image-alt-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--button-to-div",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "button-to-div",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--tab-roles-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "tab-roles-removed",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--heading-to-div",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "heading-to-div",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--combobox-role-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "combobox-role-removed",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--expanded-not-updated",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "expanded-not-updated",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--checked-stale",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--invalid-missing",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "invalid-missing",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--selected-stale",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "selected-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--toast-region-created-populated",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "toast-region-created-populated",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--live-region-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "live-region-removed",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--busy-left-true",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "busy-left-true",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--live-region-hidden-ancestor",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "live-region-hidden-ancestor",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--error-not-announced",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "error-not-announced",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--toast-duplicated",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "toast-duplicated",
+      "stratum": "regression:ANNOUNCEMENT_DUPLICATED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--live-update-repeated",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "live-update-repeated",
+      "stratum": "regression:ANNOUNCEMENT_DUPLICATED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--dialog-initial-focus-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "dialog-initial-focus-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--route-focus-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "route-focus-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "dropped",
+      "note": "Dropped from the base alone: Atomic CRM moves no focus on a route change (its only focus() calls are in the filter form and mobile views), so there is no focus move to remove."
+    },
+    {
+      "id": "atomic-crm--focus-left-on-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "focus-left-on-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--dialog-focus-not-restored",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "dialog-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--menu-focus-not-restored",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "menu-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--dialog-containment-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "dialog-containment-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--aria-modal-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "aria-modal-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "dropped",
+      "note": "Dropped from the base alone, after the split: Atomic CRM's dialogs are Radix Dialog, which makes the background inert with aria-hidden (hideOthers) instead of aria-modal, bundled with the focus trap; \"aria-modal removed while containment stays\" cannot be expressed without patching the library, and modal={false} is the containment-removed mechanism (a separate pattern)."
+    },
+    {
+      "id": "atomic-crm--tab-swallowed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "tab-swallowed",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--escape-not-closing",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "escape-not-closing",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--action-tabindex-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "action-tabindex-removed",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--landmark-or-heading-removed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "landmark-or-heading-removed",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--navigation-hidden",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "navigation-hidden",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--pointer-only-activation",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "pointer-only-activation",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--drag-only-reorder",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "drag-only-reorder",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--combobox-keyboard-broken",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "combobox-keyboard-broken",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--route-change-silent",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "route-change-silent",
+      "stratum": "regression:ROUTE_CHANGE_SILENT",
+      "status": "dropped",
+      "note": "Dropped from the base alone: Atomic CRM conveys no route change (no focus move, no live announcement), so there is nothing to silence."
+    },
+    {
+      "id": "atomic-crm--submit-pointer-only",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "submit-pointer-only",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned"
+    },
+    {
+      "id": "atomic-crm--required-field-unnamed",
+      "batch": "spa-regression",
+      "context": "atomic-crm",
+      "operator": "required-field-unnamed",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--icon-button-label-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "icon-button-label-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--field-label-disassociated",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "field-label-disassociated",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--dialog-labelledby-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "dialog-labelledby-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--image-alt-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "image-alt-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--button-to-div",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "button-to-div",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--tab-roles-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "tab-roles-removed",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--heading-to-div",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "heading-to-div",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--combobox-role-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "combobox-role-removed",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--expanded-not-updated",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "expanded-not-updated",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--checked-stale",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--invalid-missing",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "invalid-missing",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--selected-stale",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "selected-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--toast-region-created-populated",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "toast-region-created-populated",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--live-region-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "live-region-removed",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--busy-left-true",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "busy-left-true",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--live-region-hidden-ancestor",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "live-region-hidden-ancestor",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--error-not-announced",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "error-not-announced",
+      "stratum": "regression:ANNOUNCEMENT_MISSING",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--toast-duplicated",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "toast-duplicated",
+      "stratum": "regression:ANNOUNCEMENT_DUPLICATED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--live-update-repeated",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "live-update-repeated",
+      "stratum": "regression:ANNOUNCEMENT_DUPLICATED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--dialog-initial-focus-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "dialog-initial-focus-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--route-focus-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "route-focus-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "dropped",
+      "note": "Dropped from the base alone: react-admin moves no focus on a route change, and the example adds none."
+    },
+    {
+      "id": "react-admin-simple--focus-left-on-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "focus-left-on-removed",
+      "stratum": "regression:FOCUS_NOT_MOVED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--dialog-focus-not-restored",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "dialog-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--menu-focus-not-restored",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "menu-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--dialog-containment-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "dialog-containment-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--aria-modal-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "aria-modal-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--tab-swallowed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "tab-swallowed",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--escape-not-closing",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "escape-not-closing",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--action-tabindex-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "action-tabindex-removed",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--landmark-or-heading-removed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "landmark-or-heading-removed",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--navigation-hidden",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "navigation-hidden",
+      "stratum": "regression:NAV_TARGET_UNREACHABLE",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--pointer-only-activation",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "pointer-only-activation",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--drag-only-reorder",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "drag-only-reorder",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "dropped",
+      "note": "Dropped from the base alone: the example has no drag-and-drop interface."
+    },
+    {
+      "id": "react-admin-simple--combobox-keyboard-broken",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "combobox-keyboard-broken",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--route-change-silent",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "route-change-silent",
+      "stratum": "regression:ROUTE_CHANGE_SILENT",
+      "status": "dropped",
+      "note": "Dropped from the base alone: react-admin conveys no route change (no focus move, no live announcement), and the example adds none."
+    },
+    {
+      "id": "react-admin-simple--submit-pointer-only",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "submit-pointer-only",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned"
+    },
+    {
+      "id": "react-admin-simple--required-field-unnamed",
+      "batch": "spa-regression",
+      "context": "react-admin-simple",
+      "operator": "required-field-unnamed",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned"
+    },
+    {
+      "id": "oss--radix-4014",
+      "batch": "oss-regression",
+      "context": "oss:radix-ui/primitives#4014",
+      "operator": "escape-not-closing",
+      "stratum": "regression:KEYBOARD_TRAP",
+      "status": "planned",
+      "note": "@radix-ui/react-dismissable-layer 1.1.13 to 1.1.14: Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2"
+    },
+    {
+      "id": "oss--rac-8697",
+      "batch": "oss-regression",
+      "context": "oss:adobe/react-spectrum#8697",
+      "operator": "mined",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned",
+      "note": "react-aria-components 1.10.0 to 1.11.0: Menu item links do nothing on Enter"
+    },
+    {
+      "id": "oss--bootstrap-35496",
+      "batch": "oss-regression",
+      "context": "oss:twbs/bootstrap#35496",
+      "operator": "menu-focus-not-restored",
+      "stratum": "regression:FOCUS_NOT_RESTORED",
+      "status": "planned",
+      "note": "bootstrap 5.0.2 to 5.1.0: Escape in a dropdown no longer returns focus to the toggle"
+    },
+    {
+      "id": "oss--fluent-35927",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#35927",
+      "operator": "mined",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@fluentui/react-badge 9.4.15 to 9.5.0: PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)"
+    },
+    {
+      "id": "oss--fluent-7796",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#7796",
+      "operator": "mined",
+      "stratum": "regression:ROLE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "office-ui-fabric-react 6.124.2 to 6.125.0: DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)"
+    },
+    {
+      "id": "oss--carbon-19563",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#19563",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@carbon/web-components 2.28.0 to 2.29.0: Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070)"
+    },
+    {
+      "id": "oss--carbon-18824",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#18824",
+      "operator": "checked-stale",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@carbon/react 1.53.1 to 1.54.0: Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported"
+    },
+    {
+      "id": "oss--carbon-7253",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#7253",
+      "operator": "icon-button-label-removed",
+      "stratum": "regression:NAME_NOT_CONVEYED",
+      "status": "planned",
+      "note": "carbon-components 10.22.0 to 10.23.0: Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253"
+    },
+    {
+      "id": "oss--carbon-5623",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#5623",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "carbon-components-react 7.9.3 to 7.10.0: Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)"
+    },
+    {
+      "id": "oss--vuetify-9627",
+      "batch": "oss-regression",
+      "context": "oss:vuetifyjs/vuetify#9627",
+      "operator": "dialog-containment-removed",
+      "stratum": "regression:FOCUS_ESCAPES_DIALOG",
+      "status": "planned",
+      "note": "vuetify 2.0.14 to 2.0.15: VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10)"
+    },
+    {
+      "id": "oss--blueprint-6163",
+      "batch": "oss-regression",
+      "context": "oss:palantir/blueprint#6163",
+      "operator": "mined",
+      "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
+      "status": "planned",
+      "note": "@blueprintjs/select 4.9.14 to 4.9.15: Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it"
+    }
+  ]
+}

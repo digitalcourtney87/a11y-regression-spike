@@ -1,0 +1,12 @@
+{
+  "id": "bootstrap-35496",
+  "stack": "vanilla",
+  "package": "bootstrap",
+  "versions": [
+    "5.0.2",
+    "5.1.0",
+    "5.1.3"
+  ],
+  "dependencies": {},
+  "issue": "https://github.com/twbs/bootstrap/issues/35496"
+}

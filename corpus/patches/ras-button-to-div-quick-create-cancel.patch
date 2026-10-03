@@ -1,0 +1,22 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
+index 550f8bc..72d6d7d 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
+@@ -12,13 +12,14 @@ const PostQuickCreateCancelButton = ({
+     const translate = useTranslate();
+ 
+     return (
+-        <Button
+-            sx={{ margin: '10px 24px', position: 'relative' }}
++        <div
++            tabIndex={0}
++            style={{ margin: '10px 24px', position: 'relative', cursor: 'pointer' }}
+             onClick={onClick}
+         >
+             <IconCancel sx={{ paddingRight: '0.5em' }} />
+             {label && translate(label, { _: label })}
+-        </Button>
++        </div>
+     );
+ };
+ 

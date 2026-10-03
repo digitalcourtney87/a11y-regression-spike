@@ -246,3 +246,36 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | B2 signatures | 10 of 10 matched; every platform component by AutomationId |
 | NVDA-present leg (speech) | K1–K5 conveyed in 10 of 10 |
 | Re-scoring the five earlier M2 runs | No verdict, grade or order changed; the record-only table gains the "No B2 trace" column (0 everywhere) |
+
+### M3: corpus SPAs and the first dev items (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m3-spa-probe.yml` run [37126215365](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37126215365) (candidates); `m3-spa-build.yml` runs [37129009688](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37129009688) (Atomic CRM vendored), [37129580999](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37129580999) (both apps) and [37130160420](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37130160420) (both apps and the 17 dev patches); image `win25-vs2026` 20260925.250.1.
+**Affects:** DR-0056 to DR-0060 (P14–P19).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| Candidates, offline | Atomic CRM (as shipped): 83 requests to `marmelab.com` (logos, avatars, telemetry), no page error. react-admin simple: 2 (telemetry, Google fonts), no page error. TanStack kitchen sink: its data request to `jsonplaceholder.typicode.com` fails offline |
+| Vendored and integrated | Atomic CRM: install 23–32 s, build 9 s; react-admin simple: install 30 s, build 2 s. Both: no outside request, no console error, and identical ARIA snapshots across two fresh loads at a fixed clock on every path probed (4 and 3 paths) |
+| Atomic CRM build | The first build failed: the app imports `CHANGELOG.md` as text for its changelog page; vendored afterwards |
+| react-admin lockfile | Generated in CI: 284 packages, all from `registry.npmjs.org`, every one with an integrity hash; react-admin 5.15.4, MUI 5.18.0, React 18.3.1 |
+| Dev patches | 17 of 17 apply, build and load offline with no page error, and revert cleanly |
+| Open-source survey | Title-only search of 12 libraries: about 15 plausible accessibility regressions (`docs/research/2026-10-03-oss-regression-survey.md`) |
+
+### M3: reproducing mined open-source pairs (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** `m3-oss-repro.yml` runs [37131615681](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37131615681), [37132740948](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37132740948), [37133618945](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37133618945) and [37134051657](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134051657).
+**Affects:** DR-0063 (P21, P22).
+**Confidence:** observed.
+
+| Observation | Result |
+|---|---|
+| First run | 1 of 12 fixtures reproduced cleanly (bootstrap-35496). Most fixtures did not set up the issue's scenario: a click that never reached the control, a selector the library overwrote (`useRole` replaces the reference's `id`), or a missing precondition (a user tick before a programmatic change; state that changes after mount) |
+| Install date | One shared `--before` date per fixture made react-aria-components 1.10.0 fail to build (a missing export from a later `@react-aria/utils`); each release now installs as of its own publish date plus one day |
+| Verified | 11 pairs reproduce on both paths; every fixed release tested holds again |
+| Not reproduced | rac-8298 in three fixtures; floating-2874 holds on the keyboard path (pointer-only by its mechanism) |
+| Outside requests | None, except carbon-7253 (2 font requests from the Carbon CSS, blocked, no page error) |
+| After the split (run [37134734243](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37134734243)) | Only the 3 dev fixtures ran. Each pair reproduced a third time, and the three benign twins (wrapper-added, css-only, css-only) kept the checked behaviour on both paths |
+

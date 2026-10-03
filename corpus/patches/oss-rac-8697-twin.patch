@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/rac-8697/src/main.jsx b/fixtures/oss/rac-8697/src/main.jsx
+index c756b04..3c8a936 100644
+--- a/fixtures/oss/rac-8697/src/main.jsx
++++ b/fixtures/oss/rac-8697/src/main.jsx
+@@ -8,7 +8,7 @@ createRoot(document.getElementById("root")).render(
+     <p id="where">{location.pathname}</p>
+     <MenuTrigger>
+       <Button id="trigger">Links</Button>
+-      <Popover style={{ background: "white", border: "1px solid" }}>
++      <Popover style={{ background: "white", border: "1px solid", borderRadius: 4, padding: 4 }}>
+         <Menu aria-label="Links">
+           <MenuItem href="/adobe">Adobe</MenuItem>
+           <MenuItem href="/apple">Apple</MenuItem>

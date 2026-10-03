@@ -1,0 +1,16 @@
+{
+  "id": "ras-dialog-focus-not-restored-preview-twin",
+  "patternId": "react-admin-simple--dialog-focus-not-restored",
+  "operator": "class-rename",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "target": "Post preview dialog given a class name",
+  "edits": [
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        data-testid=\"dialog-show-post\"\n",
+      "replace": "                        data-testid=\"dialog-show-post\"\n                        className=\"post-preview-dialog\"\n"
+    }
+  ],
+  "twinOf": "ras-dialog-focus-not-restored-preview"
+}

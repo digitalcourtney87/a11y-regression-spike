@@ -1,0 +1,23 @@
+{
+  "id": "ras-heading-removed-custom-page",
+  "patternId": "react-admin-simple--landmark-or-heading-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-custom-page-heading",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-heading-removed-custom-page.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAV_TARGET_UNREACHABLE",
+    "mechanism": "landmark-or-heading-removed: Landmark or heading removed, so a declared strategy cannot reach the target (Custom posts page (/custom2): its h1 is removed, so NEXT_HEADING cannot reach the page heading)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator landmark-or-heading-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

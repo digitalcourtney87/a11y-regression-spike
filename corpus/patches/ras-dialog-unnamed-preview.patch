@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx b/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
+index 35e02c4..3d7915f 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
+@@ -64,9 +64,8 @@ const PostReferenceInput = () => {
+                         fullWidth
+                         open={showPreviewDialog}
+                         onClose={handleCloseShow}
+-                        aria-label={translate('simple.create-post')}
+                     >
+-                        <DialogTitle>
++                        <DialogTitle id="post-preview-heading">
+                             {translate('simple.create-post')}
+                         </DialogTitle>
+                         <DialogContent>

@@ -1,0 +1,16 @@
+{
+  "id": "oss-rac-8697-twin",
+  "patternId": "oss--rac-8697",
+  "operator": "css-only",
+  "app": "oss/rac-8697",
+  "journeyId": "oss-rac-8697",
+  "target": "The links menu's popover given rounded corners and padding (no animation)",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<Popover style={{ background: \"white\", border: \"1px solid\" }}>",
+      "replace": "<Popover style={{ background: \"white\", border: \"1px solid\", borderRadius: 4, padding: 4 }}>"
+    }
+  ],
+  "twinOf": "oss-rac-8697"
+}

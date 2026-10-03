@@ -1,0 +1,22 @@
+{
+  "id": "acrm-submit-pointer-only-save-twin",
+  "patternId": "atomic-crm--submit-pointer-only",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-save",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-submit-pointer-only-save-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "EQUIVALENT_REFACTOR"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator equivalent-refactor",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

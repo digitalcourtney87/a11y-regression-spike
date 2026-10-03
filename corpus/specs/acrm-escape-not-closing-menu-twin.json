@@ -1,0 +1,17 @@
+{
+  "id": "acrm-escape-not-closing-menu-twin",
+  "patternId": "atomic-crm--escape-not-closing",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions-escape",
+  "target": "Shared DropdownMenuContent: minimum width changed (min-w-[8rem] to min-w-[9rem])",
+  "edits": [
+    {
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "find": "min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin)",
+      "replace": "min-w-[9rem] origin-(--radix-dropdown-menu-content-transform-origin)",
+      "occurrence": 1
+    }
+  ],
+  "twinOf": "acrm-escape-not-closing-menu"
+}

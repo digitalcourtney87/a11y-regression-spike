@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/carbon-19563/index.html b/fixtures/oss/carbon-19563/index.html
+index ed83059..5bf5dc3 100644
+--- a/fixtures/oss/carbon-19563/index.html
++++ b/fixtures/oss/carbon-19563/index.html
+@@ -5,7 +5,7 @@
+     <title>carbon-19563</title>
+   </head>
+   <body>
+-    <cds-checkbox id="cb">Show archived</cds-checkbox>
++    <div class="filters"><cds-checkbox id="cb">Show archived</cds-checkbox></div>
+     <button id="clear" type="button">Clear filters</button>
+     <script type="module" src="/src/main.js"></script>
+   </body>

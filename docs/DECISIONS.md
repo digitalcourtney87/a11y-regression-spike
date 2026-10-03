@@ -92,12 +92,21 @@ Conventions:
 | [DR-0053](#dr-0053-m2-build-listener-integration-and-b2-signatures) | M2 build: listener integration and B2 signatures | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P12 and P13 approved by the owner (DR-0055) | DR-0055 | Resolved (P12, P13, DR-0055) |
 | [DR-0054](#dr-0054-g2-runs-diagnostic-and-evidence-archive) | G2 runs, diagnostic and evidence archive | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0055](#dr-0055-owner-approvals-at-the-g2-gate) | Owner approvals at the G2 gate | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0056](#dr-0056-m3-start-spa-evaluation-corpus-scaffolding-and-the-corpus-plan) | M3 start: SPA evaluation, corpus scaffolding and the corpus plan | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P14–P17 approved, P18 skipped (DR-0057) | DR-0057 | Resolved (DR-0057) |
+| [DR-0057](#dr-0057-owner-approvals-for-the-m3-corpus) | Owner approvals for the M3 corpus | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0058](#dr-0058-m3-spa-integrated-tooling-and-the-pattern-count) | M3: SPA integrated, tooling, and the pattern count | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P19 approved (DR-0059) | DR-0059 | Resolved (DR-0059) |
+| [DR-0059](#dr-0059-a-second-spa-and-the-dev-split-specs) | A second SPA, and the dev-split specs | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
+| [DR-0060](#dr-0060-dev-split-specs-for-the-spa-regression-batch) | Dev-split specs for the SPA regression batch | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0061](#dr-0061-benign-corpus-design) | Benign corpus design | Accepted | 2026-10-03 | P20, approved by the owner 2026-10-03 (DR-0062) | DR-0062 | Resolved (P20, DR-0062) |
+| [DR-0062](#dr-0062-owner-approval-of-p20-and-the-mining-pass) | Owner approval of P20, and the mining pass | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
+| [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P21 and P22 approved by the owner 2026-10-03 (DR-0064) | DR-0064 | Resolved (P21, P22, DR-0064) |
+| [DR-0064](#dr-0064-owner-approval-of-p21-and-p22-and-the-oss-regression-split) | Owner approval of P21 and P22, and the oss-regression split | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). No items are pending; a new hard-rule-12 item is added here when it arises.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). No items are pending.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -114,6 +123,15 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P11 | **Resolved (approved by the owner 2026-10-03, DR-0052).** ratify the canary speech-matching rule of DR-0048 (letters-and-digits containment; K3 needs the name immediately followed by the role) | DR-0048 | What counts as detection (canary outcomes; G1's result rests on it) | No longer pending | Approved as recommended |
 | P12 | **Resolved (approved by the owner 2026-10-03, DR-0055).** the operational B2 signatures of DR-0053 as narrowed by the G2 gate review: identity by AutomationId, with name, AriaRole or MSAA role only for events without one, no LiveSetting, and browser-frame events excluded (P3); the gating components for K1–K5 (K4 including SHOW on the dialog); the record-only traces for K6 and K7 ("separate update"; K7 order per event type); and "same frame" as the same task or a rAF fill within one 60 Hz frame, with other fills under 50 ms routed to REVIEW (timeline version 2; version 1 records keep the pre-registered one-frame threshold). Every listener event and the whole DOM timeline are kept per attempt, so another reading can be re-scored without new runs | DR-0053 | What counts as detection (G2's result rests on it) | No longer pending | Approved as recommended |
 | P13 | **Resolved (approved by the owner 2026-10-03, DR-0055).** only a setup error before activation (browser launch, page load, process or window lookup) makes an attempt INCONCLUSIVE (`ENV_FAILURE`); a failure of the B2 listener (start, fewer hooks than ranges, ping, stop, not drained) or any error after activation counts as a failure. Implemented in the G2 gate-review fix; `ENV_FAILURE` for setup errors has been in the runner since M1 without an owner decision | DR-0053 | What counts as INCONCLUSIVE (D12, DR-0032) | No longer pending | Approved as recommended |
+| P14 | **Resolved (approved by the owner 2026-10-03, DR-0057).** the M3 SPA is Atomic CRM's demo build (`marmelab/atomic-crm` at `b23289b`, MIT), with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones | DR-0056; `docs/research/2026-10-03-spa-candidates.md` | What is measured (the application the seeded regressions live in) | No longer pending | Approved as recommended |
+| P15 | **Resolved (approved by the owner 2026-10-03, DR-0057).** corpus sizes and split: 110 regression patterns (33 dev, 77 test), benign patterns about 1:1 in each split, one unchanged control per journey, test fraction 0.7 stratified by pattern stratum with seed 20261004; M3 builds the dev split only, and test patterns are built after M5's power table, before the freeze | DR-0056; corpus plan §3 | What is measured (sample sizes and the confirmatory split) | No longer pending | Approved as recommended |
+| P16 | **Resolved (approved by the owner 2026-10-03, DR-0057).** the regression catalogue (37 mechanisms across the 13 primary-analysis symptoms, creation-time family kept) and the benign catalogue (operators per BenignType) of the corpus plan | DR-0056; corpus plan §4–§5 | What is measured (which regressions and benign changes the corpus holds) | No longer pending | Approved as recommended |
+| P17 | **Resolved (approved by the owner 2026-10-03, DR-0057).** vendor about 3 MB of Atomic CRM's source at the pinned commit into `fixtures/spa/atomic-crm/` (agent instruction files excluded), and install its locked dependency tree in CI with install scripts off, `contents: read`, no secrets and a separate npm cache | DR-0056 | Security (third-party code in the repository and in CI) | No longer pending | Approved as recommended |
+| P18 | **Resolved (owner reply 2026-10-03, DR-0057): Prompt to Page exports are skipped for now; no customer defects were offered, so there are no reconstructed items for now.** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | No longer pending | Not adopted for now |
+| P19 | **Resolved (approved by the owner 2026-10-03, DR-0059).** to close the expected shortfall against P15's 110 regression patterns (about 57–67 reachable from the SPA and mined pairs), add react-admin's "simple" example (MIT; evaluated in DR-0056, meets every criterion) as a second SPA context: vendor about 1 MB of its source at the pinned commit, generate its lockfile in CI, and install it in CI under the P17 safeguards. The achievable count is reported again before the split | DR-0058; `docs/research/2026-10-03-oss-regression-survey.md` | What is measured (sample size and the independence of patterns); security (more third-party code) | No longer pending | Approved as recommended |
+| P20 | **Resolved (approved by the owner 2026-10-03, DR-0062).** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | No longer pending | Approved as recommended |
+| P21 | **Resolved (approved by the owner 2026-10-03, DR-0064).** accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; DR-0064; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | No longer pending | Approved as recommended |
+| P22 | **Resolved (approved by the owner 2026-10-03, DR-0064).** keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063; DR-0064 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2670,3 +2688,296 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 - P13: only setup errors before activation are INCONCLUSIVE (`ENV_FAILURE`); a B2 listener failure (start, fewer hooks than ranges, ping, stop, not drained, or malformed output lines) or any error after activation counts as a failure.
 - **Follow-up fixes (Decided by Claude under DR-0045, except the malformed-line rule, approved as part of P13):** the listener reads an event's child object with CHILDID_SELF when MSAA returns one, so a child never takes its parent's identity (listener 0.3.1); timeline version 3 names the element that took focus inside an open shadow root, with the host recorded (a closed root shows only the host); in `report:phase0`, valid attempts with no B2 outcome stay in every component denominator, record-only rows show a "No B2 trace" count, and the re-scoring comparison checks every K7 order field the run-time outcome recorded. Re-scoring the five M2 runs with this code changes no verdict, grade or order; the record-only table gains one column, so a report rebuilt with this code differs from the archived G2 reports only in that column. A Windows verification run checked the code before the follow-up pull request (lab notebook).
 - No owner items are pending after this record.
+
+## DR-0056 M3 start: SPA evaluation, corpus scaffolding and the corpus plan
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except P14–P18 (pending) |
+| Owner label | Decided by Claude under DR-0045; P14–P18 pending |
+| HANDOFF v1.6 | §9 (M3), §10.2 (`CorpusItem`), R1, R5, R6 |
+
+**Context.** The owner unlocked M3 (DR-0055) and asked Claude to start it. M3 selects the SPA after evaluating at least three candidates, integrates de-branded Prompt to Page exports, builds mutation tooling, mines open-source regressions and assigns the split by `patternId`.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| SPA evaluation | Four candidates against the ten HANDOFF criteria (`docs/research/2026-10-03-spa-candidates.md`). Three were built and probed on the gate runner by `m3-spa-probe.yml` (run 37126215365): pinned commits; install and build timed; the production build loaded offline in the pinned Chrome with every outside request blocked and recorded. Angular's Tour of Heroes was assessed from its source only |
+| Probe security | Third-party code runs only on standard runners, with `contents: read`, no secrets, install scripts off, and an npm cache separate from the harness's (never saved). Nothing from the candidates ran on the owner's machine; their metadata were read through the GitHub API |
+| Corpus scaffolding | `harness/src/corpus/`: `validate.ts` checks every item (schema, ids, candidate, patches, split consistency, against `corpus/split.json`); `split.ts` assigns dev or test by pattern, stratified by the pattern's modal expected class, with a recorded seed and mulberry32; `npm run corpus -- validate | split`. The seed and test fraction are an owner decision (P15) and are recorded before the split is run |
+| Corpus plan | Drafted as a proposal (`docs/research/2026-10-03-m3-corpus-plan.md`): scope, sources, sizes, split, catalogues, mutation tooling and mining method. The parts that decide what is measured go to the owner as P14–P18 |
+
+**Consequences.**
+
+- Atomic CRM is recommended (P14). react-admin's example also meets every criterion; TanStack's kitchen sink fails "deterministic data" and lacks a dialog, a status update and a composite widget.
+- No corpus item is built until P14–P18 are answered. Meanwhile Claude builds app-agnostic tooling and the mining search, which run read-only.
+
+## DR-0057 Owner approvals for the M3 corpus
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** Claude put five items to the owner before building corpus items (DR-0056): P14 (Atomic CRM as the SPA), P15 (sizes and split), P16 (regression and benign catalogues), P17 (vendoring Atomic CRM and installing its dependencies in CI) and P18 (Prompt to Page exports and customer defects).
+
+**Decision.**
+
+> Yes to P14–P17; skip P2P for now
+
+**Consequences.**
+
+- P14: the M3 SPA is Atomic CRM's demo build at `b23289b`, with `faker` seeded, the clock fixed in journey setup, telemetry off and remote images replaced by local ones.
+- P15: 110 regression patterns (33 dev, 77 test), benign about 1:1, one unchanged control per journey, test fraction 0.7, stratified, seed 20261004; M3 builds the dev split only.
+- P16: the catalogues of the corpus plan are in force. Without Prompt to Page exports, patterns come from two contexts: the SPA and mined open-source pairs. Whether 110 regression patterns can be reached from those two contexts is reported to the owner once the patterns are enumerated, before the split is run, because a shortfall changes the sample size (what is measured).
+- P17: about 3 MB of Atomic CRM's source is vendored into `fixtures/spa/atomic-crm/` without its agent instruction files, and CI installs its locked dependencies with install scripts off, `contents: read`, no secrets and a separate npm cache.
+- P18: Prompt to Page exports are skipped for now, and there are no reconstructed items for now. Either can be added later as a new owner decision.
+
+## DR-0058 M3: SPA integrated, tooling, and the pattern count
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted, except P19 (pending) |
+| Owner label | Decided by Claude under DR-0045; P19 pending |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** After the owner's approvals (DR-0057), Claude vendored and integrated Atomic CRM, built the mutation tooling and surveyed open-source regressions. DR-0057 asks for the achievable pattern count to be reported before the split, because a shortfall changes the sample size.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Vendoring | Atomic CRM at `b23289b` in `fixtures/spa/atomic-crm/`, unmodified in one commit, integration changes in the next (`UPSTREAM.md` lists them), so every change from upstream is reviewable. Upstream's agent instruction files are left out. The app imports its `CHANGELOG.md` as text, so that file was added after the first CI build failed without it |
+| Integration (P14) | Both `faker` locale instances seeded with 20261004; the CRM's telemetry request off; local placeholder logos and avatars, generated in this repository, replace `marmelab.com` images. The clock is fixed in journey setup |
+| CI build | `m3-spa-build.yml` builds the vendored demo on `windows-2025` and probes it offline with the clock fixed. Run 37129009688: install 23.4 s, build 9.3 s, no outside requests, no console errors, and identical ARIA snapshots across two fresh loads on all four paths probed |
+| Lint scope | ESLint ignores `fixtures/spa/` (third-party code under its own conventions) |
+| Mutation tooling | `harness/src/corpus/catalogue.ts` holds the approved catalogue as data (37 regression operators over the 13 primary-analysis symptoms; one benign operator per BenignType). A spec in `corpus/specs/` names an operator and anchored edits; `npm run corpus -- mutate` writes the patch (paths relative to the repository root) and the corpus item, and checks the patch with `git apply --check` |
+| Mining survey | A first, title-only survey of 12 libraries (`docs/research/2026-10-03-oss-regression-survey.md`): about 15 plausible pairs; 20–30 usable pairs expected after a deeper search and verification |
+
+**The pattern count (P19).** With Prompt to Page set aside, patterns come from the SPA, at most one per mechanism (37), and from mined pairs (about 20–30): about 57–67 regression patterns against P15's 110. At a test fraction of 0.7 that is about 43 test patterns, so the 95% margin at p = 0.15 is about ±0.107, against ±0.08 for 77. The options:
+
+| Option | Patterns (approx.) | Margin at p = 0.15 | Note |
+|---|---|---|---|
+| A. Add react-admin's "simple" example as a second SPA context | 94–104 | about ±0.084 (69 test) | Different component library (MUI) and app, so its patterns are independent of Atomic CRM's; meets every criterion (DR-0056). Recommended |
+| B. Keep two contexts | 57–67 | about ±0.107 (43 test) | Less work; wider intervals |
+| C. Count each component family in the SPA as its own pattern | Over 110 | Looks narrower | Rejected: patterns in one app share code and conventions, so they are not independent, and the bootstrap intervals would be too narrow |
+| D. Bring Prompt to Page back | Depends on exports | – | Needs the owner's exports (P18) |
+
+**Consequences.** No split is run until P19 is answered. Building the dev-split specs on Atomic CRM continues meanwhile, because their patterns exist under every option.
+
+## DR-0059 A second SPA, and the dev-split specs
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 (P19); Decided by Claude under DR-0045 (method details) |
+| HANDOFF v1.6 | §9 (M3), R5 |
+
+**Context.** Claude reported that P15's 110 regression patterns were not reachable from Atomic CRM and mined pairs alone, and proposed a second SPA context (P19, DR-0058).
+
+**Decision.**
+
+> Yes to P19; start the dev-split specs
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Second SPA | react-admin's `examples/simple` at `4789067` vendored into `fixtures/spa/react-admin-simple/` by a sparse, blob-filtered fetch (284 KB, 50 files, no agent instruction files), with the repository's MIT `LICENSE.md`. Integration: the Google web-font loader removed, telemetry off. Its data are static. It has no lockfile; CI generates one with `--package-lock-only` and it is committed after review |
+| Pattern registry | `corpus/patterns.json` lists every planned pattern before any item exists: one per catalogue mechanism per context. Seeded specs and items must name a planned pattern |
+| Split in batches | P15's split (stratified, seed 20261004, test fraction 0.7) is applied per batch: first the SPA regression patterns, later the mined pairs once verified, and benign patterns once planned. A batch never changes an earlier assignment, so dev work can start without leaking into the test split |
+| Drops before the split | Five SPA regression patterns are dropped from the base alone, before the split: `route-focus-removed` and `route-change-silent` in both apps (neither base conveys a route change: no focus move, no announcement), and `drag-only-reorder` in react-admin (no drag-and-drop). A later drop must also rest on the base alone, never on a run's result |
+| Dev only | Specs are written only for dev patterns; test patterns wait for M5's power table (P15) |
+
+**Consequences.**
+
+- The SPA regression batch has 69 planned patterns (74 less 5 dropped) and is split with seed 20261004 at a test fraction of 0.7 after this record is committed.
+- ROUTE_CHANGE_SILENT has no SPA pattern, because neither base conveys route changes. Seeding it would mean adding a route announcer to a base, which changes the application, so that would be a new owner decision. It is reported with the pattern count.
+
+## DR-0060 Dev-split specs for the SPA regression batch
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.6 | §9 (M3) |
+
+**Context.** The split of the SPA regression batch (DR-0059) put 18 patterns in the dev split, nine per app. Each needs a spec realising its catalogue mechanism (P16) in the app's own source.
+
+**Decisions (Decided by Claude under DR-0045).**
+
+| Aspect | Decision |
+|---|---|
+| Dropped after the split | `atomic-crm--aria-modal-removed`, from the base alone: Radix Dialog makes the background inert with `aria-hidden` instead of `aria-modal`, bundled with its focus trap, so "aria-modal removed while containment stays" cannot be expressed without patching the library; `modal={false}` is the containment-removed mechanism, a separate (test) pattern. 17 dev patterns remain |
+| Realisation rule | Each mechanism is realised as the smallest plausible source change in the app's own code (vendored components included, libraries never patched). Shared-component edits are used where a design-system regression is the realistic form (Atomic CRM's shadcn `Checkbox`, `Tabs`, `DropdownMenuContent`, `SaveButton`); one-off edits otherwise. Radix and react-admin apply caller props after their own, so attribute overrides take effect (read from their sources) |
+| Judgement calls | `submit-pointer-only`: the SaveButton saves on `pointerup` only. `button-to-div`: a focusable `div` keeps the target reachable, so the expected symptom is the role, not reachability. `dialog-labelledby-removed` (react-admin): the preview dialog loses both its `aria-label` and its title link. `landmark-or-heading-removed` (react-admin) deletes the custom page's `h1`; the separate `heading-to-div` (test) pattern keeps the text. `toast-duplicated` (react-admin): a global `role="status"` announcer repeats "Element updated", because react-admin gives each notification to a single consumer. `toast-region-created-populated` (react-admin): MUI's Snackbar mounts its content populated, so the realisation downgrades it from `alert` to `status`, a mechanism DR-0013 lists in the creation-time family |
+| Journeys | Each item names the journey that will exercise it; journeys are written in M4, so validation warns about missing journeys until then |
+| Checks in M3 | Every patch applies with `git apply --check`, and CI applies each to its app, builds it and loads it offline (`m3-spa-build.yml`, `patches` job). Whether each base journey holds, and the candidate shows the symptom, is checked when journeys exist (M4, M5); an item whose base expectation fails is dropped on that base-only evidence |
+
+**Consequences.**
+
+- 17 dev items exist: 8 on Atomic CRM, 9 on react-admin's example.
+- The SPA regression batch now has 68 planned patterns (17 dev, 51 test).
+
+## DR-0061 Benign corpus design
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted (P20 approved by the owner on 2026-10-03, DR-0062) |
+| Owner label | P20, approved by the owner 2026-10-03 (DR-0062) |
+| HANDOFF v1.6 | R1, §9 (M3), §10.3 |
+
+**Context.** R1 asks for benign changes at roughly 1:1 with regressions, and P15 said "benign patterns about 1:1 in each split". The benign catalogue has seven operators (one per BenignType) and the corpus has two SPA contexts. If a benign pattern were one operator in one app, as for regressions, there would be 14 benign patterns against about 68 SPA regression patterns, far from 1:1. Splitting benign patterns by target would contradict the independence rule used for regression patterns (DR-0058, option C).
+
+**Options considered.**
+
+| Option | Benign items | Clusters for false FAIL | Note |
+|---|---|---|---|
+| A. Matched twins: one benign item per regression pattern, on the same target and journey, sharing its `patternId` | About 1:1 with regression items | One per pattern (about 68 SPA, plus mined pairs) | The benign change touches exactly what the regression touched, so it is the hardest false-FAIL test; twins inherit the split, so no new split is needed. Recommended |
+| B. One benign pattern per operator per app, many items each | About 1:1 by items | 14 | Few clusters, so the false-FAIL interval is wide |
+| C. A benign pattern per operator per app per target | About 1:1 | Many | Treats same-app targets as independent, the reasoning rejected for regressions |
+
+**Decision.** **Approved by the owner 2026-10-03 (P20; DR-0062):** option A. Unchanged controls stay as approved (one per journey, P15).
+
+**Consequences.** Each regression spec gains a benign twin spec, written for dev patterns only in M3. Patterns become mixed clusters; the split already made is unchanged.
+
+## DR-0062 Owner approval of P20, and the mining pass
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03; Decided by Claude under DR-0045 (mining method) |
+| HANDOFF v1.6 | §9 (M3), R1 |
+
+**Decision.**
+
+> Yes to P20; carry on with the mining pass
+
+**Consequences.**
+
+- The benign corpus is built as matched twins (DR-0061). Twins are written for dev patterns only in M3.
+- The mining pass proceeds under the method below (Decided by Claude under DR-0045). Its ground truth must not come from the arms under test, so a mined pair is verified before its batch is split, and a pair is never dropped after the split because of what a run shows.
+
+| Step | Method |
+|---|---|
+| Search | GitHub issue and pull-request search, read-only and within the API rate limits, over mature component libraries, for closed issues reporting a regression in an accessibility behaviour |
+| Documentary check | The issue or its fix names a broken release and a fixed release (or commits), the fix is merged, both releases are published, the licence is permissive, and the behaviour maps to a primary-analysis symptom |
+| Reproduction check | Before the split: a minimal fixture page with the component, built against each release in CI, and a targeted assertion taken from the issue's own description (for example "`aria-expanded` stays false after opening"), not from any arm's oracle |
+| Batch | Pairs that pass both checks are planned as the `oss-regression` batch and split with seed 20261004 at a test fraction of 0.7 |
+
+## DR-0063 Mined pairs: reproduction method and verification
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 (method and verification rules); P21 (the pattern count) and P22 (keeping the verification rules) approved by the owner 2026-10-03 (DR-0064) |
+| HANDOFF v1.6 | §9 (M3), R1 |
+
+**Context.** DR-0062 set the mining method: a documentary check, then a reproduction check before the batch is split. This record sets out how the reproduction check runs, the rules applied in verification, and the outcome.
+
+**Reproduction method (Decided by Claude under DR-0045).**
+
+| Part | Method |
+|---|---|
+| Fixture | `fixtures/oss/<id>/`: `fixture.json` (package, releases in ascending order with the last good first, exact pinned dependencies, and `override` mode for a transitive package), a minimal `index.html` and `src/`, and `check.mjs`. Nothing third-party runs locally |
+| Install | CI only (`m3-oss-repro.yml`: `contents: read`, no secrets, install scripts off, a separate npm cache that is never saved). Each release installs with `npm install --before=<its publish time + 1 day>`, so it resolves its dependencies as a user installing it then would have. One shared date per fixture was tried first and broke older releases of monorepo packages, whose sibling packages had moved on. Pinned dependencies must predate the first listed release |
+| Build | Vite 8.3.2 (and `@vitejs/plugin-react` 6.0.1 for React) from a separate tools directory (`fixtures/oss-tools/ossBuild.mjs`), so the build tooling is current and independent of the release under test. The `vue` stack aliases `vue` to Vue 2's full build |
+| Check | `harness/src/probes/ossCheck.ts` serves the build from 127.0.0.1 with every other host blocked, opens it in the pinned Chrome with the screen-reader accessibility mode, and runs `check.mjs`, written from the issue's own description (or the fix's own test steps), never from an arm's oracle. It returns whether the correct behaviour holds when the scenario is driven as the issue describes (`pointer`) and from the keyboard (`keyboard`). Static attributes on elements that cannot be focused are read once and count for both. Every result is EXPLORATORY |
+| Verified | The check holds on the last-good release and fails on the first broken one. Where the issue named only a range, the releases in it are bisected by the same check |
+
+**Verification rules (Decided by Claude under DR-0045), applied before the split and never after it.**
+
+1. **The keyboard rule.** A pair enters the corpus only if the keyboard path reproduces, because journeys drive the page with OS-level keys (D4).
+2. **The last-good construct must be accessible.** A pair is rejected when the maintainers document the construct in the last-good release as unsupported or not accessible, because then the change is not an accessibility regression of a working pattern.
+3. **The reported last good must have the behaviour.** A pair is rejected when the reported last-good release lacks the behaviour too (by its source or by the check).
+4. **A release pair of one package.** A pair is rejected when the change arrives with a major version that needs different pinned dependencies (for example a framework major), spans a package rename, or exists only in pre-releases, because then no two releases differ only in the package under test.
+5. **The issue's own description.** A pair is rejected when the issue gives no steps or symptom to write the check from, or when the maintainers could not reproduce the reported example.
+6. **A library fix.** A pair is rejected when there is no library fix (as for radix-1615 in the first survey).
+7. **A user-facing symptom.** A pair is rejected when the attribute change has no user-facing effect, for example because the live region moved to a container that still announces.
+8. **Fixing the check is allowed until the split.** Where the check failed its own precondition (for example a click that never reached the control, or a selector the library overrides), it is fixed and rerun. The criterion is never changed after seeing which release passes.
+
+**Results.** Four runs: 37131615681, 37132740948, 37133618945 and 37134051657. The full tables are in `docs/research/2026-10-03-oss-verification.md`.
+
+| Stage | Count |
+|---|---|
+| Candidates read at the documentary check (two search rounds) | 47 (23 rejected from the issue alone) |
+| Accepted or pending after it | 24 |
+| Rejected on a closer reading of the issue, fix and source (rules 2–7) | 11 |
+| Rejected by reproduction | 2: floating-2874 (keyboard path holds on both releases), rac-8298 (not reproduced in three fixtures, including the component the fix's own test steps use) |
+| **Verified** | **11**: radix-4014, rac-8697, bootstrap-35496, carbon-18824, carbon-19563, carbon-7253, carbon-5623, fluent-35927, fluent-7796, vuetify-9627, blueprint-6163 |
+
+Every verified pair reproduced on the keyboard path and as the issue describes, in at least two runs. The other ten gave identical results in 37133618945 and 37134051657; bootstrap-35496 reproduced in 37131615681, 37132740948 and 37134051657. Where a fixed release was tested, it held again. Five pairs map to a catalogue mechanism. The other six have operator `mined`; for them the mechanism is recorded in the pattern's note, and the symptom is the scored unit (R2).
+
+**The batch.** `npm run corpus -- plan oss-regression` planned the 11 patterns in `corpus/patterns.json`. They fall across 8 strata. Split as approved (seed 20261004, test fraction 0.7, stratified), they would give 8 test and 3 dev patterns. The split is not run until P21 is answered (DR-0057).
+
+**The pattern count (P21, P22).** The corpus would hold 79 regression patterns, against P15's 110 and the 94–104 projected for P19:
+
+| | SPA (two apps) | Mined | Total | Dev | Test | 95% margin at p = 0.15 |
+|---|---|---|---|---|---|---|
+| P15 as approved | | | 110 | 33 | 77 | about ±0.080 |
+| P19's projection | 68 | 26–36 | 94–104 | | 66–73 | about ±0.082–0.086 |
+| Now | 68 | 11 | 79 | 20 | 59 | about ±0.091 |
+
+The shortfall comes from verification. 24 documentary accepts left 11 pairs, against the 20–30 the first survey expected; most losses were issues whose own facts did not hold up on a closer reading. The options:
+
+| Option | Patterns | Test | Margin | Cost and note |
+|---|---|---|---|---|
+| A. Accept 79 now, and decide on more at M5's power table | 79 | 59 | about ±0.091 | None now. The split already supports a later batch without moving any assignment, and test items are built only after M5's power table (P15), which is when the needed size is known. Recommended |
+| B. A third mining round | About 79 + 1 per 4 candidates read | | | At this pass's yield (11 of 47), 31 more pairs need about 130 more candidates. Token-heavy, and the extra pairs would come from the same libraries |
+| C. A third SPA context on another component library | About 113 | About 83 | about ±0.077 | Desk research for a candidate, then vendoring and CI install under the P17 safeguards (security), and about 15 dev specs with twins. Seeded patterns would then be about 90% of the corpus |
+
+## DR-0064 Owner approval of P21 and P22, and the oss-regression split
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.6 | §9 (M3), R1 |
+
+**Decision.**
+
+> Yes to P21 and P22; run the split
+
+**Consequences.**
+
+- P21: the corpus holds 79 regression patterns: 68 SPA patterns in two apps and 11 verified mined pairs. P15's 110 is replaced by 79 for now. Whether more patterns are needed is decided at M5's power table; any additions go in as a later batch, which never moves an assignment already made.
+- P22: the verification rules of DR-0063 stay in force for mined pairs, the keyboard rule included. Pointer-only regressions are therefore outside the mined corpus.
+- The `oss-regression` batch is split once this record is committed: `npm run corpus -- split --batch oss-regression --seed 20261004 --test-fraction 0.7`. The seed and fraction are those of P15, and the split is stratified by pattern stratum. Its result is recorded below.
+- Dev patterns of the batch get version-pair items (`source: "oss-history"`; base = the fixture at the last good release, candidate = the fixture at the first broken one) and benign twins (P20) in M3. Test patterns are built after M5's power table (P15).
+
+**The split (run 2026-10-03, after this record's decision was committed).** `oss-regression` with seed 20261004 and test fraction 0.7, stratified, recorded in `corpus/split.json`:
+
+| Stratum | Dev | Test |
+|---|---|---|
+| FOCUS_ESCAPES_DIALOG | — | vuetify-9627 |
+| FOCUS_NOT_RESTORED | — | bootstrap-35496 |
+| INTERACTION_FAILS_UNDER_AT | rac-8697 | blueprint-6163 |
+| JOURNEY_BLOCKED | — | carbon-5623 |
+| KEYBOARD_TRAP | — | radix-4014 |
+| NAME_NOT_CONVEYED | fluent-35927 | carbon-7253 |
+| ROLE_NOT_CONVEYED | — | fluent-7796 |
+| STATE_NOT_CONVEYED | carbon-19563 | carbon-18824 |
+
+With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 dev and 59 test.
+
+**Building the dev patterns (Decided by Claude under DR-0045).**
+
+| Part | Decision |
+|---|---|
+| Regression items | `npm run corpus -- oss-items` writes `oss-<id>` for each dev pattern, with `source: "oss-history"` and app `oss/<id>`. Base and candidate are refs of the form `oss/<id>@<fixture commit>+<package>@<version>`: the last good and the first broken release. Journey `oss-<id>`, one per fixture (journeys come in M4). Provenance gives the repository, the refs, the verifying run and the library's licence |
+| Twins (P20) | A mutation spec on the fixture at the last good release (`twinOf` the regression item), made by `npm run corpus -- mutate`: carbon-19563 wrapper-added (the checkbox wrapped in a div), fluent-35927 css-only (a margin on each badge), rac-8697 css-only (rounded corners and padding on the popover, with no animation, since an exit animation would hide the regression) |
+| CI | `m3-oss-repro.yml` runs only unsplit and dev-split fixtures. Test-split pairs were verified before the split, and running them again before the freeze would execute test items. Each dev fixture also builds its twin at the base release, and the check must still hold there. A twin that fails the check is rewritten before M4, because the twin is meant to keep the behaviour |
+
+**Check (run 37134734243).** Only the three dev fixtures ran. Each pair reproduced again: the check holds on the last good release and fails on the first broken one, on both paths. Each twin applied, built and reverted cleanly, and its check held on both paths at the base release.
+

@@ -1,0 +1,22 @@
+{
+  "id": "ras-dialog-unnamed-preview-twin",
+  "patternId": "react-admin-simple--dialog-labelledby-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-unnamed-preview-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "A11Y_IMPROVEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator a11y-improvement",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

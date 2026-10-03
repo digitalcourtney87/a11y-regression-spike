@@ -1,0 +1,22 @@
+{
+  "id": "oss-rac-8697-twin",
+  "patternId": "oss--rac-8697",
+  "split": "dev",
+  "source": "seeded",
+  "app": "oss/rac-8697",
+  "journeyId": "oss-rac-8697",
+  "base": {
+    "ref": "oss/rac-8697@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+react-aria-components@1.10.0"
+  },
+  "candidate": {
+    "patch": "oss-rac-8697-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "Apache-2.0 (react-aria-components)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "acrm-icon-button-label-task-actions",
+  "patternId": "atomic-crm--icon-button-label-removed",
+  "operator": "icon-button-label-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions",
+  "target": "Task actions button (icon only) in the dashboard task list loses its aria-label",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/Task.tsx",
+      "find": "              aria-label={translate(\"resources.tasks.actions.title\")}\n",
+      "replace": ""
+    }
+  ]
+}

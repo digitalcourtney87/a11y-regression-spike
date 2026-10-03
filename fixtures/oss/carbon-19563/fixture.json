@@ -1,0 +1,13 @@
+{
+  "id": "carbon-19563",
+  "stack": "web-components",
+  "package": "@carbon/web-components",
+  "versions": [
+    "2.27.1",
+    "2.28.0",
+    "2.29.0",
+    "2.30.0"
+  ],
+  "dependencies": {},
+  "issue": "https://github.com/carbon-design-system/carbon/issues/19563"
+}

@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/ui/checkbox.tsx b/fixtures/spa/atomic-crm/src/components/ui/checkbox.tsx
+index defeb01..b7d535a 100644
+--- a/fixtures/spa/atomic-crm/src/components/ui/checkbox.tsx
++++ b/fixtures/spa/atomic-crm/src/components/ui/checkbox.tsx
+@@ -16,6 +16,7 @@ function Checkbox({
+         className
+       )}
+       {...props}
++      aria-checked={false}
+     >
+       <CheckboxPrimitive.Indicator
+         data-slot="checkbox-indicator"

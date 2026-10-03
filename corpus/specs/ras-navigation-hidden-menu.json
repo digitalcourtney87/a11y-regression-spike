@@ -1,0 +1,15 @@
+{
+  "id": "ras-navigation-hidden-menu",
+  "patternId": "react-admin-simple--navigation-hidden",
+  "operator": "navigation-hidden",
+  "app": "react-admin-simple",
+  "journeyId": "ras-menu-navigate-comments",
+  "target": "Sidebar menu (src/Layout.tsx) hidden with aria-hidden",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "    <Menu>\n",
+      "replace": "    <Menu aria-hidden=\"true\">\n"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "ras-button-to-div-quick-create-cancel-twin",
+  "patternId": "react-admin-simple--button-to-div",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-cancel",
+  "target": "Quick-create Cancel button: margin changed",
+  "edits": [
+    {
+      "file": "src/comments/PostQuickCreateCancelButton.tsx",
+      "find": "sx={{ margin: '10px 24px', position: 'relative' }}",
+      "replace": "sx={{ margin: '8px 24px', position: 'relative' }}"
+    }
+  ],
+  "twinOf": "ras-button-to-div-quick-create-cancel"
+}

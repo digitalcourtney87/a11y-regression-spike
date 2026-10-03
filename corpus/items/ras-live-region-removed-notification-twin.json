@@ -1,0 +1,22 @@
+{
+  "id": "ras-live-region-removed-notification-twin",
+  "patternId": "react-admin-simple--live-region-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-live-region-removed-notification-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "TIMING_WITHIN_TOLERANCE"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator timing-within-tolerance",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

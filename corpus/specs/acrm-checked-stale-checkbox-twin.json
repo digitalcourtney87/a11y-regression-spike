@@ -1,0 +1,16 @@
+{
+  "id": "acrm-checked-stale-checkbox-twin",
+  "patternId": "atomic-crm--checked-stale",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-complete-task",
+  "target": "Shared Checkbox: corner radius changed (rounded-[4px] to rounded-sm)",
+  "edits": [
+    {
+      "file": "src/components/ui/checkbox.tsx",
+      "find": "rounded-[4px]",
+      "replace": "rounded-sm"
+    }
+  ],
+  "twinOf": "acrm-checked-stale-checkbox"
+}

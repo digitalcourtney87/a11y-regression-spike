@@ -1,0 +1,405 @@
+{
+  "label": "EXPLORATORY",
+  "method": "DR-0062",
+  "candidates": [
+    {
+      "id": "radix-4014",
+      "repo": "radix-ui/primitives",
+      "refs": [
+        "#4014",
+        "PR #4015"
+      ],
+      "stack": "react",
+      "package": "@radix-ui/react-dismissable-layer",
+      "licence": "MIT",
+      "good": "1.1.13",
+      "broken": "1.1.14",
+      "fixed": "1.1.15",
+      "symptom": "KEYBOARD_TRAP",
+      "documentary": "accept",
+      "note": "Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2",
+      "operator": "escape-not-closing",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "rac-8697",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "#8697",
+        "PR #8721"
+      ],
+      "stack": "react",
+      "package": "react-aria-components",
+      "licence": "Apache-2.0",
+      "good": "1.10.0",
+      "broken": "1.11.0",
+      "fixed": "1.12.0",
+      "symptom": "INTERACTION_FAILS_UNDER_AT",
+      "documentary": "accept",
+      "note": "Menu item links do nothing on Enter",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "bootstrap-35496",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#35496",
+        "PR #35500"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "licence": "MIT",
+      "good": "5.0.2",
+      "broken": "5.1.0",
+      "fixed": "5.2.0",
+      "symptom": "FOCUS_NOT_RESTORED",
+      "documentary": "accept",
+      "note": "Escape in a dropdown no longer returns focus to the toggle",
+      "operator": "menu-focus-not-restored",
+      "reproduction": {
+        "run": 37134051657,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "fluent-35927",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "PR #35927",
+        "PR #35811"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react-badge",
+      "licence": "MIT",
+      "good": "9.4.15",
+      "broken": "9.5.0",
+      "fixed": "9.5.1",
+      "symptom": "NAME_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "PresenceBadge labelled 'available' whatever its status (PR #35811 in 9.5.0; fixed by PR #35927 in 9.5.1)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "fluent-7796",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "PR #7796"
+      ],
+      "stack": "react",
+      "package": "office-ui-fabric-react",
+      "licence": "MIT",
+      "good": "6.124.2",
+      "broken": "6.125.0",
+      "fixed": "6.129.4",
+      "symptom": "ROLE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-19563",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#19563",
+        "PR #20070"
+      ],
+      "stack": "web-components",
+      "package": "@carbon/web-components",
+      "licence": "Apache-2.0",
+      "good": "2.28.0",
+      "broken": "2.29.0",
+      "fixed": null,
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Checkbox binds ?checked, so a programmatic uncheck after a user tick leaves the inner input checked (first broken 2.29.0 by reproduction; fixed by PR #20070)",
+      "operator": "checked-stale",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-18824",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#18824",
+        "PR #18829"
+      ],
+      "stack": "react",
+      "package": "@carbon/react",
+      "licence": "Apache-2.0",
+      "good": "1.53.1",
+      "broken": "1.54.0",
+      "fixed": null,
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported",
+      "operator": "checked-stale",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-7253",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "PR #7253",
+        "#7233"
+      ],
+      "stack": "react",
+      "package": "carbon-components",
+      "licence": "Apache-2.0",
+      "good": "10.22.0",
+      "broken": "10.23.0",
+      "fixed": "10.24.0",
+      "symptom": "NAME_NOT_CONVEYED",
+      "documentary": "accept",
+      "note": "Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253",
+      "operator": "icon-button-label-removed",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-5623",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#5623",
+        "PR #5784"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "licence": "Apache-2.0",
+      "good": "7.9.3",
+      "broken": "7.10.0",
+      "fixed": "7.11.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "vuetify-9627",
+      "repo": "vuetifyjs/vuetify",
+      "refs": [
+        "#9627",
+        "#9144",
+        "commit fa0a893"
+      ],
+      "stack": "vue",
+      "package": "vuetify",
+      "licence": "MIT",
+      "good": "2.0.14",
+      "broken": "2.0.15",
+      "fixed": "2.1.10",
+      "symptom": "FOCUS_ESCAPES_DIALOG",
+      "documentary": "accept",
+      "note": "VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10)",
+      "operator": "dialog-containment-removed",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "blueprint-6163",
+      "repo": "palantir/blueprint",
+      "refs": [
+        "PR #6163",
+        "PR #6149"
+      ],
+      "stack": "react",
+      "package": "@blueprintjs/select",
+      "licence": "Apache-2.0",
+      "good": "4.9.14",
+      "broken": "4.9.15",
+      "fixed": "4.9.16",
+      "symptom": "INTERACTION_FAILS_UNDER_AT",
+      "documentary": "accept",
+      "note": "Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it",
+      "operator": "mined",
+      "reproduction": {
+        "run": 37133618945,
+        "pointer": true,
+        "keyboard": true
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "radix-1615",
+      "reason": "no library fix; resolved as 'solution provided'"
+    },
+    {
+      "id": "headlessui-3467",
+      "reason": "visual (transition backdrop)"
+    },
+    {
+      "id": "rac-9874",
+      "reason": "behaviour change, not an accessibility symptom"
+    },
+    {
+      "id": "mui-17366",
+      "reason": "pointer click area (zIndex), not an accessibility symptom"
+    },
+    {
+      "id": "mui-18236",
+      "reason": "duplicate click events on key repeat; no primary symptom"
+    },
+    {
+      "id": "mui-36018",
+      "reason": "closed as not planned"
+    },
+    {
+      "id": "chakra-2982",
+      "reason": "v0 to v1 rewrite; aria-selected=false absent has no conveyed effect"
+    },
+    {
+      "id": "chakra-10809",
+      "reason": "pointer-events left on body; not an assistive-technology symptom"
+    },
+    {
+      "id": "downshift-1680",
+      "reason": "app-specific onStateChange logic"
+    },
+    {
+      "id": "bootstrap-28914",
+      "reason": "regression across a major version in pre-release v5; same mechanism as bootstrap-35496"
+    },
+    {
+      "id": "bootstrap-34982",
+      "reason": "nested modals are unsupported"
+    },
+    {
+      "id": "ariakit-7092",
+      "reason": "closed as not planned"
+    },
+    {
+      "id": "ariakit-3382",
+      "reason": "show/hide timing, not an accessibility symptom"
+    },
+    {
+      "id": "ariakit-2773",
+      "reason": "menu defaultOpen behaviour, not an accessibility symptom"
+    },
+    {
+      "id": "floating-3375",
+      "reason": "extra focus guards; no primary symptom"
+    },
+    {
+      "id": "zag-3263",
+      "reason": "pointer focus design change"
+    },
+    {
+      "id": "fluent-30436",
+      "reason": "app onFocus/onBlur props ignored; no primary symptom"
+    },
+    {
+      "id": "fluent-1915",
+      "reason": "2017 (React 15 era); not buildable with the pinned toolchain"
+    },
+    {
+      "id": "shoelace-845",
+      "reason": "design change"
+    },
+    {
+      "id": "blueprint-5203",
+      "reason": "extra tab stop; no primary symptom"
+    },
+    {
+      "id": "blueprint-2155",
+      "reason": "broke during an unreleased merge"
+    },
+    {
+      "id": "eui-1101",
+      "reason": "extra tab stop; no primary symptom"
+    },
+    {
+      "id": "angular, unticked",
+      "reason": "15 Angular Components issues whose 'Is this a regression?' box is unticked: long-standing bugs, not regressions"
+    },
+    {
+      "id": "headlessui-3821",
+      "reason": "maintainers: nested menus were never supported nor accessible to screen readers, and the break began in 2.2.2; the last-good construct is not accessible (DR-0063)"
+    },
+    {
+      "id": "bootstrap-36947",
+      "reason": "maintainers: tabs inside a dropdown are documented as unsupported because they cannot map to an ARIA tab pattern; the last-good construct is not accessible (DR-0063)"
+    },
+    {
+      "id": "sonner-519",
+      "reason": "no user-facing symptom: 1.6 moved the live region to the Toaster section (aria-live=polite), so toasts are still announced (DR-0063)"
+    },
+    {
+      "id": "mui-30012",
+      "reason": "the reported last-good release lacks the behaviour: in 5.0.6 a non-clickable Chip is a plain div with no aria-disabled, as in 5.2.2 (source and the reproduction run agree); maintainers trace the change to PR #22430 in the v5 alphas, a major-version change rather than a release pair (DR-0063)"
+    },
+    {
+      "id": "mui-18484",
+      "reason": "no library fix: maintainers call it an edge case of an unidiomatic ref pattern (regression from #17299) and recommend a different usage; the issue's pattern did not reproduce either (DR-0063)"
+    },
+    {
+      "id": "carbon-4232",
+      "reason": "symptom ambiguous between focus movement and focus visibility (the issue's own check is the tooltip's focus border, and the fix also restored focus styles lost in a bad merge), and the fix changed the recommended markup, so no release pair follows from the issue alone (DR-0063)"
+    },
+    {
+      "id": "ng-25676",
+      "reason": "arrives with the Material 13 to 14 major, which requires Angular 14, so the two releases cannot share their pinned dependencies and the pair cannot isolate the package (DR-0063)"
+    },
+    {
+      "id": "radix-1528",
+      "reason": "regression only in release candidates (0.1.2-rc.49 to rc.53), fixed in rc.54 before 1.0.0; no stable release pair (DR-0063)"
+    },
+    {
+      "id": "radix-584",
+      "reason": "the issue is a title only, with no steps or symptom; the window is pre-1.0 (roving-focus 0.0.6 to 0.0.11) with API changes across it, so a check would be my own invention rather than the issue's (DR-0063)"
+    },
+    {
+      "id": "rac-6807",
+      "reason": "maintainers could not reproduce the reported example outside CodeSandbox; the fix concerns only the hook's own onAction prop, a path the issue does not describe (DR-0063)"
+    },
+    {
+      "id": "fluent-27510",
+      "reason": "spans a major version and a package rename (office-ui-fabric-react 7 to @fluentui/react 8), so no release pair of one package; reporter marked it as not an accessibility issue (DR-0063)"
+    },
+    {
+      "id": "floating-2874",
+      "reason": "the keyboard path does not reproduce (run 37133618945: focus returns to the menu button on both releases); by the fix (PR #2876) the bug needs a menu opened on mousedown while focus is elsewhere, which a keyboard journey cannot produce (keyboard rule, DR-0063)"
+    },
+    {
+      "id": "rac-8298",
+      "reason": "not reproduced in three fixtures: two React Aria Components layouts (runs 37132740948, 37133618945) and React Spectrum's ComboBox as in the fix's own test steps (run 37134051657); the fix's author could reproduce it only on the docs site, not in Storybook, so it depends on page context the issue does not give (DR-0063)"
+    }
+  ]
+}

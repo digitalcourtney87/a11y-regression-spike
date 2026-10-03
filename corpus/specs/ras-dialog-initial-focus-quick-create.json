@@ -1,0 +1,15 @@
+{
+  "id": "ras-dialog-initial-focus-quick-create",
+  "patternId": "react-admin-simple--dialog-initial-focus-removed",
+  "operator": "dialog-initial-focus-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-open",
+  "target": "Post quick-create dialog opens without moving focus into it",
+  "edits": [
+    {
+      "file": "src/comments/PostQuickCreate.tsx",
+      "find": "            data-testid=\"dialog-add-post\"\n",
+      "replace": "            data-testid=\"dialog-add-post\"\n            disableAutoFocus\n"
+    }
+  ]
+}

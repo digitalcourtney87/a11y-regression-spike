@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
+index 35eae3b..cac2734 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreate.tsx
+@@ -49,6 +49,7 @@ const PostQuickCreate = props => {
+             data-testid="dialog-add-post"
+             open
+             fullWidth
++            maxWidth="md"
+             onClose={onCancel}
+             aria-label={translate('simple.create-post')}
+         >

@@ -1,0 +1,15 @@
+{
+  "id": "acrm-escape-not-closing-menu",
+  "patternId": "atomic-crm--escape-not-closing",
+  "operator": "escape-not-closing",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions-escape",
+  "target": "Shared DropdownMenuContent (src/components/ui/dropdown-menu.tsx): Escape is swallowed, so a menu that holds focus cannot be left by its documented key",
+  "edits": [
+    {
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "find": "        sideOffset={sideOffset}\n        className={cn(\n          \"bg-popover text-popover-foreground data-[state=open]:animate-in",
+      "replace": "        sideOffset={sideOffset}\n        onEscapeKeyDown={(event) => event.preventDefault()}\n        className={cn(\n          \"bg-popover text-popover-foreground data-[state=open]:animate-in"
+    }
+  ]
+}
