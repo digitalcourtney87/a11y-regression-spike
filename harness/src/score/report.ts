@@ -38,6 +38,7 @@ export interface AttemptRecord {
 export interface JobSummary {
   jobId: string;
   parity?: { tapSpeakMessages: number; logSpeakingEntries: number; difference: number };
+  segmentParity?: { segments: number; tap: number; log: number; mismatched: unknown[] };
   fatal?: string;
   synthOk?: boolean | null;
 }
@@ -72,6 +73,7 @@ export interface Phase0Report {
   invalidPackages: number;
   k6aRule: { variant: string; valid: number; announced: number; triggers: boolean }[];
   parity: { jobId: string; tap: number; log: number; difference: number }[];
+  segmentParity: { segments: number; tap: number; log: number; mismatchedSegments: number } | null;
   clock: { maxNativeMs: number | null; maxMappingMs: number | null; maxDriftMs: number | null; maxRafGapMs: number | null; lowResolution: number };
   fatalJobs: string[];
 }
@@ -143,6 +145,17 @@ export function buildReport(attempts: readonly AttemptRecord[], summaries: reado
     invalidPackages: present.filter((a) => a.packageValid === false).length,
     k6aRule,
     parity: summaries.filter((s) => s.parity !== undefined).map((s) => ({ jobId: s.jobId, tap: s.parity?.tapSpeakMessages ?? 0, log: s.parity?.logSpeakingEntries ?? 0, difference: s.parity?.difference ?? 0 })),
+    segmentParity: summaries.some((s) => s.segmentParity !== undefined)
+      ? summaries.reduce(
+          (acc, s) => ({
+            segments: acc.segments + (s.segmentParity?.segments ?? 0),
+            tap: acc.tap + (s.segmentParity?.tap ?? 0),
+            log: acc.log + (s.segmentParity?.log ?? 0),
+            mismatchedSegments: acc.mismatchedSegments + (s.segmentParity?.mismatched.length ?? 0),
+          }),
+          { segments: 0, tap: 0, log: 0, mismatchedSegments: 0 },
+        )
+      : null,
     clock: {
       maxNativeMs: max(present.map((a) => a.clock?.native)),
       maxMappingMs: max(present.map((a) => a.clock?.mappingUncertaintyMs)),
@@ -186,6 +199,8 @@ export function renderReport(report: Phase0Report): string {
   lines.push("## Validity and instruments", "");
   lines.push(`- INCONCLUSIVE reasons: ${Object.entries(report.inconclusiveReasons).map(([k, v]) => `${k} ${String(v)}`).join(", ") || "none"}`);
   lines.push(`- Errors: ${String(report.errors)}; invalid evidence packages: ${String(report.invalidPackages)}`);
+  const sp = report.segmentParity;
+  if (sp !== null) lines.push(`- Tap-versus-log parity per segment: ${String(sp.segments)} segments, tap ${String(sp.tap)} / log ${String(sp.log)}, ${String(sp.mismatchedSegments)} mismatched`);
   lines.push(`- Tap-versus-log parity per NVDA run: ${report.parity.map((p) => `${p.jobId} tap ${String(p.tap)} / log ${String(p.log)} (diff ${String(p.difference)})`).join("; ") || "–"}`);
   const c = report.clock;
   lines.push(`- Clock maxima: native self-test ${String(c.maxNativeMs)} ms; page mapping ${String(c.maxMappingMs)} ms; segment drift ${String(c.maxDriftMs)} ms; rAF gap ${String(c.maxRafGapMs)} ms; low-resolution TimeTicks ${String(c.lowResolution)}`);

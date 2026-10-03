@@ -29,6 +29,8 @@ export class RelayTap {
   readonly #worker: Worker;
   readonly #events: TapEvent[] = [];
   readonly attachedQpcNs: number;
+  /** QPC receipt time (ns) of the relay's join confirmation: the tap sees everything queued after it. */
+  joinedQpcNs: number | null = null;
 
   private constructor(worker: Worker, attachedQpcNs: number) {
     this.#worker = worker;
@@ -51,6 +53,7 @@ export class RelayTap {
       }, timeoutMs);
       const onMessage = (event: TapEvent): void => {
         if (event.kind === "joined") {
+          tap.joinedQpcNs = event.t;
           clearTimeout(timer);
           worker.off("message", onMessage);
           resolve();

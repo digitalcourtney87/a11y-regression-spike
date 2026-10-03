@@ -359,10 +359,17 @@ async function main(): Promise<void> {
     const manifestValid = EnvManifestSchema.safeParse(manifest).success;
     Object.assign(summary, { manifest, manifestValid, synthOk: nvdaRun?.synthOk ?? null, audio });
     writeSummary();
-    const tapAttachWall = nvdaRun === null ? null : qpcToWallIso(nvdaRun.tap.attachedQpcNs, captureWallAnchor());
+    // Parity windows start at the relay's join confirmation, not at the attach
+    // call: speech queued before the join never reaches the tap.
+    const tapAttachWall = nvdaRun === null ? null : qpcToWallIso(nvdaRun.tap.joinedQpcNs ?? nvdaRun.tap.attachedQpcNs, captureWallAnchor());
+    const segments: { index: number; from: string; to: string; tap: number }[] = [];
     for (const attempt of mine) {
       const record = await runAttempt(attempt, { helper, base: server.base, manifest, manifestValid, audio, nvdaRun });
       appendFileSync(attemptsPath, `${JSON.stringify(record)}\n`);
+      const step = (record.package as GateEvidencePackage | undefined)?.steps[0];
+      if (nvdaRun !== null && step !== undefined) {
+        segments.push({ index: attempt.index, from: qpcToWallIso(step.startedAt, captureWallAnchor()), to: qpcToWallIso(step.endedAt, captureWallAnchor()), tap: step.speech?.length ?? 0 });
+      }
     }
     if (nvdaRun !== null) {
       const endWall = qpcToWallIso(qpcNowNs(), captureWallAnchor());
@@ -379,6 +386,17 @@ async function main(): Promise<void> {
       // D2 parity for the NVDA run, bucketed by the wall anchor (DR-0039).
       const logSpeaks = tapAttachWall === null ? 0 : countSpeakingBetween(log, isoTimeOfDay(tapAttachWall), isoTimeOfDay(endWall));
       summary.parity = { tapSpeakMessages: tapSpeaks, logSpeakingEntries: logSpeaks, difference: tapSpeaks - logSpeaks, window: [tapAttachWall, endWall] };
+      // Per-segment parity over each attempt's observation window (DR-0039: parity and diagnostics only).
+      const segmentParity = segments.map((s) => {
+        const log_ = countSpeakingBetween(log, isoTimeOfDay(s.from), isoTimeOfDay(s.to));
+        return { index: s.index, tap: s.tap, log: log_, difference: s.tap - log_ };
+      });
+      summary.segmentParity = {
+        segments: segmentParity.length,
+        tap: segmentParity.reduce((n, s) => n + s.tap, 0),
+        log: segmentParity.reduce((n, s) => n + s.log, 0),
+        mismatched: segmentParity.filter((s) => s.difference !== 0),
+      };
       summary.sessionConfig = existsSync(join(resolveSessionUserConfigPath(), "nvda.ini"));
       try {
         await nvdaRun.adapter.stop();
