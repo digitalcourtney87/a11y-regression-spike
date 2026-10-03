@@ -1,0 +1,272 @@
+{
+  "gate": "G1",
+  "label": "EXPLORATORY",
+  "bundle": "g1-evidence.tar.zst",
+  "bundleSha256": "2f064c9dfd9124a4218f76c3be57e9f39b27477d25faa026e6d50f04b4995fd9",
+  "bundleBytes": 1002996,
+  "record": "DR-0015 (D6); DR-0021 (D12); DR-0050",
+  "note": "Archived from the local machine with gh run download, so workflows stay contents: read (D6). Contains logs, JSON, INI and screenshots only; no NVDA binaries.",
+  "runs": [
+    {
+      "runId": "37111758115",
+      "label": "M1a probe (failed: Scream folder lookup)",
+      "workflow": "phase0-probe",
+      "headSha": "09f050d59fe107160013bcc8ee7e84dc0183f967",
+      "conclusion": "failure",
+      "createdAt": "2026-10-03T09:03:26Z",
+      "images": [
+        "win22 20260927.320.1 build 20348.5622",
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111758115"
+    },
+    {
+      "runId": "37111906022",
+      "label": "M1a probe (no audio driver)",
+      "workflow": "phase0-probe",
+      "headSha": "809e2bac89db849f8ea904b69855f1c75f0cde89",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T09:06:04Z",
+      "images": [
+        "win22 20260927.320.1 build 20348.5622",
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37111906022"
+    },
+    {
+      "runId": "37112285497",
+      "label": "M1a probe (Scream installed)",
+      "workflow": "phase0-probe",
+      "headSha": "29f49510b4ca781a290bcd4fce0faacb1200794d",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T09:12:50Z",
+      "images": [
+        "win22 20260927.320.1 build 20348.5622",
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37112285497"
+    },
+    {
+      "runId": "37114407343",
+      "label": "M1b smoke",
+      "workflow": "phase0-nvda",
+      "headSha": "89923461740939a3f893d76dd0016afce76bc265",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T09:50:39Z",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114407343"
+    },
+    {
+      "runId": "37114709402",
+      "label": "M1d strict pilot",
+      "workflow": "phase0-nvda",
+      "headSha": "4277178503f9bdd949a84db3be3a39c3d360fdd5",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T09:56:09Z",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37114709402"
+    },
+    {
+      "runId": "37115887572",
+      "label": "G1 run",
+      "workflow": "phase0-nvda",
+      "headSha": "f81bcd70a0d1c95f2f7e062d1c2cb9a4d208b167",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T10:16:48Z",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37115887572"
+    },
+    {
+      "runId": "37116418050",
+      "label": "G1 top-up (K2)",
+      "workflow": "phase0-nvda",
+      "headSha": "f81bcd70a0d1c95f2f7e062d1c2cb9a4d208b167",
+      "conclusion": "success",
+      "createdAt": "2026-10-03T10:26:19Z",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37116418050"
+    }
+  ],
+  "g1Result": {
+    "pass": true,
+    "reasons": [],
+    "perCanary": [
+      {
+        "canary": "K1",
+        "attempts": 50,
+        "valid": 50,
+        "inconclusive": 0,
+        "inconclusiveRate": 0,
+        "flagged": false
+      },
+      {
+        "canary": "K2",
+        "attempts": 53,
+        "valid": 52,
+        "inconclusive": 1,
+        "inconclusiveRate": 0.018867924528301886,
+        "flagged": false
+      },
+      {
+        "canary": "K3",
+        "attempts": 50,
+        "valid": 50,
+        "inconclusive": 0,
+        "inconclusiveRate": 0,
+        "flagged": false
+      },
+      {
+        "canary": "K4",
+        "attempts": 50,
+        "valid": 50,
+        "inconclusive": 0,
+        "inconclusiveRate": 0,
+        "flagged": false
+      },
+      {
+        "canary": "K5",
+        "attempts": 50,
+        "valid": 50,
+        "inconclusive": 0,
+        "inconclusiveRate": 0,
+        "flagged": false
+      }
+    ],
+    "flags": [],
+    "pooled": {
+      "attempts": 253,
+      "valid": 252,
+      "inconclusive": 1,
+      "failures": 0,
+      "inconclusiveRate": 0.003952569169960474
+    }
+  },
+  "pins": {
+    "runners": {
+      "status": "pinned",
+      "gates": "windows-2025",
+      "probeOnly": "windows-2022",
+      "linux": "ubuntu-24.04",
+      "note": "windows-2025 resolves to the windows-2025-vs2026 image since June 2026. windows-2022 is for M1a probes only (DR-0025)."
+    },
+    "node": {
+      "status": "pinned",
+      "version": "24.21.0"
+    },
+    "typescript": {
+      "status": "pinned",
+      "version": "6.0.3",
+      "note": "typescript-eslint 8.71.0 requires TypeScript < 6.1.0."
+    },
+    "playwright": {
+      "status": "pinned",
+      "version": "1.63.0"
+    },
+    "chromeForTesting": {
+      "status": "pinned",
+      "version": "153.0.8010.12",
+      "note": "The Chrome for Testing build bundled with Playwright 1.63.0 (win64). CfT Stable on 2026-10-02 was 154.0.8037.92."
+    },
+    "chromeFlags": {
+      "status": "pinned",
+      "flags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "note": "Locks AXMode identically in every arm (DR-0019 D10)."
+    },
+    "chromiumSandbox": {
+      "status": "pinned",
+      "value": true
+    },
+    "guidepup": {
+      "status": "pinned",
+      "version": "0.35.0",
+      "note": "@guidepup/guidepup: provisioning, lifecycle and input only, started with capture:false (DR-0011 D2)."
+    },
+    "guidepupSetup": {
+      "status": "pinned",
+      "version": "0.29.1",
+      "note": "@guidepup/setup CLI installs the NVDA asset below. guidepup/setup-action was archived on 2026-09-26 and is not used (DR-0009)."
+    },
+    "nvda": {
+      "status": "pinned",
+      "version": "2026.2",
+      "guidepupAsset": "0.2.1-2026.2",
+      "sha256": "7df0ca3c1c9e8c6521bc7553486ca360ed6f0b4f9bdbd6603131e38b5c1497a1",
+      "relayCertificateValidUntil": "2027-06-28",
+      "synth": {
+        "name": "espeak",
+        "rate": "nvda-default",
+        "rateBoost": false,
+        "note": "D8 (DR-0017) as amended by DR-0041: eSpeak NG at NVDA's default rate, rate boost off. NVDA's default eSpeak NG rate on a fresh configuration is 30 on NVDA's 0-100 scale: the driver sets rate 30 in __init__ (NVDA release-2026.2 source/synthDrivers/espeak.py:216) and SynthDriver.initSettings keeps a driver's own initial values on first load (source/synthDriverHandler.py:365-385); rate boost defaults to off (espeak.py:388). The nvda.ini committed in M1 must not set an eSpeak rate. The effective rate is recorded from the running synth each run (EnvManifest.synth.rate)."
+      },
+      "note": "Pinned by the @guidepup/guidepup 0.35.0 manifest (guidepup/nvda 0.2.1-2026.2). NVDA Remote Access relay: TLS on 127.0.0.1:6837, channel guidepup. The relay certificate in this build is valid 2026-06-28 to 2027-06-28, which bounds the shelf life of this exact pin."
+    },
+    "scream": {
+      "status": "pinned",
+      "version": "3.6",
+      "url": "https://github.com/duncanthrax/scream/releases/download/3.6/Scream3.6.zip",
+      "sha256": "25ea5e778b4e6995a98d448b9b5f6d321f681663f1aeeec69d8e63183d008b19",
+      "sizeBytes": 514388,
+      "licence": "MS-PL",
+      "signerThumbprint": {
+        "status": "pinned",
+        "value": "B2353603B4837C7A86A01D12A2B34DA7B5F2D368"
+      },
+      "signatureStatus": {
+        "status": "pinned",
+        "value": "Valid"
+      },
+      "signer": {
+        "status": "pinned",
+        "value": "CN=Tom Kistner, O=Tom Kistner, STREET=Zelterweg 1, L=Nussloch, PostalCode=69226, C=DE"
+      },
+      "issuer": {
+        "status": "pinned",
+        "value": "CN=Sectigo RSA Code Signing CA, O=Sectigo Limited, L=Salford, S=Greater Manchester, C=GB"
+      },
+      "note": "SHA-256 computed by Claude on 2026-10-02 from the GitHub release download; GitHub publishes no digest for this 2020 release, so the archive hash is trust on first use. Signature pinned on 2026-10-03 from M1a run 37111906022 on windows-2025 and windows-2022 (DR-0040, DR-0047): Scream.sys and scream.cat are Authenticode Valid, signed by Tom Kistner (the GitHub release author duncanthrax, Heidelberg) through Sectigo RSA Code Signing CA, chaining to USERTrust RSA Certification Authority, timestamped by Symantec; the signer certificate expired on 2023-07-06 and validates through the timestamp, as the 3.6 release notes state. Not self-signed, so the thumbprint is pinned without asking the owner (DR-0040). The archive's bundled devcon.exe is not signed and is not used; an in-repository SetupAPI installer creates the device instead (DR-0047)."
+    },
+    "dotnet": {
+      "status": "pinned",
+      "sdk": "10.0.401",
+      "runtime": "10.0.12",
+      "note": "Platform-event listener on .NET 10 (DR-0019 D10)."
+    },
+    "actions": {
+      "checkout": {
+        "status": "pinned",
+        "repo": "actions/checkout",
+        "version": "v7.0.1",
+        "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+      },
+      "setup-node": {
+        "status": "pinned",
+        "repo": "actions/setup-node",
+        "version": "v7.0.0",
+        "sha": "820762786026740c76f36085b0efc47a31fe5020"
+      },
+      "upload-artifact": {
+        "status": "pinned",
+        "repo": "actions/upload-artifact",
+        "version": "v7.0.1",
+        "sha": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+      },
+      "setup-dotnet": {
+        "status": "pinned",
+        "repo": "actions/setup-dotnet",
+        "version": "v6.0.0",
+        "sha": "a98b56852c35b8e3190ac28c8c2271da59106c68",
+        "note": "Approved by the owner on 2026-10-03 (pending owner item P2 resolved; DR-0046). Installs the .NET 10 SDK for the listener build (DR-0019)."
+      }
+    }
+  }
+}
