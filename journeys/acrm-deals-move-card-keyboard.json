@@ -19,6 +19,13 @@
     },
     {
       "kind": "at",
+      "id": "focus-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
       "id": "lift-card",
       "strategy": "PRESS",
       "key": "Space",
@@ -50,6 +57,13 @@
           "value": "dropped"
         }
       ]
+    },
+    {
+      "kind": "at",
+      "id": "browse-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
     }
   ]
 }

@@ -28,6 +28,8 @@ export interface AtAdapter {
   press(key: string): Promise<void>;
   /** Reads the current item (NVDA+Up arrow, which the plain key syntax cannot send), as OS-level input (READ_CURRENT; P23). */
   readCurrent(): Promise<void>;
+  /** Toggles between browse and focus mode (NVDA+Space), as OS-level input (FOCUS_MODE_TOGGLE; P26). */
+  toggleFocusMode(): Promise<void>;
   /** The relay CA the pinned build trusts, for the relay tap (DR-0009). */
   relayCaPath(): string;
 }
@@ -58,6 +60,10 @@ export class GuidepupNvdaAdapter implements AtAdapter {
 
   async readCurrent(): Promise<void> {
     await nvda.perform(nvda.keyboardCommands.readLine, { capture: false });
+  }
+
+  async toggleFocusMode(): Promise<void> {
+    await nvda.perform(nvda.keyboardCommands.toggleBetweenBrowseAndFocusMode, { capture: false });
   }
 
   relayCaPath(): string {

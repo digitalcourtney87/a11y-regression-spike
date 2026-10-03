@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.8). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.9). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.

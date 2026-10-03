@@ -61,7 +61,7 @@ export const ArmSchema = z.enum([
 export const StrategySchema = z.enum([
   "TAB", "SHIFT_TAB", "NEXT_HEADING", "NEXT_FORM_FIELD", "NEXT_BUTTON",
   "NEXT_LANDMARK", "BROWSE_NEXT", "ACTIVATE", "TYPE", "READ_CURRENT",
-  "PRESS",
+  "PRESS", "FOCUS_MODE_TOGGLE", "DOCUMENT_TOP",
 ]);
 
 /** The documented keys a PRESS step may send (P25; DR-0067). */

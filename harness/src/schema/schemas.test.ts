@@ -260,7 +260,7 @@ const ALL_ARMS: readonly Arm[] = ["A", "B", "B2", "C_UNION", "C_ADJUDICATED", "D
 const ALL_STRATEGIES: readonly Strategy[] = [
   "TAB", "SHIFT_TAB", "NEXT_HEADING", "NEXT_FORM_FIELD", "NEXT_BUTTON",
   "NEXT_LANDMARK", "BROWSE_NEXT", "ACTIVATE", "TYPE", "READ_CURRENT",
-  "PRESS",
+  "PRESS", "FOCUS_MODE_TOGGLE", "DOCUMENT_TOP",
 ];
 const ALL_VERDICTS: readonly Verdict[] = ["PASS", "FAIL", "REVIEW", "INCONCLUSIVE"];
 
@@ -269,7 +269,7 @@ describe("vocabulary enums", () => {
     { name: "symptoms", schema: SymptomSchema, values: ALL_SYMPTOMS, count: 15, rejected: ["ANNOUNCEMENT_LATE", "name_not_conveyed"] },
     { name: "benign types", schema: BenignTypeSchema, values: ALL_BENIGN_TYPES, count: 7, rejected: ["REFACTOR", "css_only"] },
     { name: "arms", schema: ArmSchema, values: ALL_ARMS, count: 7, rejected: ["C", "D", "b2"] },
-    { name: "strategies", schema: StrategySchema, values: ALL_STRATEGIES, count: 11, rejected: ["CLICK", "tab"] },
+    { name: "strategies", schema: StrategySchema, values: ALL_STRATEGIES, count: 13, rejected: ["CLICK", "tab"] },
     { name: "verdicts", schema: VerdictSchema, values: ALL_VERDICTS, count: 4, rejected: ["WARN", "pass"] },
   ] as const;
 

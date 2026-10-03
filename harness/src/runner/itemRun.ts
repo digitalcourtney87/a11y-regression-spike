@@ -317,7 +317,7 @@ async function waitForBufferLoad(path: string, offset: number, timeoutMs: number
   return false;
 }
 
-const NVDA_KEYS: Record<Exclude<AtStep["strategy"], "TYPE" | "PRESS" | "READ_CURRENT">, string> = {
+const NVDA_KEYS: Record<Exclude<AtStep["strategy"], "TYPE" | "PRESS" | "READ_CURRENT" | "FOCUS_MODE_TOGGLE">, string> = {
   TAB: "Tab",
   SHIFT_TAB: "Shift+Tab",
   NEXT_HEADING: "h",
@@ -326,6 +326,7 @@ const NVDA_KEYS: Record<Exclude<AtStep["strategy"], "TYPE" | "PRESS" | "READ_CUR
   NEXT_LANDMARK: "d",
   BROWSE_NEXT: "ArrowDown",
   ACTIVATE: "Enter",
+  DOCUMENT_TOP: "Control+Home",
 };
 
 /** Playwright key names for PRESS (P25). */
@@ -380,6 +381,8 @@ interface Runtime {
   cursor: { backendId?: number };
   /** The focused node when last read, so the cursor can follow focus as NVDA's browse cursor does. */
   focusBackend?: number;
+  /** Set by DOCUMENT_TOP: the next browse step starts before the first line (P26). */
+  cursorAtTop?: boolean;
 }
 
 /** Moves the simulated cursor to the focused node whenever focus has moved since it was last read. */
@@ -388,6 +391,7 @@ async function followFocus(rt: Runtime): Promise<{ backendId?: number } | null> 
   if (f?.backendId !== rt.focusBackend) {
     rt.focusBackend = f?.backendId;
     rt.cursor = f?.backendId === undefined ? {} : { backendId: f.backendId };
+    rt.cursorAtTop = false;
   }
   return f;
 }
@@ -427,6 +431,7 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
     if (step.strategy === "TYPE") for (const ch of step.text ?? "") await rt.nvda.adapter.press(ch === " " ? "Space" : ch);
     else if (step.strategy === "PRESS") await rt.nvda.adapter.press(step.key ?? "");
     else if (step.strategy === "READ_CURRENT") await rt.nvda.adapter.readCurrent();
+    else if (step.strategy === "FOCUS_MODE_TOGGLE") await rt.nvda.adapter.toggleFocusMode();
     else await rt.nvda.adapter.press(NVDA_KEYS[step.strategy]);
     return;
   }
@@ -451,10 +456,19 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
       await page.keyboard.press(PLAYWRIGHT_KEYS[step.key ?? "Enter"]);
       await followFocus(rt);
       return;
+    // P26: NVDA's mode switch has no counterpart without NVDA; the top of the document puts the
+    // simulated cursor before the first line, as Control+Home puts NVDA's browse cursor.
+    case "FOCUS_MODE_TOGGLE":
+      return;
+    case "DOCUMENT_TOP":
+      rt.cursor = {};
+      rt.cursorAtTop = true;
+      return;
     default: {
       const flat = flattenAxTree(await fullTree(cdp));
-      let from = indexOfBackend(flat, rt.cursor.backendId);
-      if (from < 0) from = indexOfBackend(flat, focused?.backendId);
+      let from = rt.cursorAtTop === true ? -1 : indexOfBackend(flat, rt.cursor.backendId);
+      if (from < 0 && rt.cursorAtTop !== true) from = indexOfBackend(flat, focused?.backendId);
+      rt.cursorAtTop = false;
       const idx = nextIndex(flat, from, step.strategy);
       const node = idx === null ? undefined : flat[idx];
       if (node?.backendId !== undefined) rt.cursor = { backendId: node.backendId };

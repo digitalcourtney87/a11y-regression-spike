@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "journey development, round 4: each journey once on its base build, both legs (DR-0068, DR-0069)",
+  "purpose": "journey development, round 5: each journey once on its base build, both legs, with P26 (DR-0071)",
   "apps": [
     "atomic-crm",
     "react-admin-simple",

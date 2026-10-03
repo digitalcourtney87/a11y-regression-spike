@@ -39,6 +39,13 @@
     },
     {
       "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
       "id": "reach-new-contact",
       "strategy": "NEXT_HEADING",
       "until": {

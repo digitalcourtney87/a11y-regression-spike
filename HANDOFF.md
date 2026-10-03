@@ -1,6 +1,6 @@
 # HANDOFF — Accessibility Regression CI · Falsification spike, Phase 0
 
-**Version:** 1.8 (2026-10-03)
+**Version:** 1.9 (2026-10-03)
 **For:** Claude Code
 **Owner and reviewer:** Courtney
 **Source of truth:** `docs/PRD-v0.3-technical-extract.md` in this repository, plus the full PRD v0.3 held privately by the owner (never committed, D5), as amended by §5 of this file. Where they conflict, this file wins; where this file is silent, the PRD wins.
@@ -9,6 +9,15 @@
 > **Owner setup is complete (2026-10-02):** the repository exists, this file is at its root, the §2 decisions are confirmed and recorded in `docs/DECISIONS.md`, and `gh` is authenticated against the repository. The full PRD stays with the owner and is never committed (DR-0014, D5). The repository settings in DR-0016 (D7) are the owner's to apply; Claude never requests admin scope.
 
 ---
+
+## Changes in v1.9
+
+v1.9 records the owner's approval of P26, two NVDA browse-mode commands as journey strategies (DR-0071; DR-0070). No owner items are pending. The v1.8 and earlier change logs below are kept as written.
+
+| Section | What changed | Authority |
+|---|---|---|
+| Header | Version 1.9 | DR-0071 |
+| §10.2 | `Strategy` gains `FOCUS_MODE_TOGGLE` (NVDA+Space) and `DOCUMENT_TOP` (Control+Home in browse mode) | DR-0071; DR-0070 |
 
 ## Changes in v1.8
 
@@ -655,7 +664,9 @@ export type Arm =
 export type Strategy =
   | "TAB" | "SHIFT_TAB" | "NEXT_HEADING" | "NEXT_FORM_FIELD" | "NEXT_BUTTON"
   | "NEXT_LANDMARK" | "BROWSE_NEXT" | "ACTIVATE" | "TYPE" | "READ_CURRENT"
-  | "PRESS";                    // v1.8: one documented key (P25; DR-0067)
+  | "PRESS"                     // v1.8: one documented key (P25; DR-0067)
+  | "FOCUS_MODE_TOGGLE"         // v1.9: NVDA+Space; nothing in the NVDA-absent leg (P26; DR-0071)
+  | "DOCUMENT_TOP";             // v1.9: Control+Home in browse mode; the simulated cursor before the first line (P26)
 
 export interface Expectation {
   type: "announcementContains" | "focusOn" | "stateIs" | "orderBefore";
