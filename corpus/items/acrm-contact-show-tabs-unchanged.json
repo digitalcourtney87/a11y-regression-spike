@@ -1,0 +1,21 @@
+{
+  "id": "acrm-contact-show-tabs-unchanged",
+  "patternId": "atomic-crm--selected-stale",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey acrm-contact-show-tabs (P15)",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

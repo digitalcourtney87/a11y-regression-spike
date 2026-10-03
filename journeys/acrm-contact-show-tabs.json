@@ -1,0 +1,46 @@
+{
+  "id": "acrm-contact-show-tabs",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/1/show",
+  "anchor": "button[aria-label=\"Edit\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-notes-tab",
+      "strategy": "TAB",
+      "until": {
+        "name": "Notes",
+        "maxAttempts": 20
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "tab|Notes"
+        },
+        {
+          "type": "stateIs",
+          "value": "tab|Notes|selected=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "next-tab",
+      "strategy": "PRESS",
+      "key": "ArrowRight",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "tab|*"
+        },
+        {
+          "type": "stateIs",
+          "value": "tab|*|selected=true"
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,8 @@ export interface AtAdapter {
   stop(): Promise<void>;
   /** Sends one key or chord as OS-level input through NVDA. */
   press(key: string): Promise<void>;
+  /** Reads the current item (NVDA+Up arrow, which the plain key syntax cannot send), as OS-level input (READ_CURRENT; P23). */
+  readCurrent(): Promise<void>;
   /** The relay CA the pinned build trusts, for the relay tap (DR-0009). */
   relayCaPath(): string;
 }
@@ -52,6 +54,10 @@ export class GuidepupNvdaAdapter implements AtAdapter {
 
   async press(key: string): Promise<void> {
     await nvda.press(key, { capture: false });
+  }
+
+  async readCurrent(): Promise<void> {
+    await nvda.perform(nvda.keyboardCommands.readLine, { capture: false });
   }
 
   relayCaPath(): string {

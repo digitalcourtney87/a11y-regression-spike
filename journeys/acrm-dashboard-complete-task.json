@@ -1,0 +1,33 @@
+{
+  "id": "acrm-dashboard-complete-task",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/",
+  "anchor": "header a[href=\"#/contacts\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-task-checkbox",
+      "strategy": "TAB",
+      "until": {
+        "role": "checkbox",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "tick-task",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 2500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "checkbox|*|checked=true"
+        }
+      ]
+    }
+  ]
+}

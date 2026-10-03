@@ -1,0 +1,39 @@
+{
+  "id": "oss-rac-8697",
+  "version": "1",
+  "app": "oss/rac-8697",
+  "entryUrl": "/",
+  "anchor": "#trigger",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-links-menu",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "menuitem|Adobe"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-first-link",
+      "strategy": "ACTIVATE",
+      "observeMs": 3000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-new-page",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "adobe",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

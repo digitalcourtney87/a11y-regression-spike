@@ -104,6 +104,7 @@ Conventions:
 | [DR-0065](#dr-0065-m3-merged-and-m4-authorised) | M3 merged and M4 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0066](#dr-0066-m4-design-journeys-runner-and-side-aware-validity) | M4 design: journeys, runner and side-aware validity | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P23–P25 approved by the owner 2026-10-03 (DR-0067) | DR-0067 | Resolved (P23–P25, DR-0067) |
 | [DR-0067](#dr-0067-owner-approval-of-p23-p25) | Owner approval of P23–P25 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0068](#dr-0068-m4-build-runner-journeys-and-unchanged-controls) | M4 build: runner, journeys and unchanged controls | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3067,4 +3068,32 @@ With the SPA batch (17 dev, 51 test), the corpus has 79 regression patterns: 20 
 - **P24:** goal-based steps have the outcomes REACHED, UNREACHABLE (the journey stops, with no fallback), PATH_CHANGED (reached at a different attempt count from the base side's most common count in the same leg; REVIEW in M5) and ENV_FAILURE.
 - **P25:** `Strategy` gains `PRESS`, and `AtStep` gains `key` (Escape, Space, Enter, the arrow keys, Home, End).
 - HANDOFF moves to v1.8, and the schema follows (`harness/src/schema`).
+
+## DR-0068 M4 build: runner, journeys and unchanged controls
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.8 | §7.2, §7.4, §8.4, §9 (M4), §10.2 |
+
+**Context.** The build of the M4 design (DR-0066) under P23–P25 (DR-0067).
+
+| Part | Decision |
+|---|---|
+| Runner | `npm run m4:items` (`harness/src/runner/itemRun.ts`): one app and one leg per job; K1 bracketing canaries; ABBA attempts; one segment per AT step; PATH_CHANGED after the block; packages validated by `GateEvidencePackageSchema`; side-aware validity. Output is one gzipped block file per item, plus a summary line |
+| Builds | `harness/src/runner/buildApp.ps1`. For a SPA: the base build, then each patch built and reverted. For a mined pair: the fixture at the last good release (base), at the first broken release, and at the last good release with the twin's patch, each installed as of its own publish date (DR-0063). Workflow `m4-items.yml`: `contents: read`, no secrets, install scripts off, a separate npm cache |
+| Repetitions | n is 3, or 5 when the item's pattern, or for an unchanged control its journey, holds an absence-based regression (ANNOUNCEMENT_MISSING). A twin and an unchanged control are thus judged under the same n as the regression beside them |
+| Simulated cursor | NVDA release-2026.2's quick-navigation role sets, read from its source (`gecko_ia2.py`, `aria.py`). ACTIVATE after a browse step clicks the cursor's element without pointer events, as NVDA's Enter does in browse mode; otherwise it presses Enter on the focused element |
+| Goals | A goal names what the item's regression does not change, so the regression shows in an expectation, not as UNREACHABLE. The exceptions are patterns whose symptom is reachability (NAV_TARGET_UNREACHABLE, JOURNEY_BLOCKED) |
+| Expectation grammar | `focusOn` `<role>\|<name>` (after a browse step, the element under the virtual cursor); `stateIs` `<role>\|<name>\|<state>=<value>`; `*` matches any name. Checked by `checkJourneys` and by `npm run corpus -- validate` |
+| Anchor | A CSS selector for a named, focusable element. The handover compares Chrome's accessible name for it with the MSAA focus read. `body` stands for the document, on pages with nothing focusable; its expected name is the title |
+| Arm A | axe-core 4.13.0 (MPL-2.0, exact dev dependency, no install scripts), evaluated in the page of a separate replay context. Its Playwright helper is not used, because it opens a tab (DR-0024) |
+| Unchanged controls (P15) | `npm run corpus -- unchanged`: `<journey>-unchanged`, base against base, in the pattern and split of the journey's first regression item by id. Sixteen, all dev |
+| NVDA input | Guidepup key names. READ_CURRENT is NVDA+Up, sent with Guidepup's `readLine` command (`AtAdapter.readCurrent`), because the plain key syntax has no NVDA modifier. TYPE presses one character at a time (DR-0011 advises against `type()`) |
+| Known limit | A full page load inside a journey (oss-rac-8697's link) restarts the in-page timeline, so mutations before the load are not drained. The step records keep their own trees and focus reads |
+| Sync copies | The repository sits in an iCloud-synced folder, which made 548 byte-identical "name 2.ext" copies of tracked files. They were moved out of the tree (none was ever committed); `.gitignore` and the corpus tools now skip such names |
+
+**Consequences.** Journeys are developed on the base builds in the NVDA-absent leg first (`m4-items.yml` with `sides: base`), then in both legs, before full item runs. Every M4 result is exploratory.
 

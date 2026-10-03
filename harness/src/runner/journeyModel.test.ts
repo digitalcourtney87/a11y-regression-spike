@@ -1,10 +1,16 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+
 import { describe, expect, test } from "vitest";
 
 import type { CorpusItem } from "../schema/index.ts";
+import { CorpusItemSchema } from "../schema/schemas.ts";
 import { ancestors, flattenAxTree, pruneAxTree } from "./axTree.ts";
 import type { CdpAxNode } from "./axTree.ts";
 import { goalOutcome, modalCount, nodeMatchesGoal, speechMatchesGoal } from "./goals.ts";
+import { checkJourneys } from "./journeys.ts";
 import { abbaOrder, repetitionsFor } from "./order.ts";
+import { SETUP_NAMES } from "./setups.ts";
 import { indexOfBackend, nextIndex } from "./virtualCursor.ts";
 
 const n = (nodeId: string, role: string, name: string, childIds: string[] = [], extra: Partial<CdpAxNode> = {}): CdpAxNode => ({
@@ -131,5 +137,30 @@ describe("counterbalanced order", () => {
       item("r", "p3", "j2", { kind: "regression", symptom: "NAME_NOT_CONVEYED", mechanism: "x" }, 4),
     ];
     expect(corpus.map((c) => repetitionsFor(c, corpus))).toEqual([5, 5, 3, 5, 3, 4]);
+  });
+});
+
+describe("journey checks", () => {
+  const journey = { id: "j1", version: "1", app: "a", entryUrl: "/", anchor: "#start", steps: [{ kind: "at", id: "s1", strategy: "TAB", observeMs: 500, expectations: [{ type: "focusOn", value: "button|Save" }] }] };
+  const item = (journeyId: string, app = "a"): CorpusItem => ({ id: `i-${journeyId}`, patternId: "p", split: "dev", source: "seeded", app, journeyId, base: { ref: "r" }, candidate: { patch: "x.patch" }, expected: { kind: "unchanged" }, provenance: { origin: "o" } });
+  test("accepts a valid journey used by its items", () => {
+    expect(checkJourneys(new Map([["j1.json", journey]]), [item("j1")], new Set()).errors).toEqual([]);
+  });
+  test("reports a missing journey, a wrong app, an unknown setup, a bad expectation and an empty TYPE", () => {
+    const bad = { ...journey, steps: [{ kind: "setup", id: "s0", fn: "nope" }, { kind: "at", id: "s1", strategy: "TYPE", observeMs: 0, expectations: [{ type: "focusOn", value: "Save" }, { type: "stateIs", value: "checkbox|x" }] }] };
+    const errors = checkJourneys(new Map([["j1.json", bad]]), [item("j1", "b"), item("j2")], new Set()).errors;
+    expect(errors.join("\n")).toMatch(/unknown setup "nope"/);
+    expect(errors.join("\n")).toMatch(/TYPE step "s1" needs text/);
+    expect(errors.join("\n")).toMatch(/focusOn "Save" is not/);
+    expect(errors.join("\n")).toMatch(/stateIs "checkbox\|x" is not/);
+    expect(errors.join("\n")).toMatch(/is for app "a", not "b"/);
+    expect(errors.join("\n")).toMatch(/journey "j2" not found/);
+  });
+  test("every committed journey is valid, and every corpus item has its journey", () => {
+    const dir = resolve(import.meta.dirname, "../../../journeys");
+    const files = new Map(readdirSync(dir).filter((f) => f.endsWith(".json") && !f.includes(" 2.")).map((f) => [f, JSON.parse(readFileSync(join(dir, f), "utf8")) as unknown]));
+    const itemsDir = resolve(import.meta.dirname, "../../../corpus/items");
+    const items = readdirSync(itemsDir).filter((f) => f.endsWith(".json") && !f.includes(" 2.")).map((f) => CorpusItemSchema.parse(JSON.parse(readFileSync(join(itemsDir, f), "utf8"))));
+    expect(checkJourneys(files, items, SETUP_NAMES).errors).toEqual([]);
   });
 });

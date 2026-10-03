@@ -90,6 +90,8 @@ export const NVDA_ROLE_WORDS: Record<string, string> = {
   option: "",
   radio: "radio button",
   switch: "switch",
+  img: "graphic",
+  image: "graphic",
 };
 
 /**

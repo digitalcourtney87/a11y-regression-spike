@@ -1,0 +1,25 @@
+{
+  "id": "ras-menu-navigate-comments",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-comments-menu",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Comments",
+        "maxAttempts": 25
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "menuitem|Comments"
+        }
+      ]
+    }
+  ]
+}

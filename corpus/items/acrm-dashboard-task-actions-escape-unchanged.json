@@ -1,0 +1,21 @@
+{
+  "id": "acrm-dashboard-task-actions-escape-unchanged",
+  "patternId": "atomic-crm--escape-not-closing",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions-escape",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey acrm-dashboard-task-actions-escape (P15)",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

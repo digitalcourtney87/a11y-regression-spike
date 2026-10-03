@@ -1,0 +1,21 @@
+{
+  "id": "acrm-contact-create-save-unchanged",
+  "patternId": "atomic-crm--submit-pointer-only",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-save",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey acrm-contact-create-save (P15)",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

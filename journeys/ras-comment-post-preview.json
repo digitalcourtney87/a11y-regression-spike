@@ -1,0 +1,34 @@
+{
+  "id": "ras-comment-post-preview",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/comments/create?source=%7B%22post_id%22%3A1%7D",
+  "anchor": "[data-testid=\"button-show-post\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-preview",
+      "strategy": "ACTIVATE",
+      "observeMs": 2500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|New post"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "close-preview",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 2000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Show"
+        }
+      ]
+    }
+  ]
+}

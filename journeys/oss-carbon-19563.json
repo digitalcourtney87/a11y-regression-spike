@@ -1,0 +1,67 @@
+{
+  "id": "oss-carbon-19563",
+  "version": "1",
+  "app": "oss/carbon-19563",
+  "entryUrl": "/",
+  "anchor": "#clear",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-checkbox",
+      "strategy": "SHIFT_TAB",
+      "until": {
+        "role": "checkbox",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "tick",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "checkbox|Show archived|checked=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-clear",
+      "strategy": "TAB",
+      "until": {
+        "name": "Clear filters",
+        "maxAttempts": 3
+      },
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "clear",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "back-to-checkbox",
+      "strategy": "SHIFT_TAB",
+      "until": {
+        "role": "checkbox",
+        "maxAttempts": 3
+      },
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "checkbox|Show archived|checked=false"
+        }
+      ]
+    }
+  ]
+}
