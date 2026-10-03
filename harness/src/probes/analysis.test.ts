@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { minRttEstimate, readEspeakSettings, scanNvdaLog, stepSummary, ticksToNs } from "./analysis.ts";
+import { countSpeakingBetween, isoTimeOfDay, minRttEstimate, nvdaVersionFromLog, readEspeakSettings, scanNvdaLog, stepSummary, ticksToNs } from "./analysis.ts";
 
 describe("ticksToNs", () => {
   test("converts exactly at the usual 10 MHz QPC frequency", () => {
@@ -83,5 +83,31 @@ describe("readEspeakSettings", () => {
       rate: null,
       rateBoost: null,
     });
+  });
+});
+
+
+describe("NVDA log helpers", () => {
+  const log = [
+    "INFO - __main__ (09:15:16.000) - MainThread (1):",
+    "Starting NVDA version 2026.2 AMD64",
+    "IO - speech.speech.speak (09:15:17.199) - MainThread (1):",
+    "Speaking ['console']",
+    "IO - speech.speech.speak (09:15:20.500) - MainThread (1):",
+    "Speaking ['Start canary', 'button']",
+    "IO - speech.speech.speak (09:15:21.100) - MainThread (1):",
+    "Speaking ['K1 polite update arrived']",
+  ].join("\n");
+  test("reads NVDA's runtime version", () => {
+    expect(nvdaVersionFromLog(log)).toBe("2026.2");
+    expect(nvdaVersionFromLog("nothing")).toBeNull();
+  });
+  test("counts Speaking entries inside a time-of-day window", () => {
+    expect(countSpeakingBetween(log, "09:15:18.000", "09:15:22.000")).toBe(2);
+    expect(countSpeakingBetween(log, "09:15:00.000", "09:16:00.000")).toBe(3);
+  });
+  test("isoTimeOfDay takes the UTC time of day", () => {
+    expect(isoTimeOfDay("2026-10-03T09:15:20.500Z")).toBe("09:15:20.500");
+    expect(() => isoTimeOfDay("2026-10-03")).toThrow(RangeError);
   });
 });

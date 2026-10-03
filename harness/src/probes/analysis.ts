@@ -191,3 +191,46 @@ export function readEspeakSettings(ini: string): EspeakSettings {
   if (path.length === 0 && /^\s*\[\[espeak\]\]\s*$/m.test(ini)) result.espeakSectionPresent = true;
   return result;
 }
+
+/** NVDA's runtime version from its log ("Starting NVDA version 2026.2 AMD64"), or null. */
+export function nvdaVersionFromLog(text: string): string | null {
+  return /Starting NVDA version (\S+)/.exec(text)?.[1] ?? null;
+}
+
+/** Milliseconds since midnight for an HH:MM:SS.mmm time of day. */
+function timeOfDayMs(hms: string): number {
+  const m = /^(\d{2}):(\d{2}):(\d{2})\.(\d{3})$/.exec(hms);
+  if (m?.[1] === undefined || m[2] === undefined || m[3] === undefined || m[4] === undefined) throw new RangeError(`not HH:MM:SS.mmm: ${hms}`);
+  return ((Number(m[1]) * 60 + Number(m[2])) * 60 + Number(m[3])) * 1000 + Number(m[4]);
+}
+
+/** The time of day (UTC) of an ISO 8601 instant, as HH:MM:SS.mmm. */
+export function isoTimeOfDay(iso: string): string {
+  const m = /T(\d{2}:\d{2}:\d{2}\.\d{3})/.exec(iso);
+  if (m?.[1] === undefined) throw new RangeError(`not an ISO 8601 instant with milliseconds: ${iso}`);
+  return m[1];
+}
+
+/**
+ * Counts NVDA "Speaking" entries whose log time of day lies in [from, to]
+ * (HH:MM:SS.mmm, the runner's local time, which is UTC on hosted runners).
+ * For tap-versus-log parity only: wall-anchor bucketing is allowed for parity
+ * counts and diagnostics, never for latency, ordering or validity (DR-0039).
+ * Assumes the window does not cross midnight.
+ */
+export function countSpeakingBetween(text: string, from: string, to: string): number {
+  const fromMs = timeOfDayMs(from);
+  const toMs = timeOfDayMs(to);
+  const lines = text.split(/\r?\n/);
+  let count = 0;
+  let headerMs: number | null = null;
+  for (const line of lines) {
+    const header = /^[A-Z]+ - \S+ \((\d{2}:\d{2}:\d{2}\.\d{3})\)/.exec(line);
+    if (header?.[1] !== undefined) {
+      headerMs = timeOfDayMs(header[1]);
+      continue;
+    }
+    if (headerMs !== null && /^Speaking \[/.test(line.trim()) && headerMs >= fromMs && headerMs <= toMs) count++;
+  }
+  return count;
+}
