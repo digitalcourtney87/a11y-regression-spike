@@ -145,6 +145,12 @@ export const RAF_START_SCRIPT = `(() => {
   window.__rafHeartbeat = state; requestAnimationFrame(frame); return true;
 })()`;
 
+/** Returns the heartbeat's largest gap so far (ms) and frame count, without stopping it; null when none runs. */
+export const RAF_PEEK_SCRIPT = `(() => {
+  const s = window.__rafHeartbeat; if (!s) return null;
+  return { maxGapMs: s.max, frames: s.frames };
+})()`;
+
 /** Stops the heartbeat and returns its largest gap (ms) and frame count. */
 export const RAF_READ_SCRIPT = `(() => {
   const s = window.__rafHeartbeat; if (!s) return { maxGapMs: null, frames: 0 };

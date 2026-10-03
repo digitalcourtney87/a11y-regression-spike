@@ -15,7 +15,9 @@
  *   `checkbox|Mark as done|checked=true`;
  * - `announcementContains`: text an announcement contains;
  * - `orderBefore`: excluded from the primary analysis (DR-0022);
- * - a name of `*` matches any name, for an element the step has just reached.
+ * - a name of `*` matches any name, for an element the step has just reached;
+ *   a name of `#<id>` names the element with that DOM id (B2's identity, P12),
+ *   for an element without an accessible name.
  *
  * A goal identifies its target by what the item's regression does not change,
  * so that the regression shows in an expectation rather than as an

@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "journey development, round 2: each journey once on its base build, NVDA-absent leg (DR-0068)",
+  "purpose": "journey development, round 3: each journey once on its base build, both legs (DR-0068, DR-0069)",
   "apps": [
     "atomic-crm",
     "react-admin-simple",
@@ -9,7 +9,8 @@
     "oss-rac-8697"
   ],
   "legs": [
-    "nvda-absent"
+    "nvda-absent",
+    "nvda-present"
   ],
   "items": [
     "acrm-company-show-tabs-unchanged",

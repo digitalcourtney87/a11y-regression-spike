@@ -72,7 +72,7 @@ import { flattenAxTree, pruneAxTree } from "./axTree.ts";
 import type { AxNode, CdpAxNode } from "./axTree.ts";
 import { evaluateGatingB2 } from "./b2Signature.ts";
 import { GATING_SPECS } from "./canaries.ts";
-import { nativeSelfTest, pageClock, pageToQpcNs, RAF_READ_SCRIPT, RAF_START_SCRIPT, segmentDriftMs } from "./clockChecks.ts";
+import { nativeSelfTest, pageClock, pageToQpcNs, RAF_PEEK_SCRIPT, RAF_READ_SCRIPT, RAF_START_SCRIPT, segmentDriftMs } from "./clockChecks.ts";
 import { goalOutcome, modalCount, nameMatches, nodeMatchesGoal, speechMatchesGoal } from "./goals.ts";
 import { itemValidity } from "./itemValidity.ts";
 import type { AttemptReason, Side } from "./itemValidity.ts";
@@ -748,11 +748,46 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
     const clockStart = await pageClock(page, PINGS, true);
     await page.evaluate(RAF_START_SCRIPT);
     await sleep(SETTLE_MS);
+    // One page clock per document (HANDOFF §7.3: recompute the mapping after every full navigation).
+    // Drift and the rAF gap are read after every AT step, so a document that a navigation replaces
+    // keeps its last readings, and the timeline is drained per step, so its entries survive the load.
+    interface DocClock { index: number; clock: typeof clockStart; driftMs: number; rafGapMs: number }
+    let doc: DocClock = { index: 0, clock: clockStart, driftMs: 0, rafGapMs: 0 };
+    const docs: DocClock[] = [doc];
+    const timeline: MappedTimelineEntry[] = [];
+    let navigated = false;
+    page.on("framenavigated", (frame) => {
+      if (frame === page.mainFrame()) navigated = true;
+    });
+    const drain = async (): Promise<void> => {
+      const current = doc;
+      timeline.push(...(await page.evaluate<TimelineEntry[]>(TIMELINE_DRAIN_SCRIPT)).map((e) => ({ ...e, tQpc: pageToQpcNs(e.t, current.clock), doc: current.index })));
+    };
+    const readClock = async (): Promise<void> => {
+      doc.driftMs = Math.max(doc.driftMs, await segmentDriftMs(page, doc.clock, 8));
+      const r = await page.evaluate<{ maxGapMs: number | null } | null>(RAF_PEEK_SCRIPT);
+      doc.rafGapMs = Math.max(doc.rafGapMs, r?.maxGapMs ?? Number.POSITIVE_INFINITY);
+    };
+    const afterStep = async (): Promise<void> => {
+      if (!navigated) {
+        await drain();
+        await readClock();
+        return;
+      }
+      navigated = false;
+      await page.waitForLoadState("load").catch(() => undefined);
+      const clock = await pageClock(page, PINGS, true);
+      await page.evaluate(RAF_START_SCRIPT);
+      doc = { index: doc.index + 1, clock, driftMs: 0, rafGapMs: 0 };
+      docs.push(doc);
+      await drain();
+    };
+    const worst = (f: (d: DocClock) => number): number => Math.max(...docs.map(f));
     const buildPreflight = (drift: number, rafGap: number): Preflight => ({
       foregroundHwndOk: foregroundOk && focusMatches(),
       preCanaryOk,
       manifestValid: ctx.manifestValid && chromeVersion === EXPECTED_CHROME,
-      clock: { nativeSelfTestDisagreementMs: native, pageMappingUncertaintyMs: clockStart.uncertaintyMs, segmentDriftMs: drift, timeTicksHighResolution: clockStart.highResolution === true, maxRafGapMs: rafGap },
+      clock: { nativeSelfTestDisagreementMs: native, pageMappingUncertaintyMs: worst((d) => d.clock.uncertaintyMs), segmentDriftMs: drift, timeTicksHighResolution: docs.every((d) => d.clock.highResolution === true), maxRafGapMs: rafGap },
       ...(ctx.nvda === null ? {} : { injectionMarkerOk: injectionMarkerOk === true, audioOk: ctx.audio.endpointCount >= 1 && ctx.audio.audiosrvRunning, synthOk: ctx.nvda.synthOk }),
     });
     preActivation = inconclusiveReasons(buildPreflight(0, 0), leg);
@@ -788,13 +823,17 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
       }
       const run = await runAtStep(rt, step, segmentId, leg === "nvda-absent");
       record.steps.push(run);
+      await afterStep();
       if (run.outcome === "UNREACHABLE") stopped = true;
     }
     record.notRun = notRun;
 
+    await drain();
+    await readClock();
     const raf = await page.evaluate<{ maxGapMs: number | null; frames: number }>(RAF_READ_SCRIPT);
-    const driftMs = await segmentDriftMs(page, clockStart, 8);
-    const timeline: MappedTimelineEntry[] = (await page.evaluate<TimelineEntry[]>(TIMELINE_DRAIN_SCRIPT)).map((e) => ({ ...e, tQpc: pageToQpcNs(e.t, clockStart) }));
+    doc.rafGapMs = Math.max(doc.rafGapMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY);
+    const driftMs = worst((d) => d.driftMs);
+    const rafGapMs = worst((d) => d.rafGapMs);
     let events: ListenerEvent[] | null = null;
     if (listener !== undefined) {
       try {
@@ -807,7 +846,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
       }
       listener = undefined;
     }
-    record.reasons = inconclusiveReasons(buildPreflight(driftMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY), leg);
+    record.reasons = inconclusiveReasons(buildPreflight(driftMs, rafGapMs), leg);
     const axe = runAxe ? await axePass(browser, base, journey).catch((e: unknown) => new Map([["error", { violations: [], incomplete: [], error: errorText(e) }]])) : null;
     Object.assign(record, {
       chromeVersion,
@@ -815,10 +854,9 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
       timelineVersion: TIMELINE_VERSION,
       listenerEvents: events,
       ...(failure.listener === null ? {} : { listenerFailure: failure.listener }),
-      clock: { native, mappingUncertaintyMs: clockStart.uncertaintyMs, driftMs, highResolution: clockStart.highResolution, raf },
-      pageMapping: { navigationStartS: clockStart.navigationStartS, mappingOffsetNs: clockStart.mappingOffsetNs },
-      preflight: buildPreflight(driftMs, raf.maxGapMs ?? Number.POSITIVE_INFINITY),
-      maxClockSkewMs: Math.max(native, clockStart.uncertaintyMs),
+      clock: { native, driftMs, rafGapMs, raf, documents: docs.map((d) => ({ index: d.index, uncertaintyMs: d.clock.uncertaintyMs, highResolution: d.clock.highResolution, driftMs: d.driftMs, rafGapMs: d.rafGapMs, navigationStartS: d.clock.navigationStartS, mappingOffsetNs: d.clock.mappingOffsetNs })) },
+      preflight: buildPreflight(driftMs, rafGapMs),
+      maxClockSkewMs: Math.max(native, worst((d) => d.clock.uncertaintyMs)),
       speechEvents: ctx.nvda === null ? null : ctx.nvda.tap.between(record.steps.find((s) => s.startedAt !== undefined)?.startedAt ?? 0, qpcNowNs()),
       axe: axe === null ? null : Object.fromEntries(axe),
     });

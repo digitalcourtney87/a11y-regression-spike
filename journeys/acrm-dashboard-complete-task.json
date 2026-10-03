@@ -11,7 +11,7 @@
       "strategy": "TAB",
       "until": {
         "role": "checkbox",
-        "maxAttempts": 60
+        "maxAttempts": 90
       },
       "observeMs": 1000,
       "expectations": []
@@ -25,7 +25,7 @@
       "expectations": [
         {
           "type": "stateIs",
-          "value": "checkbox|*|checked=true"
+          "value": "checkbox|#checkbox-list-label-391|checked=true"
         }
       ]
     }
