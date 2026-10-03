@@ -46,7 +46,7 @@ Conventions:
 | [DR-0007](#dr-0007-toolchain-pins) | Toolchain pins | Accepted | 2026-10-02 | Approved as proposed (toolchain) | — | Resolved |
 | [DR-0008](#dr-0008-github-action-pins) | GitHub Action pins | Accepted | 2026-10-02 | HANDOFF hard rule 3, §9.2 | DR-0046 | Resolved (DR-0046) |
 | [DR-0009](#dr-0009-nvda-provisioning-via-guidepup-setup-action-archived) | NVDA provisioning via Guidepup (setup-action archived) | Accepted | 2026-10-02 | D2 (provisioning) | — | Resolved |
-| [DR-0010](#dr-0010-d1-clock-alignment) | D1 Clock alignment | Accepted | 2026-10-02 | D1 | DR-0039 | Pending: P6 |
+| [DR-0010](#dr-0010-d1-clock-alignment) | D1 Clock alignment | Accepted | 2026-10-02 | D1 | DR-0039, DR-0049 | Resolved (DR-0049) |
 | [DR-0011](#dr-0011-d2-speech-capture-incl-prd-48-at-driver-teardown) | D2 Speech capture (incl. PRD §48 AT Driver teardown) | Accepted | 2026-10-02 | D2 | DR-0039 | Resolved |
 | [DR-0012](#dr-0012-d3-virtual-audio) | D3 Virtual audio | Accepted | 2026-10-02 | D3 | DR-0040, DR-0047 | Resolved |
 | [DR-0013](#dr-0013-d4-canaries-incl-pre-registered-k6a-rule) | D4 Canaries (incl. pre-registered K6a rule) | Accepted | 2026-10-02 | D4 | DR-0036, DR-0037, DR-0046 | Resolved (DR-0046) |
@@ -84,13 +84,14 @@ Conventions:
 | [DR-0045](#dr-0045-escalation-and-gate-brief-process-owner-delegation) | Escalation and gate-brief process (owner delegation) | Accepted | 2026-10-02 (recorded 2026-10-03) | Owner review 2026-10-02, process | DR-0046 | No |
 | [DR-0046](#dr-0046-owner-approvals-of-2026-10-03) | Owner approvals of 2026-10-03 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0047](#dr-0047-scream-pinned-from-m1a-in-repository-installer-both-legs) | Scream pinned from M1a; in-repository installer; both legs | Accepted | 2026-10-03 | Decided by Claude under DR-0040 and DR-0045 | — | No |
-| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | Pending: P8 |
+| [DR-0048](#dr-0048-m1b-canary-run-design) | M1b canary-run design | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0049 | Resolved (DR-0049) |
+| [DR-0049](#dr-0049-owner-approvals-of-p6-and-p8) | Owner approvals of P6 and P8 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 These parts still carry **Proposed by Claude (not yet owner-approved)**. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the G1 brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. Four items remain pending: P3, P6, P7 and P8 (P8 added on 2026-10-03 by DR-0048).
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). Two items remain pending: P3 and P7.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -99,9 +100,9 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P3 | Listener event scope: hook ranges (EVENT_OBJECT_LOCATIONCHANGE excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | DR-0019 | What is measured (which platform events B2 observes) | Before any G2 run; the final ranges are fixed in M2 | Yes, with the final ranges confirmed from M2 data |
 | P4 | **Resolved (approved by the owner 2026-10-03, DR-0046).** Collectors in the NVDA-present leg, and how platform focus is verified there. Proposal: the WinEvent listener runs in that leg only for the 20-run on/off diagnostic, not in G1 runs; the in-page DOM timeline runs in both legs; G1 capture latency is measured from DOM mutation (page QPC) to tap receipt; platform focus in that leg is verified by an MSAA-only focus read (`accFocus` on Chrome's window), with no UIA client | DR-0020 (affects DR-0010 and DR-0024) | What is measured (which events are captured in the leg that produces C's evidence) | No longer pending | Approved as recommended |
 | P5 | **Resolved (decided by Claude under DR-0045, 2026-10-03).** The `yaml` 2.9.1 dev dependency, used by the workflow policy test to parse workflow files | DR-0007 | Listed on 2026-10-03 as security (third-party code that runs in CI; no owner-authored text names it) | No longer pending | Decided, not asked: the package is dev-only and has no dependencies of its own. It is exactly pinned, with a sha512 integrity hash in `package-lock.json`, and carries the ISC licence. It runs only in the Linux CI job (`ci.yml`), under `contents: read` with no secrets, and it parses only this repository's workflow files. It exists to enforce hard rule 3 (supply chain): the workflow policy test uses it to check Action pins, permissions, secrets and input handling |
-| P6 | Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | Before any G1 run | Yes, the methods in DR-0010's table, with any change that M1a data require stated in the item (lab notebook 2026-10-03, question 14) |
+| P6 | **Resolved (approved by the owner 2026-10-03, DR-0049).** Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | DR-0010 | What is measured (they decide when an attempt is INCONCLUSIVE) | No longer pending | Approved as recommended |
 | P7 | The owner monitors the £150 model-spend cap, because Claude cannot meter its own spend | DR-0005 | Cost (who watches the cost envelope) | The G1 brief; meanwhile Claude flags token-heavy work before running it and estimates spend | Yes; Claude's estimates in each gate report support it |
-| P8 | In Phase 0 canary runs, the pre-canary check is not applicable: each canary is itself the known-answer check, so `preCanaryOk` is always true and a capture failure counts as a canary failure, not INCONCLUSIVE. The anchor's focus announcement before activation is recorded per attempt, so the alternative (using it as the pre-canary) can be computed from the data | DR-0048 | What counts as INCONCLUSIVE (it decides whether an instrument failure can be absorbed as INCONCLUSIVE in G1) | Before the G1 runs | Yes: it keeps G1 strict, because G1 measures the instrument itself |
+| P8 | **Resolved (approved by the owner 2026-10-03, DR-0049).** In Phase 0 canary runs, the pre-canary check is not applicable: each canary is itself the known-answer check, so `preCanaryOk` is always true and a capture failure counts as a canary failure, not INCONCLUSIVE. The anchor's focus announcement before activation is recorded per attempt, so the alternative (using it as the pre-canary) can be computed from the data | DR-0048 | What counts as INCONCLUSIVE (it decides whether an instrument failure can be absorbed as INCONCLUSIVE in G1) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), K6e data that contradict the 150 ms and 350 ms serialisation boundaries (DR-0037), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -465,7 +466,7 @@ The owner's request on 2 October 2026:
 |---|---|
 | Date | 2026-10-02 |
 | Status | Accepted |
-| Proposed parts | One pending owner item (P6, the final computation of four D1 checks), marked inline; the rest resolved by DR-0030 |
+| Proposed parts | Resolved: P6 approved by the owner on 2026-10-03 (DR-0049); the rest resolved by DR-0030 |
 | Owner label | D1 |
 | Amended by | DR-0039 (2026-10-02): NVDA log lines may be bucketed into segments via the wall anchor for parity counts and diagnostics, never for latency, ordering or validity |
 | HANDOFF v1.1 | §7.3 (rewritten), §8.3, §9 (M2 and the G2 report), §10.2 |
@@ -515,10 +516,10 @@ The owner's request on 2 October 2026:
 | Quantity | Method | Status |
 |---|---|---|
 | Native self-test disagreement | Named-pipe ping-pong between the Node orchestrator and each native collector, both sides stamping QPC. Disagreement is the largest offset estimate beyond zero. | **Approved by the owner 2026-10-02 (DR-0030)** |
-| Page-mapping uncertainty | How far the CDP `Timestamp` falls outside an `hrtime` bracket around the `getMetrics` call, plus the 100 µs clamp. Cross-checked against the 16-ping estimate in M1a. | **Proposed by Claude (not yet owner-approved)** as the working definition of the owner's D1 check, used only to collect M1a and M1b exploratory data and not in force for any gate run. Pending owner item P6: the final computation, fixed from M1a data, goes to the owner before any G1 run, because it decides when an attempt is INCONCLUSIVE. |
-| Segment drift | Change in the page mapping between the start and the end of a segment. | **Proposed by Claude (not yet owner-approved)**, on the same terms (pending owner item P6) |
-| Low-resolution TimeTicks | Histogram of `performance.now()` steps: about 100 µs steps means QPC; steps of 1 ms or more means low resolution. | **Proposed by Claude (not yet owner-approved)**, on the same terms (pending owner item P6) |
-| rAF gap | Largest gap in an in-page `requestAnimationFrame` heartbeat during the segment. | **Proposed by Claude (not yet owner-approved)**, on the same terms (pending owner item P6). The heartbeat runs in the page under observation |
+| Page-mapping uncertainty | How far the CDP `Timestamp` falls outside an `hrtime` bracket around the `getMetrics` call, plus the 100 µs clamp. Cross-checked against the 16-ping estimate in M1a. | Approved by the owner 2026-10-03 (P6; DR-0049) |
+| Segment drift | Change in the page mapping between the start and the end of a segment. | Approved by the owner 2026-10-03 (P6; DR-0049) |
+| Low-resolution TimeTicks | Histogram of `performance.now()` steps: about 100 µs steps means QPC; steps of 1 ms or more means low resolution. | Approved by the owner 2026-10-03 (P6; DR-0049) |
+| rAF gap | Largest gap in an in-page `requestAnimationFrame` heartbeat during the segment. | Approved by the owner 2026-10-03 (P6; DR-0049) |
 | NVDA log parity | Computed from message counts per NVDA run, as D2 requires: tap `speak` messages against the log's "Speaking" lines (DR-0011). NVDA log wall times are display-only and never used to order or align evidence. Any finer join of log lines (per segment or per line) would need the wall anchor or in-log markers for alignment, which goes beyond D1's "human-readable times only", so it would need an owner decision first. | **Superseded in part by DR-0039:** the owner allows bucketing log lines into segments via the wall anchor for parity counts and diagnostics, never for latency, ordering or validity. Per-run parity stays. |
 
 ## DR-0011 D2 Speech capture (incl. PRD §48 AT Driver teardown)
@@ -2449,8 +2450,8 @@ The four additions each control what runs or how it runs, so each can change a v
 | | |
 |---|---|
 | Date | 2026-10-03 |
-| Status | Accepted, except the part pending as P8 |
-| Owner label | Decided by Claude under DR-0045; P8 pending |
+| Status | Accepted (P8 approved by the owner on 2026-10-03, DR-0049) |
+| Owner label | Decided by Claude under DR-0045; P8 approved by the owner (DR-0049) |
 | HANDOFF v1.4 | §7.2, §8.1, §9 (M1b, M1d), §9.1 (implemented as stated) |
 
 **Context.** M1b builds the canary runner, the relay tap and the report. The smoke pilot (run 37114407343, `windows-2025`, K1–K5 twice each) showed the instrument path working end to end: every preflight valid, every evidence package valid, tap-versus-log parity 76 of 76. All 10 gating attempts were scored FAIL only because NVDA's speech dictionaries rewrite text before it is queued ("K1" arrives as "K 1"); re-scored with the matching below, all 10 pass, 557–636 ms after activation.
@@ -2465,9 +2466,31 @@ The four additions each control what runs or how it runs, so each can change a v
 | Handover order | Foreground and verify; DOM-focus the anchor in setup; MSAA-only focus read (P4); injection marker and virtual buffer (D8); clock checks; 1.5 s settle; segment |
 | Evidence | One gate evidence package per attempt (DR-0026 amendment a), `side: "base"` (canaries have no candidate), item id with any variant suffix (for example `K6a:polite`) |
 | K6a | Run once, in the G1 dispatch, so the pre-registered rule (DR-0013) has a single look; pilots exclude K6a |
-| Pre-canary (P8, pending) | **Proposed by Claude (not yet owner-approved):** in Phase 0 canary runs `preCanaryOk` is always true, because each canary is itself the known-answer check (PRD §19); a capture failure therefore counts as a canary failure. The anchor's focus announcement is recorded per attempt (`anchorSpeech`) so the alternative can be computed |
+| Pre-canary (P8) | **Approved by the owner 2026-10-03 (DR-0049):** in Phase 0 canary runs `preCanaryOk` is always true, because each canary is itself the known-answer check (PRD §19); a capture failure therefore counts as a canary failure. The anchor's focus announcement is recorded per attempt (`anchorSpeech`) so the alternative can be computed |
 
 **Consequences.**
 
 - `report:phase0` scores G1 from the recorded tap events with these rules; the decision does not change any gate number.
 - Until the owner answers P8, G1 runs use the conservative reading above. If the owner prefers the anchor announcement as the pre-canary, it can be applied to the recorded data without re-running.
+
+## DR-0049 Owner approvals of P6 and P8
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.4 | No text change; the gate rules it relies on are unchanged |
+
+**Context.** Before the G1 run, Claude put the two hard-rule-12 items it needed to the owner, with the M1a and M1d pilot data (lab notebook 2026-10-03): P6, the computation of four D1 clock checks (DR-0010), and P8, the Phase 0 reading of the pre-canary check (DR-0048).
+
+**Decision.**
+
+> Yes to P6 and P8; dispatch the G1 run
+
+**Consequences.**
+
+- P6: the DR-0010 methods for page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap are the D1 INCONCLUSIVE tests, as implemented in `harness/src/runner/clockChecks.ts`.
+- P8: in Phase 0 canary runs `preCanaryOk` is always true; a capture failure counts as a canary failure. The anchor announcement stays recorded per attempt.
+- Pending owner items after this record: P3 (listener event scope, before any G2 run) and P7 (spend monitoring, for the G1 brief). The K6e result has triggered DR-0037's conditional question, which goes in the G1 brief.
+- The G1 run is dispatched on 2026-10-03 with these rules in force.

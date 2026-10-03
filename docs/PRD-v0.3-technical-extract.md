@@ -310,7 +310,7 @@ The full set of pre-outcome checks (HANDOFF R9, v1.1 and v1.2), with the reason 
 | Audio | No audio endpoint, or Audiosrv not running | NVDA-present | `AUDIO` | DR-0012; DR-0030 |
 | Synth | Active synth is not the declared eSpeak NG configuration (any fallback) | NVDA-present | `SYNTH_FALLBACK` | DR-0017; DR-0041 |
 
-- **How four D1 checks are computed.** The limits are the owner's (DR-0010), and the native self-test method is approved (DR-0030). How page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (an in-page `requestAnimationFrame` heartbeat) are computed is **Proposed by Claude (not yet owner-approved; pending P6)**. Claude's working definitions in DR-0010 are used only to collect M1a and M1b exploratory data and are not in force for any gate run. The final computation, fixed from M1a data, goes to the owner before any G1 run, because it decides when an attempt is INCONCLUSIVE (§8).
+- **How four D1 checks are computed.** The limits are the owner's (DR-0010). The native self-test method was approved on 2026-10-02 (DR-0030), and the computations of page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap on 2026-10-03 (P6; DR-0049), as set out in DR-0010.
 - **Audio check scope.** Limiting the audio check to the NVDA-present leg was approved by the owner 2026-10-02 (DR-0030); DR-0012 states the check without naming a leg. A missing NVDA-present check counts as failed.
 - **Declared synth configuration (DR-0041, amends DR-0017).** eSpeak NG bundled with NVDA, at NVDA's default rate for eSpeak NG (30 on NVDA's 0–100 scale on a fresh configuration), rate boost off. The `nvda.ini` committed in M1 must not set an eSpeak rate, and the effective rate is recorded from the running synth each run (`EnvManifest.synth.rate`). An effective rate other than 30 is not a synth fallback, so `SYNTH_FALLBACK` is unchanged; it goes back to the owner (hard rule 12).
 
@@ -567,7 +567,7 @@ Illustrative INCONCLUSIVE boundaries. These are arithmetic, not thresholds:
 | rAF gap | 100 ms | > 100 ms |
 | TimeTicks resolution | High resolution required | Low resolution |
 
-The limits are the owner's. How every quantity except the native self-test disagreement is computed is pending P6 (§3.6, §8). The other pre-outcome checks, and the Phase 0 scope of the validity rule, are in §3.6.
+The limits are the owner's. How each quantity is computed is set out in DR-0010 and was approved by the owner (DR-0030; P6, DR-0049). The other pre-outcome checks, and the Phase 0 scope of the validity rule, are in §3.6.
 
 ### 6.3 Run counts
 
@@ -614,7 +614,6 @@ Only hard-rule-12 items still pending remain here: what is measured, what counts
 | ID | Point | Proposal | Why it is a hard-rule-12 item | Needed by | Section |
 |---|---|---|---|---|---|
 | P3 | Listener event scope: hook ranges (`EVENT_OBJECT_LOCATIONCHANGE` excluded), filtering by browser PID and window class, and browser-UI alerts excluded by `hwndClass` | As listed in DR-0019, with the final ranges confirmed from M2 data | Sets which platform events Arm B2 observes (what is measured) | Before any G2 run | §2.2 |
-| P6 | Final computation of four D1 checks: page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap (including the in-page `requestAnimationFrame` heartbeat), fixed from M1a data | The working methods in DR-0010, with any change that M1a data require stated in the item | Decides when an attempt is INCONCLUSIVE (what is measured) | Before any G1 run | §3.6; §6.2 |
 
 P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046). P7 (a cost item) is outside this extract's scope and is listed only in `docs/DECISIONS.md`.
 
