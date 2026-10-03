@@ -17,6 +17,13 @@ function section(lock: Record<string, unknown>, key: string): Record<string, unk
   return lock[key] as Record<string, unknown>;
 }
 
+/** Resets the Scream signature fields to their pre-M1a pending state. */
+function screamPending(lock: Record<string, unknown>): Record<string, unknown> {
+  const scream = section(lock, "scream");
+  for (const key of ["signerThumbprint", "signatureStatus", "signer", "issuer"]) scream[key] = { status: "pending-M1a", value: null };
+  return scream;
+}
+
 /** Turns the setup-dotnet pin into a pending-owner pin, then applies a mutation. */
 function pendingOwner(lock: Record<string, unknown>, mutate: (action: Record<string, unknown>) => void): void {
   const action = section(section(lock, "actions"), "setup-dotnet");
@@ -47,10 +54,10 @@ describe("EnvLockSchema", () => {
     ["a pending-owner status on a toolchain pin", (l) => (section(l, "node").status = "pending-owner")],
     ["a malformed SHA-256", (l) => (section(l, "nvda").sha256 = "abc")],
     ["an http Scream URL", (l) => (section(l, "scream").url = "http://example.com/Scream3.6.zip")],
-    ["a pinned thumbprint without a value", (l) => (section(section(l, "scream"), "signerThumbprint").status = "pinned")],
-    ["a pending thumbprint with a value", (l) => (section(section(l, "scream"), "signerThumbprint").value = "A".repeat(40))],
-    ["a pinned signature status without a value", (l) => (section(section(l, "scream"), "signatureStatus").status = "pinned")],
-    ["a pending signer with a value", (l) => (section(section(l, "scream"), "signer").value = "CN=Example")],
+    ["a pinned thumbprint without a value", (l) => (section(screamPending(l), "signerThumbprint").status = "pinned")],
+    ["a pending thumbprint with a value", (l) => (section(screamPending(l), "signerThumbprint").value = "A".repeat(40))],
+    ["a pinned signature status without a value", (l) => (section(screamPending(l), "signatureStatus").status = "pinned")],
+    ["a pending signer with a value", (l) => (section(screamPending(l), "signer").value = "CN=Example")],
     ["a missing issuer", (l) => delete section(l, "scream").issuer],
     ["an unknown signature status", (l) => (section(l, "scream").signatureStatus = { status: "pinned", value: "Trusted" })],
     ["an empty signer", (l) => (section(l, "scream").signer = { status: "pinned", value: "" })],
@@ -88,7 +95,7 @@ describe("EnvLockSchema", () => {
 
   test("refuses a pinned thumbprint while the signature status, signer or issuer is pending (DR-0040)", () => {
     const lock = mutated((l) => {
-      const scream = section(l, "scream");
+      const scream = screamPending(l);
       scream.signatureStatus = { status: "pinned", value: "Valid" };
       scream.signerThumbprint = { status: "pinned", value: "0123456789ABCDEF0123456789ABCDEF01234567" };
     });

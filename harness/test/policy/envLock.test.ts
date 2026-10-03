@@ -50,10 +50,11 @@ describe("env.lock", () => {
       version: "3.6",
       url: "https://github.com/duncanthrax/scream/releases/download/3.6/Scream3.6.zip",
       sha256: "25ea5e778b4e6995a98d448b9b5f6d321f681663f1aeeec69d8e63183d008b19",
-      signerThumbprint: { status: "pending-M1a", value: null },
-      signatureStatus: { status: "pending-M1a", value: null },
-      signer: { status: "pending-M1a", value: null },
-      issuer: { status: "pending-M1a", value: null },
+      // Pinned from M1a run 37111906022 (DR-0040, DR-0047).
+      signerThumbprint: { status: "pinned", value: "B2353603B4837C7A86A01D12A2B34DA7B5F2D368" },
+      signatureStatus: { status: "pinned", value: "Valid" },
+      signer: { status: "pinned", value: "CN=Tom Kistner, O=Tom Kistner, STREET=Zelterweg 1, L=Nussloch, PostalCode=69226, C=DE" },
+      issuer: { status: "pinned", value: "CN=Sectigo RSA Code Signing CA, O=Sectigo Limited, L=Salford, S=Greater Manchester, C=GB" },
     });
     expect(lock.dotnet.sdk).toBe("10.0.401");
   });
