@@ -45,8 +45,10 @@ jobs:
         shell: pwsh
         run: ./harness/src/probes/env.ps1 -Out artefacts/m1a/env-after.json
       - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        if: always()
         run: npx --no-install playwright install chromium
       - name: Install NVDA 2026.2 (Guidepup 0.35.0 manifest, sha256-checked)
+        if: always()
         run: npx --no-install guidepup install
       - name: Run probes
         if: always()

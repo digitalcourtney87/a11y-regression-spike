@@ -23,6 +23,36 @@ $record = [ordered]@{
 }
 function Save-Record { $record | ConvertTo-Json -Depth 8 | Set-Content -Path $recordPath -Encoding utf8 }
 
+function Get-PeMachine([string]$Path) {
+  $bytes = [System.IO.File]::ReadAllBytes($Path)
+  $pe = [BitConverter]::ToInt32($bytes, 0x3C)
+  $machine = [BitConverter]::ToUInt16($bytes, $pe + 4)
+  switch ($machine) { 0x8664 { 'x64' } 0x014C { 'x86' } 0xAA64 { 'arm64' } default { '0x{0:X4}' -f $machine } }
+}
+
+function Get-SignatureRecord([string]$Path) {
+  $sig = Get-AuthenticodeSignature -FilePath $Path
+  $cert = $sig.SignerCertificate
+  $entry = [ordered]@{
+    file          = Split-Path -Leaf $Path
+    status        = "$($sig.Status)"
+    statusMessage = $sig.StatusMessage
+    signatureType = "$($sig.SignatureType)"
+  }
+  if ($Path -match '\.(sys|exe|dll)$') { $entry.machine = Get-PeMachine $Path }
+  if ($null -ne $cert) {
+    $entry.signer     = $cert.Subject
+    $entry.issuer     = $cert.Issuer
+    $entry.thumbprint = $cert.Thumbprint
+    $entry.notBefore  = $cert.NotBefore.ToString('o')
+    $entry.notAfter   = $cert.NotAfter.ToString('o')
+    $entry.selfSigned = ($cert.Subject -eq $cert.Issuer)
+    $entry.chain      = Get-ChainRecord $cert
+  }
+  if ($null -ne $sig.TimeStamperCertificate) { $entry.timestamper = $sig.TimeStamperCertificate.Subject }
+  $entry
+}
+
 function Get-ChainRecord([System.Security.Cryptography.X509Certificates.X509Certificate2]$Cert) {
   $chain = [System.Security.Cryptography.X509Certificates.X509Chain]::new()
   $chain.ChainPolicy.RevocationMode = [System.Security.Cryptography.X509Certificates.X509RevocationMode]::NoCheck
@@ -45,31 +75,20 @@ try {
   $dir = Join-Path $env:RUNNER_TEMP 'scream'
   Expand-Archive -Path $zip -DestinationPath $dir -Force
   $record.files = @(Get-ChildItem $dir -Recurse -File | ForEach-Object { $_.FullName.Substring($dir.Length + 1) })
-  $inf = Get-ChildItem $dir -Recurse -Filter 'Scream.inf' | Where-Object { $_.FullName -match 'x64' } | Select-Object -First 1
-  if ($null -eq $inf) { throw 'no x64 Scream.inf in the archive' }
+  # Scream 3.6 ships a single driver folder (Install\driver); prefer it if there are several.
+  $infs = @(Get-ChildItem $dir -Recurse -Filter 'Scream.inf')
+  $inf = @($infs | Where-Object { $_.FullName -match '\\driver\\' }) + $infs | Select-Object -First 1
+  if ($null -eq $inf) { throw 'no Scream.inf in the archive' }
   $record.inf = $inf.FullName.Substring($dir.Length + 1)
 
   $record.signatures = @()
   foreach ($file in @(Get-ChildItem $inf.DirectoryName -File | Where-Object { $_.Extension -in '.sys', '.cat' })) {
-    $sig = Get-AuthenticodeSignature -FilePath $file.FullName
-    $cert = $sig.SignerCertificate
-    $entry = [ordered]@{
-      file          = $file.Name
-      status        = "$($sig.Status)"
-      statusMessage = $sig.StatusMessage
-      signatureType = "$($sig.SignatureType)"
-    }
-    if ($null -ne $cert) {
-      $entry.signer     = $cert.Subject
-      $entry.issuer     = $cert.Issuer
-      $entry.thumbprint = $cert.Thumbprint
-      $entry.notBefore  = $cert.NotBefore.ToString('o')
-      $entry.notAfter   = $cert.NotAfter.ToString('o')
-      $entry.selfSigned = ($cert.Subject -eq $cert.Issuer)
-      $entry.chain      = Get-ChainRecord $cert
-    }
-    if ($null -ne $sig.TimeStamperCertificate) { $entry.timestamper = $sig.TimeStamperCertificate.Subject }
-    $record.signatures += $entry
+    $record.signatures += Get-SignatureRecord $file.FullName
+  }
+  $devconInArchive = Get-ChildItem $dir -Recurse -Filter 'devcon*.exe' | Select-Object -First 1
+  if ($null -ne $devconInArchive) {
+    $record.devconInArchive = $devconInArchive.FullName.Substring($dir.Length + 1)
+    $record.devconSignature = Get-SignatureRecord $devconInArchive.FullName
   }
   Save-Record
 
@@ -87,7 +106,7 @@ try {
     $store = [System.Security.Cryptography.X509Certificates.X509Store]::new('TrustedPublisher', 'LocalMachine')
     $store.Open('ReadWrite'); $store.Add($cert); $store.Close()
     Start-Service Audiosrv, AudioEndpointBuilder
-    $devcon = Get-ChildItem $dir -Recurse -Filter 'devcon*.exe' | Where-Object { $_.Name -match 'x64|devcon.exe' } | Select-Object -First 1
+    $devcon = $devconInArchive
     if ($null -eq $devcon) { $devcon = Get-Command devcon -ErrorAction SilentlyContinue }
     if ($null -eq $devcon) { throw 'devcon is neither in the archive nor on PATH (DR-0012: a separate download needs the owner)' }
     $devconPath = if ($devcon -is [System.IO.FileInfo]) { $devcon.FullName } else { $devcon.Source }
