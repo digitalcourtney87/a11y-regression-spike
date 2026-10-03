@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/deals/DealCard.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/deals/DealCard.tsx
+index c10534f..d0297ae 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/deals/DealCard.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/deals/DealCard.tsx
+@@ -40,7 +40,7 @@ export const DealCardContent = ({
+ 
+   return (
+     <div
+-      className="cursor-pointer"
++      className="cursor-pointer deal-card"
+       {...provided?.draggableProps}
+       {...provided?.dragHandleProps}
+       ref={provided?.innerRef}

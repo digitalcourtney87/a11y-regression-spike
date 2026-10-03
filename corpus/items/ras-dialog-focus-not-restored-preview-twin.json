@@ -1,0 +1,22 @@
+{
+  "id": "ras-dialog-focus-not-restored-preview-twin",
+  "patternId": "react-admin-simple--dialog-focus-not-restored",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-focus-not-restored-preview-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CLASS_RENAME"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator class-rename",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

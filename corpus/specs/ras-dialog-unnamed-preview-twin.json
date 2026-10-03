@@ -1,0 +1,21 @@
+{
+  "id": "ras-dialog-unnamed-preview-twin",
+  "patternId": "react-admin-simple--dialog-labelledby-removed",
+  "operator": "a11y-improvement",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "target": "Post preview dialog described by its content (aria-describedby), name unchanged",
+  "edits": [
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        data-testid=\"dialog-show-post\"\n",
+      "replace": "                        data-testid=\"dialog-show-post\"\n                        aria-describedby=\"post-preview-content\"\n"
+    },
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        <DialogContent>\n",
+      "replace": "                        <DialogContent id=\"post-preview-content\">\n"
+    }
+  ],
+  "twinOf": "ras-dialog-unnamed-preview"
+}

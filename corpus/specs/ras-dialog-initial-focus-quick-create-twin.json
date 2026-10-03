@@ -1,0 +1,16 @@
+{
+  "id": "ras-dialog-initial-focus-quick-create-twin",
+  "patternId": "react-admin-simple--dialog-initial-focus-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-open",
+  "target": "Post quick-create dialog: maximum width changed (maxWidth=\"md\")",
+  "edits": [
+    {
+      "file": "src/comments/PostQuickCreate.tsx",
+      "find": "            fullWidth\n",
+      "replace": "            fullWidth\n            maxWidth=\"md\"\n"
+    }
+  ],
+  "twinOf": "ras-dialog-initial-focus-quick-create"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "acrm-live-region-hidden-toaster-twin",
+  "patternId": "atomic-crm--live-region-hidden-ancestor",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-notification",
+  "target": "Notification toaster in the main layout wrapped in a plain container",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Layout.tsx",
+      "find": "      <Notification />\n",
+      "replace": "      <div className=\"notification-container\">\n        <Notification />\n      </div>\n"
+    }
+  ],
+  "twinOf": "acrm-live-region-hidden-toaster"
+}

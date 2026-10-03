@@ -1,0 +1,22 @@
+{
+  "id": "ras-button-to-div-quick-create-cancel-twin",
+  "patternId": "react-admin-simple--button-to-div",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-cancel",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-button-to-div-quick-create-cancel-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

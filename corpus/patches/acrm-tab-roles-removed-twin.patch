@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
+index 6cc24ee..b718f1a 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
+@@ -134,7 +134,7 @@ const ContactShowContentMobile = () => {
+         </div>
+ 
+         <Tabs defaultValue="notes" className="w-full">
+-          <TabsList className="grid w-full grid-cols-3 h-10">
++          <TabsList className="grid w-full grid-cols-3 h-10" aria-label="Contact sections">
+             <TabsTrigger value="notes">
+               {translate("resources.notes.name", { smart_count: 2 })}
+             </TabsTrigger>

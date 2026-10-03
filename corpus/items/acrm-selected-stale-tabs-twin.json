@@ -1,0 +1,22 @@
+{
+  "id": "acrm-selected-stale-tabs-twin",
+  "patternId": "atomic-crm--selected-stale",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-selected-stale-tabs-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

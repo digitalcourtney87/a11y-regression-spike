@@ -21,6 +21,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 
+import { operatorById } from "./catalogue.ts";
 import { applyEdits, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import type { MutationSpec } from "./mutate.ts";
 import { addPatterns, PatternRegistrySchema, planSpaRegressionPatterns } from "./patterns.ts";
@@ -100,7 +101,14 @@ if (command === "validate") {
     const spec = MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, file), "utf8")));
     if (`${spec.id}.json` !== file) throw new Error(`${file}: id "${spec.id}" must match the file name`);
     const planned = files.patterns?.patterns.find((p) => p.id === spec.patternId);
-    if (planned?.status !== "planned" || planned.operator !== spec.operator || planned.context !== spec.app) throw new Error(`${file}: pattern "${spec.patternId}" is not a planned ${spec.app} pattern for operator ${spec.operator}`);
+    const twin = spec.twinOf === undefined ? null : MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, `${spec.twinOf}.json`), "utf8")));
+    if (twin !== null) {
+      // A benign twin (P20): a benign operator on the same pattern, app and journey as its regression spec.
+      if (operatorById(spec.operator)?.kind !== "benign") throw new Error(`${file}: a twin needs a benign operator, not ${spec.operator}`);
+      if (twin.patternId !== spec.patternId || twin.app !== spec.app || twin.journeyId !== spec.journeyId) throw new Error(`${file}: a twin shares its regression spec's pattern, app and journey`);
+    }
+    const expectedOperator = twin === null ? spec.operator : twin.operator;
+    if (planned?.status !== "planned" || planned.operator !== expectedOperator || planned.context !== spec.app) throw new Error(`${file}: pattern "${spec.patternId}" is not a planned ${spec.app} pattern for operator ${expectedOperator}`);
     if (files.split?.assignments[spec.patternId] !== "dev") throw new Error(`${file}: pattern "${spec.patternId}" is not in the dev split; test patterns are not built in M3 (P15)`);
     const baseCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `fixtures/spa/${spec.app}`], { cwd: repoRoot, encoding: "utf8" }).trim();
     const patchPath = join(PATCHES, `${spec.id}.patch`);

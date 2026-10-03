@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
+index 550f8bc..1710fcc 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostQuickCreateCancelButton.tsx
+@@ -13,7 +13,7 @@ const PostQuickCreateCancelButton = ({
+ 
+     return (
+         <Button
+-            sx={{ margin: '10px 24px', position: 'relative' }}
++            sx={{ margin: '8px 24px', position: 'relative' }}
+             onClick={onClick}
+         >
+             <IconCancel sx={{ paddingRight: '0.5em' }} />

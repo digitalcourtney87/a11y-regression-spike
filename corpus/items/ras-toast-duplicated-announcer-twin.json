@@ -1,0 +1,22 @@
+{
+  "id": "ras-toast-duplicated-announcer-twin",
+  "patternId": "react-admin-simple--toast-duplicated",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-toast-duplicated-announcer-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "EQUIVALENT_REFACTOR"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator equivalent-refactor",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

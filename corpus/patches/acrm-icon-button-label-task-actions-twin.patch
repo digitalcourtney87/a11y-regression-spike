@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/Task.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/Task.tsx
+index a4e856c..cad6ab6 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/Task.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/Task.tsx
+@@ -157,7 +157,9 @@ export const Task = ({
+               className="h-5 pr-0! size-8 cursor-pointer"
+               aria-label={translate("resources.tasks.actions.title")}
+             >
+-              <MoreVertical className="size-5 md:size-4" />
++              <span>
++                <MoreVertical className="size-5 md:size-4" />
++              </span>
+             </Button>
+           </DropdownMenuTrigger>
+           <DropdownMenuContent align="end">

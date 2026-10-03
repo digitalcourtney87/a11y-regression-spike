@@ -38,6 +38,8 @@ export const MutationSpecSchema = z.strictObject({
   target: z.string().min(1),
   edits: z.array(EditSchema).min(1),
   repetitions: z.number().int().min(1).optional(),
+  /** A benign twin (P20, DR-0061) names the regression spec it is paired with; it shares that spec's pattern and journey. */
+  twinOf: z.string().optional(),
 });
 
 export type Edit = z.infer<typeof EditSchema>;

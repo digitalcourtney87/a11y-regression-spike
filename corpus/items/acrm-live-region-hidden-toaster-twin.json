@@ -1,0 +1,22 @@
+{
+  "id": "acrm-live-region-hidden-toaster-twin",
+  "patternId": "atomic-crm--live-region-hidden-ancestor",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-live-region-hidden-toaster-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "WRAPPER_ELEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator wrapper-added",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

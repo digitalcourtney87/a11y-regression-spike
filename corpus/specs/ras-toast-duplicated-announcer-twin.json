@@ -1,0 +1,16 @@
+{
+  "id": "ras-toast-duplicated-announcer-twin",
+  "patternId": "react-admin-simple--toast-duplicated",
+  "operator": "equivalent-refactor",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "Posts lifecycle callbacks gain an afterUpdate that returns its result unchanged",
+  "edits": [
+    {
+      "file": "src/dataProvider.tsx",
+      "find": "        resource: 'posts',\n",
+      "replace": "        resource: 'posts',\n        afterUpdate: async result => result,\n"
+    }
+  ],
+  "twinOf": "ras-toast-duplicated-announcer"
+}

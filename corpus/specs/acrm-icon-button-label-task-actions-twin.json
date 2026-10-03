@@ -1,0 +1,16 @@
+{
+  "id": "acrm-icon-button-label-task-actions-twin",
+  "patternId": "atomic-crm--icon-button-label-removed",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions",
+  "target": "Task actions button: its icon wrapped in a plain span",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/Task.tsx",
+      "find": "              <MoreVertical className=\"size-5 md:size-4\" />\n",
+      "replace": "              <span>\n                <MoreVertical className=\"size-5 md:size-4\" />\n              </span>\n"
+    }
+  ],
+  "twinOf": "acrm-icon-button-label-task-actions"
+}

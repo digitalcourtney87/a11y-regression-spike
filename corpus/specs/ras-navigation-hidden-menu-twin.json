@@ -1,0 +1,16 @@
+{
+  "id": "ras-navigation-hidden-menu-twin",
+  "patternId": "react-admin-simple--navigation-hidden",
+  "operator": "class-rename",
+  "app": "react-admin-simple",
+  "journeyId": "ras-menu-navigate-comments",
+  "target": "Sidebar menu given a class name",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "    <Menu>\n",
+      "replace": "    <Menu className=\"app-menu\">\n"
+    }
+  ],
+  "twinOf": "ras-navigation-hidden-menu"
+}

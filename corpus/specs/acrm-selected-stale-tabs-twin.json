@@ -1,0 +1,16 @@
+{
+  "id": "acrm-selected-stale-tabs-twin",
+  "patternId": "atomic-crm--selected-stale",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "target": "Shared TabsTrigger: font weight changed (font-medium to font-semibold)",
+  "edits": [
+    {
+      "file": "src/components/ui/tabs.tsx",
+      "find": "font-medium",
+      "replace": "font-semibold"
+    }
+  ],
+  "twinOf": "acrm-selected-stale-tabs"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "acrm-submit-pointer-only-save-twin",
+  "patternId": "atomic-crm--submit-pointer-only",
+  "operator": "equivalent-refactor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-save",
+  "target": "Shared SaveButton: the click handler passed through an inline arrow function",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      onClick={handleClick}\n",
+      "replace": "      onClick={(event) => handleClick(event)}\n"
+    }
+  ],
+  "twinOf": "acrm-submit-pointer-only-save"
+}

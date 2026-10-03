@@ -1,0 +1,26 @@
+{
+  "id": "ras-toast-status-created-populated-twin",
+  "patternId": "react-admin-simple--toast-region-created-populated",
+  "operator": "equivalent-refactor",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "Admin notification: a custom notification that sets the Snackbar content role to alert, its default",
+  "edits": [
+    {
+      "file": "src/index.tsx",
+      "find": "import { Admin, Resource, CustomRoutes } from 'react-admin';\n",
+      "replace": "import { Admin, Resource, CustomRoutes, Notification } from 'react-admin';\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "const container = document.getElementById('root') as HTMLElement;\n",
+      "replace": "const AlertNotification = () => (\n    <Notification ContentProps={{ role: 'alert' }} />\n);\n\nconst container = document.getElementById('root') as HTMLElement;\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "            layout={Layout}\n",
+      "replace": "            layout={Layout}\n            notification={AlertNotification}\n"
+    }
+  ],
+  "twinOf": "ras-toast-status-created-populated"
+}
