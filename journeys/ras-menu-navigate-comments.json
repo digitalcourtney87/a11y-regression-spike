@@ -11,6 +11,7 @@
       "strategy": "BROWSE_NEXT",
       "until": {
         "name": "Comments",
+        "role": "menuitem",
         "maxAttempts": 25
       },
       "observeMs": 1500,

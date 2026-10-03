@@ -1,21 +1,21 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M4 full run: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app (DR-0072)",
+  "purpose": "M4 re-run of ras-menu-navigate-comments after adding the role to its goal (DR-0073)",
   "apps": [
-    "atomic-crm",
-    "react-admin-simple",
-    "oss-carbon-19563",
-    "oss-fluent-35927",
-    "oss-rac-8697"
+    "react-admin-simple"
   ],
   "legs": [
     "nvda-absent",
     "nvda-present"
   ],
-  "items": [],
+  "items": [
+    "ras-navigation-hidden-menu",
+    "ras-navigation-hidden-menu-twin",
+    "ras-menu-navigate-comments-unchanged"
+  ],
   "sides": "both",
   "reps": "",
   "canaries": true,
   "axe": true,
-  "shards": 3
+  "shards": 1
 }
