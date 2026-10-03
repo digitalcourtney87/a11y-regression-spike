@@ -99,7 +99,8 @@ Conventions:
 | [DR-0060](#dr-0060-dev-split-specs-for-the-spa-regression-batch) | Dev-split specs for the SPA regression batch | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0061](#dr-0061-benign-corpus-design) | Benign corpus design | Accepted | 2026-10-03 | P20, approved by the owner 2026-10-03 (DR-0062) | DR-0062 | Resolved (P20, DR-0062) |
 | [DR-0062](#dr-0062-owner-approval-of-p20-and-the-mining-pass) | Owner approval of P20, and the mining pass | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
-| [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted (method and rules); P21, P22 Proposed | 2026-10-03 | Decided by Claude under DR-0045; Proposed by Claude (not yet owner-approved): P21, P22 | — | Yes (P21, P22) |
+| [DR-0063](#dr-0063-mined-pairs-reproduction-method-and-verification) | Mined pairs: reproduction method and verification | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P21 and P22 approved by the owner 2026-10-03 (DR-0064) | DR-0064 | Resolved (P21, P22, DR-0064) |
+| [DR-0064](#dr-0064-owner-approval-of-p21-and-p22-and-the-oss-regression-split) | Owner approval of P21 and P22, and the oss-regression split | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -129,8 +130,8 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P18 | **Resolved (owner reply 2026-10-03, DR-0057): Prompt to Page exports are skipped for now; no customer defects were offered, so there are no reconstructed items for now.** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | No longer pending | Not adopted for now |
 | P19 | **Resolved (approved by the owner 2026-10-03, DR-0059).** to close the expected shortfall against P15's 110 regression patterns (about 57–67 reachable from the SPA and mined pairs), add react-admin's "simple" example (MIT; evaluated in DR-0056, meets every criterion) as a second SPA context: vendor about 1 MB of its source at the pinned commit, generate its lockfile in CI, and install it in CI under the P17 safeguards. The achievable count is reported again before the split | DR-0058; `docs/research/2026-10-03-oss-regression-survey.md` | What is measured (sample size and the independence of patterns); security (more third-party code) | No longer pending | Approved as recommended |
 | P20 | **Resolved (approved by the owner 2026-10-03, DR-0062).** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | No longer pending | Approved as recommended |
-| P21 | **Proposed by Claude (not yet owner-approved).** Accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | Before the `oss-regression` split, and before dev OSS items and twins are written | Yes (option A of DR-0063; a third SPA, option C, reaches about 113 if the power table calls for it) |
-| P22 | **Proposed by Claude (not yet owner-approved).** Keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | With P21 | Yes |
+| P21 | **Resolved (approved by the owner 2026-10-03, DR-0064).** accept the corpus at 79 regression patterns (68 SPA and 11 verified mined pairs; 20 dev and 59 test, a margin of about ±0.091 at p = 0.15) instead of P15's 110, split the `oss-regression` batch now (seed 20261004, test fraction 0.7, stratified), and decide whether more patterns are needed at M5's power table, as a later batch if so | DR-0063; DR-0064; `docs/research/2026-10-03-oss-verification.md` | What is measured (sample size) | No longer pending | Approved as recommended |
+| P22 | **Resolved (approved by the owner 2026-10-03, DR-0064).** keep the verification rules of DR-0063 for mined pairs: a pair enters the corpus only if its keyboard path reproduces; the last-good construct must not be documented as unsupported or not accessible; the reported last good must have the behaviour; the pair must be two releases of one package that share their pinned dependencies (no framework majors, renames or pre-release-only windows); the check comes from the issue's own description; there must be a library fix and a user-facing symptom | DR-0063; DR-0064 | What is measured (which real regressions the corpus holds; the keyboard rule excludes pointer-only regressions) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2879,7 +2880,7 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 |---|---|
 | Date | 2026-10-03 |
 | Status | Accepted |
-| Owner label | Decided by Claude under DR-0045 (method and verification rules); Proposed: P21 (the pattern count) and P22 (keeping the verification rules), pending the owner (hard rule 12) |
+| Owner label | Decided by Claude under DR-0045 (method and verification rules); P21 (the pattern count) and P22 (keeping the verification rules) approved by the owner 2026-10-03 (DR-0064) |
 | HANDOFF v1.6 | §9 (M3), R1 |
 
 **Context.** DR-0062 set the mining method: a documentary check, then a reproduction check before the batch is split. This record sets out how the reproduction check runs, the rules applied in verification, and the outcome.
@@ -2934,3 +2935,24 @@ The shortfall comes from verification. 24 documentary accepts left 11 pairs, aga
 | A. Accept 79 now, and decide on more at M5's power table | 79 | 59 | about ±0.091 | None now. The split already supports a later batch without moving any assignment, and test items are built only after M5's power table (P15), which is when the needed size is known. Recommended |
 | B. A third mining round | About 79 + 1 per 4 candidates read | | | At this pass's yield (11 of 47), 31 more pairs need about 130 more candidates. Token-heavy, and the extra pairs would come from the same libraries |
 | C. A third SPA context on another component library | About 113 | About 83 | about ±0.077 | Desk research for a candidate, then vendoring and CI install under the P17 safeguards (security), and about 15 dev specs with twins. Seeded patterns would then be about 90% of the corpus |
+
+## DR-0064 Owner approval of P21 and P22, and the oss-regression split
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.6 | §9 (M3), R1 |
+
+**Decision.**
+
+> Yes to P21 and P22; run the split
+
+**Consequences.**
+
+- P21: the corpus holds 79 regression patterns: 68 SPA patterns in two apps and 11 verified mined pairs. P15's 110 is replaced by 79 for now. Whether more patterns are needed is decided at M5's power table; any additions go in as a later batch, which never moves an assignment already made.
+- P22: the verification rules of DR-0063 stay in force for mined pairs, the keyboard rule included. Pointer-only regressions are therefore outside the mined corpus.
+- The `oss-regression` batch is split once this record is committed: `npm run corpus -- split --batch oss-regression --seed 20261004 --test-fraction 0.7`. The seed and fraction are those of P15, and the split is stratified by pattern stratum. Its result is recorded below.
+- Dev patterns of the batch get version-pair items (`source: "oss-history"`; base = the fixture at the last good release, candidate = the fixture at the first broken one) and benign twins (P20) in M3. Test patterns are built after M5's power table (P15).
+
