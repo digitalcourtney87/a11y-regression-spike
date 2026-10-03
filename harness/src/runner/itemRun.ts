@@ -82,7 +82,7 @@ import { evaluateAttempt } from "./outcome.ts";
 import { SETUP_NAMES, SETUPS } from "./setups.ts";
 import { assertItemExecutable } from "./splitGuard.ts";
 import { inconclusiveReasons } from "./validity.ts";
-import { indexOfBackend, nextIndex } from "./virtualCursor.ts";
+import { indexOfBackend, lineAt, nextIndex } from "./virtualCursor.ts";
 
 const EXPECTED_CHROME = "153.0.8010.12";
 const CHROME_FLAGS = ["--force-renderer-accessibility=screen-reader"];
@@ -395,6 +395,8 @@ async function followFocus(rt: Runtime): Promise<{ backendId?: number } | null> 
 interface GoalTrace {
   attempt: number;
   node?: { name: string; role: string } | null;
+  /** The whole line under the simulated cursor, for line strategies (NVDA-absent leg). */
+  line?: { name: string; role: string }[];
   speech?: string[];
 }
 
@@ -456,19 +458,21 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
       const idx = nextIndex(flat, from, step.strategy);
       const node = idx === null ? undefined : flat[idx];
       if (node?.backendId !== undefined) rt.cursor = { backendId: node.backendId };
-      cursorNode.set(rt, idx === null ? null : (node ?? null));
+      // Line strategies read the whole line; quick navigation reads the node it lands on.
+      const line = idx === null ? [] : step.strategy === "BROWSE_NEXT" || step.strategy === "READ_CURRENT" ? lineAt(flat, idx).flatMap((i) => (flat[i] === undefined ? [] : [flat[i]])) : node === undefined ? [] : [node];
+      cursorLine.set(rt, line);
     }
   }
 }
 
-/** The simulated cursor's node after the last browse action (NVDA-absent leg). */
-const cursorNode = new WeakMap<Runtime, AxNode | null>();
+/** The nodes under the simulated cursor after the last browse action (NVDA-absent leg): one node, or one line. */
+const cursorLine = new WeakMap<Runtime, AxNode[]>();
 
 async function goalTarget(rt: Runtime, step: AtStep, absent: boolean, since: number): Promise<GoalTrace> {
   if (absent) {
     if (BROWSE.has(step.strategy)) {
-      const node = cursorNode.get(rt) ?? null;
-      return { attempt: 0, node: node === null ? null : { name: node.name, role: node.role } };
+      const line = cursorLine.get(rt) ?? [];
+      return { attempt: 0, node: line[0] === undefined ? null : { name: line[0].name, role: line[0].role }, line: line.map((x) => ({ name: x.name, role: x.role })) };
     }
     const f = await focusedNode(rt.cdp);
     return { attempt: 0, node: f === null ? null : { name: f.name, role: f.role } };
@@ -496,7 +500,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
     }
     const target = { ...(await goalTarget(rt, step, absent, since)), attempt };
     run.goalTrace?.push(target);
-    const met = target.speech !== undefined ? speechMatchesGoal(target.speech, goal) : target.node != null && nodeMatchesGoal(target.node, goal);
+    const met = target.speech !== undefined ? speechMatchesGoal(target.speech, goal) : target.line !== undefined ? target.line.some((x) => nodeMatchesGoal(x, goal)) : target.node != null && nodeMatchesGoal(target.node, goal);
     if (met) {
       run.reachedAt = attempt;
       break;
@@ -569,7 +573,7 @@ async function axePass(browser: Browser, base: string, journey: Journey): Promis
         await sleep(ATTEMPT_SETTLE_MS["nvda-absent"]);
         if (goal === undefined) break;
         const t = await goalTarget(rt, step, true, 0);
-        if (t.node != null && nodeMatchesGoal(t.node, goal)) {
+        if (t.line !== undefined ? t.line.some((x) => nodeMatchesGoal(x, goal)) : t.node != null && nodeMatchesGoal(t.node, goal)) {
           met = true;
           break;
         }

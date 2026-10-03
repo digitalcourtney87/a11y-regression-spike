@@ -8,10 +8,10 @@
     {
       "kind": "at",
       "id": "first-badge",
-      "strategy": "BROWSE_NEXT",
+      "strategy": "READ_CURRENT",
       "until": {
         "role": "img",
-        "maxAttempts": 8
+        "maxAttempts": 1
       },
       "observeMs": 1000,
       "expectations": [
@@ -27,7 +27,7 @@
       "strategy": "BROWSE_NEXT",
       "until": {
         "role": "img",
-        "maxAttempts": 4
+        "maxAttempts": 3
       },
       "observeMs": 1000,
       "expectations": [
@@ -43,7 +43,7 @@
       "strategy": "BROWSE_NEXT",
       "until": {
         "role": "img",
-        "maxAttempts": 4
+        "maxAttempts": 3
       },
       "observeMs": 1000,
       "expectations": [

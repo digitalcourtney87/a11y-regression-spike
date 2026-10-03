@@ -40,9 +40,17 @@
       "expectations": [
         {
           "type": "focusOn",
-          "value": "menuitem|Postpone to tomorrow"
+          "value": "menu|task actions"
         }
       ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
     },
     {
       "kind": "at",

@@ -11,7 +11,7 @@ import { goalOutcome, modalCount, nodeMatchesGoal, speechMatchesGoal } from "./g
 import { checkJourneys } from "./journeys.ts";
 import { abbaOrder, repetitionsFor } from "./order.ts";
 import { SETUP_NAMES } from "./setups.ts";
-import { indexOfBackend, nextIndex } from "./virtualCursor.ts";
+import { indexOfBackend, lineAt, nextIndex } from "./virtualCursor.ts";
 
 const n = (nodeId: string, role: string, name: string, childIds: string[] = [], extra: Partial<CdpAxNode> = {}): CdpAxNode => ({
   nodeId,
@@ -74,7 +74,28 @@ describe("simulated virtual cursor (P23)", () => {
     expect(at(nextIndex(flat, 2, "BROWSE_NEXT"))).toBe("link:Comments");
     expect(at(nextIndex(flat, 9, "BROWSE_NEXT"))).toBe("StaticText:Done");
     expect(at(nextIndex(flat, 5, "READ_CURRENT"))).toBe("link:Comments");
-    expect(nextIndex(flat, -1, "READ_CURRENT")).toBeNull();
+    // With no position yet (after a page load), the current line is the first line.
+    expect(at(nextIndex(flat, -1, "READ_CURRENT"))).toBe("heading:Posts");
+  });
+  test("a list item's content is one line, as NVDA reads it", () => {
+    // list > [listitem > [text "Ana", img "busy"], listitem > [text "Ben", img "away"]]
+    const list = flattenAxTree(
+      pruneAxTree([
+        n("r", "RootWebArea", "t", ["l"]),
+        n("l", "list", "", ["i1", "i2"], { parentId: "r" }),
+        n("i1", "listitem", "", ["a", "b"], { parentId: "l" }),
+        n("a", "StaticText", "Ana", [], { parentId: "i1" }),
+        n("b", "image", "busy", [], { parentId: "i1" }),
+        n("i2", "listitem", "", ["c", "d"], { parentId: "l" }),
+        n("c", "StaticText", "Ben", [], { parentId: "i2" }),
+        n("d", "image", "away", [], { parentId: "i2" }),
+      ]),
+    );
+    const first = nextIndex(list, -1, "READ_CURRENT");
+    expect(first === null ? [] : lineAt(list, first).map((i) => list[i]?.name)).toEqual(["Ana", "busy"]);
+    const second = nextIndex(list, first ?? -1, "BROWSE_NEXT");
+    expect(second === null ? [] : lineAt(list, second).map((i) => list[i]?.name)).toEqual(["Ben", "away"]);
+    expect(nextIndex(list, second ?? -1, "BROWSE_NEXT")).toBeNull();
   });
   test("follows focus by backend node id", () => {
     expect(indexOfBackend(flat, 70)).toBe(5);

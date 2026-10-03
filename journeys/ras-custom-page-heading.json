@@ -10,7 +10,7 @@
       "id": "reach-page-heading",
       "strategy": "NEXT_HEADING",
       "until": {
-        "name": "Posts from custom2",
+        "name": "custom2",
         "role": "heading",
         "maxAttempts": 6
       },

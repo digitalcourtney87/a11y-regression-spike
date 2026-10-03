@@ -13,9 +13,12 @@
  *   only; and editable fields.
  * - NEXT_LANDMARK (d): banner, complementary, contentinfo, main, navigation,
  *   search and form landmarks, and regions with a name.
- * - BROWSE_NEXT (down arrow): the next line item, modelled as the next
- *   control, or the next text run that is not inside a control.
- * - READ_CURRENT: no movement.
+ * - BROWSE_NEXT (down arrow): the next line. A line is a control, a heading,
+ *   or the run of nodes inside one list item, paragraph, cell, option or menu
+ *   item, as NVDA reads "bullet Ana graphic busy" as one line; text outside
+ *   such containers is a line of its own.
+ * - READ_CURRENT (NVDA+Up): the current line; with no position yet (after a
+ *   page load), the first line, where NVDA's cursor starts.
  *
  * Like NVDA's browse cursor, the simulated cursor follows focus: after TAB or
  * SHIFT_TAB it is placed on the focused node. Each step is one key press, so
@@ -63,32 +66,55 @@ const MATCHERS: Record<Exclude<BrowseStrategy, "BROWSE_NEXT" | "READ_CURRENT">, 
   NEXT_LANDMARK: isLandmark,
 };
 
-/** The index of the next node for a browse strategy after `from` (-1 before the first node), or null when there is none. */
+/** Containers whose content NVDA reads as one line. */
+const LINE_ROLES: ReadonlySet<string> = new Set(["listitem", "paragraph", "cell", "gridcell", "rowheader", "columnheader", "option", "menuitem", "menuitemcheckbox", "menuitemradio", "treeitem"]);
+
+/** The line a node belongs to: the nearest line container (a heading or control counts as its own line), or the node itself. */
+function lineKey(flat: readonly AxNode[], byId: ReadonlyMap<string, AxNode>, i: number): string {
+  const node = flat[i];
+  if (node === undefined) return "";
+  let current: AxNode | undefined = node;
+  for (let guard = 0; current !== undefined && guard < 200; guard++) {
+    if (LINE_ROLES.has(current.role) || isHeading(current) || (CONTROL_ROLES.has(current.role) && current !== node)) return current.id;
+    current = current.parent === undefined ? undefined : byId.get(current.parent);
+  }
+  return node.id;
+}
+
+/** Whether a node starts or carries content on a line (not an empty structural node). */
+function onLine(n: AxNode): boolean {
+  return CONTROL_ROLES.has(n.role) || isHeading(n) || (TEXT_ROLES.has(n.role) && n.name.trim() !== "");
+}
+
+/** The indices of the nodes on the line that contains index i. */
+export function lineAt(flat: readonly AxNode[], i: number): number[] {
+  const byId = new Map(flat.map((n) => [n.id, n]));
+  const key = lineKey(flat, byId, i);
+  const out: number[] = [];
+  for (let j = 0; j < flat.length; j++) if (lineKey(flat, byId, j) === key && onLine(flat[j] as AxNode)) out.push(j);
+  return out.length > 0 ? out : [i];
+}
+
+/**
+ * The index of the next node for a browse strategy after `from` (-1 before
+ * the first node), or null when there is none. For BROWSE_NEXT and
+ * READ_CURRENT it is the first node of the line; `lineAt` gives the rest.
+ */
 export function nextIndex(flat: readonly AxNode[], from: number, strategy: BrowseStrategy): number | null {
-  if (strategy === "READ_CURRENT") return from >= 0 && from < flat.length ? from : null;
-  if (strategy === "BROWSE_NEXT") {
-    const byId = new Map(flat.map((n) => [n.id, n]));
-    // A text run inside a control or heading is part of that item's line, not a line of its own.
-    const insideControl = (i: number): boolean => {
-      const node = flat[i];
-      if (node === undefined) return false;
-      let parentId = node.parent;
-      for (let guard = 0; parentId !== undefined && guard < 200; guard++) {
-        const parent = byId.get(parentId);
-        if (parent === undefined) return false;
-        if (CONTROL_ROLES.has(parent.role) || isHeading(parent)) return true;
-        parentId = parent.parent;
-      }
-      return false;
-    };
-    for (let i = from + 1; i < flat.length; i++) {
+  const byId = new Map(flat.map((n) => [n.id, n]));
+  const firstLine = (after: number, currentKey: string | null): number | null => {
+    for (let i = after + 1; i < flat.length; i++) {
       const n = flat[i];
-      if (n === undefined) continue;
-      if (CONTROL_ROLES.has(n.role) || isHeading(n)) return i;
-      if (TEXT_ROLES.has(n.role) && n.name.trim() !== "" && !insideControl(i)) return i;
+      if (n === undefined || !onLine(n)) continue;
+      if (currentKey === null || lineKey(flat, byId, i) !== currentKey) return i;
     }
     return null;
+  };
+  if (strategy === "READ_CURRENT") {
+    if (from >= 0 && from < flat.length) return lineAt(flat, from)[0] ?? from;
+    return firstLine(-1, null);
   }
+  if (strategy === "BROWSE_NEXT") return firstLine(from, from >= 0 ? lineKey(flat, byId, from) : null);
   const match = MATCHERS[strategy];
   for (let i = from + 1; i < flat.length; i++) {
     const n = flat[i];

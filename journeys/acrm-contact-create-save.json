@@ -31,6 +31,14 @@
     },
     {
       "kind": "at",
+      "id": "leave-form",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
       "id": "reach-new-contact",
       "strategy": "NEXT_HEADING",
       "until": {

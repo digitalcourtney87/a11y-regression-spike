@@ -27,10 +27,10 @@
     {
       "kind": "at",
       "id": "reach-new-page",
-      "strategy": "BROWSE_NEXT",
+      "strategy": "READ_CURRENT",
       "until": {
         "name": "adobe",
-        "maxAttempts": 3
+        "maxAttempts": 1
       },
       "observeMs": 1000,
       "expectations": []
