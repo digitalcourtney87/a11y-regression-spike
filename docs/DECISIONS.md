@@ -97,12 +97,13 @@ Conventions:
 | [DR-0058](#dr-0058-m3-spa-integrated-tooling-and-the-pattern-count) | M3: SPA integrated, tooling, and the pattern count | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P19 approved (DR-0059) | DR-0059 | Resolved (DR-0059) |
 | [DR-0059](#dr-0059-a-second-spa-and-the-dev-split-specs) | A second SPA, and the dev-split specs | Accepted | 2026-10-03 | Owner reply 2026-10-03; Decided by Claude under DR-0045 | — | No |
 | [DR-0060](#dr-0060-dev-split-specs-for-the-spa-regression-batch) | Dev-split specs for the SPA regression batch | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0061](#dr-0061-benign-corpus-design-proposed) | Benign corpus design (proposed) | Proposed | 2026-10-03 | Pending owner item P20 | — | Pending: P20 |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059). No items are pending.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059). One item is pending, needed before benign items are planned: P20 (DR-0061).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -125,6 +126,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P17 | **Resolved (approved by the owner 2026-10-03, DR-0057).** vendor about 3 MB of Atomic CRM's source at the pinned commit into `fixtures/spa/atomic-crm/` (agent instruction files excluded), and install its locked dependency tree in CI with install scripts off, `contents: read`, no secrets and a separate npm cache | DR-0056 | Security (third-party code in the repository and in CI) | No longer pending | Approved as recommended |
 | P18 | **Resolved (owner reply 2026-10-03, DR-0057): Prompt to Page exports are skipped for now; no customer defects were offered, so there are no reconstructed items for now.** the owner supplies 5–8 de-branded Prompt to Page exports (static HTML, no restricted fonts or protected marks) for seeded items, and any customer defects to reconstruct with anonymised provenance | DR-0056; corpus plan §2 | What is measured (sources in the corpus) | No longer pending | Not adopted for now |
 | P19 | **Resolved (approved by the owner 2026-10-03, DR-0059).** to close the expected shortfall against P15's 110 regression patterns (about 57–67 reachable from the SPA and mined pairs), add react-admin's "simple" example (MIT; evaluated in DR-0056, meets every criterion) as a second SPA context: vendor about 1 MB of its source at the pinned commit, generate its lockfile in CI, and install it in CI under the P17 safeguards. The achievable count is reported again before the split | DR-0058; `docs/research/2026-10-03-oss-regression-survey.md` | What is measured (sample size and the independence of patterns); security (more third-party code) | No longer pending | Approved as recommended |
+| P20 | **Proposed by Claude (not yet owner-approved):** build the benign corpus as matched twins: each regression pattern gets one benign item on the same target and journey (an operator from the benign catalogue), sharing the regression pattern's `patternId`, so benign items are about 1:1 with regression items and inherit the split already made. Patterns are then mixed clusters (one regression item, one benign twin), and the false-FAIL interval is a pattern-level bootstrap over those clusters | DR-0061 | What is measured (the benign corpus and how false FAIL is clustered) | Before benign items are planned | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -2818,3 +2820,26 @@ Record-only canaries are described, not scored: for K6, the region's insertion-t
 
 - 17 dev items exist: 8 on Atomic CRM, 9 on react-admin's example.
 - The SPA regression batch now has 68 planned patterns (17 dev, 51 test).
+
+## DR-0061 Benign corpus design (proposed)
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Proposed (pending owner item P20) |
+| Owner label | Pending owner item P20 |
+| HANDOFF v1.6 | R1, §9 (M3), §10.3 |
+
+**Context.** R1 asks for benign changes at roughly 1:1 with regressions, and P15 said "benign patterns about 1:1 in each split". The benign catalogue has seven operators (one per BenignType) and the corpus has two SPA contexts. If a benign pattern were one operator in one app, as for regressions, there would be 14 benign patterns against about 68 SPA regression patterns, far from 1:1. Splitting benign patterns by target would contradict the independence rule used for regression patterns (DR-0058, option C).
+
+**Options considered.**
+
+| Option | Benign items | Clusters for false FAIL | Note |
+|---|---|---|---|
+| A. Matched twins: one benign item per regression pattern, on the same target and journey, sharing its `patternId` | About 1:1 with regression items | One per pattern (about 68 SPA, plus mined pairs) | The benign change touches exactly what the regression touched, so it is the hardest false-FAIL test; twins inherit the split, so no new split is needed. Recommended |
+| B. One benign pattern per operator per app, many items each | About 1:1 by items | 14 | Few clusters, so the false-FAIL interval is wide |
+| C. A benign pattern per operator per app per target | About 1:1 | Many | Treats same-app targets as independent, the reasoning rejected for regressions |
+
+**Decision.** **Proposed by Claude (not yet owner-approved):** option A (P20). Unchanged controls stay as approved (one per journey, P15).
+
+**Consequences, if approved.** Each regression spec gains a benign twin spec, written for dev patterns only in M3. Patterns become mixed clusters; the split already made is unchanged.
