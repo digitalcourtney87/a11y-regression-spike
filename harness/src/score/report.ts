@@ -17,6 +17,10 @@ export interface AttemptRecord {
   canary: string;
   leg: string;
   gating: boolean;
+  /** Set on NVDA-present attempts run with the listener for the on/off diagnostic (never G1 evidence). */
+  diagnostic?: string;
+  /** The canary's own DOM change, ms after activation, from the mutation timeline (from M2). */
+  domChangeAtMs?: number | null;
   valid?: boolean;
   inconclusiveReasons?: string[];
   error?: string;
@@ -98,6 +102,11 @@ export interface Phase0Report {
    * measured separately, so it is included (an upper bound).
    */
   latency: LatencyRow[];
+  /**
+   * P4's capture latency (DR-0046): tap receipt minus the canary's DOM change,
+   * both on QPC, for valid passing attempts that carry the mutation timeline.
+   */
+  domToTap: LatencyRow[];
   /** INCONCLUSIVE per item, gating and record-only, with Wilson intervals (DR-0038). */
   inconclusive: InconclusiveRow[];
   /** The activation key's global cancel, after the key dispatch (ms). */
@@ -132,9 +141,12 @@ function max(values: (number | null | undefined)[]): number | null {
   return finite.length === 0 ? null : Math.max(...finite);
 }
 
-/** Aggregates NVDA-present attempts for G1 (DR-0021 D12; DR-0038). */
+/**
+ * Aggregates NVDA-present attempts for G1 (DR-0021 D12; DR-0038). Attempts of
+ * the on/off diagnostic ran with the listener and are excluded (P4).
+ */
 export function buildReport(attempts: readonly AttemptRecord[], summaries: readonly JobSummary[]): Phase0Report {
-  const present = attempts.filter((a) => a.leg === "nvda-present");
+  const present = attempts.filter((a) => a.leg === "nvda-present" && a.diagnostic === undefined);
   const gating: GatingRow[] = GATING_CANARIES.map((canary) => {
     const rows = present.filter((a) => a.itemId === canary);
     const valid = rows.filter((a) => a.valid === true);
@@ -220,6 +232,16 @@ export function buildReport(attempts: readonly AttemptRecord[], summaries: reado
         .filter((v): v is number => v !== null);
       return { canary, n: values.length, medianMs: quantile(values, 0.5), p90Ms: quantile(values, 0.9), maxMs: values.length === 0 ? null : Math.max(...values) };
     }),
+    domToTap: GATING_CANARIES.map((canary) => {
+      const values = present
+        .filter((a) => a.itemId === canary && a.valid === true && a.outcome?.verdict === "PASS" && typeof a.domChangeAtMs === "number")
+        .map((a) => {
+          const at = (a.outcome as { matched?: { atMs?: number } } | null | undefined)?.matched?.atMs;
+          return at === undefined ? null : at - (a.domChangeAtMs as number);
+        })
+        .filter((v): v is number => v !== null);
+      return { canary, n: values.length, medianMs: quantile(values, 0.5), p90Ms: quantile(values, 0.9), maxMs: values.length === 0 ? null : Math.max(...values) };
+    }),
     inconclusive: [...new Set(present.map((a) => a.itemId))].sort().map((itemId) => {
       const rows = present.filter((a) => a.itemId === itemId);
       const inconclusive = rows.filter((a) => a.valid !== true).length;
@@ -271,6 +293,11 @@ export function renderReport(report: Phase0Report): string {
   const ms = (v: number | null): string => (v === null ? "–" : `${v.toFixed(1)} ms`);
   for (const l of report.latency) lines.push(`| ${l.canary} | ${String(l.n)} | ${ms(l.medianMs)} | ${ms(l.p90Ms)} | ${ms(l.maxMs)} |`);
   lines.push("", `Activation key's global cancel after the key dispatch: median ${ms(report.activationCancel.medianMs)} (n ${String(report.activationCancel.n)}).`, "");
+  if (report.domToTap.some((l) => l.n > 0)) {
+    lines.push("## Capture latency, DOM change to tap receipt (P4 method; QPC on both sides)", "", "| Canary | n | Median | 90th percentile | Maximum |", "|---|---|---|---|---|");
+    for (const l of report.domToTap) lines.push(`| ${l.canary} | ${String(l.n)} | ${ms(l.medianMs)} | ${ms(l.p90Ms)} | ${ms(l.maxMs)} |`);
+    lines.push("");
+  }
   lines.push("## INCONCLUSIVE per item (Wilson 95%; flag above 10%, DR-0038)", "", "| Item | Attempts | INCONCLUSIVE | Rate (Wilson 95%) |", "|---|---|---|---|");
   for (const r of report.inconclusive) lines.push(`| ${r.itemId} | ${String(r.attempts)} | ${String(r.inconclusive)} | ${pct(r.interval)}${r.interval !== null && r.interval.point > 0.1 ? " (flag)" : ""} |`);
   lines.push("");

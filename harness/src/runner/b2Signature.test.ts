@@ -61,8 +61,10 @@ describe("gating signatures (HANDOFF §9.1)", () => {
   });
   test("K4 needs the dialog shown in the DOM and focus events on its first control", () => {
     const timeline = [dom(500, { kind: "attr", target: "div#dialog[dialog]", detail: "hidden" }), dom(500, { kind: "focusin", target: "button#dialog-first" })];
-    expect(evaluateGatingB2("K4", [ev(506, "EVENT_OBJECT_FOCUS", { name: "First control" })], timeline, W).verdict).toBe("PASS");
-    expect(evaluateGatingB2("K4", [ev(506, "EVENT_OBJECT_FOCUS", { name: "First control" })], timeline.slice(1), W).verdict).toBe("FAIL");
+    const events = [ev(505, "EVENT_OBJECT_SHOW", { automationId: "dialog" }), ev(506, "EVENT_OBJECT_FOCUS", { name: "First control" })];
+    expect(evaluateGatingB2("K4", events, timeline, W).verdict).toBe("PASS");
+    expect(evaluateGatingB2("K4", events, timeline.slice(1), W).verdict).toBe("FAIL");
+    expect(evaluateGatingB2("K4", events.slice(1), timeline, W).verdict).toBe("FAIL");
   });
   test("K5 needs pushState, focusin on the heading and a focus WinEvent, with no title dependency", () => {
     const timeline = [dom(500, { kind: "history", target: "history", detail: "pushState" }), dom(501, { kind: "focusin", target: "h1#route-heading" })];

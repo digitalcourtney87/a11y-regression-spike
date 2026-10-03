@@ -61,7 +61,7 @@ import { EnvManifestSchema, GateEvidencePackageSchema } from "../schema/schemas.
 import type { EnvManifest, GateEvidencePackage, Leg, Preflight } from "../schema/types.ts";
 import { buildPlan, shardOf } from "./canaries.ts";
 import type { PlannedAttempt } from "./canaries.ts";
-import { evaluateGatingB2, evaluateRecordB2 } from "./b2Signature.ts";
+import { evaluateGatingB2, evaluateRecordB2, gatingComponents } from "./b2Signature.ts";
 import { nativeSelfTest, pageClock, pageToQpcNs, RAF_READ_SCRIPT, RAF_START_SCRIPT, segmentDriftMs } from "./clockChecks.ts";
 import { evaluateAttempt } from "./outcome.ts";
 import { inconclusiveReasons } from "./validity.ts";
@@ -315,6 +315,10 @@ async function runAttempt(attempt: PlannedAttempt, ctx: AttemptContext): Promise
     const window_ = { activationT, endT };
     const inWindow = (tq: number): boolean => tq >= activationT && tq <= endT;
     const b2 = drained === null ? null : spec.gating ? evaluateGatingB2(spec.canary, platformEvents, timeline, window_) : evaluateRecordB2(spec, platformEvents, timeline, window_);
+    // The canary's own DOM change (first DOM component of its signature), ms after
+    // activation: the start of P4's DOM-mutation-to-tap latency (DR-0046).
+    const domAt = spec.gating ? gatingComponents(spec.canary, [], timeline, window_).filter((c) => c.channel === "dom" && c.found && c.atMs !== undefined).map((c) => c.atMs as number) : [];
+    record.domChangeAtMs = domAt.length === 0 ? null : Math.min(...domAt);
 
     const preflight: Preflight = {
       foregroundHwndOk: foregroundOk && focusOk,

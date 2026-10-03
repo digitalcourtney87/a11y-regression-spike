@@ -166,10 +166,10 @@ export function gatingComponents(canary: string, events: readonly SignatureEvent
       // focusin; focus WinEvent.
       return [dom("dom-focusin", true, timeline, w, (e) => e.kind === "focusin" && e.target === "button#target"), platform("focus", true, events, w, [FOCUS], K3_BUTTON)];
     case "K4":
-      // Dialog inserted or shown; focus events.
+      // Dialog inserted or shown (in the DOM and as EVENT_OBJECT_SHOW on the dialog); focus events.
       return [
         dom("dom-dialog-shown", true, timeline, w, (e) => (e.kind === "attr" && e.detail === "hidden" && e.target === "div#dialog[dialog]") || (e.kind === "insert" && e.target === "div#dialog[dialog]")),
-        platform("dialog-shown", false, events, w, ["EVENT_OBJECT_SHOW", "EVENT_OBJECT_REORDER", "EVENT_OBJECT_STATECHANGE"], K4_DIALOG),
+        platform("dialog-shown", true, events, w, ["EVENT_OBJECT_SHOW"], K4_DIALOG),
         dom("dom-focusin", true, timeline, w, (e) => e.kind === "focusin" && e.target === "button#dialog-first"),
         platform("focus", true, events, w, [FOCUS], K4_FIRST),
       ];
