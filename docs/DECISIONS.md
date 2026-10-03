@@ -118,6 +118,7 @@ Conventions:
 | [DR-0079](#dr-0079-m5-evidence-additions-and-the-pre-registered-triggers) | M5 evidence additions, and the pre-registered triggers | Accepted | 2026-10-03 | Decided by Claude under DR-0045; trigger definitions approved by the owner 2026-10-03 (P34, DR-0081) | DR-0081 | Resolved (P34, DR-0081) |
 | [DR-0080](#dr-0080-m5-oracles-scorer-and-dev-results-and-owner-items-p28p37) | M5 oracles, scorer and dev results, and owner items P28–P37 | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) | DR-0081 | Resolved (P28–P37, DR-0081) |
 | [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0082](#dr-0082-building-the-test-patterns-without-executing-them) | Building the test patterns without executing them | Accepted | 2026-10-04 | Owner reply 2026-10-03; tooling decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3499,3 +3500,31 @@ The full report is `docs/reports/M5-dev.md`.
 - P37: no new pattern batch now. The 59 test patterns are built next (P15). At the M6 freeze, a second round is pre-registered, sized from DR-0080's power table and triggered if a headline comparison lands in the inconclusive range (PRD §38).
 - Building test patterns executes no test-split item: patches are applied and built, and journeys are developed on the base builds only. No test candidate runs before the freeze (hard rule 5, DR-0034).
 - HANDOFF moves to v1.12.
+
+## DR-0082 Building the test patterns without executing them
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 (go-ahead); the tooling decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §9 (M5), §10.3; P15, P20, P37 |
+
+**Decision (owner).**
+
+> Yes, start the test patterns; Auto-fix on
+
+**Context.** P37 builds the 59 test patterns now: 26 Atomic CRM, 25 react-admin "simple" and 8 mined pairs. Each gets a benign twin (P20), and each new journey an unchanged control (P15). Claude flagged the work as token-heavy before starting (DR-0046). It runs in three batches on branch `m5-test-patterns`, reporting after each. Auto-fix is on for PR #8.
+
+**How the patterns are built without executing a test item (Decided by Claude under DR-0045).** Hard rule 5 forbids executing test-split items before the freeze. Building one is not executing it: no journey runs on a test candidate, and no evidence of one is collected.
+
+| Step | What happens to a test item |
+|---|---|
+| Specs and patches | `npm run corpus -- mutate` writes the patch and item in the pattern's assigned split, checking the patch applies (`git apply --check`) |
+| Mined pairs | `npm run corpus -- oss-items` writes the version-pair item in its split |
+| Build check | `m3-spa-build.yml` applies and builds each test patch, and never loads the build, whereas a dev build is also loaded offline |
+| Journeys | Developed on the base build only. `npm run m4:items -- --journeys <ids> --sides base` runs each journey as an unchanged pseudo-item `jdev-<journey>` with no candidate. `m4-items.yml` takes `journeys` in its request and builds only the base |
+| Unchanged controls | `npm run corpus -- unchanged` adds one per new journey, in the split of the journey's first regression item |
+| Item runs | Unchanged: the runner and `buildApp.ps1` select dev items only, and `assertItemExecutable` (DR-0034) is the backstop |
+
+**Consequences.** A test journey's expectations are checked on the base build in both legs, so each family can observe them. Whether each candidate shows its symptom is not checked before the freeze. That is the cost of hard rule 5: a test pattern whose patch fails to produce its symptom counts as a miss for every arm.

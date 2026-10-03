@@ -94,9 +94,11 @@ jobs:
           path: artefacts/spa/
           retention-days: 30
   patches:
-    # Applies each dev item's patch to its app, builds it and loads it offline,
-    # so a patch that breaks the build or throws at runtime is caught in M3
-    # (corpus plan §6). Same safeguards as the base job.
+    # Applies each item's patch to its app and builds it; a dev item's build is
+    # also loaded offline, so a patch that breaks the build or throws at
+    # runtime is caught (corpus plan §6). A test-split item's build is never
+    # loaded before the freeze: it is applied and built only (hard rule 5,
+    # DR-0082). Same safeguards as the base job.
     runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
     timeout-minutes: 60
     strategy:
@@ -144,7 +146,7 @@ jobs:
             $buildExit = $LASTEXITCODE
             Pop-Location
             $probeExit = $null
-            if ($buildExit -eq 0) {
+            if ($buildExit -eq 0 -and $item.split -ne "test") {
               node harness/src/probes/spaProbe.ts --name $item.id --dist (Join-Path $work "dist") --out (Join-Path $out "$($item.id).probe.json") --paths "/" --fixed-time "2026-10-05T09:00:00Z"
               $probeExit = $LASTEXITCODE
             }
@@ -152,10 +154,10 @@ jobs:
             git apply -R -p4 $patch 2>&1 | Out-File -Append (Join-Path $out "$($item.id).apply.log")
             $revertExit = $LASTEXITCODE
             Pop-Location
-            $results += [ordered]@{ id = $item.id; applyExit = $applyExit; buildExit = $buildExit; probeExit = $probeExit; revertExit = $revertExit }
+            $results += [ordered]@{ id = $item.id; split = $item.split; applyExit = $applyExit; buildExit = $buildExit; probeExit = $probeExit; revertExit = $revertExit }
           }
           $results | ConvertTo-Json | Out-File (Join-Path $out results.json)
-          if ($results | Where-Object { $_.applyExit -ne 0 -or $_.buildExit -ne 0 -or $_.probeExit -ne 0 -or $_.revertExit -ne 0 }) { exit 1 }
+          if ($results | Where-Object { $_.applyExit -ne 0 -or $_.buildExit -ne 0 -or ($null -ne $_.probeExit -and $_.probeExit -ne 0) -or $_.revertExit -ne 0 }) { exit 1 }
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:

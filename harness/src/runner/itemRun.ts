@@ -4,6 +4,14 @@
  *
  *   node harness/src/runner/itemRun.ts --leg <nvda-absent|nvda-present> --app <app> --builds <dir> --out <dir>
  *     [--items id,id] [--sides both|base] [--reps n] [--shard i/N] [--no-canaries] [--no-axe]
+ *     [--journeys id,id]
+ *
+ * With `--journeys` the job develops journeys instead of running items: each
+ * named journey runs on the app's base build only, as an unchanged
+ * pseudo-item `jdev-<journey>` with no candidate (DR-0082). This is how the
+ * journeys of test-split patterns are developed before the freeze without
+ * executing any test item (hard rule 5): no candidate build is loaded, and no
+ * corpus item is involved.
  *
  * With `--shard i/N` the job runs every Nth of the app's selected items,
  * starting with the i-th (items sorted by id), so long blocks fit the job
@@ -138,6 +146,7 @@ const { values: args } = parseArgs({
     builds: { type: "string", default: "builds" },
     out: { type: "string", default: "artefacts/items" },
     items: { type: "string", default: "" },
+    journeys: { type: "string", default: "" },
     sides: { type: "string", default: "both" },
     reps: { type: "string", default: "" },
     shard: { type: "string", default: "1/1" },
@@ -154,6 +163,7 @@ const leg: Leg = legArg;
 if (args.app === undefined) throw new Error("--app is required");
 const app: string = args.app;
 if (args.sides !== "both" && args.sides !== "base") throw new Error("--sides must be both or base");
+if (args.journeys !== "" && args.sides !== "base") throw new Error("--journeys develops journeys on the base build only: pass --sides base");
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outDir = resolve(args.out);
 const appKey = app.replace("/", "-");
@@ -1072,6 +1082,28 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
 // Main
 // ---------------------------------------------------------------------------
 
+/**
+ * A base-only pseudo-item for developing a journey (DR-0082): unchanged, so
+ * both of its sides would be the base build, and run with `--sides base`. Its
+ * base ref is the app's dev base (for a mined pair, the last good release).
+ */
+function journeyDevItem(journeyId: string, corpus: readonly CorpusItem[]): CorpusItem {
+  const base = corpus.find((i) => i.app === app && i.split === "dev" && i.expected.kind === "regression")?.base.ref ?? corpus.find((i) => i.app === app && i.split === "dev")?.base.ref;
+  if (base === undefined) throw new Error(`no dev item of ${app} to take a base ref from`);
+  return {
+    id: `jdev-${journeyId}`,
+    patternId: "journey-development",
+    split: "dev",
+    source: "seeded",
+    app,
+    journeyId,
+    base: { ref: base },
+    candidate: {},
+    expected: { kind: "unchanged" },
+    provenance: { origin: "journey development on the base build (DR-0082); not a corpus item" },
+  };
+}
+
 function readCorpus(): CorpusItem[] {
   const dir = join(repoRoot, "corpus/items");
   return readdirSync(dir)
@@ -1093,8 +1125,13 @@ async function main(): Promise<void> {
   const summary: Json = { label: "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
   const corpus = readCorpus();
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
+  const devJourneys = args.journeys.split(",").map((s) => s.trim()).filter((s) => s !== "");
   // Dev items only: test-split items are not executed before the freeze (hard rule 5); the guard below is the backstop.
-  const items = corpus.filter((i) => i.app === app && i.split === "dev" && (wantedIds === null || wantedIds.has(i.id))).filter((_, k) => k % shardCount === shardIndex - 1);
+  // Journey development replaces the items with base-only pseudo-items (DR-0082).
+  // A request may name journeys of several apps; each job develops only its own app's.
+  const journeyApps = new Map([...readJourneyFiles().values()].flatMap((j) => (typeof j === "object" && j !== null && "id" in j && "app" in j ? [[String(j.id), String(j.app)] as const] : [])));
+  const selected = devJourneys.length > 0 ? devJourneys.filter((j) => journeyApps.get(j) === app).map((j) => journeyDevItem(j, corpus)) : corpus.filter((i) => i.app === app && i.split === "dev" && (wantedIds === null || wantedIds.has(i.id)));
+  const items = selected.filter((_, k) => k % shardCount === shardIndex - 1);
   const { journeys, errors } = checkJourneys(readJourneyFiles(), items, SETUP_NAMES);
   if (errors.length > 0) throw new Error(`journeys: ${errors.join("; ")}`);
   const env = (existsSync(args.env) ? JSON.parse(readFileSync(args.env, "utf8")) : {}) as EnvSnapshot;

@@ -3,15 +3,18 @@
  * prints a summary; it exits non-zero on any error.
  *
  * `npm run corpus -- mutate` turns every spec in `corpus/specs/` into its
- * patch and corpus item (mutate.ts), checking that each patch applies to the
- * current base with `git apply --check`.
+ * patch and corpus item (mutate.ts), in its pattern's split, checking that
+ * each patch applies to the current base with `git apply --check`. Test
+ * patterns are built only after M5's power table (P15, P37); building one
+ * executes nothing (hard rule 5).
  *
  * `npm run corpus -- oss-items` writes the version-pair regression item of
- * each dev pattern of the `oss-regression` batch (oss.ts; DR-0064).
+ * each assigned pattern of the `oss-regression` batch, in its split (oss.ts;
+ * DR-0064; test patterns from P37).
  *
  * `npm run corpus -- unchanged` writes one unchanged control per journey of
- * the dev items (P15; DR-0066): `<journey>-unchanged`, base against base, in
- * the pattern and split of the journey's first regression item (by id).
+ * the corpus items (P15; DR-0066): `<journey>-unchanged`, base against base,
+ * in the pattern and split of the journey's first regression item (by id).
  *
  * `npm run corpus -- plan spa-regression` adds the planned SPA regression
  * patterns to `corpus/patterns.json` (patterns.ts); `plan oss-regression`
@@ -145,16 +148,18 @@ if (command === "validate") {
       baseRef = regression.base.ref;
       licence = regression.provenance.licence;
     }
-    if (files.split?.assignments[spec.patternId] !== "dev") throw new Error(`${file}: pattern "${spec.patternId}" is not in the dev split; test patterns are not built in M3 (P15)`);
+    // Test patterns are built after M5's power table (P15, P37), in the split their pattern was assigned.
+    const split = files.split?.assignments[spec.patternId];
+    if (split !== "dev" && split !== "test") throw new Error(`${file}: pattern "${spec.patternId}" has no split assignment`);
     const patchPath = join(PATCHES, `${spec.id}.patch`);
     writeFileSync(patchPath, patchFor(spec));
     execFileSync("git", ["apply", "--check", patchPath], { cwd: repoRoot });
-    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, baseRef, "dev", licence), null, 2)}\n`);
+    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, baseRef, split, licence), null, 2)}\n`);
     process.stdout.write(`${spec.id}: patch and item written (${spec.operator})\n`);
   }
 } else if (command === "unchanged") {
   const items = validateCorpus(files).valid;
-  const journeyIds = [...new Set(items.filter((i) => i.split === "dev" && i.expected.kind !== "unchanged").map((i) => i.journeyId))].sort();
+  const journeyIds = [...new Set(items.filter((i) => i.expected.kind !== "unchanged").map((i) => i.journeyId))].sort();
   for (const journeyId of journeyIds) {
     const first = items.filter((i) => i.journeyId === journeyId && i.expected.kind === "regression").sort((a, b) => (a.id < b.id ? -1 : 1))[0];
     if (first === undefined) throw new Error(`journey ${journeyId}: no regression item`);
@@ -174,15 +179,16 @@ if (command === "validate") {
     process.stdout.write(`${item.id}: unchanged control in pattern ${item.patternId} (${item.split})\n`);
   }
 } else if (command === "oss-items") {
-  // The regression item of each dev pattern of the oss-regression batch (DR-0064); test patterns wait for M5's power table (P15).
+  // The regression item of each assigned pattern of the oss-regression batch (DR-0064), in its split (test patterns from P37).
   const registry = OssCandidatesSchema.parse(JSON.parse(readFileSync(OSS_CANDIDATES, "utf8")));
   for (const pattern of (files.patterns?.patterns ?? []).filter((p) => p.batch === "oss-regression" && p.status === "planned")) {
-    if (files.split?.assignments[pattern.id] !== "dev") continue;
+    const split = files.split?.assignments[pattern.id];
+    if (split !== "dev" && split !== "test") continue;
     const candidate = registry.candidates.find((c) => `oss--${c.id}` === pattern.id);
     if (candidate === undefined) throw new Error(`${pattern.id}: no candidate in corpus/oss-candidates.json`);
     const fixtureCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `fixtures/oss/${candidate.id}`], { cwd: repoRoot, encoding: "utf8" }).trim();
     if (fixtureCommit === "") throw new Error(`${candidate.id}: fixtures/oss/${candidate.id} is not committed`);
-    const item = itemFromOssCandidate(candidate, fixtureCommit, "dev");
+    const item = itemFromOssCandidate(candidate, fixtureCommit, split);
     writeFileSync(join(ITEMS, `${item.id}.json`), `${JSON.stringify(item, null, 2)}\n`);
     process.stdout.write(`${item.id}: item written (${candidate.package} ${String(candidate.good)} to ${String(candidate.broken)})\n`);
   }
