@@ -8,6 +8,10 @@
 # thumbprint, verify the signature against the pins, trust the certificate and
 # install. While the thumbprint is pending (the first M1a run), nothing is
 # trusted or installed: the record decides the pin (DR-0040).
+#
+# The archive's bundled devcon.exe is not signed, so it is never run. The
+# device is created by RootDevice below, which makes the same SetupAPI and
+# newdev calls as `devcon install` (DR-0047).
 param(
   [Parameter(Mandatory = $true)][string]$Lock,
   [Parameter(Mandatory = $true)][string]$OutDir
@@ -22,6 +26,63 @@ $record = [ordered]@{
   thumbprintStatus = $pins.signerThumbprint.status
 }
 function Save-Record { $record | ConvertTo-Json -Depth 8 | Set-Content -Path $recordPath -Encoding utf8 }
+
+Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+
+/// Creates a root-enumerated device for a hardware id and installs the INF's
+/// driver on it: the SetupAPI sequence that `devcon install` performs.
+public static class RootDevice {
+  const int DICD_GENERATE_ID = 0x1;
+  const int DIF_REGISTERDEVICE = 0x19;
+  const int SPDRP_HARDWAREID = 0x1;
+  const int INSTALLFLAG_FORCE = 0x1;
+
+  [StructLayout(LayoutKind.Sequential)]
+  public struct SP_DEVINFO_DATA { public int cbSize; public Guid ClassGuid; public int DevInst; public IntPtr Reserved; }
+
+  [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+  static extern bool SetupDiGetINFClass(string infName, out Guid classGuid, StringBuilder className, int classNameSize, out int requiredSize);
+  [DllImport("setupapi.dll", SetLastError = true)]
+  static extern IntPtr SetupDiCreateDeviceInfoList(ref Guid classGuid, IntPtr hwndParent);
+  [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+  static extern bool SetupDiCreateDeviceInfo(IntPtr set, string deviceName, ref Guid classGuid, string description, IntPtr hwndParent, int flags, ref SP_DEVINFO_DATA data);
+  [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+  static extern bool SetupDiSetDeviceRegistryProperty(IntPtr set, ref SP_DEVINFO_DATA data, int property, byte[] buffer, int size);
+  [DllImport("setupapi.dll", SetLastError = true)]
+  static extern bool SetupDiCallClassInstaller(int function, IntPtr set, ref SP_DEVINFO_DATA data);
+  [DllImport("setupapi.dll", SetLastError = true)]
+  static extern bool SetupDiDestroyDeviceInfoList(IntPtr set);
+  [DllImport("newdev.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+  static extern bool UpdateDriverForPlugAndPlayDevices(IntPtr hwndParent, string hardwareId, string fullInfPath, int flags, out bool rebootRequired);
+
+  static string Fail(string step) { return "failed at " + step + ": Win32 error " + Marshal.GetLastWin32Error(); }
+
+  public static string Install(string infPath, string hardwareId) {
+    Guid classGuid;
+    var className = new StringBuilder(64);
+    int required;
+    if (!SetupDiGetINFClass(infPath, out classGuid, className, className.Capacity, out required)) return Fail("SetupDiGetINFClass");
+    IntPtr set = SetupDiCreateDeviceInfoList(ref classGuid, IntPtr.Zero);
+    if (set == new IntPtr(-1)) return Fail("SetupDiCreateDeviceInfoList");
+    try {
+      var data = new SP_DEVINFO_DATA();
+      data.cbSize = Marshal.SizeOf(typeof(SP_DEVINFO_DATA));
+      if (!SetupDiCreateDeviceInfo(set, className.ToString(), ref classGuid, null, IntPtr.Zero, DICD_GENERATE_ID, ref data)) return Fail("SetupDiCreateDeviceInfo");
+      byte[] ids = Encoding.Unicode.GetBytes(hardwareId + "\0\0");
+      if (!SetupDiSetDeviceRegistryProperty(set, ref data, SPDRP_HARDWAREID, ids, ids.Length)) return Fail("SetupDiSetDeviceRegistryProperty");
+      if (!SetupDiCallClassInstaller(DIF_REGISTERDEVICE, set, ref data)) return Fail("SetupDiCallClassInstaller(DIF_REGISTERDEVICE)");
+    } finally {
+      SetupDiDestroyDeviceInfoList(set);
+    }
+    bool reboot;
+    if (!UpdateDriverForPlugAndPlayDevices(IntPtr.Zero, hardwareId, infPath, INSTALLFLAG_FORCE, out reboot)) return Fail("UpdateDriverForPlugAndPlayDevices");
+    return "installed: class " + className + ", reboot required " + reboot;
+  }
+}
+'@
 
 function Get-PeMachine([string]$Path) {
   $bytes = [System.IO.File]::ReadAllBytes($Path)
@@ -80,6 +141,9 @@ try {
   $inf = @($infs | Where-Object { $_.FullName -match '\\driver\\' }) + $infs | Select-Object -First 1
   if ($null -eq $inf) { throw 'no Scream.inf in the archive' }
   $record.inf = $inf.FullName.Substring($dir.Length + 1)
+  $installBat = Get-ChildItem $dir -Recurse -Filter 'Install.bat' | Select-Object -First 1
+  if ($null -ne $installBat) { $record.installBat = @(Get-Content $installBat.FullName) }
+  $record.infHardwareIds = @(Select-String -Path $inf.FullName -Pattern 'Scream' | ForEach-Object { $_.Line.Trim() } | Select-Object -First 20)
 
   $record.signatures = @()
   foreach ($file in @(Get-ChildItem $inf.DirectoryName -File | Where-Object { $_.Extension -in '.sys', '.cat' })) {
@@ -106,13 +170,10 @@ try {
     $store = [System.Security.Cryptography.X509Certificates.X509Store]::new('TrustedPublisher', 'LocalMachine')
     $store.Open('ReadWrite'); $store.Add($cert); $store.Close()
     Start-Service Audiosrv, AudioEndpointBuilder
-    $devcon = $devconInArchive
-    if ($null -eq $devcon) { $devcon = Get-Command devcon -ErrorAction SilentlyContinue }
-    if ($null -eq $devcon) { throw 'devcon is neither in the archive nor on PATH (DR-0012: a separate download needs the owner)' }
-    $devconPath = if ($devcon -is [System.IO.FileInfo]) { $devcon.FullName } else { $devcon.Source }
-    $record.devcon = $devconPath
-    $record.installOutput = @(& $devconPath install $inf.FullName '*Scream' 2>&1 | ForEach-Object { "$_" })
-    $record.install = "devcon exit code $LASTEXITCODE"
+    $record.installResult = [RootDevice]::Install($inf.FullName, '*Scream')
+    $record.install = $record.installResult
+    if (-not $record.installResult.StartsWith('installed')) { throw "Scream install $($record.installResult)" }
+    Start-Sleep -Seconds 5
   }
   $record.servicesAfter = @(Get-Service Audiosrv, AudioEndpointBuilder | ForEach-Object { [ordered]@{ name = $_.Name; status = "$($_.Status)"; startType = "$($_.StartType)" } })
 } catch {
