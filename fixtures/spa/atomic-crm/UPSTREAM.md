@@ -7,7 +7,7 @@
 
 ## What is kept
 
-Only what the demo build (`vite.demo.config.ts`) needs: `src/` (without stories, tests, `src/test/` or READMEs), `demo/`, `public/`, `index.html`, `vite.demo.config.ts`, the tsconfig files, `components.json`, `package.json`, `package-lock.json` and `LICENSE.md`.
+Only what the demo build (`vite.demo.config.ts`) needs: `src/` (without stories, tests, `src/test/` or READMEs), `demo/`, `public/`, `index.html`, `vite.demo.config.ts`, the tsconfig files, `components.json`, `package.json`, `package-lock.json`, `LICENSE.md` and `CHANGELOG.md` (the app imports it as text for its changelog page; added after the first CI build showed the import).
 
 ## What is left out
 
