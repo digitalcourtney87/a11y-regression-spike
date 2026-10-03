@@ -1,0 +1,20 @@
+{
+  "id": "ras-toast-duplicated-announcer",
+  "patternId": "react-admin-simple--toast-duplicated",
+  "operator": "toast-duplicated",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "A global save announcer (a role=\"status\" region in index.html, written by the posts afterUpdate callback) repeats react-admin's \"Element updated\" notification",
+  "edits": [
+    {
+      "file": "index.html",
+      "find": "        <div id=\"root\">",
+      "replace": "        <div id=\"save-announcer\" role=\"status\" style=\"position: absolute; left: -9999px\"></div>\n        <div id=\"root\">"
+    },
+    {
+      "file": "src/dataProvider.tsx",
+      "find": "        resource: 'posts',\n",
+      "replace": "        resource: 'posts',\n        afterUpdate: async result => {\n            const announcer = document.getElementById('save-announcer');\n            if (announcer) announcer.textContent = 'Element updated';\n            return result;\n        },\n"
+    }
+  ]
+}

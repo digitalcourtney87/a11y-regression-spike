@@ -1,0 +1,15 @@
+{
+  "id": "acrm-checked-stale-checkbox",
+  "patternId": "atomic-crm--checked-stale",
+  "operator": "checked-stale",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-complete-task",
+  "target": "Shared Checkbox (src/components/ui/checkbox.tsx): aria-checked fixed at false; exercised by the task done checkbox on the dashboard",
+  "edits": [
+    {
+      "file": "src/components/ui/checkbox.tsx",
+      "find": "      {...props}\n    >\n      <CheckboxPrimitive.Indicator",
+      "replace": "      {...props}\n      aria-checked={false}\n    >\n      <CheckboxPrimitive.Indicator"
+    }
+  ]
+}

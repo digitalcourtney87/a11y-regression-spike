@@ -1,0 +1,18 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/form.tsx b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+index d87e2cf..5daaf28 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/form.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+@@ -234,9 +234,11 @@ const SaveButton = <RecordType extends RaRecord = RaRecord>(
+   return (
+     <Button
+       variant={variant}
+-      type={type}
++      type="button"
+       disabled={disabled}
+-      onClick={handleClick}
++      onPointerUp={(event) => {
++        void form.handleSubmit(handleSubmit)(event);
++      }}
+       className={cn(
+         disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
+         className,

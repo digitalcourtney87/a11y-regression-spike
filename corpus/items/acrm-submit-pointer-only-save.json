@@ -1,0 +1,23 @@
+{
+  "id": "acrm-submit-pointer-only-save",
+  "patternId": "atomic-crm--submit-pointer-only",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-save",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-submit-pointer-only-save.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "submit-pointer-only: Submit requires a pointer-only control (Shared SaveButton (src/components/admin/form.tsx): a non-submit button that saves only on pointerup, so keyboard and screen-reader activation do nothing)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator submit-pointer-only",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

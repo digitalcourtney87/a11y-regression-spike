@@ -1,0 +1,23 @@
+{
+  "id": "ras-dialog-initial-focus-quick-create",
+  "patternId": "react-admin-simple--dialog-initial-focus-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-quick-create-open",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-initial-focus-quick-create.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_MOVED",
+    "mechanism": "dialog-initial-focus-removed: Dialog opens without moving focus into it (Post quick-create dialog opens without moving focus into it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-initial-focus-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

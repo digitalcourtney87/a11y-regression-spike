@@ -1,0 +1,15 @@
+{
+  "id": "acrm-submit-pointer-only-save",
+  "patternId": "atomic-crm--submit-pointer-only",
+  "operator": "submit-pointer-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-save",
+  "target": "Shared SaveButton (src/components/admin/form.tsx): a non-submit button that saves only on pointerup, so keyboard and screen-reader activation do nothing",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      type={type}\n      disabled={disabled}\n      onClick={handleClick}\n",
+      "replace": "      type=\"button\"\n      disabled={disabled}\n      onPointerUp={(event) => {\n        void form.handleSubmit(handleSubmit)(event);\n      }}\n"
+    }
+  ]
+}

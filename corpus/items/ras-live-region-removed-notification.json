@@ -1,0 +1,23 @@
+{
+  "id": "ras-live-region-removed-notification",
+  "patternId": "react-admin-simple--live-region-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-live-region-removed-notification.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "live-region-removed: aria-live or role=status removed from the notification region (Admin notification: a custom notification gives the Snackbar content role=\"presentation\", so it is no longer an alert)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator live-region-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

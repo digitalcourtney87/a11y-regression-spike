@@ -207,7 +207,8 @@
       "context": "atomic-crm",
       "operator": "aria-modal-removed",
       "stratum": "regression:FOCUS_ESCAPES_DIALOG",
-      "status": "planned"
+      "status": "dropped",
+      "note": "Dropped from the base alone, after the split: Atomic CRM's dialogs are Radix Dialog, which makes the background inert with aria-hidden (hideOthers) instead of aria-modal, bundled with the focus trap; \"aria-modal removed while containment stays\" cannot be expressed without patching the library, and modal={false} is the containment-removed mechanism (a separate pattern)."
     },
     {
       "id": "atomic-crm--tab-swallowed",

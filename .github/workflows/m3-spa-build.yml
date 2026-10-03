@@ -93,3 +93,72 @@ jobs:
           name: spa-base-${{ matrix.app }}
           path: artefacts/spa/
           retention-days: 30
+  patches:
+    # Applies each dev item's patch to its app, builds it and loads it offline,
+    # so a patch that breaks the build or throws at runtime is caught in M3
+    # (corpus plan §6). Same safeguards as the base job.
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [atomic-crm, react-admin-simple]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install harness dependencies
+        run: npm ci
+      - name: Install Chrome for Testing 153.0.8010.12 (Playwright 1.63.0)
+        run: npx --no-install playwright install chromium
+      - name: Build and probe each patched app
+        shell: pwsh
+        env:
+          APP: ${{ matrix.app }}
+        run: |
+          $repo = $PWD
+          $out = Join-Path $repo "artefacts/patches/$env:APP"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $work = Join-Path $env:RUNNER_TEMP "spa"
+          Copy-Item -Recurse -Force "fixtures/spa/$env:APP" $work
+          Push-Location $work
+          $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-spa"
+          npm ci --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out install.log)
+          Pop-Location
+          $build = if ($env:APP -eq "atomic-crm") { "npx --no-install vite build --config vite.demo.config.ts" } else { "npx --no-install vite build" }
+          $results = @()
+          foreach ($file in Get-ChildItem corpus/items -Filter *.json | Sort-Object Name) {
+            $item = Get-Content $file.FullName -Raw | ConvertFrom-Json
+            if ($item.app -ne $env:APP -or -not $item.candidate.patch) { continue }
+            $patch = Join-Path $repo "corpus/patches/$($item.candidate.patch)"
+            Push-Location $work
+            # Patch paths are a/fixtures/spa/<app>/...; strip four components to apply inside the app copy.
+            git apply -p4 $patch 2>&1 | Out-File (Join-Path $out "$($item.id).apply.log")
+            $applyExit = $LASTEXITCODE
+            Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue
+            Invoke-Expression "$build 2>&1" | Out-File (Join-Path $out "$($item.id).build.log")
+            $buildExit = $LASTEXITCODE
+            Pop-Location
+            $probeExit = $null
+            if ($buildExit -eq 0) {
+              node harness/src/probes/spaProbe.ts --name $item.id --dist (Join-Path $work "dist") --out (Join-Path $out "$($item.id).probe.json") --paths "/" --fixed-time "2026-10-05T09:00:00Z"
+              $probeExit = $LASTEXITCODE
+            }
+            Push-Location $work
+            git apply -R -p4 $patch 2>&1 | Out-File -Append (Join-Path $out "$($item.id).apply.log")
+            $revertExit = $LASTEXITCODE
+            Pop-Location
+            $results += [ordered]@{ id = $item.id; applyExit = $applyExit; buildExit = $buildExit; probeExit = $probeExit; revertExit = $revertExit }
+          }
+          $results | ConvertTo-Json | Out-File (Join-Path $out results.json)
+          if ($results | Where-Object { $_.applyExit -ne 0 -or $_.buildExit -ne 0 -or $_.probeExit -ne 0 -or $_.revertExit -ne 0 }) { exit 1 }
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: patches-${{ matrix.app }}
+          path: artefacts/patches/
+          retention-days: 30

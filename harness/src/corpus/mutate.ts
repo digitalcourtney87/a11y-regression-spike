@@ -1,7 +1,7 @@
 /**
  * Mutation specs for seeded items (HANDOFF §9 M3; corpus plan §6). A spec in
  * `corpus/specs/<item id>.json` names a catalogue operator and the exact edits
- * that realise it in the vendored SPA; `npm run corpus -- mutate` turns it
+ * that realise it in one vendored SPA (`fixtures/spa/<app>`); `npm run corpus -- mutate` turns it
  * into `corpus/patches/<item id>.patch` and `corpus/items/<item id>.json`.
  *
  * Edits are anchored: each `find` must occur in its file exactly once, or
@@ -12,6 +12,12 @@ import { z } from "zod";
 
 import type { CorpusItem } from "../schema/index.ts";
 import { operatorById } from "./catalogue.ts";
+import { SPA_APPS } from "./patterns.ts";
+
+const LICENCES: Record<(typeof SPA_APPS)[number], string> = {
+  "atomic-crm": "MIT (Atomic CRM, marmelab/atomic-crm)",
+  "react-admin-simple": "MIT (react-admin, marmelab/react-admin)",
+};
 
 export const EditSchema = z.strictObject({
   /** Path relative to the SPA root (e.g. "src/components/ui/dialog.tsx"). */
@@ -26,7 +32,7 @@ export const MutationSpecSchema = z.strictObject({
   id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
   patternId: z.string().min(1),
   operator: z.string().min(1),
-  app: z.literal("atomic-crm"),
+  app: z.enum(SPA_APPS),
   journeyId: z.string().min(1),
   /** Where in the app the mechanism applies, for people reading the corpus. */
   target: z.string().min(1),
@@ -70,6 +76,6 @@ export function itemFromSpec(spec: MutationSpec, baseRef: string, split: "dev" |
     candidate: { patch: `${spec.id}.patch` },
     expected,
     ...(spec.repetitions === undefined ? {} : { repetitions: spec.repetitions }),
-    provenance: { origin: `seeded by Claude with operator ${operator.id}`, licence: "MIT (Atomic CRM, marmelab/atomic-crm)" },
+    provenance: { origin: `seeded by Claude with operator ${operator.id}`, licence: LICENCES[spec.app] },
   };
 }

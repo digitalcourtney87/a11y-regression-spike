@@ -1,0 +1,15 @@
+{
+  "id": "ras-dialog-focus-not-restored-preview",
+  "patternId": "react-admin-simple--dialog-focus-not-restored",
+  "operator": "dialog-focus-not-restored",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "target": "Post preview dialog on the comment form: focus is not returned to the Show button on close",
+  "edits": [
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        data-testid=\"dialog-show-post\"\n",
+      "replace": "                        data-testid=\"dialog-show-post\"\n                        disableRestoreFocus\n"
+    }
+  ]
+}

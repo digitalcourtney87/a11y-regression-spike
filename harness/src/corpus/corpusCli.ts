@@ -41,7 +41,6 @@ const PATTERNS = join(repoRoot, "corpus/patterns.json");
 function readRegistry(): PatternRegistry | null {
   return existsSync(PATTERNS) ? PatternRegistrySchema.parse(JSON.parse(readFileSync(PATTERNS, "utf8"))) : null;
 }
-const SPA_ROOT = "fixtures/spa/atomic-crm";
 
 /** Writes the patch for one spec (paths relative to the repository root) and returns it. */
 function patchFor(spec: MutationSpec): string {
@@ -50,7 +49,7 @@ function patchFor(spec: MutationSpec): string {
     const byFile = new Map<string, MutationSpec["edits"]>();
     for (const edit of spec.edits) byFile.set(edit.file, [...(byFile.get(edit.file) ?? []), edit]);
     for (const [file, edits] of byFile) {
-      const rel = `${SPA_ROOT}/${file}`;
+      const rel = `fixtures/spa/${spec.app}/${file}`;
       const text = readFileSync(join(repoRoot, rel), "utf8");
       for (const [side, content] of [["orig", text], ["mut", applyEdits(text, edits, rel)]] as const) {
         mkdirSync(dirname(join(work, side, rel)), { recursive: true });
@@ -97,15 +96,17 @@ if (command === "validate") {
   for (const e of report.errors) process.stderr.write(`error: ${e}\n`);
   if (report.errors.length > 0) process.exitCode = 1;
 } else if (command === "mutate") {
-  const baseCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", SPA_ROOT], { cwd: repoRoot, encoding: "utf8" }).trim();
   for (const file of list(SPECS, ".json")) {
     const spec = MutationSpecSchema.parse(JSON.parse(readFileSync(join(SPECS, file), "utf8")));
     if (`${spec.id}.json` !== file) throw new Error(`${file}: id "${spec.id}" must match the file name`);
+    const planned = files.patterns?.patterns.find((p) => p.id === spec.patternId);
+    if (planned?.status !== "planned" || planned.operator !== spec.operator || planned.context !== spec.app) throw new Error(`${file}: pattern "${spec.patternId}" is not a planned ${spec.app} pattern for operator ${spec.operator}`);
+    if (files.split?.assignments[spec.patternId] !== "dev") throw new Error(`${file}: pattern "${spec.patternId}" is not in the dev split; test patterns are not built in M3 (P15)`);
+    const baseCommit = execFileSync("git", ["log", "-1", "--format=%H", "--", `fixtures/spa/${spec.app}`], { cwd: repoRoot, encoding: "utf8" }).trim();
     const patchPath = join(PATCHES, `${spec.id}.patch`);
     writeFileSync(patchPath, patchFor(spec));
     execFileSync("git", ["apply", "--check", patchPath], { cwd: repoRoot });
-    const split = files.split?.assignments[spec.patternId] ?? "dev";
-    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, `atomic-crm@${baseCommit}`, split), null, 2)}\n`);
+    writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, `${spec.app}@${baseCommit}`, "dev"), null, 2)}\n`);
     process.stdout.write(`${spec.id}: patch and item written (${spec.operator})\n`);
   }
 } else if (command === "plan") {

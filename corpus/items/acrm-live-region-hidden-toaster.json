@@ -1,0 +1,23 @@
+{
+  "id": "acrm-live-region-hidden-toaster",
+  "patternId": "atomic-crm--live-region-hidden-ancestor",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-live-region-hidden-toaster.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "live-region-hidden-ancestor: aria-hidden or inert on an ancestor of the live region (Notification toaster in the main layout wrapped in an aria-hidden container)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator live-region-hidden-ancestor",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

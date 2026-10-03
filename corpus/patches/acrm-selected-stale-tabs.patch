@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx b/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
+index 3d6f3ac..d135afd 100644
+--- a/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
++++ b/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
+@@ -44,6 +44,7 @@ function TabsTrigger({
+         className
+       )}
+       {...props}
++      aria-selected={false}
+     />
+   )
+ }

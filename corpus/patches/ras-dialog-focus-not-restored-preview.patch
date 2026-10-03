@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx b/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
+index 35e02c4..c3be5c3 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/PostReferenceInput.tsx
+@@ -61,6 +61,7 @@ const PostReferenceInput = () => {
+                     </Button>
+                     <Dialog
+                         data-testid="dialog-show-post"
++                        disableRestoreFocus
+                         fullWidth
+                         open={showPreviewDialog}
+                         onClose={handleCloseShow}

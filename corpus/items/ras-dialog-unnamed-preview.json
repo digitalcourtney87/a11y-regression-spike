@@ -1,0 +1,23 @@
+{
+  "id": "ras-dialog-unnamed-preview",
+  "patternId": "react-admin-simple--dialog-labelledby-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-unnamed-preview.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "dialog-labelledby-removed: Dialog loses aria-labelledby (its title no longer names it) (Post preview dialog: its aria-label is removed and its title is given its own id, so the dialog's automatic aria-labelledby points at nothing)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-labelledby-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

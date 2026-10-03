@@ -1,0 +1,23 @@
+{
+  "id": "ras-dialog-focus-not-restored-preview",
+  "patternId": "react-admin-simple--dialog-focus-not-restored",
+  "split": "dev",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-focus-not-restored-preview.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_RESTORED",
+    "mechanism": "dialog-focus-not-restored: Closing a dialog does not return focus to its trigger (Post preview dialog on the comment form: focus is not returned to the Show button on close)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-focus-not-restored",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

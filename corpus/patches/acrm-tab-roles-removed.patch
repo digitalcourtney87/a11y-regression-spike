@@ -1,0 +1,20 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx b/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
+index 3d6f3ac..fbe0def 100644
+--- a/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
++++ b/fixtures/spa/atomic-crm/src/components/ui/tabs.tsx
+@@ -28,6 +28,7 @@ function TabsList({
+         className
+       )}
+       {...props}
++      role="group"
+     />
+   )
+ }
+@@ -44,6 +45,7 @@ function TabsTrigger({
+         className
+       )}
+       {...props}
++      role="button"
+     />
+   )
+ }

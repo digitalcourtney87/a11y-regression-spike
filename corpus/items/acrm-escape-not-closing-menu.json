@@ -1,0 +1,23 @@
+{
+  "id": "acrm-escape-not-closing-menu",
+  "patternId": "atomic-crm--escape-not-closing",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-task-actions-escape",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-escape-not-closing-menu.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "KEYBOARD_TRAP",
+    "mechanism": "escape-not-closing: Escape no longer closes a popover that captures focus (Shared DropdownMenuContent (src/components/ui/dropdown-menu.tsx): Escape is swallowed, so a menu that holds focus cannot be left by its documented key)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator escape-not-closing",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

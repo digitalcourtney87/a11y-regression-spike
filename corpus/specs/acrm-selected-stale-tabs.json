@@ -1,0 +1,15 @@
+{
+  "id": "acrm-selected-stale-tabs",
+  "patternId": "atomic-crm--selected-stale",
+  "operator": "selected-stale",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "target": "Shared TabsTrigger (src/components/ui/tabs.tsx): aria-selected fixed at false; exercised by the contact page tabs",
+  "edits": [
+    {
+      "file": "src/components/ui/tabs.tsx",
+      "find": "      {...props}\n    />\n  )\n}\n\nfunction TabsContent",
+      "replace": "      {...props}\n      aria-selected={false}\n    />\n  )\n}\n\nfunction TabsContent"
+    }
+  ]
+}

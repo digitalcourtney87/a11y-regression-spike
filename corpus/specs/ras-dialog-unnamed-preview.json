@@ -1,0 +1,20 @@
+{
+  "id": "ras-dialog-unnamed-preview",
+  "patternId": "react-admin-simple--dialog-labelledby-removed",
+  "operator": "dialog-labelledby-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-preview",
+  "target": "Post preview dialog: its aria-label is removed and its title is given its own id, so the dialog's automatic aria-labelledby points at nothing",
+  "edits": [
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        onClose={handleCloseShow}\n                        aria-label={translate('simple.create-post')}\n",
+      "replace": "                        onClose={handleCloseShow}\n"
+    },
+    {
+      "file": "src/comments/PostReferenceInput.tsx",
+      "find": "                        <DialogTitle>\n",
+      "replace": "                        <DialogTitle id=\"post-preview-heading\">\n"
+    }
+  ]
+}

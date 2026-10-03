@@ -1,0 +1,23 @@
+{
+  "id": "acrm-drag-only-deal-card",
+  "patternId": "atomic-crm--drag-only-reorder",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-deals-move-card-keyboard",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-drag-only-deal-card.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "INTERACTION_FAILS_UNDER_AT",
+    "mechanism": "drag-only-reorder: Drag-only reordering with no keyboard path (Deal card on the deals board: the drag handle is taken out of the tab order, so it cannot be lifted from the keyboard)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator drag-only-reorder",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

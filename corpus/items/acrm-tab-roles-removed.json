@@ -1,0 +1,23 @@
+{
+  "id": "acrm-tab-roles-removed",
+  "patternId": "atomic-crm--tab-roles-removed",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-tabs",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-tab-roles-removed.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "tab-roles-removed: Tabs lose role=tab/tablist (Shared Tabs (src/components/ui/tabs.tsx): the tab list becomes a group and the tabs plain buttons)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator tab-roles-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "acrm-checked-stale-checkbox",
+  "patternId": "atomic-crm--checked-stale",
+  "split": "dev",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-dashboard-complete-task",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-checked-stale-checkbox.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "checked-stale: aria-checked or aria-pressed stale on a checkbox, switch or toggle (Shared Checkbox (src/components/ui/checkbox.tsx): aria-checked fixed at false; exercised by the task done checkbox on the dashboard)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator checked-stale",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

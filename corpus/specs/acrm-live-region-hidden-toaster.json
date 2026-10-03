@@ -1,0 +1,15 @@
+{
+  "id": "acrm-live-region-hidden-toaster",
+  "patternId": "atomic-crm--live-region-hidden-ancestor",
+  "operator": "live-region-hidden-ancestor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-notification",
+  "target": "Notification toaster in the main layout wrapped in an aria-hidden container",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Layout.tsx",
+      "find": "      <Notification />\n",
+      "replace": "      <div aria-hidden=\"true\">\n        <Notification />\n      </div>\n"
+    }
+  ]
+}
