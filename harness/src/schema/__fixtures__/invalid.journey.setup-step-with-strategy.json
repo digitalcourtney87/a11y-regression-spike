@@ -1,0 +1,32 @@
+{
+  "id": "canary-k1",
+  "version": "1",
+  "app": "canaries",
+  "entryUrl": "http://127.0.0.1:4173/k1.html",
+  "anchor": "#start",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "open",
+      "fn": "openCanaryPage",
+      "strategy": "TAB"
+    },
+    {
+      "kind": "at",
+      "id": "activate",
+      "strategy": "ACTIVATE",
+      "until": {
+        "name": "Start",
+        "role": "button",
+        "maxAttempts": 1
+      },
+      "observeMs": 3000,
+      "expectations": [
+        {
+          "type": "announcementContains",
+          "value": "Saved"
+        }
+      ]
+    }
+  ]
+}

@@ -13,6 +13,8 @@ A research harness, not a product. It measures whether DOM-mutation and platform
 
 Requires Node 24.21.0 (see `.nvmrc`). Assistive-technology runs happen only on GitHub-hosted Windows runners.
 
+**Security note:** the Guidepup NVDA build hosts NVDA's Remote Access relay on all network interfaces, using a public password and a certificate whose private key is published. Anything that can reach port 6837 while NVDA runs could send it keystrokes. Run it only on ephemeral hosted runners, never on a developer machine on an untrusted network (DR-0009).
+
 ```bash
 npm ci
 npm run lint

@@ -1,0 +1,19 @@
+{
+  "id": "item-0003",
+  "patternId": "pattern-unchanged-01",
+  "split": "dev",
+  "source": "seeded",
+  "app": "spa",
+  "journeyId": "save-profile",
+  "base": {
+    "ref": "base"
+  },
+  "candidate": {},
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "seeded-mutation",
+    "licence": "Apache-2.0"
+  }
+}

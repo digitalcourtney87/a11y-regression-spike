@@ -1,0 +1,86 @@
+{
+  "itemId": "canary-K1",
+  "side": "base",
+  "repetition": 0,
+  "orderIndex": 0,
+  "env": {
+    "harnessCommit": "0123456789abcdef0123456789abcdef01234567",
+    "imageOS": "win25",
+    "imageVersion": "20260101.1.0",
+    "windowsBuild": "10.0.26100.0",
+    "chromeVersion": "153.0.8010.12",
+    "chromeFlags": [
+      "--force-renderer-accessibility=screen-reader"
+    ],
+    "listenerVersion": "0.0.0",
+    "nodeVersion": "24.21.0",
+    "locale": "en-GB",
+    "nvdaVersion": "2026.2",
+    "nvdaConfigHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "adapter": {
+      "name": "guidepup",
+      "version": "0.35.0"
+    },
+    "imageName": "windows-2025-vs2026",
+    "playwrightVersion": "1.63.0",
+    "chromeSandbox": true,
+    "axMode": "screen-reader",
+    "nvdaChannel": "IA2",
+    "synth": {
+      "name": "espeak",
+      "voice": "en-gb",
+      "rate": 30,
+      "rateBoost": false
+    },
+    "audio": {
+      "endpointCount": 1,
+      "audiosrvRunning": true,
+      "driver": "Scream 3.6"
+    },
+    "dotnetVersion": "10.0.12"
+  },
+  "canaries": {
+    "pre": true,
+    "post": true
+  },
+  "maxClockSkewMs": 1.2,
+  "steps": [
+    {
+      "stepId": "activate",
+      "segmentId": "seg-0001",
+      "startedAt": 1200000000000,
+      "endedAt": 1203000000000,
+      "outcome": "REACHED",
+      "speech": [
+        {
+          "text": "Saved",
+          "t": 1200640000000,
+          "priority": "NORMAL"
+        }
+      ],
+      "speechCancels": [],
+      "focusTrace": [
+        {
+          "t": 1200002000000,
+          "target": "button#start"
+        }
+      ]
+    }
+  ],
+  "leg": "nvda-present",
+  "preflight": {
+    "foregroundHwndOk": true,
+    "preCanaryOk": true,
+    "manifestValid": true,
+    "clock": {
+      "nativeSelfTestDisagreementMs": 0.05,
+      "pageMappingUncertaintyMs": 1.2,
+      "segmentDriftMs": 0.1,
+      "timeTicksHighResolution": true,
+      "maxRafGapMs": 18.4
+    },
+    "injectionMarkerOk": true,
+    "audioOk": true,
+    "synthOk": true
+  }
+}

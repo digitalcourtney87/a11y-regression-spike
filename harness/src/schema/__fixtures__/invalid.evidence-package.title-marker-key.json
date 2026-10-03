@@ -1,0 +1,113 @@
+{
+  "itemId": "canary-K1",
+  "side": "base",
+  "repetition": 0,
+  "orderIndex": 0,
+  "env": {
+    "harnessCommit": "0123456789abcdef0123456789abcdef01234567",
+    "imageOS": "win25",
+    "imageVersion": "20260101.1.0",
+    "windowsBuild": "10.0.26100.0",
+    "chromeVersion": "153.0.8010.12",
+    "chromeFlags": [
+      "--force-renderer-accessibility=screen-reader"
+    ],
+    "listenerVersion": "0.0.0",
+    "nodeVersion": "24.21.0",
+    "locale": "en-GB",
+    "imageName": "windows-2025-vs2026",
+    "playwrightVersion": "1.63.0",
+    "chromeSandbox": true,
+    "axMode": "screen-reader",
+    "audio": {
+      "endpointCount": 1,
+      "audiosrvRunning": true,
+      "driver": "Scream 3.6"
+    },
+    "dotnetVersion": "10.0.12"
+  },
+  "canaries": {
+    "pre": true,
+    "post": true
+  },
+  "maxClockSkewMs": 1.2,
+  "steps": [
+    {
+      "stepId": "activate",
+      "segmentId": "seg-0002",
+      "startedAt": 1200000000000,
+      "endedAt": 1203000000000,
+      "outcome": "REACHED",
+      "ariaSnapshot": "- status: Saved",
+      "axTree": {
+        "nodes": [
+          {
+            "role": "status",
+            "live": "polite",
+            "atomic": false,
+            "relevant": "additions text",
+            "busy": false
+          }
+        ]
+      },
+      "mutations": [
+        {
+          "t": 1200500000000,
+          "type": "characterData",
+          "target": "#status",
+          "value": "Saved"
+        }
+      ],
+      "platformEvents": [
+        {
+          "t": 1200501000000,
+          "channel": "IA2",
+          "event": "IA2_EVENT_TEXT_INSERTED",
+          "eventId": 286,
+          "hwndClass": "Chrome_RenderWidgetHostHWND",
+          "text": "Saved"
+        },
+        {
+          "t": 1200502000000,
+          "channel": "MSAA",
+          "event": "EVENT_OBJECT_LIVEREGIONCHANGED",
+          "eventId": 32793,
+          "hwndClass": "Chrome_RenderWidgetHostHWND",
+          "role": "status",
+          "automationId": "status",
+          "liveSetting": "Polite",
+          "ariaRole": "status"
+        },
+        {
+          "t": 1200503000000,
+          "channel": "UIA",
+          "event": "LiveRegionChanged",
+          "eventId": 20024,
+          "automationId": "status",
+          "liveSetting": "Polite",
+          "diagnostic": true
+        }
+      ],
+      "focusTrace": [
+        {
+          "t": 1200002000000,
+          "target": "button#start"
+        }
+      ],
+      "titleNonce": "n-0001"
+    }
+  ],
+  "leg": "nvda-absent",
+  "preflight": {
+    "foregroundHwndOk": true,
+    "preCanaryOk": true,
+    "manifestValid": true,
+    "clock": {
+      "nativeSelfTestDisagreementMs": 0.05,
+      "pageMappingUncertaintyMs": 1.2,
+      "segmentDriftMs": 0.1,
+      "timeTicksHighResolution": true,
+      "maxRafGapMs": 18.4
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "a11y-regression-spike",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Research harness: falsification spike for accessibility regression CI (exploratory, Phase 0).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.21.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "score": "node harness/src/score/cli.ts",
+    "protocol:hash": "node harness/src/score/protocolHash.ts"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.1",
+    "eslint": "10.11.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0",
+    "vitest": "5.0.3",
+    "yaml": "2.9.1"
+  }
+}

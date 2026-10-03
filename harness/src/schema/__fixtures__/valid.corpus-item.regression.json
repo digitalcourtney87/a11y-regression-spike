@@ -1,0 +1,24 @@
+{
+  "id": "item-0001",
+  "patternId": "pattern-live-region-01",
+  "split": "dev",
+  "source": "seeded",
+  "app": "spa",
+  "journeyId": "save-profile",
+  "base": {
+    "ref": "base"
+  },
+  "candidate": {
+    "patch": "corpus/patches/item-0001.diff"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "live region inserted pre-populated"
+  },
+  "repetitions": 5,
+  "provenance": {
+    "origin": "seeded-mutation",
+    "licence": "Apache-2.0"
+  }
+}

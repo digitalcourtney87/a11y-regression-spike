@@ -1,0 +1,23 @@
+{
+  "id": "item-0002",
+  "patternId": "pattern-wrapper-01",
+  "split": "dev",
+  "source": "seeded",
+  "app": "spa",
+  "journeyId": "save-profile",
+  "base": {
+    "ref": "base"
+  },
+  "candidate": {
+    "patch": "corpus/patches/item-0002.diff"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "RENAME_ONLY"
+  },
+  "repetitions": 5,
+  "provenance": {
+    "origin": "seeded-mutation",
+    "licence": "Apache-2.0"
+  }
+}

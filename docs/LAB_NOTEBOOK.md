@@ -1,0 +1,80 @@
+# Lab notebook
+
+Dated observations for the Accessibility Regression CI falsification spike. Decisions belong in `docs/DECISIONS.md`; post-freeze changes to the frozen set (the paths in `protocol/frozen-paths.txt`, DR-0033) belong in `protocol/AMENDMENTS.md`.
+
+## Format
+
+- **One entry per date**, newest last. Append only. A correction is a new entry that names the entry it corrects.
+- **Every entry is labelled EXPLORATORY.** Nothing in this notebook is confirmatory evidence. Before the protocol freeze (M6) all work is exploratory (HANDOFF §4 rule 5). Observations recorded here are never re-labelled as confirmatory.
+- **Each entry states:**
+
+| Field | Content |
+|---|---|
+| Date | The date of the entry |
+| Label | EXPLORATORY |
+| Source | Desk research, a workflow run (run ID, label, `ImageVersion`), or an archived gate bundle (DR-0015) |
+| Observation | What was seen, with numbers and intervals where there are counts (Wilson 95%) |
+| Confidence | Observed, or inferred (and from what) |
+| Affects | The decision records or open questions it bears on |
+
+- **No test-split data.** Test-split items are never executed before the freeze (HANDOFF §4 rule 5), so no entry can contain test-split observations.
+- **Public repository.** No secrets, customer data, interview notes or identifiable defect details (HANDOFF §4 rule 1).
+
+---
+
+## 2026-10-02: Desk research only; questions for M1a
+
+**Label:** EXPLORATORY
+**Source:** desk research, `docs/research/2026-10-02-phase0-feasibility.md` (DR-0029)
+**Confidence:** inferred from source code, documentation and third-party CI logs. Nothing has been observed on a runner by this project.
+
+**Observation.** Only desk research exists so far. No workflow has run on a GitHub-hosted Windows runner for this project. Every expectation below is a prediction to be tested, not a finding.
+
+**Questions M1a must settle** (runner probes on `windows-2025` and `windows-2022`, DR-0025). The "desk-research expectation" column records the prediction now, so that M1a can confirm or refute it.
+
+| # | Question | Desk-research expectation | Why it matters | Affects |
+|---|---|---|---|---|
+| 1 | **Audio endpoint and Audiosrv state.** How many audio endpoints exist, and is Audiosrv running, before and after the Scream 3.6 install? | No endpoint on the stock image; Audiosrv possibly stopped. Scream 3.6 installs in about 2 s on `windows-2025` (ARIA-AT precedent). `windows-2022` is unproven for 3.6. | The audio preflight (`audioOk`) marks runs INCONCLUSIVE without an endpoint and a running Audiosrv. | DR-0012, DR-0021 |
+| 2 | **Which synth NVDA loads, with and without Scream.** Does eSpeak NG load as configured, and do index and done-speaking callbacks fire? | With Scream: eSpeak NG loads and fires callbacks. Without: eSpeak cannot open the device and NVDA falls back (eSpeak → silence), or synthesis completes with no real-time pacing. | Any synth fallback is INCONCLUSIVE (`SYNTH_FALLBACK`). Synth pacing determines when NVDA pushes queued speech, which shapes K7. | DR-0017, DR-0012 |
+| 3 | **The injection marker and "Buffer load took".** With `[UIA] allowInChromium=3`, is `nvdaHelperRemote*.dll` loaded in `chrome.exe`, and does the NVDA log contain "Buffer load took" (plus the "Chromium window treated as non-UIA" line when the UIA debug category is on)? | Yes on x64 runners. NVDA's own Chrome system tests pass on both labels. | Without injection, NVDA uses out-of-process IA2 with no Chrome-side stub, and live-region speech (K1) is likely to be lost. The run is INCONCLUSIVE (`NVDA_INJECTION_MARKER`). | DR-0017, DR-0021 |
+| 4 | **Foreground-lock behaviour.** Over 20 or more fresh Chrome launches, does `GetForegroundWindow()` equal the Chrome top-level window after launch and after NVDA starts? Which technique brings it forward reliably: `page.bringToFront()`, `SetForegroundWindow` after harness-injected input, or `AttachThreadInput`? | Sessions are interactive and x64 can take the foreground, but the foreground lock may block new windows. `@guidepup/setup` 0.29.1 no longer changes `ForegroundLockTimeout`. Alt-key tricks would be heard by NVDA. | Chrome suppresses focus events when its window lacks focus (K3–K5 signatures). OS-level keys go to the foreground window. A failure is INCONCLUSIVE (`FOREGROUND_HWND`). | DR-0024, DR-0019, DR-0021 |
+| 5 | **CfT infobars.** Does Chrome for Testing 153.0.8010.12, launched by Playwright 1.63.0 with `chromiumSandbox: true`, show any infobar that NVDA announces or that fires a browser-UI EVENT_SYSTEM_ALERT? | No. Playwright passes `--disable-infobars`, which CfT honours for buttonless infobars, and the sandbox is on, so the `--no-sandbox` warning does not apply. ARIA-AT's branded-Chrome runs did announce an infobar alert on every foreground change. | An infobar announcement would add speech to every segment, and an alert on `Chrome_WidgetWin_1` would add a browser-UI event to B2. | DR-0007, DR-0019 |
+| 6 | **Clock epochs.** Do Chrome TimeTicks share an epoch with `process.hrtime.bigint()` (Node) and `Stopwatch.GetTimestamp()` (C#)? Is `performance.now()` stepping at about 100 µs (QPC-based) rather than 1 ms or more? | Yes. All are QueryPerformanceCounter-based on a Hyper-V guest; `performance.now()` is clamped to 100 µs with jitter. | The CDP page-time mapping assumes a shared epoch. Low-resolution TimeTicks is INCONCLUSIVE (`CLOCK_LOW_RES_TIMETICKS`). | DR-0010, DR-0021 |
+| 7 | **Page time origin.** Does CDP `NavigationStart` (from `Performance.getMetrics`) equal the page's time origin? Cross-check `NavigationStart + performance.now()` against a 16-ping minimum-RTT estimate (16 `performance.now()` evaluations bracketed by `process.hrtime.bigint()`, keeping the sample with the smallest round trip). | Yes. The window performance time origin is set from navigation start, so agreement should be within the 100 µs clamp plus half the minimum round trip. | D1 requires this verification once in M1a before page timestamps are trusted. Page-mapping uncertainty above 2 ms is INCONCLUSIVE (`CLOCK_PAGE_MAPPING`). | DR-0010 |
+| 8 | **Display resolution and DPI.** What are the screen size (`GetSystemMetrics`), the DPI (`GetDpiForSystem`) and the headed Chrome window rectangle on each label? | Historically 1024×768. Playwright's default 1280×720 viewport would push a headed window partly off-screen. | Window geometry must be identical across runs and fit the screen. The result fixes the viewport and window-size settings. | DR-0007 |
+| 9 | **First-launch virtual-buffer failure rate.** How often does NVDA create no virtual buffer for a freshly launched Chrome, and is run 1 on a VM worse than runs 2..N? | NVDA's CI documents occasional first-launch failures and works around them with a warm-up launch. With a fresh profile per run, every launch may behave like a first launch. | G1 allows at most 3 failures per canary and 5 pooled. A per-launch failure mode could consume that budget for reasons unrelated to the instrument. | DR-0021, DR-0013 |
+| 10 | **Desktop session.** What integrity level (`whoami /groups`, Mandatory Level) and session ID do NVDA, Chrome, the listener and the input path each get on each label? Does a `SendInput` keystroke from the job shell reach a foregrounded Chrome? | Jobs run as runneradmin in an interactive session. The image sets `ConsentPromptBehaviorAdmin=0` but not `EnableLUA=0`, so the integrity level of job-launched processes is undocumented (inference, medium confidence). | UIPI blocks `SendInput` into higher-integrity windows and limits lower-integrity accessibility clients, so input or the listener could fail silently across a mismatch. | DR-0024, DR-0019 |
+
+**Also recorded in M1a** (Proposed by Claude, not yet owner-approved):
+
+| Item | Why | Affects |
+|---|---|---|
+| The Scream driver's signer certificate thumbprint, before anything is added to TrustedPublisher | env.lock moves from `pending-M1a` to `pinned` | DR-0012 |
+| `ImageOS`, `ImageVersion` and the image name reported by each label | Manifest values and the label check | DR-0006 |
+| Tap reception alongside Guidepup, and message-count parity between tap `speak` messages and NVDA log "Speaking" lines, plus the CPU and latency overhead of DEBUG logging | Validates the speech instrument before the canary runs | DR-0011 |
+
+**Not probed:** title latency. D1 removes the `document.title` marker (DR-0010, DR-0025).
+
+## 2026-10-03: Addendum after owner review
+
+**Label:** EXPLORATORY
+**Source:** the owner's review of M0 of 2 October 2026, recorded as DR-0030 to DR-0045; NVDA release-2026.2 source, read for the eSpeak NG default rate (DR-0041); pending owner items P4 and P6 in `docs/DECISIONS.md`
+**Confidence:** no runner observation. The expected rate is inferred from NVDA source; nothing has been observed on a runner by this project.
+
+**Observation.** No workflow has yet run on a GitHub-hosted Windows runner for this project. The owner's review adds three questions for M1a (11–13). Two pending owner items in `docs/DECISIONS.md` need M1a data before they go to the owner (14 for P6; 15 for P4). Questions 1–10 of the 2026-10-02 entry stand.
+
+| # | Question | Desk-research expectation | Why it matters | Affects |
+|---|---|---|---|---|
+| 11 | **Scream Authenticode signature.** For the Scream 3.6 driver files, what is the Authenticode signature status, who is the signer and who is the issuer, and what is the signer certificate thumbprint? Does the chain validate, or is the certificate self-signed? Where does `devcon` come from: the runner image or the pinned Scream archive? | Not established by desk research. ARIA-AT's recipe adds the signer certificate to TrustedPublisher before `devcon install`, which avoids an installation prompt but says nothing about whether the chain validates. Later Scream releases are reported to hang at `devcon` unless a self-signed certificate is trusted first (DR-0012), so a self-signed result for 3.6 is possible (inference, low confidence). | Chain valid and signer consistent with the release: Claude pins the thumbprint without asking. Self-signed or any other result: DR-0012 states that authenticity rests on trust on first use, nothing is added to TrustedPublisher, and the owner is asked. A separate `devcon` download would be a new hard-rule-12 security item. | DR-0040, DR-0012 |
+| 12 | **Effective eSpeak NG rate.** With a committed `nvda.ini` that sets no eSpeak rate, what rate and rate-boost setting does the running synth report? Does any inherited configuration (for example in the Guidepup build) already hold an eSpeak section? | 30 on NVDA's 0–100 scale, rate boost off, on a fresh eSpeak configuration section (NVDA release-2026.2 `espeak.py:216` and `:388`; `synthDriverHandler.py:365-385`). The Guidepup build's own configuration pins oneCore with rate 100 and rate boost on (DR-0017); whether it also carries an eSpeak section is not known. | D8's declared rate is NVDA's default (DR-0041), and the effective rate is recorded in every run's manifest. A value other than 30 is a reason to bring the rate back to the owner. Speech rate sets synth pacing, which shapes when NVDA pushes queued speech (K7). | DR-0041, DR-0017 |
+| 13 | **K6 and K7 in both legs.** How long does one canary attempt take in each leg (handover, observation window, teardown)? Does that leave room for 190 record-only runs per leg (380 in all) alongside the gating runs, within the 6 h job limit and the 23 Oct G1 target? | Not estimated by desk research. | K6 and K7 now run in both legs: speech outcomes from the NVDA-present leg, B2 signatures from the NVDA-absent leg; the K6a rule is read on the NVDA-present leg. The result sizes the run plan and feeds the G2 cost table (DR-0003). | DR-0036, DR-0043, DR-0003 |
+| 14 | **D1 clock-check computations.** What values do Claude's working definitions of page-mapping uncertainty, segment drift, low-resolution TimeTicks and the rAF gap give on each label, with Chrome in the foreground, with and without NVDA running? Does the in-page `requestAnimationFrame` heartbeat show gaps over 100 ms that the canary page did not cause? | Page-mapping uncertainty within the 100 µs clamp plus half the minimum round trip (question 7); segment drift close to zero, because every clock involved is QPC-based (question 6; inference); `performance.now()` steps of about 100 µs (question 6). rAF gaps on the runner are not estimated by desk research. | These computations decide when an attempt is INCONCLUSIVE. Their final form is fixed from M1a data and goes to the owner before any G1 run (pending owner item P6). | DR-0010, DR-0021 |
+| 15 | **Platform focus in the NVDA-present leg.** With NVDA running and no WinEvent listener, does an MSAA-only focus read (`accFocus` through `AccessibleObjectFromWindow` on Chrome's window) identify the declared anchor after the handover, over 20 or more fresh launches, without registering a UIA client? | Not established by desk research. AXMode is locked with `--force-renderer-accessibility=screen-reader` (DR-0019), so the read should not change Chrome's accessibility mode (inference). | Pending owner item P4 proposes this read for the handover's platform-focus check in the NVDA-present leg, so that the leg producing C's evidence has no UIA client. A failed check is INCONCLUSIVE with `FOREGROUND_HWND`. | DR-0020, DR-0024, DR-0021 |
+
+**Status of the 2026-10-02 "Also recorded in M1a" items.** That table was labelled "Proposed by Claude, not yet owner-approved". This entry records how DR-0030 resolved it; the 2026-10-02 entry itself is unchanged.
+
+| Item (2026-10-02) | Status after the owner's review |
+|---|---|
+| The Scream driver's signer certificate thumbprint | Extended by DR-0040: the Authenticode status, signer and issuer are recorded too (question 11) |
+| `ImageOS`, `ImageVersion` and the image name for each label | Approved by the owner 2026-10-02 (DR-0030, PR #1 item 10) |
+| Tap reception alongside Guidepup; tap-versus-log message-count parity; the overhead of DEBUG logging | Parity is required by D2 (DR-0011), and per-segment parity may use wall-anchor bucketing (DR-0039). The tap-reception check and the overhead measurement are decided by Claude under DR-0045 (2026-10-03) |
