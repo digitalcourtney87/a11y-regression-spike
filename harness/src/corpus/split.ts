@@ -1,14 +1,17 @@
 /**
- * Dev/test split by `patternId` (HANDOFF R5, §9 M3): items sharing a
- * patternId are not independent, so the split, like the bootstrap, works on
- * patterns, never on items. The split is stratified and uses a recorded seed,
- * so it can be reproduced exactly from the corpus and the seed.
+ * Dev/test split by `patternId` (HANDOFF R5, §9 M3; P15, DR-0057): items
+ * sharing a patternId are not independent, so the split, like the bootstrap,
+ * works on patterns, never on items. Patterns are planned in
+ * `corpus/patterns.json` before any item exists, and split there, so the
+ * split cannot depend on corpus data.
  *
- * Method: each pattern gets a stratum (its items' modal expected class, see
- * `patternStratum`). Strata are visited in sorted order; within a stratum the
- * patternIds are sorted, shuffled with mulberry32 (Fisher–Yates, one
- * generator for the whole split) and the first round(n × testFraction) go to
- * the test split. The test fraction is an owner decision (what is measured).
+ * Method: patterns are split in batches (one per source, e.g. the SPA
+ * regression patterns, then mined pairs once verified). Within a batch each
+ * pattern has a stratum (its expected class); strata are visited in sorted
+ * order, the patternIds in each are sorted, shuffled with mulberry32
+ * (Fisher–Yates, one generator per batch seeded with the recorded seed) and
+ * the first round(n × testFraction) go to the test split. A batch never
+ * changes an earlier assignment (DR-0059).
  */
 import type { CorpusItem } from "../schema/index.ts";
 import { mulberry32 } from "../runner/canaries.ts";
@@ -23,7 +26,7 @@ export function expectedClass(item: Pick<CorpusItem, "expected">): string {
   return "unchanged";
 }
 
-/** A pattern's stratum: the most common expected class among its items, ties broken by sort order. */
+/** A pattern's stratum from its items: the most common expected class, ties broken by sort order. */
 export function patternStratum(items: readonly Pick<CorpusItem, "expected">[]): string {
   const counts = new Map<string, number>();
   for (const item of items) counts.set(expectedClass(item), (counts.get(expectedClass(item)) ?? 0) + 1);
@@ -33,28 +36,33 @@ export function patternStratum(items: readonly Pick<CorpusItem, "expected">[]): 
   return top[0];
 }
 
-export interface SplitAssignment {
+export interface SplitBatch {
+  name: string;
   seed: number;
   testFraction: number;
-  method: string;
-  /** patternId → split, sorted by patternId. */
-  assignments: Record<string, Split>;
-  /** stratum → counts per split. */
+  /** stratum → counts per split in this batch. */
   strata: Record<string, { dev: number; test: number }>;
 }
 
-export const SPLIT_METHOD =
-  "Stratified by pattern stratum (modal expected class of the pattern's items). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator seeded by `seed`; the first round(n × testFraction) go to test.";
+export interface SplitAssignment {
+  method: string;
+  batches: SplitBatch[];
+  /** patternId → split, sorted by patternId. */
+  assignments: Record<string, Split>;
+}
 
-/** Assigns every pattern to dev or test (deterministic for a given corpus, seed and fraction). */
-export function assignSplit(patterns: ReadonlyMap<string, string>, seed: number, testFraction: number): SplitAssignment {
+export const SPLIT_METHOD =
+  "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment.";
+
+/** Splits one batch of patterns (patternId → stratum); deterministic for a given batch, seed and fraction. */
+export function splitBatch(patterns: ReadonlyMap<string, string>, seed: number, testFraction: number): { assignments: Record<string, Split>; strata: SplitBatch["strata"] } {
   if (!Number.isInteger(seed)) throw new RangeError("seed must be an integer");
   if (!(testFraction > 0 && testFraction < 1)) throw new RangeError("testFraction must be strictly between 0 and 1");
   const byStratum = new Map<string, string[]>();
   for (const [patternId, stratum] of patterns) byStratum.set(stratum, [...(byStratum.get(stratum) ?? []), patternId]);
   const random = mulberry32(seed);
   const assignments: Record<string, Split> = {};
-  const strata: Record<string, { dev: number; test: number }> = {};
+  const strata: SplitBatch["strata"] = {};
   for (const stratum of [...byStratum.keys()].sort()) {
     const ids = [...(byStratum.get(stratum) ?? [])].sort();
     for (let i = ids.length - 1; i > 0; i--) {
@@ -69,7 +77,17 @@ export function assignSplit(patterns: ReadonlyMap<string, string>, seed: number,
     ids.forEach((id, k) => (assignments[id] = k < nTest ? "test" : "dev"));
     strata[stratum] = { dev: ids.length - nTest, test: nTest };
   }
+  return { assignments, strata };
+}
+
+/** Adds a batch to the split; refuses a repeated batch name or a pattern that already has a split. */
+export function addBatch(existing: SplitAssignment | null, name: string, patterns: ReadonlyMap<string, string>, seed: number, testFraction: number): SplitAssignment {
+  const base: SplitAssignment = existing ?? { method: SPLIT_METHOD, batches: [], assignments: {} };
+  if (base.batches.some((b) => b.name === name)) throw new Error(`batch "${name}" is already split`);
+  for (const id of patterns.keys()) if (base.assignments[id] !== undefined) throw new Error(`pattern "${id}" already has a split`);
+  const { assignments, strata } = splitBatch(patterns, seed, testFraction);
+  const merged: Record<string, Split> = { ...base.assignments, ...assignments };
   const sorted: Record<string, Split> = {};
-  for (const id of Object.keys(assignments).sort()) sorted[id] = assignments[id] as Split;
-  return { seed, testFraction, method: SPLIT_METHOD, assignments: sorted, strata };
+  for (const id of Object.keys(merged).sort()) sorted[id] = merged[id] as Split;
+  return { method: SPLIT_METHOD, batches: [...base.batches, { name, seed, testFraction, strata }], assignments: sorted };
 }

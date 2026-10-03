@@ -6,10 +6,14 @@
  * patch and corpus item (mutate.ts), checking that each patch applies to the
  * current base with `git apply --check`.
  *
- * `npm run corpus -- split --seed <n> --test-fraction <f>` assigns each
- * pattern to dev or test (split.ts), writes `corpus/split.json` with the seed
- * and method, and sets each item's `split` field to match. The test fraction
- * and seed are recorded in docs/DECISIONS.md before the split is run.
+ * `npm run corpus -- plan spa-regression` adds the planned SPA regression
+ * patterns to `corpus/patterns.json` (patterns.ts).
+ *
+ * `npm run corpus -- split --batch <name> --seed <n> --test-fraction <f>`
+ * splits one batch of planned (not dropped) patterns into dev and test
+ * (split.ts), adding it to `corpus/split.json` without changing any earlier
+ * assignment. The seed and fraction are owner decisions (P15) and are recorded
+ * in docs/DECISIONS.md before the split is run.
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -19,7 +23,9 @@ import { parseArgs } from "node:util";
 
 import { applyEdits, itemFromSpec, MutationSpecSchema } from "./mutate.ts";
 import type { MutationSpec } from "./mutate.ts";
-import { assignSplit } from "./split.ts";
+import { addPatterns, PatternRegistrySchema, planSpaRegressionPatterns } from "./patterns.ts";
+import type { PatternRegistry } from "./patterns.ts";
+import { addBatch } from "./split.ts";
 import type { SplitAssignment } from "./split.ts";
 import { validateCorpus } from "./validate.ts";
 import type { CorpusFiles } from "./validate.ts";
@@ -30,6 +36,11 @@ const PATCHES = join(repoRoot, "corpus/patches");
 const JOURNEYS = join(repoRoot, "journeys");
 const SPLIT = join(repoRoot, "corpus/split.json");
 const SPECS = join(repoRoot, "corpus/specs");
+const PATTERNS = join(repoRoot, "corpus/patterns.json");
+
+function readRegistry(): PatternRegistry | null {
+  return existsSync(PATTERNS) ? PatternRegistrySchema.parse(JSON.parse(readFileSync(PATTERNS, "utf8"))) : null;
+}
 const SPA_ROOT = "fixtures/spa/atomic-crm";
 
 /** Writes the patch for one spec (paths relative to the repository root) and returns it. */
@@ -72,6 +83,7 @@ function readFiles(): CorpusFiles {
     patches: new Set(list(PATCHES, ".patch")),
     journeys: new Set(list(JOURNEYS, ".json").map((f) => f.replace(/\.json$/, ""))),
     split: existsSync(SPLIT) ? (JSON.parse(readFileSync(SPLIT, "utf8")) as SplitAssignment) : null,
+    patterns: readRegistry(),
   };
 }
 
@@ -96,22 +108,21 @@ if (command === "validate") {
     writeFileSync(join(ITEMS, `${spec.id}.json`), `${JSON.stringify(itemFromSpec(spec, `atomic-crm@${baseCommit}`, split), null, 2)}\n`);
     process.stdout.write(`${spec.id}: patch and item written (${spec.operator})\n`);
   }
+} else if (command === "plan") {
+  const [batch] = rest;
+  if (batch !== "spa-regression") throw new Error("plan supports: spa-regression");
+  writeFileSync(PATTERNS, `${JSON.stringify(addPatterns(files.patterns ?? null, planSpaRegressionPatterns(batch)), null, 2)}\n`);
+  process.stdout.write(`planned batch ${batch}\n`);
 } else if (command === "split") {
-  const { values } = parseArgs({ args: rest, options: { seed: { type: "string" }, "test-fraction": { type: "string" } } });
-  if (values.seed === undefined || values["test-fraction"] === undefined) throw new Error("split needs --seed and --test-fraction");
-  const report = validateCorpus({ ...files, split: null });
-  if (report.errors.length > 0) {
-    for (const e of report.errors) process.stderr.write(`error: ${e}\n`);
-    throw new Error("fix the corpus errors before splitting");
-  }
-  const assignment = assignSplit(report.strata, Number(values.seed), Number(values["test-fraction"]));
+  const { values } = parseArgs({ args: rest, options: { batch: { type: "string" }, seed: { type: "string" }, "test-fraction": { type: "string" } } });
+  if (values.batch === undefined || values.seed === undefined || values["test-fraction"] === undefined) throw new Error("split needs --batch, --seed and --test-fraction");
+  const batch = values.batch;
+  const planned = (files.patterns?.patterns ?? []).filter((p) => p.batch === batch && p.status === "planned");
+  if (planned.length === 0) throw new Error(`no planned patterns in batch "${batch}"`);
+  const assignment = addBatch(files.split, batch, new Map(planned.map((p) => [p.id, p.stratum])), Number(values.seed), Number(values["test-fraction"]));
   writeFileSync(SPLIT, `${JSON.stringify(assignment, null, 2)}\n`);
-  for (const item of report.valid) {
-    const split = assignment.assignments[item.patternId];
-    if (split !== undefined && split !== item.split) writeFileSync(join(ITEMS, `${item.id}.json`), `${JSON.stringify({ ...item, split }, null, 2)}\n`);
-  }
-  process.stdout.write(`${JSON.stringify(assignment.strata, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(assignment.batches.at(-1), null, 2)}\n`);
 } else {
-  process.stderr.write("usage: npm run corpus -- validate | mutate | split --seed <n> --test-fraction <f>\n");
+  process.stderr.write("usage: npm run corpus -- validate | mutate | plan <batch> | split --batch <name> --seed <n> --test-fraction <f>\n");
   process.exitCode = 2;
 }

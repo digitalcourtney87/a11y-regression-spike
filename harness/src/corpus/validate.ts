@@ -8,13 +8,15 @@
  * file name; a duplicate id; a candidate with neither or both of `ref` and
  * `patch`; a patch that does not exist; items of one pattern in different
  * splits; an item whose split differs from `corpus/split.json`; a pattern
- * missing from split.json once it exists.
+ * missing from split.json once it exists; once `corpus/patterns.json` exists,
+ * an item whose pattern is not planned there, or is dropped.
  * Warnings: a journey that does not exist yet (journeys come in M4).
  */
 import { CorpusItemSchema } from "../schema/schemas.ts";
 import type { CorpusItem } from "../schema/index.ts";
 import { expectedClass, patternStratum } from "./split.ts";
 import type { SplitAssignment } from "./split.ts";
+import type { PatternRegistry } from "./patterns.ts";
 
 export interface CorpusFiles {
   /** File name (e.g. "a1.json") → parsed JSON content. */
@@ -24,6 +26,7 @@ export interface CorpusFiles {
   /** Journey ids that exist (file names in journeys/ without ".json"). */
   journeys: ReadonlySet<string>;
   split: SplitAssignment | null;
+  patterns?: PatternRegistry | null;
 }
 
 export interface CorpusSummary {
@@ -71,6 +74,11 @@ export function validateCorpus(files: CorpusFiles): CorpusReport {
   const strata = new Map<string, string>();
   for (const [patternId, items] of [...byPattern.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     strata.set(patternId, patternStratum(items));
+    if (files.patterns != null) {
+      const planned = files.patterns.patterns.find((p) => p.id === patternId);
+      if (planned === undefined) errors.push(`pattern "${patternId}": not planned in corpus/patterns.json`);
+      else if (planned.status === "dropped") errors.push(`pattern "${patternId}": dropped in corpus/patterns.json`);
+    }
     const splits = new Set(items.map((i) => i.split));
     if (splits.size > 1) errors.push(`pattern "${patternId}": items are in both splits (${items.map((i) => `${i.id}=${i.split}`).join(", ")})`);
     if (files.split !== null) {
