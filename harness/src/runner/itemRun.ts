@@ -649,8 +649,17 @@ async function runK1(ctx: JobContext): Promise<Json> {
     await ctx.helper.activate(win.hwnd);
     await page.locator("#start").focus();
     await sleep(FOCUS_FIRST_READ_MS);
-    const msaa = await ctx.helper.msaaFocus(win.hwnd);
+    // P10 (DR-0051): retry the MSAA read every 100 ms, within 1 s of the first read, as the canary runner does.
+    const retryUntil = qpcNowNs() + FOCUS_RETRY_FOR_MS * 1e6;
+    let msaa = await ctx.helper.msaaFocus(win.hwnd);
+    let focusReads = 1;
+    while (msaa.name !== CANARY_ANCHOR && qpcNowNs() + FOCUS_RETRY_MS * 1e6 <= retryUntil) {
+      await sleep(FOCUS_RETRY_MS);
+      msaa = await ctx.helper.msaaFocus(win.hwnd);
+      focusReads++;
+    }
     record.focusOk = msaa.name === CANARY_ANCHOR;
+    record.focusReads = focusReads;
     const clock = await pageClock(page, PINGS, false);
     await sleep(SETTLE_MS);
     const activationT = qpcNowNs();
