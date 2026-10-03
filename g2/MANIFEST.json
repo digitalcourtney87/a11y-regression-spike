@@ -452,5 +452,23 @@
     "changed": [],
     "recordAttempts": 190,
     "recordChanged": []
+  },
+  "followUp": {
+    "bundle": "g2-followup-evidence.tar.zst",
+    "bundleSha256": "36b75dd19cc52b2c6afc1055bacd254b5d8673136f58452231eda88f0ba36cf5",
+    "bundleBytes": 36266,
+    "record": "DR-0055",
+    "note": "Verification of the follow-up fixes after the G2 merge (listener 0.3.1, timeline version 3). Not G2 evidence.",
+    "runs": [
+      {
+        "runId": "37125153236",
+        "label": "Follow-up verification (both legs, K1-K5 x2)",
+        "workflow": "phase0-nvda",
+        "event": "workflow_dispatch",
+        "headSha": "8e31c0041ea520336d03a025dc9e6e0e031a7be9",
+        "conclusion": "success",
+        "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37125153236"
+      }
+    ]
   }
 }

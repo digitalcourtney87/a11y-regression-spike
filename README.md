@@ -29,3 +29,5 @@ The bundle holds all eight M1 runs. Run the report on the two G1 runs only: runn
     npm run report:phase0 -- artefacts/g2-repro/pilot-only
 
 The bundle holds all five M2 runs: the smoke run, the pilot, the G2 run, the on/off diagnostic and the gate-review verification run. The G2 numbers come from run 37119632093 alone and the on/off diagnostic from run 37119638620 alone. Each directory gets `report-g2.md` (B2, NVDA-absent leg) and `report.md` (speech, NVDA-present leg). The archived reports were regenerated with the gate-review code; run the report from the G2 pull request's head commit (or later), whose code re-scores B2 from the raw evidence.
+
+`g2-followup-evidence.tar.zst` holds run 37125153236, the Windows check of the fixes made after the G2 merge (DR-0055). It is not G2 evidence.
