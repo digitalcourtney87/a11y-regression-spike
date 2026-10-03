@@ -47,6 +47,10 @@ const SECRET_PATTERNS: ReadonlyArray<{ label: string; regex: RegExp }> = [
   { label: "GitHub personal access token (classic)", regex: /\bghp_[A-Za-z0-9]{20,}/ },
   { label: "GitHub OAuth token", regex: /\bgho_[A-Za-z0-9]{20,}/ },
   { label: "GitHub fine-grained token", regex: /\bgithub_pat_[A-Za-z0-9_]{20,}/ },
+  // Owner approval 2026-10-03 (DR-0046): the remaining GitHub token families.
+  { label: "GitHub App installation token", regex: /\bghs_[A-Za-z0-9]{20,}/ },
+  { label: "GitHub user-to-server token", regex: /\bghu_[A-Za-z0-9]{20,}/ },
+  { label: "GitHub refresh token", regex: /\bghr_[A-Za-z0-9]{20,}/ },
   { label: "AWS access key ID", regex: /\bAKIA[0-9A-Z]{16}\b/ },
   { label: "private key block", regex: /-----BEGIN [A-Z ]*PRIVATE KEY-----/ },
 ];
@@ -181,12 +185,15 @@ describe("repository safety detectors", () => {
       `token = "${"gh" + "p_"}${body}"`,
       `${"gh" + "o_"}${body}`,
       `${"github" + "_pat_"}11ABCDEFG0123456789_abcdefghijklmnopqrstuvwxyz`,
+      `${"gh" + "s_"}${body}`,
+      `${"gh" + "u_"}${body}`,
+      `${"gh" + "r_"}${body}`,
       `aws_access_key_id = ${"AK" + "IA"}ABCDEFGHIJ234567`,
       `${"-----BEGIN" + " RSA PRIVATE"} KEY-----\nMIIE...`,
       `${"-----BEGIN" + " PRIVATE"} KEY-----`,
     ];
     for (const sample of samples) expect(findSecrets(sample), sample).toHaveLength(1);
-    const prose = `Classic tokens start with ${"gh" + "p_"} and fine-grained ones with ${"github" + "_pat_"}.`;
+    const prose = `Classic tokens start with ${"gh" + "p_"}, app tokens with ${"gh" + "s_"} and fine-grained ones with ${"github" + "_pat_"}.`;
     expect(findSecrets(prose)).toEqual([]);
     expect(findSecrets(`${"-----BEGIN" + " PUBLIC"} KEY-----`)).toEqual([]);
   });
