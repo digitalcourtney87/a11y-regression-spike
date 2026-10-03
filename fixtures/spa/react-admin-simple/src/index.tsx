@@ -28,6 +28,8 @@ root.render(
             queryClient={queryClient}
             title="Example Admin"
             layout={Layout}
+            // Accessibility-corpus integration (P19): no telemetry request leaves the page.
+            disableTelemetry
         >
             <Resource name="posts" {...posts} />
             <Resource name="comments" {...comments} />

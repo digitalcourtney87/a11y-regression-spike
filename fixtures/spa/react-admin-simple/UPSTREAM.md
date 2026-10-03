@@ -16,3 +16,9 @@ The commit after this file's first commit holds every change from upstream. The 
 ## Building
 
 Only in CI (`npm ci --ignore-scripts`, then `npx --no-install vite build`), with `contents: read`, no secrets and a separate npm cache (P17, P19). Outside the react-admin monorepo, its `vite.config.ts` resolves the published packages.
+
+### Integration commit (P19)
+
+- `index.html`: the Google web-font loader (`ajax.googleapis.com`) is removed; the system font stack applies.
+- `src/index.tsx`: `disableTelemetry` on `<Admin>`.
+- The data (`src/data.tsx`) are static with fixed dates, so no seed is needed; journeys still fix the clock.

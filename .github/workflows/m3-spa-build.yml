@@ -1,11 +1,12 @@
 name: m3-spa-build
-# M3 corpus SPA (P14, P17; DR-0057): builds the vendored Atomic CRM demo
-# (fixtures/spa/atomic-crm) on the gate runner and probes the production build
-# offline with the clock fixed, loading each path twice to check the data are
-# deterministic. Its dependencies install from the vendored lockfile with
-# install scripts off and a separate npm cache that is never saved; the job
-# has contents: read and uses no secrets at all. It runs on pushes to
-# m3-corpus that touch the SPA, the corpus or the probe.
+# M3 corpus SPAs (P14, P17, P19; DR-0057, DR-0059): builds each vendored app
+# in fixtures/spa/ on the gate runner and probes the production build offline
+# with the clock fixed, loading each path twice to check the data are
+# deterministic. Dependencies install from the app's lockfile (generated with
+# --package-lock-only when the app has none, and uploaded to be committed)
+# with install scripts off and a separate npm cache that is never saved; the
+# job has contents: read and uses no secrets at all. It runs on pushes to
+# m3-corpus that touch the SPAs, the corpus or the probe.
 on:
   workflow_dispatch:
   push:
@@ -24,6 +25,16 @@ jobs:
   base:
     runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
     timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: atomic-crm
+            build: npx --no-install vite build --config vite.demo.config.ts
+            paths: "/,/#/contacts,/#/deals,/#/companies"
+          - app: react-admin-simple
+            build: npx --no-install vite build
+            paths: "/,/#/posts,/#/comments"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -38,23 +49,33 @@ jobs:
         run: npx --no-install playwright install chromium
       - name: Install and build the SPA (timed)
         shell: pwsh
+        env:
+          APP: ${{ matrix.app }}
+          BUILD: ${{ matrix.build }}
         run: |
-          $out = Join-Path $PWD "artefacts/spa/atomic-crm"
+          $out = Join-Path $PWD "artefacts/spa/$env:APP"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
           # Build outside the harness tree so the SPA resolves only its own dependencies.
           $work = Join-Path $env:RUNNER_TEMP "spa"
-          Copy-Item -Recurse -Force "fixtures/spa/atomic-crm" $work
+          Copy-Item -Recurse -Force "fixtures/spa/$env:APP" $work
           Set-Location $work
           $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-spa"
+          $generated = $false
+          if (-not (Test-Path package-lock.json)) {
+            npm install --package-lock-only --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out lock.log)
+            Copy-Item package-lock.json (Join-Path $out package-lock.json)
+            $generated = $true
+          }
           $install = [Diagnostics.Stopwatch]::StartNew()
           npm ci --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $out install.log)
           $installExit = $LASTEXITCODE
           $install.Stop()
           $build = [Diagnostics.Stopwatch]::StartNew()
-          npx --no-install vite build --config vite.demo.config.ts 2>&1 | Out-File (Join-Path $out build.log)
+          Invoke-Expression "$env:BUILD 2>&1" | Out-File (Join-Path $out build.log)
           $buildExit = $LASTEXITCODE
           $build.Stop()
           [ordered]@{
+            app = $env:APP; lockfileGenerated = $generated
             installSeconds = [math]::Round($install.Elapsed.TotalSeconds, 1); installExit = $installExit
             buildSeconds = [math]::Round($build.Elapsed.TotalSeconds, 1); buildExit = $buildExit
             distExists = (Test-Path dist)
@@ -62,10 +83,13 @@ jobs:
           if ($buildExit -ne 0) { exit $buildExit }
       - name: Probe the build offline with the clock fixed, two loads per path
         shell: pwsh
-        run: node harness/src/probes/spaProbe.ts --name atomic-crm --dist (Join-Path $env:RUNNER_TEMP "spa/dist") --out artefacts/spa/atomic-crm/probe.json --paths "/,/#/contacts,/#/deals,/#/companies" --fixed-time "2026-10-05T09:00:00Z" --repeat 2
+        env:
+          APP: ${{ matrix.app }}
+          PATHS: ${{ matrix.paths }}
+        run: node harness/src/probes/spaProbe.ts --name "$env:APP" --dist (Join-Path $env:RUNNER_TEMP "spa/dist") --out "artefacts/spa/$env:APP/probe.json" --paths "$env:PATHS" --fixed-time "2026-10-05T09:00:00Z" --repeat 2
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
-          name: spa-base
+          name: spa-base-${{ matrix.app }}
           path: artefacts/spa/
           retention-days: 30
