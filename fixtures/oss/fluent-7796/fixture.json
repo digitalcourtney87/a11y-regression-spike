@@ -1,0 +1,15 @@
+{
+  "id": "fluent-7796",
+  "stack": "react",
+  "package": "office-ui-fabric-react",
+  "versions": [
+    "6.124.2",
+    "6.125.0",
+    "6.129.4"
+  ],
+  "dependencies": {
+    "react": "16.7.0",
+    "react-dom": "16.7.0"
+  },
+  "issue": "https://github.com/microsoft/fluentui/pull/7796"
+}

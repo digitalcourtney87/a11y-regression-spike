@@ -1,7 +1,7 @@
 // Issue #19563: after the user ticks a cds-checkbox, setting checked = false
 // in code ("clear the filters") no longer unticks it; the inner input, which
-// is what assistive technology reads, stays checked. Driven by clicks, and
-// from the keyboard (Tab, Space, Tab, Enter).
+// is what assistive technology reads, stays checked. Driven by clicks (on
+// the checkbox's label), and from the keyboard (Tab, Space, Tab, Enter).
 async function state(p) {
   return p.evaluate(() => {
     const cb = document.querySelector("cds-checkbox");
@@ -15,7 +15,8 @@ async function ready(p) {
 }
 export default async function check({ page, fresh }) {
   await ready(page);
-  await page.click("cds-checkbox");
+  // Playwright's CSS selectors pierce the open shadow root; the label toggles the inner input.
+  await page.click("cds-checkbox label");
   await page.waitForTimeout(200);
   const ticked = await state(page);
   await page.click("#clear");

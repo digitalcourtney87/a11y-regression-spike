@@ -1,0 +1,15 @@
+{
+  "id": "blueprint-6163",
+  "stack": "react",
+  "package": "@blueprintjs/select",
+  "versions": [
+    "4.9.14",
+    "4.9.15",
+    "4.9.16"
+  ],
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "issue": "https://github.com/palantir/blueprint/pull/6163"
+}

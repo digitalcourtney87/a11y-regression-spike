@@ -4,7 +4,10 @@
 // existed when the release under test was published; the fixture's own
 // imports resolve from its own node_modules, installed with npm --before.
 //
-//   node <tools>/ossBuild.mjs <fixture build dir> <react|vanilla|web-components>
+//   node <tools>/ossBuild.mjs <fixture build dir> <react|vanilla|web-components|vue>
+//
+// For "vue" (Vue 2), "vue" is aliased to its full build, so templates compile
+// in the browser and a UMD library that requires "vue" shares the same copy.
 import { build } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -14,4 +17,5 @@ await build({
   configFile: false,
   logLevel: "warn",
   plugins: stack === "react" ? [react()] : [],
+  resolve: stack === "vue" ? { alias: [{ find: /^vue$/, replacement: "vue/dist/vue.esm.js" }] } : {},
 });

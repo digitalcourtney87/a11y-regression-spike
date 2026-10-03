@@ -3,9 +3,9 @@ name: m3-oss-repro
 # every listed release of the package under test and runs its check, written
 # from the issue's own description. Third-party code runs here only with
 # contents: read and no secrets at all, install scripts off, and a separate
-# npm cache that is never saved. Each fixture installs with --before set to its
-# newest listed release's date plus two days, so its builds differ only in the
-# package under test; the build tools come from their own directory. Runs on pushes to m3-corpus that touch the
+# npm cache that is never saved. Each release installs with --before set to its
+# own publish date plus one day, so it resolves its dependencies as a user
+# installing it then would have; the build tools come from their own directory. Runs on pushes to m3-corpus that touch the
 # fixtures or the check harness.
 on:
   workflow_dispatch:
@@ -72,10 +72,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
           $meta = Get-Content (Join-Path $fixture "fixture.json") -Raw | ConvertFrom-Json
           $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
-          $newest = ($meta.versions | ForEach-Object { [datetime]$times[$_] } | Measure-Object -Maximum).Maximum
-          $before = $newest.ToUniversalTime().AddDays(2).ToString("yyyy-MM-dd")
           $results = @()
           foreach ($version in $meta.versions) {
+            $before = ([datetime]$times[$version]).ToUniversalTime().AddDays(1).ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
             $work = Join-Path $env:RUNNER_TEMP "oss-$version"
             node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work
             Push-Location $work

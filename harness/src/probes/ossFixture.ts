@@ -9,10 +9,12 @@
  * into npm `overrides` when it is a transitive dependency (`"mode": "override"`).
  * The fixture's `index.html` and `src/` are copied as they are. The build
  * tools are not listed: CI installs this package.json with `npm install
- * --before=<newest listed release's date + 2 days>`, the same date for every
- * release of one fixture, so the builds differ only in the package under test
- * and no later fix can arrive through a transitive dependency; it builds them
- * with `ossBuild.mjs` from a separate tools directory.
+ * --before=<that release's publish time + 1 day>`, so each release resolves
+ * its dependencies as a user installing it then would have (a shared date
+ * broke older releases of monorepo packages, whose sibling packages moved on);
+ * the pinned dependencies must therefore predate the first listed release.
+ * It builds them with `fixtures/oss-tools/ossBuild.mjs` from a separate
+ * tools directory.
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -21,7 +23,8 @@ import { z } from "zod";
 
 export const FixtureSchema = z.strictObject({
   id: z.string(),
-  stack: z.enum(["react", "vanilla", "web-components"]),
+  /** "vue" is Vue 2 with its full build, which the build aliases "vue" to (templates compile in the browser). */
+  stack: z.enum(["react", "vanilla", "web-components", "vue"]),
   package: z.string(),
   mode: z.enum(["dependency", "override"]).default("dependency"),
   /** Releases to test, ascending; the first is the reported last good release. */

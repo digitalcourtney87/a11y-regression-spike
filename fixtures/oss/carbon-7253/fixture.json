@@ -1,0 +1,16 @@
+{
+  "id": "carbon-7253",
+  "stack": "react",
+  "package": "carbon-components",
+  "versions": [
+    "10.22.0",
+    "10.23.0",
+    "10.24.0"
+  ],
+  "dependencies": {
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "carbon-components-react": "7.22.0"
+  },
+  "issue": "https://github.com/carbon-design-system/carbon/issues/7233"
+}

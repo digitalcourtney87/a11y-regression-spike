@@ -8,8 +8,8 @@ function App() {
   const { getReferenceProps, getFloatingProps } = useInteractions([useClick(context), useDismiss(context), useRole(context, { role: "menu" })]);
   return (
     <main style={{ padding: "4rem", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-      <button id="first">First</button>
-      <button id="menu" ref={refs.setReference} {...getReferenceProps()}>Menu</button>
+      <button id="first" data-testid="first">First</button>
+      <button data-testid="menu" ref={refs.setReference} {...getReferenceProps()}>Menu</button>
       {open && (
         <FloatingFocusManager context={context} modal={false}>
           <div ref={refs.setFloating} style={{ ...floatingStyles, marginLeft: "8px", background: "white", border: "1px solid" }} {...getFloatingProps()}>

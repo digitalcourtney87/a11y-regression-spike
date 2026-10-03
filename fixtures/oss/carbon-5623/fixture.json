@@ -1,0 +1,15 @@
+{
+  "id": "carbon-5623",
+  "stack": "react",
+  "package": "carbon-components-react",
+  "versions": [
+    "7.9.3",
+    "7.10.0",
+    "7.11.0"
+  ],
+  "dependencies": {
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  },
+  "issue": "https://github.com/carbon-design-system/carbon/issues/5623"
+}
