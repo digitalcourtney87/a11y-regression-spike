@@ -4,7 +4,7 @@
   "split": "dev",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
+  "journeyId": "acrm-company-show-tabs",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },

@@ -4,7 +4,7 @@
   "split": "dev",
   "source": "seeded",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
+  "journeyId": "acrm-company-show-tabs",
   "base": {
     "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
   },
@@ -14,7 +14,7 @@
   "expected": {
     "kind": "regression",
     "symptom": "STATE_NOT_CONVEYED",
-    "mechanism": "selected-stale: aria-selected stale on a tab or option (Shared TabsTrigger (src/components/ui/tabs.tsx): aria-selected fixed at false; exercised by the contact page tabs)"
+    "mechanism": "selected-stale: aria-selected stale on a tab or option (Shared TabsTrigger (src/components/ui/tabs.tsx): aria-selected fixed at false; exercised by the company page tabs (the contact page shows tabs only in its mobile layout))"
   },
   "provenance": {
     "origin": "seeded by Claude with operator selected-stale",

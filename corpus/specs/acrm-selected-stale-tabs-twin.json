@@ -3,7 +3,7 @@
   "patternId": "atomic-crm--selected-stale",
   "operator": "css-only",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
+  "journeyId": "acrm-company-show-tabs",
   "target": "Shared TabsTrigger: font weight changed (font-medium to font-semibold)",
   "edits": [
     {

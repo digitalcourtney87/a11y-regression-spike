@@ -3,8 +3,19 @@
   "version": "1",
   "app": "react-admin-simple",
   "entryUrl": "/#/comments/create",
-  "anchor": "#post_id",
+  "anchor": "button[aria-label=\"Close menu\"]",
   "steps": [
+    {
+      "kind": "at",
+      "id": "reach-post-select",
+      "strategy": "TAB",
+      "until": {
+        "role": "combobox",
+        "maxAttempts": 40
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
     {
       "kind": "at",
       "id": "open-post-select",

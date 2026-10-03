@@ -3,8 +3,8 @@
   "patternId": "atomic-crm--selected-stale",
   "operator": "selected-stale",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
-  "target": "Shared TabsTrigger (src/components/ui/tabs.tsx): aria-selected fixed at false; exercised by the contact page tabs",
+  "journeyId": "acrm-company-show-tabs",
+  "target": "Shared TabsTrigger (src/components/ui/tabs.tsx): aria-selected fixed at false; exercised by the company page tabs (the contact page shows tabs only in its mobile layout)",
   "edits": [
     {
       "file": "src/components/ui/tabs.tsx",

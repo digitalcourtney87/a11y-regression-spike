@@ -3,15 +3,16 @@
   "version": "1",
   "app": "atomic-crm",
   "entryUrl": "/#/deals",
-  "anchor": "header a[href=\"#/contacts\"]",
+  "anchor": "a[href=\"#/deals/create\"]",
   "steps": [
     {
       "kind": "at",
       "id": "reach-deal-card",
       "strategy": "TAB",
       "until": {
+        "name": "Inventore maxime provident",
         "role": "button",
-        "maxAttempts": 40
+        "maxAttempts": 5
       },
       "observeMs": 1000,
       "expectations": []

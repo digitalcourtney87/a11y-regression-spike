@@ -1,27 +1,27 @@
 {
-  "id": "acrm-contact-show-tabs",
+  "id": "acrm-company-show-tabs",
   "version": "1",
   "app": "atomic-crm",
-  "entryUrl": "/#/contacts/1/show",
-  "anchor": "button[aria-label=\"Edit\"]",
+  "entryUrl": "/#/companies/0/show",
+  "anchor": "header a[href=\"#/contacts\"]",
   "steps": [
     {
       "kind": "at",
-      "id": "reach-notes-tab",
+      "id": "reach-activity-tab",
       "strategy": "TAB",
       "until": {
-        "name": "Notes",
-        "maxAttempts": 20
+        "name": "Activity",
+        "maxAttempts": 60
       },
       "observeMs": 1500,
       "expectations": [
         {
           "type": "focusOn",
-          "value": "tab|Notes"
+          "value": "tab|Activity"
         },
         {
           "type": "stateIs",
-          "value": "tab|Notes|selected=true"
+          "value": "tab|Activity|selected=true"
         }
       ]
     },

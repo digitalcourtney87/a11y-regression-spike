@@ -1,13 +1,13 @@
-diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
-index 6cc24ee..b718f1a 100644
---- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
-+++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
-@@ -134,7 +134,7 @@ const ContactShowContentMobile = () => {
-         </div>
- 
-         <Tabs defaultValue="notes" className="w-full">
--          <TabsList className="grid w-full grid-cols-3 h-10">
-+          <TabsList className="grid w-full grid-cols-3 h-10" aria-label="Contact sections">
-             <TabsTrigger value="notes">
-               {translate("resources.notes.name", { smart_count: 2 })}
-             </TabsTrigger>
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyShow.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyShow.tsx
+index 6e53822..bf56b66 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyShow.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyShow.tsx
+@@ -118,7 +118,7 @@ const CompanyShowContent = () => {
+               <h5 className="text-xl ml-2 flex-1">{record.name}</h5>
+             </div>
+             <Tabs defaultValue={currentTab} onValueChange={handleTabChange}>
+-              <TabsList className="grid w-full grid-cols-3">
++              <TabsList className="grid w-full grid-cols-3" aria-label="Company sections">
+                 <TabsTrigger value="activity">
+                   {translate("crm.common.activity")}
+                 </TabsTrigger>

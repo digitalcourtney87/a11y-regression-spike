@@ -3,7 +3,7 @@
   "patternId": "atomic-crm--tab-roles-removed",
   "operator": "tab-roles-removed",
   "app": "atomic-crm",
-  "journeyId": "acrm-contact-show-tabs",
+  "journeyId": "acrm-company-show-tabs",
   "target": "Shared Tabs (src/components/ui/tabs.tsx): the tab list becomes a group and the tabs plain buttons",
   "edits": [
     {

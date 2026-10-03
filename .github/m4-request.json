@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "journey development: each journey once on its base build, NVDA-absent leg (DR-0068)",
+  "purpose": "journey development, round 2: each journey once on its base build, NVDA-absent leg (DR-0068)",
   "apps": [
     "atomic-crm",
     "react-admin-simple",
@@ -12,9 +12,9 @@
     "nvda-absent"
   ],
   "items": [
+    "acrm-company-show-tabs-unchanged",
     "acrm-contact-create-notification-unchanged",
     "acrm-contact-create-save-unchanged",
-    "acrm-contact-show-tabs-unchanged",
     "acrm-dashboard-complete-task-unchanged",
     "acrm-dashboard-task-actions-escape-unchanged",
     "acrm-dashboard-task-actions-unchanged",

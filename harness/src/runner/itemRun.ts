@@ -94,8 +94,31 @@ const FOCUS_RETRY_FOR_MS = 1000;
 const ESPEAK_DEFAULT_RATE = 30;
 /** Wait after each goal-seeking attempt before checking the goal: longer with NVDA, which must speak first. */
 const ATTEMPT_SETTLE_MS = { "nvda-absent": 300, "nvda-present": 900 } as const;
-/** The page clock for apps whose data depend on today's date (P14). */
-const FIXED_TIME: Record<string, string> = { "atomic-crm": "2026-10-05T09:00:00Z" };
+/** The page clock for apps whose data depend on today's date (P14), as epoch milliseconds (2026-10-05T09:00:00Z). */
+const FIXED_TIME_MS: Record<string, number> = { "atomic-crm": 1_791_190_800_000 };
+
+/**
+ * Fixes the page's Date only (P14; DR-0069): it starts at the fixed instant and advances with
+ * performance.now(). Playwright's clock API is not used, because it also fakes performance.now()
+ * and requestAnimationFrame, which the D1 clock checks and the DOM timeline rely on. Built
+ * without the tokens the clock policy forbids, since it runs in the page, not in a collector.
+ */
+function dateShim(startMs: number): string {
+  return `(() => {
+  const Real = globalThis.Date;
+  const t0 = performance.now();
+  const current = () => ${String(startMs)} + (performance.now() - t0);
+  function Shim(...a) {
+    if (!new.target) return Reflect.construct(Real, [current()]).toString();
+    return Reflect.construct(Real, a.length === 0 ? [current()] : a, new.target);
+  }
+  Shim.prototype = Real.prototype;
+  Shim.now = current;
+  Shim.parse = Real.parse;
+  Shim.UTC = Real.UTC;
+  globalThis.Date = Shim;
+})();`;
+}
 const CANARY_ANCHOR = "Start canary";
 
 const { values: args } = parseArgs({
@@ -195,6 +218,8 @@ function buildDir(item: CorpusItem, side: Side): string {
 
 async function newContext(browser: Browser, base: string, external: string[]): Promise<BrowserContext> {
   const context = await browser.newContext();
+  const fixed = FIXED_TIME_MS[app];
+  if (fixed !== undefined) await context.addInitScript(dateShim(fixed));
   await context.route("**/*", async (route) => {
     const url = route.request().url();
     if (url.startsWith(base) || url.startsWith("data:") || url.startsWith("blob:")) await route.continue();
@@ -209,8 +234,6 @@ async function newContext(browser: Browser, base: string, external: string[]): P
 async function openPage(context: BrowserContext, url: string, errors: string[]): Promise<Page> {
   const page = await context.newPage();
   page.on("pageerror", (e) => errors.push(e.message.slice(0, 300)));
-  const fixed = FIXED_TIME[app];
-  if (fixed !== undefined) await page.clock.setFixedTime(fixed);
   await page.goto(url, { waitUntil: "load" });
   await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => undefined);
   await page.waitForTimeout(1000);
@@ -355,6 +378,18 @@ interface Runtime {
   nvda: NvdaRun | null;
   /** The simulated virtual cursor's node (NVDA-absent leg; P23). */
   cursor: { backendId?: number };
+  /** The focused node when last read, so the cursor can follow focus as NVDA's browse cursor does. */
+  focusBackend?: number;
+}
+
+/** Moves the simulated cursor to the focused node whenever focus has moved since it was last read. */
+async function followFocus(rt: Runtime): Promise<{ backendId?: number } | null> {
+  const f = await focusedNode(rt.cdp);
+  if (f?.backendId !== rt.focusBackend) {
+    rt.focusBackend = f?.backendId;
+    rt.cursor = f?.backendId === undefined ? {} : { backendId: f.backendId };
+  }
+  return f;
 }
 
 interface GoalTrace {
@@ -393,30 +428,31 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
     else await rt.nvda.adapter.press(NVDA_KEYS[step.strategy]);
     return;
   }
+  // Focus may have moved since the last action (the page's own doing); the cursor follows it.
+  const focused = await followFocus(rt);
   switch (step.strategy) {
     case "TAB":
-    case "SHIFT_TAB": {
+    case "SHIFT_TAB":
       await page.keyboard.press(step.strategy === "TAB" ? "Tab" : "Shift+Tab");
-      const focused = await focusedNode(cdp);
-      rt.cursor = focused?.backendId === undefined ? {} : { backendId: focused.backendId };
+      await followFocus(rt);
       return;
-    }
-    case "ACTIVATE": {
-      const focused = await focusedNode(cdp);
+    case "ACTIVATE":
       if (rt.cursor.backendId !== undefined && rt.cursor.backendId !== focused?.backendId) await clickBackend(cdp, rt.cursor.backendId);
       else await page.keyboard.press("Enter");
+      await followFocus(rt);
       return;
-    }
     case "TYPE":
       await page.keyboard.type(step.text ?? "");
+      await followFocus(rt);
       return;
     case "PRESS":
       await page.keyboard.press(PLAYWRIGHT_KEYS[step.key ?? "Enter"]);
+      await followFocus(rt);
       return;
     default: {
       const flat = flattenAxTree(await fullTree(cdp));
       let from = indexOfBackend(flat, rt.cursor.backendId);
-      if (from < 0) from = indexOfBackend(flat, (await focusedNode(cdp))?.backendId);
+      if (from < 0) from = indexOfBackend(flat, focused?.backendId);
       const idx = nextIndex(flat, from, step.strategy);
       const node = idx === null ? undefined : flat[idx];
       if (node?.backendId !== undefined) rt.cursor = { backendId: node.backendId };
@@ -520,8 +556,7 @@ async function axePass(browser: Browser, base: string, journey: Journey): Promis
     const firstAt = journey.steps.findIndex((s) => s.kind === "at");
     for (const step of journey.steps.slice(0, firstAt)) if (step.kind === "setup") await SETUPS[step.fn]?.(page);
     if (journey.anchor !== "body") await page.locator(journey.anchor).first().focus();
-    const anchor = await focusedNode(cdp);
-    rt.cursor = anchor?.backendId === undefined ? {} : { backendId: anchor.backendId };
+    await followFocus(rt);
     for (const step of journey.steps.slice(firstAt)) {
       if (step.kind === "setup") {
         await SETUPS[step.fn]?.(page);
@@ -724,7 +759,7 @@ async function runAttempt(item: CorpusItem, journey: Journey, side: Side, orderI
 
     // The journey: one segment per AT step (P24).
     const focused = await focusedNode(cdp);
-    const rt: Runtime = { page, cdp, helper: ctx.helper, hwnd: win.hwnd, nvda: ctx.nvda, cursor: focused?.backendId === undefined ? {} : { backendId: focused.backendId } };
+    const rt: Runtime = { page, cdp, helper: ctx.helper, hwnd: win.hwnd, nvda: ctx.nvda, cursor: focused?.backendId === undefined ? {} : { backendId: focused.backendId }, ...(focused?.backendId === undefined ? {} : { focusBackend: focused.backendId }) };
     const notRun: string[] = [];
     let stopped = false;
     let envFailure: string | null = null;
