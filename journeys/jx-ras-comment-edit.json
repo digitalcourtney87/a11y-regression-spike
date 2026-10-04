@@ -1,0 +1,184 @@
+{
+  "id": "jx-ras-comment-edit",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/comments/1",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "t1",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t2",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t3",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t4",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t5",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t6",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t7",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t8",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t9",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t10",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t11",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t12",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t13",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t14",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t15",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t16",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t17",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t18",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t19",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t20",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t21",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t22",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t23",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t24",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t25",
+      "strategy": "TAB",
+      "observeMs": 300,
+      "expectations": []
+    }
+  ]
+}

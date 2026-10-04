@@ -1,8 +1,8 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, Atomic CRM round 4: the eight journeys on the base build only, three attempts each to check the base is stable (k = n), both legs (DR-0082)",
+  "purpose": "Test-pattern journey development, react-admin round 1: exploration journeys on the base build only, both legs, one attempt (DR-0082)",
   "apps": [
-    "atomic-crm"
+    "react-admin-simple"
   ],
   "legs": [
     "nvda-absent",
@@ -10,18 +10,15 @@
   ],
   "items": [],
   "journeys": [
-    "acrm-contact-create-errors",
-    "acrm-company-create-notification",
-    "acrm-contact-add-task-dialog",
-    "acrm-theme-menu",
-    "acrm-landmarks",
-    "acrm-contact-show-actions",
-    "acrm-contact-show-details",
-    "acrm-company-picker-dialog"
+    "jx-ras-post-edit",
+    "jx-ras-post-list",
+    "jx-ras-user-edit",
+    "jx-ras-comment-edit",
+    "jx-ras-post-show"
   ],
   "sides": "base",
-  "reps": "3",
+  "reps": "1",
   "canaries": false,
   "axe": false,
-  "shards": 3
+  "shards": 2
 }
