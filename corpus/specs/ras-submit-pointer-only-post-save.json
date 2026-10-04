@@ -1,0 +1,25 @@
+{
+  "id": "ras-submit-pointer-only-post-save",
+  "patternId": "react-admin-simple--submit-pointer-only",
+  "operator": "submit-pointer-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-redirect",
+  "target": "Post form: a custom toolbar whose Save submits on pointerdown only; its click (Enter) is cancelled",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    Toolbar,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "const PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n",
+      "replace": "const PointerSaveToolbar = () => (\n    <Toolbar>\n        <Button\n            type=\"button\"\n            variant=\"contained\"\n            onClick={event => event.preventDefault()}\n            onPointerDown={event => event.currentTarget.closest('form')?.requestSubmit()}\n        >\n            Save\n        </Button>\n    </Toolbar>\n);\n\nconst PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>\n",
+      "replace": "        <TabbedForm\n            defaultValues={{ average_note: 0 }}\n            warnWhenUnsavedChanges\n            toolbar={<PointerSaveToolbar />}\n        >\n"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ras-focus-left-on-removed-backlinks",
+  "patternId": "react-admin-simple--focus-left-on-removed",
+  "operator": "focus-left-on-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-backlinks-add",
+  "target": "Post form: after a backlink is added, focus is dropped from the new row instead of staying in its first field",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    AddItemButton,\n    useSimpleFormIterator,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "const PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n",
+      "replace": "const DroppingAddButton = () => {\n    const { add } = useSimpleFormIterator();\n    return (\n        <AddItemButton\n            onClick={() => {\n                add();\n                // The new row's first field gets focus, which is then dropped.\n                window.setTimeout(() => (document.activeElement as HTMLElement | null)?.blur(), 100);\n            }}\n        />\n    );\n};\n\nconst PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <SimpleFormIterator>\n                        <DateInput source=\"date\" />\n",
+      "replace": "                    <SimpleFormIterator addButton={<DroppingAddButton />}>\n                        <DateInput source=\"date\" />\n"
+    }
+  ]
+}

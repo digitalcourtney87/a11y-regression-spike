@@ -21,14 +21,12 @@
       "id": "add-backlink",
       "strategy": "ACTIVATE",
       "observeMs": 1500,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "t1",
-      "strategy": "TAB",
-      "observeMs": 500,
-      "expectations": []
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "Date|Date"
+        }
+      ]
     }
   ]
 }

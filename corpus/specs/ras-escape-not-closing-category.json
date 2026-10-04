@@ -1,0 +1,15 @@
+{
+  "id": "ras-escape-not-closing-category",
+  "patternId": "react-admin-simple--escape-not-closing",
+  "operator": "escape-not-closing",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "target": "Post form: the Category menu swallows Escape, so it cannot be left by its documented key",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{\n                        MenuProps: {\n                            onKeyDownCapture: event => {\n                                if (event.key === 'Escape') event.stopPropagation();\n                            },\n                        },\n                    }}\n                />\n"
+    }
+  ]
+}

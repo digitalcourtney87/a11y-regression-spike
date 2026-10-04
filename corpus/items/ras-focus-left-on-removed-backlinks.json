@@ -1,0 +1,23 @@
+{
+  "id": "ras-focus-left-on-removed-backlinks",
+  "patternId": "react-admin-simple--focus-left-on-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-backlinks-add",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-focus-left-on-removed-backlinks.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_MOVED",
+    "mechanism": "focus-left-on-removed: After an inline create, focus is left on a removed element (Post form: after a backlink is added, focus is dropped from the new row instead of staying in its first field)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator focus-left-on-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

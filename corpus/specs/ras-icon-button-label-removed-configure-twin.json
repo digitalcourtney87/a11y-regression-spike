@@ -1,0 +1,16 @@
+{
+  "id": "ras-icon-button-label-removed-configure-twin",
+  "patternId": "react-admin-simple--icon-button-label-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "target": "App bar: a small margin before the Configure this page button",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "        <InspectorButton />\n",
+      "replace": "        <InspectorButton sx={{ ml: 1 }} />\n"
+    }
+  ],
+  "twinOf": "ras-icon-button-label-removed-configure"
+}

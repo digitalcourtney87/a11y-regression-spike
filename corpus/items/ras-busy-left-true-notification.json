@@ -1,0 +1,23 @@
+{
+  "id": "ras-busy-left-true-notification",
+  "patternId": "react-admin-simple--busy-left-true",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-busy-left-true-notification.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "busy-left-true: aria-busy left true on a region (Admin notification: aria-busy=true left on the notification's alert)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator busy-left-true",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

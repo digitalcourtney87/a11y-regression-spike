@@ -1,0 +1,15 @@
+{
+  "id": "ras-expanded-not-updated-post-autocomplete",
+  "patternId": "react-admin-simple--expanded-not-updated",
+  "operator": "expanded-not-updated",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-autocomplete",
+  "target": "Comment form: the Post autocomplete's aria-expanded is reset to false whenever it opens",
+  "edits": [
+    {
+      "file": "src/comments/CommentEdit.tsx",
+      "find": "                                    openOnFocus={false}\n                                    inputText={inputText}\n                                />\n",
+      "replace": "                                    openOnFocus={false}\n                                    inputText={inputText}\n                                    TextFieldProps={{\n                                        inputRef: (input: HTMLInputElement | null) => {\n                                            if (!input) return;\n                                            // The popup's open state is never conveyed: aria-expanded is put back to false.\n                                            new MutationObserver(() => {\n                                                if (input.getAttribute('aria-expanded') === 'true')\n                                                    input.setAttribute('aria-expanded', 'false');\n                                            }).observe(input, { attributes: true, attributeFilter: ['aria-expanded'] });\n                                        },\n                                    }}\n                                />\n"
+    }
+  ]
+}

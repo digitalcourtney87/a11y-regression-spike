@@ -1,0 +1,16 @@
+{
+  "id": "ras-menu-focus-not-restored-category-twin",
+  "patternId": "react-admin-simple--menu-focus-not-restored",
+  "operator": "timing-within-tolerance",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "target": "Post form: the Category menu opens without its transition",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{ MenuProps: { transitionDuration: 0 } }}\n                />\n"
+    }
+  ],
+  "twinOf": "ras-menu-focus-not-restored-category"
+}

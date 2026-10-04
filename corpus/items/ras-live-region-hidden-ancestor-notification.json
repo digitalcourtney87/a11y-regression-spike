@@ -1,0 +1,23 @@
+{
+  "id": "ras-live-region-hidden-ancestor-notification",
+  "patternId": "react-admin-simple--live-region-hidden-ancestor",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-live-region-hidden-ancestor-notification.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "live-region-hidden-ancestor: aria-hidden or inert on an ancestor of the live region (Admin notification: wrapped in an aria-hidden container)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator live-region-hidden-ancestor",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

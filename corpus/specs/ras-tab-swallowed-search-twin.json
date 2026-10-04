@@ -1,0 +1,16 @@
+{
+  "id": "ras-tab-swallowed-search-twin",
+  "patternId": "react-admin-simple--tab-swallowed",
+  "operator": "equivalent-refactor",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "target": "Posts list: the search box given a key handler that lets every key through",
+  "edits": [
+    {
+      "file": "src/posts/PostList.tsx",
+      "find": "    <SearchInput source=\"q\" alwaysOn />,\n",
+      "replace": "    <SearchInput source=\"q\" alwaysOn onKeyDown={() => undefined} />,\n"
+    }
+  ],
+  "twinOf": "ras-tab-swallowed-search"
+}

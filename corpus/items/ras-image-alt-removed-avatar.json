@@ -1,0 +1,23 @@
+{
+  "id": "ras-image-alt-removed-avatar",
+  "patternId": "react-admin-simple--image-alt-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-image-alt-removed-avatar.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "image-alt-removed: Image or avatar loses its alt text (User menu: the avatar image loses its alt text (the default identity no longer has a full name))"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator image-alt-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

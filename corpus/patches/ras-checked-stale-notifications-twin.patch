@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..4e48938 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -124,6 +124,7 @@ const PostEdit = () => (
+                 />
+                 <CheckboxGroupInput
+                     source="notifications"
++                    row={false}
+                     choices={[
+                         { id: 12, name: 'Ray Hakt' },
+                         { id: 31, name: 'Ann Gullar' },

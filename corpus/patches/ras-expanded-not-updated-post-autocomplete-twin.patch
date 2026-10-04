@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx b/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
+index f998109..3661b3c 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
+@@ -153,6 +153,7 @@ const CommentEdit = props => {
+                                     optionText={<OptionRenderer />}
+                                     openOnFocus={false}
+                                     inputText={inputText}
++                                    size="small"
+                                 />
+                             </ReferenceInput>
+ 

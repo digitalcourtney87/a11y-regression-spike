@@ -1,0 +1,16 @@
+{
+  "id": "ras-aria-modal-removed-category-twin",
+  "patternId": "react-admin-simple--aria-modal-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "target": "New category dialog: full width",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <Dialog open onClose={onCancel}>\n",
+      "replace": "        <Dialog open onClose={onCancel} fullWidth>\n"
+    }
+  ],
+  "twinOf": "ras-aria-modal-removed-category"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "ras-pointer-only-activation-edit-twin",
+  "patternId": "react-admin-simple--pointer-only-activation",
+  "operator": "wrapper-added",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "target": "Posts list: each row's Edit link wrapped in a plain span",
+  "edits": [
+    {
+      "file": "src/posts/PostList.tsx",
+      "find": "                <EditButton />\n                <ShowButton />\n",
+      "replace": "                <span>\n                    <EditButton />\n                </span>\n                <ShowButton />\n"
+    }
+  ],
+  "twinOf": "ras-pointer-only-activation-edit"
+}

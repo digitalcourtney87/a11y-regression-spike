@@ -1,0 +1,39 @@
+{
+  "id": "ras-comment-post-autocomplete",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/comments/1",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-post",
+      "strategy": "TAB",
+      "until": {
+        "name": "Post",
+        "role": "combobox",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Post"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-post",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "combobox|Post|expanded=true"
+        }
+      ]
+    }
+  ]
+}

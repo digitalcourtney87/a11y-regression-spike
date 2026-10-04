@@ -1,0 +1,22 @@
+{
+  "id": "ras-tab-swallowed-search-twin",
+  "patternId": "react-admin-simple--tab-swallowed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-tab-swallowed-search-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "EQUIVALENT_REFACTOR"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator equivalent-refactor",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

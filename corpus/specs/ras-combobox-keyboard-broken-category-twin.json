@@ -1,0 +1,16 @@
+{
+  "id": "ras-combobox-keyboard-broken-category-twin",
+  "patternId": "react-admin-simple--combobox-keyboard-broken",
+  "operator": "equivalent-refactor",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-select",
+  "target": "Post form: the Category menu given a key handler that lets every key through",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{ MenuProps: { onKeyDownCapture: () => undefined } }}\n                />\n"
+    }
+  ],
+  "twinOf": "ras-combobox-keyboard-broken-category"
+}

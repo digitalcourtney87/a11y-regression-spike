@@ -1,0 +1,18 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+index e3ed7b9..2357197 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+@@ -200,7 +200,12 @@ const PostListDesktop = () => (
+                 className="hiddenOnSmallScreens"
+             />
+             <DataTable.Col sx={{ textAlign: 'center' }}>
+-                <EditButton />
++                <EditButton
++                    onClick={event => event.preventDefault()}
++                    onPointerDown={event => {
++                        window.location.hash = (event.currentTarget as HTMLAnchorElement).hash;
++                    }}
++                />
+                 <ShowButton />
+             </DataTable.Col>
+         </DataTable>

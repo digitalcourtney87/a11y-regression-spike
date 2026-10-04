@@ -1,0 +1,31 @@
+diff --git a/fixtures/spa/react-admin-simple/src/index.tsx b/fixtures/spa/react-admin-simple/src/index.tsx
+index 8ced795..4ed364c 100644
+--- a/fixtures/spa/react-admin-simple/src/index.tsx
++++ b/fixtures/spa/react-admin-simple/src/index.tsx
+@@ -1,6 +1,6 @@
+ /* eslint react/jsx-key: off */
+ import * as React from 'react';
+-import { Admin, Resource, CustomRoutes } from 'react-admin';
++import { Admin, Resource, CustomRoutes, Notification } from 'react-admin';
+ import { createRoot } from 'react-dom/client';
+ import { Route } from 'react-router-dom';
+ 
+@@ -16,6 +16,10 @@ import users from './users';
+ import tags from './tags';
+ import { queryClient } from './queryClient';
+ 
++const BusyNotification = () => (
++    <Notification ContentProps={{ 'aria-busy': true }} />
++);
++
+ const container = document.getElementById('root') as HTMLElement;
+ const root = createRoot(container);
+ 
+@@ -28,6 +32,7 @@ root.render(
+             queryClient={queryClient}
+             title="Example Admin"
+             layout={Layout}
++            notification={BusyNotification}
+             // Accessibility-corpus integration (P19): no telemetry request leaves the page.
+             disableTelemetry
+         >

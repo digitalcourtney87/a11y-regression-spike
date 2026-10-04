@@ -1,0 +1,22 @@
+{
+  "id": "ras-menu-focus-not-restored-category-twin",
+  "patternId": "react-admin-simple--menu-focus-not-restored",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-menu-focus-not-restored-category-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "TIMING_WITHIN_TOLERANCE"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator timing-within-tolerance",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

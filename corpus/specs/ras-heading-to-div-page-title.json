@@ -1,0 +1,15 @@
+{
+  "id": "ras-heading-to-div-page-title",
+  "patternId": "react-admin-simple--heading-to-div",
+  "operator": "heading-to-div",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "target": "App bar: the page title rendered as a div instead of a heading",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "        <TitlePortal />\n",
+      "replace": "        <TitlePortal component=\"div\" />\n"
+    }
+  ]
+}

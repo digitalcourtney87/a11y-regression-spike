@@ -1,0 +1,16 @@
+{
+  "id": "ras-dialog-containment-removed-category-twin",
+  "patternId": "react-admin-simple--dialog-containment-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "target": "New category dialog: an extra-small maximum width",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <Dialog open onClose={onCancel}>\n",
+      "replace": "        <Dialog open onClose={onCancel} maxWidth=\"xs\">\n"
+    }
+  ],
+  "twinOf": "ras-dialog-containment-removed-category"
+}

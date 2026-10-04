@@ -1,0 +1,23 @@
+{
+  "id": "ras-required-field-unnamed-teaser",
+  "patternId": "react-admin-simple--required-field-unnamed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-required-field-unnamed-teaser.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "required-field-unnamed: A required field has no accessible name, so a goal-based step cannot find it (Post form: the required Teaser field loses its label, so it has no accessible name)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator required-field-unnamed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

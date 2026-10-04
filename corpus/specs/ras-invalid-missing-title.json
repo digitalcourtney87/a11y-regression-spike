@@ -1,0 +1,15 @@
+{
+  "id": "ras-invalid-missing-title",
+  "patternId": "react-admin-simple--invalid-missing",
+  "operator": "invalid-missing",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: the Title input's aria-invalid fixed at false",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                    />\n",
+      "replace": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                        inputProps={{ 'aria-invalid': false }}\n                    />\n"
+    }
+  ]
+}

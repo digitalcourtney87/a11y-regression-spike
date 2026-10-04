@@ -1,0 +1,21 @@
+diff --git a/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx b/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
+index f998109..786b30c 100644
+--- a/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/comments/CommentEdit.tsx
+@@ -153,6 +153,16 @@ const CommentEdit = props => {
+                                     optionText={<OptionRenderer />}
+                                     openOnFocus={false}
+                                     inputText={inputText}
++                                    TextFieldProps={{
++                                        inputRef: (input: HTMLInputElement | null) => {
++                                            if (!input) return;
++                                            // The popup's open state is never conveyed: aria-expanded is put back to false.
++                                            new MutationObserver(() => {
++                                                if (input.getAttribute('aria-expanded') === 'true')
++                                                    input.setAttribute('aria-expanded', 'false');
++                                            }).observe(input, { attributes: true, attributeFilter: ['aria-expanded'] });
++                                        },
++                                    }}
+                                 />
+                             </ReferenceInput>
+ 

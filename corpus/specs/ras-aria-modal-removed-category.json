@@ -1,0 +1,15 @@
+{
+  "id": "ras-aria-modal-removed-category",
+  "patternId": "react-admin-simple--aria-modal-removed",
+  "operator": "aria-modal-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "target": "New category dialog: aria-modal removed and the page behind it no longer hidden, so the virtual cursor can leave it",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    const [value, setValue] = React.useState(filter || '');\n",
+      "replace": "    const [value, setValue] = React.useState(filter || '');\n    React.useEffect(() => {\n        document\n            .querySelectorAll('body > [aria-hidden=\"true\"]')\n            .forEach(element => element.removeAttribute('aria-hidden'));\n        document\n            .querySelectorAll('[role=\"dialog\"][aria-modal]')\n            .forEach(element => element.removeAttribute('aria-modal'));\n    }, []);\n"
+    }
+  ]
+}

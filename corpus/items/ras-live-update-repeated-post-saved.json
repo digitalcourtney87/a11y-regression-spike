@@ -1,0 +1,23 @@
+{
+  "id": "ras-live-update-repeated-post-saved",
+  "patternId": "react-admin-simple--live-update-repeated",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-live-update-repeated-post-saved.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_DUPLICATED",
+    "mechanism": "live-update-repeated: A live region is updated twice with the same text (Post edit: on success the Post updated notification is shown twice, so the alert region is updated twice with the same text)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator live-update-repeated",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

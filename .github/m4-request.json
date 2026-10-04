@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, react-admin round 2: the test journeys on the base build only, both legs, one attempt (DR-0082)",
+  "purpose": "Test-pattern journey development, react-admin round 3: the eleven test journeys on the base build only, three attempts each to check the base is stable (k = n), both legs (DR-0082)",
   "apps": [
     "react-admin-simple"
   ],
@@ -19,11 +19,12 @@
     "ras-post-category-escape",
     "ras-post-category-create-dialog",
     "ras-post-edit-save-redirect",
-    "ras-post-backlinks-add"
+    "ras-post-backlinks-add",
+    "ras-comment-post-autocomplete"
   ],
   "sides": "base",
-  "reps": "1",
+  "reps": "3",
   "canaries": false,
   "axe": false,
-  "shards": 3
+  "shards": 4
 }

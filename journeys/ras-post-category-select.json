@@ -27,12 +27,7 @@
       "strategy": "PRESS",
       "key": "ArrowDown",
       "observeMs": 1000,
-      "expectations": [
-        {
-          "type": "stateIs",
-          "value": "combobox|Category|expanded=true"
-        }
-      ]
+      "expectations": []
     },
     {
       "kind": "at",

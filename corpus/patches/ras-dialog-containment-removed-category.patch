@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..fcd34b4 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -60,7 +60,7 @@ const CreateCategory = ({
+         return false;
+     };
+     return (
+-        <Dialog open onClose={onCancel}>
++        <Dialog open onClose={onCancel} disableEnforceFocus>
+             <form onSubmit={handleSubmit}>
+                 <DialogContent>
+                     <MuiTextField

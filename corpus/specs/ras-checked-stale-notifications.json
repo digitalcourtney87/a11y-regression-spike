@@ -1,0 +1,25 @@
+{
+  "id": "ras-checked-stale-notifications",
+  "patternId": "react-admin-simple--checked-stale",
+  "operator": "checked-stale",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-notifications",
+  "target": "Post form: the notification recipients become custom checkboxes whose aria-checked keeps its first value",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    useInput,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "const PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n",
+      "replace": "const notificationChoices = [\n    { id: 12, name: 'Ray Hakt' },\n    { id: 31, name: 'Ann Gullar' },\n    { id: 42, name: 'Sean Phonee' },\n];\n\nconst NotificationToggles = () => {\n    const { field } = useInput({ source: 'notifications' });\n    const value: number[] = field.value ?? [];\n    // The checked state given to assistive technology is the first render's: it is never updated.\n    const [initial] = React.useState<number[]>(value);\n    const toggle = (id: number) =>\n        field.onChange(\n            value.includes(id) ? value.filter(v => v !== id) : [...value, id]\n        );\n    return (\n        <fieldset style={{ border: 0, padding: 0 }}>\n            <legend>Notifications recipients</legend>\n            {notificationChoices.map(choice => (\n                <span\n                    key={choice.id}\n                    role=\"checkbox\"\n                    tabIndex={0}\n                    aria-checked={initial.includes(choice.id)}\n                    onClick={() => toggle(choice.id)}\n                    onKeyDown={event => {\n                        if (event.key === ' ') {\n                            event.preventDefault();\n                            toggle(choice.id);\n                        }\n                    }}\n                    style={{ display: 'inline-flex', marginRight: 16, cursor: 'pointer' }}\n                >\n                    {value.includes(choice.id) ? '\\u2611' : '\\u2610'} {choice.name}\n                </span>\n            ))}\n        </fieldset>\n    );\n};\n\nconst PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                <CheckboxGroupInput\n                    source=\"notifications\"\n                    choices={[\n                        { id: 12, name: 'Ray Hakt' },\n                        { id: 31, name: 'Ann Gullar' },\n                        { id: 42, name: 'Sean Phonee' },\n                    ]}\n                />\n",
+      "replace": "                <NotificationToggles />\n"
+    }
+  ]
+}

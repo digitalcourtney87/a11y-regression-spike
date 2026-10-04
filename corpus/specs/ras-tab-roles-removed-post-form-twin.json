@@ -1,0 +1,21 @@
+{
+  "id": "ras-tab-roles-removed-post-form-twin",
+  "patternId": "react-admin-simple--tab-roles-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-tabs",
+  "target": "Post form: a scrollable tab strip",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    TabbedFormTabs,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>\n",
+      "replace": "        <TabbedForm\n            defaultValues={{ average_note: 0 }}\n            warnWhenUnsavedChanges\n            tabs={<TabbedFormTabs variant=\"scrollable\" />}\n        >\n"
+    }
+  ],
+  "twinOf": "ras-tab-roles-removed-post-form"
+}

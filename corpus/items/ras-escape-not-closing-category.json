@@ -1,0 +1,23 @@
+{
+  "id": "ras-escape-not-closing-category",
+  "patternId": "react-admin-simple--escape-not-closing",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-escape-not-closing-category.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "KEYBOARD_TRAP",
+    "mechanism": "escape-not-closing: Escape no longer closes a popover that captures focus (Post form: the Category menu swallows Escape, so it cannot be left by its documented key)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator escape-not-closing",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

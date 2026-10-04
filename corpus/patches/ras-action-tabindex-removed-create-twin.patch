@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+index e3ed7b9..6611321 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+@@ -103,7 +103,7 @@ const postListActions = (
+     <TopToolbar>
+         <FilterButton />
+         <ColumnsButton />
+-        <CreateButton />
++        <CreateButton sx={{ ml: 1 }} />
+         <ExportButton />
+     </TopToolbar>
+ );

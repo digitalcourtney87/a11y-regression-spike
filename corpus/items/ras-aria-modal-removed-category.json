@@ -1,0 +1,23 @@
+{
+  "id": "ras-aria-modal-removed-category",
+  "patternId": "react-admin-simple--aria-modal-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-aria-modal-removed-category.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_ESCAPES_DIALOG",
+    "mechanism": "aria-modal-removed: aria-modal removed, and the background is no longer inert (New category dialog: aria-modal removed and the page behind it no longer hidden, so the virtual cursor can leave it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator aria-modal-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

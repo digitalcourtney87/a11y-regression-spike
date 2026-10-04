@@ -1,0 +1,26 @@
+{
+  "id": "ras-busy-left-true-notification-twin",
+  "patternId": "react-admin-simple--busy-left-true",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "Admin notification: a wider notification",
+  "edits": [
+    {
+      "file": "src/index.tsx",
+      "find": "import { Admin, Resource, CustomRoutes } from 'react-admin';\n",
+      "replace": "import { Admin, Resource, CustomRoutes, Notification } from 'react-admin';\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "const container = document.getElementById('root') as HTMLElement;\n",
+      "replace": "const WideNotification = () => (\n    <Notification ContentProps={{ sx: { minWidth: 360 } }} />\n);\n\nconst container = document.getElementById('root') as HTMLElement;\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "            layout={Layout}\n",
+      "replace": "            layout={Layout}\n            notification={WideNotification}\n"
+    }
+  ],
+  "twinOf": "ras-busy-left-true-notification"
+}

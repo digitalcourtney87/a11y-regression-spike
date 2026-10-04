@@ -1,0 +1,75 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..56b6cc2 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -31,6 +31,7 @@ import {
+     useCreateSuggestionContext,
+     EditActionsProps,
+     CanAccess,
++    useInput,
+ } from 'react-admin';
+ import {
+     Box,
+@@ -98,6 +99,46 @@ const categories = [
+     { name: 'Lifestyle', id: 'lifestyle' },
+ ];
+ 
++const notificationChoices = [
++    { id: 12, name: 'Ray Hakt' },
++    { id: 31, name: 'Ann Gullar' },
++    { id: 42, name: 'Sean Phonee' },
++];
++
++const NotificationToggles = () => {
++    const { field } = useInput({ source: 'notifications' });
++    const value: number[] = field.value ?? [];
++    // The checked state given to assistive technology is the first render's: it is never updated.
++    const [initial] = React.useState<number[]>(value);
++    const toggle = (id: number) =>
++        field.onChange(
++            value.includes(id) ? value.filter(v => v !== id) : [...value, id]
++        );
++    return (
++        <fieldset style={{ border: 0, padding: 0 }}>
++            <legend>Notifications recipients</legend>
++            {notificationChoices.map(choice => (
++                <span
++                    key={choice.id}
++                    role="checkbox"
++                    tabIndex={0}
++                    aria-checked={initial.includes(choice.id)}
++                    onClick={() => toggle(choice.id)}
++                    onKeyDown={event => {
++                        if (event.key === ' ') {
++                            event.preventDefault();
++                            toggle(choice.id);
++                        }
++                    }}
++                    style={{ display: 'inline-flex', marginRight: 16, cursor: 'pointer' }}
++                >
++                    {value.includes(choice.id) ? '\u2611' : '\u2610'} {choice.name}
++                </span>
++            ))}
++        </fieldset>
++    );
++};
++
+ const PostEdit = () => (
+     <Edit title={<PostTitle />} actions={<EditActions />}>
+         <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>
+@@ -122,14 +163,7 @@ const PostEdit = () => (
+                     validate={required()}
+                     resettable
+                 />
+-                <CheckboxGroupInput
+-                    source="notifications"
+-                    choices={[
+-                        { id: 12, name: 'Ray Hakt' },
+-                        { id: 31, name: 'Ann Gullar' },
+-                        { id: 42, name: 'Sean Phonee' },
+-                    ]}
+-                />
++                <NotificationToggles />
+                 <ImageInput
+                     multiple
+                     source="pictures"

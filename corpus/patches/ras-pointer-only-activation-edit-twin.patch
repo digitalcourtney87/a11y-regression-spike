@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+index e3ed7b9..8f8b5ba 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+@@ -200,7 +200,9 @@ const PostListDesktop = () => (
+                 className="hiddenOnSmallScreens"
+             />
+             <DataTable.Col sx={{ textAlign: 'center' }}>
+-                <EditButton />
++                <span>
++                    <EditButton />
++                </span>
+                 <ShowButton />
+             </DataTable.Col>
+         </DataTable>

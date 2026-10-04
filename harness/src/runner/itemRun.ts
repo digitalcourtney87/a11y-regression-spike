@@ -529,10 +529,13 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
       if (from < 0 && rt.cursorAtTop !== true) from = indexOfBackend(flat, focused?.backendId);
       rt.cursorAtTop = false;
       const idx = nextIndex(flat, from, step.strategy);
-      const node = idx === null ? undefined : flat[idx];
+      // With nothing further to read, NVDA's browse cursor stays where it is (it reports the bottom, or no next
+      // heading), so the simulated cursor and its line stay too (DR-0085).
+      if (idx === null) return;
+      const node = flat[idx];
       if (node?.backendId !== undefined) rt.cursor = { backendId: node.backendId };
       // Line strategies read the whole line; quick navigation reads the node it lands on.
-      const line = idx === null ? [] : step.strategy === "BROWSE_NEXT" || step.strategy === "READ_CURRENT" ? lineAt(flat, idx).flatMap((i) => (flat[i] === undefined ? [] : [flat[i]])) : node === undefined ? [] : [node];
+      const line = step.strategy === "BROWSE_NEXT" || step.strategy === "READ_CURRENT" ? lineAt(flat, idx).flatMap((i) => (flat[i] === undefined ? [] : [flat[i]])) : node === undefined ? [] : [node];
       cursorLine.set(rt, line);
     }
   }

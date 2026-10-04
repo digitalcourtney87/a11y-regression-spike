@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..c54abb6 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -204,6 +204,7 @@ const PostEdit = () => (
+                     resettable
+                     source="category"
+                     choices={categories}
++                    SelectProps={{ MenuProps: { PaperProps: { elevation: 12 } } }}
+                 />
+                 <NumberInput
+                     source="average_note"

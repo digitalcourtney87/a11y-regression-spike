@@ -1,0 +1,19 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..8f1404a 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -204,6 +204,14 @@ const PostEdit = () => (
+                     resettable
+                     source="category"
+                     choices={categories}
++                    SelectProps={{
++                        MenuProps: {
++                            onKeyDownCapture: event => {
++                                if (event.key === 'Enter' || event.key === ' ')
++                                    event.stopPropagation();
++                            },
++                        },
++                    }}
+                 />
+                 <NumberInput
+                     source="average_note"

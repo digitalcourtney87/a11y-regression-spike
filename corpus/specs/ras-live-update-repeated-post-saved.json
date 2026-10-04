@@ -1,0 +1,25 @@
+{
+  "id": "ras-live-update-repeated-post-saved",
+  "patternId": "react-admin-simple--live-update-repeated",
+  "operator": "live-update-repeated",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "Post edit: on success the Post updated notification is shown twice, so the alert region is updated twice with the same text",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    useNotify,\n    useRedirect,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "const PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n",
+      "replace": "const PostEdit = () => {\n    const notify = useNotify();\n    const redirect = useRedirect();\n    const onSuccess = () => {\n        const options = {\n            type: 'info' as const,\n            messageArgs: { smart_count: 1 },\n            undoable: true,\n        };\n        notify('resources.posts.notifications.updated', options);\n        notify('resources.posts.notifications.updated', options);\n        redirect('list', 'posts');\n    };\n    return (\n    <Edit\n        title={<PostTitle />}\n        actions={<EditActions />}\n        mutationOptions={{ onSuccess }}\n    >\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    </Edit>\n);\n\nexport default PostEdit;\n",
+      "replace": "    </Edit>\n    );\n};\n\nexport default PostEdit;\n"
+    }
+  ]
+}

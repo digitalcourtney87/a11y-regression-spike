@@ -1,0 +1,23 @@
+{
+  "id": "ras-expanded-not-updated-post-autocomplete",
+  "patternId": "react-admin-simple--expanded-not-updated",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-autocomplete",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-expanded-not-updated-post-autocomplete.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "expanded-not-updated: aria-expanded not updated on a menu or disclosure trigger (Comment form: the Post autocomplete's aria-expanded is reset to false whenever it opens)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator expanded-not-updated",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ras-selected-stale-post-form",
+  "patternId": "react-admin-simple--selected-stale",
+  "operator": "selected-stale",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-tabs",
+  "target": "Post form: a restyled tab strip fixes aria-selected at false on every tab",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    TabbedFormTabs,\n    TabbedFormTabsProps,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "const PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n",
+      "replace": "const StyledTabs = (props: TabbedFormTabsProps) => (\n    <TabbedFormTabs {...props}>\n        {React.Children.map(props.children, tab =>\n            React.isValidElement(tab)\n                ? React.cloneElement(tab, { 'aria-selected': false } as any)\n                : tab\n        )}\n    </TabbedFormTabs>\n);\n\nconst PostEdit = () => (\n    <Edit title={<PostTitle />} actions={<EditActions />}>\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>\n",
+      "replace": "        <TabbedForm\n            defaultValues={{ average_note: 0 }}\n            warnWhenUnsavedChanges\n            tabs={<StyledTabs />}\n        >\n"
+    }
+  ]
+}
