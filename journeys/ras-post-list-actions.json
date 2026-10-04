@@ -1,0 +1,97 @@
+{
+  "id": "ras-post-list-actions",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-search",
+      "strategy": "TAB",
+      "until": {
+        "name": "Search",
+        "role": "textbox",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Search"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-search",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add filter"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-create",
+      "strategy": "TAB",
+      "until": {
+        "name": "Create",
+        "role": "link",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "link|Create"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-edit",
+      "strategy": "TAB",
+      "until": {
+        "name": "Edit",
+        "role": "link",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-edit",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-title",
+      "strategy": "NEXT_FORM_FIELD",
+      "until": {
+        "name": "Title",
+        "maxAttempts": 14
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Title"
+        }
+      ]
+    }
+  ]
+}

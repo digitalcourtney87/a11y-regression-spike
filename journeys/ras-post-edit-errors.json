@@ -1,0 +1,63 @@
+{
+  "id": "ras-post-edit-errors",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1",
+  "anchor": "input[name=\"title\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "clear-title",
+      "fn": "ras.clear-title"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "role": "button",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "save-post",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Title"
+        },
+        {
+          "type": "stateIs",
+          "value": "textbox|Title|invalid=true"
+        },
+        {
+          "type": "announcementContains",
+          "value": "Required"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-teaser",
+      "strategy": "TAB",
+      "until": {
+        "name": "Teaser",
+        "role": "textbox",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Teaser"
+        }
+      ]
+    }
+  ]
+}

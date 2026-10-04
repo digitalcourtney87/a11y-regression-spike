@@ -1,0 +1,34 @@
+{
+  "id": "ras-post-backlinks-add",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1/2",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-add",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "add-backlink",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "t1",
+      "strategy": "TAB",
+      "observeMs": 500,
+      "expectations": []
+    }
+  ]
+}

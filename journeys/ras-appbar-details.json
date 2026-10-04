@@ -1,0 +1,72 @@
+{
+  "id": "ras-appbar-details",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1/show",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-configure",
+      "strategy": "TAB",
+      "until": {
+        "role": "button",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Configure this page"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-title",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Accusantium",
+        "maxAttempts": 6
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "heading|Accusantium"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-profile",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Profile",
+        "role": "button",
+        "maxAttempts": 8
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "avatar-line",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "img|John Doe"
+        }
+      ]
+    }
+  ]
+}

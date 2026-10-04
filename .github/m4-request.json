@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, react-admin round 1: exploration journeys on the base build only, both legs, one attempt (DR-0082)",
+  "purpose": "Test-pattern journey development, react-admin round 2: the test journeys on the base build only, both legs, one attempt (DR-0082)",
   "apps": [
     "react-admin-simple"
   ],
@@ -10,15 +10,20 @@
   ],
   "items": [],
   "journeys": [
-    "jx-ras-post-edit",
-    "jx-ras-post-list",
-    "jx-ras-user-edit",
-    "jx-ras-comment-edit",
-    "jx-ras-post-show"
+    "ras-appbar-details",
+    "ras-post-edit-tabs",
+    "ras-post-edit-errors",
+    "ras-post-edit-notifications",
+    "ras-post-list-actions",
+    "ras-post-category-select",
+    "ras-post-category-escape",
+    "ras-post-category-create-dialog",
+    "ras-post-edit-save-redirect",
+    "ras-post-backlinks-add"
   ],
   "sides": "base",
   "reps": "1",
   "canaries": false,
   "axe": false,
-  "shards": 2
+  "shards": 3
 }

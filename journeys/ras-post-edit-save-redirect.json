@@ -1,0 +1,45 @@
+{
+  "id": "ras-post-edit-save-redirect",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "setup",
+      "id": "edit-title",
+      "fn": "ras.edit-post-title"
+    },
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "role": "button",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "save-post",
+      "strategy": "ACTIVATE",
+      "observeMs": 2500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-add-filter",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add filter",
+        "role": "button",
+        "maxAttempts": 15
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

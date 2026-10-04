@@ -40,6 +40,11 @@ export const SETUPS: Readonly<Record<string, SetupFn>> = {
     await title.fill(`${await title.inputValue()} (edited)`);
     await settle(page, 300);
   },
+  /** react-admin "simple", post edit: empty the required title, so that the form is dirty and saving reports an error. */
+  "ras.clear-title": async (page) => {
+    await page.locator('input[name="title"]').first().fill("");
+    await settle(page, 300);
+  },
   /** react-admin "simple", comment create: choose the first post in the Post select so that its Show button appears. */
   "ras.choose-first-post": async (page) => {
     await page.getByRole("combobox", { name: /post/i }).first().click();

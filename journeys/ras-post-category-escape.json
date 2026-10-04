@@ -1,0 +1,54 @@
+{
+  "id": "ras-post-category-escape",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1/2",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-category",
+      "strategy": "TAB",
+      "until": {
+        "name": "Category",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Category"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-category",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-category",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Category"
+        }
+      ]
+    }
+  ]
+}

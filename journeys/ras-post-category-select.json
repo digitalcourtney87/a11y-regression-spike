@@ -1,0 +1,63 @@
+{
+  "id": "ras-post-category-select",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1/2",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-category",
+      "strategy": "TAB",
+      "until": {
+        "name": "Category",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Category"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-category",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "combobox|Category|expanded=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "next-option",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "pick-option",
+      "strategy": "PRESS",
+      "until": {
+        "role": "combobox",
+        "maxAttempts": 1
+      },
+      "key": "Enter",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Category"
+        }
+      ]
+    }
+  ]
+}
