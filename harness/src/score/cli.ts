@@ -1,14 +1,23 @@
 /**
- * Scorer entry point: `npm run score -- --split <dev|test>` (DR-0028; the
- * freeze covers the frozen set listed in protocol/frozen-paths.txt, DR-0033).
+ * Scorer entry point: `npm run score -- --split <dev|test> --runs <dir>[,<dir>…]
+ * [--out <report.md>] [--json <scores.json>] [--allow-missing]` (DR-0028; the freeze covers the
+ * frozen set listed in protocol/frozen-paths.txt, DR-0033). The run
+ * directories are downloaded artefacts (`gh run download <run> -D
+ * artefacts/<run>`); a later directory's blocks replace an earlier one's for
+ * the same item and leg. Every item of the split must have a block: the
+ * scorer refuses otherwise, unless `--allow-missing` scores the missing items
+ * as INCONCLUSIVE in every arm.
+ *
+ * This file only parses the arguments and applies the freeze guard; the
+ * scoring code (`scoreRuns.ts`) is loaded only once the guard allows the split.
  *
  * Exit codes:
  *
  * | Code | Meaning |
  * |---|---|
+ * | 0 | Scored |
  * | 1 | Test split refused by the freeze guard |
- * | 2 | Missing or unknown split, or unknown arguments |
- * | 3 | Split allowed, but the scorer is not implemented until M5 |
+ * | 2 | Missing or unknown split, missing runs, unknown arguments, or no item blocks for the split |
  */
 
 import { parseArgs } from "node:util";
@@ -18,11 +27,20 @@ import type { FreezeGuardDeps } from "./freezeGuard.ts";
 
 export { REPO_ROOT };
 
+export const EXIT_OK = 0;
 export const EXIT_REFUSED = 1;
 export const EXIT_USAGE = 2;
-export const EXIT_NOT_IMPLEMENTED = 3;
 
-const USAGE = "usage: npm run score -- --split <dev|test>";
+const USAGE = "usage: npm run score -- --split <dev|test> --runs <dir>[,<dir>...] [--out <report.md>] [--json <scores.json>] [--allow-missing]";
+
+/** A scoring request that has passed the freeze guard (`scoreRuns.ts`). */
+export interface ScoreRequest {
+  split: "dev" | "test";
+  runs: string[];
+  out?: string;
+  json?: string;
+  allowMissing?: boolean;
+}
 
 export interface CliIo {
   out(line: string): void;
@@ -42,22 +60,26 @@ export function defaultDeps(repoRoot: string = REPO_ROOT): FreezeGuardDeps {
   return repositoryFreezeDeps(repoRoot);
 }
 
-/** Runs the scorer CLI and returns its exit code. */
-export function runScoreCli(argv: readonly string[], deps: FreezeGuardDeps = defaultDeps(), io: CliIo = consoleIo): number {
-  let split: string | undefined;
+/**
+ * Parses the arguments and applies the freeze guard. Returns an exit code when
+ * the CLI stops here, or the scoring request when the split is allowed.
+ */
+export function runScoreCli(argv: readonly string[], deps: FreezeGuardDeps = defaultDeps(), io: CliIo = consoleIo): number | ScoreRequest {
+  let values: { split?: string; runs?: string; out?: string; json?: string; "allow-missing"?: boolean };
   try {
     const parsed = parseArgs({
       args: [...argv],
-      options: { split: { type: "string" } },
+      options: { split: { type: "string" }, runs: { type: "string" }, out: { type: "string" }, json: { type: "string" }, "allow-missing": { type: "boolean" } },
       strict: true,
       allowPositionals: false,
     });
-    split = parsed.values.split;
+    values = parsed.values;
   } catch (error) {
     io.err(error instanceof Error ? error.message : String(error));
     io.err(USAGE);
     return EXIT_USAGE;
   }
+  const split = values.split;
 
   if (split === undefined) {
     io.err("missing --split");
@@ -76,10 +98,20 @@ export function runScoreCli(argv: readonly string[], deps: FreezeGuardDeps = def
     return EXIT_REFUSED;
   }
 
-  io.out("Scorer not implemented until M5.");
-  return EXIT_NOT_IMPLEMENTED;
+  const runs = (values.runs ?? "").split(",").map((r) => r.trim()).filter((r) => r !== "");
+  if (runs.length === 0) {
+    io.err("missing --runs");
+    io.err(USAGE);
+    return EXIT_USAGE;
+  }
+  return { split, runs, ...(values.out === undefined ? {} : { out: values.out }), ...(values.json === undefined ? {} : { json: values.json }), ...(values["allow-missing"] === true ? { allowMissing: true } : {}) };
 }
 
 if (import.meta.main) {
-  process.exitCode = runScoreCli(process.argv.slice(2));
+  const result = runScoreCli(process.argv.slice(2));
+  if (typeof result === "number") process.exitCode = result;
+  else {
+    const { scoreRuns } = await import("./scoreRuns.ts");
+    process.exitCode = scoreRuns(result, consoleIo);
+  }
 }

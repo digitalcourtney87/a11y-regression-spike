@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, posix } from "node:path";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 
-import { EXIT_NOT_IMPLEMENTED, EXIT_REFUSED, EXIT_USAGE, REPO_ROOT, runScoreCli } from "./cli.ts";
+import { EXIT_REFUSED, EXIT_USAGE, REPO_ROOT, runScoreCli } from "./cli.ts";
 import type { FreezeGuardDeps } from "./freezeGuard.ts";
 import { computeProtocolHash } from "./protocolHash.ts";
 
@@ -36,10 +36,21 @@ describe("runScoreCli", () => {
     expect(c.err.join("\n")).toMatch(/usage/);
   });
 
-  test("dev is allowed and reports the scorer is not implemented (exit 3)", () => {
+  test("dev is allowed without a freeze, but needs runs (exit 2)", () => {
     const c = capture();
-    expect(runScoreCli(["--split", "dev"], unfrozen, c.io)).toBe(EXIT_NOT_IMPLEMENTED);
-    expect(c.out).toEqual(["Scorer not implemented until M5."]);
+    expect(runScoreCli(["--split", "dev"], unfrozen, c.io)).toBe(EXIT_USAGE);
+    expect(c.err.join("\n")).toMatch(/missing --runs/);
+  });
+
+  test("--allow-missing is passed through", () => {
+    const c = capture();
+    expect(runScoreCli(["--split", "dev", "--runs", "a", "--allow-missing"], unfrozen, c.io)).toEqual({ split: "dev", runs: ["a"], allowMissing: true });
+  });
+
+  test("dev with runs returns the scoring request", () => {
+    const c = capture();
+    expect(runScoreCli(["--split", "dev", "--runs", "artefacts/1, artefacts/2", "--out", "r.md"], unfrozen, c.io)).toEqual({ split: "dev", runs: ["artefacts/1", "artefacts/2"], out: "r.md" });
+    expect(c.err).toEqual([]);
   });
 
   test("test without a matching freeze tag is refused (exit 1)", () => {
@@ -49,9 +60,14 @@ describe("runScoreCli", () => {
     expect(c.out).toEqual([]);
   });
 
-  test("test with a matching freeze tag reaches the stub (exit 3)", () => {
+  test("test with a matching freeze tag passes the guard and returns the request", () => {
     const c = capture();
-    expect(runScoreCli(["--split", "test"], frozen, c.io)).toBe(EXIT_NOT_IMPLEMENTED);
+    expect(runScoreCli(["--split", "test", "--runs", "artefacts/9"], frozen, c.io)).toEqual({ split: "test", runs: ["artefacts/9"] });
+  });
+
+  test("test without runs is refused before runs are checked when unfrozen (exit 1)", () => {
+    const c = capture();
+    expect(runScoreCli(["--split", "test"], unfrozen, c.io)).toBe(EXIT_REFUSED);
   });
 });
 
@@ -156,17 +172,17 @@ describe("score CLI process", () => {
     expect(result.stderr).toMatch(/^Refusing to score the test split: no protocol freeze tag \(protocol-freeze-v<N>\) exists/);
   });
 
-  test("allows the dev split and reports the scorer is not implemented (exit 3)", () => {
+  test("allows the dev split without a freeze and asks for runs (exit 2)", () => {
     const result = run(["--split", "dev"]);
-    expect(result.status).toBe(EXIT_NOT_IMPLEMENTED);
-    expect(result.stdout).toBe("Scorer not implemented until M5.\n");
+    expect(result.status).toBe(EXIT_USAGE);
+    expect(result.stderr).toMatch(/^missing --runs/);
   });
 
-  test("reaches the stub for the test split once a freeze tag records the frozen set's hash (exit 3), and refuses after a later frozen-set commit (exit 1)", () => {
+  test("passes the guard for the test split once a freeze tag records the frozen set's hash (asks for runs, exit 2), and refuses after a later frozen-set commit (exit 1)", () => {
     git(["tag", "-a", "protocol-freeze-v1", "-m", `Protocol freeze 1\n\nprotocol-sha256: ${computeProtocolHash(repo)}`]);
     const allowed = run(["--split", "test"]);
-    expect(allowed.status).toBe(EXIT_NOT_IMPLEMENTED);
-    expect(allowed.stdout).toBe("Scorer not implemented until M5.\n");
+    expect(allowed.status).toBe(EXIT_USAGE);
+    expect(allowed.stderr).toMatch(/^missing --runs/);
 
     put("harness/src/oracle.ts", "export const rule = 1;\n");
     commitAll("change the frozen set after the freeze");

@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.10). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.12). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -34,11 +34,11 @@ This is a research harness, not a product. It measures whether event observation
 - gh run download <run-id> -D artefacts/<run-id>
 - npm run report:phase0 -- artefacts/<run-id> (available from M1)
 - npm run phase0:canaries -- --leg <nvda-absent|nvda-present> --runs <n> (available from M1; Windows CI only)
-- npm run score -- --split dev (reports "not implemented" until M5)
+- npm run score -- --split dev --runs artefacts/<run-id>[,artefacts/<run-id>] (M5; writes report-m5-dev.md and .json beside the first run; the test split is refused until the freeze)
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M4. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065). M5 onwards is not authorised: ask the owner before starting M5. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
+M0–M5. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065), and merged M4 and authorised M5 on 2026-10-03 (DR-0078). M6 onwards is not authorised: ask the owner before starting M6. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003).
 
 ## Logs
 - docs/DECISIONS.md — decisions

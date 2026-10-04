@@ -1,0 +1,51 @@
+{
+  "version": "1",
+  "label": "EXPLORATORY until the M6 freeze; developed on the dev split only (hard rule 6)",
+  "note": "Tables the M5 oracles read (harness/src/oracles/). The rules that use them are described in protocol/oracles/README.md. The entries that decide what counts as detection were approved by the owner on 2026-10-03 (P28–P36; DR-0081).",
+  "axeSymptoms": {
+    "note": "Arm A: an axe rule whose violation count at a step is higher in every candidate attempt than in every base attempt is a new violation. A rule listed here gives FAIL with its symptom; any other new violation gives REVIEW. Grouped by what the axe rule checks: an accessible name, a role, or a state or property; rules about headings, landmarks and hidden focusable content are grouped with navigation.",
+    "NAME_NOT_CONVEYED": [
+      "area-alt", "aria-command-name", "aria-dialog-name", "aria-input-field-name", "aria-meter-name",
+      "aria-progressbar-name", "aria-toggle-field-name", "aria-tooltip-name", "aria-treeitem-name",
+      "button-name", "empty-heading", "empty-table-header", "frame-title", "image-alt", "input-button-name",
+      "input-image-alt", "label", "link-name", "object-alt", "role-img-alt", "select-name", "summary-name", "svg-img-alt"
+    ],
+    "ROLE_NOT_CONVEYED": [
+      "aria-allowed-role", "aria-required-children", "aria-required-parent", "aria-roles", "definition-list",
+      "dlitem", "list", "listitem", "presentation-role-conflict"
+    ],
+    "STATE_NOT_CONVEYED": [
+      "aria-allowed-attr", "aria-conditional-attr", "aria-prohibited-attr", "aria-required-attr", "aria-valid-attr",
+      "aria-valid-attr-value"
+    ],
+    "NAV_TARGET_UNREACHABLE": [
+      "aria-hidden-focus", "bypass", "landmark-one-main", "page-has-heading-one"
+    ]
+  },
+  "reachabilityFamily": {
+    "note": "For scoring (approved by the owner 2026-10-03, P29; DR-0081): the HANDOFF §6 definitions of these three symptoms overlap (a step the journey cannot get past), and the M3 catalogue assigns them by mechanism, not by evidence. A FAIL with any member counts as the correct symptom for an item labelled with any member. The oracle still names the member its structural rule finds.",
+    "members": ["NAV_TARGET_UNREACHABLE", "INTERACTION_FAILS_UNDER_AT", "JOURNEY_BLOCKED"]
+  },
+  "liveRoles": ["alert", "status", "log", "marquee", "timer"],
+  "componentRoles": {
+    "note": "Composite widgets and popups a documented key (Escape) should leave; used to tell KEYBOARD_TRAP from FOCUS_NOT_RESTORED.",
+    "roles": ["menu", "menubar", "listbox", "dialog", "alertdialog", "grid", "tree", "treegrid", "tablist", "toolbar"]
+  },
+  "nvda": {
+    "source": "NVDA 2026.2, en-GB: role words as P23/P24 (harness/src/runner/goals.ts); symbol names from source/locale/en/symbols.dic, only symbols spoken at NVDA's default punctuation level (some); state labels from NVDA's controlTypes state names.",
+    "symbols": {
+      "#": "number", "%": "percent", "&": "and", "*": "star", "/": "slash", "@": "at",
+      "+": "plus", "=": "equals", "<": "less", ">": "greater", "•": "bullet", "°": "degrees"
+    },
+    "states": {
+      "checked": { "true": "checked", "false": "not checked", "negations": ["not", "half"] },
+      "selected": { "true": "selected", "false": "not selected", "negations": ["not"] },
+      "pressed": { "true": "pressed", "false": "not pressed", "negations": ["not", "half"] },
+      "expanded": { "true": "expanded", "false": "collapsed", "negations": [] },
+      "required": { "true": "required", "negations": [] },
+      "invalid": { "true": "invalid entry", "negations": [] },
+      "disabled": { "true": "unavailable", "negations": [] },
+      "busy": { "true": "busy", "negations": [] }
+    }
+  }
+}

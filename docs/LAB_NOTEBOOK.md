@@ -310,3 +310,22 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | react-admin's own announcement | "alert Post updated" in all 62 base attempts of the post-edit journey (NVDA-present, both runs), spoken a median of 0.56 s into the save step (range 0.46–1.02 s) |
 | A duplicated announcement must repeat the same text | The first spec's second announcer said "Element updated", so the candidate announced two messages, not one twice. With "Post updated", NVDA says it twice in every candidate attempt |
 | Absence-based regressions | With the live region removed, or created already populated, NVDA says nothing on save in any candidate attempt |
+
+### M5: what each family of evidence sees on the dev split (appended 2026-10-03)
+
+**Label:** EXPLORATORY
+**Source:** M5 evidence run [37157013736](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/37157013736); M4 evidence runs 37151537838 and 37154136328; `docs/reports/M5-dev.md`.
+**Affects:** DR-0079, DR-0080 (P28–P37).
+**Confidence:** observed (in-sample: the rules were developed on these items).
+
+| Observation | Result |
+|---|---|
+| NVDA's speech conveys most regressions plainly | "dialog" against "clickable New post dialog" (lost name); "Activity tab 1 of 3" against "Activity tab selected 1 of 3" (stale state); "clickable Cancel" against "CANCEL button" (lost role); silence after Escape (trap) |
+| NVDA speaks symbols and omits some roles | "Posts from slash custom 2"; a menu item in a popover is "Adobe 1 of 3", with no role word |
+| A state NVDA never voices | After the task tick, NVDA says "unavailable" on both builds, never "checked", so ADJUDICATED downgrades B2's correct STATE_NOT_CONVEYED |
+| A status region created already filled | Its text is in the tree, so a tree assertion passes; Chrome fires no event and NVDA says nothing, so B2 and C find the announcement missing |
+| Toasts need a mid-window tree | They hide after about 4 s; the settled tree 1 s into the window shows them, the step's end tree does not |
+| MUI dialogs | Focus goes to a container whose only child is the dialog |
+| axe's knock-on findings | While a menu stays open, Radix hides the rest of the page, and axe reports a missing main landmark and level-one heading |
+| NVDA-leg flakiness after a full page load | In one of three base attempts of oss-rac-8697, READ_CURRENT did not reach the new page |
+| Triggers | Programmatic focus fires on 64 item steps, live regions on 22, route transitions on 21, dialogs on 9, alerts on 7, status on 2, active descendant on none; D runs NVDA on 70 of 159 steps, 23% of C's segment time |

@@ -98,6 +98,8 @@ const FOCUS_RETRY_FOR_MS = 1000;
 const ESPEAK_DEFAULT_RATE = 30;
 /** Wait after each goal-seeking attempt before checking the goal: longer with NVDA, which must speak first. */
 const ATTEMPT_SETTLE_MS = { "nvda-absent": 300, "nvda-present": 900 } as const;
+/** When, into an observation window, the NVDA-absent leg reads the settled tree (M5). */
+const SETTLED_AT_MS = 1000;
 /** Gives each document an id when it is created, so a full navigation can be told from a same-document one (DR-0074). */
 const DOC_ID_SCRIPT = "window.__a11yDoc = crypto.randomUUID();";
 const DOC_ID_READ = "window.__a11yDoc ?? null";
@@ -274,6 +276,22 @@ async function focusedNode(cdp: CDPSession): Promise<{ name: string; role: strin
   return node === undefined ? null : { name: node.name, role: node.role, ...(node.backendId === undefined ? {} : { backendId: node.backendId }) };
 }
 
+function nodeRef(n: { name: string; role: string; backendId?: number }): NodeRef {
+  return { name: n.name, role: n.role, ...(n.backendId === undefined ? {} : { backendId: n.backendId }) };
+}
+
+/** The backend node id of the element with this DOM id, or null when there is none (an expectation's `#id` target; M5). */
+async function backendIdById(cdp: CDPSession, id: string): Promise<number | null> {
+  const { result } = (await cdp.send("Runtime.evaluate", { expression: `document.getElementById(${JSON.stringify(id)})` })) as { result: { objectId?: string } };
+  if (result.objectId === undefined) return null;
+  try {
+    const { node } = (await cdp.send("DOM.describeNode", { objectId: result.objectId })) as { node: { backendNodeId?: number } };
+    return node.backendNodeId ?? null;
+  } finally {
+    await cdp.send("Runtime.releaseObject", { objectId: result.objectId }).catch(() => undefined);
+  }
+}
+
 /** The anchor's accessible name, from Chrome's accessibility tree (the handover compares it with the MSAA focus read). */
 async function anchorName(cdp: CDPSession, selector: string): Promise<string> {
   const { result } = (await cdp.send("Runtime.evaluate", { expression: `document.querySelector(${JSON.stringify(selector)})` })) as { result: { objectId?: string } };
@@ -409,11 +427,20 @@ async function followFocus(rt: Runtime): Promise<{ backendId?: number } | null> 
   return f;
 }
 
+/** A node as the oracles identify it: accessible name and role, and Chrome's backend node id where the leg has one (M5). */
+interface NodeRef {
+  name: string;
+  role: string;
+  backendId?: number;
+}
+
 interface GoalTrace {
   attempt: number;
-  node?: { name: string; role: string } | null;
+  /** QPC ns when this attempt's action began, so its speech can be told from the previous attempt's (M5). */
+  t?: number;
+  node?: NodeRef | null;
   /** The whole line under the simulated cursor, for line strategies (NVDA-absent leg). */
-  line?: { name: string; role: string }[];
+  line?: NodeRef[];
   speech?: string[];
 }
 
@@ -430,7 +457,16 @@ interface StepRun {
   reachedAt?: number | null;
   outcome?: "REACHED" | "PATH_CHANGED" | "UNREACHABLE" | "ENV_FAILURE";
   goalTrace?: GoalTrace[];
-  focusAtEnd?: { name: string; role: string } | null;
+  focusAtEnd?: NodeRef | null;
+  /** NVDA-absent leg, browse strategies: the node, or line, under the simulated cursor at the step's end (M5). */
+  cursorAtEnd?: NodeRef[];
+  /**
+   * NVDA-absent leg: the accessibility tree and ARIA snapshot 1 s into an observation window longer than 1 s, when a
+   * transient message (a toast) is still on screen, as an auto-waiting tree assertion would see it (M5). No input is sent.
+   */
+  settled?: { at: number; ariaSnapshot: string; axTree: AxNode[] };
+  /** Expectation targets named by DOM id (`#id`), resolved at the step's end to Chrome's backend node id (M5). */
+  targets?: { id: string; backendId: number | null }[];
   ariaSnapshot?: string;
   axTree?: AxNode[];
   error?: string;
@@ -499,10 +535,10 @@ async function goalTarget(rt: Runtime, step: AtStep, absent: boolean, since: num
   if (absent) {
     if (BROWSE.has(step.strategy)) {
       const line = cursorLine.get(rt) ?? [];
-      return { attempt: 0, node: line[0] === undefined ? null : { name: line[0].name, role: line[0].role }, line: line.map((x) => ({ name: x.name, role: x.role })) };
+      return { attempt: 0, node: line[0] === undefined ? null : nodeRef(line[0]), line: line.map(nodeRef) };
     }
     const f = await focusedNode(rt.cdp);
-    return { attempt: 0, node: f === null ? null : { name: f.name, role: f.role } };
+    return { attempt: 0, node: f === null ? null : nodeRef(f) };
   }
   if (!BROWSE.has(step.strategy)) {
     const m = await rt.helper.msaaFocus(rt.hwnd);
@@ -527,7 +563,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
       run.reachedAt = 1;
       break;
     }
-    const target = { ...(await goalTarget(rt, step, absent, since)), attempt };
+    const target = { ...(await goalTarget(rt, step, absent, since)), attempt, t: since };
     run.goalTrace?.push(target);
     const met = target.speech !== undefined ? speechMatchesGoal(target.speech, goal) : target.line !== undefined ? target.line.some((x) => nodeMatchesGoal(x, goal)) : target.node != null && nodeMatchesGoal(target.node, goal);
     if (met) {
@@ -537,16 +573,25 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
   }
   // The observation window: no input of any kind (D4).
   run.observeFrom = qpcNowNs();
-  await sleep(step.observeMs);
+  if (absent && step.observeMs > SETTLED_AT_MS) {
+    await sleep(SETTLED_AT_MS);
+    const at = qpcNowNs();
+    const ariaSnapshot = await rt.page.locator("body").ariaSnapshot().catch((e: unknown) => `error: ${errorText(e)}`);
+    run.settled = { at, ariaSnapshot, axTree: await fullTree(rt.cdp) };
+    await sleep(Math.max(0, step.observeMs - (qpcNowNs() - run.observeFrom) / 1e6));
+  } else await sleep(step.observeMs);
   run.endedAt = qpcNowNs();
   run.outcome = run.reachedAt === null ? "UNREACHABLE" : "REACHED";
   if (absent) {
     const f = await focusedNode(rt.cdp);
-    run.focusAtEnd = f === null ? null : { name: f.name, role: f.role };
+    run.focusAtEnd = f === null ? null : nodeRef(f);
+    if (BROWSE.has(step.strategy)) run.cursorAtEnd = (cursorLine.get(rt) ?? []).map(nodeRef);
   } else {
     const m = await rt.helper.msaaFocus(rt.hwnd);
     run.focusAtEnd = { name: m.name ?? "", role: m.roleText ?? "" };
   }
+  const ids = [...new Set(step.expectations.flatMap((e) => (e.type === "focusOn" || e.type === "stateIs" ? [e.value.split("|")[1] ?? ""] : [])).filter((n) => n.startsWith("#")).map((n) => n.slice(1)))];
+  if (ids.length > 0) run.targets = await Promise.all(ids.map(async (id) => ({ id, backendId: await backendIdById(rt.cdp, id).catch(() => null) })));
   run.ariaSnapshot = await rt.page.locator("body").ariaSnapshot().catch((e: unknown) => `error: ${errorText(e)}`);
   run.axTree = await fullTree(rt.cdp);
   return run;

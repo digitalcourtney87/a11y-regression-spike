@@ -109,16 +109,22 @@ Conventions:
 | [DR-0070](#dr-0070-m4-journeys-in-the-nvda-present-leg-and-nvdas-modes) | M4 journeys in the NVDA-present leg, and NVDA's modes | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P26 approved by the owner 2026-10-03 (DR-0071) | DR-0071 | Resolved (P26, DR-0071) |
 | [DR-0071](#dr-0071-owner-approval-of-p26) | Owner approval of P26 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0072](#dr-0072-m4-journeys-complete-smoke-tests-and-the-first-full-run) | M4: journeys complete, smoke tests and the first full run | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
-| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0073](#dr-0073-m4-full-run-results-and-m4-status) | M4 full run results, and M4 status | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | DR-0075, DR-0077 (evidence runs) | No |
 | [DR-0074](#dr-0074-m4-pr-review-findings) | M4 PR review findings | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
 | [DR-0075](#dr-0075-m4-repeated-full-run-and-frame-gaps-in-real-apps) | M4 repeated full run, and frame gaps in real apps | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P27 approved by the owner 2026-10-03 (DR-0076) | DR-0076 | Resolved (P27, DR-0076) |
 | [DR-0076](#dr-0076-owner-approval-of-p27) | Owner approval of P27 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0077](#dr-0077-m4-full-run-under-p27-and-the-duplicated-announcement-spec) | M4 full run under P27, and the duplicated-announcement spec | Accepted | 2026-10-03 | Decided by Claude under DR-0045 | — | No |
+| [DR-0078](#dr-0078-m4-merged-and-m5-authorised) | M4 merged and M5 authorised | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0079](#dr-0079-m5-evidence-additions-and-the-pre-registered-triggers) | M5 evidence additions, and the pre-registered triggers | Accepted | 2026-10-03 | Decided by Claude under DR-0045; trigger definitions approved by the owner 2026-10-03 (P34, DR-0081) | DR-0081 | Resolved (P34, DR-0081) |
+| [DR-0080](#dr-0080-m5-oracles-scorer-and-dev-results-and-owner-items-p28p37) | M5 oracles, scorer and dev results, and owner items P28–P37 | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) | DR-0081 | Resolved (P28–P37, DR-0081) |
+| [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). No items are pending.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). No items are pending.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -149,8 +155,18 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P25 | **Resolved (approved by the owner 2026-10-03, DR-0067).** Add a PRESS strategy: one documented key (Escape, Space, Enter, arrows, Home, End) on the focused element, sent through NVDA in the NVDA-present leg, because KEYBOARD_TRAP is defined by a component's documented keys | DR-0066; DR-0067 | What is measured (the journey vocabulary) | No longer pending | Approved as recommended |
 | P26 | **Resolved (approved by the owner 2026-10-03, DR-0071).** Two NVDA browse-mode commands as journey strategies. FOCUS_MODE_TOGGLE is NVDA+Space, the key an NVDA user presses to pass keys to a widget such as a keyboard drag handle. DOCUMENT_TOP is Control+Home in browse mode, which reads a new page from its top. In the NVDA-absent leg the first does nothing and the second puts the simulated cursor before the first line | DR-0070; DR-0071 | What is measured (the journey vocabulary, and which NVDA interactions C exercises) | No longer pending | Approved as recommended |
 | P27 | **Resolved (approved by the owner 2026-10-03, DR-0076).** In corpus runs (from M4), a frame gap counts towards CLOCK_RAF_GAP only for the part that the page's own main-thread work does not cover. That work is read from Chrome's Long Animation Frames and Long Tasks APIs. An attempt is INCONCLUSIVE when the uncovered part of a gap exceeds 100 ms. The covered stalls are recorded with the evidence. Canary runs keep DR-0010's rule unchanged | DR-0075; DR-0076 | What is measured (which attempts are INCONCLUSIVE: DR-0010's clock limit applied to real apps) | No longer pending | Approved as recommended |
+| P28 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **The M5 oracle model.** Each leg compares base and candidate per family of evidence, with k = n per side. A, B and B2 use the NVDA-absent leg; NVDA uses the NVDA-present leg. Rules:<br>- An expectation the base never meets cannot be observed by that family and gives nothing.<br>- An inconsistent base, a candidate failing in fewer than k attempts, or PATH_CHANGED gives REVIEW.<br>- Failure classes become symptoms by `protocol/oracles/README.md`: a lost name or role is judged on the focused element itself; focus symptoms follow the step's place in the journey; reachability symptoms follow the journey's structure.<br>- Arms nest: a FAIL in a contained family is a FAIL of the arm.<br>- Combining legs, FAIL outranks INCONCLUSIVE, which outranks REVIEW and PASS. | DR-0080 | What counts as detection | No longer pending | Approved as recommended |
+| P29 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **How detection is credited.** An arm detects a regression when any of its FAIL symptoms is the correct one; the earliest finding's symptom alone is reported as a sensitivity reading. NAV_TARGET_UNREACHABLE, INTERACTION_FAILS_UNDER_AT and JOURNEY_BLOCKED count as one family for scoring: their HANDOFF §6 definitions overlap, and the M3 catalogue assigns them by mechanism, not by evidence | DR-0080 | What counts as detection | No longer pending | Approved as recommended |
+| P30 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Arm A's rule.** At each step, an axe rule whose violation count is higher in every candidate attempt than in every base attempt is a new violation. Counts are compared, not targets, so a class rename cannot fake one. A rule in the table (`rules.v1.json`: names, roles, states and properties, and navigation) gives FAIL with its symptom; any other new violation gives REVIEW; axe's incomplete results are not used | DR-0080 | What counts as detection (Arm A) | No longer pending | Approved as recommended |
+| P31 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Arm B's evidence for announcements.** B also reads the tree 1 s into each observation window longer than 1 s (DR-0079), and infers an announcement when a live region holds the expected text; two such regions are a duplicate. The alternative is that B judges no announcements, which makes B miss every announcement regression, including those a tree assertion catches | DR-0080 | What is measured (Arm B; H1's comparison) | No longer pending | Approved as recommended |
+| P32 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Arm B2's additions.** B2 infers announcements from alert and live-region-changed events, tied by role or live setting to the regions holding the text (two tied events are a duplicate). It also gives ROUTE_CHANGE_SILENT when a route change is conveyed (focus event, announcement event or title change) in the base and not in the candidate. B2's focus, name, role and state judgements are B's | DR-0080 | What counts as detection (Arm B2; H1) | No longer pending | Approved as recommended |
+| P33 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **NVDA's evidence for C and D.** NVDA's evidence is its queued speech and the NVDA-present leg's step outcomes.<br>- Speech is matched after the speech normaliser: symbols NVDA speaks at its default punctuation level become their names. Comparison uses P11 containment, NVDA's en-GB role words and state labels matched word by word.<br>- For ADJUDICATED, NVDA's output at a step is unchanged when every candidate attempt's set of normalised utterances equals some base attempt's. | DR-0080 | What counts as detection (C and D; H2) | No longer pending | Approved as recommended |
+| P34 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Arm D's trigger definitions** (`protocol/triggers.v1.json`, written before any D result, DR-0079): seven triggers from PRD §14, judged on each step's NVDA-absent B2 evidence; a step is triggered when any fires in any valid NVDA-absent attempt on either side | DR-0079; DR-0080 | What counts as detection (Arm D; H3) | No longer pending | Approved as recommended |
+| P35 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Candidate-only check failures** (DR-0035): no FAIL rule covers them in v1, so they route to REVIEW. A pre-outcome check failing on the candidate alone (a stolen foreground, a frame stall, an NVDA crash) is not a symptom of HANDOFF §6, and none occurred in the M4 runs | DR-0035; DR-0080 | What counts as detection | No longer pending | Approved as recommended |
+| P36 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Duplicates seen only in speech** (DR-0042): they route to REVIEW, without NVDA-log corroboration, which would need a join that DR-0039 does not allow. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2. This is conservative for H2 | DR-0042; DR-0080 | What counts as detection (ANNOUNCEMENT_DUPLICATED) | No longer pending | Approved as recommended |
+| P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
 
-Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them: a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), the FAIL rules that cover candidate-only check failures (DR-0035), the M5 handling of duplicates (DR-0042), and the final BenignType descriptions at the M6 freeze review (DR-0030).
+Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
 ---
 
@@ -3332,3 +3348,179 @@ The first run's validity for the post-edit journey was wrong. Restarting the rAF
 | NVDA-absent leg | Every journey complete; no attempt missing B2 events; largest uncovered frame gap 62.5 ms. In the DOM timeline's save step, the duplicated-announcement candidate has three live-region mutations in every attempt against the base's two, and the removed live region has none |
 
 **M4 status.** DR-0073's list of M4 deliverables stands. M4's evidence is now runs 37151537838 and 37154136328; their artefacts expire after 30 days. M5 needs the owner's go-ahead.
+
+## DR-0078 M4 merged and M5 authorised
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.11 | Header, §9 (M5), §12 |
+
+**Decision.**
+
+> Yes, reply and resolve the thread; merged #7, start M5
+
+**Consequences.**
+
+- M4 is merged (PR #7). The authorised scope is M0–M5. M6 (the freeze, Gate G3) needs the owner's go-ahead. HANDOFF moves to v1.11, and CLAUDE.md's current authorisation follows it.
+- Devin's review comment on the NVDA log (DR-0074) was answered with the reason it was not adopted, and the thread resolved.
+- M5 work is on branch `m5-oracles`, on the dev split only. Choices that change what counts as detection go to the owner when first needed, as yes/no items with Claude's recommendation (DR-0045). Two are already known: which FAIL rules cover candidate-only check failures (DR-0035), and how ANNOUNCEMENT_DUPLICATED is handled (DR-0042).
+
+## DR-0079 M5 evidence additions, and the pre-registered triggers
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; the trigger definitions approved by the owner 2026-10-03 (P34, DR-0081) |
+| HANDOFF v1.11 | §6, §8.4, §9 (M5), §10.2; R5 |
+
+**Context.** M5 judges each journey expectation in every arm. Checking the M4 evidence against the 16 journeys showed four gaps:
+- After a browse step, `focusAtEnd` is the system focus, not NVDA's reading position, so the oracles need the simulated cursor's node.
+- An expectation target named by DOM id (`#id`, P12) cannot be found in the recorded tree, which has no DOM ids.
+- In the NVDA-present leg, the speech of a goal step's last attempt cannot be separated from that of earlier attempts, because attempt times were not recorded.
+- Toasts hide after about 4 s, but the tree is read only at each step's end (5–8 s later). Arm B could therefore never see a message that a tree assertion would catch, for example Playwright's auto-waiting `toContainText`.
+
+**Decision (Decided by Claude under DR-0045).** The runner records, from the M5 evidence run onwards:
+
+| Field | Leg | Content |
+|---|---|---|
+| `goalTrace[].t` | Both | QPC ns when each goal attempt's action began |
+| Backend node ids | NVDA-absent | On `focusAtEnd` and on the goal trace's nodes and lines |
+| `cursorAtEnd` | NVDA-absent | For browse strategies, the node or line under the simulated cursor at the step's end |
+| `targets` | Both | Each `#id` expectation target resolved at the step's end to its backend node id (null when absent) |
+| `settled` | NVDA-absent | The accessibility tree and ARIA snapshot 1 s into each observation window longer than 1 s. No input is sent, so D4 holds. The NVDA-present leg reads nothing inside a window |
+
+These fields add evidence and change no existing measurement. Whether Arm B may use the settled tree decides what B can detect, so it goes to the owner with the B oracle.
+
+**Pre-registered triggers.** HANDOFF R5 fixes Arm D's trigger rules v1 in advance, from PRD §14. `protocol/triggers.v1.json` sets them now, before any Arm D result is scored. It gives seven triggers: live regions, role status, role alert, dialog opening, route transitions, programmatic focus changes and aria-activedescendant widgets, each judged on the NVDA-absent B2 evidence of a step. A step is triggered when any trigger fires on it in any valid NVDA-absent attempt, on either side. PRD §14's last entry, patterns the spike shows to benefit from AT, is excluded, because it can only come from results. The list is the PRD's, but the operational definitions are Claude's. They decide which steps Arm D sees NVDA evidence for, so they go to the owner (hard rule 12) with the M5 oracle items.
+
+**Consequences.** The M5 evidence run repeats every dev item in both legs with the new fields. The M4 evidence runs stay as M4's record.
+
+## DR-0080 M5 oracles, scorer and dev results, and owner items P28–P37
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) |
+| HANDOFF v1.11 | §6, §8.4, §9 (M5), §10.3; R3, R5, R7, R9, R10 |
+
+**Context.** M5 asks for rules per arm, the scorer and the §10.3 statistics, a dev report and a power table, on the dev split only. The rules were developed on the dev items, with the M4 evidence runs (37151537838, 37154136328) and the M5 evidence run (37157013736, DR-0079). Every result below is EXPLORATORY and in-sample, since the rules were developed on these same items.
+
+**What was built (Decided by Claude under DR-0045).**
+- **Oracles** (`harness/src/oracles/`):
+  - The rules are described in `protocol/oracles/README.md`; their tables are in `protocol/oracles/rules.v1.json`. Both are in the frozen set.
+  - Four families of evidence: axe (A), the tree (B), events and the timeline (B2), and NVDA's speech.
+  - Within each leg, base and candidate are compared with k = n. Failure classes become symptoms, and the arms are assembled from the families with UNION, ADJUDICATED and D's trigger masking.
+- **Scorer** (`harness/src/score/`):
+  - Clopper–Pearson intervals, the exact McNemar test, a seeded pattern-level bootstrap (10,000 resamples, seed 20261005) and the sample-size formulas, with unit tests.
+  - Arm metrics, with detection weighted uniformly by symptom as the primary analysis (HANDOFF §10.3) and item-level rates beside it.
+  - The report: `npm run score -- --split dev --runs <dirs>`. The CLI applies the freeze guard before it loads any scoring code.
+  - The secondary, owner-weighted analysis waits for the owner's weights file.
+- **Fixes found on the dev data:**
+  - **Speech normaliser:** NVDA speaks "/" as "slash", so symbols spoken at NVDA's default level are rendered as words before matching (HANDOFF R6).
+  - **MUI dialogs:** they focus a container whose only child is the dialog, so that counts as focus on the dialog.
+  - **Name or role:** a lost name or role is judged on the focused element itself, not its ancestors. A menu named like its trigger had made a trap look like a role change.
+  - **Tree text:** text under an ignored wrapper counts. It had hidden Atomic CRM's toast.
+  - **Declared announcements:** the route rule yields to them.
+  - **Stopping step:** axe judges the step where a candidate's journey stopped.
+
+**M5 evidence run (37157013736).** All 112 blocks are valid (0 of 736 attempts INCONCLUSIVE) and all 224 K1 canaries passed. In one NVDA-leg base attempt of oss-rac-8697, the new page was not reached after the full navigation (2 of 3), so NVDA's result for that item is REVIEW.
+
+**Dev results.**
+
+| Arm | Detection, uniform by symptom (bootstrap 95%) | Detection, items | False FAIL, benign | False FAIL, unchanged |
+|---|---|---|---|---|
+| A | 15% (6–29%) | 4/20 | 0/20 | 0/16 |
+| B | 88% (78–100%) | 18/20 | 0/20 | 0/16 |
+| B2 | 100% (100–100%) | 20/20 | 0/20 | 0/16 |
+| C_UNION | 100% (100–100%) | 20/20 | 0/20 | 0/16 |
+| C_ADJUDICATED | 97% (88–100%) | 19/20 | 0/20 | 0/16 |
+| D_UNION | 100% (100–100%) | 20/20 | 0/20 | 0/16 |
+| D_ADJUDICATED | 97% (88–100%) | 19/20 | 0/20 | 0/16 |
+
+- **B2 against B (H1):** 2 to 0. B2 alone catches the status region created already filled (no event fires, though the tree holds the text) and the duplicated announcer.
+- **C against B2 (H2):**
+  - Under UNION: 0 to 0.
+  - Under ADJUDICATED: 0 to 1. NVDA says "unavailable" for the ticked task on both builds, so it downgrades B2's correct STATE_NOT_CONVEYED to REVIEW.
+  - NVDA's evidence alone detects 17 of 20 and adds nothing beyond B2 here.
+- **D against C (H3):** D keeps all of C's detections, using 23% of C's NVDA segment time. 70 of 159 steps are triggered.
+- **Arm A:** detects 4 of 20. Its three wrong-symptom FAILs are knock-on violations, such as landmarks hidden while a menu stays open.
+
+The full report is `docs/reports/M5-dev.md`.
+
+**Owner items (hard rule 12).** P28–P37 are listed under "Pending owner items", each with Claude's recommendation:
+- P28: the oracle model;
+- P29: how detection is credited;
+- P30: Arm A;
+- P31: Arm B's announcements;
+- P32: Arm B2;
+- P33: NVDA's evidence;
+- P34: the triggers;
+- P35: candidate-only checks;
+- P36: duplicates from speech;
+- P37: the pattern count.
+
+**Consequences.**
+- Until the owner rules, the dev results stand on proposed rules.
+- After the ruling, HANDOFF records M5 and the M5 PR is opened.
+- The test patterns are built after P37 is decided (P15).
+
+## DR-0081 Owner approval of P28–P37
+
+| | |
+|---|---|
+| Date | 2026-10-03 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 |
+| HANDOFF v1.12 | §5 (R9), §6, §9 (M5), §10.3 |
+
+**Decision.**
+
+> Yes to P28–P37; carry on
+
+**Consequences.**
+
+- The M5 oracle rules stand as written in `protocol/oracles/README.md`, `protocol/oracles/rules.v1.json` and `protocol/triggers.v1.json`:
+  - the oracle model (P28);
+  - detection credited when any of an arm's FAIL symptoms is correct, with the three reachability symptoms as one family (P29);
+  - Arm A's rule and axe table (P30);
+  - Arm B's settled tree and live-region announcements (P31);
+  - B2's event announcements and route rule (P32);
+  - NVDA's evidence and ADJUDICATED's "unchanged" (P33);
+  - Arm D's triggers (P34);
+  - candidate-only check failures as REVIEW (P35);
+  - duplicates from speech alone as REVIEW (P36).
+
+  They stay exploratory until the M6 freeze.
+- The dev report (`docs/reports/M5-dev.md`) no longer rests on proposed rules; its numbers are unchanged.
+- P37: no new pattern batch now. The 59 test patterns are built next (P15). At the M6 freeze, a second round is pre-registered, sized from DR-0080's power table and triggered if a headline comparison lands in the inconclusive range (PRD §38).
+- Building test patterns executes no test-split item: patches are applied and built, and journeys are developed on the base builds only. No test candidate runs before the freeze (hard rule 5, DR-0034).
+- HANDOFF moves to v1.12.
+
+## DR-0084 M5 PR review findings
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §6, §10.3; R7; P13, P28–P36 |
+
+**Context.** Codex (2 comments) and Devin Review (8 comments) reviewed PR #8. Claude checked each against the code and the dev data. None changes the dev results: detection, false FAIL and REVIEW counts are as in DR-0080. The approved rules (P28–P36) are unchanged; the fixes make the code do what they say, and make missing evidence explicit.
+
+| Finding | Assessment | Change |
+|---|---|---|
+| Items with no block are silently left out of the split's metrics (Codex) | Valid | The scorer refuses when any item of the split has no block. `--allow-missing` scores them as INCONCLUSIVE in every arm (a miss, R7), and the report lists them |
+| Another split's block with no journey aborts scoring (Devin) | Valid | Only blocks of the split's corpus items are read; journey-development pseudo-items are skipped too |
+| A false state with an explicit NVDA label passes on silence (Codex; Devin) | Valid for states with a negative label: the code fell back to "positive label absent", against its own description | `checked`, `selected` and `pressed` need "not …", and `expanded` needs "collapsed". States NVDA conveys only when true (`required`, `invalid`, `disabled`, `busy`) are false when their label is absent |
+| Missing axe or B2 evidence reads as a pass (Devin) | Valid. DR-0074 said M5 counts a missing B2 listener record as a failure, never INCONCLUSIVE (P13) | Missing or failed axe results at a step, and B2 events missing in any attempt, give a REVIEW finding |
+| A truncated block lowers k (Devin) | Valid | k is the block's planned repetitions per side. A side with fewer attempts gives REVIEW, never a FAIL |
+| A step the base did not always reach skips axe (Devin) | Valid | axe is still compared at that step, as at a step where the candidate stopped |
+| Arm D passes without a valid NVDA leg when no step is triggered (Devin) | Not adopted. D uses NVDA only at triggered steps (HANDOFF R5, §8.4); with none triggered, D would not run NVDA, so its verdict is B2's. When the NVDA-absent leg is INCONCLUSIVE, D is INCONCLUSIVE too | None |
+| A partly unreachable step hides later steps (Devin) | Not adopted. With k = n, no later step can give FAIL once one candidate attempt stopped, and the item is already REVIEW. If the freeze sets k < n, this is revisited | None |
+| A message removed before the settled tree is missed by B2 (Devin) | A known limit of P31 and P32: the settled tree is read 1 s into the window, and both apps' toasts last about 4 s | Stated in the report's limits |
+| A state with no negative label passes on silence (Devin) | Not adopted for those states: silence is how NVDA conveys them as false | None (see the false-state row) |
