@@ -15,6 +15,7 @@
  * `npm run corpus -- unchanged` writes one unchanged control per journey of
  * the corpus items (P15; DR-0066): `<journey>-unchanged`, base against base,
  * in the pattern and split of the journey's first regression item (by id).
+ * An existing control is left as it is.
  *
  * `npm run corpus -- plan spa-regression` adds the planned SPA regression
  * patterns to `corpus/patterns.json` (patterns.ts); `plan oss-regression`
@@ -161,6 +162,8 @@ if (command === "validate") {
   const items = validateCorpus(files).valid;
   const journeyIds = [...new Set(items.filter((i) => i.expected.kind !== "unchanged").map((i) => i.journeyId))].sort();
   for (const journeyId of journeyIds) {
+    // An existing control is never rewritten: a journey later shared with test items keeps its dev control (DR-0085).
+    if (existsSync(join(ITEMS, `${journeyId}-unchanged.json`))) continue;
     const first = items.filter((i) => i.journeyId === journeyId && i.expected.kind === "regression").sort((a, b) => (a.id < b.id ? -1 : 1))[0];
     if (first === undefined) throw new Error(`journey ${journeyId}: no regression item`);
     const item: CorpusItem = {

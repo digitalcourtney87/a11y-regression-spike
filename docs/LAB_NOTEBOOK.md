@@ -346,3 +346,21 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Datetime fields | Each segment is a Tab stop (six, plus the picker button); NVDA speaks each as a spin button |
 | Validation errors | NVDA speaks a field's error with the field ("invalid entry Required"); the tree marks it invalid but keeps no description |
 | Symbols | "linkedin.com" is spoken "linkedin dot com"; "LinkedIn" is spoken "Linked In" |
+
+### M5: react-admin base behaviour seen while building test journeys (appended 2026-10-04)
+
+**Label:** EXPLORATORY
+**Source:** journey-development runs 37168262367, 37168915475 and 37169312828 (base build only, no test item; DR-0082).
+**Affects:** DR-0085.
+**Confidence:** observed on the base build.
+
+| Observation | Result |
+|---|---|
+| MUI menus and selects | Modal: while open, the rest of the page (the trigger too) is aria-hidden, so the trigger's expanded state is not exposed |
+| MUI Autocomplete | Its popup is not modal; the input keeps focus and carries aria-expanded; NVDA says "expanded" |
+| Saving an invalid post | Focus moves to the first invalid field; NVDA: "Title edit invalid entry Required" |
+| Save button | Disabled until the form changes, so it is not in the tab order of an unchanged form |
+| Tab from the last control (NVDA leg) | Moves into Chrome's toolbar, not back to the page |
+| Users pages | "Access denied" for the default identity |
+| Adding a backlink | Focus moves into the new row's first field (the date's month) |
+| Browsing past a dialog's end | NVDA stays on the last line and repeats it |

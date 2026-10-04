@@ -121,6 +121,7 @@ Conventions:
 | [DR-0082](#dr-0082-building-the-test-patterns-without-executing-them) | Building the test patterns without executing them | Accepted | 2026-10-04 | Owner reply 2026-10-03; tooling decided by Claude under DR-0045 | — | No |
 | [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) | — | P38 |
 | [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
+| [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3592,3 +3593,50 @@ The full report is `docs/reports/M5-dev.md`.
 | A partly unreachable step hides later steps (Devin) | Not adopted. With k = n, no later step can give FAIL once one candidate attempt stopped, and the item is already REVIEW. If the freeze sets k < n, this is revisited | None |
 | A message removed before the settled tree is missed by B2 (Devin) | A known limit of P31 and P32: the settled tree is read 1 s into the window, and both apps' toasts last about 4 s | Stated in the report's limits |
 | A state with no negative label passes on silence (Devin) | Not adopted for those states: silence is how NVDA conveys them as false | None (see the false-state row) |
+
+## DR-0085 Test patterns, batch 2: react-admin "simple"
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P23, P37; DR-0082 |
+
+**What was built.** All 25 react-admin "simple" test patterns of the test split, each with a benign twin (P20), on eleven new journeys, each with an unchanged control (P15). The three notification patterns reuse the dev journey `ras-post-edit-save-notification`. No test item was executed (DR-0082).
+- **Journeys:** developed on the base build only (runs 37168262367, 37168915475 and 37169312828). In the last run each journey ran three times in both legs, and every expectation behaved the same in every attempt.
+- **Build check:** run 37169335614 applied, built and reverted all 68 react-admin and 68 Atomic CRM patches (50 and 52 of them test), and loaded none of the test builds.
+
+| Journey (entry) | Test patterns |
+|---|---|
+| `ras-appbar-details` (post page: app bar) | icon-button-label-removed (Configure this page), heading-to-div (page title), image-alt-removed (user avatar) |
+| `ras-post-edit-tabs` (post form tabs) | tab-roles-removed, selected-stale |
+| `ras-post-edit-errors` (post form, title emptied and saved) | field-label-disassociated, invalid-missing, error-not-announced, required-field-unnamed (Teaser) |
+| `ras-post-edit-notifications` (post form checkboxes) | checked-stale |
+| `ras-post-list-actions` (posts list: search, Create, Edit) | tab-swallowed, action-tabindex-removed, pointer-only-activation |
+| `ras-post-category-select` (post form Category select) | combobox-role-removed, combobox-keyboard-broken |
+| `ras-post-category-escape` (the same select, closed with Escape) | escape-not-closing, menu-focus-not-restored |
+| `ras-post-category-create-dialog` (the select's Create dialog) | dialog-containment-removed, aria-modal-removed |
+| `ras-comment-post-autocomplete` (comment form Post autocomplete) | expanded-not-updated |
+| `ras-post-backlinks-add` (post form backlinks, Add) | focus-left-on-removed |
+| `ras-post-edit-save-redirect` (post form saved, list reached) | submit-pointer-only |
+| `ras-post-edit-save-notification` (dev journey) | busy-left-true, live-region-hidden-ancestor, live-update-repeated |
+
+**Patches through the app's own code.** react-admin and MUI are not vendored, so every patch changes the app's code or the props it passes. Each prop the patches rely on was checked in the react-admin 5.15.4 and MUI 5.18.0 sources:
+- MUI Tab and Select spread the caller's props after their own `role`, `aria-selected` and `aria-expanded`.
+- MUI TextField spreads them after `htmlFor`, the helper text's id and `aria-invalid`.
+- InspectorButton spreads them after its `aria-label`, and TitlePortal into its Typography.
+- AutocompleteInput forks the input ref.
+
+The tab patterns use a custom tab strip that passes the attribute to the tab headers only, because FormTab would also spread it onto the tab panel.
+
+**Base behaviours that decided the targets.**
+- **Expanded state on menus:** MUI menus and selects are modal, so the rest of the page, trigger included, is hidden while they are open, and neither the tree nor NVDA sees `expanded=true`. The expanded-not-updated pattern therefore targets the comment form's Post autocomplete, whose popup is not modal and whose input stays exposed. NVDA says "expanded" there.
+- **Avatar:** NVDA reads the user menu's avatar only as part of the "Profile" button, so the image-alt check is observable by the tree only.
+- **Saving:** a post with an empty title moves focus to the Title field on save, and NVDA reads "invalid entry Required" with it.
+- **Adding a backlink:** focus moves into the new row's Date field.
+- **Risk, busy-left-true:** `aria-busy` is set on the notification's alert, which is created already filled. Chrome blocks live-region-changed events for a busy region, but may still raise the alert event. If it does, this pattern shows no symptom, which counts as a miss for every arm. It cannot be checked before the freeze.
+
+**Two tooling fixes (Decided by Claude under DR-0045).**
+- **Simulated cursor (P23 fidelity):** when there is nothing further to read, the cursor and its line now stay where they are, as NVDA's do (it reports the bottom, or no next heading). Before, the line emptied. No dev journey reaches the end of its page, so no dev result changes.
+- **`npm run corpus -- unchanged`:** it rewrote the dev control of `ras-post-edit-save-notification` into the test split once test items shared that journey. It now leaves an existing control as it is; the dev control was restored before any commit.

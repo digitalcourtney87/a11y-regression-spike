@@ -1,0 +1,21 @@
+{
+  "id": "ras-post-category-escape-unchanged",
+  "patternId": "react-admin-simple--escape-not-closing",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey ras-post-category-escape (P15)",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "ras-appbar-details-unchanged",
+  "patternId": "react-admin-simple--heading-to-div",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey ras-appbar-details (P15)",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}
