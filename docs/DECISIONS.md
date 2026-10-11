@@ -124,6 +124,7 @@ Conventions:
 | [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 | [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
 | [DR-0087](#dr-0087-owner-approval-of-p38) | Owner approval of P38 | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
+| [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | G3 brief |
 
 ## Pending owner items (hard rule 12)
 
@@ -3712,3 +3713,26 @@ The m3 reproductions (DR-0063) ran on the earlier fixtures. Re-checking them wou
 - A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was in every attempt and the base's focus moved in every attempt. Staying means the same node in the tree, or silence from NVDA. The rule is in `protocol/oracles/README.md` and `focusSymptom` (`harness/src/oracles/compare.ts`).
 - Escape is unchanged: it is a trap only when focus stays inside a component.
 - No dev pattern has this mechanism, so no dev result changes. No test item has been run. The two tab-swallowed test patterns (`acrm-tab-swallowed-note`, `ras-tab-swallowed-search`) are the ones this lets score KEYBOARD_TRAP instead of FOCUS_NOT_MOVED.
+
+## DR-0088 M6 started
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.13 | §9 (M6), §12; DR-0023, DR-0028, DR-0030, DR-0033; P37 |
+
+**Decision.**
+
+> Start M6
+
+**What was written (Decided by Claude under DR-0045, except the brief items).** `protocol/PROTOCOL.md` states the confirmatory protocol. It incorporates the approved oracle and trigger files by reference and specifies the two pre-registrations M6 requires:
+
+- the inconclusive range and the second round (PRD §38, P37): a headline comparison is inconclusive when its pattern-bootstrap 95% interval contains 0 and some value at least 0.08 from 0; an inconclusive comparison triggers 18 further regression patterns, taking the test count from 59 to 77;
+- the rule model (DR-0023): the earliest of three pre-declared B2 rules with the highest dev-split agreement, judged on the test split by the rate at which C detects and the rule does not.
+
+The BenignType descriptions are proposed as final in that file (DR-0030). The G3 brief asks the owner to ratify these, together with the fixture edits and the known blind spots, before tagging.
+
+**Not done.** The freeze tag is the owner's. No test item was executed or scored. M7 was not started.
+
