@@ -147,3 +147,5 @@ Owner authorised proceeding with the broader bounded search after pass two, 2026
 ### A-007: Batch-four exploratory controlled DataGrid fixture
 
 2026-10-11; owner instruction to finish test patterns under P39/P22. G4 outcomes are known. Add unsplit `fixtures/oss/fluent-27997/` from issues #27997/#27896 and merged fix #27978; issue-derived row selection plus equivalent width-only twin diagnostic. No registry/split admission yet, oracle/trigger/threshold change or new tag. Assigned test fixtures remain excluded by the existing mining workflow. Preserve original G4 evidence at protocol-freeze-v3; new confirmatory execution remains gated on an owner tag.
+
+Batch-four A-007 follow-up: repair DataGrid render-function setup uniformly (P22 rule 8), without changing the criterion, and add unsplit `fixtures/oss/vuetify-22770/` from the issue/fix's keyboard-wrap scenario, on two releases sharing Vue 3.3.4. Plain JavaScript rendering uses existing vanilla build mode, with no execution/security safeguard change. No assignment or new tag. Preserve first setup failure and all later check outcomes.
