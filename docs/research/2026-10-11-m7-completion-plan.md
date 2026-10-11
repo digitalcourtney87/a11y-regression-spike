@@ -1,0 +1,17 @@
+# M7 corpus completion plan
+
+Owner instruction: finish the test patterns, retaining 77 as the target. Current state: 61 test patterns, 20 dev, two of 18 additions built; PR #13 remains open. No freeze tag or confirmatory execution until the complete amended corpus is approved.
+
+Work single-agent in successive recorded bounded batches. No selection from G4 misses, revival of dropped patterns, duplicate mechanism/context, reassignment of dev patterns, new source context, oracle/threshold change or relaxation of P22. Preserve failures and pending evidence. Every admitted addition gets a benign twin and a new-journey unchanged control. Routine research continues under the owner's completion instruction; report shortfalls honestly.
+
+## Batch four (recorded before queries)
+
+First review the eleven query-cap issues already recorded in pass three, in recorded query/issue order. They were inspected as search hits but not selected/reviewed documentary candidates. Keep the six unresolved earlier leads separate; follow their named fixes/release history where it can supply missing evidence, never recount them as new.
+
+Then query repositories in order: radix-ui/primitives, adobe/react-spectrum, mui/material-ui, carbon-design-system/carbon, microsoft/fluentui, tailwindlabs/headlessui, vuetifyjs/vuetify, palantir/blueprint. Query `is:issue is:closed keyboard in:title`, then `is:issue is:closed accessibility in:title`. Sort creation date descending to address the earlier creation-ascending bias. Inspect at most 30 hits per query. After excluding registry entries, all prior documentary ledger candidates and original survey/verification references, select at most two new unique reports per query whose body mentions a regression, upgrade, previously working behaviour or a concrete semantic version. The lexical filter is `regress|upgrad|previous|used to|worked|\d+\.\d+\.\d+`, case insensitive. Deduplicate across queries and the eleven queued issues. Stop after sixteen queries (at most 32 new selections plus eleven queued).
+
+Read every selected issue, relevant comments, timelines and named fixes. Documentary acceptance requires a permissive library, merged fix, stable one-package last-good/broken pair with compatible pinned dependencies, accessible working base, user-facing symptom and issue-derived keyboard scenario. No auto-admission from keyword matches. Log all inspected hits and exclusions/caps.
+
+At most two new fixture candidates and two existing m3-oss-repro dispatches per batch. Select reproduction candidates in documentary-review order when their evidence is complete; retain other eligible candidates as a queue. Use shared safe framework pins, published source verification, original issue criterion, independent repeat and pre-assignment browse/benign-twin checks. No local third-party execution or assigned test-item browser execution; build-only checks are permitted. Record runner overhead and all run conclusions.
+
+Before another batch, record its sources, query ordering, selection/stopping rules and exclusion set. Do not silently substitute searches. Continue qualifying additions toward 77 within these criteria; if the available source evidence cannot support completion, present the concrete shortfall and required owner decision rather than fabricating patterns.
