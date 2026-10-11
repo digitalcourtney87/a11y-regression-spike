@@ -10,17 +10,11 @@
       "id": "reach-fruit",
       "strategy": "TAB",
       "until": {
+        "role": "combobox",
         "name": "Choose an item",
-        "maxAttempts": 2
+        "maxAttempts": 3
       },
       "observeMs": 1000,
-      "expectations": []
-    },
-    {
-      "kind": "at",
-      "id": "enter-field",
-      "strategy": "FOCUS_MODE_TOGGLE",
-      "observeMs": 500,
       "expectations": []
     },
     {

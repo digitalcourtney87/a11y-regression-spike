@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, oss-regression round 3: the carbon-5623 journey, with focus mode entered before typing, on the last good release only, three attempts, both legs (DR-0082, DR-0086)",
+  "purpose": "Test-pattern journey development, oss-regression round 4: the carbon-5623 journey, its first goal matched on role as well as name, on the last good release only, three attempts, both legs (DR-0082, DR-0086)",
   "apps": [
     "oss-carbon-5623"
   ],
