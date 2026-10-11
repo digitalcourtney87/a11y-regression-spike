@@ -1,0 +1,519 @@
+{
+  "label": "EXPLORATORY",
+  "plan": "2026-10-11-m7-mining-plan.md",
+  "candidates": [
+    {
+      "id": "primitives-212",
+      "repo": "radix-ui/primitives",
+      "number": 212,
+      "url": "https://github.com/radix-ui/primitives/issues/212",
+      "title": "Add dev warnings to ensure the right elements are used?",
+      "query": "repo:radix-ui/primitives is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Development warnings request; no release regression or library fix for a primary symptom.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/212"
+      ]
+    },
+    {
+      "id": "primitives-1351",
+      "repo": "radix-ui/primitives",
+      "number": 1351,
+      "url": "https://github.com/radix-ui/primitives/issues/1351",
+      "title": "[Tooltip][Mobile] - Not triggering on focus ",
+      "query": "repo:radix-ui/primitives is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Maintainers say mobile tooltips not opening on focus is intentional. The linked regression concerns opening on touch, not the reported keyboard behaviour.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/1351"
+      ]
+    },
+    {
+      "id": "primitives-1925",
+      "repo": "radix-ui/primitives",
+      "number": 1925,
+      "url": "https://github.com/radix-ui/primitives/issues/1925",
+      "title": "Select causing layout shift in external monitor.",
+      "query": "repo:radix-ui/primitives is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Scrollbar/layout shift; no primary-analysis semantic or keyboard symptom established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/1925"
+      ]
+    },
+    {
+      "id": "primitives-1236",
+      "repo": "radix-ui/primitives",
+      "number": 1236,
+      "url": "https://github.com/radix-ui/primitives/issues/1236",
+      "title": "[Dialog] on touch devices blocks body input after closing",
+      "query": "repo:radix-ui/primitives is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "The reporter explicitly says Escape and other keyboard interactions work; failure is touch-only (P22 rule 1).",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/1236"
+      ]
+    },
+    {
+      "id": "react-spectrum-10553",
+      "repo": "adobe/react-spectrum",
+      "number": 10553,
+      "url": "https://github.com/adobe/react-spectrum/issues/10553",
+      "title": "Docs suggestion: optional applied modal screen-reader failure exercise",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Documentation/resource suggestion, not a library regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/10553"
+      ]
+    },
+    {
+      "id": "react-spectrum-2030",
+      "repo": "adobe/react-spectrum",
+      "number": 2030,
+      "url": "https://github.com/adobe/react-spectrum/issues/2030",
+      "title": "pasting into text inputs contained within modals/dialogs with usePreventScroll isn't working on iOS/Safari",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "iOS touch-paste behaviour; does not establish a reproducible Windows/Chrome keyboard regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/2030"
+      ]
+    },
+    {
+      "id": "react-spectrum-2572",
+      "repo": "adobe/react-spectrum",
+      "number": 2572,
+      "url": "https://github.com/adobe/react-spectrum/issues/2572",
+      "title": "ListView needs to support PageUp, PageDown, End and Home key events",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression keyboard",
+      "status": "pending documentary",
+      "reason": "Keyboard failures and a merged fix (#3000) are documented; no last-good/first-broken published release pair established. The issue itself asks whether this is a regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/2572"
+      ]
+    },
+    {
+      "id": "react-spectrum-2608",
+      "repo": "adobe/react-spectrum",
+      "number": 2608,
+      "url": "https://github.com/adobe/react-spectrum/issues/2608",
+      "title": "ListView keyboard issues",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Duplicate of #2572; cannot add another independent pattern.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/2608"
+      ]
+    },
+    {
+      "id": "material-ui-6293",
+      "repo": "mui/material-ui",
+      "number": 6293,
+      "url": "https://github.com/mui/material-ui/issues/6293",
+      "title": "[Button] Flat button Hover/Focus background color",
+      "query": "repo:mui/material-ui is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Hover/focus background colour design discussion; no existing primary-analysis symptom established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/6293"
+      ]
+    },
+    {
+      "id": "material-ui-6799",
+      "repo": "mui/material-ui",
+      "number": 6799,
+      "url": "https://github.com/mui/material-ui/issues/6799",
+      "title": "Should we integrate with `material-components-web`?",
+      "query": "repo:mui/material-ui is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Library integration discussion, not a release regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/6799"
+      ]
+    },
+    {
+      "id": "material-ui-7617",
+      "repo": "mui/material-ui",
+      "number": 7617,
+      "url": "https://github.com/mui/material-ui/issues/7617",
+      "title": "Suggestion - Material guidelines checker",
+      "query": "repo:mui/material-ui is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Guidelines-checker feature proposal; no regression pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/7617"
+      ]
+    },
+    {
+      "id": "material-ui-783",
+      "repo": "mui/material-ui",
+      "number": 783,
+      "url": "https://github.com/mui/material-ui/issues/783",
+      "title": "[TextField] loses focus on rerender",
+      "query": "repo:mui/material-ui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Long-running focus-loss reports include remount/key problems; no specific merged library fix and compatible release pair established (P22 rules 5/6).",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/783"
+      ]
+    },
+    {
+      "id": "material-ui-4384",
+      "repo": "mui/material-ui",
+      "number": 4384,
+      "url": "https://github.com/mui/material-ui/issues/4384",
+      "title": "Dialogs should trap focus",
+      "query": "repo:mui/material-ui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Request for dialog focus trapping and later reports; no accessible last-good release or specific regression/fix pair established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/4384"
+      ]
+    },
+    {
+      "id": "material-ui-5186",
+      "repo": "mui/material-ui",
+      "number": 5186,
+      "url": "https://github.com/mui/material-ui/issues/5186",
+      "title": "[Menu] Improve hover/select/focus UI display",
+      "query": "repo:mui/material-ui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Visual hover/selected distinction on the next branch; no primary symptom and stable published regression pair established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/mui/material-ui/issues/5186"
+      ]
+    },
+    {
+      "id": "carbon-2329",
+      "repo": "carbon-design-system/carbon",
+      "number": 2329,
+      "url": "https://github.com/carbon-design-system/carbon/issues/2329",
+      "title": "[All fields and inputs] Helper text update",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Helper-text design enhancement, not a release regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/2329"
+      ]
+    },
+    {
+      "id": "carbon-4118",
+      "repo": "carbon-design-system/carbon",
+      "number": 4118,
+      "url": "https://github.com/carbon-design-system/carbon/issues/4118",
+      "title": "Tile: Refactor all versions of the component to address multiple a11y issues",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Umbrella refactor/testing request spanning several issues; no single defined release regression pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/4118"
+      ]
+    },
+    {
+      "id": "carbon-4870",
+      "repo": "carbon-design-system/carbon",
+      "number": 4870,
+      "url": "https://github.com/carbon-design-system/carbon/issues/4870",
+      "title": "[Tabs, Content switcher] Manual activation for accessible users",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Request for manual tab activation; maintainers describe automatic/manual activation as valid patterns, not loss of accessible behaviour.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/4870"
+      ]
+    },
+    {
+      "id": "carbon-2600",
+      "repo": "carbon-design-system/carbon",
+      "number": 2600,
+      "url": "https://github.com/carbon-design-system/carbon/issues/2600",
+      "title": "Unexpected behavior in keyboard navigation in DropdownV2",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression keyboard",
+      "status": "pending documentary",
+      "reason": "Keyboard Enter failure is described at 6.28.3, but last-good release and exact merged fix/release boundary remain unidentified.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/2600"
+      ]
+    },
+    {
+      "id": "carbon-3397",
+      "repo": "carbon-design-system/carbon",
+      "number": 3397,
+      "url": "https://github.com/carbon-design-system/carbon/issues/3397",
+      "title": "Tabs/Tab component enhancements",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression keyboard",
+      "status": "pending documentary",
+      "reason": "Comments report tabs working in 7.2 and failing in 7.3 with MDX; full reproduction context and merged library fix remain unestablished.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/3397"
+      ]
+    },
+    {
+      "id": "carbon-3831",
+      "repo": "carbon-design-system/carbon",
+      "number": 3831,
+      "url": "https://github.com/carbon-design-system/carbon/issues/3831",
+      "title": "Accordion's expanded content not read by JAWS | AVT 3",
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Reporter later succeeds with JAWS 20/Windows 10; maintainers cannot reproduce on Windows 10. No package regression pair established (P22 rule 5).",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/3831"
+      ]
+    },
+    {
+      "id": "fluentui-1216",
+      "repo": "microsoft/fluentui",
+      "number": 1216,
+      "url": "https://github.com/microsoft/fluentui/issues/1216",
+      "title": "Text field component in IE family shows X button which cannot be accessed from keyboard",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "IE/Edge-injected clear pseudo-element, absent in Chrome; does not establish the required browser/keyboard regression pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/1216"
+      ]
+    },
+    {
+      "id": "fluentui-1618",
+      "repo": "microsoft/fluentui",
+      "number": 1618,
+      "url": "https://github.com/microsoft/fluentui/issues/1618",
+      "title": "Text field accessibility issues",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "AT/browser compatibility report with no accessible last-good package release; does not establish a release regression pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/1618"
+      ]
+    },
+    {
+      "id": "fluentui-4432",
+      "repo": "microsoft/fluentui",
+      "number": 4432,
+      "url": "https://github.com/microsoft/fluentui/issues/4432",
+      "title": "Dropdown not annoucing value of dropdown option on up or down arrow key press when dropdown is in collapsed state",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression accessibility",
+      "status": "pending documentary",
+      "reason": "Dropdown option announcements on arrows; merged fix #5385 referenced, but last-good/broken releases and NVDA/Chrome reproduction remain unresolved.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/4432"
+      ]
+    },
+    {
+      "id": "fluentui-4619",
+      "repo": "microsoft/fluentui",
+      "number": 4619,
+      "url": "https://github.com/microsoft/fluentui/issues/4619",
+      "title": "DatePicker: Keyboard focus is not visible on the \"Go to Today,\" \"Next month\" and \"Previous month\" buttons",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Loss of visual focus outline is outside the current primary-analysis symptom set; no semantic focus-loss claim.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/4619"
+      ]
+    },
+    {
+      "id": "fluentui-4620",
+      "repo": "microsoft/fluentui",
+      "number": 4620,
+      "url": "https://github.com/microsoft/fluentui/issues/4620",
+      "title": "DatePicker: pressing space/Enter on Previous/Next month/year arrow buttons goes 2 months at a time",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
+      "status": "documentary candidate",
+      "reason": "Keyboard Calendar activation increments twice; maintainer bisect and merged fix #4662. Published source suggests 5.40.2 -> 5.41.0, fixed 5.90.0; CI reproduction pending. Symptom mapping and full accessible last-good eligibility remain provisional.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/4620",
+        "https://github.com/microsoft/fluentui/pull/4662",
+        "https://github.com/microsoft/fluentui/commit/fd2206f8041ba6aca3b61a67a8552652e67d4954",
+        "https://registry.npmjs.org/office-ui-fabric-react"
+      ],
+      "package": "office-ui-fabric-react",
+      "licence": "MIT",
+      "good": "5.40.2",
+      "broken": "5.41.0",
+      "fixed": "5.90.0",
+      "releaseStatus": "source-inferred; reproduction pending"
+    },
+    {
+      "id": "fluentui-5115",
+      "repo": "microsoft/fluentui",
+      "number": 5115,
+      "url": "https://github.com/microsoft/fluentui/issues/5115",
+      "title": "DetailsList Accessibility Issues",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Design/spec discussion; maintainers regard tab behaviour as intentional/wont-fix. No release regression pair established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/5115"
+      ]
+    },
+    {
+      "id": "headlessui-2243",
+      "repo": "tailwindlabs/headlessui",
+      "number": 2243,
+      "url": "https://github.com/tailwindlabs/headlessui/issues/2243",
+      "title": "@click event on <NuxtLink> with headlessui v1.7.8 not working",
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Maintainer closure explains NuxtLink click handling/workaround; no merged library fix and keyboard reproduction pair established (P22 rules 1/6).",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/tailwindlabs/headlessui/issues/2243"
+      ]
+    },
+    {
+      "id": "headlessui-2934",
+      "repo": "tailwindlabs/headlessui",
+      "number": 2934,
+      "url": "https://github.com/tailwindlabs/headlessui/issues/2934",
+      "title": "Combobox selects the active value when the focus is moved away",
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Maintainer describes tab-to-select as intended; changing nullable defaults in v2 is not evidence of an accessible last-good regression pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/tailwindlabs/headlessui/issues/2934"
+      ]
+    },
+    {
+      "id": "vuetify-1326",
+      "repo": "vuetifyjs/vuetify",
+      "number": 1326,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/1326",
+      "title": "[feature request] dialogs should close after pressing \"esc\" key",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Escape-closing feature request; no last-good release regression.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/1326"
+      ]
+    },
+    {
+      "id": "vuetify-2543",
+      "repo": "vuetifyjs/vuetify",
+      "number": 2543,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/2543",
+      "title": "[Bug Report] [Regression] Font sizes for headers are broken",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Heading font sizes/CSS styling change; no primary-analysis symptom established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/2543"
+      ]
+    },
+    {
+      "id": "vuetify-17846",
+      "repo": "vuetifyjs/vuetify",
+      "number": 17846,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/17846",
+      "title": "[Feature Request] Bring in Basic Accessibility testing code scans",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression accessibility",
+      "status": "rejected",
+      "reason": "Accessibility-scanning feature request spanning a major version; no single compatible release pair.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/17846"
+      ]
+    },
+    {
+      "id": "vuetify-3177",
+      "repo": "vuetifyjs/vuetify",
+      "number": 3177,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/3177",
+      "title": "[Bug Report] unexpected automation in v-list-group",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "List-group expansion behaviour enhancement; maintainer states remaining reported behaviours are not bugs.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/3177"
+      ]
+    },
+    {
+      "id": "vuetify-7310",
+      "repo": "vuetifyjs/vuetify",
+      "number": 7310,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/7310",
+      "title": "[Bug Report] Dialog is closed by clicking on Snackbar",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Reported steps require pointer clicking a Snackbar; keyboard regression and last-good release are not established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/7310"
+      ]
+    },
+    {
+      "id": "vuetify-11370",
+      "repo": "vuetifyjs/vuetify",
+      "number": 11370,
+      "url": "https://github.com/vuetifyjs/vuetify/issues/11370",
+      "title": "[Bug Report] v-autocomplete search breaks with dynamic item-text of multiple columns",
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Dynamic item-text question closed with slot/workaround guidance; no merged library fix or last-good regression pair established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/11370"
+      ]
+    },
+    {
+      "id": "blueprint-183",
+      "repo": "palantir/blueprint",
+      "number": 183,
+      "url": "https://github.com/palantir/blueprint/issues/183",
+      "title": "Overlay doesn't stretch 100% height",
+      "query": "repo:palantir/blueprint is:issue is:closed regression keyboard",
+      "status": "rejected",
+      "reason": "Overlay size/scroll layout issue; no current primary-analysis symptom and last-good regression established.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/palantir/blueprint/issues/183"
+      ]
+    },
+    {
+      "id": "blueprint-3988",
+      "repo": "palantir/blueprint",
+      "number": 3988,
+      "url": "https://github.com/palantir/blueprint/issues/3988",
+      "title": "In a Table of EditableCells, when using Tab/Enter to navigate and update cells, every other cell is updated.",
+      "query": "repo:palantir/blueprint is:issue is:closed regression keyboard",
+      "status": "pending documentary",
+      "reason": "Keyboard cell editing regression reported in table 3.8.x, good 3.7.1 corroborated. Closure says it might be fixed in 4.0.0-rc.1; merged fix and compatible stable fixed release remain unestablished.",
+      "reproduction": null,
+      "sources": [
+        "https://github.com/palantir/blueprint/issues/3988"
+      ]
+    }
+  ]
+}

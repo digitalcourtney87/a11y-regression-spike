@@ -85,3 +85,23 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 **Impact on analyses.** None on the statistics. The test report's power section no longer offers a sample size computed from the confirmatory scores.
 
 **Reporting.** There is still no test-split analysis. Dev results stay the exploratory report from `protocol-freeze-v1`.
+
+### A-003: Exploratory second-round mining fixture
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Codex |
+| Owner approval | Owner instruction to proceed with the bounded mining feasibility pass, 2026-10-11; confirmatory execution still awaits the owner's freeze tag |
+| Freeze tag before | protocol-freeze-v3 (`protocol-sha256: 508302c493d1e35225fc409ea4d01c3c7e4b7b982c819efedac4783627d60ab2`) |
+| Freeze tag after | None; this branch is not frozen for confirmatory execution |
+| Files and sections changed | `fixtures/oss/fluent-4620/`; this amendment entry |
+| Related decision records | DR-0092, DR-0093; `docs/research/2026-10-11-m7-mining-plan.md` |
+
+**Change.** Add an unsplit exploratory fixture for Fluent UI issue #4620, checking whether one Space press advances the Calendar exactly one month. Source inspection suggests last good 5.40.2, first broken 5.41.0 and fixed 5.90.0; reproduction must establish the behavioural boundary. No corpus item or pattern is registered or assigned by this amendment. The check uses the issue and fix's expected behaviour, independently of the arm oracles.
+
+**Justification.** The pre-registered second round needs new qualifying mined patterns. The bounded feasibility pass checks this candidate before any split assignment; it does not count an unverified candidate toward 77.
+
+**Test-split exposure.** G4's 145-item confirmatory run and all five comparison intervals have already been seen. The search plan was recorded before new searches and did not select from G4 misses. This exploratory check is not represented as pre-registered before G4.
+
+**Analysis and execution.** The accepted G4 analysis remains reproducible at `protocol-freeze-v3`. The new fixture is run only by the exploratory mining workflow, before any test assignment. No amended confirmatory analysis exists. Oracles, triggers, thresholds and original split assignments are unchanged. The owner must tag the amended tree before any subsequent confirmatory execution or scoring.

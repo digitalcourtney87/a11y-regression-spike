@@ -1,0 +1,15 @@
+{
+  "id": "fluent-4620",
+  "stack": "react",
+  "package": "office-ui-fabric-react",
+  "versions": [
+    "5.40.2",
+    "5.41.0",
+    "5.90.0"
+  ],
+  "dependencies": {
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
+  "issue": "https://github.com/microsoft/fluentui/issues/4620"
+}
