@@ -1,0 +1,1 @@
+{"id":"ras-8637","stack":"react","package":"@adobe/react-spectrum","versions":["3.42.2","3.43.0","3.44.0"],"dependencies":{"react":"18.3.1","react-dom":"18.3.1"},"issue":"https://github.com/adobe/react-spectrum/issues/8637"}

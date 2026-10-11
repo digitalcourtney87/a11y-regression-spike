@@ -125,3 +125,7 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 | Decision | DR-0096 |
 
 **Change and exposure.** G4 outcomes are known. Add accessible-month and benign-layout diagnostics before assignment, then register one qualifying Calendar pattern, a benign twin and unchanged control. The issue-derived criterion is unchanged. Assign the addition explicitly to test; preserve old assignments. Use the frozen journey vocabulary and JOURNEY_BLOCKED symptom; no oracle, trigger, threshold or scoring rule changes. The original G4 items and misses did not select this candidate. The branch's frozen-set hash changes; protocol-freeze-v3 retains the original G4 evidence. No assigned test item is executed or scored and no new tag is made.
+
+### A-005: Pass-three exploratory DateField fixture
+
+Owner authorised proceeding with the broader bounded search after pass two, 2026-10-11. G4 outcomes are known. Add unsplit `fixtures/oss/ras-8637/` using the issue's continuous leading-zero typing criterion, before any corpus assignment. Follow the pass-three recorded plan, P22 and existing workflow safeguards. No oracle, threshold, trigger, corpus assignment or new tag changes. The branch's frozen hash changes; confirmatory execution still requires a new owner freeze tag. Original G4 evidence remains at protocol-freeze-v3.
