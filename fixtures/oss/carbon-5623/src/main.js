@@ -24,6 +24,8 @@ function App() {
       selectedItem: selected,
       onChange: ({ selectedItem }) => setSelected(selectedItem),
     }),
+    // Names the selection, so a journey can tell which fruit was chosen (DR-0086).
+    h("button", { id: "order", type: "button" }, `Order ${selected ? selected.text : "nothing"}`),
   );
 }
 render(h(App), document.getElementById("root"));

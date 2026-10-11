@@ -1089,10 +1089,16 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
  * A base-only pseudo-item for developing a journey (DR-0082): unchanged, so
  * both of its sides would be the base build, and run with `--sides base`. Its
  * base ref is the app's dev base (for a mined pair, the last good release).
+ * A test-only mined pair takes the last good release from its test regression
+ * item; only the base is taken, never the candidate (DR-0086).
  */
 function journeyDevItem(journeyId: string, corpus: readonly CorpusItem[]): CorpusItem {
-  const base = corpus.find((i) => i.app === app && i.split === "dev" && i.expected.kind === "regression")?.base.ref ?? corpus.find((i) => i.app === app && i.split === "dev")?.base.ref;
-  if (base === undefined) throw new Error(`no dev item of ${app} to take a base ref from`);
+  const ofApp = corpus.filter((i) => i.app === app);
+  const base =
+    ofApp.find((i) => i.split === "dev" && i.expected.kind === "regression")?.base.ref ??
+    ofApp.find((i) => i.split === "dev")?.base.ref ??
+    ofApp.find((i) => i.source === "oss-history" && i.expected.kind === "regression")?.base.ref;
+  if (base === undefined) throw new Error(`no item of ${app} to take a base ref from`);
   return {
     id: `jdev-${journeyId}`,
     patternId: "journey-development",

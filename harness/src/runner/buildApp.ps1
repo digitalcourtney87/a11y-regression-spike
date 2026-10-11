@@ -9,7 +9,7 @@
 #   built and reverted (as m3-spa-build does).
 # - Mined pair (oss/<id>): the fixture at the last good release (base), at the
 #   first broken release (the regression item), and at the last good release
-#   with each twin's patch. Each release installs with npm --before its own
+#   with each twin's patch. A test pair gets its base only. Each release installs with npm --before its own
 #   publish time plus one day (DR-0063).
 param(
   [Parameter(Mandatory = $true)][string]$App,
@@ -46,8 +46,9 @@ if ($App -like "oss/*") {
   if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
   $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
   # The version pair comes from the regression item; the unchanged control is also oss-history, with base = candidate.
-  $regression = @($all | Where-Object { $_.app -eq $App -and $_.split -eq "dev" -and $_.source -eq "oss-history" -and $_.expected.kind -eq "regression" }) | Select-Object -First 1
-  if ($null -eq $regression) { throw "no dev regression item for $App" }
+  # A test pair's regression item gives only the base: only dev items are built below, so its broken release never is (DR-0086).
+  $regression = @($all | Where-Object { $_.app -eq $App -and $_.source -eq "oss-history" -and $_.expected.kind -eq "regression" }) | Select-Object -First 1
+  if ($null -eq $regression) { throw "no regression item for $App" }
   $good = $regression.base.ref -replace '^.*@', ''
   $broken = $regression.candidate.ref -replace '^.*@', ''
   if ($good -eq $broken) { throw "the regression item's base and candidate are the same release ($good)" }

@@ -120,3 +120,64 @@ jobs:
           name: oss-${{ matrix.id }}
           path: artefacts/oss/
           retention-days: 30
+  # A test pair's benign twin is built, never loaded or checked (DR-0086): its patch applies, the fixture
+  # builds at the last good release, and the patch reverts. Only exit codes and logs are kept, not the build.
+  test-twins:
+    runs-on: windows-2025 # gates; change only via DECISIONS.md (DR-0006)
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install harness dependencies
+        run: npm ci
+      - name: Build each test twin
+        shell: pwsh
+        run: |
+          $repo = $PWD
+          $out = Join-Path $repo "artefacts/oss-test-twins"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-oss"
+          $tools = Join-Path $env:RUNNER_TEMP "oss-tools"
+          New-Item -ItemType Directory -Force -Path $tools | Out-Null
+          '{"private":true,"dependencies":{"vite":"8.3.2","@vitejs/plugin-react":"6.0.1"}}' | Out-File -Encoding utf8NoBOM (Join-Path $tools "package.json")
+          Copy-Item fixtures/oss-tools/ossBuild.mjs $tools
+          npm install --prefix $tools --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
+          $results = @()
+          foreach ($file in Get-ChildItem corpus/items -Filter *.json | Where-Object { $_.Name -notlike "* 2.*" } | Sort-Object Name) {
+            $item = Get-Content $file.FullName -Raw | ConvertFrom-Json
+            if ($item.split -ne "test" -or $item.app -notlike "oss/*" -or -not $item.candidate.patch) { continue }
+            $id = $item.app.Substring(4)
+            $fixture = Join-Path $repo "fixtures/oss/$id"
+            $meta = Get-Content (Join-Path $fixture "fixture.json") -Raw | ConvertFrom-Json
+            $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
+            $version = $item.base.ref -replace '^.*@', ''
+            $before = ([datetime]$times[$version]).ToUniversalTime().AddDays(1).ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            $patch = Join-Path $repo "corpus/patches/$($item.candidate.patch)"
+            $work = Join-Path $env:RUNNER_TEMP "twin-$($item.id)"
+            git apply $patch 2>&1 | Out-File (Join-Path $out "$($item.id).apply.log")
+            $applyExit = $LASTEXITCODE
+            node harness/src/probes/ossFixture.ts --fixture $fixture --version $version --out $work 2>&1 | Out-File (Join-Path $out "$($item.id).fixture.log")
+            git apply -R $patch 2>&1 | Out-File -Append (Join-Path $out "$($item.id).apply.log")
+            $revertExit = $LASTEXITCODE
+            Push-Location $work
+            npm install --ignore-scripts --no-audit --no-fund "--before=$before" 2>&1 | Out-File (Join-Path $out "$($item.id).install.log")
+            $installExit = $LASTEXITCODE
+            Pop-Location
+            node (Join-Path $tools "ossBuild.mjs") $work $meta.stack 2>&1 | Out-File (Join-Path $out "$($item.id).build.log")
+            $results += [ordered]@{ item = $item.id; version = $version; before = $before; applyExit = $applyExit; revertExit = $revertExit; installExit = $installExit; buildExit = $LASTEXITCODE }
+          }
+          $results | ConvertTo-Json | Out-File (Join-Path $out "builds.json")
+          $results | ConvertTo-Json | Out-Host
+          exit 0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: oss-test-twins
+          path: artefacts/oss-test-twins/
+          retention-days: 30
