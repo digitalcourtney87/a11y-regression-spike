@@ -1,6 +1,6 @@
 # Confirmatory protocol (M6, Gate G3)
 
-**Status:** written 2026-10-11. It becomes the confirmatory protocol when the owner creates the annotated tag `protocol-freeze-v1` whose message records this tree's protocol hash (DR-0028, DR-0033). Until that tag exists, everything here is exploratory (HANDOFF §4 rule 5) and the scorer and the runner refuse the test split. Claude does not create or push the tag.
+**Status:** ratified by the owner on 2026-10-11 (G3 brief items 1–5, DR-0089). It becomes the confirmatory protocol when the annotated tag `protocol-freeze-v1` records this tree's protocol hash (DR-0028, DR-0033). Until that tag exists, the scorer and the runner refuse the test split (HANDOFF §4 rule 5).
 
 No test-split item has been executed or scored. The dev results in `docs/reports/M5-dev.md` are exploratory and in-sample: the rules were developed on those items.
 
@@ -64,7 +64,7 @@ Secondary. It never changes a primary verdict. It asks how much of C's detection
 
 ## 5. Benign types
 
-The names are fixed by HANDOFF §10.2. These descriptions are proposed as final, for ratification in the G3 brief (DR-0030). They are the working descriptions already in use. They are not scored; the false-FAIL rate is.
+The names are fixed by HANDOFF §10.2. These descriptions are final (DR-0030, ratified 2026-10-11, DR-0089). They are not scored; the false-FAIL rate is.
 
 | Type | Description |
 |---|---|
@@ -78,7 +78,7 @@ The names are fixed by HANDOFF §10.2. These descriptions are proposed as final,
 
 ## 6. Limits frozen with the corpus
 
-These are properties of the test corpus as it stands. Redesigning any of them before the tag is a G3 brief item.
+These are properties of the test corpus, ratified as limits on 2026-10-11 (DR-0089). They are not redesigned before the tag.
 
 - **Fixture edits after the split** (DR-0086). The Vuetify card carries the dialog role and name. The Carbon combo box is followed by a button named after the chosen fruit. Each Fluent card receives an id after rendering, and the page has a heading. None of these edits changes library code.
 - **NVDA cannot see two symptoms on the base.** The Vuetify dialog pull-back, and the Fluent list-item role.

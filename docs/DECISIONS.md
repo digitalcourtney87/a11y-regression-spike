@@ -124,7 +124,8 @@ Conventions:
 | [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 | [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
 | [DR-0087](#dr-0087-owner-approval-of-p38) | Owner approval of P38 | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
-| [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | G3 brief |
+| [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0089 | Resolved (G3, DR-0089) |
+| [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3735,4 +3736,29 @@ The m3 reproductions (DR-0063) ran on the earlier fixtures. Re-checking them wou
 The BenignType descriptions are proposed as final in that file (DR-0030). The G3 brief asks the owner to ratify these, together with the fixture edits and the known blind spots, before tagging.
 
 **Not done.** The freeze tag is the owner's. No test item was executed or scored. M7 was not started.
+
+## DR-0089 Owner approval of the G3 brief
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.13 | §9 (M6); DR-0023, DR-0028, DR-0030, DR-0086, DR-0088; P37 |
+
+**Decision.**
+
+> Yes to all of them
+
+**Consequences.** All six items of `docs/gates/G3-brief.md` are approved:
+
+1. The three fixture edits made after the split stay (DR-0086).
+2. The known blind spots stay as limits. Those patterns are not redesigned.
+3. The BenignType descriptions in `protocol/PROTOCOL.md` §5 are final (DR-0030).
+4. The inconclusive range and the second round of 18 regression patterns are adopted (P37).
+5. The rule-model secondary analysis is adopted (DR-0023).
+6. `protocol-freeze-v1` is to be created and pushed, with PR #9 merged first so the tag is on `main`.
+
+The tag push is the owner's explicit approval under hard rule 2. No test item is executed or scored. M7 is not started.
+
 
