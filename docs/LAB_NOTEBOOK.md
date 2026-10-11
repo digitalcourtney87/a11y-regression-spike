@@ -382,3 +382,17 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | Fluent DocumentCard 6.124.2 | `role="listitem"` reaches the DOM; the list item has no name; NVDA reads "Recent documents list with 2 items Quarterly report" with no item role |
 | Radix Dialog with dismissable-layer 1.1.13 | Focus goes to the first input. Under NVDA, the first Escape leaves focus mode and the second closes the dialog. |
 | Carbon IconButton 1.53.1 | Ghost icon-only button; Space toggles `aria-pressed`; NVDA: "pressed" |
+
+### M7: K1 soak recorded (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** workflow run 38155513822, image `20260925.250.1`, seed `20261011`.
+**Affects:** PROTOCOL.md §8, DR-0090.
+**Confidence:** observed. The counts are the confirmatory soak record in `docs/reports/M7-soak.md`. This notebook does not restate them.
+
+### M7: Gate G4 recorded (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** owner reply 2026-10-11 (DR-0092). The confirmatory corpus is run 38156720011 and the soak is run 38155513822. The evidence bundles are on `results` at `aea1b4f`, directory `g4/`.
+**Affects:** DR-0092, P39, HANDOFF v1.15.
+**Confidence:** the gate record is `docs/gates/G4.md` and `docs/gates/G4-brief.md`. This notebook does not restate the test-split counts. The second round of 18 patterns is authorised and not built. No new freeze tag was created. M8 was not started.

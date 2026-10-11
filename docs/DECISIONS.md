@@ -127,13 +127,14 @@ Conventions:
 | [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0089 | Resolved (G3, DR-0089) |
 | [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0090 | M7 started (DR-0090) |
 | [DR-0090](#dr-0090-m7-started) | M7 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0091 | The first test dispatch refused (DR-0091) |
-| [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | — | No |
+| [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | DR-0092 | G4 accepted (DR-0092) |
+| [DR-0092](#dr-0092-owner-approval-of-the-g4-brief) | Owner approval of the G4 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | Second round build authorised; not executed |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). P38 was approved by the owner on 2026-10-11 (DR-0087). Nothing in this table is pending.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). P38 was approved by the owner on 2026-10-11 (DR-0087). P39 was approved by the owner on 2026-10-11 (DR-0092). Nothing in this table is pending.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -175,6 +176,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P36 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Duplicates seen only in speech** (DR-0042): they route to REVIEW, without NVDA-log corroboration, which would need a join that DR-0039 does not allow. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2. This is conservative for H2 | DR-0042; DR-0080 | What counts as detection (ANNOUNCEMENT_DUPLICATED) | No longer pending | Approved as recommended |
 | P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
 | P38 | **Resolved (approved by the owner 2026-10-11, DR-0087).** **KEYBOARD_TRAP when Tab cannot leave a component.** A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was and the base's focus moved: the same node in the tree, or silence from NVDA, in every attempt. No dev pattern has the mechanism, so no dev result changes, and no test item has been run | DR-0083; DR-0087 | What counts as detection (KEYBOARD_TRAP) | No longer pending | Approved as recommended |
+| P39 | **Resolved (approved by the owner 2026-10-11, DR-0092).** How the second round's 18 regression patterns are chosen, now that PROTOCOL §3 has triggered. Build them as the first 59 were (DR-0082 to DR-0086): seeded operators from the M3 catalogue, on controls that do not already carry that operator, in Atomic CRM and react-admin "simple", plus mined pairs that pass P22; each with a benign twin (P20) and an unchanged control when the journey is new; assigned to the test split. The symptoms and items this round missed do not decide which operators or controls are used. They are not executed or scored until the owner tags the amended tree | [G4-brief.md](gates/G4-brief.md) item 3; DR-0092 | What is measured (which regressions the second round adds) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3802,5 +3804,30 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 - A test dispatch that leaves `apps` at the five dev apps is rewritten to the apps that have test items. A dispatch that names its apps is left as sent.
 - Tag pushes no longer start `m4-items`. The `protocol-freeze-v2` push did, because a tag push ignores path filters, and that stray run was cancelled.
 - `protocol-freeze-v3` has to exist before the replacement corpus run. The soak (run 38155513822) does not use the freeze tag and is left running.
+
+## DR-0092 Owner approval of the G4 brief
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.15 | §9 (M7); §12; P39 |
+
+**Decision.**
+
+> Yes to all recommendations
+
+**Consequences.** All seven items of `docs/gates/G4-brief.md` are approved:
+
+1. The five headline calls in `docs/gates/G4.md` are this round's record.
+2. The second round is triggered. It adds 18 regression patterns, 59 to 77, and the size stays the dev table's 77.
+3. P39 is the selection rule. The symptoms this round missed do not choose the operators or the controls.
+4. The oracles, triggers and thresholds stay as frozen.
+5. The scorer stays unamended. The difference intervals remain in the gate report.
+6. The corpus run and the soak are archived on `results` at `aea1b4f`, directory `g4/` (D6). The corpus is three bundles because one archive was 89 MB. Nothing was dropped.
+7. M8 is not started. The Phase 1 decision stays on 27 November 2026 (DR-0003).
+
+**Build rule (Decided by Claude under DR-0045).** `patternId` is one mechanism in one source context, so a second control of an operator already present in that app is another item of the same pattern and does not raise the count from 59 to 77. The catalogue rows with no regression item in that app are five new pattern ids: `aria-modal-removed` in Atomic CRM; a route change that no longer moves focus, in each SPA; a route change that is no longer conveyed, in each SPA. The 11 verified mined pairs are already in the corpus. The other 13 patterns are a new mining pass under P22. None of them is executed or scored until the owner tags the amended tree. No freeze tag is created here.
 
 
