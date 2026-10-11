@@ -1,6 +1,6 @@
 # Confirmatory protocol (M6, Gate G3)
 
-**Status:** ratified by the owner on 2026-10-11 (G3 brief items 1–5, DR-0089). It becomes the confirmatory protocol when the annotated tag `protocol-freeze-v1` records this tree's protocol hash (DR-0028, DR-0033). Until that tag exists, the scorer and the runner refuse the test split (HANDOFF §4 rule 5).
+**Status:** ratified by the owner on 2026-10-11 (G3 brief items 1–5, DR-0089). `protocol-freeze-v1` records the tree before A-001. The test split runs only when the latest freeze tag matches this tree (A-001, `protocol-freeze-v2`).
 
 No test-split item has been executed or scored. The dev results in `docs/reports/M5-dev.md` are exploratory and in-sample: the rules were developed on those items.
 
@@ -96,4 +96,8 @@ protocol-sha256: <hex from npm run protocol:hash>"
 git push origin protocol-freeze-v1
 ```
 
-The owner creates and pushes the tag. The message contains exactly one `protocol-sha256:` line (DR-0028).
+The owner creates and pushes the tag. The message contains exactly one `protocol-sha256:` line (DR-0028). A later amendment uses the next number, `protocol-freeze-v2` and so on.
+
+## 8. Reliability soak
+
+Pre-registered before any test-split execution (A-001, DR-0090). The soak is 600 attempts of canary K1 in each leg, the sample §10.3 of HANDOFF uses to bound a flake rate at 0.5% when every attempt passes. It is a known-answer check, not a second copy of the corpus. The confirmatory corpus itself runs once, at the attempt counts in §2.

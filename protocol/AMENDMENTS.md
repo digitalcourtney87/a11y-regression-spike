@@ -42,4 +42,46 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 
 ## Amendments
 
-No amendments: the protocol is not yet frozen.
+### A-001: Let the runner execute the test split, and pre-register the soak
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Implementation, on the owner's instruction to start M7 |
+| Owner approval | Courtney, 2026-10-11 ("If M7 is next, please proceed") |
+| Freeze tag before | protocol-freeze-v1 (protocol-sha256: 1d80884ecba3ed388138c9851b69ea3bed2ca69e749202c694148d134e09bd07) |
+| Freeze tag after | protocol-freeze-v2. The hash is the tag message. It is not copied here, because this file is inside the hash. |
+| Files and sections changed | `protocol/PROTOCOL.md` (status, §7, new §8), `protocol/AMENDMENTS.md`, `harness/src/runner/itemRun.ts`, `harness/src/runner/buildApp.ps1`, `harness/src/score/devReport.ts`, `harness/src/score/scoreRuns.ts`, `.github/workflows/m4-items.yml` |
+| Related decision records | DR-0090 |
+
+**Change.** The item runner takes `--split dev|test` and defaults to dev. `test` selects test-split items; `assertItemExecutable` still refuses them unless the latest freeze tag matches. Evidence blocks and the scorer's report say CONFIRMATORY for the test split and EXPLORATORY for the dev split. `buildApp.ps1 -Split` builds that split's candidates, including a mined pair's broken release when the split is test. The workflow passes `split` and defaults to dev. `PROTOCOL.md` §8 pre-registers the soak: 600 K1 attempts per leg, and one corpus pass at the frozen attempt counts.
+
+**Justification.** `protocol-freeze-v1` allows the test split, but the runner still selected only dev items and the build step never built a test candidate. M7 cannot run without this. No oracle, trigger, threshold, journey or corpus item changes.
+
+**Test-split exposure when proposed.** None. No test-split item had been executed or scored, and no test-split result had been seen.
+
+**Impact on analyses.** None on the statistics. The test split becomes executable. The soak size is fixed before the run.
+
+**Reporting.** The G4 report is the first test-split analysis. There is no earlier test-split analysis to set beside it. Dev results stay the exploratory report from `protocol-freeze-v1`.
+
+### A-002: Fetch the freeze tag, and stop the confirmatory report describing itself as dev
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Review on PR #11 (Codex and Devin) |
+| Owner approval | Courtney, 2026-10-11 (asked for a response to that review) |
+| Freeze tag before | protocol-freeze-v2 (protocol-sha256: 23dc31a3809ce3b6757019a2ac49156ed4958df83f93ca64df389d52c338d3bb) |
+| Freeze tag after | protocol-freeze-v3. The hash is the tag message. It is not copied here, because this file is inside the hash. |
+| Files and sections changed | `.github/workflows/m4-items.yml`, `harness/src/runner/itemRun.ts` (job summary label), `harness/src/score/devReport.ts` (test-split wording), `protocol/AMENDMENTS.md` |
+| Related decision records | DR-0091 |
+
+**Change.** The items job fetches tags and stops before the build if a test job has none. `--split test --journeys` keeps the job summary EXPLORATORY. The test report no longer says the oracles were developed on that split, and it omits power rows computed from the scores being reported. A test dispatch that leaves `apps` at the dev default is rewritten to the apps that have test items. A tag push no longer starts this workflow.
+
+**Justification.** Run 38155512025 built candidates and then refused every test item, because the checkout had no freeze tag. The other edits stop a journey run being labelled confirmatory and stop the G4 report presenting test scores as a dev sample-size plan.
+
+**Test-split exposure when proposed.** Run 38155512025 selected test items. The guard refused each one before a block, canary or attempt. A downloaded summary (`items-atomic-crm-nvda-absent-shard4`) records the refusal and no blocks. No arm verdict was produced, and nothing was scored. The run was cancelled.
+
+**Impact on analyses.** None on the statistics. The test report's power section no longer offers a sample size computed from the confirmatory scores.
+
+**Reporting.** There is still no test-split analysis. Dev results stay the exploratory report from `protocol-freeze-v1`.

@@ -1,11 +1,12 @@
 name: m4-items
 # M4 item runs (HANDOFF §9 M4; DR-0066, DR-0067). Dispatch with --ref <branch>.
-# Each job builds one app's base and dev candidates (third-party code installed
-# with scripts off, contents: read, no secrets, a separate npm cache that is
-# never saved; P17, P19), then runs that app's dev items in one leg: K1
-# bracketing canaries, ABBA attempts and evidence packages. Both legs run in one
-# dispatch so they share an image version (R8, DR-0006). Test-split items are
-# never built or run before the freeze (hard rule 5, DR-0034). A push that
+# Each job builds one app's base and the candidates of the requested split
+# (third-party code installed with scripts off, contents: read, no secrets, a
+# separate npm cache that is never saved; P17, P19), then runs that app's items
+# of that split in one leg: K1 bracketing canaries, ABBA attempts and evidence
+# packages. Both legs run in one dispatch so they share an image version (R8,
+# DR-0006). The test split is built and run only with split=test, and only when
+# the freeze tag matches (A-001). A push that
 # changes .github/m4-request.json runs the request it holds (the same fields as
 # the dispatch inputs), so runs can be requested from a branch before the
 # workflow reaches the default branch. A request may instead name journeys to
@@ -14,6 +15,10 @@ name: m4-items
 # developed before the freeze (DR-0082).
 on:
   push:
+    # A tag push does not evaluate path filters, so without a branch filter the
+    # freeze tag itself would start this workflow (observed on protocol-freeze-v2).
+    branches:
+      - "**"
     paths:
       - .github/m4-request.json
   workflow_dispatch:
@@ -27,7 +32,7 @@ on:
         type: string
         default: '["nvda-absent","nvda-present"]'
       items:
-        description: Comma-separated item ids (empty for every dev item of the app)
+        description: Comma-separated item ids (empty for every item of the split)
         type: string
         default: ""
       sides:
@@ -54,6 +59,10 @@ on:
         description: Comma-separated journey ids to develop on the base build only (empty to run items)
         type: string
         default: ""
+      split:
+        description: dev or test (test runs only after the freeze tag matches)
+        type: string
+        default: "dev"
 permissions:
   contents: read
 concurrency:
@@ -74,6 +83,7 @@ jobs:
       shards: ${{ steps.plan.outputs.shards }}
       shard_list: ${{ steps.plan.outputs.shard_list }}
       journeys: ${{ steps.plan.outputs.journeys }}
+      split: ${{ steps.plan.outputs.split }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -90,6 +100,7 @@ jobs:
           IN_AXE: ${{ inputs.axe }}
           IN_SHARDS: ${{ inputs.shards }}
           IN_JOURNEYS: ${{ inputs.journeys }}
+          IN_SPLIT: ${{ inputs.split }}
         run: |
           if [ "$EVENT" = "push" ]; then
             f=.github/m4-request.json
@@ -103,6 +114,7 @@ jobs:
               echo "axe=$(jq -r '.axe' "$f")"
               echo "shards=$(jq -r '.shards // 1' "$f")"
               echo "journeys=$(jq -r '(.journeys // []) | join(",")' "$f")"
+              echo "split=$(jq -r '.split // "dev"' "$f")"
             } >> "$GITHUB_OUTPUT"
           else
             {
@@ -115,7 +127,24 @@ jobs:
               echo "axe=$IN_AXE"
               echo "shards=${IN_SHARDS:-1}"
               echo "journeys=$IN_JOURNEYS"
+              echo "split=${IN_SPLIT:-dev}"
             } >> "$GITHUB_OUTPUT"
+          fi
+          # The dispatch default is the dev apps. A test run that leaves it there
+          # would miss the eight mined test apps and build three that have no test items.
+          split=$(grep '^split=' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2-)
+          apps=$(grep '^apps=' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2-)
+          dev_default='["atomic-crm","react-admin-simple","oss-carbon-19563","oss-fluent-35927","oss-rac-8697"]'
+          if [ "$split" = "test" ] && [ "$apps" = "$dev_default" ]; then
+            list=$(mktemp)
+            for f in corpus/items/*.json; do
+              base=$(basename "$f")
+              case "$base" in *' 2.'*) continue ;; esac
+              jq -r 'select(.split=="test") | .app | split("/") | join("-")' "$f"
+            done | sort -u > "$list"
+            test_apps=$(jq -R . "$list" | jq -cs .)
+            rm -f "$list"
+            echo "apps=$test_apps" >> "$GITHUB_OUTPUT"
           fi
           n=$(grep '^shards=' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2)
           echo "shard_list=$(seq 1 "$n" | jq -cs .)" >> "$GITHUB_OUTPUT"
@@ -133,6 +162,14 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-tags: true
+      - name: Require a freeze tag before a test-split job builds
+        if: needs.plan.outputs.split == 'test'
+        shell: bash
+        run: |
+          git tag --list 'protocol-freeze-v*'
+          test -n "$(git tag --list 'protocol-freeze-v*')"
+          git for-each-ref --format='%(objecttype) %(refname)' 'refs/tags/protocol-freeze-v*'
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
@@ -157,19 +194,20 @@ jobs:
       - name: Install NVDA 2026.2 (Guidepup 0.35.0 manifest, sha256-checked)
         if: matrix.leg == 'nvda-present'
         run: npx --no-install guidepup install
-      - name: Build the app's base and dev candidates
+      - name: Build the app's base and the split's candidates
         shell: pwsh
         env:
           APP_KEY: ${{ matrix.app }}
           ITEMS: ${{ needs.plan.outputs.items }}
           JOURNEYS: ${{ needs.plan.outputs.journeys }}
+          SPLIT: ${{ needs.plan.outputs.split }}
         run: |
           $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
           # Journey development needs the base build only (DR-0082).
           $items = if ($env:JOURNEYS -ne '') { '__base_only__' } else { $env:ITEMS }
-          ./harness/src/runner/buildApp.ps1 -App $app -Out builds -Items "$items"
+          ./harness/src/runner/buildApp.ps1 -App $app -Out builds -Items "$items" -Split "$env:SPLIT"
           Copy-Item -Recurse -Force (Join-Path "builds" $env:APP_KEY "_logs") (Join-Path "artefacts/items" "build-logs") -ErrorAction SilentlyContinue
-      - name: Run the app's dev items
+      - name: Run the app's items
         shell: pwsh
         env:
           APP_KEY: ${{ matrix.app }}
@@ -182,13 +220,14 @@ jobs:
           SHARD: ${{ matrix.shard }}
           SHARDS: ${{ needs.plan.outputs.shards }}
           JOURNEYS: ${{ needs.plan.outputs.journeys }}
+          SPLIT: ${{ needs.plan.outputs.split }}
         run: |
           $app = if ($env:APP_KEY -like 'oss-*') { 'oss/' + $env:APP_KEY.Substring(4) } else { $env:APP_KEY }
           $extra = @()
           if ($env:CANARIES -ne 'true') { $extra += '--no-canaries' }
           if ($env:AXE -ne 'true') { $extra += '--no-axe' }
           if ($env:JOURNEYS -ne '') { $extra += @('--journeys', "$env:JOURNEYS") }
-          npm run m4:items -- --leg "$env:LEG" --app "$app" --builds builds --out artefacts/items --env artefacts/items/env.json --items "$env:ITEMS" --sides "$env:SIDES" --reps "$env:REPS" --shard "$env:SHARD/$env:SHARDS" @extra
+          npm run m4:items -- --leg "$env:LEG" --app "$app" --builds builds --out artefacts/items --env artefacts/items/env.json --items "$env:ITEMS" --split "$env:SPLIT" --sides "$env:SIDES" --reps "$env:REPS" --shard "$env:SHARD/$env:SHARDS" @extra
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:

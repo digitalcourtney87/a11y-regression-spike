@@ -3,7 +3,7 @@
  * only. One invocation is one job: one app, one leg.
  *
  *   node harness/src/runner/itemRun.ts --leg <nvda-absent|nvda-present> --app <app> --builds <dir> --out <dir>
- *     [--items id,id] [--sides both|base] [--reps n] [--shard i/N] [--no-canaries] [--no-axe]
+ *     [--items id,id] [--split dev|test] [--sides both|base] [--reps n] [--shard i/N] [--no-canaries] [--no-axe]
  *     [--journeys id,id]
  *
  * With `--journeys` the job develops journeys instead of running items: each
@@ -23,7 +23,8 @@
  * "-". Each build is served from 127.0.0.1 and every other host is blocked.
  *
  * Per item, in this leg (DR-0066):
- * 1. `assertItemExecutable` (DR-0034); test-split items never run here.
+ * 1. `assertItemExecutable` (DR-0034). A test-split item runs only when `--split test`
+ *    and the latest freeze tag matches the frozen set (A-001).
  * 2. A pre-block canary (K1), then the attempts in ABBA order (order.ts),
  *    then a post-block canary (K1). The post-block canary never converts
  *    outcomes (DR-0032).
@@ -146,6 +147,7 @@ const { values: args } = parseArgs({
     builds: { type: "string", default: "builds" },
     out: { type: "string", default: "artefacts/items" },
     items: { type: "string", default: "" },
+    split: { type: "string", default: "dev" },
     journeys: { type: "string", default: "" },
     sides: { type: "string", default: "both" },
     reps: { type: "string", default: "" },
@@ -1063,7 +1065,7 @@ async function runBlock(item: CorpusItem, journey: Journey, corpus: readonly Cor
   const packages = attempts.map((a) => packageFor(item, a, ctx.manifest, canaries));
   const validations = packages.map((p) => (p === null ? null : GateEvidencePackageSchema.safeParse(p)));
   const validity = itemValidity(attempts.map((a) => ({ side: a.side, reasons: a.reasons })));
-  const block = { label: "EXPLORATORY", jobId, item, journeyId: journey.id, leg, n, order, split: decision.split, pre, post, validity, attempts, packages, canariesSkipped: args["no-canaries"], packageErrors: validations.map((v) => (v === null ? ["no evidence package: the attempt failed before its preflight"] : v.success ? null : v.error.issues.slice(0, 10).map((i) => `${i.path.join(".")}: ${i.message}`))) };
+  const block = { label: item.split === "test" ? "CONFIRMATORY" : "EXPLORATORY", jobId, item, journeyId: journey.id, leg, n, order, split: decision.split, pre, post, validity, attempts, packages, canariesSkipped: args["no-canaries"], packageErrors: validations.map((v) => (v === null ? ["no evidence package: the attempt failed before its preflight"] : v.success ? null : v.error.issues.slice(0, 10).map((i) => `${i.path.join(".")}: ${i.message}`))) };
   mkdirSync(join(outDir, "blocks"), { recursive: true });
   writeFileSync(join(outDir, "blocks", `${item.id}.json.gz`), gzipSync(JSON.stringify(block)));
   const summary = {
@@ -1131,15 +1133,16 @@ function readJourneyFiles(): Map<string, unknown> {
 
 async function main(): Promise<void> {
   mkdirSync(outDir, { recursive: true });
-  const summary: Json = { label: "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
+  if (args.split !== "dev" && args.split !== "test") throw new Error(`--split must be dev or test, not ${args.split}`);
+  const summary: Json = { label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
   const corpus = readCorpus();
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
   const devJourneys = args.journeys.split(",").map((s) => s.trim()).filter((s) => s !== "");
-  // Dev items only: test-split items are not executed before the freeze (hard rule 5); the guard below is the backstop.
+  // `--split test` selects the test split. The guard below refuses it unless the freeze tag matches (A-001).
   // Journey development replaces the items with base-only pseudo-items (DR-0082).
   // A request may name journeys of several apps; each job develops only its own app's.
   const journeyApps = new Map([...readJourneyFiles().values()].flatMap((j) => (typeof j === "object" && j !== null && "id" in j && "app" in j ? [[String(j.id), String(j.app)] as const] : [])));
-  const selected = devJourneys.length > 0 ? devJourneys.filter((j) => journeyApps.get(j) === app).map((j) => journeyDevItem(j, corpus)) : corpus.filter((i) => i.app === app && i.split === "dev" && (wantedIds === null || wantedIds.has(i.id)));
+  const selected = devJourneys.length > 0 ? devJourneys.filter((j) => journeyApps.get(j) === app).map((j) => journeyDevItem(j, corpus)) : corpus.filter((i) => i.app === app && i.split === args.split && (wantedIds === null || wantedIds.has(i.id)));
   const items = selected.filter((_, k) => k % shardCount === shardIndex - 1);
   const { journeys, errors } = checkJourneys(readJourneyFiles(), items, SETUP_NAMES);
   if (errors.length > 0) throw new Error(`journeys: ${errors.join("; ")}`);
