@@ -1,0 +1,21 @@
+{
+  "id": "oss-vuetify-22770-unchanged",
+  "patternId": "oss--vuetify-22770",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/vuetify-22770",
+  "journeyId": "oss-vuetify-22770",
+  "base": {
+    "ref": "oss/vuetify-22770@9f8dc24ccde90eb6d884e069fc46bc4d64ec09cf+vuetify@3.3.6"
+  },
+  "candidate": {
+    "ref": "oss/vuetify-22770@9f8dc24ccde90eb6d884e069fc46bc4d64ec09cf+vuetify@3.3.6"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-vuetify-22770 (P15/P39, DR-0099)",
+    "licence": "MIT (vuetify)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.3.7",
+  "result": {
+    "pointer": {
+      "holds": false,
+      "detail": "Item 1 -> Item 9 (ArrowUp; pointer entry)"
+    },
+    "keyboard": {
+      "holds": false,
+      "detail": "Item 1 -> Item 9 (ArrowUp; Tab entry)"
+    },
+    "benignTwin": {
+      "holds": false,
+      "detail": "Item 1 -> Item 9 (ArrowUp; Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

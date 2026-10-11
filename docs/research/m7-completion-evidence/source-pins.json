@@ -1,0 +1,137 @@
+[
+  {
+    "package": "vuetify",
+    "releases": [
+      {
+        "version": "3.3.6",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": "^1.0.0-alpha.12",
+          "webpack-plugin-vuetify": "^2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "58f620cedd9445686a4a694b78a61c3f0ecc1369",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.3.6.tgz",
+          "fileCount": 1383,
+          "integrity": "sha512-9QHh3mY5dK2Y4FGGBHFaIl/RVoP3Wg+XzP/pvruAoglIsUqzMlHrUOYAjO6/SWTxmhsiPI1jl4TyEBlppMXtNQ==",
+          "signatures": [
+            {
+              "sig": "MEUCICUd9nZOwrO26InUNqXiioRwPTjKY0UpvBVR7r3d5KMCAiEA1ZHkKmz5YRfTYg22UMkOfwJh0ai1BqnZUpgakV+zCFw=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 31446282
+        },
+        "published": "2023-06-27T21:01:18.411Z"
+      },
+      {
+        "version": "3.3.7",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": "^1.0.0-alpha.12",
+          "webpack-plugin-vuetify": "^2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "858dceca1a2bcb465b1214b611c70625868ce99b",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.3.7.tgz",
+          "fileCount": 1385,
+          "integrity": "sha512-+Avd/vXdDZsct7PiXbOlgEKy8ZhxlaWZERv4MZ1x4tyJ5AoTm/jZW33u6TzlwhilqBgqKJFOe2UOH60LkKlukQ==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCMF+UzQOJXf/7Vhih7TJTDmLA7MPmb/YKlItvj1lifvQIhAJxE0XBfL5Nob/Jxo7qzKyPwfKPLmYJl4BjOtJBXsuoA",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 31540017
+        },
+        "published": "2023-07-05T18:59:45.643Z"
+      }
+    ]
+  },
+  {
+    "package": "@fluentui/react-components",
+    "releases": [
+      {
+        "version": "9.20.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "001175cf68a74cd62ebe51db4e89a9d7e7eb7907",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.0.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-2EMBXlmny04XJ4rQfsnLDSPC0dXXNP+exHXhF+vyhTkR8nKjsK1jGMZs84dDXIZq6l5Ok87bfDlxVt1WMmuXzw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDvj7N3400X2+FgnF2FVg/CSzfx4p+34MZ0auQpmJmZfwIhAJKx85fTqHA5Uy4rmg9yp7BSboa5vsr7NVOjuMVcOglx",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2536514
+        },
+        "published": "2023-05-12T20:25:49.400Z"
+      },
+      {
+        "version": "9.20.1",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "0dcc35e7e8724c1a3b7d21e3419c63345d2c6198",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.1.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-UmPk6Z756gQqLNi7A/0bV6OC3ybh1i5fe1aDUhR+1JbIlRH+hgbpCWQfL3UACbTjwuw/taOQNRyAeHsxgcBzYQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIBWLLbilN0tcExGrObYKNE4iW0w805sPNjkCXVkhEyjQAiEAqfFXA2fVnIVEZDADjTCxKW/MfAXkfaGcz0V1HAIgvY8=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2556377
+        },
+        "published": "2023-05-18T00:38:28.672Z"
+      },
+      {
+        "version": "9.20.4",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "5c932fc101b0fd14c52834e24cb7747072318c3d",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.4.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-XpEiNO1dbCV+5BmMEzJPKfAyH4VV1lWTmIZ+6Pa/CW/B8me6ninCeUj9Jep5N5lI3mPde2ue7KCMpNZMdJM6Aw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQD67vg5GZqK9w5lbyN3bKv7L1KDIHkGRep6PpWGNb+2CAIhAKjPgetP8e57UGloJmzASLCzY0yIMaT4Wjs4SQ8q+KZS",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2578905
+        },
+        "published": "2023-05-25T10:00:30.539Z"
+      }
+    ]
+  }
+]

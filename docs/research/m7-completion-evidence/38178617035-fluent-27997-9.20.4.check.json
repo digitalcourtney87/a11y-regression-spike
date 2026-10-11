@@ -1,0 +1,11 @@
+{
+  "label": "EXPLORATORY",
+  "version": "9.20.4",
+  "result": {
+    "error": "TimeoutError: locator.innerText: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#selection')\u001b[22m\n"
+  },
+  "external": [],
+  "pageErrors": [
+    "e.renderCell is not a function"
+  ]
+}

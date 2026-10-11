@@ -1,0 +1,16 @@
+{
+  "id": "oss-vuetify-22770-twin",
+  "patternId": "oss--vuetify-22770",
+  "operator": "css-only",
+  "app": "oss/vuetify-22770",
+  "journeyId": "oss-vuetify-22770",
+  "target": "Main width only; autocomplete items and key handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "h(\"main\", null, [",
+      "replace": "h(\"main\", { style: { maxWidth: \"480px\" } }, ["
+    }
+  ],
+  "twinOf": "oss-vuetify-22770"
+}

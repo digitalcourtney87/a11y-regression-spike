@@ -5,12 +5,19 @@ export default async function check({ page, fresh }) {
     if (await p.locator("#selection").innerText() !== "alpha") throw new Error("Initial selection must be Alpha");
     if (keyboard) {
       let reached = false;
+      const trace = [];
       for (let i = 0; i < 20; i++) {
         await p.keyboard.press("Tab");
-        reached = await p.evaluate(() => document.activeElement?.closest('[role="row"]')?.textContent?.includes("Alpha") === true);
+        trace.push(await p.evaluate(() => {
+          const el = document.activeElement;
+          return { tag: el?.tagName, role: el?.getAttribute("role"), text: el?.textContent?.slice(0, 100), tabIndex: el?.tabIndex, row: el?.closest('[role="row"]')?.textContent?.slice(0, 100) };
+        }));
+        reached = await p.evaluate(() => document.activeElement?.closest('[role="columnheader"]')?.textContent?.trim() === "Name");
         if (reached) break;
       }
-      if (!reached) throw new Error("First data row not keyboard reachable");
+      if (!reached) throw new Error(`Grid header not keyboard reachable: ${JSON.stringify({ trace, tabbables: await p.evaluate(() => [...document.querySelectorAll("[tabindex]")].map((el) => ({ role: el.getAttribute("role"), tabIndex: el.tabIndex, text: el.textContent?.slice(0, 80) }))) })}`);
+      await p.keyboard.press("ArrowDown");
+      if (!await p.evaluate(() => document.activeElement?.closest('[role="row"]')?.textContent?.includes("Alpha") === true)) throw new Error("ArrowDown did not reach Alpha from header");
       await p.keyboard.press("ArrowDown");
       if (!await p.evaluate(() => document.activeElement?.closest('[role="row"]')?.textContent?.includes("Beta") === true)) throw new Error("ArrowDown did not reach Beta");
       await p.keyboard.press("Space");

@@ -139,6 +139,8 @@ Conventions:
 
 | [DR-0098](#dr-0098-broader-mining-pass-and-datefield-admission) | Broader mining pass and DateField admission | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | Second addition built; 16 still needed |
 
+| [DR-0099](#dr-0099-completion-batches-and-vuetify-navigation-admission) | Completion batches and Vuetify navigation admission | Accepted | 2026-10-11 | Owner instruction to finish patterns; P22/P39 | — | 62 test patterns; completion continues |
+
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
@@ -3942,3 +3944,22 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Admission/build.** Add `oss--ras-8637` with existing JOURNEY_BLOCKED and `mined` mechanism metadata, a test regression item, CSS_ONLY twin and exact base/base unchanged control. Refs share immutable fixture commit 613899074a9864fff939ebaa29bdca6b77fc0ae5. Follow P39's explicit all-test append (unused seed 0, fraction 1), without altering prior assignments/items. The journey uses existing TAB/TYPE/mode-toggle/DOCUMENT_TOP/BROWSE_NEXT strategies; actual NVDA path remains unexecuted until a new tag. The ordinary fixture output exposes the entered date identically on every release; no oracle, threshold or trigger changes.
 
 **Boundary and validation.** One fixture and two dispatches used; no local third-party execution or assigned test-item execution. Corpus validation reports 207 items, 81 patterns (20 dev, 61 test); lint/typecheck and all 154 corpus/schema tests pass. Source patch applies. A-005/A-006 record frozen-set changes; no new tag. Two of 18 additions are built, 16 still needed; six documentary leads remain pending. The cap is reached and availability remains unestablished. No M8 work or criteria/context/target change.
+
+## DR-0099 Completion batches and Vuetify navigation admission
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction to finish test patterns, retaining 77; P22/P39 |
+| Scope | Successive recorded bounded mining/reproduction batches; no new freeze tag |
+
+**Method.** Completion/batch-four plan committed as f65ef41 before queries. Eleven previously query-capped issues plus 32 new selections are reviewed: 43 candidates, 38 excluded, three documentary leads pending, DataGrid taken to reproduction and Vuetify subsequently admitted. Batch-five plan committed as c8a59d1 before its sixteen queries: 18 new selections, 14 excluded and four pending documentary. Full ledgers retain every search hit/disposition and sources. Previous six pending leads remain separate. Follow-up of Carbon #2600 finds contributor PR #13391, which addresses a different issue (#13110) and does not establish #2600's release boundary; Blueprint #3988 still has no linked fix in its timeline. No fabricated admissions follow from missing evidence.
+
+**DataGrid failures.** Run 38178617035 renders no valid fixture because DataGridRow needs a render-function child; fix it uniformly. Runs 38178948350 and 38179257999 fail the first-row Tab precondition on all three releases, even after replacing later-version composite focus mode with the supported default cell mode. No successful keyboard behaviour or admission is claimed. Before batch-five dispatch two, instrument focus/tabindex traces and uniformly correct the initial route to the grid's tabbable column header, then ArrowDown to Alpha and Beta, then Space. The controlled selection criterion and release pins never change. P22 rule 8 permits pre-assignment setup repair; failing checks do not retry an alternative path. Retain every failed attempt.
+
+**Vuetify admission.** #22770/#17265/#23031 isolate VAutocomplete virtualization. MIT Vuetify 3.3.6 versus 3.3.7 shares Vue 3.3.4; ordinary JavaScript render functions use the existing vanilla build mode without workflow/security changes. Runs 38178948350 and 38179257999 have identical check outputs and resolved locks: Enter opens, ArrowDown reaches Item 1, then ArrowUp reaches Item 100 on last good but only Item 9 on broken. Pointer-start and pure Tab-entry paths agree; a fresh width-only twin preserves both. No page errors/external requests and successful installs/builds. The modern merged fix requires newer Vue and is documentary corroboration, not a third execution with incompatible pins.
+
+**Construction.** Add oss--vuetify-22770 with existing JOURNEY_BLOCKED, a test version pair, CSS_ONLY twin and exact unchanged control. Both refs share immutable fixture commit 9f8dc24ccde90eb6d884e069fc46bc4d64ec09cf. Append P39's all-test assignment (unused seed 0, fraction 1); preserve previous assignments/items. The declared TAB/Enter/ArrowDown/ArrowUp journey uses existing name goals; no oracle, trigger, threshold or scoring definition changes. Actual NVDA journey execution remains gated by the new-tag requirement. Corpus validation: 210 items, 82 patterns (20 dev, 62 test); lint/typecheck and 154 corpus/schema tests pass. Twin patch applies. A-008 discloses admission after G4 exposure.
+
+**Ongoing objective.** Three of 18 additions are built; 15 still needed. This is a progress record, not a claim that completion is achieved or remaining pairs are available. Continue the owner's completion objective in recorded batches; report genuine source/evidence barriers without relaxing P22, context or target. No assigned test item is executed/scored, freeze tag applied or M8 work started.

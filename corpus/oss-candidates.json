@@ -301,6 +301,30 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "vuetify-22770",
+      "repo": "vuetifyjs/vuetify",
+      "refs": [
+        "#22770",
+        "PR #17265",
+        "PR #23031"
+      ],
+      "stack": "vanilla",
+      "package": "vuetify",
+      "licence": "MIT",
+      "good": "3.3.6",
+      "broken": "3.3.7",
+      "fixed": null,
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "VAutocomplete virtualization restricts keyboard wrap to rendered options: ArrowUp from Item 1 reaches Item 9 instead of Item 100. Introduced by #17265 and fixed by merged #23031. Pair shares Vue 3.3.4; the modern fix requires newer Vue and was not executed. Two unchanged exploratory reproductions plus width-only twin in 38178948350/38179257999 (DR-0099).",
+      "reproduction": {
+        "run": 38179257999,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

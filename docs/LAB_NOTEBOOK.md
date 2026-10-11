@@ -429,3 +429,7 @@ DR-0097; [pass-two report and source-linked ledger](research/2026-10-11-m7-minin
 ### 2026-10-11 — Broader mining pass and DateField admission
 
 DR-0098; [source-linked report and ledger](research/2026-10-11-m7-pass-three.md). Ten new issues, one admitted DateField pair with twin/control after two exploratory checks. Two additions built, 16 remain; six documentary leads pending. No confirmatory execution or new tag.
+
+### 2026-10-11 — Completion batches and Vuetify navigation admission
+
+DR-0099; [batch-four ledger/report](research/2026-10-11-m7-batch-four.md), [batch-five ledger/report](research/2026-10-11-m7-batch-five.md), [completion evidence](research/m7-completion-evidence/vuetify-repeat-comparison.json). Three additions built, 62 test patterns, 15 still needed; completion work continues. DataGrid remains unadmitted after setup failures.

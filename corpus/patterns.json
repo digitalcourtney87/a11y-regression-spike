@@ -714,6 +714,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "@adobe/react-spectrum 3.42.2 to 3.43.0: DateField leading-zero suppression prevents continuous 01011970 entering January 1, 1970; it instead enters October 11, 970. Reverted by PR #8684. Reproduced in runs 38176937862 and 38177297242; original criterion unchanged, browse-outcome/CSS-twin diagnostics pass (DR-0098)."
+    },
+    {
+      "id": "oss--vuetify-22770",
+      "batch": "oss-regression",
+      "context": "oss:vuetifyjs/vuetify#22770",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "vuetify 3.3.6 to 3.3.7: VAutocomplete virtualization restricts keyboard wrap to rendered options: ArrowUp from Item 1 reaches Item 9 instead of Item 100. Introduced by #17265 and fixed by merged #23031. Pair shares Vue 3.3.4; the modern fix requires newer Vue and was not executed. Two unchanged exploratory reproductions plus width-only twin in 38178948350/38179257999 (DR-0099)."
     }
   ]
 }
