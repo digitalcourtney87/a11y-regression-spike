@@ -433,3 +433,7 @@ DR-0098; [source-linked report and ledger](research/2026-10-11-m7-pass-three.md)
 ### 2026-10-11 — Completion batches and Vuetify navigation admission
 
 DR-0099; [batch-four ledger/report](research/2026-10-11-m7-batch-four.md), [batch-five ledger/report](research/2026-10-11-m7-batch-five.md), [completion evidence](research/m7-completion-evidence/vuetify-repeat-comparison.json). Three additions built, 62 test patterns, 15 still needed; completion work continues. DataGrid remains unadmitted after setup failures.
+
+### 2026-10-12 — EXPLORATORY: DataGrid admission
+
+DR-0100; A-009; [matching reproduction evidence](research/m7-completion-evidence/datagrid-repeat-comparison.json). Completion continues; no new freeze tag or assigned execution.

@@ -58,6 +58,32 @@
     "package": "@fluentui/react-components",
     "releases": [
       {
+        "version": "9.19.1",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "26c166798f3bff755d4abe2bcc7a4fef45c5646e",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.19.1.tgz",
+          "fileCount": 28,
+          "integrity": "sha512-HHhQdGXHVn0PwrEbFGu/xEqSLVYRf2WfMsG6FVmFBNwSwojB/2/DRWXQPUPL8K2Hzrg5Xon8z3RBP/XrSUFqtw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCQI57kINrbOGgLD/0/0SQepNPKQ9vwkkJ6Kcs6BrmADwIgd7ook2Ab2KYHXobfqZq55d8kMw2KQ7Fe5ZAy5pbd1pU=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2445722,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkRjnPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoWvQ/+N7KtwRQ81VUzAZoDSW4yru1VSsEbBRSc3xVZPIYCL7TgH0G/\r\n3KUZdMjiGZF7X8Y18LGZUOy8x6MajWg2kqqoG8UMfGie/bd8vcc2s4juiRQQ\r\nWVXhi6QkjdaHlDmFTaBqMCrpSVoZc8QzHjI6Ok57/pHqrcsomuROdodEctDT\r\nPgb6JdQ4OgRHZigaHjC87U23Hg6ssFnah02bly7ZCZblUmkrkxsoaf9LTT+5\r\nFc2SU5s7admQW9N/+A7SXaolpn6X99k61LWl3SmQLo4qv06GFLS7rTR2gI8t\r\nOZz9ltnJNKyraOxGX4jR2uQGjsNKvCXLw/7buKDo7o1jMzffuftZ9SrAwPOl\r\n0f3qL+xI9nMxTDW11RiJqIiETeQc5PAcU2uQmlfAd/4CbukcnuMWKdsJGkaD\r\nDzhwZah2JUky69OsRCg6K+u4dlOQ9zFJSYQZz6AnOyxIcBHOvo2Tlgx8NB57\r\nMYe3q6lzZnRGx7l4TihM8tWzj+bKmLqNFmdm/H359mes5FmdNjHAHdorkMKU\r\nWOwyfiXzuOec5/29+m4p6Z1NUZhtFr00GnUOjsJ1i/emAfhBTfmBd/8QR4TV\r\n/s/PkKjrQVgMIkMgw/JQCW4YHcphLAbBa2CH0KB63N4P8AZUVb8GLDkyr8HU\r\nRskDonnzvNOWOH1Mv91fPdA5vEyVATexdso=\r\n=Hwrs\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2023-04-24T08:11:59.234Z"
+      },
+      {
         "version": "9.20.0",
         "license": "MIT",
         "peerDependencies": {

@@ -723,6 +723,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "vuetify 3.3.6 to 3.3.7: VAutocomplete virtualization restricts keyboard wrap to rendered options: ArrowUp from Item 1 reaches Item 9 instead of Item 100. Introduced by #17265 and fixed by merged #23031. Pair shares Vue 3.3.4; the modern fix requires newer Vue and was not executed. Two unchanged exploratory reproductions plus width-only twin in 38178948350/38179257999 (DR-0099)."
+    },
+    {
+      "id": "oss--fluent-27997",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#27997",
+      "operator": "mined",
+      "stratum": "regression:STATE_NOT_CONVEYED",
+      "status": "planned",
+      "note": "@fluentui/react-components 9.19.1 to 9.20.0: Controlled DataGrid selection dispatcher becomes a noop after #27702: selecting Beta leaves Alpha selected, Beta row aria-selected and radio checked false. #27978 restores dispatcher. Refined published-source boundary and repaired supported header/ArrowDown/Space route reproduce in 38181259137 and 38181647925 with identical locks and CSS twin; prior setup failures and false 9.20.0 last-good hypothesis retained (DR-0100)."
     }
   ]
 }

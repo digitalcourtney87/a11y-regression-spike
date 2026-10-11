@@ -1,0 +1,16 @@
+{
+  "id": "oss-fluent-27997-twin",
+  "patternId": "oss--fluent-27997",
+  "operator": "css-only",
+  "app": "oss/fluent-27997",
+  "journeyId": "oss-fluent-27997",
+  "target": "Main width only; controlled rows and selection callbacks unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "return <FluentProvider theme={webLightTheme}>\n    <main>",
+      "replace": "return <FluentProvider theme={webLightTheme}>\n    <main style={{ maxWidth: 480 }}>"
+    }
+  ],
+  "twinOf": "oss-fluent-27997"
+}

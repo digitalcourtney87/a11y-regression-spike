@@ -1,0 +1,22 @@
+{
+  "id": "oss-fluent-27997-twin",
+  "patternId": "oss--fluent-27997",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/fluent-27997",
+  "journeyId": "oss-fluent-27997",
+  "base": {
+    "ref": "oss/fluent-27997@d26f7a08671909d4289f91f4ade4fe321d9bfd58+@fluentui/react-components@9.19.1"
+  },
+  "candidate": {
+    "patch": "oss-fluent-27997-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0100)",
+    "licence": "MIT (@fluentui/react-components)"
+  }
+}

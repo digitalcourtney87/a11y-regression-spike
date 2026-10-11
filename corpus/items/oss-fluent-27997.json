@@ -1,0 +1,24 @@
+{
+  "id": "oss-fluent-27997",
+  "patternId": "oss--fluent-27997",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/fluent-27997",
+  "journeyId": "oss-fluent-27997",
+  "base": {
+    "ref": "oss/fluent-27997@d26f7a08671909d4289f91f4ade4fe321d9bfd58+@fluentui/react-components@9.19.1"
+  },
+  "candidate": {
+    "ref": "oss/fluent-27997@d26f7a08671909d4289f91f4ade4fe321d9bfd58+@fluentui/react-components@9.20.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "mined: Controlled DataGrid selection dispatcher becomes a noop after #27702: selecting Beta leaves Alpha selected, Beta row aria-selected and radio checked false. #27978 restores dispatcher. Refined published-source boundary and repaired supported header/ArrowDown/Space route reproduce in 38181259137 and 38181647925 with identical locks and CSS twin; prior setup failures and false 9.20.0 last-good hypothesis retained (DR-0100)."
+  },
+  "provenance": {
+    "origin": "mined from microsoft/fluentui (#27997, #27896, PR #27702, PR #27978); verified by m3-oss-repro run 38181647925 (DR-0063); second-round admission DR-0100",
+    "licence": "MIT (@fluentui/react-components)",
+    "url": "https://github.com/microsoft/fluentui/issues/27997"
+  }
+}

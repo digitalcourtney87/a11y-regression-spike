@@ -325,6 +325,31 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "fluent-27997",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#27997",
+        "#27896",
+        "PR #27702",
+        "PR #27978"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react-components",
+      "licence": "MIT",
+      "good": "9.19.1",
+      "broken": "9.20.0",
+      "fixed": "9.20.4",
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "Controlled DataGrid selection dispatcher becomes a noop after #27702: selecting Beta leaves Alpha selected, Beta row aria-selected and radio checked false. #27978 restores dispatcher. Refined published-source boundary and repaired supported header/ArrowDown/Space route reproduce in 38181259137 and 38181647925 with identical locks and CSS twin; prior setup failures and false 9.20.0 last-good hypothesis retained (DR-0100).",
+      "reproduction": {
+        "run": 38181647925,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

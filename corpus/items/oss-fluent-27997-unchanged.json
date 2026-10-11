@@ -1,0 +1,21 @@
+{
+  "id": "oss-fluent-27997-unchanged",
+  "patternId": "oss--fluent-27997",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/fluent-27997",
+  "journeyId": "oss-fluent-27997",
+  "base": {
+    "ref": "oss/fluent-27997@d26f7a08671909d4289f91f4ade4fe321d9bfd58+@fluentui/react-components@9.19.1"
+  },
+  "candidate": {
+    "ref": "oss/fluent-27997@d26f7a08671909d4289f91f4ade4fe321d9bfd58+@fluentui/react-components@9.19.1"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-fluent-27997 (P15/P39, DR-0100)",
+    "licence": "MIT (@fluentui/react-components)"
+  }
+}

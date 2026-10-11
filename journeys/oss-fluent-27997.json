@@ -1,0 +1,57 @@
+{
+  "id": "oss-fluent-27997",
+  "version": "1",
+  "app": "oss/fluent-27997",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-header",
+      "strategy": "TAB",
+      "until": {
+        "name": "Name",
+        "maxAttempts": 20
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-alpha",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "until": {
+        "name": "Alpha",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-beta",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "until": {
+        "name": "Beta",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "select-beta",
+      "strategy": "PRESS",
+      "key": "Space",
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "radio|Select Beta|checked=true"
+        }
+      ],
+      "observeMs": 1000
+    }
+  ]
+}
