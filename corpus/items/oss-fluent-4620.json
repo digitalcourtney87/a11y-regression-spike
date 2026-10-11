@@ -1,0 +1,24 @@
+{
+  "id": "oss-fluent-4620",
+  "patternId": "oss--fluent-4620",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/fluent-4620",
+  "journeyId": "oss-fluent-4620",
+  "base": {
+    "ref": "oss/fluent-4620@09b9e5a89192a20e055ef288b3db5f51f67601ad+office-ui-fabric-react@5.40.2"
+  },
+  "candidate": {
+    "ref": "oss/fluent-4620@09b9e5a89192a20e055ef288b3db5f51f67601ad+office-ui-fabric-react@5.41.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Calendar Next month handles one Space twice after controls became native buttons; April advances to June instead of May. Pointer control advances once. Fixed by PR #4662. Two unchanged-check reproductions plus browse-goal/CSS-twin diagnostics in run 38175379953 (DR-0096)."
+  },
+  "provenance": {
+    "origin": "mined from microsoft/fluentui (#4620, PR #4662); verified by m3-oss-repro run 38175379953 (DR-0063); second-round admission DR-0096, independent runs 38174040191 and 38174572204",
+    "licence": "MIT (office-ui-fabric-react)",
+    "url": "https://github.com/microsoft/fluentui/issues/4620"
+  }
+}

@@ -254,6 +254,29 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "fluent-4620",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#4620",
+        "PR #4662"
+      ],
+      "stack": "react",
+      "package": "office-ui-fabric-react",
+      "licence": "MIT",
+      "good": "5.40.2",
+      "broken": "5.41.0",
+      "fixed": "5.90.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "Calendar Next month handles one Space twice after controls became native buttons; April advances to June instead of May. Pointer control advances once. Fixed by PR #4662. Two unchanged-check reproductions plus browse-goal/CSS-twin diagnostics in run 38175379953 (DR-0096).",
+      "reproduction": {
+        "run": 38175379953,
+        "pointer": false,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

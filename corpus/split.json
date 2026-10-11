@@ -1,5 +1,5 @@
 {
-  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment.",
+  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment. P39 second-round additions are explicitly appended to test (no shuffle); their batches have testFraction 1 and seed 0 (unused).",
   "batches": [
     {
       "name": "spa-regression",
@@ -94,6 +94,17 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-calendar",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -139,6 +150,7 @@
     "oss--carbon-5623": "test",
     "oss--carbon-7253": "test",
     "oss--fluent-35927": "dev",
+    "oss--fluent-4620": "test",
     "oss--fluent-7796": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",

@@ -127,13 +127,19 @@ Conventions:
 | [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0089 | Resolved (G3, DR-0089) |
 | [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0090 | M7 started (DR-0090) |
 | [DR-0090](#dr-0090-m7-started) | M7 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0091 | The first test dispatch refused (DR-0091) |
-| [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | — | No |
+| [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | DR-0092 | G4 accepted (DR-0092) |
+| [DR-0092](#dr-0092-owner-approval-of-the-g4-brief) | Owner approval of the G4 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0093 (build allocation only) | Second round build authorised; allocation corrected |
+| [DR-0093](#dr-0093-correction-of-the-second-round-build-allocation) | Correction of the second-round build allocation | Accepted | 2026-10-11 | Owner instruction; factual correction under DR-0045 | — | 18 new qualifying mined patterns required; availability unestablished |
+| [DR-0094](#dr-0094-bounded-second-round-mining-feasibility-pass) | Bounded second-round mining feasibility pass | Accepted | 2026-10-11 | Owner instruction to proceed | — | One exploratory reproduction; no new corpus patterns admitted |
+| [DR-0095](#dr-0095-independent-repeat-of-the-calendar-mining-check) | Independent repeat of the Calendar mining check | Accepted | 2026-10-11 | Owner instruction to repeat the Calendar check | — | Two successful reproductions; no corpus admission |
+
+| [DR-0096](#dr-0096-calendar-admission-and-mining-lead-follow-up) | Calendar admission and mining lead follow-up | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | One new test pattern; 17 additions remain |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). P38 was approved by the owner on 2026-10-11 (DR-0087). Nothing in this table is pending.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). P38 was approved by the owner on 2026-10-11 (DR-0087). P39 was approved by the owner on 2026-10-11 (DR-0092). Nothing in this table is pending.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -175,6 +181,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P36 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Duplicates seen only in speech** (DR-0042): they route to REVIEW, without NVDA-log corroboration, which would need a join that DR-0039 does not allow. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2. This is conservative for H2 | DR-0042; DR-0080 | What counts as detection (ANNOUNCEMENT_DUPLICATED) | No longer pending | Approved as recommended |
 | P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
 | P38 | **Resolved (approved by the owner 2026-10-11, DR-0087).** **KEYBOARD_TRAP when Tab cannot leave a component.** A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was and the base's focus moved: the same node in the tree, or silence from NVDA, in every attempt. No dev pattern has the mechanism, so no dev result changes, and no test item has been run | DR-0083; DR-0087 | What counts as detection (KEYBOARD_TRAP) | No longer pending | Approved as recommended |
+| P39 | **Resolved (approved by the owner 2026-10-11, DR-0092).** How the second round's 18 regression patterns are chosen, now that PROTOCOL §3 has triggered. Build them as the first 59 were (DR-0082 to DR-0086): seeded operators from the M3 catalogue, on controls that do not already carry that operator, in Atomic CRM and react-admin "simple", plus mined pairs that pass P22; each with a benign twin (P20) and an unchanged control when the journey is new; assigned to the test split. The symptoms and items this round missed do not decide which operators or controls are used. They are not executed or scored until the owner tags the amended tree. DR-0093 corrects the build allocation: the existing seeded catalogue has no unused non-dropped patterns; 18 new qualifying mined patterns are required, with availability unestablished | [G4-brief.md](gates/G4-brief.md) item 3; DR-0092 | What is measured (which regressions the second round adds) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3803,4 +3810,101 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 - Tag pushes no longer start `m4-items`. The `protocol-freeze-v2` push did, because a tag push ignores path filters, and that stray run was cancelled.
 - `protocol-freeze-v3` has to exist before the replacement corpus run. The soak (run 38155513822) does not use the freeze tag and is left running.
 
+## DR-0092 Owner approval of the G4 brief
 
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.15 | §9 (M7); §12; P39 |
+
+**Decision.**
+
+> Yes to all recommendations
+
+**Consequences.** All seven items of `docs/gates/G4-brief.md` are approved:
+
+1. The five headline calls in `docs/gates/G4.md` are this round's record.
+2. The second round is triggered. It adds 18 regression patterns, 59 to 77, and the size stays the dev table's 77.
+3. P39 is the selection rule. The symptoms this round missed do not choose the operators or the controls.
+4. The oracles, triggers and thresholds stay as frozen.
+5. The scorer stays unamended. The difference intervals remain in the gate report.
+6. The corpus run and the soak are archived on `results` at `aea1b4f`, directory `g4/` (D6). The corpus is three bundles because one archive was 89 MB. Nothing was dropped.
+7. M8 is not started. The Phase 1 decision stays on 27 November 2026 (DR-0003).
+
+**Build rule (corrected 2026-10-11, DR-0093).** `patternId` is one mechanism in one source context, so another control carrying an operator already represented in that app does not add an independent pattern. The previous allocation of five seeded patterns plus thirteen mined patterns was incorrect: the five seeded entries are dropped, not available. All 68 non-dropped SPA catalogue patterns and all 11 previously verified mined patterns already have regression items across dev and test. Existing dev patterns cannot be reassigned to test. Under P39/P22, the 18 additions therefore require new qualifying mined patterns; availability is not established. Each needs a benign twin (P20), an unchanged control when the journey is new, and a test assignment. Selection must not use the confirmatory misses. None is executed or scored until the owner tags the amended tree. DR-0093 records the evidence and supersedes only the erroneous allocation.
+
+## DR-0093 Correction of the second-round build allocation
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction to investigate and correct the G4 review finding; factual correction under DR-0045 |
+| HANDOFF v1.15 | §9 (M7); P39 |
+
+**Finding.** DR-0092 treated missing regression items as unused seeded capacity without checking the registry's dropped status. The five entries it proposed were excluded on base-only evidence before the confirmatory run:
+
+| Entries in `corpus/patterns.json` | Reason | Original record |
+|---|---|---|
+| `atomic-crm--route-focus-removed`, `react-admin-simple--route-focus-removed` | Neither base moves focus on a route change, so there is no behaviour to remove | DR-0059 |
+| `atomic-crm--route-change-silent`, `react-admin-simple--route-change-silent` | Neither base conveys route changes; adding an announcer to the base changes the application | DR-0059 |
+| `atomic-crm--aria-modal-removed` | Radix uses `aria-hidden` with its focus trap; this mechanism cannot be expressed without patching the library. `modal={false}` is the already represented containment-removed mechanism | DR-0060 |
+
+**Investigation.** A registry-to-item check found 74 SPA catalogue entries: 68 have regression items and six are dropped. The sixth is `react-admin-simple--drag-only-reorder`, excluded because the base has no drag-and-drop (DR-0059). All 11 `oss-regression` entries also have regression items. There is no unused non-dropped pattern in either batch. The 20 dev patterns remain dev; adding controls or reusing an existing mined pattern does not increase the independent test-pattern count.
+
+**Correction.** Remove the five-plus-thirteen allocation. Keep the existing exclusions and P39's method: seek 18 new distinct mined patterns that pass P22's documentary, keyboard-reproduction and other verification rules, with checks derived from the issue or fix rather than the arms' oracles. Assign the additions to test as P39 specifies; preserve existing assignments. Keep benign twins and new-journey unchanged controls. Register each accepted pattern and record its source, verification evidence and distinct mechanism/context before confirmatory execution. Do not select from the symptoms or items G4 missed.
+
+**Limits.** This corrects an unsupported allocation; it does not claim that 18 qualifying pairs are available. If the mining pass falls short, record the shortfall and bring any change of context, base application, verification rule or target count to the owner under hard rule 12. The accepted G4 calls, target of 77, frozen oracles, triggers and thresholds, tag requirement, M8 boundary and 27 November decision date stand. No corpus item, split, frozen path, execution or tag is changed by this correction.
+
+## DR-0094 Bounded second-round mining feasibility pass
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction to proceed with the recommended bounded feasibility pass |
+| HANDOFF v1.15 | §9 (M7); P39 |
+
+**Method.** The correction (DR-0093) was committed as `998e389`. The bounded search plan was recorded before searches in `docs/research/2026-10-11-m7-mining-plan.md`, commit `8b5ed75`: sixteen fixed queries over eight repositories, at most three new issues per query and 48 total, excluding the original registry and duplicates. The pass kept P22 and did not select from G4 misses. Its limit was three new fixture candidates and two exploratory reproduction dispatches.
+
+**Outcome.** Thirty-six issues outside the current 11-entry registry were reviewed (including Headless UI #2934, rediscovered from the earlier title survey): thirty excluded, five pending documentary evidence, and one taken to reproduction. Fluent UI #4620 reproduces once in run 38174040191 at `d50c8c2`: Calendar 5.40.2 advances one month per Space, 5.41.0 advances two, and 5.90.0 advances one again. Pointer activation advances one month in all three. The first dispatch (38173756427) built the releases but failed the fixture's render precondition; required localisation strings were added uniformly before the split under P22 rule 8. Both the failed setup and successful observations are retained. Two dispatches were used; an independent successful repeat remains outstanding.
+
+**Records.** `docs/research/2026-10-11-m7-mining-ledger.md` (sources, queries and exclusions), its JSON companion, `docs/research/2026-10-11-m7-mining-feasibility.md` (shortfall and follow-up), and `docs/research/m7-mining-evidence/` (check/build outputs and release fingerprints). A-003 records the exploratory fixture addition and G4 exposure.
+
+**Boundary.** No new corpus pattern is admitted, registered or split. The existing 59 test patterns and 20 dev patterns retain their assignments. One successful reproduction is not the full admission check: an independent repeat, frozen-vocabulary compatibility and companion twin/control work remain. Even if this candidate and all five documentary leads qualify, this selected set would supply at most six additions, leaving at least twelve to source. The search limit is reached; a further pass starts with a revised recorded plan, not a selection based on confirmatory misses. The 77 target and P22 criteria stand. No confirmatory execution/scoring, new freeze tag or M8 work occurred.
+
+## DR-0095 Independent repeat of the Calendar mining check
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction: "Please repeat the calendar check" |
+| HANDOFF v1.15 | §9 (M7); P39 |
+
+**Scope.** One additional exploratory dispatch after DR-0094's bounded pass, using the unchanged Calendar fixture, releases 5.40.2/5.41.0/5.90.0, React/react-dom 16.2.0 and one-month-per-Space criterion. The original pass's two-dispatch budget remains its historical record; this repeat is separately owner-authorised.
+
+**Evidence.** Run 38174572204 at `0b5e0a1` independently matches successful run 38174040191 at `d50c8c2`: good and fixed releases advance April → May on Space, while broken 5.41.0 advances April → June. Pointer activation advances one month in all three. Installs and builds return 0, with no page errors or external requests. Fixture and execution paths are identical across the commits; resolved package locks and check outputs match exactly.
+
+**Records.** Repeat check/build outputs, dependency-lock comparison hashes and runner timings are retained in `docs/research/m7-mining-evidence/`, with a SHA-256 manifest. The ledger and feasibility report record two successful exploratory reproductions and retain the initial setup failure.
+
+**Boundary.** The independent-repeat requirement is resolved. Frozen-vocabulary compatibility and companion benign-twin/new-journey control work remain before corpus admission. No candidate is registered, assigned or admitted, and no confirmatory execution, new freeze tag or M8 work occurs.
+
+## DR-0096 Calendar admission and mining lead follow-up
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Please proceed” after the Calendar admission recommendation; P22/P39 |
+| Scope | Second-round build only; no freeze tag or confirmatory execution |
+
+**Admission.** Calendar #4620 is one distinct mined pattern, `oss--fluent-4620`, using the existing JOURNEY_BLOCKED definition: one Space on Next month must expose May 2018 from April 2018. The declared journey uses TAB, explicit focus-mode toggles around PRESS Space, DOCUMENT_TOP and bounded BROWSE_NEXT. No announcement expectation, oracle, trigger or threshold is added. The independent issue-derived check reproduced in runs 38174040191 and 38174572204. Admission diagnostic run 38175379953 on `09b9e5a89192a20e055ef288b3db5f51f67601ad` retains the same criterion and adds accessible browse-goal and CSS-only twin checks. May 2018 is reachable on browse line 4 in 5.40.2, absent in 5.41.0 after April→June, and reachable on line 2 in fixed 5.90.0. Pointer controls pass all releases. The twin's maximum-width-only style preserves each release's keyboard and browse results. Installs/builds exit zero; no page errors/external requests. See `docs/research/2026-10-11-calendar-admission.md` and its raw evidence.
+
+**Construction.** Register the MIT pair 5.40.2/5.41.0 with React/react-dom 16.2.0; fixed 5.90.0 corroborates the library fix. The same immutable fixture commit pins both refs. Append the assignment to test under P39 and retain all previous assignments. The explicit all-test batch records testFraction 1 and unused seed 0; it does not invoke the earlier randomized split algorithm, which requires a fraction strictly between zero and one. The pattern stays in the existing `oss-regression` source batch so existing build tools handle its twin. Add a CSS_ONLY twin, changing only main maxWidth to 480, and an exact base/base unchanged control for the new journey. Pointer reproduction metadata is false: pointer control remains correct in the broken release. The keyboard reproduction metadata is true.
+
+**Limits.** The browse diagnostic uses the unchanged accessibility-tree cursor model; it is not real NVDA evidence or a scored corpus run. The CSS diagnostic applies the identical inline style on a fresh page; the committed patch is checked structurally. Assigned test items are not executed before a new owner freeze tag. The existing M7 scores remain at protocol-freeze-v3. There are now 20 dev and 60 test regression patterns (80 total), with one of the needed 18 additions built, leaving 17. No claim of availability follows.
+
+**Lead follow-up.** The five recorded leads were revisited without a new search. Carbon #3397 was closed as stale after maintainers requested missing MDX reproduction context, with no linked fix; exclude it from this pass under P22 rules 5/6. Four documentary leads remain pending and none is scheduled for CI. A revised bounded title-search plan is recorded before searches in `docs/research/2026-10-11-m7-next-mining-plan.md`; no query under it has yet run. Details: `docs/research/2026-10-11-m7-leads-followup.md`.

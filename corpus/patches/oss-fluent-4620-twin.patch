@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/fluent-4620/src/main.js b/fixtures/oss/fluent-4620/src/main.js
+index f532359..9f0fade 100644
+--- a/fixtures/oss/fluent-4620/src/main.js
++++ b/fixtures/oss/fluent-4620/src/main.js
+@@ -17,7 +17,7 @@ const strings = {
+ };
+ 
+ render(
+-  h("main", null,
++  h("main", { style: { maxWidth: 480 } },
+     h("h1", null, "Calendar keyboard regression check"),
+     h(Calendar, { value: new Date(2018, 3, 15), today: new Date(2018, 3, 15), showMonthPickerAsOverlay: false, strings }),
+   ),

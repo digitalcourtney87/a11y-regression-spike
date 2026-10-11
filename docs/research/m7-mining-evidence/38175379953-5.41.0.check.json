@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.41.0",
+  "result": {
+    "pointer": {
+      "browseMayReachedAt": 4,
+      "holds": true,
+      "detail": "April 2018 -> May 2018 (one pointer click)"
+    },
+    "keyboard": {
+      "browseMayReachedAt": null,
+      "holds": false,
+      "detail": "April 2018 -> June 2018 (one Space press)"
+    },
+    "benignTwin": {
+      "browseMayReachedAt": null,
+      "holds": false,
+      "detail": "April 2018 -> June 2018 (one Space press)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

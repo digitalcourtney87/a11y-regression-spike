@@ -1,0 +1,13 @@
+# M7 documentary follow-up
+
+EXPLORATORY. Owner authorised proceeding after the Calendar repeat. This follows only the five recorded leads; no new candidate search or fixture execution. GitHub issue bodies, comments, timelines and referenced pull requests were read on 2026-10-11.
+
+| Lead | Follow-up finding | Disposition |
+|---|---|---|
+| [React Spectrum #2572](https://github.com/adobe/react-spectrum/issues/2572) | Comment names [merged PR #3000](https://github.com/adobe/react-spectrum/pull/3000), a ListView row-focus refactor. The issue questions whether Home/End support regressed and provides no last-good release. The fix alone cannot establish a release regression. | Pending: working last-good and first-broken published boundary still needed. No CI |
+| [Carbon #2600](https://github.com/carbon-design-system/carbon/issues/2600) | Maintainer calls the Enter/Space failure a regression. Final comment refers to a contributor's latest fix without an exact PR. Timeline links [#1147](https://github.com/carbon-design-system/carbon/issues/1147), an accessibility improvement issue, not the needed merged fix. | Pending: exact fix and last-good release still needed. No CI |
+| [Carbon #3397](https://github.com/carbon-design-system/carbon/issues/3397) | Maintainer requests full reproduction details for MDX usage. The issue was then auto-closed as stale; no library fix is linked in its timeline. | Excluded from this pass under P22 rules 5/6: incomplete reproduction context and no identified fix. This does not claim the underlying bug was invalid |
+| [Fluent UI #4432](https://github.com/microsoft/fluentui/issues/4432) | [Merged PR #5385](https://github.com/microsoft/fluentui/pull/5385) lists this issue among nine fixes and substantially refactors Dropdown accessibility. A comment says the author could not reproduce the fix. Report is Narrator/Edge, with no good/broken versions. | Pending: published release boundary and source-supported applicability to the pinned NVDA/Chrome path. No CI |
+| [Blueprint #3988](https://github.com/palantir/blueprint/issues/3988) | Maintainer corroborates table 3.7.x with newer core, and another user confirms 3.7.1 versus 3.8.22. Closure only suggests table 4.0.0-rc.1 might fix it; timeline identifies no specific merged fix. | Pending: stable compatible pair and exact library fix. No CI |
+
+The follow-up narrows the unresolved queue to four leads. None has sufficient evidence to schedule a new reproduction. The original 36-issue search and its original dispositions remain the historical record; the current ledger records the later exclusion separately.

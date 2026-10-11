@@ -85,3 +85,43 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 **Impact on analyses.** None on the statistics. The test report's power section no longer offers a sample size computed from the confirmatory scores.
 
 **Reporting.** There is still no test-split analysis. Dev results stay the exploratory report from `protocol-freeze-v1`.
+
+### A-003: Exploratory second-round mining fixture
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Codex |
+| Owner approval | Owner instruction to proceed with the bounded mining feasibility pass, 2026-10-11; confirmatory execution still awaits the owner's freeze tag |
+| Freeze tag before | protocol-freeze-v3 (`protocol-sha256: 508302c493d1e35225fc409ea4d01c3c7e4b7b982c819efedac4783627d60ab2`) |
+| Freeze tag after | None; this branch is not frozen for confirmatory execution |
+| Files and sections changed | `fixtures/oss/fluent-4620/`; this amendment entry |
+| Related decision records | DR-0092, DR-0093; `docs/research/2026-10-11-m7-mining-plan.md` |
+
+**Change.** Add an unsplit exploratory fixture for Fluent UI issue #4620, checking whether one Space press advances the Calendar exactly one month. Source inspection suggests last good 5.40.2, first broken 5.41.0 and fixed 5.90.0; reproduction must establish the behavioural boundary. No corpus item or pattern is registered or assigned by this amendment. The check uses the issue and fix's expected behaviour, independently of the arm oracles.
+
+**Justification.** The pre-registered second round needs new qualifying mined patterns. The bounded feasibility pass checks this candidate before any split assignment; it does not count an unverified candidate toward 77.
+
+**Test-split exposure.** G4's 145-item confirmatory run and all five comparison intervals have already been seen. The search plan was recorded before new searches and did not select from G4 misses. This exploratory check is not represented as pre-registered before G4.
+
+**Analysis and execution.** The accepted G4 analysis remains reproducible at `protocol-freeze-v3`. The new fixture is run only by the exploratory mining workflow, before any test assignment. No amended confirmatory analysis exists. Oracles, triggers, thresholds and original split assignments are unchanged. The owner must tag the amended tree before any subsequent confirmatory execution or scoring.
+
+**Pre-split setup repair.** Run 38173756427 installed and built all three releases, but each page failed to render because `Calendar.strings` was null. The fixture now supplies the documented English `ICalendarStrings` fields identically on all releases. The one-month criterion and release pins are unchanged. These errors are setup failures, not regression observations (P22 rule 8).
+
+**Exploratory outcome.** The repaired fixture in run 38174040191 (`d50c8c2`) reproduces the good/broken/fixed keyboard boundary once, with pointer controls passing and no page errors or external requests. The first dispatch was cancelled by the replacement run after its candidate artifact completed. The two-dispatch budget is exhausted; independent successful repetition and corpus admission remain outstanding (DR-0094). No confirmatory verdict or split assignment was produced.
+
+**Owner-authorised follow-up.** DR-0095 records run 38174572204, an independently successful repeat with unchanged fixture and execution paths. Both successful runs give identical check output and resolved dependency locks. The earlier bounded pass still used two dispatches; this additional dispatch was explicitly requested by the owner. Corpus admission remains outstanding, and no new freeze tag or confirmatory execution occurs.
+
+### A-004: First second-round mined pattern
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Codex |
+| Owner approval | Owner “Please proceed” after the Calendar admission recommendation; P39/P22 |
+| Freeze tag before | protocol-freeze-v3 |
+| Freeze tag after | None; confirmatory execution awaits a new owner tag |
+| Files changed | `fixtures/oss/fluent-4620/check.mjs`, `corpus/oss-candidates.json`, `corpus/patterns.json`, `corpus/split.json`, three Calendar items, twin spec/patch, `journeys/oss-fluent-4620.json`; this entry |
+| Decision | DR-0096 |
+
+**Change and exposure.** G4 outcomes are known. Add accessible-month and benign-layout diagnostics before assignment, then register one qualifying Calendar pattern, a benign twin and unchanged control. The issue-derived criterion is unchanged. Assign the addition explicitly to test; preserve old assignments. Use the frozen journey vocabulary and JOURNEY_BLOCKED symptom; no oracle, trigger, threshold or scoring rule changes. The original G4 items and misses did not select this candidate. The branch's frozen-set hash changes; protocol-freeze-v3 retains the original G4 evidence. No assigned test item is executed or scored and no new tag is made.
