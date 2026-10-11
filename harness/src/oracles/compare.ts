@@ -18,7 +18,9 @@
  *      baseline is ambiguous evidence, extract §3.3);
  *    - the base meets it in k of n and the candidate fails it in k of n:
  *      FAIL, with the symptom of the candidate's most common failure class;
- *      in fewer than k: REVIEW.
+ *      in fewer than k: REVIEW. A focus failure on Tab or Shift+Tab is
+ *      KEYBOARD_TRAP when the candidate's focus stayed and the base's moved
+ *      (P38, DR-0087).
  *    - announcementContains also gives ANNOUNCEMENT_DUPLICATED when the base
  *      carries the text exactly once in k of n attempts and the candidate at
  *      least twice in k of n. From speech alone, a duplicate is REVIEW, not
@@ -110,8 +112,9 @@ function inComponent(family: Family, previous: BlockStep | undefined, rules: Ora
 
 /**
  * The focus symptom from the step's place in the journey:
- * - KEYBOARD_TRAP: the step presses Escape (a documented key for leaving a
- *   component) and the candidate's focus stays inside the component;
+ * - KEYBOARD_TRAP: the step presses Escape and the candidate's focus stays
+ *   inside the component, or the step is Tab or Shift+Tab, the candidate's
+ *   focus stays where it was and the base's focus moved (P38, DR-0087);
  * - FOCUS_ESCAPES_DIALOG: the target is a dialog that an earlier step already
  *   had focus in;
  * - FOCUS_NOT_RESTORED: the target is the journey's anchor or an earlier
@@ -123,6 +126,7 @@ export function focusSymptom(
   journey: Journey,
   index: number,
   t: Target,
+  base: readonly BlockAttempt[],
   candidates: readonly BlockAttempt[],
   anchorName: string | undefined,
   rules: OracleRules,
@@ -130,6 +134,13 @@ export function focusSymptom(
   const steps = atSteps(journey);
   const step = steps[index];
   if (step === undefined) return "FOCUS_NOT_MOVED";
+  const stayedThrough = (attempts: readonly BlockAttempt[], stayed: boolean): boolean =>
+    attempts.length > 0 &&
+    attempts.every((a) => {
+      const s = stepOf(a, step.id);
+      const prev = steps[index - 1] === undefined ? undefined : stepOf(a, steps[index - 1]?.id ?? "");
+      return s !== undefined && focusStayed(family, s, prev, a) === stayed;
+    });
   if (step.strategy === "PRESS" && step.key === "Escape") {
     const trapped = candidates.every((a) => {
       const s = stepOf(a, step.id);
@@ -138,6 +149,8 @@ export function focusSymptom(
     });
     if (trapped) return "KEYBOARD_TRAP";
   }
+  // P38: Tab is a documented key for leaving a component. Focus that stays, while the base's moved, is a trap.
+  if ((step.strategy === "TAB" || step.strategy === "SHIFT_TAB") && stayedThrough(candidates, true) && stayedThrough(base, false)) return "KEYBOARD_TRAP";
   const value = `${t.role}|${t.name}`;
   const earlier = steps.slice(0, index).flatMap((s) => s.expectations.filter((e) => e.type === "focusOn").map((e) => e.value));
   if ((t.role === "dialog" || t.role === "alertdialog") && earlier.includes(value)) return "FOCUS_ESCAPES_DIALOG";
@@ -260,7 +273,7 @@ export function compareFamily(family: Family, block: Block, journey: Journey, ru
         let symptom = record.finding.symptom;
         if (record.finding.verdict === "FAIL" && record.cls === "focus") {
           const t = parseTarget(e);
-          symptom = t === null ? "FOCUS_NOT_MOVED" : focusSymptom(family, journey, index, t, cand, anchorName, rules);
+          symptom = t === null ? "FOCUS_NOT_MOVED" : focusSymptom(family, journey, index, t, base, cand, anchorName, rules);
         }
         push({ ...record.finding, ...(symptom === undefined ? {} : { symptom }), stepIndex: index, stepId: step.id, order: 1 + ei });
       }

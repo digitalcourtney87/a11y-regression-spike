@@ -119,16 +119,17 @@ Conventions:
 | [DR-0080](#dr-0080-m5-oracles-scorer-and-dev-results-and-owner-items-p28p37) | M5 oracles, scorer and dev results, and owner items P28–P37 | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) | DR-0081 | Resolved (P28–P37, DR-0081) |
 | [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
 | [DR-0082](#dr-0082-building-the-test-patterns-without-executing-them) | Building the test patterns without executing them | Accepted | 2026-10-04 | Owner reply 2026-10-03; tooling decided by Claude under DR-0045 | — | No |
-| [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) | — | P38 |
+| [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 approved by the owner 2026-10-11 (DR-0087) | DR-0087 | Resolved (P38, DR-0087) |
 | [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 | [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 | [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
+| [DR-0087](#dr-0087-owner-approval-of-p38) | Owner approval of P38 | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). **P38 is pending** (DR-0083).
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). P38 was approved by the owner on 2026-10-11 (DR-0087). Nothing in this table is pending.
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -169,7 +170,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P35 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Candidate-only check failures** (DR-0035): no FAIL rule covers them in v1, so they route to REVIEW. A pre-outcome check failing on the candidate alone (a stolen foreground, a frame stall, an NVDA crash) is not a symptom of HANDOFF §6, and none occurred in the M4 runs | DR-0035; DR-0080 | What counts as detection | No longer pending | Approved as recommended |
 | P36 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Duplicates seen only in speech** (DR-0042): they route to REVIEW, without NVDA-log corroboration, which would need a join that DR-0039 does not allow. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2. This is conservative for H2 | DR-0042; DR-0080 | What counts as detection (ANNOUNCEMENT_DUPLICATED) | No longer pending | Approved as recommended |
 | P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
-| P38 | **KEYBOARD_TRAP when Tab cannot leave a component.** The M5 rule (P28) gives KEYBOARD_TRAP only for a step that presses Escape. HANDOFF §6 defines the symptom as a candidate that "cannot leave a component by its documented keys; base can", and the M3 catalogue includes "A component swallows Tab". Under the approved rule, a test pattern of that mechanism can only score FOCUS_NOT_MOVED, a miss for every arm. Proposal: a TAB or SHIFT_TAB step after which the candidate's focus stays where it was gives KEYBOARD_TRAP: the same node in the tree, or silence in NVDA's speech, while the base's focus moved. The rule is written from the catalogue and HANDOFF's definition; no dev pattern has the mechanism, and no test item has been run | DR-0083 | What counts as detection (KEYBOARD_TRAP) | Before the freeze | Yes |
+| P38 | **Resolved (approved by the owner 2026-10-11, DR-0087).** **KEYBOARD_TRAP when Tab cannot leave a component.** A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was and the base's focus moved: the same node in the tree, or silence from NVDA, in every attempt. No dev pattern has the mechanism, so no dev result changes, and no test item has been run | DR-0083; DR-0087 | What counts as detection (KEYBOARD_TRAP) | No longer pending | Approved as recommended |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3540,7 +3541,7 @@ The full report is `docs/reports/M5-dev.md`.
 |---|---|
 | Date | 2026-10-04 |
 | Status | Accepted |
-| Owner label | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) |
+| Owner label | Decided by Claude under DR-0045; P38 approved by the owner 2026-10-11 (DR-0087) |
 | HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P37; DR-0082 |
 
 **What was built.** All 26 Atomic CRM test patterns of the test split, each with a benign twin (P20), on eight new journeys, each with an unchanged control (P15): 60 test items. No test item was executed (DR-0082).
@@ -3569,7 +3570,7 @@ The full report is `docs/reports/M5-dev.md`.
   Each pattern is observable by at least one family.
 - **Journey wording:** NVDA reads "linkedin.com" as "linkedin dot com", so the expectation names "URL must be from linkedin". The speech normaliser was not changed.
 
-**Owner item P38 (hard rule 12).** The approved rule (P28) gives KEYBOARD_TRAP only after Escape, so the tab-swallowed pattern can only score FOCUS_NOT_MOVED. P38 proposes the Tab case; see "Pending owner items".
+**Owner item P38 (hard rule 12).** The approved rule (P28) gives KEYBOARD_TRAP only after Escape, so the tab-swallowed pattern can only score FOCUS_NOT_MOVED. The owner approved the Tab case on 2026-10-11 (DR-0087).
 
 ## DR-0084 M5 PR review findings
 
@@ -3692,3 +3693,22 @@ The m3 reproductions (DR-0063) ran on the earlier fixtures. Re-checking them wou
 **Tooling (Decided by Claude under DR-0045).**
 - **Base builds for test-only mined pairs:** `buildApp.ps1` and the runner's journey-development pseudo-item take the last good release from a test pair's regression item. Only the base is ever built, because `buildApp.ps1` builds candidates for dev items only.
 - **New `test-twins` job in `m3-oss-repro`:** it builds each test twin without loading or checking it, and keeps only exit codes and logs.
+
+## DR-0087 Owner approval of P38
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.12 | §6; P28; DR-0083 |
+
+**Decision.**
+
+> Go with recommendation for P38.
+
+**Consequences.**
+
+- A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was in every attempt and the base's focus moved in every attempt. Staying means the same node in the tree, or silence from NVDA. The rule is in `protocol/oracles/README.md` and `focusSymptom` (`harness/src/oracles/compare.ts`).
+- Escape is unchanged: it is a trap only when focus stays inside a component.
+- No dev pattern has this mechanism, so no dev result changes. No test item has been run. The two tab-swallowed test patterns (`acrm-tab-swallowed-note`, `ras-tab-swallowed-search`) are the ones this lets score KEYBOARD_TRAP instead of FOCUS_NOT_MOVED.

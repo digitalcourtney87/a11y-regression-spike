@@ -128,6 +128,38 @@ describe("focus symptoms from the journey", () => {
     expect(compareFamily("B", b, j, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "FOCUS_NOT_RESTORED" }]);
   });
 
+  test.each(["TAB", "SHIFT_TAB"] as const)("%s that leaves focus where it was, while the base's focus moved, is KEYBOARD_TRAP (P38)", (strategy) => {
+    const tab = journey([
+      at("here", strategy, [{ type: "focusOn", value: "textbox|Search" }]),
+      at("leave", strategy, [{ type: "focusOn", value: "button|Add filter" }]),
+    ]);
+    const b = block(item("regression", "KEYBOARD_TRAP"), "nvda-absent", 3, (side) => {
+      const stayed = axTree({ role: "RootWebArea", kids: [{ role: "textbox", name: "Search", props: { focused: true } }] });
+      const moved = axTree({ role: "RootWebArea", kids: [{ role: "button", name: "Add filter", props: { focused: true } }] });
+      return attempt(side, steps(tab, { here: { tree: stayed }, leave: { tree: side === "base" ? moved : stayed } }));
+    });
+    expect(compareFamily("B", b, tab, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "KEYBOARD_TRAP", stepId: "leave" }]);
+  });
+
+  test("Tab that moves focus to the wrong control is FOCUS_NOT_MOVED", () => {
+    const tab = journey([at("leave", "TAB", [{ type: "focusOn", value: "button|Add filter" }])]);
+    const b = block(item("regression", "FOCUS_NOT_MOVED"), "nvda-absent", 3, (side) =>
+      attempt(side, steps(tab, { leave: { tree: axTree({ role: "RootWebArea", kids: [{ role: side === "base" ? "button" : "link", name: side === "base" ? "Add filter" : "Elsewhere", props: { focused: true } }] }) } })),
+    );
+    expect(compareFamily("B", b, tab, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "FOCUS_NOT_MOVED" }]);
+  });
+
+  test("from speech, silence after Tab while the base speaks is KEYBOARD_TRAP (P38)", () => {
+    const tab = journey([
+      at("here", "TAB", [{ type: "focusOn", value: "textbox|Search" }]),
+      at("leave", "TAB", [{ type: "focusOn", value: "button|Add filter" }]),
+    ]);
+    const b = block(item("regression", "KEYBOARD_TRAP"), "nvda-present", 3, (side) =>
+      attempt(side, steps(tab, {}), { speechEvents: [...speechAt(tab, "here", ["Search edit"]), ...(side === "base" ? speechAt(tab, "leave", ["Add filter button"]) : [])] }),
+    );
+    expect(compareFamily("NVDA", b, tab, rules).findings).toMatchObject([{ verdict: "FAIL", symptom: "KEYBOARD_TRAP", stepId: "leave" }]);
+  });
+
   test("from speech, silence after Escape is KEYBOARD_TRAP", () => {
     const b = block(item("regression", "KEYBOARD_TRAP"), "nvda-present", 3, (side) =>
       attempt(side, steps(j, {}), { speechEvents: [...speechAt(j, "reach", ["Actions menu button collapsed"]), ...speechAt(j, "open", ["Actions menu"]), ...(side === "base" ? speechAt(j, "close", ["Actions menu button collapsed"]) : [])] }),

@@ -58,7 +58,7 @@ The arms nest as PRD §33 defines them:
 | role | ROLE_NOT_CONVEYED |
 | state | STATE_NOT_CONVEYED |
 | absent | ANNOUNCEMENT_MISSING |
-| focus | Decided by the step's place in the journey: <ul><li>KEYBOARD_TRAP: Escape leaves focus inside the component (tree), or NVDA says nothing (speech).</li><li>FOCUS_ESCAPES_DIALOG: the target is a dialog an earlier step had focus in.</li><li>FOCUS_NOT_RESTORED: the target is the anchor or an earlier step's target, and focus went elsewhere in between.</li><li>FOCUS_NOT_MOVED: otherwise.</li></ul> |
+| focus | Decided by the step's place in the journey: <ul><li>KEYBOARD_TRAP: Escape leaves focus inside the component (tree), or NVDA says nothing (speech). Tab or Shift+Tab does the same when the candidate's focus stays where it was (the same node, or silence) and the base's focus moved (P38).</li><li>FOCUS_ESCAPES_DIALOG: the target is a dialog an earlier step had focus in.</li><li>FOCUS_NOT_RESTORED: the target is the anchor or an earlier step's target, and focus went elsewhere in between.</li><li>FOCUS_NOT_MOVED: otherwise.</li></ul> |
 | unreachable | <ul><li>JOURNEY_BLOCKED: the candidate never meets the goal's name.</li><li>INTERACTION_FAILS_UNDER_AT: an action came since the last navigation step.</li><li>NAV_TARGET_UNREACHABLE: otherwise.</li></ul> For scoring, the three form one family. |
 
 ## Verdicts
