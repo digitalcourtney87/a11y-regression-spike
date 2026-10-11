@@ -30,15 +30,19 @@
     },
     {
       "kind": "at",
-      "id": "back-to-content",
-      "strategy": "SHIFT_TAB",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "until": {
+        "name": "Save",
+        "maxAttempts": 3
+      },
       "observeMs": 1000,
       "expectations": []
     },
     {
       "kind": "at",
-      "id": "leave-backwards",
-      "strategy": "SHIFT_TAB",
+      "id": "leave-forwards",
+      "strategy": "TAB",
       "observeMs": 1500,
       "expectations": [
         {

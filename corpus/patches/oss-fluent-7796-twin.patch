@@ -1,13 +1,13 @@
 diff --git a/fixtures/oss/fluent-7796/src/main.js b/fixtures/oss/fluent-7796/src/main.js
-index 8382730..c0bb52f 100644
+index 77de9e7..eec4bbe 100644
 --- a/fixtures/oss/fluent-7796/src/main.js
 +++ b/fixtures/oss/fluent-7796/src/main.js
-@@ -10,7 +10,7 @@ render(
-   h(
+@@ -13,7 +13,7 @@ render(
      "main",
      { style: { padding: "2rem" } },
+     h("h1", null, "Documents"),
 -    h("div", { role: "list", "aria-label": "Recent documents" }, ...docs.map((title) => h(DocumentCard, { key: title, role: "listitem" }, h(DocumentCardTitle, { title })))),
 +    h("div", { role: "list", "aria-label": "Recent files" }, ...docs.map((title) => h(DocumentCard, { key: title, role: "listitem" }, h(DocumentCardTitle, { title })))),
    ),
    document.getElementById("root"),
- );
+   () => document.querySelectorAll(".ms-DocumentCard").forEach((card, i) => card.setAttribute("id", `card-${i + 1}`)),

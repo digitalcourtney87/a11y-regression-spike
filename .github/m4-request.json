@@ -1,6 +1,6 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "Test-pattern journey development, oss-regression round 1: the eight mined test journeys on the last good release only, one attempt, both legs (DR-0082, DR-0086)",
+  "purpose": "Test-pattern journey development, oss-regression round 2: the eight mined test journeys on the last good release only, three attempts each to check the base is stable (k = n), both legs (DR-0082, DR-0086)",
   "apps": [
     "oss-vuetify-9627",
     "oss-bootstrap-35496",
@@ -27,7 +27,7 @@
     "oss-carbon-18824"
   ],
   "sides": "base",
-  "reps": "1",
+  "reps": "3",
   "canaries": false,
   "axe": false,
   "shards": 1

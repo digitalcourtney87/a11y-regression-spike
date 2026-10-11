@@ -14,7 +14,7 @@
     },
     {
       "kind": "at",
-      "id": "next-film",
+      "id": "focus-filter",
       "strategy": "PRESS",
       "key": "ArrowDown",
       "observeMs": 500,
@@ -33,7 +33,7 @@
       "id": "back-on-select",
       "strategy": "READ_CURRENT",
       "until": {
-        "name": "Casablanca",
+        "name": "The Godfather",
         "maxAttempts": 1
       },
       "observeMs": 1000,

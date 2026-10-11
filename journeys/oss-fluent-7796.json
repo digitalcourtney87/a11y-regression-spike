@@ -24,7 +24,7 @@
       "expectations": [
         {
           "type": "focusOn",
-          "value": "listitem|Quarterly report"
+          "value": "listitem|#card-1"
         }
       ]
     },
@@ -40,7 +40,7 @@
       "expectations": [
         {
           "type": "focusOn",
-          "value": "listitem|Product roadmap"
+          "value": "listitem|#card-2"
         }
       ]
     }

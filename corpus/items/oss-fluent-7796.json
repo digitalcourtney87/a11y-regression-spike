@@ -6,10 +6,10 @@
   "app": "oss/fluent-7796",
   "journeyId": "oss-fluent-7796",
   "base": {
-    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.124.2"
+    "ref": "oss/fluent-7796@49243225b4e0a4103b1e90baa15e4e5292a0c2d4+office-ui-fabric-react@6.124.2"
   },
   "candidate": {
-    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.125.0"
+    "ref": "oss/fluent-7796@49243225b4e0a4103b1e90baa15e4e5292a0c2d4+office-ui-fabric-react@6.125.0"
   },
   "expected": {
     "kind": "regression",

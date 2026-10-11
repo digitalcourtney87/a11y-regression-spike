@@ -10,7 +10,7 @@
       "id": "reach-fruit",
       "strategy": "TAB",
       "until": {
-        "name": "Fruit",
+        "name": "Choose an item",
         "maxAttempts": 2
       },
       "observeMs": 1000,
