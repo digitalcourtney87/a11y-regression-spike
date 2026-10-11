@@ -143,3 +143,7 @@ Owner authorised proceeding with the broader bounded search after pass two, 2026
 | Related decision | DR-0098 |
 
 **Change and exposure.** G4 outcomes are known. Add browse-outcome/CSS-twin diagnostics preserving the issue's original criterion, then admit the qualifying DateField pattern to test with twin/control after two exploratory reproductions. Prior assignments and items stay unchanged. Existing primary vocabulary and journey strategies represent the outcome; no oracle, trigger, threshold or scoring-rule changes. Original confirmatory misses did not select the candidate. Frozen-set hash changes; the original G4 evidence stays at protocol-freeze-v3. No assigned test item is executed or scored and no new tag is created.
+
+### A-007: Batch-four exploratory controlled DataGrid fixture
+
+2026-10-11; owner instruction to finish test patterns under P39/P22. G4 outcomes are known. Add unsplit `fixtures/oss/fluent-27997/` from issues #27997/#27896 and merged fix #27978; issue-derived row selection plus equivalent width-only twin diagnostic. No registry/split admission yet, oracle/trigger/threshold change or new tag. Assigned test fixtures remain excluded by the existing mining workflow. Preserve original G4 evidence at protocol-freeze-v3; new confirmatory execution remains gated on an owner tag.
