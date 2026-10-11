@@ -159,3 +159,5 @@ A-007 further unsplit exploratory work: refine DataGrid's source-supported relea
 ### A-009: Fourth second-round mined pattern
 
 2026-10-12; owner instruction to finish test patterns, P22/P39; DR-0100. G4 outcomes are known. After independent matching reproductions, append Fluent DataGrid #27997 to the frozen set as a test regression pair with CSS_ONLY twin and unchanged control, plus its journey. Registry/pattern/split, three new items and twin spec/patch change. Preserve prior assignments/items and detection/scoring definitions. The earlier false last-good hypothesis and setup failures remain recorded. No selection from G4 misses. Actual assigned execution/scoring awaits a new owner freeze tag; G4 evidence remains at protocol-freeze-v3.
+
+A-007 further unsplit work, batch seven: add Vuetify #21591 from its reported 3.4.9/3.4.10 boundary and fix #22242. Shared Vue 3.3.8, original zero-delay keyboard-menu criterion, ordinary render-function fixture in existing vanilla build mode. No assigned execution or changed oracle, threshold, security context or tag. The later fixed release is documentary only because its framework requirements differ.
