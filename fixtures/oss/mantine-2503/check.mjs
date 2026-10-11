@@ -11,7 +11,7 @@ export default async function check({ page, fresh }) {
         if (reached) break;
       }
       if (!reached) throw new Error("MultiSelect input not keyboard reachable");
-    } else await input.click();
+    } else await p.getByRole("combobox").click();
     await p.waitForTimeout(300);
     const expanded = await p.getByRole("combobox").getAttribute("aria-expanded");
     const visible = await p.getByText("No choices", { exact: true }).isVisible();
