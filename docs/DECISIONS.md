@@ -126,7 +126,8 @@ Conventions:
 | [DR-0087](#dr-0087-owner-approval-of-p38) | Owner approval of P38 | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
 | [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0089 | Resolved (G3, DR-0089) |
 | [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0090 | M7 started (DR-0090) |
-| [DR-0090](#dr-0090-m7-started) | M7 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
+| [DR-0090](#dr-0090-m7-started) | M7 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0091 | The first test dispatch refused (DR-0091) |
+| [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3782,5 +3783,24 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 - `protocol-freeze-v2` is required before any test item runs, because A-001 changes the frozen set. The tag push is the owner's instruction to proceed with M7, which cannot run on `protocol-freeze-v1`.
 - The corpus dispatch is one `m4-items` run, `split=test`, both legs, empty reps, canaries and axe on, 4 shards. That is 10 apps × 2 legs × 4 shards = 80 Windows jobs. The two SPA jobs are the long ones (about 60 candidates each). The soak is a separate `phase0-nvda` dispatch, `runs=600`, `canaries=K1`, 10 shards, both legs (20 jobs, 60 attempts each). Public-repo minutes; the queue is the cost.
 - M8 is not started. The second round of 18 patterns waits on the headline intervals. The Phase 1 decision stays on 27 November 2026 (DR-0003).
+
+## DR-0091 Fetch the freeze tag before a test job
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Review on PR #11, owner asked for a response |
+| HANDOFF v1.14 | A-002 |
+
+**Decision.** The reviews on PR #11 are right about the checkout, the report wording and the journey label. The app-list default is a footgun and did not affect the dispatch that actually ran.
+
+**Consequences.**
+
+- Run 38155512025 checked out `m7-confirmatory` without tags. `assertItemExecutable` refused every selected test item before a block, canary or attempt. One shard summary records `no protocol freeze tag` and `blocks: null`. The run was cancelled. No verdict was produced.
+- A-002 fetches tags in the items checkout, fails the job before the build when a test job still has no freeze tag, keeps journey-development summaries labelled EXPLORATORY, and stops the confirmatory report from describing its own scores as a dev power plan.
+- A test dispatch that leaves `apps` at the five dev apps is rewritten to the apps that have test items. A dispatch that names its apps is left as sent.
+- Tag pushes no longer start `m4-items`. The `protocol-freeze-v2` push did, because a tag push ignores path filters, and that stray run was cancelled.
+- `protocol-freeze-v3` has to exist before the replacement corpus run. The soak (run 38155513822) does not use the freeze tag and is left running.
 
 

@@ -1134,7 +1134,7 @@ function readJourneyFiles(): Map<string, unknown> {
 async function main(): Promise<void> {
   mkdirSync(outDir, { recursive: true });
   if (args.split !== "dev" && args.split !== "test") throw new Error(`--split must be dev or test, not ${args.split}`);
-  const summary: Json = { label: args.split === "test" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
+  const summary: Json = { label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
   const corpus = readCorpus();
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
   const devJourneys = args.journeys.split(",").map((s) => s.trim()).filter((s) => s !== "");

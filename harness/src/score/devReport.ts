@@ -94,15 +94,22 @@ export function renderDevReport(metrics: Metrics, scores: readonly ItemScore[], 
   L.push("", "## Triggers (Arm D)", "", "| Trigger | Steps it fired on (items × steps) |", "|---|---|");
   for (const t of TRIGGER_IDS) L.push(`| ${t} | ${String(scores.reduce((n, s) => n + (s.triggers ?? []).filter((x) => x.fired.includes(t)).length, 0))} |`);
   const pw = metrics.power;
-  L.push("", "## Power table", "", `Patterns needed to estimate a detection rate within ±d (95%), n = z²·p(1 − p)/d², planned with p, or for a dev estimate with its Wilson 95% bound nearest 0.5, since 20 dev patterns cannot pin a rate near 0 or 1. The test split holds ${pw.testRegressionPatterns === null ? "–" : String(pw.testRegressionPatterns)} regression patterns (\`corpus/split.json\`, dropped patterns excluded).`, "");
-  L.push(`| Basis | p (dev) | Planning p | ${pw.margins.map((m) => `±${m.toFixed(2)}`).join(" | ")} |`, `|---|---|---|${pw.margins.map(() => "---").join("|")}|`);
-  for (const r of pw.rows) L.push(`| ${r.basis} | ${r.p.toFixed(2)} | ${r.planning.toFixed(2)} | ${pw.margins.map((m) => String(r.needed[m.toFixed(2)] ?? "–")).join(" | ")} |`);
-  L.push("", "Pairs needed for each paired comparison at α = 0.05 and power 0.8 (Connor 1987), from the dev discordant proportions. With 20 dev patterns these proportions are rough.", "");
-  L.push("| Comparison | p10 | p01 | Patterns needed |", "|---|---|---|---|");
-  for (const p of pw.paired) L.push(`| ${p.label} | ${p.p10.toFixed(2)} | ${p.p01.toFixed(2)} | ${Number.isFinite(p.needed) ? String(p.needed) : "∞ (no difference)"} |`);
+  const confirmatory = meta.split === "test";
+  const powerRows = confirmatory ? pw.rows.filter((r) => !r.basis.endsWith("(dev)")) : pw.rows;
+  L.push("", "## Power table", "");
+  if (confirmatory) L.push(`The worst case and the HANDOFF §10.3 example are the planning figures already used. Rates from these scores are not a new sample-size plan, and they are not a reason to add patterns or move a threshold. A second round is the rule in \`PROTOCOL.md\` §3. The test split holds ${pw.testRegressionPatterns === null ? "–" : String(pw.testRegressionPatterns)} regression patterns (\`corpus/split.json\`, dropped patterns excluded).`, "");
+  else L.push(`Patterns needed to estimate a detection rate within ±d (95%), n = z²·p(1 − p)/d², planned with p, or for a dev estimate with its Wilson 95% bound nearest 0.5, since 20 dev patterns cannot pin a rate near 0 or 1. The test split holds ${pw.testRegressionPatterns === null ? "–" : String(pw.testRegressionPatterns)} regression patterns (\`corpus/split.json\`, dropped patterns excluded).`, "");
+  L.push(`| Basis | ${confirmatory ? "p" : "p (dev)"} | Planning p | ${pw.margins.map((m) => `±${m.toFixed(2)}`).join(" | ")} |`, `|---|---|---|${pw.margins.map(() => "---").join("|")}|`);
+  for (const r of powerRows) L.push(`| ${r.basis} | ${r.p.toFixed(2)} | ${r.planning.toFixed(2)} | ${pw.margins.map((m) => String(r.needed[m.toFixed(2)] ?? "–")).join(" | ")} |`);
+  if (!confirmatory) {
+    L.push("", "Pairs needed for each paired comparison at α = 0.05 and power 0.8 (Connor 1987), from the dev discordant proportions. With 20 dev patterns these proportions are rough.", "");
+    L.push("| Comparison | p10 | p01 | Patterns needed |", "|---|---|---|---|");
+    for (const p of pw.paired) L.push(`| ${p.label} | ${p.p10.toFixed(2)} | ${p.p01.toFixed(2)} | ${Number.isFinite(p.needed) ? String(p.needed) : "∞ (no difference)"} |`);
+  }
   L.push("", "## Biases and limits", "");
   L.push("- Speech is what NVDA queues plus global cancels, not audio: queued-then-cancelled text counts as spoken, and cancellations inside NVDA's speech manager never reach the relay (R10, DR-0022). This makes ANNOUNCEMENT_DUPLICATED anti-conservative; a duplicate seen only in speech is REVIEW (DR-0042; P36).");
-  L.push("- The oracles were developed on this split. Its results show the rules work as written; they are not estimates for the test split.");
+  if (confirmatory) L.push("- The oracles, triggers and thresholds were fixed before this split was executed. These figures are the confirmatory results.");
+  else L.push("- The oracles were developed on this split. Its results show the rules work as written; they are not estimates for the test split.");
   L.push("- Every dev pattern has one regression item, so item-level and pattern-level counts agree; the bootstrap matters for the test split's mixed clusters (P20).");
   L.push("- The tree and B2 tie an announcement's text to a live region read at the step's end or 1 s into its window (DR-0079). A message shown and removed within that second is missed by both.");
   return `${L.join("\n")}\n`;
