@@ -125,7 +125,8 @@ Conventions:
 | [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
 | [DR-0087](#dr-0087-owner-approval-of-p38) | Owner approval of P38 | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
 | [DR-0088](#dr-0088-m6-started) | M6 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0089 | Resolved (G3, DR-0089) |
-| [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
+| [DR-0089](#dr-0089-owner-approval-of-the-g3-brief) | Owner approval of the G3 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0090 | M7 started (DR-0090) |
+| [DR-0090](#dr-0090-m7-started) | M7 started | Accepted | 2026-10-11 | Owner reply 2026-10-11 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3760,5 +3761,26 @@ The BenignType descriptions are proposed as final in that file (DR-0030). The G3
 6. `protocol-freeze-v1` is to be created and pushed, with PR #9 merged first so the tag is on `main`.
 
 The tag push is the owner's explicit approval under hard rule 2. No test item is executed or scored. M7 is not started.
+
+## DR-0090 M7 started
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-11 |
+| HANDOFF v1.14 | §9 (M7); A-001 |
+
+**Decision.**
+
+> If M7 is next, please proceed
+
+**Consequences.**
+
+- Amendment A-001 lets the runner and the build step select the test split. Oracles, triggers, thresholds, journeys and corpus items are unchanged. No test-split item had been executed or scored when this was written.
+- The soak, missing from `protocol-freeze-v1`, is pre-registered in `PROTOCOL.md` §8 before any test execution: 600 attempts of canary K1 in each leg. The confirmatory corpus runs once, at 3 or 5 attempts per side.
+- `protocol-freeze-v2` is required before any test item runs, because A-001 changes the frozen set. The tag push is the owner's instruction to proceed with M7, which cannot run on `protocol-freeze-v1`.
+- The corpus dispatch is one `m4-items` run, `split=test`, both legs, empty reps, canaries and axe on, 4 shards. That is 10 apps × 2 legs × 4 shards = 80 Windows jobs. The two SPA jobs are the long ones (about 60 candidates each). The soak is a separate `phase0-nvda` dispatch, `runs=600`, `canaries=K1`, 10 shards, both legs (20 jobs, 60 attempts each). Public-repo minutes; the queue is the cost.
+- M8 is not started. The second round of 18 patterns waits on the headline intervals. The Phase 1 decision stays on 27 November 2026 (DR-0003).
 
 

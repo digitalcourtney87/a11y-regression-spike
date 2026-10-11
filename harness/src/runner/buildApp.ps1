@@ -14,7 +14,8 @@
 param(
   [Parameter(Mandatory = $true)][string]$App,
   [Parameter(Mandatory = $true)][string]$Out,
-  [string]$Items = ""
+  [string]$Items = "",
+  [string]$Split = "dev"
 )
 $ErrorActionPreference = "Stop"
 $repo = (Get-Location).Path
@@ -26,7 +27,8 @@ New-Item -ItemType Directory -Force -Path $logs | Out-Null
 $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-items"
 $wanted = if ($Items -eq "") { $null } else { $Items.Split(",") | ForEach-Object { $_.Trim() } }
 $all = Get-ChildItem corpus/items -Filter *.json | Where-Object { $_.Name -notlike "* 2.*" } | ForEach-Object { Get-Content $_.FullName -Raw | ConvertFrom-Json }
-$devItems = @($all | Where-Object { $_.app -eq $App -and $_.split -eq "dev" -and ($null -eq $wanted -or $wanted -contains $_.id) })
+if ($Split -ne "dev" -and $Split -ne "test") { throw "-Split must be dev or test, not $Split" }
+$devItems = @($all | Where-Object { $_.app -eq $App -and $_.split -eq $Split -and ($null -eq $wanted -or $wanted -contains $_.id) })
 $results = @()
 
 function Copy-Dist([string]$from, [string]$to) {
@@ -46,7 +48,7 @@ if ($App -like "oss/*") {
   if ($LASTEXITCODE -ne 0) { throw "build tools install failed" }
   $times = npm view $meta.package time --json | ConvertFrom-Json -AsHashtable
   # The version pair comes from the regression item; the unchanged control is also oss-history, with base = candidate.
-  # A test pair's regression item gives only the base: only dev items are built below, so its broken release never is (DR-0086).
+  # A test pair's broken release is built only when -Split test, because only that split's items are built below (DR-0086, A-001).
   $regression = @($all | Where-Object { $_.app -eq $App -and $_.source -eq "oss-history" -and $_.expected.kind -eq "regression" }) | Select-Object -First 1
   if ($null -eq $regression) { throw "no regression item for $App" }
   $good = $regression.base.ref -replace '^.*@', ''

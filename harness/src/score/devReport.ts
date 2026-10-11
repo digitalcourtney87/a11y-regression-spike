@@ -1,7 +1,8 @@
 /**
  * The M5 scorer's report: arm metrics, paired comparisons, Arm D's cost, the
  * per-item verdicts, expectation observability, trigger firing and the power
- * table. Every result is EXPLORATORY (HANDOFF §4 rule 5).
+ * table. A dev report is EXPLORATORY. A test report is CONFIRMATORY: it is
+ * written only after the freeze guard has allowed the split (A-001).
  */
 import type { ItemScore } from "../oracles/arms.ts";
 import type { OracleRules } from "../oracles/rules.ts";
@@ -35,7 +36,7 @@ function cell(score: ItemScore, item: CorpusItem, arm: Arm, rules: OracleRules):
 
 export function renderDevReport(metrics: Metrics, scores: readonly ItemScore[], items: ReadonlyMap<string, CorpusItem>, rules: OracleRules, meta: ReportMeta): string {
   const L: string[] = [];
-  L.push(`# M5 ${meta.split}-split report (EXPLORATORY)`, "");
+  L.push(`# M5 ${meta.split}-split report (${meta.split === "test" ? "CONFIRMATORY" : "EXPLORATORY"})`, "");
   L.push(`Runs: ${meta.runs.join(", ")}. Harness commit: ${meta.harnessCommit}. Oracle tables: \`protocol/oracles/rules.v1.json\`; triggers: \`protocol/triggers.v1.json\`. k = n per side and leg (DR-0031). Bootstrap: ${String(BOOTSTRAP_RESAMPLES)} pattern-level resamples, seed ${String(BOOTSTRAP_SEED)}. Detection needs a FAIL with the correct symptom; REVIEW is not detection and INCONCLUSIVE is a miss. "Any" credits an arm when any of its FAIL symptoms is correct; "earliest" only the earliest finding's. The reachability symptoms count as one family (P29). Rules approved by the owner 2026-10-03 (P28–P36, DR-0081). W = Wilson 95% over items; boot = pattern bootstrap 95%.`, "");
   if ((meta.missing ?? []).length > 0) L.push(`**Incomplete evidence:** ${String(meta.missing?.length ?? 0)} item(s) of the split have no block and are scored INCONCLUSIVE in every arm: ${(meta.missing ?? []).join(", ")}.`, "");
   L.push("## Arms", "", "Primary: detection weighted uniformly by expected symptom (HANDOFF §10.3), the mean of the per-symptom rates, with a pattern-level bootstrap 95% interval. The item-level rates follow.", "");

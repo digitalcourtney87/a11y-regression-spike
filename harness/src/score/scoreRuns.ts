@@ -101,7 +101,7 @@ export function scoreRuns(req: ScoreRequest, io: ScoreIo, root: string = REPO_RO
   const out = resolve(req.out ?? join(first, `report-m5-${req.split}.md`));
   const json = resolve(req.json ?? join(first, `report-m5-${req.split}.json`));
   writeFileSync(out, report);
-  writeFileSync(json, `${JSON.stringify({ label: "EXPLORATORY", split: req.split, runs: req.runs, metrics, scores: scores.map((s) => ({ itemId: s.itemId, arms: s.arms, triggers: s.triggers, nvdaMs: s.nvdaMs, expectations: s.comparisons.flatMap((c) => c.expectations) })) }, null, 2)}\n`);
+  writeFileSync(json, `${JSON.stringify({ label: req.split === "test" ? "CONFIRMATORY" : "EXPLORATORY", split: req.split, runs: req.runs, metrics, scores: scores.map((s) => ({ itemId: s.itemId, arms: s.arms, triggers: s.triggers, nvdaMs: s.nvdaMs, expectations: s.comparisons.flatMap((c) => c.expectations) })) }, null, 2)}\n`);
   for (const m of metrics.arms) io.out(`${m.arm.padEnd(14)} detection ${String(m.detection.k)}/${String(m.detection.n)}  false FAIL benign ${String(m.falseFailBenign.k)}/${String(m.falseFailBenign.n)}  unchanged ${String(m.falseFailUnchanged.k)}/${String(m.falseFailUnchanged.n)}`);
   io.out(`${String(scores.length)} items scored; report ${out}`);
   return 0;
