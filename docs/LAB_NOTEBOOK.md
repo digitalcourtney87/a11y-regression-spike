@@ -396,3 +396,10 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 **Source:** owner reply 2026-10-11 (DR-0092). The confirmatory corpus is run 38156720011 and the soak is run 38155513822. The evidence bundles are on `results` at `aea1b4f`, directory `g4/`.
 **Affects:** DR-0092, P39, HANDOFF v1.15.
 **Confidence:** the gate record is `docs/gates/G4.md` and `docs/gates/G4-brief.md`. This notebook does not restate the test-split counts. The second round of 18 patterns is authorised and not built. No new freeze tag was created. M8 was not started.
+
+### M7: Second-round build allocation corrected (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** registry-to-item review of `corpus/patterns.json` and `corpus/items/`, against DR-0059 and DR-0060.
+**Affects:** DR-0092 build rule, P39, HANDOFF v1.15.
+**Confidence:** the correction and its evidence are recorded in DR-0093, `docs/gates/G4.md` and `docs/gates/G4-brief.md`. This notebook does not restate the confirmatory results. The second round remains authorised and unbuilt.

@@ -19,3 +19,5 @@
 - `ras-busy-left-true-notification` is PASS in every arm, which is the frozen limit in PROTOCOL §6.
 - The soak's phase0 renderer prints a G1 failure because K2–K5 were absent. That line is the G1 rule.
 - **Cost:** this draft is single-agent. The Windows runs have already finished. The pattern build is the next model spend, and it is authorised.
+
+**Build-allocation correction (2026-10-11, DR-0093):** item 3 above is retained as the approved recommendation. DR-0092's later five-seeded-plus-thirteen-mined allocation was incorrect: the five seeded entries had already been dropped on base-only evidence. The existing catalogue has no unused non-dropped patterns. The 18 additions require new qualifying mined patterns under P39/P22; their availability is not established. See [DR-0093](../DECISIONS.md#dr-0093-correction-of-the-second-round-build-allocation).
