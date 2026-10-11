@@ -421,3 +421,7 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 ### 2026-10-11 — Calendar admission and lead follow-up
 
 DR-0096; [Calendar admission](research/2026-10-11-calendar-admission.md), [lead follow-up](research/2026-10-11-m7-leads-followup.md), [next bounded search plan](research/2026-10-11-m7-next-mining-plan.md). One new test pattern built with twin/control; 17 additions remain. No confirmatory execution or new tag.
+
+### 2026-10-11 — Second bounded mining pass
+
+DR-0097; [pass-two report and source-linked ledger](research/2026-10-11-m7-mining-pass-two.md). Eight queries, one new candidate excluded, zero additions or CI dispatches; 17 patterns still needed.

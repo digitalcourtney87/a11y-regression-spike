@@ -135,6 +135,8 @@ Conventions:
 
 | [DR-0096](#dr-0096-calendar-admission-and-mining-lead-follow-up) | Calendar admission and mining lead follow-up | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | One new test pattern; 17 additions remain |
 
+| [DR-0097](#dr-0097-second-bounded-mining-pass) | Second bounded mining pass | Accepted | 2026-10-11 | Owner instruction to move to next task | — | Zero additions; 17 still needed |
+
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
@@ -3908,3 +3910,16 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Limits.** The browse diagnostic uses the unchanged accessibility-tree cursor model; it is not real NVDA evidence or a scored corpus run. The CSS diagnostic applies the identical inline style on a fresh page; the committed patch is checked structurally. Assigned test items are not executed before a new owner freeze tag. The existing M7 scores remain at protocol-freeze-v3. There are now 20 dev and 60 test regression patterns (80 total), with one of the needed 18 additions built, leaving 17. No claim of availability follows.
 
 **Lead follow-up.** The five recorded leads were revisited without a new search. Carbon #3397 was closed as stale after maintainers requested missing MDX reproduction context, with no linked fix; exclude it from this pass under P22 rules 5/6. Four documentary leads remain pending and none is scheduled for CI. A revised bounded title-search plan is recorded before searches in `docs/research/2026-10-11-m7-next-mining-plan.md`; no query under it has yet run. Details: `docs/research/2026-10-11-m7-leads-followup.md`.
+
+## DR-0097 Second bounded mining pass
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Merge, please move onto the next task” |
+| Scope | Recorded next bounded mining search; no criteria/context change |
+
+**Outcome.** PR #12 was already merged when checked (ba2831f). Execute the eight pre-recorded title queries in `docs/research/2026-10-11-m7-next-mining-plan.md`: three hits, two previously excluded, one new candidate (Fluent UI #8750). Its merged fix removes a dangling described-by reference only when the selected-item list is empty. No issue-derived primary user-facing symptom is established; exclude under P22 rule 7. The scanner finding alone does not justify a new symptom or verdict. Zero new patterns, fixtures or CI dispatches. Calendar remains the first addition, with 17 needed and four documentary leads pending. See `docs/research/2026-10-11-m7-mining-pass-two.md` and its JSON ledger.
+
+**Boundary.** The title intersection is sparse; do not substitute new queries after seeing the result. A subsequent search starts from a revised recorded plan. No frozen set, original assignment, detection rule, target, context or freeze tag changes. No confirmatory execution or M8 work.

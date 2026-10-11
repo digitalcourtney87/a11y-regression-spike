@@ -1,0 +1,89 @@
+{
+  "label": "EXPLORATORY",
+  "plan": "2026-10-11-m7-next-mining-plan.md",
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression keyboard in:title",
+      "totalHits": 0,
+      "inspected": 0,
+      "selected": [],
+      "excludedAlreadyReviewed": []
+    },
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression accessibility in:title",
+      "totalHits": 0,
+      "inspected": 0,
+      "selected": [],
+      "excludedAlreadyReviewed": []
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression keyboard in:title",
+      "totalHits": 1,
+      "inspected": 1,
+      "selected": [],
+      "excludedAlreadyReviewed": [
+        8298
+      ]
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression accessibility in:title",
+      "totalHits": 0,
+      "inspected": 0,
+      "selected": [],
+      "excludedAlreadyReviewed": []
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression keyboard in:title",
+      "totalHits": 1,
+      "inspected": 1,
+      "selected": [],
+      "excludedAlreadyReviewed": [
+        18236
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression accessibility in:title",
+      "totalHits": 0,
+      "inspected": 0,
+      "selected": [],
+      "excludedAlreadyReviewed": []
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard in:title",
+      "totalHits": 0,
+      "inspected": 0,
+      "selected": [],
+      "excludedAlreadyReviewed": []
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression accessibility in:title",
+      "totalHits": 1,
+      "inspected": 1,
+      "selected": [
+        8750
+      ],
+      "excludedAlreadyReviewed": []
+    }
+  ],
+  "candidates": [
+    {
+      "id": "fluentui-8750",
+      "repo": "microsoft/fluentui",
+      "number": 8750,
+      "status": "rejected",
+      "reason": "P22 rule 7: fix removes aria-describedby only when selected items are empty; no expected descriptive content is lost and no primary user-facing symptom established by the issue. Audit-rule failure alone does not establish a corpus symptom.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/8750",
+        "https://github.com/microsoft/fluentui/pull/8753",
+        "https://github.com/microsoft/fluentui/pull/8753/files"
+      ],
+      "reportedBroken": "6.165.0",
+      "reportedFixed": "6.167.2",
+      "lastGood": null,
+      "reproduction": null
+    }
+  ],
+  "newFixtures": 0,
+  "ciDispatches": 0,
+  "admittedPatterns": 0
+}
