@@ -1,0 +1,61 @@
+{
+  "id": "oss-fluent-4620",
+  "version": "1",
+  "app": "oss/fluent-4620",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-next-month",
+      "strategy": "TAB",
+      "until": {
+        "role": "button",
+        "name": "Next month",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "enter-focus-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "advance-one-month",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "return-to-browse-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-from-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-expected-month",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "May 2018",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}
