@@ -1,0 +1,22 @@
+{
+  "id": "oss-fluent-4620-twin",
+  "patternId": "oss--fluent-4620",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/fluent-4620",
+  "journeyId": "oss-fluent-4620",
+  "base": {
+    "ref": "oss/fluent-4620@09b9e5a89192a20e055ef288b3db5f51f67601ad+office-ui-fabric-react@5.40.2"
+  },
+  "candidate": {
+    "patch": "oss-fluent-4620-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20, P39, DR-0096)",
+    "licence": "MIT (office-ui-fabric-react)"
+  }
+}

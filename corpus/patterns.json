@@ -696,6 +696,15 @@
       "stratum": "regression:INTERACTION_FAILS_UNDER_AT",
       "status": "planned",
       "note": "@blueprintjs/select 4.9.14 to 4.9.15: Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it"
+    },
+    {
+      "id": "oss--fluent-4620",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#4620",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "office-ui-fabric-react 5.40.2 to 5.41.0: Calendar Next month handles one Space twice after controls became native buttons; April advances to June instead of May. Pointer control advances once. Fixed by PR #4662. Two unchanged-check reproductions plus browse-goal/CSS-twin diagnostics in run 38175379953 (DR-0096)."
     }
   ]
 }

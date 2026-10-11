@@ -2,7 +2,9 @@
 
 EXPLORATORY. [Plan recorded before search](2026-10-11-m7-mining-plan.md); [candidate ledger and sources](2026-10-11-m7-mining-ledger.md); [machine-readable ledger](2026-10-11-m7-mining-ledger.json). Authority: P39/P22 and DR-0093. This is a bounded feasibility pass, not the second confirmatory round.
 
-## Documentary result
+**Current follow-up (DR-0096):** Calendar is admitted with a benign twin and unchanged control after browse-goal/CSS diagnostics. One of 18 additions is built; 17 remain. Four documentary leads remain after excluding Carbon #3397. See [admission report](2026-10-11-calendar-admission.md), [lead follow-up](2026-10-11-m7-leads-followup.md) and [next search plan](2026-10-11-m7-next-mining-plan.md). The bounded-pass and repeat sections below retain their historical state.
+
+## Documentary result (historical bounded pass and repeat)
 
 | Stage | Count |
 |---|---|

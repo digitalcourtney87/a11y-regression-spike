@@ -133,6 +133,8 @@ Conventions:
 | [DR-0094](#dr-0094-bounded-second-round-mining-feasibility-pass) | Bounded second-round mining feasibility pass | Accepted | 2026-10-11 | Owner instruction to proceed | — | One exploratory reproduction; no new corpus patterns admitted |
 | [DR-0095](#dr-0095-independent-repeat-of-the-calendar-mining-check) | Independent repeat of the Calendar mining check | Accepted | 2026-10-11 | Owner instruction to repeat the Calendar check | — | Two successful reproductions; no corpus admission |
 
+| [DR-0096](#dr-0096-calendar-admission-and-mining-lead-follow-up) | Calendar admission and mining lead follow-up | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | One new test pattern; 17 additions remain |
+
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
@@ -3889,3 +3891,20 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Records.** Repeat check/build outputs, dependency-lock comparison hashes and runner timings are retained in `docs/research/m7-mining-evidence/`, with a SHA-256 manifest. The ledger and feasibility report record two successful exploratory reproductions and retain the initial setup failure.
 
 **Boundary.** The independent-repeat requirement is resolved. Frozen-vocabulary compatibility and companion benign-twin/new-journey control work remain before corpus admission. No candidate is registered, assigned or admitted, and no confirmatory execution, new freeze tag or M8 work occurs.
+
+## DR-0096 Calendar admission and mining lead follow-up
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Please proceed” after the Calendar admission recommendation; P22/P39 |
+| Scope | Second-round build only; no freeze tag or confirmatory execution |
+
+**Admission.** Calendar #4620 is one distinct mined pattern, `oss--fluent-4620`, using the existing JOURNEY_BLOCKED definition: one Space on Next month must expose May 2018 from April 2018. The declared journey uses TAB, explicit focus-mode toggles around PRESS Space, DOCUMENT_TOP and bounded BROWSE_NEXT. No announcement expectation, oracle, trigger or threshold is added. The independent issue-derived check reproduced in runs 38174040191 and 38174572204. Admission diagnostic run 38175379953 on `09b9e5a89192a20e055ef288b3db5f51f67601ad` retains the same criterion and adds accessible browse-goal and CSS-only twin checks. May 2018 is reachable on browse line 4 in 5.40.2, absent in 5.41.0 after April→June, and reachable on line 2 in fixed 5.90.0. Pointer controls pass all releases. The twin's maximum-width-only style preserves each release's keyboard and browse results. Installs/builds exit zero; no page errors/external requests. See `docs/research/2026-10-11-calendar-admission.md` and its raw evidence.
+
+**Construction.** Register the MIT pair 5.40.2/5.41.0 with React/react-dom 16.2.0; fixed 5.90.0 corroborates the library fix. The same immutable fixture commit pins both refs. Append the assignment to test under P39 and retain all previous assignments. The explicit all-test batch records testFraction 1 and unused seed 0; it does not invoke the earlier randomized split algorithm, which requires a fraction strictly between zero and one. The pattern stays in the existing `oss-regression` source batch so existing build tools handle its twin. Add a CSS_ONLY twin, changing only main maxWidth to 480, and an exact base/base unchanged control for the new journey. Pointer reproduction metadata is false: pointer control remains correct in the broken release. The keyboard reproduction metadata is true.
+
+**Limits.** The browse diagnostic uses the unchanged accessibility-tree cursor model; it is not real NVDA evidence or a scored corpus run. The CSS diagnostic applies the identical inline style on a fresh page; the committed patch is checked structurally. Assigned test items are not executed before a new owner freeze tag. The existing M7 scores remain at protocol-freeze-v3. There are now 20 dev and 60 test regression patterns (80 total), with one of the needed 18 additions built, leaving 17. No claim of availability follows.
+
+**Lead follow-up.** The five recorded leads were revisited without a new search. Carbon #3397 was closed as stale after maintainers requested missing MDX reproduction context, with no linked fix; exclude it from this pass under P22 rules 5/6. Four documentary leads remain pending and none is scheduled for CI. A revised bounded title-search plan is recorded before searches in `docs/research/2026-10-11-m7-next-mining-plan.md`; no query under it has yet run. Details: `docs/research/2026-10-11-m7-leads-followup.md`.

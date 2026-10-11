@@ -1,0 +1,16 @@
+{
+  "id": "oss-fluent-4620-twin",
+  "patternId": "oss--fluent-4620",
+  "operator": "css-only",
+  "app": "oss/fluent-4620",
+  "journeyId": "oss-fluent-4620",
+  "target": "Main maximum width only; Calendar props, dates and event handlers unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "h(\"main\", null,",
+      "replace": "h(\"main\", { style: { maxWidth: 480 } },"
+    }
+  ],
+  "twinOf": "oss-fluent-4620"
+}

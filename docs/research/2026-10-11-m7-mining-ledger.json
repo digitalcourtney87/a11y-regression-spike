@@ -261,8 +261,8 @@
       "url": "https://github.com/carbon-design-system/carbon/issues/3397",
       "title": "Tabs/Tab component enhancements",
       "query": "repo:carbon-design-system/carbon is:issue is:closed regression keyboard",
-      "status": "pending documentary",
-      "reason": "Comments report tabs working in 7.2 and failing in 7.3 with MDX; full reproduction context and merged library fix remain unestablished.",
+      "status": "rejected",
+      "reason": "Follow-up: auto-closed as stale after missing MDX reproduction details were requested; no linked library fix identified. Excluded under P22 rules 5/6 (DR-0096).",
       "reproduction": null,
       "sources": [
         "https://github.com/carbon-design-system/carbon/issues/3397"
@@ -345,8 +345,8 @@
       "url": "https://github.com/microsoft/fluentui/issues/4620",
       "title": "DatePicker: pressing space/Enter on Previous/Next month/year arrow buttons goes 2 months at a time",
       "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
-      "status": "documentary candidate",
-      "reason": "Two successful exploratory CI reproductions (38174040191 and 38174572204) give identical good/broken/fixed keyboard results and passing pointer controls. Not admitted: frozen-vocabulary compatibility and companion twin/control work remain.",
+      "status": "admitted",
+      "reason": "Admitted under DR-0096 after two independent reproductions and run 38175379953 browse-goal/CSS-twin diagnostics. JOURNEY_BLOCKED; test assignment with benign twin and unchanged control. Confirmatory execution awaits a new owner freeze tag.",
       "reproduction": {
         "run": 38174040191,
         "commit": "d50c8c25bf36686cf04843c87a82d3b7d29446a1",
@@ -384,10 +384,11 @@
             }
           }
         },
-        "admitted": false,
+        "admitted": true,
         "repeatRun": 38174572204,
         "repeatCommit": "0b5e0a1622bf955d5e99ff275198d711876bbf84",
-        "repeatMatchesFirst": true
+        "repeatMatchesFirst": true,
+        "admissionRun": 38175379953
       },
       "sources": [
         "https://github.com/microsoft/fluentui/issues/4620",
@@ -395,7 +396,8 @@
         "https://github.com/microsoft/fluentui/commit/fd2206f8041ba6aca3b61a67a8552652e67d4954",
         "https://registry.npmjs.org/office-ui-fabric-react",
         "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191",
-        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174572204"
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174572204",
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38175379953"
       ],
       "package": "office-ui-fabric-react",
       "licence": "MIT",

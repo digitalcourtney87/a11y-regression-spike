@@ -111,3 +111,17 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 **Exploratory outcome.** The repaired fixture in run 38174040191 (`d50c8c2`) reproduces the good/broken/fixed keyboard boundary once, with pointer controls passing and no page errors or external requests. The first dispatch was cancelled by the replacement run after its candidate artifact completed. The two-dispatch budget is exhausted; independent successful repetition and corpus admission remain outstanding (DR-0094). No confirmatory verdict or split assignment was produced.
 
 **Owner-authorised follow-up.** DR-0095 records run 38174572204, an independently successful repeat with unchanged fixture and execution paths. Both successful runs give identical check output and resolved dependency locks. The earlier bounded pass still used two dispatches; this additional dispatch was explicitly requested by the owner. Corpus admission remains outstanding, and no new freeze tag or confirmatory execution occurs.
+
+### A-004: First second-round mined pattern
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Codex |
+| Owner approval | Owner “Please proceed” after the Calendar admission recommendation; P39/P22 |
+| Freeze tag before | protocol-freeze-v3 |
+| Freeze tag after | None; confirmatory execution awaits a new owner tag |
+| Files changed | `fixtures/oss/fluent-4620/check.mjs`, `corpus/oss-candidates.json`, `corpus/patterns.json`, `corpus/split.json`, three Calendar items, twin spec/patch, `journeys/oss-fluent-4620.json`; this entry |
+| Decision | DR-0096 |
+
+**Change and exposure.** G4 outcomes are known. Add accessible-month and benign-layout diagnostics before assignment, then register one qualifying Calendar pattern, a benign twin and unchanged control. The issue-derived criterion is unchanged. Assign the addition explicitly to test; preserve old assignments. Use the frozen journey vocabulary and JOURNEY_BLOCKED symptom; no oracle, trigger, threshold or scoring rule changes. The original G4 items and misses did not select this candidate. The branch's frozen-set hash changes; protocol-freeze-v3 retains the original G4 evidence. No assigned test item is executed or scored and no new tag is made.
