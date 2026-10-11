@@ -639,7 +639,7 @@
       "origin": "repo:ariakit/ariakit is:issue is:closed regression focus in:title,body",
       "url": "https://github.com/ariakit/ariakit/issues/7671",
       "disposition": "excluded",
-      "reason": "Experimental ComboboxSelect API; no stable working pair established.",
+      "reason": "No working stable release boundary established for searchable shadow-root Escape path; fix alone does not prove regression.",
       "sources": [
         "https://github.com/ariakit/ariakit/issues/7671",
         "https://github.com/ariakit/ariakit/pull/7655",
