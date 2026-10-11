@@ -1,6 +1,6 @@
 # G3 brief (one page)
 
-**Result:** the confirmatory protocol is written in `protocol/PROTOCOL.md`. No test item has been executed or scored. The freeze tag is not created. Hash of the committed frozen set at `8e31c85` (those files last changed in `5ad4769`):
+**Result:** the confirmatory protocol is written in `protocol/PROTOCOL.md`. No test item has been executed or scored. The freeze tag is not created. Hash of the committed frozen set (those files last changed in `5ad4769`; docs commits do not change it). Recompute with `npm run protocol:hash` and tag only if it still prints this line:
 
 `protocol-sha256: 190f715002354461c917991ecbaf30bff0a41804b5af35ee90fc0b59575f563a`
 
