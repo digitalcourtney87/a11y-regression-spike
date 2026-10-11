@@ -1,0 +1,503 @@
+{
+  "label": "EXPLORATORY",
+  "planCommit": "4252ba5",
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 2572,
+          "title": "ListView needs to support PageUp, PageDown, End and Home key events",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 2608,
+          "title": "ListView keyboard issues",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 5658,
+          "title": "useFocusRing: isTextInput no longer toggling focus ring",
+          "disposition": "selected"
+        },
+        {
+          "number": 8298,
+          "title": "Combobox closes when navigating items with keyboard (May release regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8697,
+          "title": "MenuItem links do not work in 1.11.0 using keyboard",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9631,
+          "title": "\ud83d\udc1e Chrome: Link URL hint persists after click when link remains mounted",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10051,
+          "title": "`Button` and `Checkbox` from `react-aria-components` rendered inside a shadow  root via `ReactDOM.createRoot` are completely non-interactive",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10553,
+          "title": "Docs suggestion: optional applied modal screen-reader failure exercise",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 18236,
+          "title": "[Chip] Keyboard events regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 36018,
+          "title": "Select dropdown menu selects the first non-disabled element when no value is selected",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 48418,
+          "title": "[CardActionArea] Implementation + tests",
+          "disposition": "selected"
+        },
+        {
+          "number": 48423,
+          "title": "[Chip] Implementation + tests",
+          "disposition": "selected"
+        },
+        {
+          "number": 48428,
+          "title": "[List + ToggleButtonGroup + Toolbar] Implementation + tests",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 48433,
+          "title": "[SelectField] Implementation + tests (unstable)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 48438,
+          "title": "[NumberField] Implementation + tests (unstable)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 48443,
+          "title": "[MenuBar] Implementation + tests (unstable)",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 7861,
+          "title": "Update Filterable MultiSelect to work in new format",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 23126,
+          "title": "[Bug]: Tooltip on the modal close button swallows Escape, so ComposedModal/Modal never handle it (strands the overlay with enable-dialog-element)",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 4619,
+          "title": "DatePicker: Keyboard focus is not visible on the \"Go to Today,\" \"Next month\" and \"Previous month\" buttons",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7622,
+          "title": "[Accessibility] ContextualMenu: keyboard navigation does not work when menu is not near menu button",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9048,
+          "title": "Checkbox doesn't show outline box when using keyboard",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 14072,
+          "title": "[Bug Report][2.4.11] V-AutoComplete/V-Combobox regression with tab order when selecting item with mouse click",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 18547,
+          "title": "[Bug Report][3.3.23] No button element for VChip close button",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 3988,
+          "title": "In a Table of EditableCells, when using Tab/Enter to navigate and update cells, every other cell is updated.",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 1680,
+          "title": "useCombobox hook isOpen state \"regression\"  starting from v9.2.0 ?",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 30,
+      "hits": [
+        {
+          "number": 6295,
+          "title": "Collection store item() drops metadata from the items state and ignores controlled items updates",
+          "disposition": "selected"
+        },
+        {
+          "number": 6301,
+          "title": "CompositeRenderer/SelectRenderer emit invalid aria-setsize/aria-posinset when an ungrouped item follows a group",
+          "disposition": "selected"
+        },
+        {
+          "number": 6323,
+          "title": "@ariakit/store: re-registering a sync/batch listener discards its pending cleanup without running it",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6341,
+          "title": "Div-based Focusable server-renders without tabindex=\"0\" (not keyboard-reachable until hydration) and with an invalid disabled attribute",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6690,
+          "title": "Provider component strict miss doesn't propagate through composed hooks",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6848,
+          "title": "Clicking a combobox popover's empty space disables arrow navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6852,
+          "title": "ComboboxPopover re-renders per keystroke and its Escape baseline can drift",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6858,
+          "title": "ComboboxSelect scroll into view can retarget on hover and misses late items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6902,
+          "title": "ComboboxSelect aria-haspopup stays listbox after the popover opens on macOS",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6986,
+          "title": "Revisit composite focus presentation for real and virtual focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7042,
+          "title": "Composite: a presentation drops a replaced item when the item itself held DOM focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7092,
+          "title": "Tab moves focus out of a modal Dialog into the browser UI",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7099,
+          "title": "Alt-modified keys that move composite focus are treated as pointer modality",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7115,
+          "title": "Tooltip hover depends on composition order with accessibleWhenDisabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7116,
+          "title": "Truly disabled anchor opens the tooltip on hover when the disabled state is below the anchor",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7168,
+          "title": "initUIEventModififiers reports a bogus modifier state for Object.prototype key names",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7192,
+          "title": "The synthetic click behind keyboard activation reports view: null and composed: false",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7193,
+          "title": "Event helpers in @ariakit/utils build events from the ambient global instead of the element's own window",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7363,
+          "title": "Composite composite={false} documentation overstates what it disables",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7384,
+          "title": "CompositeItem ignores an accessibleWhenDisabled resolved by a Focusable it renders, so arrow keys skip the item",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7395,
+          "title": "fireClickEvent's PointerEvent construction throws under vitest's jsdom environment: \"Failed to construct 'PointerEvent': member view is not of type Window\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7519,
+          "title": "Keep borderless Ariakit UI folder tab selection visible in forced colors",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7521,
+          "title": "Ariakit UI Shell: app shell layout component (design specification)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7606,
+          "title": "Diagnose the Safari flake where the dialog-3403 route dialog stays in its leave state after Escape",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7616,
+          "title": "Keep the popup state when a close is prevented",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7628,
+          "title": "Keep a far keyboard move in view in a virtualized list with items of different sizes",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7641,
+          "title": "Handle ComboboxSelect keyboard focus checks inside a shadow root",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7657,
+          "title": "Return focus from ComboboxList to the combobox inside a shadow root",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7803,
+          "title": "Keep a far keyboard move in view in a virtualized list when the browser is zoomed out",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7805,
+          "title": "Find the correct scroll element for virtualized lists and keep active items in view on each axis",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 8945,
+          "title": "[Regression] Slider thumb offset issue",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9151,
+          "title": "[Regression] Slider thumb offset issue #2",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 5,
+      "hits": [
+        {
+          "number": 15103,
+          "title": "v3.3.2 ship list",
+          "disposition": "selected"
+        },
+        {
+          "number": 16074,
+          "title": "v3.3.5 ship list",
+          "disposition": "selected"
+        },
+        {
+          "number": 35496,
+          "title": "ESC key in DropDown no longer sets focus back to the toggle button in 5.1x",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41542,
+          "title": "Disabled buttons breaks WCAG compliance and expected UX behavior",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 42851,
+          "title": "Docs: consider an applied modal accessibility exercise in Additional resources",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 766,
+          "title": "`<sl-menu>` caching `<sl-menu-item>`s breaks dynamic toggling of `<sl-menu-item>.disabled` (`2.0.0-beta.74` regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 845,
+          "title": "`<sl-menu>` and `<sl-menu-item>` regression in `2.0.0-beta.79` caused by allowing focus on disabled items for improved accessibility",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1107,
+          "title": "Menu items with `display: none` or `hidden` erroneously receive focus when using arrow keys",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed regression keyboard in:title,body",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 4684,
+          "title": "[EuiButtonGroup] Usability/accessibility enhancements",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9099,
+          "title": "[EuiFlyout] Make flyout update focus trap shards",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9997,
+          "title": "[EuiToolTip] Tooltip does not dismiss on mouse-out for aria-disabled anchors",
+          "disposition": "already-reviewed"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 5658,
+      "title": "useFocusRing: isTextInput no longer toggling focus ring",
+      "origin": "repo:adobe/react-spectrum is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/adobe/react-spectrum/issues/5658",
+      "disposition": "excluded",
+      "reason": "Visual focus ring only; maintainer reports same behavior in prior release."
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 48418,
+      "title": "[CardActionArea] Implementation + tests",
+      "origin": "repo:mui/material-ui is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/mui/material-ui/issues/48418",
+      "disposition": "excluded",
+      "reason": "Implementation/ship tracking ticket, not a distinct regression report."
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 48423,
+      "title": "[Chip] Implementation + tests",
+      "origin": "repo:mui/material-ui is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/mui/material-ui/issues/48423",
+      "disposition": "excluded",
+      "reason": "Implementation/ship tracking ticket, not a distinct regression report."
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 6295,
+      "title": "Collection store item() drops metadata from the items state and ignores controlled items updates",
+      "origin": "repo:ariakit/ariakit is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/ariakit/ariakit/issues/6295",
+      "disposition": "excluded",
+      "reason": "Collection data metadata defect; no issue-derived primary user-facing symptom or working stable boundary."
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 6301,
+      "title": "CompositeRenderer/SelectRenderer emit invalid aria-setsize/aria-posinset when an ungrouped item follows a group",
+      "origin": "repo:ariakit/ariakit is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/ariakit/ariakit/issues/6301",
+      "disposition": "excluded",
+      "reason": "Experimental virtualized renderer ARIA metadata; no stable working release."
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 15103,
+      "title": "v3.3.2 ship list",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/twbs/bootstrap/issues/15103",
+      "disposition": "excluded",
+      "reason": "Implementation/ship tracking ticket, not a distinct regression report."
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 16074,
+      "title": "v3.3.5 ship list",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression keyboard in:title,body",
+      "url": "https://github.com/twbs/bootstrap/issues/16074",
+      "disposition": "excluded",
+      "reason": "Implementation/ship tracking ticket, not a distinct regression report."
+    }
+  ]
+}

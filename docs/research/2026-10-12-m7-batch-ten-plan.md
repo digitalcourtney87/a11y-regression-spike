@@ -1,0 +1,5 @@
+# M7 completion batch ten — EXPLORATORY, recorded before follow-up
+
+Review the first still-new query-capped issue in each of batch-nine's sixteen queries, preserving repository/query/creation order. No replacement when an issue is excluded; duplicates and prior-ledger/registry/original-survey exclusions skip to the next still-new hit. At most sixteen documentary selections, no new search queries. Preserve origins and all dispositions in the ledger. This resolves an existing lead queue rather than selecting from G4 results.
+
+At most two new fixtures/two exploratory dispatches; can independently repeat an unsplit candidate from earlier batches without counting it as a new selection. Stable accessible last-good, source-supported boundary, identical direct framework pins, original criterion, repeat and control/twin requirements remain mandatory. Keep failure records. No test assignment until qualification, no assigned execution until a new tag, and no change to context, cost safeguards, oracle or thresholds. Continue toward 77.
