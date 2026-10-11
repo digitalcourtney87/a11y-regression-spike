@@ -1,6 +1,6 @@
 # M7 bounded mining candidate ledger (2026-10-11)
 
-EXPLORATORY. Search plan: [bounded mining plan](2026-10-11-m7-mining-plan.md). The original candidate registry and split are unchanged. `Rejected` means excluded from this pass under P22/current scope, not that the reported bug never existed. `Pending documentary` lacks required evidence; `documentary candidate` is not verified or a corpus addition.
+EXPLORATORY. Search plan: [bounded mining plan](2026-10-11-m7-mining-plan.md). The original 11-entry candidate registry and split are unchanged. The earlier survey mentioned Headless UI #2934, which this query rediscovered because it is absent from that registry; it is rejected and contributes no addition. `Rejected` means excluded from this pass under P22/current scope, not that the reported bug never existed. `Pending documentary` lacks required evidence; `documentary candidate` is not verified or a corpus addition.
 
 ## Search log
 

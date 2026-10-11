@@ -7,14 +7,14 @@ EXPLORATORY. [Plan recorded before search](2026-10-11-m7-mining-plan.md); [candi
 | Stage | Count |
 |---|---|
 | Planned queries completed | 16 across 8 repositories |
-| New unique selected issues reviewed | 36 (cap 48) |
+| Unique selected issues outside the existing registry reviewed | 36 (cap 48) |
 | Excluded from this pass | 30 |
 | Pending documentary evidence | 5 |
 | Documentary candidate taken to exploratory reproduction | 1: Fluent UI #4620 |
 | Successfully reproduced in one exploratory run | 1: Fluent UI #4620 |
 | Corpus patterns admitted | 0 |
 
-These dispositions are evidence states, not claims that every rejected issue is an invalid bug. Most excluded issues request features, discuss visual styling or touch behaviour, lack a specific library fix, or describe constructs not established as accessible in a last-good release. The existing 47-candidate registry was excluded from selection. The fixed search order was not changed to target G4 misses.
+These dispositions are evidence states, not claims that every rejected issue is an invalid bug. Most excluded issues request features, discuss visual styling or touch behaviour, lack a specific library fix, or describe constructs not established as accessible in a last-good release. The existing registry has 11 entries, all verified pairs, and was excluded from selection. DR-0063 records 47 historical candidates reviewed, but that full survey is not the current registry. Headless UI #2934 was already mentioned in the earlier title survey and was rediscovered here; it is rejected and does not count as an addition. The fixed search order was not changed to target G4 misses.
 
 ## Reproduction
 
@@ -45,7 +45,7 @@ This pass does not establish availability of 18 additions. Even if the Calendar 
 
 The broad terms matched discussion text (including comments about preventing future regressions), and creation-date order favoured old enhancement issues. This is a limitation of this bounded search, not evidence that the libraries contain no further qualifying regressions. Do not extrapolate its yield to the whole ecosystem or select a new search from G4's misses.
 
-Before a further pass, record a revised bounded query plan, prioritising explicit regression reports in titles/labels and continuing a deterministic ordering, while retaining P22 and excluding this ledger and the original registry. Resolve the five documentary leads by source/release history where feasible. Do not revive the dropped seeded patterns or alter a base app to meet the count.
+Before a further pass, record a revised bounded query plan, prioritising explicit regression reports in titles/labels and continuing a deterministic ordering, while retaining P22 and excluding this ledger, the original registry and leads already recorded in earlier survey/verification notes. Resolve the five documentary leads by source/release history where feasible. Do not revive the dropped seeded patterns or alter a base app to meet the count.
 
 ## Cost and scope
 
