@@ -18,6 +18,13 @@
     },
     {
       "kind": "at",
+      "id": "enter-field",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
       "id": "type-fruit",
       "strategy": "TYPE",
       "text": "ban",
