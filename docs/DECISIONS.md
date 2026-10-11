@@ -122,6 +122,7 @@ Conventions:
 | [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) | — | P38 |
 | [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
 | [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
+| [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
@@ -3640,3 +3641,54 @@ The tab patterns use a custom tab strip that passes the attribute to the tab hea
 **Two tooling fixes (Decided by Claude under DR-0045).**
 - **Simulated cursor (P23 fidelity):** when there is nothing further to read, the cursor and its line now stay where they are, as NVDA's do (it reports the bottom, or no next heading). Before, the line emptied. No dev journey reaches the end of its page, so no dev result changes.
 - **`npm run corpus -- unchanged`:** it rewrote the dev control of `ras-post-edit-save-notification` into the test split once test items shared that journey. It now leaves an existing control as it is; the dev control was restored before any commit.
+
+## DR-0086 Test patterns, batch 3: mined pairs
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P23, P24; DR-0063, DR-0064, DR-0082 |
+
+**What was built.** The eight mined test patterns of the oss-regression batch (DR-0064). Each has:
+- its regression item (the version pair);
+- a benign twin (P20);
+- an unchanged control (P15);
+- a journey of its own.
+
+No test candidate was built or executed: neither a first broken release nor a twin was loaded (DR-0082).
+- **Journeys:** developed on the last good release only. Runs 38151638666, 38152045502, 38152360106 and 38152662474. In the last run of each journey, every step was reached and every expectation behaved the same in all three attempts, in both legs.
+- **Build check:** runs 38151643266 and 38152902505 applied, built and reverted all eight twin patches at the last good release. None was loaded or checked.
+
+| Journey (anchor) | Symptom | Judged by, on the base |
+|---|---|---|
+| `oss-vuetify-9627` (Open dialog; Tab past Save) | FOCUS_ESCAPES_DIALOG | Tree. NVDA does not repeat the dialog when focus is pulled back to Name, so it cannot see this step. |
+| `oss-bootstrap-35496` (Menu; Escape from the first item) | FOCUS_NOT_RESTORED | Tree and NVDA |
+| `oss-blueprint-6163` (Select a film; Enter in the filter) | INTERACTION_FAILS_UNDER_AT | Reachability, in both legs |
+| `oss-carbon-5623` (combo box; type "ban", Enter, Tab to "Order Banana") | JOURNEY_BLOCKED | Reachability, in both legs |
+| `oss-radix-4014` (Edit profile; Escape) | KEYBOARD_TRAP | Tree and NVDA |
+| `oss-carbon-7253` (top; next button) | NAME_NOT_CONVEYED | Tree and NVDA ("Previous page button unavailable") |
+| `oss-fluent-7796` (top; browse to each card) | ROLE_NOT_CONVEYED | Tree only. NVDA speaks no list-item role, and an id target has no speech form. |
+| `oss-carbon-18824` (Before; Tab, Space) | STATE_NOT_CONVEYED | Tree and NVDA ("pressed") |
+
+**Fixture changes after the split.** Three test fixtures were changed so that their symptom can be judged at all. None changes the library code or the behaviour the issue describes.
+- **Vuetify 2.0** puts `role="dialog"` on a container that is not an ancestor of the focused content. The card now carries `role="dialog" aria-label="Edit name"`.
+- **Carbon 7.9:** a value is not a goal (P24), and the highlighted option is only `aria-activedescendant`, which the absent leg does not treat as focus. A button named "Order <fruit>" now follows the combo box, so the chosen fruit is reachable by name.
+- **Fluent:** DocumentCard 6.124 passes no id or label through, and Chrome gives a list item no name. Each card now gets an id after rendering, so the journey can name it by `#card-1` and `#card-2`. A heading also gives both legs the same first line: without it, NVDA's Ctrl+Home lands on the first card itself.
+
+The m3 reproductions (DR-0063) ran on the earlier fixtures. Re-checking them would load the broken releases, so the changed fixtures are not re-verified before the freeze.
+
+**Base behaviours that decided the journeys.**
+- **Vuetify:** the dialog content is inserted first in the app, so Shift+Tab from it leaves the page. The journey therefore Tabs forwards past Save, where the last good release pulls focus back to Name.
+- **Bootstrap:** the first Escape closes the menu in both legs, because NVDA is back in browse mode once focus is on a link. There is no leave-focus-mode Escape.
+- **Blueprint:** the filter input takes focus only on the first ArrowDown. Enter then picks the first film ("The Godfather"), and focus returns to the button.
+- **Carbon combo box under NVDA:** the first Tab stops on a wrapper that NVDA calls "Choose an item list". The goal therefore matches on role as well as name. On the editable combo box, NVDA enters focus mode by itself, so no toggle is needed.
+
+**Risks.**
+- **Bootstrap:** after a candidate's Escape, NVDA says nothing. From speech alone, this classifies as KEYBOARD_TRAP rather than FOCUS_NOT_RESTORED. The tree families classify it correctly.
+- **Candidates:** how each candidate behaves under these journeys is inferred from the issue and the diff only. It cannot be checked before the freeze.
+
+**Tooling (Decided by Claude under DR-0045).**
+- **Base builds for test-only mined pairs:** `buildApp.ps1` and the runner's journey-development pseudo-item take the last good release from a test pair's regression item. Only the base is ever built, because `buildApp.ps1` builds candidates for dev items only.
+- **New `test-twins` job in `m3-oss-repro`:** it builds each test twin without loading or checking it, and keeps only exit codes and logs.
