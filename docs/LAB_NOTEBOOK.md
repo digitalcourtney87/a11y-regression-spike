@@ -403,3 +403,10 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 **Source:** registry-to-item review of `corpus/patterns.json` and `corpus/items/`, against DR-0059 and DR-0060.
 **Affects:** DR-0092 build rule, P39, HANDOFF v1.15.
 **Confidence:** the correction and its evidence are recorded in DR-0093, `docs/gates/G4.md` and `docs/gates/G4-brief.md`. This notebook does not restate the confirmatory results. The second round remains authorised and unbuilt.
+
+### M7: Bounded mining feasibility pass recorded (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** fixed GitHub documentary search and exploratory reproduction runs 38173756427 and 38174040191.
+**Affects:** DR-0094, P39, A-003.
+**Confidence:** methods, dispositions and observations are in `docs/research/2026-10-11-m7-mining-ledger.md` and `docs/research/2026-10-11-m7-mining-feasibility.md`. The successful reproduction has not yet had an independent repeat. No new corpus pattern is admitted; confirmatory results remain in the G4 records.

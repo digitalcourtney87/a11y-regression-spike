@@ -1,0 +1,16 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.40.2",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "April 2018 -> May 2018 (one pointer click)"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "April 2018 -> May 2018 (one Space press)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

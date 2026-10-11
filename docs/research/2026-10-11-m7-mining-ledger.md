@@ -53,7 +53,7 @@ GitHub REST search, creation date ascending, up to 30 hits inspected per query a
 | [microsoft/fluentui #1618](https://github.com/microsoft/fluentui/issues/1618) | rejected | AT/browser compatibility report with no accessible last-good package release; does not establish a release regression pair. |
 | [microsoft/fluentui #4432](https://github.com/microsoft/fluentui/issues/4432) | pending documentary | Dropdown option announcements on arrows; merged fix #5385 referenced, but last-good/broken releases and NVDA/Chrome reproduction remain unresolved. |
 | [microsoft/fluentui #4619](https://github.com/microsoft/fluentui/issues/4619) | rejected | Loss of visual focus outline is outside the current primary-analysis symptom set; no semantic focus-loss claim. |
-| [microsoft/fluentui #4620](https://github.com/microsoft/fluentui/issues/4620) | documentary candidate | Keyboard Calendar activation increments twice; maintainer bisect and merged fix #4662. Published source suggests 5.40.2 -> 5.41.0, fixed 5.90.0; CI reproduction pending. Symptom mapping and full accessible last-good eligibility remain provisional. |
+| [microsoft/fluentui #4620](https://github.com/microsoft/fluentui/issues/4620) | documentary candidate | Keyboard Calendar activation increments twice; maintainer bisect and merged fix #4662. Published source suggests 5.40.2 -> 5.41.0, fixed 5.90.0; One successful exploratory reproduction in run 38174040191. Independent repeat and frozen-vocabulary compatibility remain pending; not admitted. |
 | [microsoft/fluentui #5115](https://github.com/microsoft/fluentui/issues/5115) | rejected | Design/spec discussion; maintainers regard tab behaviour as intentional/wont-fix. No release regression pair established. |
 | [tailwindlabs/headlessui #2243](https://github.com/tailwindlabs/headlessui/issues/2243) | rejected | Maintainer closure explains NuxtLink click handling/workaround; no merged library fix and keyboard reproduction pair established (P22 rules 1/6). |
 | [tailwindlabs/headlessui #2934](https://github.com/tailwindlabs/headlessui/issues/2934) | rejected | Maintainer describes tab-to-select as intended; changing nullable defaults in v2 is not evidence of an accessible last-good regression pair. |
@@ -70,6 +70,20 @@ GitHub REST search, creation date ascending, up to 30 hits inspected per query a
 
 [Fluent UI #4620](https://github.com/microsoft/fluentui/issues/4620) describes one keyboard invocation advancing two months. The maintainer identifies [commit fd2206f](https://github.com/microsoft/fluentui/commit/fd2206f8041ba6aca3b61a67a8552652e67d4954), changing clickable spans to buttons. [Merged fix #4662](https://github.com/microsoft/fluentui/pull/4662) gates keydown handling to Enter because native button activation also handles Space. This is the independent check specification: one Space on Next month must advance exactly one month; pointer activation is a control.
 
-The [npm registry metadata](https://registry.npmjs.org/office-ui-fabric-react) identifies MIT licensing, compatible React 16 peer ranges, and published releases. Read-only inspection of published tarball source found no native CalendarDay navigation buttons in 5.40.2 and native buttons in the next release, 5.41.0. 5.89.0 still routes Space through keydown; 5.90.0 restricts that handler to Enter. These are source-inferred boundaries, not observed behavioural results. The exploratory fixture pins React/react-dom 16.2.0, published before the earliest library release, and tests 5.40.2, 5.41.0 and 5.90.0 in CI only.
+The [npm registry metadata](https://registry.npmjs.org/office-ui-fabric-react) identifies MIT licensing, compatible React 16 peer ranges, and published releases. Read-only inspection of published tarball source found no native CalendarDay navigation buttons in 5.40.2 and native buttons in the next release, 5.41.0. 5.89.0 still routes Space through keydown; 5.90.0 restricts that handler to Enter. These were source-inferred boundaries before CI. Run 38174040191 subsequently reproduced the expected good/broken/fixed behaviour once. The exploratory fixture pins React/react-dom 16.2.0, published before the earliest library release, and tests 5.40.2, 5.41.0 and 5.90.0 in CI only.
 
 Even successful reproduction does not itself establish corpus readiness: check the accessible last-good construct, compatibility with the frozen symptom/journey vocabulary, mechanism/context independence, and two-run stability before admission. No symptom definition may be changed to admit this candidate.
+
+## Exploratory reproduction outcome
+
+[Run 38173756427](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38173756427) built all versions but failed to render without required `Calendar.strings`. That setup error was corrected identically on each release under P22 rule 8. The replacement dispatch cancelled the first run's remaining job via the existing concurrency rule; the completed candidate artifact was retained.
+
+[Run 38174040191](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191), commit `d50c8c2`, produced:
+
+| Release | Pointer, one click | Keyboard, one Space | Page errors / external requests |
+|---|---|---|---|
+| 5.40.2 | April → May, holds | April → May, holds | 0 / 0 |
+| 5.41.0 | April → May, holds | April → June, fails | 0 / 0 |
+| 5.90.0 | April → May, holds | April → May, holds | 0 / 0 |
+
+All three installs and builds returned exit 0. The [saved check output](m7-mining-evidence/38174040191-5.41.0.check.json) preserves the broken-release observation; adjacent files preserve the controls, setup failures and build results. This is one successful exploratory reproduction. An independent repeat remains outstanding because the two-dispatch cap included the setup repair. No candidate has been assigned or admitted to the corpus.

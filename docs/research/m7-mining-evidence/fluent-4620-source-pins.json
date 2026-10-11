@@ -1,0 +1,90 @@
+{
+  "label": "EXPLORATORY",
+  "package": "office-ui-fabric-react",
+  "source": "https://registry.npmjs.org/office-ui-fabric-react",
+  "note": "Read-only inspection of published package metadata and source; no local execution of third-party code. Behavioural verification is separate.",
+  "versions": {
+    "5.40.2": {
+      "published": "2018-01-19T11:14:37.238Z",
+      "licence": "MIT",
+      "peerDependencies": {
+        "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+        "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+      },
+      "dist": {
+        "shasum": "38f165ea6e0c6924997beb802f74013bfa9ba9ed",
+        "tarball": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.40.2.tgz",
+        "integrity": "sha512-XN62aBr6eT8wq7ZkWRocwuhUboEP12xKB+HH3mAVmAF0jN7mHiasFS405EdJBF/qYw6rl7y6T0n7L8knrRxULg==",
+        "signatures": [
+          {
+            "sig": "MEUCICIsURluExLtfAo9V3H6rqLwuMX5ubhqZjaegPqLx5x9AiEAoE2gNFH+Rl+cbpfzuEX8F9gJmmxPGUG8WLjPtiu3k8c=",
+            "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+          }
+        ]
+      }
+    },
+    "5.41.0": {
+      "published": "2018-01-22T11:15:55.317Z",
+      "licence": "MIT",
+      "peerDependencies": {
+        "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+        "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+      },
+      "dist": {
+        "shasum": "73b86677cea70b4a9425b2e22ca99cf01fcf6070",
+        "tarball": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.41.0.tgz",
+        "integrity": "sha512-c1tSsOZ/U4NW8zcNRTtbVG3UNWMl++oc9FPxkCr2lKcEdYsG2ouQ0aqh4K1SrbUIZhlNv64/214pzUZfoAemGw==",
+        "signatures": [
+          {
+            "sig": "MEQCIAqHLYKverAfSKpxbcPZ7SDrl6mUBSp/hzoqLIsmNBlGAiBYfBX+vtMEG50m/yk4BIbauC87i+KHj8je4+L244YHqQ==",
+            "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+          }
+        ]
+      }
+    },
+    "5.89.0": {
+      "published": "2018-04-25T05:33:07.391Z",
+      "licence": "MIT",
+      "peerDependencies": {
+        "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+        "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+      },
+      "dist": {
+        "shasum": "72180be2b6226666757713293c10e3d388368cbb",
+        "tarball": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.89.0.tgz",
+        "fileCount": 8114,
+        "integrity": "sha512-Qj/3BusBCxlDeHnTvk/zCYD+4SznlU5OffB0ExP2OjiDZw3oD3WKrMTLtVv+Duvy771u8fAthSrpjuF5aLfh+w==",
+        "signatures": [
+          {
+            "sig": "MEQCIFuMKUKqIW8Hj2/8xduQTiMs8lTQ1gDjCMEAMYhiZtUkAiAE0kQgZuW9qBEbFGSTUyH5cPf0w7GxuJNb+9JRYvydGA==",
+            "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+          }
+        ],
+        "unpackedSize": 33592883,
+        "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4BMTCRA9TVsSAnZWagAADWoQAJ/QIo8cxYxpedp8WJM0\n8oXLhTXJwnYddua+xkT+ezZAfbRQCa02GZty+M6wr8kh9TK5DCp6rUwSZ1ZZ\nn9tuFaDIkjbu6s+i3qhAI/GVrm7QgQV4+ThFPpzO9klKu1i9/ufarsGxTTGq\nMMzMU8qYFfSpV3o8NgwXVQEB3wpGChYBK01I0PEgE90EpENPEGVjWe03OJhm\n9Ul/p1UImUdaKSPNZ0l8wccHE38Xev022snjpzCHqZZEVR1Yx04BcP6zl+D4\n9hjbLx1ct4lbN7bauCGpdzzrc0a6lOYIp8k9ocaya8hiFs2ANMbQnUJOgI4W\nilKXYHdm1uBFhrXR5SKlRx8e9qz6OXXO1g6nKksrcF/QjBRBbejaGLGhwf7P\ngbpTwIAyDUunS7s8dSIQRA8CFnz9dComlO4+QK2oXwvc0ZeR/FjHCoVl0HXM\nuyees5IaSgccaBr80ehl9H2Eye6qz/jMkLzZB9M27HbaHWGDRXpqzyOrKXVf\nvvLxEMFHlqhW76KZrzbkdQBJwDomSe3ffss+2UaVYLOe8vV6IGUwTPoV0UVU\n+L/u1NPt1cwOLsPoJrwsPYa4b+kmphIJ7IucmfXBOpnHAz6Tzdon4Z0fheWO\ntl7jLxZ4jIMfoRmkqPjL8N8ZkZm8eqfVEH657U0w+ClLbVspQYlVVIUqBno9\n6lDH\r\n=E4QG\r\n-----END PGP SIGNATURE-----\r\n"
+      }
+    },
+    "5.90.0": {
+      "published": "2018-04-26T10:13:07.955Z",
+      "licence": "MIT",
+      "peerDependencies": {
+        "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+        "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+      },
+      "dist": {
+        "shasum": "d5dda0bb21f20c6d542ba6277b398b9ae73eaf27",
+        "tarball": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.90.0.tgz",
+        "fileCount": 8105,
+        "integrity": "sha512-jYIaoTqIR7ygJZICZdIo8dJxdCVREOvK3Dl6BfqCIS6Ah6+PdlKColPjhyvdXzpicbBaKP2kdYCVhxTXoWRtSA==",
+        "signatures": [
+          {
+            "sig": "MEQCIAIVW//lZSD0SXdeH+RbhqiAD4VkirYKYaXZAzg3BdoPAiBMEJZ+hgzzkQAxmCdzc5cDsTGuESSo7GqqQn5j7NuU+g==",
+            "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+          }
+        ],
+        "unpackedSize": 33562579,
+        "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4aY0CRA9TVsSAnZWagAAHXAQAJgOM41cicf+FuWjVJrB\n/bl2No3MbVxo9hr8uugpHimyRztrOYFLJn/SbXhyhejdQsyQVTKp6FS630RZ\nl4Ioci2vRxl6SUEMauMRuhzHz3vrTOPFxDP/TfxnSQsthm1iewey90SD/8rP\nSEe4pGbiyNcePcmi+uo5ZYcOKJXuwxBdee8FMELxoELZMkEEd1zOH2OwqUOg\nLzcjB3CtluciREtFq8wh3GRD0hmHh3LKn/Y21MBaJJI40Glo0PnEl7WqQ8he\nfEwYCzpEmNpgZX4FsPteyRXWo04OLVQFt9hrydPrrxjd8cq0jSEGqJC8sS7K\ntStN44KRHTqE15JO5bRQUmZ6XxBtO4VgNmV7lItCdKrgZoi3biGaegJNtiMC\nqq1+LWnbv8qFi+BDxZ5LiTAuBl5lJOwy9SJnFqsvBfFV/fllCHquetyxInGt\nGIXXWRUbXfVwKsW0lw+p++mw+gVEnJrnYu7lnmSOpXMYp6M9RhVj/EaFQuHZ\n+5+qqD4X1OuUr/4/rMjE6PBuUI6pN0GiYmZLu21qAS3e4CLBNDQYirpCxY0o\nRXqzxzvBEK8K6yk3L3HqCH2BB9pZccMvmugJnt+D3lnxZG/1xbkG08VdZaCQ\ncBNBdRI7trP8kBS94SswSyU86dbBk167Wj+I0X3mwLaTZ4zCOyzw6fPSfBAh\nR0yy\r\n=XEc/\r\n-----END PGP SIGNATURE-----\r\n"
+      }
+    }
+  }
+}

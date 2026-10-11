@@ -1,0 +1,131 @@
+{
+  "label": "EXPLORATORY",
+  "runs": [
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38173756427,
+      "headSha": "ea7dec08c58a081388e82fdf83cfcf9d5157855e",
+      "jobs": [
+        {
+          "databaseId": 114571658605,
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:48:38Z",
+          "completedAt": "2026-10-11T20:48:42Z",
+          "elapsedSeconds": 4.0
+        },
+        {
+          "databaseId": 114571658774,
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:48:38Z",
+          "completedAt": "2026-10-11T20:50:33Z",
+          "elapsedSeconds": 115.0
+        },
+        {
+          "databaseId": 114571678650,
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:48:44Z",
+          "completedAt": "2026-10-11T20:51:39Z",
+          "elapsedSeconds": 175.0
+        },
+        {
+          "databaseId": 114571678668,
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:48:44Z",
+          "completedAt": "2026-10-11T20:50:35Z",
+          "elapsedSeconds": 111.0
+        },
+        {
+          "databaseId": 114571678690,
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "startedAt": "2026-10-11T20:48:46Z",
+          "completedAt": "2026-10-11T20:53:06Z",
+          "elapsedSeconds": 260.0
+        },
+        {
+          "databaseId": 114571678725,
+          "name": "fixture (fluent-4620)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:48:43Z",
+          "completedAt": "2026-10-11T20:51:44Z",
+          "elapsedSeconds": 181.0
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38173756427"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38174040191,
+      "headSha": "d50c8c25bf36686cf04843c87a82d3b7d29446a1",
+      "jobs": [
+        {
+          "databaseId": 114572572332,
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:08Z",
+          "completedAt": "2026-10-11T20:55:39Z",
+          "elapsedSeconds": 151.0
+        },
+        {
+          "databaseId": 114572572618,
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:08Z",
+          "completedAt": "2026-10-11T20:53:14Z",
+          "elapsedSeconds": 6.0
+        },
+        {
+          "databaseId": 114572598821,
+          "name": "fixture (fluent-4620)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:17Z",
+          "completedAt": "2026-10-11T20:55:16Z",
+          "elapsedSeconds": 119.0
+        },
+        {
+          "databaseId": 114572598854,
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:16Z",
+          "completedAt": "2026-10-11T20:56:44Z",
+          "elapsedSeconds": 208.0
+        },
+        {
+          "databaseId": 114572598898,
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:16Z",
+          "completedAt": "2026-10-11T20:56:33Z",
+          "elapsedSeconds": 197.0
+        },
+        {
+          "databaseId": 114572598956,
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T20:53:16Z",
+          "completedAt": "2026-10-11T20:55:04Z",
+          "elapsedSeconds": 108.0
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191"
+    }
+  ]
+}

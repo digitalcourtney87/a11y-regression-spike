@@ -346,20 +346,59 @@
       "title": "DatePicker: pressing space/Enter on Previous/Next month/year arrow buttons goes 2 months at a time",
       "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
       "status": "documentary candidate",
-      "reason": "Keyboard Calendar activation increments twice; maintainer bisect and merged fix #4662. Published source suggests 5.40.2 -> 5.41.0, fixed 5.90.0; CI reproduction pending. Symptom mapping and full accessible last-good eligibility remain provisional.",
-      "reproduction": null,
+      "reason": "One successful exploratory CI reproduction: keyboard advances two months only in 5.41.0; 5.40.2 and 5.90.0 advance one month. Pointer control passes all three. Not admitted: independent repeat and frozen-vocabulary compatibility remain pending.",
+      "reproduction": {
+        "run": 38174040191,
+        "commit": "d50c8c25bf36686cf04843c87a82d3b7d29446a1",
+        "label": "EXPLORATORY",
+        "successfulRuns": 1,
+        "versions": {
+          "5.40.2": {
+            "pointer": {
+              "holds": true,
+              "detail": "April 2018 -> May 2018 (one pointer click)"
+            },
+            "keyboard": {
+              "holds": true,
+              "detail": "April 2018 -> May 2018 (one Space press)"
+            }
+          },
+          "5.41.0": {
+            "pointer": {
+              "holds": true,
+              "detail": "April 2018 -> May 2018 (one pointer click)"
+            },
+            "keyboard": {
+              "holds": false,
+              "detail": "April 2018 -> June 2018 (one Space press)"
+            }
+          },
+          "5.90.0": {
+            "pointer": {
+              "holds": true,
+              "detail": "April 2018 -> May 2018 (one pointer click)"
+            },
+            "keyboard": {
+              "holds": true,
+              "detail": "April 2018 -> May 2018 (one Space press)"
+            }
+          }
+        },
+        "admitted": false
+      },
       "sources": [
         "https://github.com/microsoft/fluentui/issues/4620",
         "https://github.com/microsoft/fluentui/pull/4662",
         "https://github.com/microsoft/fluentui/commit/fd2206f8041ba6aca3b61a67a8552652e67d4954",
-        "https://registry.npmjs.org/office-ui-fabric-react"
+        "https://registry.npmjs.org/office-ui-fabric-react",
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191"
       ],
       "package": "office-ui-fabric-react",
       "licence": "MIT",
       "good": "5.40.2",
       "broken": "5.41.0",
       "fixed": "5.90.0",
-      "releaseStatus": "source-inferred; reproduction pending"
+      "releaseStatus": "source-supported and observed in one successful exploratory run"
     },
     {
       "id": "fluentui-5115",

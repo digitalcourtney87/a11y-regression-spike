@@ -130,6 +130,7 @@ Conventions:
 | [DR-0091](#dr-0091-fetch-the-freeze-tag-before-a-test-job) | Fetch the freeze tag before a test job | Accepted | 2026-10-11 | Review on PR #11 | DR-0092 | G4 accepted (DR-0092) |
 | [DR-0092](#dr-0092-owner-approval-of-the-g4-brief) | Owner approval of the G4 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0093 (build allocation only) | Second round build authorised; allocation corrected |
 | [DR-0093](#dr-0093-correction-of-the-second-round-build-allocation) | Correction of the second-round build allocation | Accepted | 2026-10-11 | Owner instruction; factual correction under DR-0045 | — | 18 new qualifying mined patterns required; availability unestablished |
+| [DR-0094](#dr-0094-bounded-second-round-mining-feasibility-pass) | Bounded second-round mining feasibility pass | Accepted | 2026-10-11 | Owner instruction to proceed | — | One exploratory reproduction; no new corpus patterns admitted |
 
 ## Pending owner items (hard rule 12)
 
@@ -3853,3 +3854,20 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Correction.** Remove the five-plus-thirteen allocation. Keep the existing exclusions and P39's method: seek 18 new distinct mined patterns that pass P22's documentary, keyboard-reproduction and other verification rules, with checks derived from the issue or fix rather than the arms' oracles. Assign the additions to test as P39 specifies; preserve existing assignments. Keep benign twins and new-journey unchanged controls. Register each accepted pattern and record its source, verification evidence and distinct mechanism/context before confirmatory execution. Do not select from the symptoms or items G4 missed.
 
 **Limits.** This corrects an unsupported allocation; it does not claim that 18 qualifying pairs are available. If the mining pass falls short, record the shortfall and bring any change of context, base application, verification rule or target count to the owner under hard rule 12. The accepted G4 calls, target of 77, frozen oracles, triggers and thresholds, tag requirement, M8 boundary and 27 November decision date stand. No corpus item, split, frozen path, execution or tag is changed by this correction.
+
+## DR-0094 Bounded second-round mining feasibility pass
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction to proceed with the recommended bounded feasibility pass |
+| HANDOFF v1.15 | §9 (M7); P39 |
+
+**Method.** The correction (DR-0093) was committed as `998e389`. The bounded search plan was recorded before searches in `docs/research/2026-10-11-m7-mining-plan.md`, commit `8b5ed75`: sixteen fixed queries over eight repositories, at most three new issues per query and 48 total, excluding the original registry and duplicates. The pass kept P22 and did not select from G4 misses. Its limit was three new fixture candidates and two exploratory reproduction dispatches.
+
+**Outcome.** Thirty-six new issues were reviewed: thirty excluded, five pending documentary evidence, and one taken to reproduction. Fluent UI #4620 reproduces once in run 38174040191 at `d50c8c2`: Calendar 5.40.2 advances one month per Space, 5.41.0 advances two, and 5.90.0 advances one again. Pointer activation advances one month in all three. The first dispatch (38173756427) built the releases but failed the fixture's render precondition; required localisation strings were added uniformly before the split under P22 rule 8. Both the failed setup and successful observations are retained. Two dispatches were used; an independent successful repeat remains outstanding.
+
+**Records.** `docs/research/2026-10-11-m7-mining-ledger.md` (sources, queries and exclusions), its JSON companion, `docs/research/2026-10-11-m7-mining-feasibility.md` (shortfall and follow-up), and `docs/research/m7-mining-evidence/` (check/build outputs and release fingerprints). A-003 records the exploratory fixture addition and G4 exposure.
+
+**Boundary.** No new corpus pattern is admitted, registered or split. The existing 59 test patterns and 20 dev patterns retain their assignments. One successful reproduction is not the full admission check: an independent repeat, frozen-vocabulary compatibility and companion twin/control work remain. Even if this candidate and all five documentary leads qualify, this selected set would supply at most six additions, leaving at least twelve to source. The search limit is reached; a further pass starts with a revised recorded plan, not a selection based on confirmatory misses. The 77 target and P22 criteria stand. No confirmatory execution/scoring, new freeze tag or M8 work occurred.
