@@ -1,0 +1,83 @@
+{
+  "gate": "G4",
+  "label": "CONFIRMATORY",
+  "record": "DR-0015 (D6); DR-0092",
+  "note": "Archived from the local machine with gh run download, so workflows stay contents: read (D6). No evidence was dropped. The corpus download is split into three bundles because one archive exceeded 50 MB: g4-corpus-meta.tar.zst holds every file that is not a block (.json.gz); the block files, sorted by path, are split by raw size into g4-corpus-blocks-a.tar.zst (183 files) and g4-corpus-blocks-b.tar.zst (107 files). Extract all three into one directory to rebuild run 38156720011. g4-soak.tar.zst is run 38155513822. JSON, JSON lines, gzip, NVDA logs and Markdown only. No NVDA binaries. Scanned for token-shaped secrets before commit: none.",
+  "bundles": [
+    {
+      "file": "g4-corpus-meta.tar.zst",
+      "sha256": "447c13639aefbd42b6d9a710aea7dcb1443727830999ec878ab5d080b2fbd7d9",
+      "bytes": 7362764,
+      "files": 2794,
+      "holds": "run 38156720011 except block json.gz files, including the scorer report"
+    },
+    {
+      "file": "g4-corpus-blocks-a.tar.zst",
+      "sha256": "186ee9ed45d880ef3361c4bcba74c0d05134492c2f20c44f3f15e176fa3d9c28",
+      "bytes": 44011025,
+      "files": 183,
+      "holds": "first 183 block files of run 38156720011, sorted by path"
+    },
+    {
+      "file": "g4-corpus-blocks-b.tar.zst",
+      "sha256": "d11bd267bfd03ce430e527127dd7c2af83ef0a1bcbac2fd428383ed45af1c9aa",
+      "bytes": 42287360,
+      "files": 107,
+      "holds": "remaining 107 block files of run 38156720011"
+    },
+    {
+      "file": "g4-soak.tar.zst",
+      "sha256": "d0ceb36b130cea4422009d743f39a641a862be295e492f288a38e85d458dda6b",
+      "bytes": 1508762,
+      "files": 95,
+      "holds": "run 38155513822, 20 canary shards"
+    }
+  ],
+  "corpusRun": "38156720011",
+  "soakRun": "38155513822",
+  "runs": [
+    {
+      "runId": "38156720011",
+      "label": "Confirmatory test split (both legs, 10 apps, 4 shards)",
+      "workflow": "m4-items",
+      "headSha": "8082479f066e2a695614f99ba917902901f14c05",
+      "conclusion": "success",
+      "createdAt": "2026-10-11T16:44:33Z",
+      "updatedAt": "2026-10-11T18:02:45Z",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "listener": [
+        "0.3.1 (sha256 803bf42a1ccda527f7de524e65de3a5f1f4eaa12d32a3df61ae7ebf01809f115); .NET 10.0.12"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38156720011"
+    },
+    {
+      "runId": "38155513822",
+      "label": "K1 soak (both legs, 600 attempts, 10 shards)",
+      "workflow": "phase0-nvda",
+      "headSha": "e8903e4",
+      "conclusion": "success",
+      "images": [
+        "win25-vs2026 20260925.250.1 build 26100.33438"
+      ],
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38155513822"
+    }
+  ],
+  "pins": {
+    "protocol-freeze": "protocol-freeze-v3",
+    "protocol-sha256": "508302c493d1e35225fc409ea4d01c3c7e4b7b982c819efedac4783627d60ab2",
+    "node": "24.21.0",
+    "playwright": "1.63.0",
+    "chromeForTesting": "153.0.8010.12",
+    "axeCore": "4.13.0",
+    "nvda": "2026.2",
+    "nvdaSha256": "7df0ca3c1c9e8c6521bc7553486ca360ed6f0b4f9bdbd6603131e38b5c1497a1",
+    "espeakRate": 30,
+    "scream": "3.6",
+    "screamSha256": "25ea5e778b4e6995a98d448b9b5f6d321f681663f1aeeec69d8e63183d008b19",
+    "screamSignerThumbprint": "B2353603B4837C7A86A01D12A2B34DA7B5F2D368",
+    "guidepup": "0.35.0"
+  },
+  "result": "G4 accepted 2026-10-11 (DR-0092). B2 versus B is a difference. D versus C union is equivalent within 0.08. C versus B2, both rules, and D versus C adjudicated are inconclusive. False FAILs are 0."
+}

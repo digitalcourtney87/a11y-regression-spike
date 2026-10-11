@@ -1,6 +1,6 @@
 # results
 
-Orphan branch for Phase 0 gate evidence (DR-0015, D6). Each gate has a folder with a `tar.zst` bundle under 50 MB, a `MANIFEST.json` (run IDs, head commits, image versions, pinned versions and the gate result) and `SHA256SUMS`. Bundles are archived from the local machine with `gh run download`, so workflows stay `contents: read`, and they never contain NVDA binaries. Everything here is EXPLORATORY.
+Orphan branch for Phase 0 gate evidence (DR-0015, D6). Each gate has a folder with a `tar.zst` bundle under 50 MB, a `MANIFEST.json` (run IDs, head commits, image versions, pinned versions and the gate result) and `SHA256SUMS`. Bundles are archived from the local machine with `gh run download`, so workflows stay `contents: read`, and they never contain NVDA binaries. G1 and G2 are EXPLORATORY. G4 is CONFIRMATORY.
 
 ## Verify and rebuild G1
 
@@ -31,3 +31,16 @@ The bundle holds all eight M1 runs. Run the report on the two G1 runs only: runn
 The bundle holds all five M2 runs: the smoke run, the pilot, the G2 run, the on/off diagnostic and the gate-review verification run. The G2 numbers come from run 37119632093 alone and the on/off diagnostic from run 37119638620 alone. Each directory gets `report-g2.md` (B2, NVDA-absent leg) and `report.md` (speech, NVDA-present leg). The archived reports were regenerated with the gate-review code; run the report from the G2 pull request's head commit (or later), whose code re-scores B2 from the raw evidence.
 
 `g2-followup-evidence.tar.zst` holds run 37125153236, the Windows check of the fixes made after the G2 merge (DR-0055). It is not G2 evidence.
+
+## Verify G4
+
+Extract the three corpus bundles into one directory. The block bundles hold `.json.gz` files; the meta bundle holds everything else from run 38156720011, including `report-m5-test.md`.
+
+    (cd ../results-wt/g4 && shasum -a 256 -c SHA256SUMS)
+    mkdir -p artefacts/g4-repro/corpus artefacts/g4-repro/soak
+    for b in g4-corpus-meta g4-corpus-blocks-a g4-corpus-blocks-b; do
+      zstd -d -c ../results-wt/g4/$b.tar.zst | tar -xf - -C artefacts/g4-repro/corpus
+    done
+    zstd -d -c ../results-wt/g4/g4-soak.tar.zst | tar -xf - -C artefacts/g4-repro/soak
+
+Scoring the corpus needs a checkout whose frozen hash matches `protocol-freeze-v3`. The soak report is `npm run report:phase0 -- artefacts/g4-repro/soak`.
