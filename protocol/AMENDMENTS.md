@@ -105,3 +105,5 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 **Test-split exposure.** G4's 145-item confirmatory run and all five comparison intervals have already been seen. The search plan was recorded before new searches and did not select from G4 misses. This exploratory check is not represented as pre-registered before G4.
 
 **Analysis and execution.** The accepted G4 analysis remains reproducible at `protocol-freeze-v3`. The new fixture is run only by the exploratory mining workflow, before any test assignment. No amended confirmatory analysis exists. Oracles, triggers, thresholds and original split assignments are unchanged. The owner must tag the amended tree before any subsequent confirmatory execution or scoring.
+
+**Pre-split setup repair.** Run 38173756427 installed and built all three releases, but each page failed to render because `Calendar.strings` was null. The fixture now supplies the documented English `ICalendarStrings` fields identically on all releases. The one-month criterion and release pins are unchanged. These errors are setup failures, not regression observations (P22 rule 8).

@@ -4,7 +4,7 @@ EXPLORATORY. Search plan: [bounded mining plan](2026-10-11-m7-mining-plan.md). T
 
 ## Search log
 
-GitHub REST search, creation date ascending, up to 30 hits inspected per query and three new issues selected per query. Bodies, comments and timelines of all selected issues were read. Search matches can come from discussion text; a hit need not document a regression. Repository and query order follow the plan. No query failed.
+GitHub REST search, creation date ascending, up to 30 hits inspected per query and three new issues selected per query. Issue bodies and relevant comments and timelines were inspected for all selected issues. Search matches can come from discussion text; a hit need not document a regression. Repository and query order follow the plan. No query failed.
 
 | Repository | Term | Search total | Selected issue numbers | Excluded duplicates/previous entries before selection cap |
 |---|---|---|---|---|

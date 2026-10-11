@@ -1,0 +1,11 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.90.0",
+  "result": {
+    "error": "TimeoutError: locator.innerText: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ms-DatePicker-monthAndYear').first()\u001b[22m\n"
+  },
+  "external": [],
+  "pageErrors": [
+    "Cannot read properties of null (reading 'goToToday')"
+  ]
+}
