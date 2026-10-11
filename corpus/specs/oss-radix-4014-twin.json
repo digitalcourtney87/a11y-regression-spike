@@ -1,0 +1,16 @@
+{
+  "id": "oss-radix-4014-twin",
+  "patternId": "oss--radix-4014",
+  "operator": "wrapper-added",
+  "app": "oss/radix-4014",
+  "journeyId": "oss-radix-4014",
+  "target": "The name field wrapped in a plain div",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<input id=\"name\" aria-label=\"Name\" />",
+      "replace": "<div className=\"field\"><input id=\"name\" aria-label=\"Name\" /></div>"
+    }
+  ],
+  "twinOf": "oss-radix-4014"
+}

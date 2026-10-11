@@ -1,0 +1,21 @@
+{
+  "id": "oss-blueprint-6163-unchanged",
+  "patternId": "oss--blueprint-6163",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/blueprint-6163",
+  "journeyId": "oss-blueprint-6163",
+  "base": {
+    "ref": "oss/blueprint-6163@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@blueprintjs/select@4.9.14"
+  },
+  "candidate": {
+    "ref": "oss/blueprint-6163@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@blueprintjs/select@4.9.14"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-blueprint-6163 (P15)",
+    "licence": "Apache-2.0 (@blueprintjs/select)"
+  }
+}

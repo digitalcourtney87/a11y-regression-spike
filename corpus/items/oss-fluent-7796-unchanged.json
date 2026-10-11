@@ -1,0 +1,21 @@
+{
+  "id": "oss-fluent-7796-unchanged",
+  "patternId": "oss--fluent-7796",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/fluent-7796",
+  "journeyId": "oss-fluent-7796",
+  "base": {
+    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.124.2"
+  },
+  "candidate": {
+    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.124.2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-fluent-7796 (P15)",
+    "licence": "MIT (office-ui-fabric-react)"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "oss-bootstrap-35496",
+  "version": "1",
+  "app": "oss/bootstrap-35496",
+  "entryUrl": "/",
+  "anchor": "#toggle",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-menu",
+      "strategy": "ACTIVATE",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "button|Menu|expanded=true"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "enter-menu",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-action",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "link|Action"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-menu",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Menu"
+        }
+      ]
+    }
+  ]
+}

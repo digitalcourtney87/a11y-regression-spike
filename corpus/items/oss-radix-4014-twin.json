@@ -1,0 +1,22 @@
+{
+  "id": "oss-radix-4014-twin",
+  "patternId": "oss--radix-4014",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/radix-4014",
+  "journeyId": "oss-radix-4014",
+  "base": {
+    "ref": "oss/radix-4014@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@radix-ui/react-dismissable-layer@1.1.13"
+  },
+  "candidate": {
+    "patch": "oss-radix-4014-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "WRAPPER_ELEMENT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator wrapper-added",
+    "licence": "MIT (@radix-ui/react-dismissable-layer)"
+  }
+}

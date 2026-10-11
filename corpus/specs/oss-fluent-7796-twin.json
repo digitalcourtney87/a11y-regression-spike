@@ -1,0 +1,16 @@
+{
+  "id": "oss-fluent-7796-twin",
+  "patternId": "oss--fluent-7796",
+  "operator": "copy-edit",
+  "app": "oss/fluent-7796",
+  "journeyId": "oss-fluent-7796",
+  "target": "The list label, which no expectation asserts, reworded",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "\"aria-label\": \"Recent documents\"",
+      "replace": "\"aria-label\": \"Recent files\""
+    }
+  ],
+  "twinOf": "oss-fluent-7796"
+}

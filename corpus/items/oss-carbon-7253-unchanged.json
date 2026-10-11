@@ -1,0 +1,21 @@
+{
+  "id": "oss-carbon-7253-unchanged",
+  "patternId": "oss--carbon-7253",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/carbon-7253",
+  "journeyId": "oss-carbon-7253",
+  "base": {
+    "ref": "oss/carbon-7253@4b7811f1bdcc6d9e46944186b9ebaed0513df144+carbon-components@10.22.0"
+  },
+  "candidate": {
+    "ref": "oss/carbon-7253@4b7811f1bdcc6d9e46944186b9ebaed0513df144+carbon-components@10.22.0"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-carbon-7253 (P15)",
+    "licence": "Apache-2.0 (carbon-components)"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "oss-fluent-7796",
+  "patternId": "oss--fluent-7796",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/fluent-7796",
+  "journeyId": "oss-fluent-7796",
+  "base": {
+    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.124.2"
+  },
+  "candidate": {
+    "ref": "oss/fluent-7796@4b7811f1bdcc6d9e46944186b9ebaed0513df144+office-ui-fabric-react@6.125.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "mined: DocumentCard replaces its own role with link or button (operator precedence, commit 5b8befe in 6.125.0; fixed by PR #7796 in 6.129.4)"
+  },
+  "provenance": {
+    "origin": "mined from microsoft/fluentui (PR #7796); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "MIT (office-ui-fabric-react)",
+    "url": "https://github.com/microsoft/fluentui/issues/7796"
+  }
+}

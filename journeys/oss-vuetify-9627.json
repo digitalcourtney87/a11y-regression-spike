@@ -1,0 +1,51 @@
+{
+  "id": "oss-vuetify-9627",
+  "version": "1",
+  "app": "oss/vuetify-9627",
+  "entryUrl": "/",
+  "anchor": "#open",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-dialog",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-name",
+      "strategy": "TAB",
+      "until": {
+        "name": "Name",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Edit name"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "back-to-content",
+      "strategy": "SHIFT_TAB",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "leave-backwards",
+      "strategy": "SHIFT_TAB",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Edit name"
+        }
+      ]
+    }
+  ]
+}

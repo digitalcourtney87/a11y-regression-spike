@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/fluent-7796/src/main.js b/fixtures/oss/fluent-7796/src/main.js
+index 8382730..c0bb52f 100644
+--- a/fixtures/oss/fluent-7796/src/main.js
++++ b/fixtures/oss/fluent-7796/src/main.js
+@@ -10,7 +10,7 @@ render(
+   h(
+     "main",
+     { style: { padding: "2rem" } },
+-    h("div", { role: "list", "aria-label": "Recent documents" }, ...docs.map((title) => h(DocumentCard, { key: title, role: "listitem" }, h(DocumentCardTitle, { title })))),
++    h("div", { role: "list", "aria-label": "Recent files" }, ...docs.map((title) => h(DocumentCard, { key: title, role: "listitem" }, h(DocumentCardTitle, { title })))),
+   ),
+   document.getElementById("root"),
+ );

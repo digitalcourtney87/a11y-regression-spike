@@ -1,0 +1,24 @@
+{
+  "id": "oss-carbon-7253",
+  "patternId": "oss--carbon-7253",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/carbon-7253",
+  "journeyId": "oss-carbon-7253",
+  "base": {
+    "ref": "oss/carbon-7253@4b7811f1bdcc6d9e46944186b9ebaed0513df144+carbon-components@10.22.0"
+  },
+  "candidate": {
+    "ref": "oss/carbon-7253@4b7811f1bdcc6d9e46944186b9ebaed0513df144+carbon-components@10.23.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "icon-button-label-removed: Icon-only button loses its aria-label (Tooltip styles from PR #7029 hide a disabled icon-only button's assistive text (display: none), so Pagination's disabled button has no name; fixed by PR #7253)"
+  },
+  "provenance": {
+    "origin": "mined from carbon-design-system/carbon (PR #7253, #7233); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (carbon-components)",
+    "url": "https://github.com/carbon-design-system/carbon/issues/7253"
+  }
+}

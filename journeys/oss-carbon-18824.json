@@ -1,0 +1,33 @@
+{
+  "id": "oss-carbon-18824",
+  "version": "1",
+  "app": "oss/carbon-18824",
+  "entryUrl": "/",
+  "anchor": "#before",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-star",
+      "strategy": "TAB",
+      "until": {
+        "name": "Favourite",
+        "maxAttempts": 2
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "toggle-star",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "button|Favourite|pressed=true"
+        }
+      ]
+    }
+  ]
+}

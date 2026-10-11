@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-5623-twin",
+  "patternId": "oss--carbon-5623",
+  "operator": "css-only",
+  "app": "oss/carbon-5623",
+  "journeyId": "oss-carbon-5623",
+  "target": "The page widened",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "{ style: { padding: \"2rem\", width: 320 } }",
+      "replace": "{ style: { padding: \"2rem\", width: 360 } }"
+    }
+  ],
+  "twinOf": "oss-carbon-5623"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "oss-bootstrap-35496-twin",
+  "patternId": "oss--bootstrap-35496",
+  "operator": "copy-edit",
+  "app": "oss/bootstrap-35496",
+  "journeyId": "oss-bootstrap-35496",
+  "target": "The second menu item, which no expectation asserts, reworded",
+  "edits": [
+    {
+      "file": "index.html",
+      "find": ">Another action</a>",
+      "replace": ">Another option</a>"
+    }
+  ],
+  "twinOf": "oss-bootstrap-35496"
+}

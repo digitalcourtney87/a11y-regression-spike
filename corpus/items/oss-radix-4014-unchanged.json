@@ -1,0 +1,21 @@
+{
+  "id": "oss-radix-4014-unchanged",
+  "patternId": "oss--radix-4014",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/radix-4014",
+  "journeyId": "oss-radix-4014",
+  "base": {
+    "ref": "oss/radix-4014@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@radix-ui/react-dismissable-layer@1.1.13"
+  },
+  "candidate": {
+    "ref": "oss/radix-4014@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@radix-ui/react-dismissable-layer@1.1.13"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-radix-4014 (P15)",
+    "licence": "MIT (@radix-ui/react-dismissable-layer)"
+  }
+}

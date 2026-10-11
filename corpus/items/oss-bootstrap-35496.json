@@ -1,0 +1,24 @@
+{
+  "id": "oss-bootstrap-35496",
+  "patternId": "oss--bootstrap-35496",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/bootstrap-35496",
+  "journeyId": "oss-bootstrap-35496",
+  "base": {
+    "ref": "oss/bootstrap-35496@52ebc3355c5c26e01f717ab227513db1f8a7271b+bootstrap@5.0.2"
+  },
+  "candidate": {
+    "ref": "oss/bootstrap-35496@52ebc3355c5c26e01f717ab227513db1f8a7271b+bootstrap@5.1.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_RESTORED",
+    "mechanism": "menu-focus-not-restored: Closing a menu or popover does not return focus (Escape in a dropdown no longer returns focus to the toggle)"
+  },
+  "provenance": {
+    "origin": "mined from twbs/bootstrap (#35496, PR #35500); verified by m3-oss-repro run 37134051657 (DR-0063)",
+    "licence": "MIT (bootstrap)",
+    "url": "https://github.com/twbs/bootstrap/issues/35496"
+  }
+}

@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/blueprint-6163/src/main.jsx b/fixtures/oss/blueprint-6163/src/main.jsx
+index 9750310..8a39caa 100644
+--- a/fixtures/oss/blueprint-6163/src/main.jsx
++++ b/fixtures/oss/blueprint-6163/src/main.jsx
+@@ -14,7 +14,7 @@ const renderFilm = (film, { handleClick, handleFocus, modifiers }) =>
+ function App() {
+   const [film, setFilm] = useState(null);
+   return (
+-    <main style={{ padding: "2rem" }}>
++    <main style={{ padding: "2rem", maxWidth: 480 }}>
+       <Select2 items={films} itemPredicate={filter} itemRenderer={renderFilm} onItemSelect={setFilm} noResults={<MenuItem disabled text="No results" />}>
+         <Button data-testid="target" text={film ?? "Select a film"} />
+       </Select2>

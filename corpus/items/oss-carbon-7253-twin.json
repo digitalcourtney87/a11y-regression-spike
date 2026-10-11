@@ -1,0 +1,22 @@
+{
+  "id": "oss-carbon-7253-twin",
+  "patternId": "oss--carbon-7253",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/carbon-7253",
+  "journeyId": "oss-carbon-7253",
+  "base": {
+    "ref": "oss/carbon-7253@4b7811f1bdcc6d9e46944186b9ebaed0513df144+carbon-components@10.22.0"
+  },
+  "candidate": {
+    "patch": "oss-carbon-7253-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "Apache-2.0 (carbon-components)"
+  }
+}

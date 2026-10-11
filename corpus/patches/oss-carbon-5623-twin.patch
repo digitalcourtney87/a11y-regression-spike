@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/carbon-5623/src/main.js b/fixtures/oss/carbon-5623/src/main.js
+index bab9cdb..401f714 100644
+--- a/fixtures/oss/carbon-5623/src/main.js
++++ b/fixtures/oss/carbon-5623/src/main.js
+@@ -14,7 +14,7 @@ function App() {
+   const [selected, setSelected] = useState(items[0]);
+   return h(
+     "main",
+-    { style: { padding: "2rem", width: 320 } },
++    { style: { padding: "2rem", width: 360 } },
+     h(ComboBox, {
+       id: "fruit",
+       titleText: "Fruit",

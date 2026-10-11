@@ -1,0 +1,22 @@
+{
+  "id": "oss-carbon-18824-twin",
+  "patternId": "oss--carbon-18824",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/carbon-18824",
+  "journeyId": "oss-carbon-18824",
+  "base": {
+    "ref": "oss/carbon-18824@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@carbon/react@1.53.1"
+  },
+  "candidate": {
+    "patch": "oss-carbon-18824-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "EQUIVALENT_REFACTOR"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator equivalent-refactor",
+    "licence": "Apache-2.0 (@carbon/react)"
+  }
+}

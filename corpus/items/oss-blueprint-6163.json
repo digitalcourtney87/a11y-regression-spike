@@ -1,0 +1,24 @@
+{
+  "id": "oss-blueprint-6163",
+  "patternId": "oss--blueprint-6163",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/blueprint-6163",
+  "journeyId": "oss-blueprint-6163",
+  "base": {
+    "ref": "oss/blueprint-6163@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@blueprintjs/select@4.9.14"
+  },
+  "candidate": {
+    "ref": "oss/blueprint-6163@4b7811f1bdcc6d9e46944186b9ebaed0513df144+@blueprintjs/select@4.9.15"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "INTERACTION_FAILS_UNDER_AT",
+    "mechanism": "mined: Select2: choosing an item with Enter leaves the popover open (PR #6149 in 4.9.15; fixed by PR #6163 in 4.9.16); pointer selection still closes it"
+  },
+  "provenance": {
+    "origin": "mined from palantir/blueprint (PR #6163, PR #6149); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (@blueprintjs/select)",
+    "url": "https://github.com/palantir/blueprint/issues/6163"
+  }
+}

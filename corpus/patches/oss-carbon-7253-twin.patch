@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/carbon-7253/src/main.jsx b/fixtures/oss/carbon-7253/src/main.jsx
+index f00069b..8172ae5 100644
+--- a/fixtures/oss/carbon-7253/src/main.jsx
++++ b/fixtures/oss/carbon-7253/src/main.jsx
+@@ -6,7 +6,7 @@ import { Pagination } from "carbon-components-react";
+ // icon-only button whose name comes from its assistive-text span. The
+ // package under test is carbon-components, which supplies the CSS.
+ render(
+-  <main style={{ padding: "4rem 2rem" }}>
++  <main style={{ padding: "4rem 3rem" }}>
+     <Pagination page={1} pageSize={10} pageSizes={[10, 20, 30]} totalItems={45} backwardText="Previous page" forwardText="Next page" />
+   </main>,
+   document.getElementById("root"),
