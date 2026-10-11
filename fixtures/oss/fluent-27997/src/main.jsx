@@ -9,7 +9,7 @@ function App() {
   return <FluentProvider theme={webLightTheme}>
     <main>
       <h1>Controlled row selection</h1>
-      <DataGrid items={items} columns={columns} getRowId={(item) => item.id} selectionMode="single" selectedItems={selected} onSelectionChange={(_event, data) => setSelected(data.selectedItems)} focusMode="composite" aria-label="Records">
+      <DataGrid items={items} columns={columns} getRowId={(item) => item.id} selectionMode="single" selectedItems={selected} onSelectionChange={(_event, data) => setSelected(data.selectedItems)} aria-label="Records">
         <DataGridHeader><DataGridRow>{({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}</DataGridRow></DataGridHeader>
         <DataGridBody>{({ item, rowId }) => <DataGridRow key={rowId} selectionCell={{ radioIndicator: { "aria-label": `Select ${item.name}` } }}>
           {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
