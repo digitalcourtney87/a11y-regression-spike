@@ -1,0 +1,15 @@
+{
+  "id": "acrm-heading-to-div-contact-name",
+  "patternId": "atomic-crm--heading-to-div",
+  "operator": "heading-to-div",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "target": "Contact page: the contact's name heading replaced by a styled div",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactShow.tsx",
+      "find": "                <h5 className=\"text-xl font-semibold\">\n                  <RecordRepresentation />\n                </h5>\n",
+      "replace": "                <div className=\"text-xl font-semibold\">\n                  <RecordRepresentation />\n                </div>\n"
+    }
+  ]
+}

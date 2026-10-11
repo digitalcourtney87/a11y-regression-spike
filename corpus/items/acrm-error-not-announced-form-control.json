@@ -1,0 +1,23 @@
+{
+  "id": "acrm-error-not-announced-form-control",
+  "patternId": "atomic-crm--error-not-announced",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-error-not-announced-form-control.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "error-not-announced: Validation error text no longer in a live region or associated with its field (Shared FormControl: aria-describedby no longer points at the error message, so a field's validation error is not conveyed with it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator error-not-announced",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

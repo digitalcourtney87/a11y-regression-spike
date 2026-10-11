@@ -1,0 +1,15 @@
+{
+  "id": "ras-tab-swallowed-search",
+  "patternId": "react-admin-simple--tab-swallowed",
+  "operator": "tab-swallowed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "target": "Posts list: the search box swallows Tab, so focus cannot leave it by its documented key",
+  "edits": [
+    {
+      "file": "src/posts/PostList.tsx",
+      "find": "    <SearchInput source=\"q\" alwaysOn />,\n",
+      "replace": "    <SearchInput\n        source=\"q\"\n        alwaysOn\n        onKeyDown={event => {\n            if (event.key === 'Tab') event.preventDefault();\n        }}\n    />,\n"
+    }
+  ]
+}

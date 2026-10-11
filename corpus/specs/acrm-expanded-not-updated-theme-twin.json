@@ -1,0 +1,16 @@
+{
+  "id": "acrm-expanded-not-updated-theme-twin",
+  "patternId": "atomic-crm--expanded-not-updated",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "target": "Theme toggle: a round trigger button",
+  "edits": [
+    {
+      "file": "src/components/admin/theme-mode-toggle.tsx",
+      "find": "        <Button variant=\"ghost\" size=\"icon\" className=\"hidden sm:inline-flex\">\n",
+      "replace": "        <Button variant=\"ghost\" size=\"icon\" className=\"hidden sm:inline-flex rounded-full\">\n"
+    }
+  ],
+  "twinOf": "acrm-expanded-not-updated-theme"
+}

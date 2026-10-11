@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+index 9f6dece..8b12a59 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+@@ -111,7 +111,9 @@ export const AddTask = ({
+         mutationOptions={{ onSuccess: handleSuccess }}
+       >
+         <Dialog open={open} onOpenChange={() => setOpen(false)}>
+-          <DialogContent className="lg:max-w-xl overflow-y-auto max-h-9/10 top-1/20 translate-y-0">
++          <DialogContent className="lg:max-w-xl overflow-y-auto max-h-9/10 top-1/20 translate-y-0"
++            onOpenAutoFocus={(event) => event.preventDefault()}
++          >
+             <Form className="flex flex-col gap-4">
+               <DialogHeader>
+                 <DialogTitle>

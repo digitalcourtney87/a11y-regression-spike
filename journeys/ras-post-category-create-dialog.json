@@ -1,0 +1,106 @@
+{
+  "id": "ras-post-category-create-dialog",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1/2",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-category",
+      "strategy": "TAB",
+      "until": {
+        "name": "Category",
+        "maxAttempts": 30
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-category",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "last-option",
+      "strategy": "PRESS",
+      "key": "End",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-create",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|*"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-cancel",
+      "strategy": "TAB",
+      "until": {
+        "name": "Cancel",
+        "role": "button",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "wrap-around",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|*"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "browse-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b1",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b2",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "b3",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|*"
+        }
+      ]
+    }
+  ]
+}

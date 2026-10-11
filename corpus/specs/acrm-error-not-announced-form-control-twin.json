@@ -1,0 +1,16 @@
+{
+  "id": "acrm-error-not-announced-form-control-twin",
+  "patternId": "atomic-crm--error-not-announced",
+  "operator": "equivalent-refactor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "target": "Shared FormControl: aria-describedby built from a filtered list, with the same ids",
+  "edits": [
+    {
+      "file": "src/components/admin/form.tsx",
+      "find": "      aria-describedby={\n        !error\n          ? `${formDescriptionId}`\n          : `${formDescriptionId} ${formMessageId}`\n      }\n",
+      "replace": "      aria-describedby={[formDescriptionId, error ? formMessageId : null].filter(Boolean).join(\" \")}\n"
+    }
+  ],
+  "twinOf": "acrm-error-not-announced-form-control"
+}

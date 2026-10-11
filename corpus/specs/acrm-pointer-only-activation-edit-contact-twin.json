@@ -1,0 +1,16 @@
+{
+  "id": "acrm-pointer-only-activation-edit-contact-twin",
+  "patternId": "atomic-crm--pointer-only-activation",
+  "operator": "wrapper-added",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page: the Edit contact link wrapped in a plain span",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactAside.tsx",
+      "find": "          <EditButton label=\"resources.contacts.action.edit\" />\n",
+      "replace": "          <span>\n            <EditButton label=\"resources.contacts.action.edit\" />\n          </span>\n"
+    }
+  ],
+  "twinOf": "acrm-pointer-only-activation-edit-contact"
+}

@@ -329,3 +329,56 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 | axe's knock-on findings | While a menu stays open, Radix hides the rest of the page, and axe reports a missing main landmark and level-one heading |
 | NVDA-leg flakiness after a full page load | In one of three base attempts of oss-rac-8697, READ_CURRENT did not reach the new page |
 | Triggers | Programmatic focus fires on 64 item steps, live regions on 22, route transitions on 21, dialogs on 9, alerts on 7, status on 2, active descendant on none; D runs NVDA on 70 of 159 steps, 23% of C's segment time |
+
+### M5: Atomic CRM base behaviour seen while building test journeys (appended 2026-10-04)
+
+**Label:** EXPLORATORY
+**Source:** journey-development runs 37161106040, 37161666333, 37162157850 and 37162479815 (base build only, no test item; DR-0082).
+**Affects:** DR-0082, DR-0083.
+**Confidence:** observed on the base build.
+
+| Observation | Result |
+|---|---|
+| Handover on list pages | On /#/contacts and /#/companies, the MSAA focus read returns the window pane (depth 0) in both legs, though NVDA follows focus and speaks it; elsewhere it returns the focused control |
+| Controlled dialogs | Closing a dialog opened by a plain button (Add task, Merge contact) sends focus to the document in both legs |
+| Radix popovers and menus | The Company picker and the theme and tag menus return focus to their trigger on close |
+| Opening a menu from NVDA | NVDA's browse-mode Enter clicks the trigger, so focus lands on the menu itself; ArrowDown reaches the first item |
+| Datetime fields | Each segment is a Tab stop (six, plus the picker button); NVDA speaks each as a spin button |
+| Validation errors | NVDA speaks a field's error with the field ("invalid entry Required"); the tree marks it invalid but keeps no description |
+| Symbols | "linkedin.com" is spoken "linkedin dot com"; "LinkedIn" is spoken "Linked In" |
+
+### M5: react-admin base behaviour seen while building test journeys (appended 2026-10-04)
+
+**Label:** EXPLORATORY
+**Source:** journey-development runs 37168262367, 37168915475 and 37169312828 (base build only, no test item; DR-0082).
+**Affects:** DR-0085.
+**Confidence:** observed on the base build.
+
+| Observation | Result |
+|---|---|
+| MUI menus and selects | Modal: while open, the rest of the page (the trigger too) is aria-hidden, so the trigger's expanded state is not exposed |
+| MUI Autocomplete | Its popup is not modal; the input keeps focus and carries aria-expanded; NVDA says "expanded" |
+| Saving an invalid post | Focus moves to the first invalid field; NVDA: "Title edit invalid entry Required" |
+| Save button | Disabled until the form changes, so it is not in the tab order of an unchanged form |
+| Tab from the last control (NVDA leg) | Moves into Chrome's toolbar, not back to the page |
+| Users pages | "Access denied" for the default identity |
+| Adding a backlink | Focus moves into the new row's first field (the date's month) |
+| Browsing past a dialog's end | NVDA stays on the last line and repeats it |
+
+### M5: mined-pair base behaviour seen while building test journeys (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** journey-development runs 38151638666, 38152045502, 38152360106 and 38152662474 (last good release only, no test candidate; DR-0082).
+**Affects:** DR-0086.
+**Confidence:** observed on the base build.
+
+| Observation | Result |
+|---|---|
+| Vuetify 2.0.14 dialog | Content is inserted first in the app and takes focus as `document`. Shift+Tab from it leaves the page. Tab past Save is pulled back to Name. NVDA then says only "Name edit blank", without the dialog. |
+| Bootstrap 5.0.2 dropdown under NVDA | After FOCUS_MODE_TOGGLE and ArrowDown onto a link, the first Escape reaches the page and closes the menu; NVDA: "Menu button collapsed" |
+| Blueprint Select2 4.9.14 | Enter on the button opens the popover, but the filter input takes focus only on the first ArrowDown. Enter then selects the first film. |
+| Carbon ComboBox 7.9.3 | The input is named "Choose an item" (not its title). Under NVDA, the first Tab stops on a wrapper read as "Choose an item list". In browse mode, typed letters are quick-navigation keys ("b" moved to the next button). |
+| Carbon Pagination 10.22 | The disabled "Previous page" is the first button; NVDA: "Previous page button unavailable" |
+| Fluent DocumentCard 6.124.2 | `role="listitem"` reaches the DOM; the list item has no name; NVDA reads "Recent documents list with 2 items Quarterly report" with no item role |
+| Radix Dialog with dismissable-layer 1.1.13 | Focus goes to the first input. Under NVDA, the first Escape leaves focus mode and the second closes the dialog. |
+| Carbon IconButton 1.53.1 | Ghost icon-only button; Space toggles `aria-pressed`; NVDA: "pressed" |

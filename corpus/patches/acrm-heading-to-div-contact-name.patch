@@ -1,0 +1,16 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
+index 6cc24ee..5be8446 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactShow.tsx
+@@ -248,9 +248,9 @@ const ContactShowContent = () => {
+             <div className="flex">
+               <Avatar />
+               <div className="ml-2 flex-1">
+-                <h5 className="text-xl font-semibold">
++                <div className="text-xl font-semibold">
+                   <RecordRepresentation />
+-                </h5>
++                </div>
+                 <div className="inline-flex text-sm text-muted-foreground">
+                   {record.title && record.company_id != null
+                     ? `${translate("resources.contacts.position_at", {

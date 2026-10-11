@@ -1,0 +1,23 @@
+{
+  "id": "ras-pointer-only-activation-edit",
+  "patternId": "react-admin-simple--pointer-only-activation",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-pointer-only-activation-edit.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "INTERACTION_FAILS_UNDER_AT",
+    "mechanism": "pointer-only-activation: Activation bound to mousedown or pointerdown only (Posts list: each row's Edit link navigates on pointerdown only; its click (Enter) is cancelled)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator pointer-only-activation",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

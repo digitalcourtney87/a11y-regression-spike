@@ -1,0 +1,24 @@
+{
+  "id": "oss-radix-4014",
+  "patternId": "oss--radix-4014",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/radix-4014",
+  "journeyId": "oss-radix-4014",
+  "base": {
+    "ref": "oss/radix-4014@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@radix-ui/react-dismissable-layer@1.1.13"
+  },
+  "candidate": {
+    "ref": "oss/radix-4014@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@radix-ui/react-dismissable-layer@1.1.14"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "KEYBOARD_TRAP",
+    "mechanism": "escape-not-closing: Escape no longer closes a popover that captures focus (Escape handlers keep their first-render closure on React 19.2, so a Dialog that blocks Escape while pending stays blocked after the work finishes. Needs React 19.2)"
+  },
+  "provenance": {
+    "origin": "mined from radix-ui/primitives (#4014, PR #4015); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "MIT (@radix-ui/react-dismissable-layer)",
+    "url": "https://github.com/radix-ui/primitives/issues/4014"
+  }
+}

@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+index e3ed7b9..1fb3c81 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostList.tsx
+@@ -47,7 +47,7 @@ const QuickFilter = ({
+ };
+ 
+ const postFilter = [
+-    <SearchInput source="q" alwaysOn />,
++    <SearchInput source="q" alwaysOn onKeyDown={() => undefined} />,
+     <TextInput source="title" defaultValue="Qui tempore rerum et voluptates" />,
+     <QuickFilter
+         label="resources.posts.fields.commentable"

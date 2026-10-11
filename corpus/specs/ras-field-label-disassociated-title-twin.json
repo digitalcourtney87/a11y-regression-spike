@@ -1,0 +1,16 @@
+{
+  "id": "ras-field-label-disassociated-title-twin",
+  "patternId": "react-admin-simple--field-label-disassociated",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: the Title label in medium weight",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                    />\n",
+      "replace": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                        InputLabelProps={{ sx: { fontWeight: 500 } }}\n                    />\n"
+    }
+  ],
+  "twinOf": "ras-field-label-disassociated-title"
+}

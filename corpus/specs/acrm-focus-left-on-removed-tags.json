@@ -1,0 +1,25 @@
+{
+  "id": "acrm-focus-left-on-removed-tags",
+  "patternId": "atomic-crm--focus-left-on-removed",
+  "operator": "focus-left-on-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page tags: after a tag is added, the Add tag menu is remounted, so focus is left on the removed trigger",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "  const [open, setOpen] = useState(false);\n",
+      "replace": "  const [open, setOpen] = useState(false);\n  const [added, setAdded] = useState(0);\n"
+    },
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "      previousData: record,\n    });\n  };\n\n  const handleTagDelete",
+      "replace": "      previousData: record,\n    });\n    setAdded((n) => n + 1);\n  };\n\n  const handleTagDelete"
+    },
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "      <div>\n        <DropdownMenu>\n",
+      "replace": "      <div key={added}>\n        <DropdownMenu>\n"
+    }
+  ]
+}

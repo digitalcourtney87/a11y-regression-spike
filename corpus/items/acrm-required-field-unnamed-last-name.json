@@ -1,0 +1,23 @@
+{
+  "id": "acrm-required-field-unnamed-last-name",
+  "patternId": "atomic-crm--required-field-unnamed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-create-errors",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-required-field-unnamed-last-name.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "required-field-unnamed: A required field has no accessible name, so a goal-based step cannot find it (Contact form: the required Last name field loses its label, so it has no accessible name)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator required-field-unnamed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

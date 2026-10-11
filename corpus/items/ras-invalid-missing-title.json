@@ -1,0 +1,23 @@
+{
+  "id": "ras-invalid-missing-title",
+  "patternId": "react-admin-simple--invalid-missing",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-invalid-missing-title.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "invalid-missing: aria-invalid missing on a field with a validation error (Post form: the Title input's aria-invalid fixed at false)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator invalid-missing",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ras-error-not-announced-title",
+  "patternId": "react-admin-simple--error-not-announced",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-error-not-announced-title.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ANNOUNCEMENT_MISSING",
+    "mechanism": "error-not-announced: Validation error text no longer in a live region or associated with its field (Post form: the Title's error text gets another id, so the input's aria-describedby no longer reaches it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator error-not-announced",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

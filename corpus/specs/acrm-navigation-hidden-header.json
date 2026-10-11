@@ -1,0 +1,15 @@
+{
+  "id": "acrm-navigation-hidden-header",
+  "patternId": "atomic-crm--navigation-hidden",
+  "operator": "navigation-hidden",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "target": "Header: the main navigation links hidden with aria-hidden",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Header.tsx",
+      "find": "                <nav className=\"flex\">\n",
+      "replace": "                <nav className=\"flex\" aria-hidden=\"true\">\n"
+    }
+  ]
+}

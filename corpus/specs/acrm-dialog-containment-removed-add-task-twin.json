@@ -1,0 +1,16 @@
+{
+  "id": "acrm-dialog-containment-removed-add-task-twin",
+  "patternId": "atomic-crm--dialog-containment-removed",
+  "operator": "class-rename",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: the footer's classes reordered",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "              <DialogFooter className=\"w-full justify-end\">\n",
+      "replace": "              <DialogFooter className=\"justify-end w-full\">\n"
+    }
+  ],
+  "twinOf": "acrm-dialog-containment-removed-add-task"
+}

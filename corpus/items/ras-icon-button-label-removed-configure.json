@@ -1,0 +1,23 @@
+{
+  "id": "ras-icon-button-label-removed-configure",
+  "patternId": "react-admin-simple--icon-button-label-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-icon-button-label-removed-configure.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "icon-button-label-removed: Icon-only button loses its aria-label (App bar: the icon-only Configure this page button loses its aria-label)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator icon-button-label-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

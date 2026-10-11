@@ -1,0 +1,24 @@
+{
+  "id": "oss-vuetify-9627",
+  "patternId": "oss--vuetify-9627",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/vuetify-9627",
+  "journeyId": "oss-vuetify-9627",
+  "base": {
+    "ref": "oss/vuetify-9627@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+vuetify@2.0.14"
+  },
+  "candidate": {
+    "ref": "oss/vuetify-9627@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+vuetify@2.0.15"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_ESCAPES_DIALOG",
+    "mechanism": "dialog-containment-removed: Modal dialog loses its focus containment (VDialog stops wrapping focus on Tab (commit fa0a893 in 2.0.15; reverted in 2.1.10))"
+  },
+  "provenance": {
+    "origin": "mined from vuetifyjs/vuetify (#9627, #9144, commit fa0a893); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "MIT (vuetify)",
+    "url": "https://github.com/vuetifyjs/vuetify/issues/9627"
+  }
+}

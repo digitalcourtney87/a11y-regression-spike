@@ -1,0 +1,23 @@
+{
+  "id": "ras-tab-swallowed-search",
+  "patternId": "react-admin-simple--tab-swallowed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-tab-swallowed-search.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "KEYBOARD_TRAP",
+    "mechanism": "tab-swallowed: A component swallows Tab (Posts list: the search box swallows Tab, so focus cannot leave it by its documented key)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator tab-swallowed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

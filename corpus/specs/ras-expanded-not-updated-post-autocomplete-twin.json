@@ -1,0 +1,16 @@
+{
+  "id": "ras-expanded-not-updated-post-autocomplete-twin",
+  "patternId": "react-admin-simple--expanded-not-updated",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-comment-post-autocomplete",
+  "target": "Comment form: the Post autocomplete in the small size",
+  "edits": [
+    {
+      "file": "src/comments/CommentEdit.tsx",
+      "find": "                                    openOnFocus={false}\n                                    inputText={inputText}\n                                />\n",
+      "replace": "                                    openOnFocus={false}\n                                    inputText={inputText}\n                                    size=\"small\"\n                                />\n"
+    }
+  ],
+  "twinOf": "ras-expanded-not-updated-post-autocomplete"
+}

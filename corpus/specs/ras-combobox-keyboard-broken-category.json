@@ -1,0 +1,15 @@
+{
+  "id": "ras-combobox-keyboard-broken-category",
+  "patternId": "react-admin-simple--combobox-keyboard-broken",
+  "operator": "combobox-keyboard-broken",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-select",
+  "target": "Post form: the Category menu stops Enter and Space before its options, so they cannot be chosen from the keyboard",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{\n                        MenuProps: {\n                            onKeyDownCapture: event => {\n                                if (event.key === 'Enter' || event.key === ' ')\n                                    event.stopPropagation();\n                            },\n                        },\n                    }}\n                />\n"
+    }
+  ]
+}

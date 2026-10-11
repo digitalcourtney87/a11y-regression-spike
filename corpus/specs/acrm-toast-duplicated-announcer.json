@@ -1,0 +1,25 @@
+{
+  "id": "acrm-toast-duplicated-announcer",
+  "patternId": "atomic-crm--toast-duplicated",
+  "operator": "toast-duplicated",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: a second, visually hidden role=status region repeats every toast's message",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "  const { theme } = useTheme();\n",
+      "replace": "  const { theme } = useTheme();\n  const [echo, setEcho] = React.useState(\"\");\n"
+    },
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "        toast[type](finalMessage, {\n          duration,\n          action: undoable\n            ? {\n                label: translate(\"ra.action.undo\"),\n                onClick: handleUndo,\n              }\n            : undefined,\n          onDismiss: handleExited,\n          onAutoClose: handleExited,\n        });\n",
+      "replace": "        setEcho(typeof finalMessage === \"string\" ? finalMessage : \"\");\n        toast[type](finalMessage, {\n          duration,\n          action: undoable\n            ? {\n                label: translate(\"ra.action.undo\"),\n                onClick: handleUndo,\n              }\n            : undefined,\n          onDismiss: handleExited,\n          onAutoClose: handleExited,\n        });\n"
+    },
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "      <Toaster\n        richColors\n",
+      "replace": "      <div role=\"status\" className=\"sr-only\">\n        {echo}\n      </div>\n      <Toaster\n        richColors\n"
+    }
+  ]
+}

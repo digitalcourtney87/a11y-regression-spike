@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/radix-4014/src/main.jsx b/fixtures/oss/radix-4014/src/main.jsx
+index 38907a7..45d5208 100644
+--- a/fixtures/oss/radix-4014/src/main.jsx
++++ b/fixtures/oss/radix-4014/src/main.jsx
+@@ -29,7 +29,7 @@ function App() {
+         >
+           <Dialog.Title>Edit profile</Dialog.Title>
+           <p id="status">{pending ? "Loading…" : "Ready"}</p>
+-          <input id="name" aria-label="Name" />
++          <div className="field"><input id="name" aria-label="Name" /></div>
+         </Dialog.Content>
+       </Dialog.Portal>
+     </Dialog.Root>

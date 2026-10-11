@@ -1,0 +1,15 @@
+{
+  "id": "acrm-image-alt-removed-company-avatar",
+  "patternId": "atomic-crm--image-alt-removed",
+  "operator": "image-alt-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "target": "Shared CompanyAvatar: the company logo loses its alt text",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyAvatar.tsx",
+      "find": "        alt={record.name}\n",
+      "replace": ""
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ras-selected-stale-post-form",
+  "patternId": "react-admin-simple--selected-stale",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-tabs",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-selected-stale-post-form.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "selected-stale: aria-selected stale on a tab or option (Post form: a restyled tab strip fixes aria-selected at false on every tab)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator selected-stale",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

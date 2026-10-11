@@ -1,0 +1,16 @@
+{
+  "id": "acrm-landmark-removed-main-twin",
+  "patternId": "atomic-crm--landmark-or-heading-removed",
+  "operator": "a11y-improvement",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "target": "Layout: the main landmark labelled Content",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Layout.tsx",
+      "find": "      <main className=\"max-w-screen-xl mx-auto p-4\" id=\"main-content\">\n",
+      "replace": "      <main className=\"max-w-screen-xl mx-auto p-4\" id=\"main-content\" aria-label=\"Content\">\n"
+    }
+  ],
+  "twinOf": "acrm-landmark-removed-main"
+}

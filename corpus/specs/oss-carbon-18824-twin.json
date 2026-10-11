@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-18824-twin",
+  "patternId": "oss--carbon-18824",
+  "operator": "equivalent-refactor",
+  "app": "oss/carbon-18824",
+  "journeyId": "oss-carbon-18824",
+  "target": "The toggle handler written against the current value instead of an updater",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "onClick={() => setSelected((s) => !s)}",
+      "replace": "onClick={() => setSelected(!selected)}"
+    }
+  ],
+  "twinOf": "oss-carbon-18824"
+}

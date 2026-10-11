@@ -1,0 +1,25 @@
+{
+  "id": "ras-busy-left-true-notification",
+  "patternId": "react-admin-simple--busy-left-true",
+  "operator": "busy-left-true",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-notification",
+  "target": "Admin notification: aria-busy=true left on the notification's alert",
+  "edits": [
+    {
+      "file": "src/index.tsx",
+      "find": "import { Admin, Resource, CustomRoutes } from 'react-admin';\n",
+      "replace": "import { Admin, Resource, CustomRoutes, Notification } from 'react-admin';\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "const container = document.getElementById('root') as HTMLElement;\n",
+      "replace": "const BusyNotification = () => (\n    <Notification ContentProps={{ 'aria-busy': true }} />\n);\n\nconst container = document.getElementById('root') as HTMLElement;\n"
+    },
+    {
+      "file": "src/index.tsx",
+      "find": "            layout={Layout}\n",
+      "replace": "            layout={Layout}\n            notification={BusyNotification}\n"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..be9c75a 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -31,6 +31,7 @@ import {
+     useCreateSuggestionContext,
+     EditActionsProps,
+     CanAccess,
++    TabbedFormTabs,
+ } from 'react-admin';
+ import {
+     Box,
+@@ -100,7 +101,11 @@ const categories = [
+ 
+ const PostEdit = () => (
+     <Edit title={<PostTitle />} actions={<EditActions />}>
+-        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>
++        <TabbedForm
++            defaultValues={{ average_note: 0 }}
++            warnWhenUnsavedChanges
++            tabs={<TabbedFormTabs variant="scrollable" />}
++        >
+             <TabbedForm.Tab label="post.form.summary">
+                 <SanitizedBox
+                     display="flex"

@@ -1,0 +1,29 @@
+{
+  "id": "ras-post-edit-tabs",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-summary",
+      "strategy": "TAB",
+      "until": {
+        "name": "Summary",
+        "maxAttempts": 15
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "tab|Summary"
+        },
+        {
+          "type": "stateIs",
+          "value": "tab|Summary|selected=true"
+        }
+      ]
+    }
+  ]
+}

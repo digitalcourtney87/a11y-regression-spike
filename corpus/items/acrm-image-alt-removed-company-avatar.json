@@ -1,0 +1,23 @@
+{
+  "id": "acrm-image-alt-removed-company-avatar",
+  "patternId": "atomic-crm--image-alt-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-image-alt-removed-company-avatar.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "image-alt-removed: Image or avatar loses its alt text (Shared CompanyAvatar: the company logo loses its alt text)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator image-alt-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

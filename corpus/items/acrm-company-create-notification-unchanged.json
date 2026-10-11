@@ -1,0 +1,21 @@
+{
+  "id": "acrm-company-create-notification-unchanged",
+  "patternId": "atomic-crm--busy-left-true",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey acrm-company-create-notification (P15)",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

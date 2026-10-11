@@ -1,0 +1,14 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+index 4151e3b..5fe2461 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+@@ -36,6 +36,9 @@ export const Notification = (props: ToasterProps) => {
+   const { notifications, takeNotification } = useNotificationContext();
+   const takeMutation = useTakeUndoableMutation();
+   const { theme } = useTheme();
++  useEffect(() => {
++    document.querySelector("section[aria-live]")?.setAttribute("aria-busy", "true");
++  });
+ 
+   useEffect(() => {
+     if (notifications.length) {

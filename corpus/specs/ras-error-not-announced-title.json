@@ -1,0 +1,15 @@
+{
+  "id": "ras-error-not-announced-title",
+  "patternId": "react-admin-simple--error-not-announced",
+  "operator": "error-not-announced",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: the Title's error text gets another id, so the input's aria-describedby no longer reaches it",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                    />\n",
+      "replace": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                        FormHelperTextProps={{ id: 'post-title-error' }}\n                    />\n"
+    }
+  ]
+}

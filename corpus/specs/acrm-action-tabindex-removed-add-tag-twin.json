@@ -1,0 +1,16 @@
+{
+  "id": "acrm-action-tabindex-removed-add-tag-twin",
+  "patternId": "atomic-crm--action-tabindex-removed",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page: a round Add tag button",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "            <Button\n              variant=\"outline\"\n              size=\"sm\"\n              className=\"h-9 md:h-6 cursor-pointer\"\n            >\n",
+      "replace": "            <Button\n              variant=\"outline\"\n              size=\"sm\"\n              className=\"h-9 md:h-6 cursor-pointer rounded-full\"\n            >\n"
+    }
+  ],
+  "twinOf": "acrm-action-tabindex-removed-add-tag"
+}

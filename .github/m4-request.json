@@ -1,21 +1,20 @@
 {
   "label": "EXPLORATORY",
-  "purpose": "M5 evidence run: every dev item, both sides in ABBA order, default repetitions, K1 canaries, axe, both legs, three shards per app; the runner now also records goal-attempt times, the simulated cursor's nodes, DOM-id targets and a settled tree 1 s into each long observation window (DR-0079)",
+  "purpose": "Test-pattern journey development, oss-regression round 4: the carbon-5623 journey, its first goal matched on role as well as name, on the last good release only, three attempts, both legs (DR-0082, DR-0086)",
   "apps": [
-    "atomic-crm",
-    "react-admin-simple",
-    "oss-carbon-19563",
-    "oss-fluent-35927",
-    "oss-rac-8697"
+    "oss-carbon-5623"
   ],
   "legs": [
     "nvda-absent",
     "nvda-present"
   ],
   "items": [],
-  "sides": "both",
-  "reps": "",
-  "canaries": true,
-  "axe": true,
-  "shards": 3
+  "journeys": [
+    "oss-carbon-5623"
+  ],
+  "sides": "base",
+  "reps": "3",
+  "canaries": false,
+  "axe": false,
+  "shards": 1
 }

@@ -1,0 +1,15 @@
+{
+  "id": "ras-required-field-unnamed-teaser",
+  "patternId": "react-admin-simple--required-field-unnamed",
+  "operator": "required-field-unnamed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: the required Teaser field loses its label, so it has no accessible name",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                <TextInput\n                    multiline\n                    source=\"teaser\"\n                    validate={required()}\n                    resettable\n                />\n",
+      "replace": "                <TextInput\n                    multiline\n                    label={false}\n                    source=\"teaser\"\n                    validate={required()}\n                    resettable\n                />\n"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "acrm-tab-swallowed-note",
+  "patternId": "atomic-crm--tab-swallowed",
+  "operator": "tab-swallowed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Note form: the Add a note box swallows Tab, so focus cannot leave it by its documented key",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/notes/NoteInputs.tsx",
+      "find": "        rows={2}\n",
+      "replace": "        rows={2}\n        onKeyDown={(event) => {\n          if (event.key === \"Tab\") event.preventDefault();\n        }}\n"
+    }
+  ]
+}

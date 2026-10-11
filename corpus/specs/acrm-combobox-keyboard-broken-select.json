@@ -1,0 +1,15 @@
+{
+  "id": "acrm-combobox-keyboard-broken-select",
+  "patternId": "atomic-crm--combobox-keyboard-broken",
+  "operator": "combobox-keyboard-broken",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Shared Select: an option's Enter and Space are swallowed, so options cannot be chosen from the keyboard",
+  "edits": [
+    {
+      "file": "src/components/ui/select.tsx",
+      "find": "        className\n      )}\n      {...props}\n    >\n      <span className=\"absolute right-2",
+      "replace": "        className\n      )}\n      onKeyDown={(event) => {\n        if (event.key === \"Enter\" || event.key === \" \") event.preventDefault()\n      }}\n      {...props}\n    >\n      <span className=\"absolute right-2"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "acrm-image-alt-removed-company-avatar-twin",
+  "patternId": "atomic-crm--image-alt-removed",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "target": "Shared CompanyAvatar: the logo drawn to cover its box",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyAvatar.tsx",
+      "find": "        className=\"object-contain\"\n",
+      "replace": "        className=\"object-cover\"\n"
+    }
+  ],
+  "twinOf": "acrm-image-alt-removed-company-avatar"
+}

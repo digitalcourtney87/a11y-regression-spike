@@ -1,0 +1,24 @@
+{
+  "id": "oss-carbon-18824",
+  "patternId": "oss--carbon-18824",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/carbon-18824",
+  "journeyId": "oss-carbon-18824",
+  "base": {
+    "ref": "oss/carbon-18824@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@carbon/react@1.53.1"
+  },
+  "candidate": {
+    "ref": "oss/carbon-18824@f5b6ee1fbcc6a87f95bb3eaa4719cfcbb1237366+@carbon/react@1.54.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "checked-stale: aria-checked or aria-pressed stale on a checkbox, switch or toggle (Button hasIconOnly stopped forwarding aria-pressed to IconButton (commit e4626be9ed, first in 1.54.0); still broken in 1.78.0 when reported)"
+  },
+  "provenance": {
+    "origin": "mined from carbon-design-system/carbon (#18824, PR #18829); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (@carbon/react)",
+    "url": "https://github.com/carbon-design-system/carbon/issues/18824"
+  }
+}

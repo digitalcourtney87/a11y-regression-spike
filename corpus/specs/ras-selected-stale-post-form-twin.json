@@ -1,0 +1,21 @@
+{
+  "id": "ras-selected-stale-post-form-twin",
+  "patternId": "react-admin-simple--selected-stale",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-tabs",
+  "target": "Post form: the tab indicator in the secondary colour",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    TabbedFormTabs,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>\n",
+      "replace": "        <TabbedForm\n            defaultValues={{ average_note: 0 }}\n            warnWhenUnsavedChanges\n            tabs={<TabbedFormTabs indicatorColor=\"secondary\" />}\n        >\n"
+    }
+  ],
+  "twinOf": "ras-selected-stale-post-form"
+}

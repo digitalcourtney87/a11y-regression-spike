@@ -1,0 +1,23 @@
+{
+  "id": "ras-menu-focus-not-restored-category",
+  "patternId": "react-admin-simple--menu-focus-not-restored",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-menu-focus-not-restored-category.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_RESTORED",
+    "mechanism": "menu-focus-not-restored: Closing a menu or popover does not return focus (Post form: closing the Category menu no longer returns focus to the select)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator menu-focus-not-restored",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

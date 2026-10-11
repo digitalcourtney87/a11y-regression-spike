@@ -1,0 +1,22 @@
+{
+  "id": "ras-field-label-disassociated-title-twin",
+  "patternId": "react-admin-simple--field-label-disassociated",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-field-label-disassociated-title-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

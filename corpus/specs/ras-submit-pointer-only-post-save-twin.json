@@ -1,0 +1,21 @@
+{
+  "id": "ras-submit-pointer-only-post-save-twin",
+  "patternId": "react-admin-simple--submit-pointer-only",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-redirect",
+  "target": "Post form: a toolbar with wider gaps",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "    CanAccess,\n} from 'react-admin';\n",
+      "replace": "    CanAccess,\n    Toolbar,\n} from 'react-admin';\n"
+    },
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>\n",
+      "replace": "        <TabbedForm\n            defaultValues={{ average_note: 0 }}\n            warnWhenUnsavedChanges\n            toolbar={<Toolbar sx={{ gap: 2 }} />}\n        >\n"
+    }
+  ],
+  "twinOf": "ras-submit-pointer-only-post-save"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "ras-post-edit-notifications",
+  "version": "1",
+  "app": "react-admin-simple",
+  "entryUrl": "/#/posts/1",
+  "anchor": "button[aria-label=\"Close menu\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-ray",
+      "strategy": "TAB",
+      "until": {
+        "name": "Ray Hakt",
+        "maxAttempts": 20
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "checkbox|Ray Hakt"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "toggle-ray",
+      "strategy": "PRESS",
+      "key": "Space",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "stateIs",
+          "value": "checkbox|Ray Hakt|checked=false"
+        }
+      ]
+    }
+  ]
+}

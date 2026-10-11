@@ -1,0 +1,16 @@
+{
+  "id": "acrm-heading-to-div-contact-name-twin",
+  "patternId": "atomic-crm--heading-to-div",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "target": "Contact page: the contact's name heading made larger",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/ContactShow.tsx",
+      "find": "                <h5 className=\"text-xl font-semibold\">\n                  <RecordRepresentation />\n                </h5>\n",
+      "replace": "                <h5 className=\"text-2xl font-semibold\">\n                  <RecordRepresentation />\n                </h5>\n"
+    }
+  ],
+  "twinOf": "acrm-heading-to-div-contact-name"
+}

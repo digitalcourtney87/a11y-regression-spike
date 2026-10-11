@@ -1,0 +1,16 @@
+{
+  "id": "acrm-dialog-labelledby-removed-add-task-twin",
+  "patternId": "atomic-crm--dialog-labelledby-removed",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: the title made larger",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "                <DialogTitle>\n",
+      "replace": "                <DialogTitle className=\"text-xl\">\n"
+    }
+  ],
+  "twinOf": "acrm-dialog-labelledby-removed-add-task"
+}

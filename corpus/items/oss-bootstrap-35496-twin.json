@@ -1,0 +1,22 @@
+{
+  "id": "oss-bootstrap-35496-twin",
+  "patternId": "oss--bootstrap-35496",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/bootstrap-35496",
+  "journeyId": "oss-bootstrap-35496",
+  "base": {
+    "ref": "oss/bootstrap-35496@52ebc3355c5c26e01f717ab227513db1f8a7271b+bootstrap@5.0.2"
+  },
+  "candidate": {
+    "patch": "oss-bootstrap-35496-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "COPY_EDIT"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator copy-edit",
+    "licence": "MIT (bootstrap)"
+  }
+}

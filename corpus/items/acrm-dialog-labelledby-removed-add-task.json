@@ -1,0 +1,23 @@
+{
+  "id": "acrm-dialog-labelledby-removed-add-task",
+  "patternId": "atomic-crm--dialog-labelledby-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-dialog-labelledby-removed-add-task.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "dialog-labelledby-removed: Dialog loses aria-labelledby (its title no longer names it) (Add task dialog: its title is a plain h2, not the dialog's title, so the dialog's aria-labelledby points at nothing)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-labelledby-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

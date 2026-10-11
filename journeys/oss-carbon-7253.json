@@ -1,0 +1,32 @@
+{
+  "id": "oss-carbon-7253",
+  "version": "1",
+  "app": "oss/carbon-7253",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-previous",
+      "strategy": "NEXT_BUTTON",
+      "until": {
+        "role": "button",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Previous page"
+        }
+      ]
+    }
+  ]
+}

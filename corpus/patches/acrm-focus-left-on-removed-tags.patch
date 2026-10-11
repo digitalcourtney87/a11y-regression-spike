@@ -1,0 +1,29 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+index ac03867..002ea3e 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+@@ -24,6 +24,7 @@ import type { Contact, Tag } from "../types";
+ export const TagsListEdit = () => {
+   const record = useRecordContext<Contact>();
+   const [open, setOpen] = useState(false);
++  const [added, setAdded] = useState(0);
+   const translate = useTranslate();
+ 
+   const { data: allTags, isPending: isPendingAllTags } = useTags({
+@@ -51,6 +52,7 @@ export const TagsListEdit = () => {
+       data: { tags },
+       previousData: record,
+     });
++    setAdded((n) => n + 1);
+   };
+ 
+   const handleTagDelete = async (id: Identifier) => {
+@@ -106,7 +108,7 @@ export const TagsListEdit = () => {
+         </div>
+       ))}
+ 
+-      <div>
++      <div key={added}>
+         <DropdownMenu>
+           <DropdownMenuTrigger asChild>
+             <Button

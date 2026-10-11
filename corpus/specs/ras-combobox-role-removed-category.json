@@ -1,0 +1,15 @@
+{
+  "id": "ras-combobox-role-removed-category",
+  "patternId": "react-admin-simple--combobox-role-removed",
+  "operator": "combobox-role-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-select",
+  "target": "Post form: the Category select's trigger given role=button, so it is no longer a combobox",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{ SelectDisplayProps: { role: 'button' } }}\n                />\n"
+    }
+  ]
+}

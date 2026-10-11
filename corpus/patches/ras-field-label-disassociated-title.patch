@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..b4eb39c 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -114,6 +114,7 @@ const PostEdit = () => (
+                         source="title"
+                         validate={required()}
+                         resettable
++                        InputLabelProps={{ htmlFor: 'post-title' }}
+                     />
+                 </SanitizedBox>
+                 <TextInput

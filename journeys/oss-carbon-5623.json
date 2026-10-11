@@ -1,0 +1,48 @@
+{
+  "id": "oss-carbon-5623",
+  "version": "1",
+  "app": "oss/carbon-5623",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-fruit",
+      "strategy": "TAB",
+      "until": {
+        "role": "combobox",
+        "name": "Choose an item",
+        "maxAttempts": 3
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "type-fruit",
+      "strategy": "TYPE",
+      "text": "ban",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "choose-fruit",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-order",
+      "strategy": "TAB",
+      "until": {
+        "name": "Order Banana",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

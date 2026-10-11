@@ -1,0 +1,30 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+index 4151e3b..9da228d 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/notification.tsx
+@@ -36,6 +36,7 @@ export const Notification = (props: ToasterProps) => {
+   const { notifications, takeNotification } = useNotificationContext();
+   const takeMutation = useTakeUndoableMutation();
+   const { theme } = useTheme();
++  const [echo, setEcho] = React.useState("");
+ 
+   useEffect(() => {
+     if (notifications.length) {
+@@ -85,6 +86,7 @@ export const Notification = (props: ToasterProps) => {
+         const duration =
+           autoHideDuration === null ? Infinity : autoHideDuration;
+ 
++        setEcho(typeof finalMessage === "string" ? finalMessage : "");
+         toast[type](finalMessage, {
+           duration,
+           action: undoable
+@@ -107,6 +109,9 @@ export const Notification = (props: ToasterProps) => {
+ 
+   return (
+     <CloseNotificationContext.Provider value={handleRequestClose}>
++      <div role="status" className="sr-only">
++        {echo}
++      </div>
+       <Toaster
+         richColors
+         theme={theme}

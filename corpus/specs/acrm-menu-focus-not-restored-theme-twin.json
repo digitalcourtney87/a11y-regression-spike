@@ -1,0 +1,16 @@
+{
+  "id": "acrm-menu-focus-not-restored-theme-twin",
+  "patternId": "atomic-crm--menu-focus-not-restored",
+  "operator": "copy-edit",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "target": "Theme toggle: the System menu item reads System default",
+  "edits": [
+    {
+      "file": "src/components/admin/theme-mode-toggle.tsx",
+      "find": "          System\n",
+      "replace": "          System default\n"
+    }
+  ],
+  "twinOf": "acrm-menu-focus-not-restored-theme"
+}

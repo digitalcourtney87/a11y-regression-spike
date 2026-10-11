@@ -1,0 +1,23 @@
+{
+  "id": "ras-dialog-containment-removed-category",
+  "patternId": "react-admin-simple--dialog-containment-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-dialog-containment-removed-category.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_ESCAPES_DIALOG",
+    "mechanism": "dialog-containment-removed: Modal dialog loses its focus containment (New category dialog: its focus trap is disabled, so Tab can leave it)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator dialog-containment-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

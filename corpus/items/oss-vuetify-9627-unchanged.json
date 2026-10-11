@@ -1,0 +1,21 @@
+{
+  "id": "oss-vuetify-9627-unchanged",
+  "patternId": "oss--vuetify-9627",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/vuetify-9627",
+  "journeyId": "oss-vuetify-9627",
+  "base": {
+    "ref": "oss/vuetify-9627@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+vuetify@2.0.14"
+  },
+  "candidate": {
+    "ref": "oss/vuetify-9627@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+vuetify@2.0.14"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-vuetify-9627 (P15)",
+    "licence": "MIT (vuetify)"
+  }
+}

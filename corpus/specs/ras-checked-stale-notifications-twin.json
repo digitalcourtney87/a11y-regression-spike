@@ -1,0 +1,16 @@
+{
+  "id": "ras-checked-stale-notifications-twin",
+  "patternId": "react-admin-simple--checked-stale",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-notifications",
+  "target": "Post form: the notification recipients listed in a column",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                <CheckboxGroupInput\n                    source=\"notifications\"\n                    choices={[\n                        { id: 12, name: 'Ray Hakt' },\n                        { id: 31, name: 'Ann Gullar' },\n                        { id: 42, name: 'Sean Phonee' },\n                    ]}\n                />\n",
+      "replace": "                <CheckboxGroupInput\n                    source=\"notifications\"\n                    row={false}\n                    choices={[\n                        { id: 12, name: 'Ray Hakt' },\n                        { id: 31, name: 'Ann Gullar' },\n                        { id: 42, name: 'Sean Phonee' },\n                    ]}\n                />\n"
+    }
+  ],
+  "twinOf": "ras-checked-stale-notifications"
+}

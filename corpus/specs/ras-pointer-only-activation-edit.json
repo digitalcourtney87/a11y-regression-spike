@@ -1,0 +1,15 @@
+{
+  "id": "ras-pointer-only-activation-edit",
+  "patternId": "react-admin-simple--pointer-only-activation",
+  "operator": "pointer-only-activation",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "target": "Posts list: each row's Edit link navigates on pointerdown only; its click (Enter) is cancelled",
+  "edits": [
+    {
+      "file": "src/posts/PostList.tsx",
+      "find": "                <EditButton />\n                <ShowButton />\n",
+      "replace": "                <EditButton\n                    onClick={event => event.preventDefault()}\n                    onPointerDown={event => {\n                        window.location.hash = (event.currentTarget as HTMLAnchorElement).hash;\n                    }}\n                />\n                <ShowButton />\n"
+    }
+  ]
+}

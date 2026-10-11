@@ -1,0 +1,16 @@
+{
+  "id": "oss-blueprint-6163-twin",
+  "patternId": "oss--blueprint-6163",
+  "operator": "css-only",
+  "app": "oss/blueprint-6163",
+  "journeyId": "oss-blueprint-6163",
+  "target": "The page given a maximum width",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main style={{ padding: \"2rem\" }}>",
+      "replace": "<main style={{ padding: \"2rem\", maxWidth: 480 }}>"
+    }
+  ],
+  "twinOf": "oss-blueprint-6163"
+}

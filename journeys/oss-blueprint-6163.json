@@ -1,0 +1,43 @@
+{
+  "id": "oss-blueprint-6163",
+  "version": "1",
+  "app": "oss/blueprint-6163",
+  "entryUrl": "/",
+  "anchor": "[data-testid=\"target\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-list",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "focus-filter",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "choose-film",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "back-on-select",
+      "strategy": "READ_CURRENT",
+      "until": {
+        "name": "The Godfather",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

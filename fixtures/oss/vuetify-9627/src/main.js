@@ -6,7 +6,9 @@ import "vuetify/dist/vuetify.min.css";
 
 Vue.use(Vuetify);
 
-// The issue's page: several buttons and one dialog.
+// The issue's page: several buttons and one dialog. Vuetify 2.0 puts role="dialog"
+// on a container outside the focused content, so the card carries the dialog's
+// role and name for the journey to judge containment by (DR-0086).
 new Vue({
   vuetify: new Vuetify(),
   data: () => ({ dialog: false }),
@@ -18,7 +20,7 @@ new Vue({
           <v-btn id="open" @click="dialog = true">Open dialog</v-btn>
           <v-btn id="after">After</v-btn>
           <v-dialog v-model="dialog" width="400">
-            <v-card id="card">
+            <v-card id="card" role="dialog" aria-label="Edit name">
               <v-card-title>Edit name</v-card-title>
               <v-card-text><input id="name" aria-label="Name" /></v-card-text>
               <v-card-actions>

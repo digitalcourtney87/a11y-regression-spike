@@ -1,0 +1,24 @@
+{
+  "id": "oss-carbon-5623",
+  "patternId": "oss--carbon-5623",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/carbon-5623",
+  "journeyId": "oss-carbon-5623",
+  "base": {
+    "ref": "oss/carbon-5623@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+carbon-components-react@7.9.3"
+  },
+  "candidate": {
+    "ref": "oss/carbon-5623@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+carbon-components-react@7.10.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Controlled ComboBox resets its input on every render, so typing is lost (getDerivedStateFromProps; fixed by PR #5784 in 7.11.0)"
+  },
+  "provenance": {
+    "origin": "mined from carbon-design-system/carbon (#5623, PR #5784); verified by m3-oss-repro run 37133618945 (DR-0063)",
+    "licence": "Apache-2.0 (carbon-components-react)",
+    "url": "https://github.com/carbon-design-system/carbon/issues/5623"
+  }
+}

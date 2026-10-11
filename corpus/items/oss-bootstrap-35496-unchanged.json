@@ -1,0 +1,21 @@
+{
+  "id": "oss-bootstrap-35496-unchanged",
+  "patternId": "oss--bootstrap-35496",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/bootstrap-35496",
+  "journeyId": "oss-bootstrap-35496",
+  "base": {
+    "ref": "oss/bootstrap-35496@52ebc3355c5c26e01f717ab227513db1f8a7271b+bootstrap@5.0.2"
+  },
+  "candidate": {
+    "ref": "oss/bootstrap-35496@52ebc3355c5c26e01f717ab227513db1f8a7271b+bootstrap@5.0.2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-bootstrap-35496 (P15)",
+    "licence": "MIT (bootstrap)"
+  }
+}

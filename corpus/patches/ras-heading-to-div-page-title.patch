@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/react-admin-simple/src/Layout.tsx b/fixtures/spa/react-admin-simple/src/Layout.tsx
+index 4935a4e..fce9228 100644
+--- a/fixtures/spa/react-admin-simple/src/Layout.tsx
++++ b/fixtures/spa/react-admin-simple/src/Layout.tsx
+@@ -11,7 +11,7 @@ import '../assets/app.css';
+ 
+ const MyAppBar = () => (
+     <AppBar>
+-        <TitlePortal />
++        <TitlePortal component="div" />
+         <InspectorButton />
+     </AppBar>
+ );

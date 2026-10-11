@@ -1,0 +1,16 @@
+{
+  "id": "ras-required-field-unnamed-teaser-twin",
+  "patternId": "react-admin-simple--required-field-unnamed",
+  "operator": "wrapper-added",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: the Teaser field wrapped in a plain Box",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                <TextInput\n                    multiline\n                    source=\"teaser\"\n                    validate={required()}\n                    resettable\n                />\n",
+      "replace": "                <Box>\n                    <TextInput\n                        multiline\n                        source=\"teaser\"\n                        validate={required()}\n                        resettable\n                    />\n                </Box>\n"
+    }
+  ],
+  "twinOf": "ras-required-field-unnamed-teaser"
+}

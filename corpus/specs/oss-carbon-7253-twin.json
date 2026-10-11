@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-7253-twin",
+  "patternId": "oss--carbon-7253",
+  "operator": "css-only",
+  "app": "oss/carbon-7253",
+  "journeyId": "oss-carbon-7253",
+  "target": "The page padding widened",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main style={{ padding: \"4rem 2rem\" }}>",
+      "replace": "<main style={{ padding: \"4rem 3rem\" }}>"
+    }
+  ],
+  "twinOf": "oss-carbon-7253"
+}

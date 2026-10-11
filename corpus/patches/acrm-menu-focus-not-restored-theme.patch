@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+index 4dfbdb2..ec2853e 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/theme-mode-toggle.tsx
+@@ -29,7 +29,7 @@ export function ThemeModeToggle() {
+           <span className="sr-only">Toggle theme</span>
+         </Button>
+       </DropdownMenuTrigger>
+-      <DropdownMenuContent align="end">
++      <DropdownMenuContent align="end" onCloseAutoFocus={(event) => event.preventDefault()}>
+         <DropdownMenuItem onClick={() => setTheme("light")}>
+           Light
+           <Check className={cn("ml-auto", theme !== "light" && "hidden")} />

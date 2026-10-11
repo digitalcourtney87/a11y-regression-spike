@@ -1,0 +1,16 @@
+{
+  "id": "ras-invalid-missing-title-twin",
+  "patternId": "react-admin-simple--invalid-missing",
+  "operator": "class-rename",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "target": "Post form: a class name added to the Title field",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                    />\n",
+      "replace": "                    <TextInput\n                        source=\"title\"\n                        validate={required()}\n                        resettable\n                        className=\"post-title\"\n                    />\n"
+    }
+  ],
+  "twinOf": "ras-invalid-missing-title"
+}

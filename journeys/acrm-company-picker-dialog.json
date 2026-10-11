@@ -1,0 +1,54 @@
+{
+  "id": "acrm-company-picker-dialog",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/create",
+  "anchor": "input[name=\"first_name\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-company",
+      "strategy": "TAB",
+      "until": {
+        "name": "Company",
+        "role": "combobox",
+        "maxAttempts": 10
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Company"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-company",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-company",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Company"
+        }
+      ]
+    }
+  ]
+}

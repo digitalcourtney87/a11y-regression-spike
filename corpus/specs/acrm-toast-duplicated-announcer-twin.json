@@ -1,0 +1,16 @@
+{
+  "id": "acrm-toast-duplicated-announcer-twin",
+  "patternId": "atomic-crm--toast-duplicated",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: toasts at the bottom right instead of the bottom centre",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "        position=\"bottom-center\"\n",
+      "replace": "        position=\"bottom-right\"\n"
+    }
+  ],
+  "twinOf": "acrm-toast-duplicated-announcer"
+}

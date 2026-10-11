@@ -1,0 +1,42 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..09a76dc 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -31,6 +31,8 @@ import {
+     useCreateSuggestionContext,
+     EditActionsProps,
+     CanAccess,
++    AddItemButton,
++    useSimpleFormIterator,
+ } from 'react-admin';
+ import {
+     Box,
+@@ -98,6 +100,19 @@ const categories = [
+     { name: 'Lifestyle', id: 'lifestyle' },
+ ];
+ 
++const DroppingAddButton = () => {
++    const { add } = useSimpleFormIterator();
++    return (
++        <AddItemButton
++            onClick={() => {
++                add();
++                // The new row's first field gets focus, which is then dropped.
++                window.setTimeout(() => (document.activeElement as HTMLElement | null)?.blur(), 100);
++            }}
++        />
++    );
++};
++
+ const PostEdit = () => (
+     <Edit title={<PostTitle />} actions={<EditActions />}>
+         <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>
+@@ -187,7 +202,7 @@ const PostEdit = () => (
+                     label="Tags"
+                 />
+                 <ArrayInput source="backlinks">
+-                    <SimpleFormIterator>
++                    <SimpleFormIterator addButton={<DroppingAddButton />}>
+                         <DateInput source="date" />
+                         <TextInput source="url" validate={required()} />
+                     </SimpleFormIterator>

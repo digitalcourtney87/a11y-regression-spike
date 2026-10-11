@@ -1,0 +1,23 @@
+{
+  "id": "acrm-landmark-removed-main",
+  "patternId": "atomic-crm--landmark-or-heading-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-landmark-removed-main.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAV_TARGET_UNREACHABLE",
+    "mechanism": "landmark-or-heading-removed: Landmark or heading removed, so a declared strategy cannot reach the target (Layout: the main landmark becomes a div, so NEXT_LANDMARK cannot reach the main content)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator landmark-or-heading-removed",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

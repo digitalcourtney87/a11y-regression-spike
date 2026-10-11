@@ -118,13 +118,17 @@ Conventions:
 | [DR-0079](#dr-0079-m5-evidence-additions-and-the-pre-registered-triggers) | M5 evidence additions, and the pre-registered triggers | Accepted | 2026-10-03 | Decided by Claude under DR-0045; trigger definitions approved by the owner 2026-10-03 (P34, DR-0081) | DR-0081 | Resolved (P34, DR-0081) |
 | [DR-0080](#dr-0080-m5-oracles-scorer-and-dev-results-and-owner-items-p28p37) | M5 oracles, scorer and dev results, and owner items P28–P37 | Accepted | 2026-10-03 | Decided by Claude under DR-0045; P28–P37 approved by the owner 2026-10-03 (DR-0081) | DR-0081 | Resolved (P28–P37, DR-0081) |
 | [DR-0081](#dr-0081-owner-approval-of-p28p37) | Owner approval of P28–P37 | Accepted | 2026-10-03 | Owner reply 2026-10-03 | — | No |
+| [DR-0082](#dr-0082-building-the-test-patterns-without-executing-them) | Building the test patterns without executing them | Accepted | 2026-10-04 | Owner reply 2026-10-03; tooling decided by Claude under DR-0045 | — | No |
+| [DR-0083](#dr-0083-test-patterns-batch-1-atomic-crm) | Test patterns, batch 1: Atomic CRM | Accepted | 2026-10-04 | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) | — | P38 |
 | [DR-0084](#dr-0084-m5-pr-review-findings) | M5 PR review findings | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
+| [DR-0085](#dr-0085-test-patterns-batch-2-react-admin-simple) | Test patterns, batch 2: react-admin "simple" | Accepted | 2026-10-04 | Decided by Claude under DR-0045 | — | No |
+| [DR-0086](#dr-0086-test-patterns-batch-3-mined-pairs) | Test patterns, batch 3: mined pairs | Accepted | 2026-10-11 | Decided by Claude under DR-0045 | — | No |
 
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
 
-P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). No items are pending.
+P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under DR-0045; see its row and DR-0007). Its row stays so that the P-numbers do not change. P1, P2 and P4 were approved by the owner on 2026-10-03 (DR-0046); their rows also stay. P6 and P8 were approved by the owner on 2026-10-03 (DR-0049). P3, P7, P9, P10 and P11 (P9 to P11 added on 2026-10-03 after the G1 gate review) were approved by the owner at the G1 gate on 2026-10-03 (DR-0052). P12, P13 and making P9 final were approved by the owner at the G2 gate on 2026-10-03 (DR-0055). P14–P17 were approved and P18 was set aside on 2026-10-03 (DR-0057). P19 was approved on 2026-10-03 (DR-0059) and P20 on 2026-10-03 (DR-0062). P21 and P22 were approved on 2026-10-03 (DR-0064), P23–P25 (DR-0067), P26 (DR-0071) and P27 (DR-0076). P28–P37, the M5 oracle items and the pattern count, were approved by the owner on 2026-10-03 (DR-0081). **P38 is pending** (DR-0083).
 
 | # | Item | Record | Category | Needed by | Claude's recommendation |
 |---|---|---|---|---|---|
@@ -165,6 +169,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P35 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Candidate-only check failures** (DR-0035): no FAIL rule covers them in v1, so they route to REVIEW. A pre-outcome check failing on the candidate alone (a stolen foreground, a frame stall, an NVDA crash) is not a symptom of HANDOFF §6, and none occurred in the M4 runs | DR-0035; DR-0080 | What counts as detection | No longer pending | Approved as recommended |
 | P36 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Duplicates seen only in speech** (DR-0042): they route to REVIEW, without NVDA-log corroboration, which would need a join that DR-0039 does not allow. The tree's and B2's duplicate rules stand, so C and D can still detect a duplicate through B2. This is conservative for H2 | DR-0042; DR-0080 | What counts as detection (ANNOUNCEMENT_DUPLICATED) | No longer pending | Approved as recommended |
 | P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
+| P38 | **KEYBOARD_TRAP when Tab cannot leave a component.** The M5 rule (P28) gives KEYBOARD_TRAP only for a step that presses Escape. HANDOFF §6 defines the symptom as a candidate that "cannot leave a component by its documented keys; base can", and the M3 catalogue includes "A component swallows Tab". Under the approved rule, a test pattern of that mechanism can only score FOCUS_NOT_MOVED, a miss for every arm. Proposal: a TAB or SHIFT_TAB step after which the candidate's focus stays where it was gives KEYBOARD_TRAP: the same node in the tree, or silence in NVDA's speech, while the base's focus moved. The rule is written from the catalogue and HANDOFF's definition; no dev pattern has the mechanism, and no test item has been run | DR-0083 | What counts as detection (KEYBOARD_TRAP) | Before the freeze | Yes |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -3501,6 +3506,71 @@ The full report is `docs/reports/M5-dev.md`.
 - Building test patterns executes no test-split item: patches are applied and built, and journeys are developed on the base builds only. No test candidate runs before the freeze (hard rule 5, DR-0034).
 - HANDOFF moves to v1.12.
 
+## DR-0082 Building the test patterns without executing them
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Owner reply 2026-10-03 (go-ahead); the tooling decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §9 (M5), §10.3; P15, P20, P37 |
+
+**Decision (owner).**
+
+> Yes, start the test patterns; Auto-fix on
+
+**Context.** P37 builds the 59 test patterns now: 26 Atomic CRM, 25 react-admin "simple" and 8 mined pairs. Each gets a benign twin (P20), and each new journey an unchanged control (P15). Claude flagged the work as token-heavy before starting (DR-0046). It runs in three batches on branch `m5-test-patterns`, reporting after each. Auto-fix is on for PR #8.
+
+**How the patterns are built without executing a test item (Decided by Claude under DR-0045).** Hard rule 5 forbids executing test-split items before the freeze. Building one is not executing it: no journey runs on a test candidate, and no evidence of one is collected.
+
+| Step | What happens to a test item |
+|---|---|
+| Specs and patches | `npm run corpus -- mutate` writes the patch and item in the pattern's assigned split, checking the patch applies (`git apply --check`) |
+| Mined pairs | `npm run corpus -- oss-items` writes the version-pair item in its split |
+| Build check | `m3-spa-build.yml` applies and builds each test patch, and never loads the build, whereas a dev build is also loaded offline |
+| Journeys | Developed on the base build only. `npm run m4:items -- --journeys <ids> --sides base` runs each journey as an unchanged pseudo-item `jdev-<journey>` with no candidate. `m4-items.yml` takes `journeys` in its request and builds only the base |
+| Unchanged controls | `npm run corpus -- unchanged` adds one per new journey, in the split of the journey's first regression item |
+| Item runs | Unchanged: the runner and `buildApp.ps1` select dev items only, and `assertItemExecutable` (DR-0034) is the backstop |
+
+**Consequences.** A test journey's expectations are checked on the base build in both legs, so each family can observe them. Whether each candidate shows its symptom is not checked before the freeze. That is the cost of hard rule 5: a test pattern whose patch fails to produce its symptom counts as a miss for every arm.
+
+## DR-0083 Test patterns, batch 1: Atomic CRM
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045; P38 Proposed by Claude (not yet owner-approved) |
+| HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P37; DR-0082 |
+
+**What was built.** All 26 Atomic CRM test patterns of the test split, each with a benign twin (P20), on eight new journeys, each with an unchanged control (P15): 60 test items. No test item was executed (DR-0082).
+- **Journeys:** developed on the base build only (rounds 37161106040, 37161666333, 37162157850 and 37162479815). In the last round each ran three times in both legs, and every expectation behaved the same in every attempt.
+- **Build check:** run 37162503892 applied, built and reverted all 68 Atomic CRM patches (52 of them test), and loaded none of the test builds.
+
+| Journey (entry) | Test patterns |
+|---|---|
+| `acrm-contact-create-errors` (contact create, submitted with errors) | field-label-disassociated, invalid-missing, error-not-announced, required-field-unnamed |
+| `acrm-company-create-notification` (company create, saved) | toast-region-created-populated, live-region-removed, busy-left-true, toast-duplicated, live-update-repeated, button-to-div |
+| `acrm-contact-add-task-dialog` (contact page, Add task dialog) | dialog-labelledby-removed, dialog-initial-focus-removed, dialog-containment-removed, combobox-role-removed, combobox-keyboard-broken |
+| `acrm-company-picker-dialog` (contact create, the Company picker's popover dialog) | dialog-focus-not-restored |
+| `acrm-theme-menu` (contact page, theme menu) | expanded-not-updated, menu-focus-not-restored |
+| `acrm-contact-show-actions` (contact page: note box, Edit contact, Add tag) | tab-swallowed, pointer-only-activation, action-tabindex-removed, focus-left-on-removed |
+| `acrm-contact-show-details` (contact page: name heading, company logo) | heading-to-div, image-alt-removed |
+| `acrm-landmarks` (contact page: navigation, main landmark) | navigation-hidden, landmark-or-heading-removed |
+
+**Base behaviours that decided the targets (Decided by Claude under DR-0045).**
+- **List pages:** on the contacts and companies lists, the handover's MSAA focus read returns the window pane in both legs, so every attempt there would be INCONCLUSIVE (FOREGROUND_HWND). No journey enters on a list page. The dev journeys never did.
+- **Dialogs:** Atomic CRM opens its dialogs with plain buttons, not Radix triggers, so no dialog returns focus on close on the base build. The FOCUS_NOT_RESTORED pattern therefore targets the Company picker, a Radix popover dialog with a trigger, which does restore focus on the base.
+- **Inline note:** after the note is added, the base loses focus, because the Add this note button is disabled while it saves. The focus-left-on-removed pattern therefore targets the tag menu, which returns focus to its trigger on the base.
+- **Unobservable by design:** some expectations cannot be observed by one family, because the base never meets them there:
+  - the error text read with its field (NVDA only; the tree does not keep descriptions);
+  - the theme trigger's expanded state, and focus wrapping inside the dialog (tree only; NVDA voices neither).
+
+  Each pattern is observable by at least one family.
+- **Journey wording:** NVDA reads "linkedin.com" as "linkedin dot com", so the expectation names "URL must be from linkedin". The speech normaliser was not changed.
+
+**Owner item P38 (hard rule 12).** The approved rule (P28) gives KEYBOARD_TRAP only after Escape, so the tab-swallowed pattern can only score FOCUS_NOT_MOVED. P38 proposes the Tab case; see "Pending owner items".
+
 ## DR-0084 M5 PR review findings
 
 | | |
@@ -3524,3 +3594,101 @@ The full report is `docs/reports/M5-dev.md`.
 | A partly unreachable step hides later steps (Devin) | Not adopted. With k = n, no later step can give FAIL once one candidate attempt stopped, and the item is already REVIEW. If the freeze sets k < n, this is revisited | None |
 | A message removed before the settled tree is missed by B2 (Devin) | A known limit of P31 and P32: the settled tree is read 1 s into the window, and both apps' toasts last about 4 s | Stated in the report's limits |
 | A state with no negative label passes on silence (Devin) | Not adopted for those states: silence is how NVDA conveys them as false | None (see the false-state row) |
+
+## DR-0085 Test patterns, batch 2: react-admin "simple"
+
+| | |
+|---|---|
+| Date | 2026-10-04 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P23, P37; DR-0082 |
+
+**What was built.** All 25 react-admin "simple" test patterns of the test split, each with a benign twin (P20), on eleven new journeys, each with an unchanged control (P15). The three notification patterns reuse the dev journey `ras-post-edit-save-notification`. No test item was executed (DR-0082).
+- **Journeys:** developed on the base build only (runs 37168262367, 37168915475 and 37169312828). In the last run each journey ran three times in both legs, and every expectation behaved the same in every attempt.
+- **Build check:** run 37169335614 applied, built and reverted all 68 react-admin and 68 Atomic CRM patches (50 and 52 of them test), and loaded none of the test builds.
+
+| Journey (entry) | Test patterns |
+|---|---|
+| `ras-appbar-details` (post page: app bar) | icon-button-label-removed (Configure this page), heading-to-div (page title), image-alt-removed (user avatar) |
+| `ras-post-edit-tabs` (post form tabs) | tab-roles-removed, selected-stale |
+| `ras-post-edit-errors` (post form, title emptied and saved) | field-label-disassociated, invalid-missing, error-not-announced, required-field-unnamed (Teaser) |
+| `ras-post-edit-notifications` (post form checkboxes) | checked-stale |
+| `ras-post-list-actions` (posts list: search, Create, Edit) | tab-swallowed, action-tabindex-removed, pointer-only-activation |
+| `ras-post-category-select` (post form Category select) | combobox-role-removed, combobox-keyboard-broken |
+| `ras-post-category-escape` (the same select, closed with Escape) | escape-not-closing, menu-focus-not-restored |
+| `ras-post-category-create-dialog` (the select's Create dialog) | dialog-containment-removed, aria-modal-removed |
+| `ras-comment-post-autocomplete` (comment form Post autocomplete) | expanded-not-updated |
+| `ras-post-backlinks-add` (post form backlinks, Add) | focus-left-on-removed |
+| `ras-post-edit-save-redirect` (post form saved, list reached) | submit-pointer-only |
+| `ras-post-edit-save-notification` (dev journey) | busy-left-true, live-region-hidden-ancestor, live-update-repeated |
+
+**Patches through the app's own code.** react-admin and MUI are not vendored, so every patch changes the app's code or the props it passes. Each prop the patches rely on was checked in the react-admin 5.15.4 and MUI 5.18.0 sources:
+- MUI Tab and Select spread the caller's props after their own `role`, `aria-selected` and `aria-expanded`.
+- MUI TextField spreads them after `htmlFor`, the helper text's id and `aria-invalid`.
+- InspectorButton spreads them after its `aria-label`, and TitlePortal into its Typography.
+- AutocompleteInput forks the input ref.
+
+The tab patterns use a custom tab strip that passes the attribute to the tab headers only, because FormTab would also spread it onto the tab panel.
+
+**Base behaviours that decided the targets.**
+- **Expanded state on menus:** MUI menus and selects are modal, so the rest of the page, trigger included, is hidden while they are open, and neither the tree nor NVDA sees `expanded=true`. The expanded-not-updated pattern therefore targets the comment form's Post autocomplete, whose popup is not modal and whose input stays exposed. NVDA says "expanded" there.
+- **Avatar:** NVDA reads the user menu's avatar only as part of the "Profile" button, so the image-alt check is observable by the tree only.
+- **Saving:** a post with an empty title moves focus to the Title field on save, and NVDA reads "invalid entry Required" with it.
+- **Adding a backlink:** focus moves into the new row's Date field.
+- **Risk, busy-left-true:** `aria-busy` is set on the notification's alert, which is created already filled. Chrome blocks live-region-changed events for a busy region, but may still raise the alert event. If it does, this pattern shows no symptom, which counts as a miss for every arm. It cannot be checked before the freeze.
+
+**Two tooling fixes (Decided by Claude under DR-0045).**
+- **Simulated cursor (P23 fidelity):** when there is nothing further to read, the cursor and its line now stay where they are, as NVDA's do (it reports the bottom, or no next heading). Before, the line emptied. No dev journey reaches the end of its page, so no dev result changes.
+- **`npm run corpus -- unchanged`:** it rewrote the dev control of `ras-post-edit-save-notification` into the test split once test items shared that journey. It now leaves an existing control as it is; the dev control was restored before any commit.
+
+## DR-0086 Test patterns, batch 3: mined pairs
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Decided by Claude under DR-0045 |
+| HANDOFF v1.12 | §4 rule 5, §6, §9 (M5); P15, P20, P23, P24; DR-0063, DR-0064, DR-0082 |
+
+**What was built.** The eight mined test patterns of the oss-regression batch (DR-0064). Each has:
+- its regression item (the version pair);
+- a benign twin (P20);
+- an unchanged control (P15);
+- a journey of its own.
+
+No test candidate was built or executed: neither a first broken release nor a twin was loaded (DR-0082).
+- **Journeys:** developed on the last good release only. Runs 38151638666, 38152045502, 38152360106 and 38152662474. In the last run of each journey, every step was reached and every expectation behaved the same in all three attempts, in both legs.
+- **Build check:** runs 38151643266 and 38152902505 applied, built and reverted all eight twin patches at the last good release. None was loaded or checked.
+
+| Journey (anchor) | Symptom | Judged by, on the base |
+|---|---|---|
+| `oss-vuetify-9627` (Open dialog; Tab past Save) | FOCUS_ESCAPES_DIALOG | Tree. NVDA does not repeat the dialog when focus is pulled back to Name, so it cannot see this step. |
+| `oss-bootstrap-35496` (Menu; Escape from the first item) | FOCUS_NOT_RESTORED | Tree and NVDA |
+| `oss-blueprint-6163` (Select a film; Enter in the filter) | INTERACTION_FAILS_UNDER_AT | Reachability, in both legs |
+| `oss-carbon-5623` (combo box; type "ban", Enter, Tab to "Order Banana") | JOURNEY_BLOCKED | Reachability, in both legs |
+| `oss-radix-4014` (Edit profile; Escape) | KEYBOARD_TRAP | Tree and NVDA |
+| `oss-carbon-7253` (top; next button) | NAME_NOT_CONVEYED | Tree and NVDA ("Previous page button unavailable") |
+| `oss-fluent-7796` (top; browse to each card) | ROLE_NOT_CONVEYED | Tree only. NVDA speaks no list-item role, and an id target has no speech form. |
+| `oss-carbon-18824` (Before; Tab, Space) | STATE_NOT_CONVEYED | Tree and NVDA ("pressed") |
+
+**Fixture changes after the split.** Three test fixtures were changed so that their symptom can be judged at all. None changes the library code or the behaviour the issue describes.
+- **Vuetify 2.0** puts `role="dialog"` on a container that is not an ancestor of the focused content. The card now carries `role="dialog" aria-label="Edit name"`.
+- **Carbon 7.9:** a value is not a goal (P24), and the highlighted option is only `aria-activedescendant`, which the absent leg does not treat as focus. A button named "Order <fruit>" now follows the combo box, so the chosen fruit is reachable by name.
+- **Fluent:** DocumentCard 6.124 passes no id or label through, and Chrome gives a list item no name. Each card now gets an id after rendering, so the journey can name it by `#card-1` and `#card-2`. A heading also gives both legs the same first line: without it, NVDA's Ctrl+Home lands on the first card itself.
+
+The m3 reproductions (DR-0063) ran on the earlier fixtures. Re-checking them would load the broken releases, so the changed fixtures are not re-verified before the freeze.
+
+**Base behaviours that decided the journeys.**
+- **Vuetify:** the dialog content is inserted first in the app, so Shift+Tab from it leaves the page. The journey therefore Tabs forwards past Save, where the last good release pulls focus back to Name.
+- **Bootstrap:** the first Escape closes the menu in both legs, because NVDA is back in browse mode once focus is on a link. There is no leave-focus-mode Escape.
+- **Blueprint:** the filter input takes focus only on the first ArrowDown. Enter then picks the first film ("The Godfather"), and focus returns to the button.
+- **Carbon combo box under NVDA:** the first Tab stops on a wrapper that NVDA calls "Choose an item list". The goal therefore matches on role as well as name. On the editable combo box, NVDA enters focus mode by itself, so no toggle is needed.
+
+**Risks.**
+- **Bootstrap:** after a candidate's Escape, NVDA says nothing. From speech alone, this classifies as KEYBOARD_TRAP rather than FOCUS_NOT_RESTORED. The tree families classify it correctly.
+- **Candidates:** how each candidate behaves under these journeys is inferred from the issue and the diff only. It cannot be checked before the freeze.
+
+**Tooling (Decided by Claude under DR-0045).**
+- **Base builds for test-only mined pairs:** `buildApp.ps1` and the runner's journey-development pseudo-item take the last good release from a test pair's regression item. Only the base is ever built, because `buildApp.ps1` builds candidates for dev items only.
+- **New `test-twins` job in `m3-oss-repro`:** it builds each test twin without loading or checking it, and keeps only exit codes and logs.

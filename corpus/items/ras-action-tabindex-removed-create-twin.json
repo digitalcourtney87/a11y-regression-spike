@@ -1,0 +1,22 @@
+{
+  "id": "ras-action-tabindex-removed-create-twin",
+  "patternId": "react-admin-simple--action-tabindex-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-action-tabindex-removed-create-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

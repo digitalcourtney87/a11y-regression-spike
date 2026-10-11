@@ -1,0 +1,16 @@
+{
+  "id": "ras-heading-to-div-page-title-twin",
+  "patternId": "react-admin-simple--heading-to-div",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "target": "App bar: the page title in medium weight",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "        <TitlePortal />\n",
+      "replace": "        <TitlePortal sx={{ fontWeight: 500 }} />\n"
+    }
+  ],
+  "twinOf": "ras-heading-to-div-page-title"
+}

@@ -1,0 +1,50 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..1fa3b25 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -31,6 +31,8 @@ import {
+     useCreateSuggestionContext,
+     EditActionsProps,
+     CanAccess,
++    useNotify,
++    useRedirect,
+ } from 'react-admin';
+ import {
+     Box,
+@@ -98,8 +100,25 @@ const categories = [
+     { name: 'Lifestyle', id: 'lifestyle' },
+ ];
+ 
+-const PostEdit = () => (
+-    <Edit title={<PostTitle />} actions={<EditActions />}>
++const PostEdit = () => {
++    const notify = useNotify();
++    const redirect = useRedirect();
++    const onSuccess = () => {
++        const options = {
++            type: 'info' as const,
++            messageArgs: { smart_count: 1 },
++            undoable: true,
++        };
++        notify('resources.posts.notifications.updated', options);
++        notify('resources.posts.notifications.updated', options);
++        redirect('list', 'posts');
++    };
++    return (
++    <Edit
++        title={<PostTitle />}
++        actions={<EditActions />}
++        mutationOptions={{ onSuccess }}
++    >
+         <TabbedForm defaultValues={{ average_note: 0 }} warnWhenUnsavedChanges>
+             <TabbedForm.Tab label="post.form.summary">
+                 <SanitizedBox
+@@ -245,6 +264,7 @@ const PostEdit = () => (
+             </TabbedForm.Tab>
+         </TabbedForm>
+     </Edit>
+-);
++    );
++};
+ 
+ export default PostEdit;

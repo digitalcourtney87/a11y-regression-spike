@@ -1,0 +1,137 @@
+{
+  "id": "acrm-contact-show-actions",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/0/show",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-note",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add a note",
+        "role": "textbox",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|Add a note"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-note",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Show options"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-edit",
+      "strategy": "TAB",
+      "until": {
+        "name": "Edit contact",
+        "role": "link",
+        "maxAttempts": 25
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "link|Edit contact"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-add-tag",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add tag",
+        "role": "button",
+        "maxAttempts": 12
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-tags",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "first-tag",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "pick-tag",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add tag"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "back-to-edit",
+      "strategy": "SHIFT_TAB",
+      "until": {
+        "name": "Edit contact",
+        "role": "link",
+        "maxAttempts": 15
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-edit",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-first-name",
+      "strategy": "NEXT_FORM_FIELD",
+      "until": {
+        "name": "First name",
+        "maxAttempts": 10
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "textbox|First name"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "acrm-dialog-containment-removed-add-task",
+  "patternId": "atomic-crm--dialog-containment-removed",
+  "operator": "dialog-containment-removed",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Add task dialog: made non-modal, so Tab can leave it",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/tasks/AddTask.tsx",
+      "find": "        <Dialog open={open} onOpenChange={() => setOpen(false)}>\n",
+      "replace": "        <Dialog modal={false} open={open} onOpenChange={() => setOpen(false)}>\n"
+    }
+  ]
+}

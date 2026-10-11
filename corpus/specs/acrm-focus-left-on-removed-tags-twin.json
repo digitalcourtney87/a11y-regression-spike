@@ -1,0 +1,16 @@
+{
+  "id": "acrm-focus-left-on-removed-tags-twin",
+  "patternId": "atomic-crm--focus-left-on-removed",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Contact page tags: a wider Add tag menu",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/contacts/TagsListEdit.tsx",
+      "find": "          <DropdownMenuContent>\n",
+      "replace": "          <DropdownMenuContent className=\"min-w-48\">\n"
+    }
+  ],
+  "twinOf": "acrm-focus-left-on-removed-tags"
+}

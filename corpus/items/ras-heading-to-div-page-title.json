@@ -1,0 +1,23 @@
+{
+  "id": "ras-heading-to-div-page-title",
+  "patternId": "react-admin-simple--heading-to-div",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-heading-to-div-page-title.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "heading-to-div: Heading replaced by a styled div (App bar: the page title rendered as a div instead of a heading)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator heading-to-div",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

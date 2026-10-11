@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+index ac03867..bd42bd1 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/TagsListEdit.tsx
+@@ -118,7 +118,7 @@ export const TagsListEdit = () => {
+               {translate("resources.tags.action.add")}
+             </Button>
+           </DropdownMenuTrigger>
+-          <DropdownMenuContent>
++          <DropdownMenuContent className="min-w-48">
+             {unselectedTags?.map((tag) => (
+               <DropdownMenuItem
+                 key={tag.id}

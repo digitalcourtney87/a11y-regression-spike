@@ -1,0 +1,13 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/admin/form.tsx b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+index d87e2cf..d90177a 100644
+--- a/fixtures/spa/atomic-crm/src/components/admin/form.tsx
++++ b/fixtures/spa/atomic-crm/src/components/admin/form.tsx
+@@ -107,7 +107,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+           ? `${formDescriptionId}`
+           : `${formDescriptionId} ${formMessageId}`
+       }
+-      aria-invalid={!!error}
++      aria-invalid={false}
+       {...props}
+     />
+   );

@@ -1,0 +1,42 @@
+{
+  "id": "oss-radix-4014",
+  "version": "1",
+  "app": "oss/radix-4014",
+  "entryUrl": "/",
+  "anchor": "#trigger",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "open-dialog",
+      "strategy": "ACTIVATE",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Edit profile"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "leave-focus-mode",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "close-dialog",
+      "strategy": "PRESS",
+      "key": "Escape",
+      "observeMs": 1500,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Edit profile"
+        }
+      ]
+    }
+  ]
+}

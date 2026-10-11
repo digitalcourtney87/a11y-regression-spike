@@ -1,0 +1,23 @@
+{
+  "id": "acrm-expanded-not-updated-theme",
+  "patternId": "atomic-crm--expanded-not-updated",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-theme-menu",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-expanded-not-updated-theme.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "expanded-not-updated: aria-expanded not updated on a menu or disclosure trigger (Theme toggle: aria-expanded fixed at false on the menu trigger)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator expanded-not-updated",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

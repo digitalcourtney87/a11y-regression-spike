@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+index 9f6dece..60a2561 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/tasks/AddTask.tsx
+@@ -122,7 +122,9 @@ export const AddTask = ({
+                     : translate("resources.tasks.dialog.create")}
+                 </DialogTitle>
+               </DialogHeader>
+-              <TaskFormContent selectContact={selectContact} />
++              <div>
++                <TaskFormContent selectContact={selectContact} />
++              </div>
+               <DialogFooter className="w-full justify-end">
+                 <SaveButton />
+               </DialogFooter>

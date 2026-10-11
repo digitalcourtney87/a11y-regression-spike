@@ -1,0 +1,16 @@
+{
+  "id": "acrm-combobox-keyboard-broken-select-twin",
+  "patternId": "atomic-crm--combobox-keyboard-broken",
+  "operator": "equivalent-refactor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "target": "Shared Select: an option's key handler added that lets every key through",
+  "edits": [
+    {
+      "file": "src/components/ui/select.tsx",
+      "find": "        className\n      )}\n      {...props}\n    >\n      <span className=\"absolute right-2",
+      "replace": "        className\n      )}\n      onKeyDown={() => undefined}\n      {...props}\n    >\n      <span className=\"absolute right-2"
+    }
+  ],
+  "twinOf": "acrm-combobox-keyboard-broken-select"
+}

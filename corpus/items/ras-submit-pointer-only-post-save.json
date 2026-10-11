@@ -1,0 +1,23 @@
+{
+  "id": "ras-submit-pointer-only-post-save",
+  "patternId": "react-admin-simple--submit-pointer-only",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-save-redirect",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-submit-pointer-only-post-save.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "submit-pointer-only: Submit requires a pointer-only control (Post form: a custom toolbar whose Save submits on pointerdown only; its click (Enter) is cancelled)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator submit-pointer-only",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

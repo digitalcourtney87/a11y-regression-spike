@@ -1,0 +1,19 @@
+diff --git a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+index e45a2c2..8d5ada6 100644
+--- a/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
++++ b/fixtures/spa/react-admin-simple/src/posts/PostEdit.tsx
+@@ -51,6 +51,14 @@ const CreateCategory = ({
+ }) => {
+     const { filter, onCancel, onCreate } = useCreateSuggestionContext();
+     const [value, setValue] = React.useState(filter || '');
++    React.useEffect(() => {
++        document
++            .querySelectorAll('body > [aria-hidden="true"]')
++            .forEach(element => element.removeAttribute('aria-hidden'));
++        document
++            .querySelectorAll('[role="dialog"][aria-modal]')
++            .forEach(element => element.removeAttribute('aria-modal'));
++    }, []);
+     const handleSubmit = (event: React.FormEvent) => {
+         event.preventDefault();
+         const choice = { name: value, id: value.toLowerCase() };

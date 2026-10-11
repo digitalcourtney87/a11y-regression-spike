@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/carbon-18824/src/main.jsx b/fixtures/oss/carbon-18824/src/main.jsx
+index 5d5ba09..ac2deda 100644
+--- a/fixtures/oss/carbon-18824/src/main.jsx
++++ b/fixtures/oss/carbon-18824/src/main.jsx
+@@ -16,7 +16,7 @@ function App() {
+   return (
+     <main style={{ padding: "4rem" }}>
+       <button id="before">Before</button>
+-      <Button id="star" hasIconOnly kind="ghost" iconDescription="Favourite" renderIcon={Star} isSelected={selected} onClick={() => setSelected((s) => !s)} />
++      <Button id="star" hasIconOnly kind="ghost" iconDescription="Favourite" renderIcon={Star} isSelected={selected} onClick={() => setSelected(!selected)} />
+     </main>
+   );
+ }

@@ -1,0 +1,16 @@
+{
+  "id": "ras-image-alt-removed-avatar-twin",
+  "patternId": "react-admin-simple--image-alt-removed",
+  "operator": "equivalent-refactor",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "target": "Auth provider: the default identity's id written through a spread, with the same fields",
+  "edits": [
+    {
+      "file": "src/authProvider.tsx",
+      "find": "    id: 'login',\n    fullName: 'John Doe',\n",
+      "replace": "    ...{ id: 'login' },\n    fullName: 'John Doe',\n"
+    }
+  ],
+  "twinOf": "ras-image-alt-removed-avatar"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "acrm-tab-swallowed-note-twin",
+  "patternId": "atomic-crm--tab-swallowed",
+  "operator": "equivalent-refactor",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-actions",
+  "target": "Note form: the Add a note box given a key handler that lets every key through",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/notes/NoteInputs.tsx",
+      "find": "        rows={2}\n",
+      "replace": "        rows={2}\n        onKeyDown={() => undefined}\n"
+    }
+  ],
+  "twinOf": "acrm-tab-swallowed-note"
+}

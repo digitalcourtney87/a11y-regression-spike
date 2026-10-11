@@ -1,0 +1,16 @@
+{
+  "id": "acrm-navigation-hidden-header-twin",
+  "patternId": "atomic-crm--navigation-hidden",
+  "operator": "css-only",
+  "app": "atomic-crm",
+  "journeyId": "acrm-landmarks",
+  "target": "Header: a small gap between the navigation links",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/layout/Header.tsx",
+      "find": "                <nav className=\"flex\">\n",
+      "replace": "                <nav className=\"flex gap-1\">\n"
+    }
+  ],
+  "twinOf": "acrm-navigation-hidden-header"
+}

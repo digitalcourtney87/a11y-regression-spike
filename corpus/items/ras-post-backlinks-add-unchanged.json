@@ -1,0 +1,21 @@
+{
+  "id": "ras-post-backlinks-add-unchanged",
+  "patternId": "react-admin-simple--focus-left-on-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-backlinks-add",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey ras-post-backlinks-add (P15)",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

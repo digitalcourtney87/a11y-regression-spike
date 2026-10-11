@@ -1,0 +1,23 @@
+{
+  "id": "acrm-heading-to-div-contact-name",
+  "patternId": "atomic-crm--heading-to-div",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-show-details",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-heading-to-div-contact-name.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "heading-to-div: Heading replaced by a styled div (Contact page: the contact's name heading replaced by a styled div)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator heading-to-div",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

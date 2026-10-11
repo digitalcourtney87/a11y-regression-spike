@@ -1,0 +1,23 @@
+{
+  "id": "ras-field-label-disassociated-title",
+  "patternId": "react-admin-simple--field-label-disassociated",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-errors",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-field-label-disassociated-title.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "NAME_NOT_CONVEYED",
+    "mechanism": "field-label-disassociated: Field label disassociated (htmlFor or id mismatch) (Post form: the Title label's htmlFor no longer matches its input)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator field-label-disassociated",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

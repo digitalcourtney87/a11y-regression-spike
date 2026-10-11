@@ -1,0 +1,15 @@
+{
+  "id": "ras-dialog-containment-removed-category",
+  "patternId": "react-admin-simple--dialog-containment-removed",
+  "operator": "dialog-containment-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-create-dialog",
+  "target": "New category dialog: its focus trap is disabled, so Tab can leave it",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "        <Dialog open onClose={onCancel}>\n",
+      "replace": "        <Dialog open onClose={onCancel} disableEnforceFocus>\n"
+    }
+  ]
+}

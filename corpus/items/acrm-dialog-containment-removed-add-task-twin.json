@@ -1,0 +1,22 @@
+{
+  "id": "acrm-dialog-containment-removed-add-task-twin",
+  "patternId": "atomic-crm--dialog-containment-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "atomic-crm",
+  "journeyId": "acrm-contact-add-task-dialog",
+  "base": {
+    "ref": "atomic-crm@dd1d1c567a6150efd848b25bad406fcd95ea2254"
+  },
+  "candidate": {
+    "patch": "acrm-dialog-containment-removed-add-task-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CLASS_RENAME"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator class-rename",
+    "licence": "MIT (Atomic CRM, marmelab/atomic-crm)"
+  }
+}

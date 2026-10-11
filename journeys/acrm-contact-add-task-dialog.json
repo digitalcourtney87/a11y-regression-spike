@@ -1,0 +1,106 @@
+{
+  "id": "acrm-contact-add-task-dialog",
+  "version": "1",
+  "app": "atomic-crm",
+  "entryUrl": "/#/contacts/0/show",
+  "anchor": "header a[href=\"#/deals\"]",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-add-task",
+      "strategy": "TAB",
+      "until": {
+        "name": "Add task",
+        "role": "button",
+        "maxAttempts": 80
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "button|Add task"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-task-dialog",
+      "strategy": "ACTIVATE",
+      "observeMs": 2000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Create task"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-type",
+      "strategy": "TAB",
+      "until": {
+        "name": "Type",
+        "maxAttempts": 10
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "combobox|Type"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "open-type",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "next-type",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "pick-type",
+      "strategy": "PRESS",
+      "until": {
+        "role": "dialog",
+        "maxAttempts": 1
+      },
+      "key": "Enter",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-close",
+      "strategy": "TAB",
+      "until": {
+        "name": "Close",
+        "role": "button",
+        "maxAttempts": 14
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "wrap-around",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "dialog|Create task"
+        }
+      ]
+    }
+  ]
+}

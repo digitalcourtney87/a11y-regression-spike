@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/vuetify-9627/src/main.js b/fixtures/oss/vuetify-9627/src/main.js
+index 47787e8..8f1cf2a 100644
+--- a/fixtures/oss/vuetify-9627/src/main.js
++++ b/fixtures/oss/vuetify-9627/src/main.js
+@@ -15,7 +15,7 @@ new Vue({
+   template: `
+     <v-app>
+       <v-content>
+-        <div style="padding: 2rem">
++        <div style="padding: 3rem">
+           <v-btn id="before">Before</v-btn>
+           <v-btn id="open" @click="dialog = true">Open dialog</v-btn>
+           <v-btn id="after">After</v-btn>

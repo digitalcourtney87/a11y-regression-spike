@@ -1,0 +1,22 @@
+{
+  "id": "oss-vuetify-9627-twin",
+  "patternId": "oss--vuetify-9627",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/vuetify-9627",
+  "journeyId": "oss-vuetify-9627",
+  "base": {
+    "ref": "oss/vuetify-9627@a6a2f22aeb7d06898424d3aea9147de31ec8ca9c+vuetify@2.0.14"
+  },
+  "candidate": {
+    "patch": "oss-vuetify-9627-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator css-only",
+    "licence": "MIT (vuetify)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ras-menu-focus-not-restored-category",
+  "patternId": "react-admin-simple--menu-focus-not-restored",
+  "operator": "menu-focus-not-restored",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "target": "Post form: closing the Category menu no longer returns focus to the select",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{ MenuProps: { disableRestoreFocus: true } }}\n                />\n"
+    }
+  ]
+}

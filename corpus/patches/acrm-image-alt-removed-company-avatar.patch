@@ -1,0 +1,12 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyAvatar.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyAvatar.tsx
+index 6171d50..efc3b2c 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyAvatar.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/companies/CompanyAvatar.tsx
+@@ -18,7 +18,6 @@ export const CompanyAvatar = (props: {
+     <Avatar className={sizeClass}>
+       <AvatarImage
+         src={record.logo?.src}
+-        alt={record.name}
+         className="object-contain"
+       />
+       <AvatarFallback className={width !== 40 ? "text-xs" : "text-sm"}>

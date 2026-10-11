@@ -1,0 +1,16 @@
+{
+  "id": "ras-action-tabindex-removed-create-twin",
+  "patternId": "react-admin-simple--action-tabindex-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-list-actions",
+  "target": "Posts list: a small margin before the Create action",
+  "edits": [
+    {
+      "file": "src/posts/PostList.tsx",
+      "find": "        <ColumnsButton />\n        <CreateButton />\n",
+      "replace": "        <ColumnsButton />\n        <CreateButton sx={{ ml: 1 }} />\n"
+    }
+  ],
+  "twinOf": "ras-action-tabindex-removed-create"
+}

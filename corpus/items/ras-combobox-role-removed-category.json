@@ -1,0 +1,23 @@
+{
+  "id": "ras-combobox-role-removed-category",
+  "patternId": "react-admin-simple--combobox-role-removed",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-select",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-combobox-role-removed-category.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "ROLE_NOT_CONVEYED",
+    "mechanism": "combobox-role-removed: Combobox trigger loses its role (Post form: the Category select's trigger given role=button, so it is no longer a combobox)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator combobox-role-removed",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}

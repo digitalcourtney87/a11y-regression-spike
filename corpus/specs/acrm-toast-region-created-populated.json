@@ -1,0 +1,25 @@
+{
+  "id": "acrm-toast-region-created-populated",
+  "patternId": "atomic-crm--toast-region-created-populated",
+  "operator": "toast-region-created-populated",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Shared Notification: toasts shown in a role=status element mounted with its message, instead of the persistent sonner live region (creation-time family)",
+  "edits": [
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "  const { theme } = useTheme();\n",
+      "replace": "  const { theme } = useTheme();\n  const [current, setCurrent] = React.useState<React.ReactNode>(null);\n"
+    },
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "        toast[type](finalMessage, {\n          duration,\n          action: undoable\n            ? {\n                label: translate(\"ra.action.undo\"),\n                onClick: handleUndo,\n              }\n            : undefined,\n          onDismiss: handleExited,\n          onAutoClose: handleExited,\n        });\n",
+      "replace": "        void handleUndo;\n        setCurrent(finalMessage ?? null);\n        window.setTimeout(\n          () => {\n            setCurrent(null);\n            handleExited();\n          },\n          Number.isFinite(duration) ? duration : 4000,\n        );\n"
+    },
+    {
+      "file": "src/components/admin/notification.tsx",
+      "find": "      <Toaster\n        richColors\n",
+      "replace": "      {current ? (\n        <div\n          role=\"status\"\n          className=\"fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-md border bg-popover px-4 py-3 text-sm text-popover-foreground shadow-md\"\n        >\n          {current}\n        </div>\n      ) : null}\n      <Toaster\n        richColors\n"
+    }
+  ]
+}

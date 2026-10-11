@@ -1,0 +1,15 @@
+{
+  "id": "acrm-button-to-div-create-company",
+  "patternId": "atomic-crm--button-to-div",
+  "operator": "button-to-div",
+  "app": "atomic-crm",
+  "journeyId": "acrm-company-create-notification",
+  "target": "Company create: the Create Company button replaced by a focusable div that submits on click",
+  "edits": [
+    {
+      "file": "src/components/atomic-crm/companies/CompanyCreate.tsx",
+      "find": "                  <SaveButton\n                    label={translate(\"resources.companies.action.create\", {\n                      _: \"Create Company\",\n                    })}\n                  />\n",
+      "replace": "                  <div\n                    tabIndex={0}\n                    className=\"inline-flex h-9 cursor-pointer items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground\"\n                    onClick={(event) =>\n                      event.currentTarget.closest(\"form\")?.requestSubmit()\n                    }\n                  >\n                    {translate(\"resources.companies.action.create\", {\n                      _: \"Create Company\",\n                    })}\n                  </div>\n"
+    }
+  ]
+}

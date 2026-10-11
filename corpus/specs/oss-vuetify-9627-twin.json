@@ -1,0 +1,16 @@
+{
+  "id": "oss-vuetify-9627-twin",
+  "patternId": "oss--vuetify-9627",
+  "operator": "css-only",
+  "app": "oss/vuetify-9627",
+  "journeyId": "oss-vuetify-9627",
+  "target": "The page padding widened",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "<div style=\"padding: 2rem\">",
+      "replace": "<div style=\"padding: 3rem\">"
+    }
+  ],
+  "twinOf": "oss-vuetify-9627"
+}

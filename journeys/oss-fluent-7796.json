@@ -1,0 +1,48 @@
+{
+  "id": "oss-fluent-7796",
+  "version": "1",
+  "app": "oss/fluent-7796",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "page-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 500,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-first-card",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Quarterly report",
+        "maxAttempts": 6
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "listitem|#card-1"
+        }
+      ]
+    },
+    {
+      "kind": "at",
+      "id": "reach-second-card",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "Product roadmap",
+        "maxAttempts": 4
+      },
+      "observeMs": 1000,
+      "expectations": [
+        {
+          "type": "focusOn",
+          "value": "listitem|#card-2"
+        }
+      ]
+    }
+  ]
+}

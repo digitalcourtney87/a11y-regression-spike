@@ -1,0 +1,15 @@
+diff --git a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactInputs.tsx b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactInputs.tsx
+index c56809a..0b2a700 100644
+--- a/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactInputs.tsx
++++ b/fixtures/spa/atomic-crm/src/components/atomic-crm/contacts/ContactInputs.tsx
+@@ -73,7 +73,9 @@ const ContactIdentityInputs = () => {
+         defaultValue={contactGender[0].value}
+       />
+       <TextInput source="first_name" validate={required()} helperText={false} />
+-      <TextInput source="last_name" validate={required()} helperText={false} />
++      <div>
++        <TextInput source="last_name" validate={required()} helperText={false} />
++      </div>
+     </div>
+   );
+ };

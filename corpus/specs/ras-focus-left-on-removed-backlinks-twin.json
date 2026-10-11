@@ -1,0 +1,16 @@
+{
+  "id": "ras-focus-left-on-removed-backlinks-twin",
+  "patternId": "react-admin-simple--focus-left-on-removed",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-backlinks-add",
+  "target": "Post form: the backlinks laid out inline",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    <SimpleFormIterator>\n                        <DateInput source=\"date\" />\n",
+      "replace": "                    <SimpleFormIterator inline>\n                        <DateInput source=\"date\" />\n"
+    }
+  ],
+  "twinOf": "ras-focus-left-on-removed-backlinks"
+}

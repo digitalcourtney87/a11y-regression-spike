@@ -1,0 +1,16 @@
+{
+  "id": "ras-escape-not-closing-category-twin",
+  "patternId": "react-admin-simple--escape-not-closing",
+  "operator": "css-only",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-category-escape",
+  "target": "Post form: the Category menu with square corners",
+  "edits": [
+    {
+      "file": "src/posts/PostEdit.tsx",
+      "find": "                    source=\"category\"\n                    choices={categories}\n                />\n",
+      "replace": "                    source=\"category\"\n                    choices={categories}\n                    SelectProps={{ MenuProps: { PaperProps: { square: true } } }}\n                />\n"
+    }
+  ],
+  "twinOf": "ras-escape-not-closing-category"
+}

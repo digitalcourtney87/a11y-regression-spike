@@ -1,0 +1,15 @@
+{
+  "id": "ras-icon-button-label-removed-configure",
+  "patternId": "react-admin-simple--icon-button-label-removed",
+  "operator": "icon-button-label-removed",
+  "app": "react-admin-simple",
+  "journeyId": "ras-appbar-details",
+  "target": "App bar: the icon-only Configure this page button loses its aria-label",
+  "edits": [
+    {
+      "file": "src/Layout.tsx",
+      "find": "        <InspectorButton />\n",
+      "replace": "        <InspectorButton aria-label={undefined} />\n"
+    }
+  ]
+}

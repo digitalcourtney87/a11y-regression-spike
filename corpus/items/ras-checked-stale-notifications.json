@@ -1,0 +1,23 @@
+{
+  "id": "ras-checked-stale-notifications",
+  "patternId": "react-admin-simple--checked-stale",
+  "split": "test",
+  "source": "seeded",
+  "app": "react-admin-simple",
+  "journeyId": "ras-post-edit-notifications",
+  "base": {
+    "ref": "react-admin-simple@d551f87f1eb7a5eade82b2c87a8b81bd24f256a2"
+  },
+  "candidate": {
+    "patch": "ras-checked-stale-notifications.patch"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "STATE_NOT_CONVEYED",
+    "mechanism": "checked-stale: aria-checked or aria-pressed stale on a checkbox, switch or toggle (Post form: the notification recipients become custom checkboxes whose aria-checked keeps its first value)"
+  },
+  "provenance": {
+    "origin": "seeded by Claude with operator checked-stale",
+    "licence": "MIT (react-admin, marmelab/react-admin)"
+  }
+}
