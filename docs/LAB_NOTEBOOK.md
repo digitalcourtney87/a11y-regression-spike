@@ -425,3 +425,7 @@ DR-0096; [Calendar admission](research/2026-10-11-calendar-admission.md), [lead 
 ### 2026-10-11 — Second bounded mining pass
 
 DR-0097; [pass-two report and source-linked ledger](research/2026-10-11-m7-mining-pass-two.md). Eight queries, one new candidate excluded, zero additions or CI dispatches; 17 patterns still needed.
+
+### 2026-10-11 — Broader mining pass and DateField admission
+
+DR-0098; [source-linked report and ledger](research/2026-10-11-m7-pass-three.md). Ten new issues, one admitted DateField pair with twin/control after two exploratory checks. Two additions built, 16 remain; six documentary leads pending. No confirmatory execution or new tag.

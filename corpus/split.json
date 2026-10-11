@@ -105,6 +105,17 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-datefield",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -154,6 +165,7 @@
     "oss--fluent-7796": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",
+    "oss--ras-8637": "test",
     "oss--vuetify-9627": "test",
     "react-admin-simple--action-tabindex-removed": "test",
     "react-admin-simple--aria-modal-removed": "test",

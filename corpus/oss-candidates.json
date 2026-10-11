@@ -277,6 +277,30 @@
         "pointer": false,
         "keyboard": true
       }
+    },
+    {
+      "id": "ras-8637",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "#8637",
+        "PR #8447",
+        "PR #8684"
+      ],
+      "stack": "react",
+      "package": "@adobe/react-spectrum",
+      "licence": "Apache-2.0",
+      "good": "3.42.2",
+      "broken": "3.43.0",
+      "fixed": "3.44.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "DateField leading-zero suppression prevents continuous 01011970 entering January 1, 1970; it instead enters October 11, 970. Reverted by PR #8684. Reproduced in runs 38176937862 and 38177297242; original criterion unchanged, browse-outcome/CSS-twin diagnostics pass (DR-0098).",
+      "reproduction": {
+        "run": 38177297242,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

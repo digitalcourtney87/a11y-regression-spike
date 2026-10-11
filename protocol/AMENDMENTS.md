@@ -129,3 +129,17 @@ Copy this block for each amendment, numbered A-001, A-002 and so on.
 ### A-005: Pass-three exploratory DateField fixture
 
 Owner authorised proceeding with the broader bounded search after pass two, 2026-10-11. G4 outcomes are known. Add unsplit `fixtures/oss/ras-8637/` using the issue's continuous leading-zero typing criterion, before any corpus assignment. Follow the pass-three recorded plan, P22 and existing workflow safeguards. No oracle, threshold, trigger, corpus assignment or new tag changes. The branch's frozen hash changes; confirmatory execution still requires a new owner freeze tag. Original G4 evidence remains at protocol-freeze-v3.
+
+### A-006: Second second-round mined pattern
+
+| Field | Value |
+|---|---|
+| Date | 2026-10-11 |
+| Proposed by | Codex |
+| Owner approval | Owner instruction to proceed with the broader pass; P22/P39 |
+| Freeze tag before | protocol-freeze-v3 |
+| Freeze tag after | None; assigned execution awaits a new owner tag |
+| Files changed | `fixtures/oss/ras-8637/check.mjs`; registry/pattern/split files; DateField regression, twin/control items and twin spec/patch; `journeys/oss-ras-8637.json`; this entry |
+| Related decision | DR-0098 |
+
+**Change and exposure.** G4 outcomes are known. Add browse-outcome/CSS-twin diagnostics preserving the issue's original criterion, then admit the qualifying DateField pattern to test with twin/control after two exploratory reproductions. Prior assignments and items stay unchanged. Existing primary vocabulary and journey strategies represent the outcome; no oracle, trigger, threshold or scoring-rule changes. Original confirmatory misses did not select the candidate. Frozen-set hash changes; the original G4 evidence stays at protocol-freeze-v3. No assigned test item is executed or scored and no new tag is created.

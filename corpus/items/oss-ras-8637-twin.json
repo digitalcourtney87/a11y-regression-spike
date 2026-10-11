@@ -1,0 +1,22 @@
+{
+  "id": "oss-ras-8637-twin",
+  "patternId": "oss--ras-8637",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/ras-8637",
+  "journeyId": "oss-ras-8637",
+  "base": {
+    "ref": "oss/ras-8637@613899074a9864fff939ebaa29bdca6b77fc0ae5+@adobe/react-spectrum@3.42.2"
+  },
+  "candidate": {
+    "patch": "oss-ras-8637-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0098)",
+    "licence": "Apache-2.0 (@adobe/react-spectrum)"
+  }
+}

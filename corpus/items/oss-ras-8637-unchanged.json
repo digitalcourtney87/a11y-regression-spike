@@ -1,0 +1,21 @@
+{
+  "id": "oss-ras-8637-unchanged",
+  "patternId": "oss--ras-8637",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/ras-8637",
+  "journeyId": "oss-ras-8637",
+  "base": {
+    "ref": "oss/ras-8637@613899074a9864fff939ebaa29bdca6b77fc0ae5+@adobe/react-spectrum@3.42.2"
+  },
+  "candidate": {
+    "ref": "oss/ras-8637@613899074a9864fff939ebaa29bdca6b77fc0ae5+@adobe/react-spectrum@3.42.2"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-ras-8637 (P15/P39, DR-0098)",
+    "licence": "Apache-2.0 (@adobe/react-spectrum)"
+  }
+}

@@ -137,6 +137,8 @@ Conventions:
 
 | [DR-0097](#dr-0097-second-bounded-mining-pass) | Second bounded mining pass | Accepted | 2026-10-11 | Owner instruction to move to next task | — | Zero additions; 17 still needed |
 
+| [DR-0098](#dr-0098-broader-mining-pass-and-datefield-admission) | Broader mining pass and DateField admission | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | Second addition built; 16 still needed |
+
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
@@ -3923,3 +3925,20 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Outcome.** PR #12 was already merged when checked (ba2831f). Execute the eight pre-recorded title queries in `docs/research/2026-10-11-m7-next-mining-plan.md`: three hits, two previously excluded, one new candidate (Fluent UI #8750). Its merged fix removes a dangling described-by reference only when the selected-item list is empty. No issue-derived primary user-facing symptom is established; exclude under P22 rule 7. The scanner finding alone does not justify a new symptom or verdict. Zero new patterns, fixtures or CI dispatches. Calendar remains the first addition, with 17 needed and four documentary leads pending. See `docs/research/2026-10-11-m7-mining-pass-two.md` and its JSON ledger.
 
 **Boundary.** The title intersection is sparse; do not substitute new queries after seeing the result. A subsequent search starts from a revised recorded plan. No frozen set, original assignment, detection rule, target, context or freeze tag changes. No confirmatory execution or M8 work.
+
+## DR-0098 Broader mining pass and DateField admission
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Please proceed” after the broader-search recommendation; P22/P39 |
+| Scope | Eight recorded queries, at most two fixtures/two exploratory dispatches; second-round build only |
+
+**Method and result.** Commit `5607d07` records the broader plan before search. Eight queries inspect 77 hits and select ten new issues: seven excluded, two pending documentary, and one DateField candidate later admitted. All four exact regression-label queries are empty. Per-query selection caps, ordering and exclusions are retained; no query substitution or selection from G4 misses. Sources and all inspected-hit dispositions are in `docs/research/2026-10-11-m7-pass-three-ledger.json` and the Markdown report.
+
+**DateField evidence.** Issue #8637's continuous `01011970` criterion follows published @adobe/react-spectrum 3.42.2/3.43.0/3.44.0 with compatible shared React/react-dom 18.3.1, Apache-2.0. Introducing PR #8447 suppresses leading zeros; merged revert #8684 fixes it. Runs 38176937862 and 38177297242 reproduce January 1, 1970 on good/fixed versus October 11, 970 on broken, with zero errors/external requests and successful installs/builds. The original criterion and resolved locks agree across both. Before assignment, the second run also checks existing-model browse reachability of the expected date (line 8 good/fixed, absent broken), and an identical CSS-only width twin. First candidate artifacts are complete; the remaining first-run Carbon job is cancelled by replacement, so overall run one is cancelled. Run two succeeds in all six jobs.
+
+**Admission/build.** Add `oss--ras-8637` with existing JOURNEY_BLOCKED and `mined` mechanism metadata, a test regression item, CSS_ONLY twin and exact base/base unchanged control. Refs share immutable fixture commit 613899074a9864fff939ebaa29bdca6b77fc0ae5. Follow P39's explicit all-test append (unused seed 0, fraction 1), without altering prior assignments/items. The journey uses existing TAB/TYPE/mode-toggle/DOCUMENT_TOP/BROWSE_NEXT strategies; actual NVDA path remains unexecuted until a new tag. The ordinary fixture output exposes the entered date identically on every release; no oracle, threshold or trigger changes.
+
+**Boundary and validation.** One fixture and two dispatches used; no local third-party execution or assigned test-item execution. Corpus validation reports 207 items, 81 patterns (20 dev, 61 test); lint/typecheck and all 154 corpus/schema tests pass. Source patch applies. A-005/A-006 record frozen-set changes; no new tag. Two of 18 additions are built, 16 still needed; six documentary leads remain pending. The cap is reached and availability remains unestablished. No M8 work or criteria/context/target change.

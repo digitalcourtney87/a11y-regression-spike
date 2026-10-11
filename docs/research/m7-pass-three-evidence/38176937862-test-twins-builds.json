@@ -1,0 +1,83 @@
+[
+  {
+    "item": "oss-blueprint-6163-twin",
+    "version": "4.9.14",
+    "before": "2023-04-22T00:01:40Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-bootstrap-35496-twin",
+    "version": "5.0.2",
+    "before": "2021-06-23T18:37:55Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-18824-twin",
+    "version": "1.53.1",
+    "before": "2024-03-20T16:45:22Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-5623-twin",
+    "version": "7.9.3",
+    "before": "2020-01-31T16:04:38Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-7253-twin",
+    "version": "10.22.0",
+    "before": "2020-10-16T19:12:32Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-4620-twin",
+    "version": "5.40.2",
+    "before": "2018-01-20T11:14:37Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-7796-twin",
+    "version": "6.124.2",
+    "before": "2019-01-15T13:39:54Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-radix-4014-twin",
+    "version": "1.1.13",
+    "before": "2026-06-16T19:08:52Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-vuetify-9627-twin",
+    "version": "2.0.14",
+    "before": "2019-09-05T02:27:43Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

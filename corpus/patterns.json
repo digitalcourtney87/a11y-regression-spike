@@ -705,6 +705,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "office-ui-fabric-react 5.40.2 to 5.41.0: Calendar Next month handles one Space twice after controls became native buttons; April advances to June instead of May. Pointer control advances once. Fixed by PR #4662. Two unchanged-check reproductions plus browse-goal/CSS-twin diagnostics in run 38175379953 (DR-0096)."
+    },
+    {
+      "id": "oss--ras-8637",
+      "batch": "oss-regression",
+      "context": "oss:adobe/react-spectrum#8637",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "@adobe/react-spectrum 3.42.2 to 3.43.0: DateField leading-zero suppression prevents continuous 01011970 entering January 1, 1970; it instead enters October 11, 970. Reverted by PR #8684. Reproduced in runs 38176937862 and 38177297242; original criterion unchanged, browse-outcome/CSS-twin diagnostics pass (DR-0098)."
     }
   ]
 }

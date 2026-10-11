@@ -1,0 +1,131 @@
+{
+  "label": "EXPLORATORY",
+  "runs": [
+    {
+      "databaseId": 38176937862,
+      "headSha": "ca2d1e90afc40dc90a981f99b45ec71426fc5afe",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38176937862",
+      "jobs": [
+        {
+          "databaseId": 114581211619,
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:34:40Z",
+          "completedAt": "2026-10-11T21:34:45Z",
+          "elapsedSeconds": 5.0
+        },
+        {
+          "databaseId": 114581211734,
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:34:40Z",
+          "completedAt": "2026-10-11T21:37:01Z",
+          "elapsedSeconds": 141.0
+        },
+        {
+          "databaseId": 114581237603,
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:34:48Z",
+          "completedAt": "2026-10-11T21:36:25Z",
+          "elapsedSeconds": 97.0
+        },
+        {
+          "databaseId": 114581237657,
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:34:48Z",
+          "completedAt": "2026-10-11T21:38:09Z",
+          "elapsedSeconds": 201.0
+        },
+        {
+          "databaseId": 114581237663,
+          "name": "fixture (ras-8637)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:34:48Z",
+          "completedAt": "2026-10-11T21:37:00Z",
+          "elapsedSeconds": 132.0
+        },
+        {
+          "databaseId": 114581237737,
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "startedAt": "2026-10-11T21:34:48Z",
+          "completedAt": "2026-10-11T21:40:19Z",
+          "elapsedSeconds": 331.0
+        }
+      ]
+    },
+    {
+      "databaseId": 38177297242,
+      "headSha": "613899074a9864fff939ebaa29bdca6b77fc0ae5",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38177297242",
+      "jobs": [
+        {
+          "databaseId": 114582367483,
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:22Z",
+          "completedAt": "2026-10-11T21:40:28Z",
+          "elapsedSeconds": 6.0
+        },
+        {
+          "databaseId": 114582367724,
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:22Z",
+          "completedAt": "2026-10-11T21:42:41Z",
+          "elapsedSeconds": 139.0
+        },
+        {
+          "databaseId": 114582395415,
+          "name": "fixture (ras-8637)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:30Z",
+          "completedAt": "2026-10-11T21:42:45Z",
+          "elapsedSeconds": 135.0
+        },
+        {
+          "databaseId": 114582395420,
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:30Z",
+          "completedAt": "2026-10-11T21:44:03Z",
+          "elapsedSeconds": 213.0
+        },
+        {
+          "databaseId": 114582395424,
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:30Z",
+          "completedAt": "2026-10-11T21:42:22Z",
+          "elapsedSeconds": 112.0
+        },
+        {
+          "databaseId": 114582395570,
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-10-11T21:40:30Z",
+          "completedAt": "2026-10-11T21:44:08Z",
+          "elapsedSeconds": 218.0
+        }
+      ]
+    }
+  ]
+}

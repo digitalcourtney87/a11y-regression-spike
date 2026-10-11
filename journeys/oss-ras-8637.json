@@ -1,0 +1,53 @@
+{
+  "id": "oss-ras-8637",
+  "version": "1",
+  "app": "oss/ras-8637",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-month",
+      "strategy": "TAB",
+      "until": {
+        "name": "month",
+        "maxAttempts": 20
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "enter-date",
+      "strategy": "TYPE",
+      "text": "01011970",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "return-to-browse-mode",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-from-top",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-expected-date",
+      "strategy": "BROWSE_NEXT",
+      "until": {
+        "name": "1970-01-01",
+        "maxAttempts": 60
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

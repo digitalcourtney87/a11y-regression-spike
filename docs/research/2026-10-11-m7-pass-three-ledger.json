@@ -1,0 +1,631 @@
+{
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "inspected": 8,
+      "hits": [
+        {
+          "number": 1354,
+          "title": "[Tooltip] Regression: sometimes opens on touch devices",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1615,
+          "title": "[Dialog][DropdownMenu] Possible regression in auto focus behaviour when opening a dialog from a dropdown",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 2224,
+          "title": "[Regression] Select component trigs Popover closing inside Popover ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3780,
+          "title": "[Regression] Radix Slot/asChild prop merging silently fails in RSC dev mode after Next.js 16.0.10 security patch",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3933,
+          "title": "[1.5.0][Regression] TypeScript type errors - Duplicate index signature for type '`--radix-${string}`'",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4014,
+          "title": "[DismissableLayer] Escape handlers go stale on React 19.2 (regression in 1.1.14)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4072,
+          "title": "RSC regression on Slot",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4150,
+          "title": "`Slot` throws when a lazy child resolves to another lazy child (regression left over from #3165 / #3680, likely also #4082)",
+          "disposition": "selected"
+        }
+      ]
+    },
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed label:regression",
+      "totalHits": 0,
+      "inspected": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "inspected": 9,
+      "hits": [
+        {
+          "number": 5887,
+          "title": "Regression in terms of localization strings/i18n bundling in the latest release",
+          "disposition": "selected"
+        },
+        {
+          "number": 6784,
+          "title": "Regression in useControlledState signature",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8298,
+          "title": "Combobox closes when navigating items with keyboard (May release regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8637,
+          "title": "DateField UX regression in entering some dates",
+          "disposition": "selected"
+        },
+        {
+          "number": 9776,
+          "title": "useComboBox: \"Too many re-renders\" infinite loop with inline children (regression in react-aria 3.47.0?)",
+          "disposition": "selected"
+        },
+        {
+          "number": 9874,
+          "title": "react-aria-components ComboBox: onSelectionChange(null) fired on blur (regression / behavior change vs. earlier 1.x)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9937,
+          "title": "April release regression in RAC Table",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10313,
+          "title": "Prebuilt `dist` CSS ships unflattened native nesting since 3.47.2 \u2014 breaks engines below Chrome 112 (regression from 3.47.1)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10324,
+          "title": "Modal jumps to the top when dismissed via underlay press in Chrome/Safari (regression in 1.17.0)",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed label:regression",
+      "totalHits": 0,
+      "inspected": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "totalHits": 39,
+      "inspected": 30,
+      "hits": [
+        {
+          "number": 2783,
+          "title": "[Checkbox] regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5702,
+          "title": "[next] failed to create new regression baseline",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6603,
+          "title": "[Card] regression in material-ui@1.0.0-alpha.10",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7089,
+          "title": "[TextField] regression inputStyle color not working",
+          "disposition": "selected"
+        },
+        {
+          "number": 8004,
+          "title": "Typescript regression from 1.0.0-beta.6 to 1.0.0-beta.7",
+          "disposition": "selected"
+        },
+        {
+          "number": 9241,
+          "title": "Command to run regression is wrong",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10178,
+          "title": "[MobileStepper] bug/regression for variant=\"progress\"?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10248,
+          "title": "serious regression in the display since this week on chrome and Firefox. Why ?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11548,
+          "title": "[regression] Modal is exported as Backdrop instead of Backdrop",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11576,
+          "title": "v0.20.1 REGRESSION AutoComplete : Enter key doesn't fire onNewRequest",
+          "disposition": "selected"
+        },
+        {
+          "number": 11587,
+          "title": "Regression: Changes from beta 36 to Release added too much css specificity preventing overrides from working properly",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 11913,
+          "title": "[Regression] tooltips block pointer events even when not showing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13163,
+          "title": "Regression for browser usage when upgrading from 3.1.2 -> 3.2.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13247,
+          "title": "Browser regression when upgrading from 3.2.0 to 3.2.1",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 13283,
+          "title": "[ButtonBase] Regression in 3.1.2 causes error \"Cannot read property 'focusVisible' of null\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 14042,
+          "title": "Regression in vertical alignment of Button text in IE11",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15906,
+          "title": "[Popper] Position flicker regression in v4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16184,
+          "title": "Regression: withWidth fails on the server side because of useMediaQuery",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16441,
+          "title": "[Popover] ModalClasses prop regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17366,
+          "title": "[Radio] Regression in v4.4.1 when no label is used",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 18236,
+          "title": "[Chip] Keyboard events regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 18255,
+          "title": "Regression: <Select native id=\"my-id\"> No Longer Has an Id",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18484,
+          "title": "[TextField] Programmatically focus, potencial regression in v.4.5.0+",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25866,
+          "title": "[v5.0.0-alpha.31] Doc `Tree View` on dark mode had a regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 30012,
+          "title": "[chip] Disabled a11y regression in MUIv5",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 32136,
+          "title": "[@mui/styles] Regression accessing theme",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36054,
+          "title": "[useMediaQuery] Regression noSsr: true has no longer any impact",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 37247,
+          "title": "[Input][Joy] Regression with input backgrounds",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41584,
+          "title": "[docs-infra] Skip non React components from visual regression tests",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 43741,
+          "title": "[material-ui] Button `color=\"inherit\"` prop regression for `variant=\"contained\"`",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed label:regression",
+      "totalHits": 0,
+      "inspected": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "totalHits": 43,
+      "inspected": 30,
+      "hits": [
+        {
+          "number": 321,
+          "title": "Regression: Unsupported tag leakage in Overlay in fabric-react",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1182,
+          "title": "TextFiled: this._willMountTriggerValidation is removed and caused regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1234,
+          "title": "Package: visual regression testing output in npm package",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1542,
+          "title": "DetailsList: accessbility: Enter not working on links.(Regression)",
+          "disposition": "selected"
+        },
+        {
+          "number": 1725,
+          "title": "Update Visual Regression Testing Documentation",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2056,
+          "title": "MessageBar: UI regression for multi-line message bar that without actions.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2545,
+          "title": "Drop down: regression of DropDown not opening up when rendered at bottom of its containter",
+          "disposition": "selected"
+        },
+        {
+          "number": 2724,
+          "title": "Regression in DetailsList: Horizontal scroll in justified mode : 4.37.7 - 4.38.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5060,
+          "title": "[Regression]Datepicker: unnecessary scrollbars",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5757,
+          "title": "Add themed variation to all visual regression tests",
+          "disposition": "selected"
+        },
+        {
+          "number": 6830,
+          "title": "Regression in Panel footer button behavior ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8750,
+          "title": "People picker accessibility regression: aria-valid-attr-value: ARIA attributes must conform to valid values ",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9200,
+          "title": "[Regression] Dropdown erases selected option",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9344,
+          "title": "PR #9295 caused regression in menu icon disabled state for Buttons",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 12504,
+          "title": "Fabric 7 Bundle Size Regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13012,
+          "title": "Tracking: investigate severities of Chromium Edge High Contrast regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 15423,
+          "title": "makeStyle regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16027,
+          "title": "[v8] [Regression] SearchBox maximum call stack size on keydown",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17482,
+          "title": "Question: Are you interested to give a try Creevey as Visual Regression tool?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18714,
+          "title": "[SearchBox][Regression] onChanged silently broke with the v8 upgrade",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20618,
+          "title": "Regression: Callout doesn't resize to content when it shrinks",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21814,
+          "title": "DropDown Multiple Selection Regression Bug",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22878,
+          "title": "[Bug]-Regression: Absolute-positioned modeless dialogs/modals are no longer visible or repositioned since 8.64.0.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 23064,
+          "title": "Select: add visual regression tests",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 23680,
+          "title": "[Important] Skeleton animation=wave regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 25078,
+          "title": "[Epic]: Visual Regression Tool Migration",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 25701,
+          "title": "[Bug]: Regression - `childrenGap` on Stack with `wrap` breaks layout",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 27510,
+          "title": "[Bug]: DatePicker focus of current value (v8 regression) ",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 27997,
+          "title": "[Bug]: DataGrid controlled selection broken (regression)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 28903,
+          "title": "[Feature]: Add shadow DOM visual regression tests for all Fluent v8 controls",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed label:regression",
+      "totalHits": 0,
+      "inspected": 0,
+      "hits": []
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "radix-ui/primitives",
+      "number": 4150,
+      "url": "https://github.com/radix-ui/primitives/issues/4150",
+      "title": "`Slot` throws when a lazy child resolves to another lazy child (regression left over from #3165 / #3680, likely also #4082)",
+      "query": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Nested Flight lazy render failure; no working accessible last-good release or declared keyboard regression established.",
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/4150",
+        "https://github.com/radix-ui/primitives/pull/4152"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 5887,
+      "url": "https://github.com/adobe/react-spectrum/issues/5887",
+      "title": "Regression in terms of localization strings/i18n bundling in the latest release",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Locale bundle-size/tree-shaking regression; strings remain included, no primary user-facing accessibility symptom.",
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/5887",
+        "https://github.com/adobe/react-spectrum/pull/5889",
+        "https://github.com/adobe/react-spectrum/pull/5892",
+        "https://github.com/heroui-inc/heroui/pull/4836"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 8637,
+      "url": "https://github.com/adobe/react-spectrum/issues/8637",
+      "title": "DateField UX regression in entering some dates",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "status": "admitted",
+      "reason": "Two exploratory reproductions with identical original criteria and dependency locks; accessible outcome and CSS-only twin match good/broken/fixed behaviour. DR-0098 adds test regression, benign twin and unchanged control; confirmatory execution awaits a new tag.",
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/8637",
+        "https://github.com/namesakefyi/namesake-convex/pull/709",
+        "https://github.com/adobe/react-spectrum/pull/8684",
+        "https://github.com/adobe/react-spectrum/issues/8366",
+        "https://github.com/adobe/react-spectrum/pull/8447",
+        "https://github.com/adobe/react-spectrum/pull/8684",
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38176937862",
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38177297242"
+      ],
+      "reproduction": {
+        "run": 38176937862,
+        "successfulRuns": 2,
+        "admitted": true,
+        "versions": {
+          "3.42.2": {
+            "pointer": {
+              "holds": true,
+              "detail": "01011970 -> 1970-01-01 (pointer to first segment; continuous typing)"
+            },
+            "keyboard": {
+              "holds": true,
+              "detail": "01011970 -> 1970-01-01 (Tab to first segment; continuous typing)"
+            }
+          },
+          "3.43.0": {
+            "pointer": {
+              "holds": false,
+              "detail": "01011970 -> 0970-10-11 (pointer to first segment; continuous typing)"
+            },
+            "keyboard": {
+              "holds": false,
+              "detail": "01011970 -> 0970-10-11 (Tab to first segment; continuous typing)"
+            }
+          },
+          "3.44.0": {
+            "pointer": {
+              "holds": true,
+              "detail": "01011970 -> 1970-01-01 (pointer to first segment; continuous typing)"
+            },
+            "keyboard": {
+              "holds": true,
+              "detail": "01011970 -> 1970-01-01 (Tab to first segment; continuous typing)"
+            }
+          }
+        },
+        "repeatRun": 38177297242,
+        "repeatCommit": "613899074a9864fff939ebaa29bdca6b77fc0ae5"
+      },
+      "package": "@adobe/react-spectrum",
+      "licence": "Apache-2.0",
+      "good": "3.42.2",
+      "broken": "3.43.0",
+      "fixed": "3.44.0"
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 9776,
+      "url": "https://github.com/adobe/react-spectrum/issues/9776",
+      "title": "useComboBox: \"Too many re-renders\" infinite loop with inline children (regression in react-aria 3.47.0?)",
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "status": "pending documentary",
+      "reason": "Merged fix #9781 for initial render loop; needs compatible pinned release boundary and an accessible complete last-good construct/keyboard scenario. The reported example only renders a bare input.",
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/9776",
+        "https://github.com/adobe/react-spectrum/pull/9781"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 7089,
+      "url": "https://github.com/mui/material-ui/issues/7089",
+      "title": "[TextField] regression inputStyle color not working",
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Input text colour styling; primary vocabulary does not score colour/contrast.",
+      "sources": [
+        "https://github.com/mui/material-ui/issues/7089",
+        "https://github.com/mui/material-ui/issues/7213"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 8004,
+      "url": "https://github.com/mui/material-ui/issues/8004",
+      "title": "Typescript regression from 1.0.0-beta.6 to 1.0.0-beta.7",
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "TypeScript compilation failure across beta releases; no stable accessible user-facing keyboard pair.",
+      "sources": [
+        "https://github.com/mui/material-ui/issues/8004"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 11576,
+      "url": "https://github.com/mui/material-ui/issues/11576",
+      "title": "v0.20.1 REGRESSION AutoComplete : Enter key doesn't fire onNewRequest",
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Keyboard issue is concrete, but closed as v0.x unmaintained with no library fix (P22 rule 6).",
+      "sources": [
+        "https://github.com/mui/material-ui/issues/11576"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 1542,
+      "url": "https://github.com/microsoft/fluentui/issues/1542",
+      "title": "DetailsList: accessbility: Enter not working on links.(Regression)",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "status": "pending documentary",
+      "reason": "Enter activates row handler instead of cell link; maintainer says fixed in new release, but exact merged fix and last-good/broken pair remain unidentified.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/1542"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 2545,
+      "url": "https://github.com/microsoft/fluentui/issues/2545",
+      "title": "Drop down: regression of DropDown not opening up when rendered at bottom of its containter",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Callout placement/available visual space; intentional change and no reported AT keyboard outcome. Linked #3719 is an issue, not a merged fix.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/2545"
+      ],
+      "reproduction": null
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 5757,
+      "url": "https://github.com/microsoft/fluentui/issues/5757",
+      "title": "Add themed variation to all visual regression tests",
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "status": "rejected",
+      "reason": "Request for themed visual regression tests, not a concrete accessible release regression.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/5757"
+      ],
+      "reproduction": null
+    }
+  ],
+  "label": "EXPLORATORY",
+  "plan": "2026-10-11-m7-pass-three-plan.md"
+}
