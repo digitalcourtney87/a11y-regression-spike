@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.3.0",
+  "result": {
+    "pointer": {
+      "holds": false,
+      "detail": "expanded=false, No choices visible=false (pointer focus)"
+    },
+    "keyboard": {
+      "holds": false,
+      "detail": "expanded=false, No choices visible=false (Tab focus)"
+    },
+    "benignTwin": {
+      "holds": false,
+      "detail": "expanded=false, No choices visible=false (Tab focus)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}
