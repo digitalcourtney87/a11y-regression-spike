@@ -19,3 +19,7 @@ Record documentary findings in a separate ledger under `docs/research/`; do not 
 ## Deliverables and decision
 
 A source-linked candidate ledger, search log, and feasibility report: counts by stage, verified additions versus the target of 18, unresolved release/reproduction requirements, actual CI dispatch count and evidence-backed effort implications. If fewer than 18 qualify, report a shortfall rather than relaxing rules or reviving dropped seeded patterns. No new application context, base edits, detection rules or target count are introduced by this pass.
+
+## Owner-authorised Calendar repeat (2026-10-11)
+
+After the bounded pass used its two dispatches (one setup failure and one successful reproduction), the owner explicitly requested an independent repeat of the Calendar check. One additional exploratory dispatch, run 38174572204 on `0b5e0a1`, uses the unchanged fixture, releases, pinned dependencies and check criterion. This is a follow-up to the completed bounded pass; its original search and two-dispatch limits remain the historical record. No new search, split assignment or confirmatory execution is authorised by this repeat.

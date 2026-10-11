@@ -131,6 +131,7 @@ Conventions:
 | [DR-0092](#dr-0092-owner-approval-of-the-g4-brief) | Owner approval of the G4 brief | Accepted | 2026-10-11 | Owner reply 2026-10-11 | DR-0093 (build allocation only) | Second round build authorised; allocation corrected |
 | [DR-0093](#dr-0093-correction-of-the-second-round-build-allocation) | Correction of the second-round build allocation | Accepted | 2026-10-11 | Owner instruction; factual correction under DR-0045 | — | 18 new qualifying mined patterns required; availability unestablished |
 | [DR-0094](#dr-0094-bounded-second-round-mining-feasibility-pass) | Bounded second-round mining feasibility pass | Accepted | 2026-10-11 | Owner instruction to proceed | — | One exploratory reproduction; no new corpus patterns admitted |
+| [DR-0095](#dr-0095-independent-repeat-of-the-calendar-mining-check) | Independent repeat of the Calendar mining check | Accepted | 2026-10-11 | Owner instruction to repeat the Calendar check | — | Two successful reproductions; no corpus admission |
 
 ## Pending owner items (hard rule 12)
 
@@ -3871,3 +3872,20 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Records.** `docs/research/2026-10-11-m7-mining-ledger.md` (sources, queries and exclusions), its JSON companion, `docs/research/2026-10-11-m7-mining-feasibility.md` (shortfall and follow-up), and `docs/research/m7-mining-evidence/` (check/build outputs and release fingerprints). A-003 records the exploratory fixture addition and G4 exposure.
 
 **Boundary.** No new corpus pattern is admitted, registered or split. The existing 59 test patterns and 20 dev patterns retain their assignments. One successful reproduction is not the full admission check: an independent repeat, frozen-vocabulary compatibility and companion twin/control work remain. Even if this candidate and all five documentary leads qualify, this selected set would supply at most six additions, leaving at least twelve to source. The search limit is reached; a further pass starts with a revised recorded plan, not a selection based on confirmatory misses. The 77 target and P22 criteria stand. No confirmatory execution/scoring, new freeze tag or M8 work occurred.
+
+## DR-0095 Independent repeat of the Calendar mining check
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction: "Please repeat the calendar check" |
+| HANDOFF v1.15 | §9 (M7); P39 |
+
+**Scope.** One additional exploratory dispatch after DR-0094's bounded pass, using the unchanged Calendar fixture, releases 5.40.2/5.41.0/5.90.0, React/react-dom 16.2.0 and one-month-per-Space criterion. The original pass's two-dispatch budget remains its historical record; this repeat is separately owner-authorised.
+
+**Evidence.** Run 38174572204 at `0b5e0a1` independently matches successful run 38174040191 at `d50c8c2`: good and fixed releases advance April → May on Space, while broken 5.41.0 advances April → June. Pointer activation advances one month in all three. Installs and builds return 0, with no page errors or external requests. Fixture and execution paths are identical across the commits; resolved package locks and check outputs match exactly.
+
+**Records.** Repeat check/build outputs, dependency-lock comparison hashes and runner timings are retained in `docs/research/m7-mining-evidence/`, with a SHA-256 manifest. The ledger and feasibility report record two successful exploratory reproductions and retain the initial setup failure.
+
+**Boundary.** The independent-repeat requirement is resolved. Frozen-vocabulary compatibility and companion benign-twin/new-journey control work remain before corpus admission. No candidate is registered, assigned or admitted, and no confirmatory execution, new freeze tag or M8 work occurs.

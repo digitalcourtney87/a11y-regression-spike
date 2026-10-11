@@ -1,0 +1,26 @@
+{
+  "label": "EXPLORATORY",
+  "firstSuccessfulRun": 38174040191,
+  "repeatRun": 38174572204,
+  "fixtureAndExecutionPathsUnchangedBetween": [
+    "d50c8c2",
+    "0b5e0a1"
+  ],
+  "versions": {
+    "5.40.2": {
+      "checkOutputsIdentical": true,
+      "dependencyLocksIdentical": true,
+      "dependencyLockSha256": "db08a8c0d3ef60074e4103545656a27755c3b7783301450a306b576859108622"
+    },
+    "5.41.0": {
+      "checkOutputsIdentical": true,
+      "dependencyLocksIdentical": true,
+      "dependencyLockSha256": "b6e24e4a41543c648debccfb2721415a07bcb0ef40f6104a8b2fa0b3f481faac"
+    },
+    "5.90.0": {
+      "checkOutputsIdentical": true,
+      "dependencyLocksIdentical": true,
+      "dependencyLockSha256": "9d46bc7549d83c1be2080ae6de95ea73b6beb9b81d4ba10d1676d1acdd54ab67"
+    }
+  }
+}

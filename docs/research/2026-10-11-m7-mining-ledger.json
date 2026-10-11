@@ -346,12 +346,12 @@
       "title": "DatePicker: pressing space/Enter on Previous/Next month/year arrow buttons goes 2 months at a time",
       "query": "repo:microsoft/fluentui is:issue is:closed regression keyboard",
       "status": "documentary candidate",
-      "reason": "One successful exploratory CI reproduction: keyboard advances two months only in 5.41.0; 5.40.2 and 5.90.0 advance one month. Pointer control passes all three. Not admitted: independent repeat and frozen-vocabulary compatibility remain pending.",
+      "reason": "Two successful exploratory CI reproductions (38174040191 and 38174572204) give identical good/broken/fixed keyboard results and passing pointer controls. Not admitted: frozen-vocabulary compatibility and companion twin/control work remain.",
       "reproduction": {
         "run": 38174040191,
         "commit": "d50c8c25bf36686cf04843c87a82d3b7d29446a1",
         "label": "EXPLORATORY",
-        "successfulRuns": 1,
+        "successfulRuns": 2,
         "versions": {
           "5.40.2": {
             "pointer": {
@@ -384,21 +384,25 @@
             }
           }
         },
-        "admitted": false
+        "admitted": false,
+        "repeatRun": 38174572204,
+        "repeatCommit": "0b5e0a1622bf955d5e99ff275198d711876bbf84",
+        "repeatMatchesFirst": true
       },
       "sources": [
         "https://github.com/microsoft/fluentui/issues/4620",
         "https://github.com/microsoft/fluentui/pull/4662",
         "https://github.com/microsoft/fluentui/commit/fd2206f8041ba6aca3b61a67a8552652e67d4954",
         "https://registry.npmjs.org/office-ui-fabric-react",
-        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191"
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174040191",
+        "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38174572204"
       ],
       "package": "office-ui-fabric-react",
       "licence": "MIT",
       "good": "5.40.2",
       "broken": "5.41.0",
       "fixed": "5.90.0",
-      "releaseStatus": "source-supported and observed in one successful exploratory run"
+      "releaseStatus": "source-supported and observed in two successful exploratory runs"
     },
     {
       "id": "fluentui-5115",

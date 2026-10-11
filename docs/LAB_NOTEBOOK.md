@@ -410,3 +410,10 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 **Source:** fixed GitHub documentary search and exploratory reproduction runs 38173756427 and 38174040191.
 **Affects:** DR-0094, P39, A-003.
 **Confidence:** methods, dispositions and observations are in `docs/research/2026-10-11-m7-mining-ledger.md` and `docs/research/2026-10-11-m7-mining-feasibility.md`. The successful reproduction has not yet had an independent repeat. No new corpus pattern is admitted; confirmatory results remain in the G4 records.
+
+### M7: Calendar mining check independently repeated (appended 2026-10-11)
+
+**Label:** EXPLORATORY
+**Source:** owner-authorised repeat run 38174572204 at `0b5e0a1`.
+**Affects:** DR-0095, P39, Calendar candidate in the M7 mining ledger.
+**Confidence:** the repeat matches run 38174040191; evidence and remaining admission requirements are in `docs/research/2026-10-11-m7-mining-ledger.md` and `docs/research/2026-10-11-m7-mining-feasibility.md`. No new corpus pattern is admitted or assigned.
