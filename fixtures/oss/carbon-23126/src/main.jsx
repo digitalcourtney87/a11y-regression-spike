@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Modal } from "@carbon/react";
-import "@carbon/styles/css/styles.css";
+import styles from "@carbon/styles/css/styles.css?raw";
+
+// Keep the published CSS intact; the current minifier rejects an unrelated legacy media query.
+const style = document.createElement("style");
+style.textContent = styles;
+document.head.appendChild(style);
 
 // Issue #23126's default passive modal, without native-dialog feature flags.
 function App() {

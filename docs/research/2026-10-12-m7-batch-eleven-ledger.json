@@ -1,0 +1,1419 @@
+{
+  "label": "EXPLORATORY",
+  "planCommit": "ff68406",
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 4150,
+          "title": "`Slot` throws when a lazy child resolves to another lazy child (regression left over from #3165 / #3680, likely also #4082)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4072,
+          "title": "RSC regression on Slot",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4014,
+          "title": "[DismissableLayer] Escape handlers go stale on React 19.2 (regression in 1.1.14)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3933,
+          "title": "[1.5.0][Regression] TypeScript type errors - Duplicate index signature for type '`--radix-${string}`'",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3780,
+          "title": "[Regression] Radix Slot/asChild prop merging silently fails in RSC dev mode after Next.js 16.0.10 security patch",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2224,
+          "title": "[Regression] Select component trigs Popover closing inside Popover ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1615,
+          "title": "[Dialog][DropdownMenu] Possible regression in auto focus behaviour when opening a dialog from a dropdown",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1354,
+          "title": "[Tooltip] Regression: sometimes opens on touch devices",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 10324,
+          "title": "Modal jumps to the top when dismissed via underlay press in Chrome/Safari (regression in 1.17.0)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10313,
+          "title": "Prebuilt `dist` CSS ships unflattened native nesting since 3.47.2 \u2014 breaks engines below Chrome 112 (regression from 3.47.1)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9937,
+          "title": "April release regression in RAC Table",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9874,
+          "title": "react-aria-components ComboBox: onSelectionChange(null) fired on blur (regression / behavior change vs. earlier 1.x)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9776,
+          "title": "useComboBox: \"Too many re-renders\" infinite loop with inline children (regression in react-aria 3.47.0?)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8637,
+          "title": "DateField UX regression in entering some dates",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8298,
+          "title": "Combobox closes when navigating items with keyboard (May release regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 6784,
+          "title": "Regression in useControlledState signature",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5887,
+          "title": "Regression in terms of localization strings/i18n bundling in the latest release",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "totalHits": 39,
+      "hits": [
+        {
+          "number": 48712,
+          "title": "[material] internal/Transition.mjs directory-imports react-transition-group/TransitionGroupContext, breaking Node ESM (regression since 9.1.0)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 48692,
+          "title": "Autocomplete `groupBy` breaks after creating a new option when all existing options are selected (regression in 7.3.11)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 47926,
+          "title": "CSS regression in 7.3.9",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 47811,
+          "title": "[autocomplete] regression in width behavior in v7.3.8",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 46734,
+          "title": "[autocomplete] Regression with 7.3 and Playwright",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 45477,
+          "title": "[Snackbar] v6.4.6 & React 18 regression `ownerState` failed prop type warning",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 44920,
+          "title": "[internal] Regression test is 5 times slower after React 19 upgrade",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 44534,
+          "title": "[docs-infra] Fix light/dark mode & RTL change speed regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 44048,
+          "title": "[autocomplete] regression in behavior for freeSolo Autocomplete with custom Popper/Paper and no options",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 43741,
+          "title": "[material-ui] Button `color=\"inherit\"` prop regression for `variant=\"contained\"`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41584,
+          "title": "[docs-infra] Skip non React components from visual regression tests",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 37247,
+          "title": "[Input][Joy] Regression with input backgrounds",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36054,
+          "title": "[useMediaQuery] Regression noSsr: true has no longer any impact",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32136,
+          "title": "[@mui/styles] Regression accessing theme",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 30012,
+          "title": "[chip] Disabled a11y regression in MUIv5",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25866,
+          "title": "[v5.0.0-alpha.31] Doc `Tree View` on dark mode had a regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18484,
+          "title": "[TextField] Programmatically focus, potencial regression in v.4.5.0+",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 18255,
+          "title": "Regression: <Select native id=\"my-id\"> No Longer Has an Id",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18236,
+          "title": "[Chip] Keyboard events regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 17366,
+          "title": "[Radio] Regression in v4.4.1 when no label is used",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 16441,
+          "title": "[Popover] ModalClasses prop regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16184,
+          "title": "Regression: withWidth fails on the server side because of useMediaQuery",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15906,
+          "title": "[Popper] Position flicker regression in v4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14042,
+          "title": "Regression in vertical alignment of Button text in IE11",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13283,
+          "title": "[ButtonBase] Regression in 3.1.2 causes error \"Cannot read property 'focusVisible' of null\"",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13247,
+          "title": "Browser regression when upgrading from 3.2.0 to 3.2.1",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13163,
+          "title": "Regression for browser usage when upgrading from 3.1.2 -> 3.2.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11913,
+          "title": "[Regression] tooltips block pointer events even when not showing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11587,
+          "title": "Regression: Changes from beta 36 to Release added too much css specificity preventing overrides from working properly",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 11576,
+          "title": "v0.20.1 REGRESSION AutoComplete : Enter key doesn't fire onNewRequest",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "totalHits": 32,
+      "hits": [
+        {
+          "number": 22517,
+          "title": "[Bug]: wc multi-select clear selection button regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22341,
+          "title": "[Bug]: Link component display: inline-flex \u2192 inline regression in v11.104\u2013v11.108, undocumented breaking change",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20832,
+          "title": "[Bug]: Slider: typescript declaration regression",
+          "disposition": "selected"
+        },
+        {
+          "number": 19563,
+          "title": "[Bug]: WC Checkbox regression on checked state",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 19370,
+          "title": "[Regression]: Grid layout broken",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 19242,
+          "title": "[Bug]: Regression in MultiSelect typescript annotations",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15724,
+          "title": "[Bug]: Dropdown itemToElement isn't working anymore (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15608,
+          "title": "[Bug]: AccordionItem does not adjust to dynamic contents (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14478,
+          "title": "Add visual regression testing for RTL/bidi styles",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9858,
+          "title": "NumberInput Regression: different button hover CSS for light option enabled and disabled",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9725,
+          "title": "[SideNavMenu]: regression SideNavMenu no longer collapses in isRail mode when SideNav is not expanded",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8911,
+          "title": "Add Percy visual regression testing (VRT) snapshots for all components",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8786,
+          "title": "Regression: Sketch plugin icon sync commands failing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8523,
+          "title": "Tile: Visual regression for selectable tiles",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8392,
+          "title": "ToastNotification timeout regression after updating to carbon-component-react  v7.32.0.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7724,
+          "title": "[data table] style regression: sort hover is rendering incorrectly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7614,
+          "title": "Regression: Existing Sketch plugin icons are not modified when sync command is run",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6449,
+          "title": "DataTable with stickyHeader styling of rows and headers regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6432,
+          "title": "Using fill=\"currentColor\" for icons causes a regression for certain components in dark themes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6142,
+          "title": "Regression: Header border disappeared",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5623,
+          "title": "ComboBox regression in 10.10 (carbon-components-react 7.10)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4772,
+          "title": "[Code Snippet]: copy button style regression in latest unpublished code",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4568,
+          "title": "[Inline Notification] action button style regression",
+          "disposition": "selected"
+        },
+        {
+          "number": 4567,
+          "title": "[Inline Notification] action button style regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4232,
+          "title": "Regression bug: Vanilla Tooltip focus management",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3944,
+          "title": "Regression bug: Disabled button's hover state",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3428,
+          "title": "[Link: Regression styling bug] states colors overwrite disabled color",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3142,
+          "title": "Data Table: regression for position of search icon in batch actions toolbar",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3093,
+          "title": "Data Table: Regression Bug: Table headers aren't bolded",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3092,
+          "title": "Button: Regression bug: disabled button icon color",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "totalHits": 43,
+      "hits": [
+        {
+          "number": 36604,
+          "title": "[Bug]: Tooltip permanently hidden inside tightly-fitted overflow:hidden containers (regression in 9.10.4+)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36007,
+          "title": "[Bug]: Performance regression in rc.11: waitForConnectedDescendants always defers via requestAnimationFrame",
+          "disposition": "selected"
+        },
+        {
+          "number": 35473,
+          "title": "[Bug]: Shorthand styles weren't applied correctly and now they cause a visual regression if added",
+          "disposition": "selected"
+        },
+        {
+          "number": 35341,
+          "title": "[Bug]: ToastTitle link regression, wrong color is used",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 35009,
+          "title": "[Bug]: Image fading when combining multiple styles is a regression from v8: It is too faded",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 33888,
+          "title": "[Bug]: V9 Searchbox is a regression from V8: There is not option to have an unfixed width",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 32946,
+          "title": "[Bug]: Fluent v8 visual regression test snapshots are broken",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32433,
+          "title": "[Bug]: Regression on Dialog styles, removing motions is also removing dialog surface shadows",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 32040,
+          "title": "[Bug]: Regression issue: The height limit of Combobox with Virtualizer doesn't work",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 30896,
+          "title": "[Bug]: Tooltip jest test regression after react 18 fix if `autoMount` set to true",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 30165,
+          "title": "[Bug]: Regression v9.42.0 caused by using floating-ui-devtools in http:// non-localhost contexts",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 29819,
+          "title": "[Bug]: Re-Regression - mountNode not available",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 29515,
+          "title": "[Bug]: Regression - mountNode not available",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 28903,
+          "title": "[Feature]: Add shadow DOM visual regression tests for all Fluent v8 controls",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 27997,
+          "title": "[Bug]: DataGrid controlled selection broken (regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 27510,
+          "title": "[Bug]: DatePicker focus of current value (v8 regression) ",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25701,
+          "title": "[Bug]: Regression - `childrenGap` on Stack with `wrap` breaks layout",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25078,
+          "title": "[Epic]: Visual Regression Tool Migration",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 23680,
+          "title": "[Important] Skeleton animation=wave regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 23064,
+          "title": "Select: add visual regression tests",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22878,
+          "title": "[Bug]-Regression: Absolute-positioned modeless dialogs/modals are no longer visible or repositioned since 8.64.0.",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 21814,
+          "title": "DropDown Multiple Selection Regression Bug",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20618,
+          "title": "Regression: Callout doesn't resize to content when it shrinks",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18714,
+          "title": "[SearchBox][Regression] onChanged silently broke with the v8 upgrade",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17482,
+          "title": "Question: Are you interested to give a try Creevey as Visual Regression tool?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16027,
+          "title": "[v8] [Regression] SearchBox maximum call stack size on keydown",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15423,
+          "title": "makeStyle regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13012,
+          "title": "Tracking: investigate severities of Chromium Edge High Contrast regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 12504,
+          "title": "Fabric 7 Bundle Size Regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9344,
+          "title": "PR #9295 caused regression in menu icon disabled state for Buttons",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed regression in:title",
+      "totalHits": 6,
+      "hits": [
+        {
+          "number": 3821,
+          "title": "Nested Menu components no longer work (regression in `@headlessui/react \u2265 2.2.3`)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3667,
+          "title": "Potential regression in `Radio` component default tag behavior in v2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3467,
+          "title": "Regression in `@headlessui/react@2.1.x` when using `<TransitionChild>` with `<Dialog>` for the backdrop",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3323,
+          "title": "`data-enter` is not removed when performing exit transition before enter ends (`v2.1.0` transition API regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2084,
+          "title": "Combobox displayValue regression in @headlessui/vue@v1.7.5",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1607,
+          "title": "Regression: No transitions on open dialog [v1.6.5]",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "totalHits": 40,
+      "hits": [
+        {
+          "number": 22997,
+          "title": "[Bug Report][4.1.4] Performance regression from 4.1.3 to 4.1.4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22416,
+          "title": "[Bug Report][3.11.2] v-text-area placeholder visible on initial render (overlaps label) regression since v3.11.0-beta.1",
+          "disposition": "selected"
+        },
+        {
+          "number": 22218,
+          "title": "[Bug Report][3.10.1] Regression: VSelect menu shifted few pixels to the right again",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21492,
+          "title": "[Bug Report][3.8.0] regression - VCalendar monthly view hide days in week",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21022,
+          "title": "[Bug Report][3.7.13] [VNumberInput] regression in 3.7.13, argument passed to rule function becomes string",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20979,
+          "title": "[Bug Report][3.7.12] Regression in v-dialog, the height of the content is not respected any more",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20480,
+          "title": "[Bug Report][3.7.1] Regression: can no longer generate declarations",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20104,
+          "title": "[Bug Report][3.6.11] [Bug Report][3.6.11] VTreeview component, regression in the indentation of the sub elements",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20021,
+          "title": "[Bug Report][3.6.9] v-icon doesn't display \"icon\" when slot is filled (regression from 3.0.0 beta 5)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 19658,
+          "title": "[Bug Report][3.5.16] Regression in VProgressLinear position inside an appbar",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18024,
+          "title": "[Bug Report][3.3.7] VSwitch regression - readonly switch is not clickable anymore",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17242,
+          "title": "[Bug Report][3.2.1] `createVuetify` TypeScript regression: Default export of the module has or is using private name 'DateInstance'",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16948,
+          "title": "[Bug Report][3.1.10] Regression[3.0.5->3.1.10]: VProgressLinear invisible in VAppBar extension slot",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16702,
+          "title": "[Bug Report][3.1.5] Regression from 3.1.4 list item exact property now applies active class to not exact links",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16637,
+          "title": "[Bug Report][3.1.4] v-text-field - change event not handled by component (Vuetify 2 regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16478,
+          "title": "[Bug Report][3.1.2] Potential v-tabs color regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15942,
+          "title": "[Bug Report][3.0.0-beta.14] Volar + takeover mode intellisense regression from beta.13",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14624,
+          "title": "[Bug Report][2.6.2] v-app-bar height regression in 2.6.2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14072,
+          "title": "[Bug Report][2.4.11] V-AutoComplete/V-Combobox regression with tab order when selecting item with mouse click",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13656,
+          "title": "[Bug Report][2.5.0] Regression: vCarousel in v-if triggers an error",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13151,
+          "title": "[Bug Report] Regression in VSlider - it sends change events twice, if dragged.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 12922,
+          "title": "[Bug Report] VCalendar regression in click handler when dealing with string categories",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11600,
+          "title": "[Bug Report] Regression on custom column filter matching behaviour in VDataTable",
+          "disposition": "selected"
+        },
+        {
+          "number": 9627,
+          "title": "[Bug Report] Tab key in VDialog focuses outside the dialg (regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7608,
+          "title": "[Bug Report] V-Dialog Regression BreaksTinyMCE Inside Dialog",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6635,
+          "title": "[Bug Report] Regression caused by #6431 - search input gets nulled immediately when using an `item-text` function + ajax loading",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6256,
+          "title": "[Bug Report] Activator in disabled menu gets \"pointer\" cursor instead of \"default\" (regression since 1.4.0)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5607,
+          "title": "[Bug Report] Regression in expand transition",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5405,
+          "title": "[Regression] dark animation makes theme transition much slower",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4641,
+          "title": "[Bug Report] Vertical Dividers Regression - Width",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "totalHits": 15,
+      "hits": [
+        {
+          "number": 6471,
+          "title": "Regression on useHotkeys - \"esc\" became \"escape\" ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6248,
+          "title": "Draggable component regression in attaching event listeners",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6015,
+          "title": "Regression for pt-text-selection-color",
+          "disposition": "selected"
+        },
+        {
+          "number": 5987,
+          "title": "Regression in box-shadow Sass variable syntax",
+          "disposition": "selected"
+        },
+        {
+          "number": 5203,
+          "title": "Icons in buttons tab focus regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4979,
+          "title": "Popover2 Regression: ContextMenu2 scrolls to top when context menu is opened in Chrome and Firefox",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4320,
+          "title": "NumericInput regression prevents typing decimal places",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4311,
+          "title": "Table enableFocusedCell causes text to be written in a previous unfocused cell (regression between 3.8.0 and 3.8.1)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3487,
+          "title": "[docs-theme] Regression in markdown rendering",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3389,
+          "title": "3.14.0 regression with old react types",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2155,
+          "title": "DateInput ESC key handler regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1517,
+          "title": "[Labs/Popover2] regression from original Popover for .pt-button-group",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1506,
+          "title": "[Core/Tabs2 regression] cannot set to large anymore when using component's API",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1025,
+          "title": "[Table] Investigate perf regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 340,
+          "title": "Regression in DateInput",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed regression in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 1680,
+          "title": "useCombobox hook isOpen state \"regression\"  starting from v9.2.0 ?",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1101,
+          "title": "[useComboBox] Regression in Menu Option Click 5.4.5",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 110,
+          "title": "selectItemAtIndex possible regression",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed regression in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 6855,
+          "title": "Restore legacy Select regression coverage for the migrated issue sandboxes",
+          "disposition": "selected"
+        },
+        {
+          "number": 5992,
+          "title": "useSafeLayoutEffect evaluated at module-load time causes SSR warning regression in universal bundles",
+          "disposition": "selected"
+        },
+        {
+          "number": 3382,
+          "title": "Regression with Menus and 0.4.0",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title",
+      "totalHits": 11,
+      "hits": [
+        {
+          "number": 10797,
+          "title": "Semantic token resolution regression in @chakra-ui/react@3.35.0",
+          "disposition": "selected"
+        },
+        {
+          "number": 9151,
+          "title": "[Regression] Slider thumb offset issue #2",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8978,
+          "title": "[Regression] Unable to scroll dialog with `scrollBehavior=\"outside\"`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8945,
+          "title": "[Regression] Slider thumb offset issue",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7623,
+          "title": "Regression on minor version bump for some browsers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7277,
+          "title": "SkeletonText regression - no longer shimmers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6693,
+          "title": "Regression: since @chakra-ui/react@2.8.9, using `onEdit` with `onChange` in Editable causes text selection on every keystroke",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6096,
+          "title": "regression in toast component and Next.js",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4765,
+          "title": "regression during update from 1.6.6 to 1.6.8 theme became: Dict<any>",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2511,
+          "title": "Menu Regression: Prop gutter is not applied to popper element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1118,
+          "title": "[Menu] V1 Rendering Performance Regression",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 8883,
+          "title": "`AngleSlider` mouse drag broken since v9.1.0 (regression from v9.0.2)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8393,
+          "title": "Regression in left-padding for List",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8128,
+          "title": "TagsInput regression in 8.2.2",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7951,
+          "title": "Collapse inside Stack spacing regression in 7.17.7->7.17.8",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7437,
+          "title": "Regression with Mantine Popover onClose",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6060,
+          "title": "AppShell Footer regression in version 7.7.1",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5848,
+          "title": "`useLocalStorage` regression in 7.6.1",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5288,
+          "title": "MultiSelect/TagsInput (regression): placeholder doesn't dissapear in uncontrolled mode",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2503,
+          "title": "MultiSelect - a regression makes the MultiSelect unusable in some circunstances",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed regression in:title",
+      "totalHits": 42,
+      "hits": [
+        {
+          "number": 41704,
+          "title": "v5.2+ regression: default popover header styles missing",
+          "disposition": "selected"
+        },
+        {
+          "number": 41395,
+          "title": "Updated navbar focus styles are an accessibility regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 39189,
+          "title": "invalid selector regression in 5.3.2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36947,
+          "title": "Tab active class isn't removed correctly when inside drop-down menu (5.2 regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 36813,
+          "title": "5.2.0 regression: tooltips never close when they are initialized using as `selector` option the attribute `title`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36743,
+          "title": "5.2.0 Regression when recreating disposed tooltips using `title`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 35126,
+          "title": "New `align-self: center` default for btn class causes regression in vertical button stacks inside flex containers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34982,
+          "title": "Nested modals not working (regression since 5.1.0)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 34736,
+          "title": "Regression in Tooltip: content doesn't update after first show",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34611,
+          "title": "Grid column regression introduced in v5.0.2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34374,
+          "title": "regression in hr rendering since bootstrap 5",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34335,
+          "title": "v5.0.2 regression: grid col-N now overrides col-breakpoint",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34012,
+          "title": "5.0.1: row and cell background colours broken when using a non-transparent $table-bg (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 33172,
+          "title": "table-hover regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32629,
+          "title": "Regression: carousel `data-touch=\"false\"` not working",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32384,
+          "title": "Popover overflows container (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 31771,
+          "title": "v5 vertical pills regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 28812,
+          "title": "Popover regression from 4.2.x to 4.3.x",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 26414,
+          "title": "Navbar regression in 4.1.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 25428,
+          "title": "Popover positioning regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 24920,
+          "title": "Dropdown got clipped by fixed-top navbar, 4 alpha 6 -> 4 beta 2 regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 24256,
+          "title": ".table-responsive regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22667,
+          "title": "Regression in .input-group vs. grid cols",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21876,
+          "title": "tab-pane fade in active regression in Bootstrap 4 alpha 6.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21871,
+          "title": "Regression in label button group alignment in version 4.0.0-alpha.6",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21023,
+          "title": "Custom checkbox alignment possible regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17740,
+          "title": "#12683 in 3.2.0 causes regression for collapsed accordion bottom borders",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16292,
+          "title": "Recent update to .hidden utility class causes regression when mixed with .visible-* classes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15168,
+          "title": "Tooltip selector regression in v3.3.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14962,
+          "title": "navbar-right button regression",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 1579,
+          "title": "Regression: Shoelace components are not defining in Angular",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1576,
+          "title": "Documentation regression - some doc fixes were not included when migrating to the 'pages' subdirectory",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1303,
+          "title": "Regression in input[type=datetime-local]: valueAsNumber always returns null",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 860,
+          "title": "`<sl-dropdown>` cannot keep content in viewport (regression in `2.0.0-beta.81`)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 859,
+          "title": "`<sl-dropdown>` content overflow regression introduced in `2.0.0-beta.80`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 856,
+          "title": "`<sl-dropdown>` content overflow regression introduced in `2.0.0-beta.80`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 845,
+          "title": "`<sl-menu>` and `<sl-menu-item>` regression in `2.0.0-beta.79` caused by allowing focus on disabled items for improved accessibility",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 766,
+          "title": "`<sl-menu>` caching `<sl-menu-item>`s breaks dynamic toggling of `<sl-menu-item>.disabled` (`2.0.0-beta.74` regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 445,
+          "title": "`<sl-details>` regression in `2.0.0-beta.41`",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 7616,
+          "title": "Set up Loki for Visual Regression Testing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7523,
+          "title": "[EuiProgress] Missing animation on progress bar update - regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4957,
+          "title": "[EuiDataGrid] regression in displaying Arrays and Objects in expand behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4951,
+          "title": "[EuiComboBox] Regression in singleSelection scrolling behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1313,
+          "title": "EuiComboBox no longer supports fullWidth (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 767,
+          "title": "Integrate visual regression testing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 677,
+          "title": "Add guide to writing visual regression tests to README.md",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 521,
+          "title": "Visual regression tests to protect against accidental CSS side effects",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 20832,
+      "title": "[Bug]: Slider: typescript declaration regression",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "url": "https://github.com/carbon-design-system/carbon/issues/20832",
+      "disposition": "excluded",
+      "reason": "Type declaration/build-only error, no primary user-facing symptom.",
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/20832",
+        "https://github.com/carbon-design-system/carbon/pull/20833"
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 4568,
+      "title": "[Inline Notification] action button style regression",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "url": "https://github.com/carbon-design-system/carbon/issues/4568",
+      "disposition": "excluded",
+      "reason": "Visual action-button alignment/color only, duplicate4567.",
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/4568"
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 36007,
+      "title": "[Bug]: Performance regression in rc.11: waitForConnectedDescendants always defers via requestAnimationFrame",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "url": "https://github.com/microsoft/fluentui/issues/36007",
+      "disposition": "excluded",
+      "reason": "Release-candidate performance/paint timing, no stable pair or primary symptom.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/36007",
+        "https://github.com/microsoft/fluentui/pull/36018"
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 35473,
+      "title": "[Bug]: Shorthand styles weren't applied correctly and now they cause a visual regression if added",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "url": "https://github.com/microsoft/fluentui/issues/35473",
+      "disposition": "excluded",
+      "reason": "Visual chart styles only.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/35473",
+        "https://github.com/microsoft/fluentui/pull/35476"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22416,
+      "title": "[Bug Report][3.11.2] v-text-area placeholder visible on initial render (overlaps label) regression since v3.11.0-beta.1",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22416",
+      "disposition": "excluded",
+      "reason": "Visual placeholder/label overlap, no name or interaction failure demonstrated.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/22416"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 11600,
+      "title": "[Bug Report] Regression on custom column filter matching behaviour in VDataTable",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/11600",
+      "disposition": "pending",
+      "reason": "Reported2.2.32/2.2.34 custom-filter transition; supported intended union/intersection semantics and library fix remain unresolved.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/11600",
+        "https://github.com/vuetifyjs/vuetify/issues/13801",
+        "https://github.com/vuetifyjs/vuetify/pull/14035",
+        "https://github.com/vuetifyjs/vuetify/issues/12136",
+        "https://github.com/vuetifyjs/vuetify/issues/14710",
+        "https://github.com/fluidd-core/fluidd/issues/989",
+        "https://github.com/fluidd-core/fluidd/pull/992",
+        "https://github.com/vuetifyjs/vuetify/issues/16337",
+        "https://github.com/vuetifyjs/vuetify/pull/17747"
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 6015,
+      "title": "Regression for pt-text-selection-color",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "url": "https://github.com/palantir/blueprint/issues/6015",
+      "disposition": "excluded",
+      "reason": "Visual text-selection color only.",
+      "sources": [
+        "https://github.com/palantir/blueprint/issues/6015",
+        "https://github.com/palantir/blueprint/pull/6017"
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 5987,
+      "title": "Regression in box-shadow Sass variable syntax",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "url": "https://github.com/palantir/blueprint/issues/5987",
+      "disposition": "excluded",
+      "reason": "Sass variable syntax/build error, no primary user-facing symptom.",
+      "sources": [
+        "https://github.com/palantir/blueprint/issues/5987",
+        "https://github.com/palantir/blueprint/pull/5989"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 6855,
+      "title": "Restore legacy Select regression coverage for the migrated issue sandboxes",
+      "origin": "repo:ariakit/ariakit is:issue is:closed regression in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/6855",
+      "disposition": "excluded",
+      "reason": "Regression test-coverage restoration request, not distinct measured library behavior.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/6855",
+        "https://github.com/ariakit/ariakit/pull/6832",
+        "https://github.com/ariakit/ariakit/pull/6880",
+        "https://github.com/ariakit/ariakit/pull/6890"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 5992,
+      "title": "useSafeLayoutEffect evaluated at module-load time causes SSR warning regression in universal bundles",
+      "origin": "repo:ariakit/ariakit is:issue is:closed regression in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/5992",
+      "disposition": "excluded",
+      "reason": "Server-render warning and DOM shim environment, outside standard production browser fixture.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/5992"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10797,
+      "title": "Semantic token resolution regression in @chakra-ui/react@3.35.0",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10797",
+      "disposition": "excluded",
+      "reason": "Semantic CSS token color resolution only.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10797",
+        "https://github.com/chakra-ui/chakra-ui/pull/10799"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 41704,
+      "title": "v5.2+ regression: default popover header styles missing",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title",
+      "url": "https://github.com/twbs/bootstrap/issues/41704",
+      "disposition": "excluded",
+      "reason": "Visual popover header styles with unsupported standalone header-class usage, no primary symptom.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/41704"
+      ]
+    }
+  ]
+}
