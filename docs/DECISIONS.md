@@ -150,6 +150,7 @@ Conventions:
 | [DR-0107](#dr-0107-three-content-and-callback-admissions-rejected-diagnostics-retained) | Content and callback admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 75 test |
 | [DR-0108](#dr-0108-manual-tooltip-admission) | Manual-tooltip admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 76 test |
 | [DR-0109](#dr-0109-restricted-slider-admission-completes-the-second-round-build) | Second-round build complete | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 77 test;18 additions |
+| [DR-0110](#dr-0110-second-round-freeze-and-confirmatory-execution-authorised) | Second-round freeze and execution | Accepted | 2026-10-12 | Owner “Please proceed” | — | v4;54 new items in both legs |
 
 ## Pending owner items (hard rule 12)
 
@@ -4140,3 +4141,14 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Add existing JOURNEY_BLOCKED test version pair, CSS_ONLY twin, exact unchanged control and TAB/ArrowRight/focus-mode-toggle/document-top/browse journey. Both refs share fixture commit4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e. Manual all-test append, fraction1/unused seed0; previous assignments/items preserved. No changed oracle, strategy, threshold, context or local third-party execution. Actual assigned NVDA remains unperformed before a new tag.
 
 **Completion.** All18 required new mined patterns are built:77 test,20 dev,97 total patterns,255 items. Original59 test assignments and all original-freeze item bytes are unchanged. Four previously admitted new-round source URLs were corrected under A-016; measurement/ref/expectation fields preserved. Full local suite passes740 tests; source/corpus validation and build-only control verification accompany the completion report. This completes pattern construction, not confirmatory execution or M8. No new tag applied.
+
+## DR-0110 Second-round freeze and confirmatory execution authorised
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | “Please proceed” after proposed v4 freeze, second-round execution and combined G4 analysis |
+| Scope | M7 second round; M8 remains unauthorised |
+
+The owner merged PR13 and authorised the next freeze/test/report sequence. Publish annotated `protocol-freeze-v4` at merged commit22bbb9a2476fff62b34ac9de266a23ad9abfef22, hash65e188e8b79471aaa42713aaf4a635ef87696e894c4e7918b140ac77ffff9a5a. Freeze guard accepted before dispatch38276928082. Run54 newly added assigned items in both legs with unchanged frozen checks/default repetitions; combine with original run38156720011 for77 regression patterns. Preserve prior analysis and amendments; no measurement changes or M8 authority. Plan and results: docs/reports/M7-second-round.md.
