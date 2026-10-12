@@ -469,3 +469,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 — M8 closed after PR17 merge; recovery archive published on results at `363cbf5`. See DR-0118. No new execution.
 
 2026-10-12 — Read-only check: NVDA spoke Vuetify's focused field without a name, as the focus readers recorded; P42 proposed. See DR-0119 and docs/plans/M9-remedy-evaluation-proposal.md. No new execution.
+
+2026-10-12 — P42 approved; fresh controls and criteria registered before cursor v2. See DR-0120 and docs/plans/2026-10-12-m9-registered-criteria.md.

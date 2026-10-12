@@ -1,0 +1,38 @@
+{
+  "id": "m9-plain-page",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=plain-page",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-to-target",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Plain final line.",
+        "maxAttempts": 8
+      }
+    },
+    {
+      "kind": "at",
+      "id": "past-end",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Plain final line.",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}

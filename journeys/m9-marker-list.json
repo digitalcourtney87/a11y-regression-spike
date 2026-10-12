@@ -1,0 +1,27 @@
+{
+  "id": "m9-marker-list",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=marker-list",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-to-target",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Marker target reached",
+        "maxAttempts": 15
+      }
+    }
+  ]
+}

@@ -4249,3 +4249,26 @@ A read-only check of the published P41 archive narrows the Vuetify 3.3.6 limit i
 Decisions under DR-0045: call the next task M9, with proposal P42, because M8 is closed. Write the evidence derivation as a read-only script over the published archive.
 
 **Proposed by Claude (not yet owner-approved), P42:** a registered evaluation on fresh owned controls. The controls and their known answers are committed before cursor v2 is built. Cursor v2 corrects identity and ignored ancestry beside an unchanged v1. Focus readers stay unchanged unless they disagree with NVDA's focus speech. One read-only observation is added: the same-instant full-tree focus name, in calibration mode only. The budget is one dispatch of two Windows jobs, 60 minutes each and 120 runner-minutes, with no retry. Decision rules are declared in the proposal. This changes what is measured and sets a new budget, so it waits for the owner (hard rule 12). The M7 result, `protocol-freeze-v4` and exposed cases stay fixed. Plan: docs/plans/M9-remedy-evaluation-proposal.md.
+
+## DR-0120 Owner approval of P42
+
+2026-10-12. Accepted; P42 resolved. The owner merged PR19 at `b78a604856931407cd9fbe90df06047bf0c87932` and instructed:
+
+> Merged, please proceed with my approval
+
+All three items in docs/plans/M9-remedy-evaluation-proposal.md are approved:
+
+1. The registered evaluation as scoped: fresh owned controls registered first, cursor v2 built offline beside v1, then one dispatch of two standard Windows jobs capped at 60 minutes each, 120 runner-minutes in total, with no retry.
+2. The same-instant full-tree focus-name read, in calibration mode only.
+3. The Vuetify unnamed-focus result is treated as a journey-goal limit, not a reader defect, unless the validation shows readers disagreeing with NVDA.
+
+The M7 result, exposed cases, corpus, oracles, triggers and `protocol-freeze-v4` stay unchanged.
+
+Implementation decisions under DR-0045:
+
+- **Registration.** The eight controls (`fixtures/m9-controls/`, app `m9-controls`), their journeys, the operational definitions and the decision rules are in docs/plans/2026-10-12-m9-registered-criteria.md. They are checksummed in docs/research/m9-registration/SHA256SUMS and committed and pushed before any v2 code.
+- **Cases.** `p42-cursor` runs in both legs, using v1 in the absent leg. `p42-cursor-v2` runs in the absent leg only. `p42-focus` runs in both legs. The case order is fixed and disclosed.
+- **New read.** The full-tree read applies only to TAB and SHIFT_TAB steps of P42 cases.
+- **Approval labels.** Each calibration case carries its own approval label, so P42 raw summaries do not inherit the P40 label that P41's did.
+
+Checklist: docs/plans/2026-10-12-m9-implementation.md.

@@ -1,0 +1,21 @@
+{
+  "id": "m9-unnamed-wrapper",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=unnamed-wrapper",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-field",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Item name",
+        "role": "textbox",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}
