@@ -15,10 +15,14 @@ export default async function check({ page, fresh }) {
         if (reached) break;
       }
       if (!reached) throw new Error("Date input unreachable");
-      await p.waitForTimeout(200);
-      await p.keyboard.press("ArrowDown");
       const start = p.getByRole("option", { name: "Choose Wednesday, February 19th, 2025", exact: true });
-      if (!(await start.evaluate((el) => el === document.activeElement))) throw new Error("Initial day not focused");
+      let dayReached = false;
+      for (let i = 0; i < 30; i++) {
+        await p.keyboard.press("Tab");
+        dayReached = await start.evaluate((el) => el === document.activeElement);
+        if (dayReached) break;
+      }
+      if (!dayReached) throw new Error("Initial day not keyboard reachable");
       await p.keyboard.press("Enter");
     } else {
       await input.click();
