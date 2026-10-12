@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Modal } from "@carbon/react";
-import "./styles.scss";
+import "@carbon/styles/css/styles.css";
 
 // Issue #23126's default passive modal, without native-dialog feature flags.
 function App() {
