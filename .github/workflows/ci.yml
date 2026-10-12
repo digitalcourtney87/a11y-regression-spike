@@ -41,6 +41,9 @@ jobs:
           Push-Location $work
           try { 'path regression check' | Out-File (Join-Path $logRoot 'probe.log') } finally { Pop-Location }
           if (-not (Test-Path artefacts/m8-path-proof/evidence/build-logs/probe.log)) { throw 'M8 log was redirected by the fixture working directory' }
+          $request = Join-Path $env:RUNNER_TEMP 'm8-recovery-path-proof.json'
+          '{"approval":"DR-0116","dispatches":1,"jobs":2,"timeoutMinutes":60,"repetitions":3,"cases":["bootstrap-modal","vuetify-input","calendar","multiselect"]}' | Out-File -Encoding utf8NoBOM $request
+          ./harness/src/runner/calibrationBuild.ps1 -Out artefacts/m8-path-proof/builds -Evidence artefacts/m8-path-proof/evidence -ValidatePathsOnly -RecoveryRequest $request | Out-Null
       - run: npm test
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:
