@@ -1,0 +1,14 @@
+{
+  "status": "published",
+  "resultsCommit": "363cbf5a5a5f589252e0b53aa1286fb6b6b9d6ae",
+  "path": "m8-working-recovery/",
+  "url": "https://github.com/digitalcourtney87/a11y-regression-spike/tree/363cbf5a5a5f589252e0b53aa1286fb6b6b9d6ae/m8-working-recovery",
+  "ownerAcceptanceMerge": "923d82e75781df468423c25442ded1a457c291bd",
+  "runId": 38307364080,
+  "bundleSha256": "847c304bcc01756af1395e49ff1f8ea829d6680f709ff7d8303ea1bc1a50d898",
+  "bundleBytes": 356268,
+  "rawFilesVerified": 70,
+  "verifiedFromPushedBranch": true,
+  "nvdaBinariesIncluded": false,
+  "earlierArchivesPreserved": true
+}

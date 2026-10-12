@@ -1,6 +1,6 @@
 # M8 working-release calibration recovery
 
-Status: authorised P41/DR-0116 recovery completed; owner gate acceptance pending. This completes the missing exploratory comparisons from the partial P40 pilot. No M7 verdict, detection rate, inclusion decision, navigation, oracle or freeze tag changes.
+Status: authorised P41/DR-0116 recovery completed; accepted through PR17 merge on 2026-10-12 (DR-0118). This completes the missing exploratory comparisons from the partial P40 pilot. No M7 verdict, detection rate, inclusion decision, navigation, oracle or freeze tag changes.
 
 ## Execution and integrity
 
@@ -39,10 +39,10 @@ Absent job: 6m23s; present: 13m15s; summed 19m38s (19.6 runner-minutes), below t
 
 Before execution, 771 portable tests, lint/typecheck and ordinary CI passed, including PowerShell request selection/absolute log-path verification without fixture execution. The recovery workflow is now disabled repository-wide and its job unconditionally skipped. P40 remains disabled. No further Windows dispatch is authorised. A retirement regression failed before the job guard changed and passed afterward.
 
-The complete raw recovery archive contains 70 files, 356268 bytes compressed, verified file-for-file against its inventory; no NVDA binaries are included. [Archive manifest](../research/m8-recovery-evidence/archive-manifest.json), bundle SHA-256 `847c304bcc01756af1395e49ff1f8ea829d6680f709ff7d8303ea1bc1a50d898`. Prepared locally for D6 publication after owner accepts PR17. The accepted original partial pilot remains on results at dbf0fc2, with all failures retained.
+The complete raw recovery archive contains 70 files, 356268 bytes compressed, verified file-for-file against its inventory; no NVDA binaries are included. [Archive manifest](../research/m8-recovery-evidence/archive-manifest.json), bundle SHA-256 `847c304bcc01756af1395e49ff1f8ea829d6680f709ff7d8303ea1bc1a50d898`. Published under D6 on results at `363cbf5`, under `m8-working-recovery/`, after the owner accepted PR17 ([publication record](../research/m8-recovery-evidence/archive-publication.json), DR-0118). The accepted original partial pilot remains on results at dbf0fc2, with all failures retained.
 
 ## Next step
 
-Accept this completed calibration record and its stated limits. Then design a separately evaluated remedy for simulated-cursor identity/ignored ancestry and focused-name sampling, using fresh owned controls. Register the measurement/validation changes before implementation and keep exposed M7 outcomes fixed. No new remedy, experiment, cost envelope or Phase 1 commitment is authorised by this report; the Phase 1 decision date remains 27 November 2026.
+The owner accepted this completed calibration record and its stated limits through PR17 merge (DR-0118). Next, design a separately evaluated remedy for simulated-cursor identity/ignored ancestry and focused-name sampling, using fresh owned controls. Register the measurement/validation changes before implementation and keep exposed M7 outcomes fixed. No new remedy, experiment, cost envelope or Phase 1 commitment is authorised by this report; the Phase 1 decision date remains 27 November 2026.
 
 Independent final [gate review](../research/m8-recovery-evidence/gate-review.json) found no actionable defects and verified the raw counts, omissions, observations, budget, archive and retired workflows. All 27 targeted tests pass; the final local full suite passes 771 tests/typecheck. Local lint excludes only unrelated untracked duplicate files that appeared in the workspace; repository policy is unchanged and final CI runs normal lint on the committed head.
