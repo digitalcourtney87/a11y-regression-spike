@@ -67,3 +67,14 @@ Both M8 archives are EXPLORATORY and outside the frozen experiment. `m8-calibrat
     zstd -d -c ../results-wt/m8-working-recovery/m8-working-recovery.tar.zst | tar -xf - -C artefacts/m8-repro/recovery
 
 Findings and limits are in `docs/reports/M8-calibration.md` and `docs/reports/M8-working-recovery.md` on main. They are not revised M7 detection rates.
+
+## Verify the M9 registered evaluation
+
+`m9-registered-evaluation/` holds the complete P42 run 38315343825, accepted by the owner's PR21 merge. It is EXPLORATORY and outside the frozen experiment. Its controls and criteria were registered on main before the run: `docs/plans/2026-10-12-m9-registered-criteria.md`, with checksums in `docs/research/m9-registration/`. `archive-manifest.json` lists every raw file's SHA-256, the run, the head commit and the image and package pins. The archive contains no NVDA binaries.
+
+    (cd ../results-wt/m9-registered-evaluation && shasum -a 256 -c SHA256SUMS)
+    mkdir -p artefacts/m9-repro
+    zstd -d -c ../results-wt/m9-registered-evaluation/m9-registered-evaluation.tar.zst | tar -xf - -C artefacts/m9-repro
+    python3 -I docs/research/m9-evaluation-evidence/derive-registered-results.py artefacts/m9-repro
+
+The last command reproduces `docs/research/m9-evaluation-evidence/registered-results.json` on main byte for byte. Findings and limits are in `docs/reports/M9-registered-evaluation.md`. They do not change any M7 result.
