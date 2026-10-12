@@ -1,0 +1,15 @@
+{
+  "id": "reactmodal-732",
+  "stack": "react",
+  "package": "react-modal",
+  "versions": [
+    "3.1.0",
+    "3.8.1",
+    "3.11.1"
+  ],
+  "dependencies": {
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
+  },
+  "issue": "https://github.com/reactjs/react-modal/issues/732"
+}
