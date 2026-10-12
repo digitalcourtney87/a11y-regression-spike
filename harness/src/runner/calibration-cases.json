@@ -1,0 +1,7 @@
+[
+  { "id": "controls", "app": "m8-controls", "baseRef": "owned-controls@1", "fixture": "m8-controls", "journeys": ["m8-delayed-modal", "m8-nested-editor", "m8-feedback-document", "m8-feedback-application"] },
+  { "id": "bootstrap-modal", "app": "oss/bootstrap-39189", "baseRef": "bootstrap@5.3.1", "fixture": "bootstrap-39189", "journeys": ["oss-bootstrap-39189"] },
+  { "id": "vuetify-input", "app": "oss/vuetify-22770", "baseRef": "vuetify@3.3.6", "fixture": "vuetify-22770", "journeys": ["oss-vuetify-22770"] },
+  { "id": "calendar", "app": "oss/fluent-4620", "baseRef": "office-ui-fabric-react@5.40.2", "fixture": "fluent-4620", "journeys": ["oss-fluent-4620"] },
+  { "id": "multiselect", "app": "oss/carbon-7861", "baseRef": "carbon-components-react@7.28.0", "fixture": "carbon-7861", "journeys": ["oss-carbon-7861"] }
+]

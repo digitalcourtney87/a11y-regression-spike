@@ -93,6 +93,8 @@ import { checkJourneys } from "./journeys.ts";
 import { abbaOrder, repetitionsFor } from "./order.ts";
 import { evaluateAttempt } from "./outcome.ts";
 import { SETUP_NAMES, SETUPS } from "./setups.ts";
+import { CALIBRATION_FOCUS_SCRIPT, calibrationCaseFor, calibrationItems, captureCalibrationPoint } from "./calibration.ts";
+import type { CalibrationPoint, FocusIdentity } from "./calibration.ts";
 import { assertItemExecutable } from "./splitGuard.ts";
 import { inconclusiveReasons } from "./validity.ts";
 import { indexOfBackend, lineAt, nextIndex } from "./virtualCursor.ts";
@@ -149,6 +151,7 @@ const { values: args } = parseArgs({
     items: { type: "string", default: "" },
     split: { type: "string", default: "dev" },
     journeys: { type: "string", default: "" },
+    calibration: { type: "string", default: "" },
     sides: { type: "string", default: "both" },
     reps: { type: "string", default: "" },
     shard: { type: "string", default: "1/1" },
@@ -166,6 +169,7 @@ if (args.app === undefined) throw new Error("--app is required");
 const app: string = args.app;
 if (args.sides !== "both" && args.sides !== "base") throw new Error("--sides must be both or base");
 if (args.journeys !== "" && args.sides !== "base") throw new Error("--journeys develops journeys on the base build only: pass --sides base");
+const calibration = calibrationCaseFor({ caseId: args.calibration, app, journeys: args.journeys, split: args.split, sides: args.sides, items: args.items, reps: args.reps });
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outDir = resolve(args.out);
 const appKey = app.replace("/", "-");
@@ -469,6 +473,7 @@ interface StepRun {
   reachedAt?: number | null;
   outcome?: "REACHED" | "PATH_CHANGED" | "UNREACHABLE" | "ENV_FAILURE";
   goalTrace?: GoalTrace[];
+  calibration?: CalibrationPoint[];
   focusAtEnd?: NodeRef | null;
   /** NVDA-absent leg, browse strategies: the node, or line, under the simulated cursor at the step's end (M5). */
   cursorAtEnd?: NodeRef[];
@@ -569,17 +574,22 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
   const goal = step.until;
   const attempts = goal?.maxAttempts ?? 1;
   run.reachedAt = null;
+  let lastInputAt = run.startedAt ?? qpcNowNs();
+  const diagnosticFocus = (): Promise<FocusIdentity> => rt.page.evaluate<FocusIdentity>(CALIBRATION_FOCUS_SCRIPT);
   for (let attempt = 1; attempt <= attempts; attempt++) {
     const since = qpcNowNs();
+    lastInputAt = since;
     await act(rt, step, absent);
     await sleep(ATTEMPT_SETTLE_MS[leg]);
     await afterAction();
     if (goal === undefined) {
+      if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, () => goalTarget(rt, step, absent, since), diagnosticFocus, qpcNowNs));
       run.reachedAt = 1;
       break;
     }
     const target = { ...(await goalTarget(rt, step, absent, since)), attempt, t: since };
     run.goalTrace?.push(target);
+    if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, target, diagnosticFocus, qpcNowNs));
     const met = target.speech !== undefined ? speechMatchesGoal(target.speech, goal) : target.line !== undefined ? target.line.some((x) => nodeMatchesGoal(x, goal)) : target.node != null && nodeMatchesGoal(target.node, goal);
     if (met) {
       run.reachedAt = attempt;
@@ -605,6 +615,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
     const m = await rt.helper.msaaFocus(rt.hwnd);
     run.focusAtEnd = { name: m.name ?? "", role: m.roleText ?? "" };
   }
+  if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("observation-end", leg, () => goalTarget(rt, step, absent, lastInputAt), diagnosticFocus, qpcNowNs));
   const ids = [...new Set(step.expectations.flatMap((e) => (e.type === "focusOn" || e.type === "stateIs" ? [e.value.split("|")[1] ?? ""] : [])).filter((n) => n.startsWith("#")).map((n) => n.slice(1)))];
   if (ids.length > 0) run.targets = await Promise.all(ids.map(async (id) => ({ id, backendId: await backendIdById(rt.cdp, id).catch(() => null) })));
   run.ariaSnapshot = await rt.page.locator("body").ariaSnapshot().catch((e: unknown) => `error: ${errorText(e)}`);
@@ -1134,15 +1145,15 @@ function readJourneyFiles(): Map<string, unknown> {
 async function main(): Promise<void> {
   mkdirSync(outDir, { recursive: true });
   if (args.split !== "dev" && args.split !== "test") throw new Error(`--split must be dev or test, not ${args.split}`);
-  const summary: Json = { label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
-  const corpus = readCorpus();
+  const summary: Json = { ...(calibration === null ? {} : { calibrationCase: calibration.id, calibrationApproval: "P40/DR-0114", internalModeObservation: "unavailable; no new relay API" }), label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
+  const corpus = calibration === null ? readCorpus() : [];
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
   const devJourneys = args.journeys.split(",").map((s) => s.trim()).filter((s) => s !== "");
   // `--split test` selects the test split. The guard below refuses it unless the freeze tag matches (A-001).
   // Journey development replaces the items with base-only pseudo-items (DR-0082).
   // A request may name journeys of several apps; each job develops only its own app's.
   const journeyApps = new Map([...readJourneyFiles().values()].flatMap((j) => (typeof j === "object" && j !== null && "id" in j && "app" in j ? [[String(j.id), String(j.app)] as const] : [])));
-  const selected = devJourneys.length > 0 ? devJourneys.filter((j) => journeyApps.get(j) === app).map((j) => journeyDevItem(j, corpus)) : corpus.filter((i) => i.app === app && i.split === args.split && (wantedIds === null || wantedIds.has(i.id)));
+  const selected = calibration !== null ? calibrationItems(calibration) : devJourneys.length > 0 ? devJourneys.filter((j) => journeyApps.get(j) === app).map((j) => journeyDevItem(j, corpus)) : corpus.filter((i) => i.app === app && i.split === args.split && (wantedIds === null || wantedIds.has(i.id)));
   const items = selected.filter((_, k) => k % shardCount === shardIndex - 1);
   const { journeys, errors } = checkJourneys(readJourneyFiles(), items, SETUP_NAMES);
   if (errors.length > 0) throw new Error(`journeys: ${errors.join("; ")}`);

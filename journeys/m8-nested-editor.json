@@ -1,0 +1,21 @@
+{
+  "id": "m8-nested-editor",
+  "version": "1",
+  "app": "m8-controls",
+  "entryUrl": "/?case=nested-editor",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-actual-input",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Actual field",
+        "role": "textbox",
+        "maxAttempts": 5
+      }
+    }
+  ]
+}

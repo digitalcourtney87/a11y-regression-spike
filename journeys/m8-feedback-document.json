@@ -1,0 +1,74 @@
+{
+  "id": "m8-feedback-document",
+  "version": "1",
+  "app": "m8-controls",
+  "entryUrl": "/?case=feedback-document",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-choices",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Choices",
+        "role": "textbox",
+        "maxAttempts": 5
+      }
+    },
+    {
+      "kind": "at",
+      "id": "type-filter",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "Al"
+    },
+    {
+      "kind": "at",
+      "id": "highlight-alpha",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown",
+      "until": {
+        "name": "Alpha",
+        "maxAttempts": 1
+      }
+    },
+    {
+      "kind": "at",
+      "id": "select-alpha",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "toggle-for-reading",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-result",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Chosen Alpha",
+        "maxAttempts": 12
+      }
+    }
+  ]
+}
