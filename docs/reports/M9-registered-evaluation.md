@@ -1,6 +1,6 @@
 # M9 registered evaluation: cursor identity and focus-name reads
 
-Status: the authorised P42/DR-0120 run is complete; owner gate acceptance is pending. All evidence is EXPLORATORY. No M7 verdict, detection rate, corpus, oracle, trigger or `protocol-freeze-v4` change. Registered criteria: [2026-10-12-m9-registered-criteria.md](../plans/2026-10-12-m9-registered-criteria.md). Proposal: [M9-remedy-evaluation-proposal.md](../plans/M9-remedy-evaluation-proposal.md).
+Status: the authorised P42/DR-0120 run is complete; owner gate acceptance is pending. PR20 merged the registration through the retirement (`cfa43b3`) before these results existed, so they follow in a separate gate PR. All evidence is EXPLORATORY. No M7 verdict, detection rate, corpus, oracle, trigger or `protocol-freeze-v4` change. Registered criteria: [2026-10-12-m9-registered-criteria.md](../plans/2026-10-12-m9-registered-criteria.md). Proposal: [M9-remedy-evaluation-proposal.md](../plans/M9-remedy-evaluation-proposal.md).
 
 ## Result
 

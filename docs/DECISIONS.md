@@ -4275,7 +4275,7 @@ Checklist: docs/plans/2026-10-12-m9-implementation.md.
 
 ## DR-0121 M9 registered evaluation complete
 
-2026-10-12. Recorded; gate acceptance pending. P42/DR-0120 was consumed by run 38315343825 at `69760a04015b3867e5f9cdc09b97de8eecec4170`. The run followed the registration (`ac21ec8`), the implementation (`b750282`, with ordinary CI 38315076817 passing) and the pre-committed analysis (`f545d29`).
+2026-10-12. Recorded; gate acceptance pending. The owner merged PR20 at `cfa43b35edd1c510d3795580e0da0614ef2d9816`, before any results existed. That merge covered the registration, implementation, request and retirement only. This record follows in a separate gate PR. P42/DR-0120 was consumed by run 38315343825 at `69760a04015b3867e5f9cdc09b97de8eecec4170`. The run followed the registration (`ac21ec8`), the implementation (`b750282`, with ordinary CI 38315076817 passing) and the pre-committed analysis (`f545d29`).
 
 - **Integrity.** Exactly two Windows jobs ran, both successful. Twenty blocks, all EXPLORATORY and VALID, came from 60 base-only attempts. All 40 K1 brackets pass and all manifests are valid. There are no package, attempt, diagnostic-read or full-tree-read errors and no retry. Raw summaries carry their own P42 label.
 - **Rule 1: cursor v2 is accepted for future registered studies.** It reached the C1–C3 targets in 3/3 repetitions with no repeated position. It matched v1 on C4, and NVDA reached every target. The v1 positive control (the C1 marker stall) was reproduced.
