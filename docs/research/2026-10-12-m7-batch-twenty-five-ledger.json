@@ -1,0 +1,214 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "twenty-five",
+  "queries": [
+    {
+      "query": "repo:react-dates/react-dates is:issue is:closed regression in:title",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 487,
+          "title": "Regression of minimum nights hover with release 11.0.0",
+          "disposition": "selected"
+        },
+        {
+          "number": 306,
+          "title": "Bug / regression?: incorrect \"invalid\" dates when startDate/endDate moment object's time is not 12:00:00",
+          "disposition": "selected"
+        }
+      ]
+    },
+    {
+      "query": "repo:Hacker0x01/react-datepicker is:issue is:closed regression in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 2015,
+          "title": "Moment.js => date-fn lib regression for date completion",
+          "disposition": "selected"
+        },
+        {
+          "number": 1140,
+          "title": "[regression] displayed date does not change when date_format changes",
+          "disposition": "selected"
+        },
+        {
+          "number": 837,
+          "title": "regression: on blur date is not formatted",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:gpbl/react-day-picker is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:jquense/react-widgets is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed regression in:title",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 4063,
+          "title": "Regression - Multiple Search Dropdown clears search on selection",
+          "disposition": "selected"
+        },
+        {
+          "number": 2927,
+          "title": "Regression - Modal with no dimmer placed at bottom of page on left side",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:moroshko/react-autosuggest is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/picker is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/tree is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "react-dates/react-dates",
+      "number": 487,
+      "title": "Regression of minimum nights hover with release 11.0.0",
+      "url": "https://github.com/react-dates/react-dates/issues/487",
+      "origin": "repo:react-dates/react-dates is:issue is:closed regression in:title",
+      "disposition": "not admitted",
+      "reason": "Original criterion hover highlight is pointer/visual, no original keyboard failure.",
+      "issueBody": "It seems there is a regression with last release on minimumNights prop. \r\n\r\nPreviously, when using `minimumNights={x}`, hovering current date would hover the next `x` days. \r\nIt is not working anymore with last version (on http://airbnb.io/react-dates/). ",
+      "comments": [
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/487#issuecomment-299229638",
+          "body": "This is likely something to do with the perf rearchitecture in v11. There's a few features that got lost/messed up by the rearchitecting that I'll attempt to patch today. Thank you for flagging!"
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/487#issuecomment-300568181",
+          "body": "Should be fixed in 11.0.1!"
+        }
+      ]
+    },
+    {
+      "repo": "react-dates/react-dates",
+      "number": 306,
+      "title": "Bug / regression?: incorrect \"invalid\" dates when startDate/endDate moment object's time is not 12:00:00",
+      "url": "https://github.com/react-dates/react-dates/issues/306",
+      "origin": "repo:react-dates/react-dates is:issue is:closed regression in:title",
+      "disposition": "not admitted",
+      "reason": "Reporter confirms rollback still fails, explicitly not a regression.",
+      "issueBody": "I am using this component together with a TimePicker component. Both are controlled components, so changing the time changes the moments that are currently in the DatePicker.\r\n\r\nI upgraded the version of react-dates to major version 5 this week, and noticed a weird interaction when using the DateRangePicker:\r\n\r\n* When the time is after `12:00:00`, the date immediately after the start date is marked as out of range.\r\n* When the time is before `12:00:00`, the date immediately before the start date is marked as out of range.\r\n\r\nHopefully the images make this more clear. If you have any questions, please let me know. Thanks!\r\n\r\nCase 1: Time before `12:00:00`:\r\n<img width=\"431\" alt=\"screen shot 2017-02-07 at 4 10 50 pm\" src=\"https://cloud.githubusercontent.com/assets/5831434/22711825/94b4ab9e-ed50-11e6-94ea-b5d6c8cfbf53.png\">\r\n<img width=\"401\" alt=\"screen shot 2017-02-07 at 4 10 56 pm\" src=\"https://cloud.githubusercontent.com/assets/5831434/22711827/94b5c1e6-ed50-11e6-898e-a637e8a31fdf.png\">\r\n\r\nCase 2: Time after `12:00:00`:\r\n<img width=\"394\" alt=\"screen shot 2017-02-07 at 4 11 04 pm\" src=\"https://cloud.githubusercontent.com/assets/5831434/22711828/94b5f490-ed50-11e6-8c5b-ebd3ee566fed.png\">\r\n<img width=\"332\" alt=\"screen shot 2017-02-07 at 4 11 08 pm\" src=\"https://cloud.githubusercontent.com/assets/5831434/22711826/94b5888e-ed50-11e6-8c59-93a60c8600b0.png\">\r\n\r\n\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/306#issuecomment-278182245",
+          "body": "Huh, I have no idea what would cause this regression. @timhwang21 what version did you upgrade from and are you now on v5.0.0 or v5.2.0?\r\n\r\nThis is probably coming from the minimum nights calculation I imagine. Can you share your prop values?"
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/306#issuecomment-278185901",
+          "body": "I'll test later today if it's a regression by rolling back the version, didn't have time earlier today\r\n\r\nWill also reply with props, I overwrote the blocked dates function but realize I didn't write any minimum nights logic so I'll check that out as well.\r\n\r\nThanks for the quick response!"
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/306#issuecomment-278240816",
+          "body": "Sorry, I actually upgraded from `4.3.2` to `6.0.1`. Problem is still there after rolling back, so it's not a regression. \r\n\r\nI think the only relevant prop I have passed is `isOutsideRange()` which in my situation is a no-op.  \r\n\r\nFor what it's worth, setting `minimumNights={0}` fixes the error, but also allows the user to select the same start and end date, so it's not a perfect solution."
+        }
+      ]
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 2015,
+      "title": "Moment.js => date-fn lib regression for date completion",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/2015",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed regression in:title",
+      "disposition": "not admitted",
+      "reason": "Keyboard date-completion issue, no applicable library fix or stable working baseline yet established.",
+      "issueBody": "**Describe the bug**\r\nUpon entering `9/1` for example (or any other date that includes only a single slash, omitting the year), the datepicker yields `9/1/2001` rather than defaulting to the current year. \r\n\r\nThe reason for this is that the Date object (which is the `date-fns` library more closely adheres to compared to moment.js) expects year as the first argument in a new date, e.g. `new Date(<year>, <month>, <day>)` and since year is absent from the string `9/1` we need to capture this input style `mm/dd` from users with regex and add the current year. \r\n\r\nI believe moment.js is smarter about handling an input like `9/10` and thus this regressed during the update to remove moment.js.\r\n\r\nI can gladly submit a PR for this, but I have some concern that this library is less active, I see alot of newly reported bugs. Please confirm that my efforts would be welcome and considered.\r\n\r\n**To Reproduce**\r\nSteps to reproduce the behavior:\r\n\r\n1. View the demo https://codesandbox.io/s/epic-glade-shjg4\r\n2. Do as shown in the GIF below\r\n3. Type `9/1` in the input field\r\n4. Hit ENTER on keyboard\r\n\r\n**Expected behavior**\r\nShould yield `9/1/<current year>`.\r\n\r\n**Screenshots**\r\n![Screen_Recording_2020-01-15_at_7 44 07_PM](https://user-images.githubusercontent.com/47546998/72488907-a2f5d800-37cf-11ea-976d-dceba92c6e28.gif)\r\n\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/2015#issuecomment-672241597",
+          "body": "@bfeister I'm having the same issue as well. Did you find a workaround for this?"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/2015#issuecomment-774841823",
+          "body": "This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.\n"
+        }
+      ]
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 1140,
+      "title": "[regression] displayed date does not change when date_format changes",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/1140",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed regression in:title",
+      "disposition": "not admitted",
+      "reason": "Reported0.46.0 format change boundary; no applicable library fix yet established.",
+      "issueBody": "Here is the test case which fails\r\nGiven I have a date picker and a button which switches date format (for instance MM/DD/YYYY and DD/MM/YYYY)\r\nWhen I type a date\r\n  and switches format WITHOUT PRESSING ENTER\r\nThen the date keeps the original format\r\n\r\nThe example can be found here:\r\nhttps://github.com/euZebe/react-datepicker/tree/master/examples/hello-world\r\n\r\nNotes:\r\n- the problem doesn't happen when typing a valid date then pressing \"Enter\" before switching date format\r\n- the problem doesn't happen when picking a date using the calendar.",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/1140#issuecomment-344154299",
+          "body": "A few investigation later, I think this is a regression which happened at version 0.46.0."
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/1140#issuecomment-526720236",
+          "body": "This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.\n"
+        }
+      ]
+    },
+    {
+      "repo": "Semantic-Org/Semantic-UI-React",
+      "number": 4063,
+      "title": "Regression - Multiple Search Dropdown clears search on selection",
+      "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063",
+      "origin": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed regression in:title",
+      "disposition": "not admitted",
+      "reason": "Maintainer confirms intentional0.84.0 behavior alignment, controlled search workaround; no applicable restoration fix.",
+      "issueBody": "Hi everyone -\r\n\r\nI hope all is well.\r\n\r\nI'm facing an issue where the Multiple Search Selection dropdown clears the search after an item is selected. See below for an example:\r\n\r\nhttps://camo.githubusercontent.com/6c62ec71f34fd76cea9db1ee86b43c5871c41732/687474703a2f2f672e7265636f726469742e636f2f4f71716e5a44485235752e676966\r\n\r\nAccording to #1954 this issue was resolved (see [here](https://github.com/Semantic-Org/Semantic-UI-React/issues/1954)), but it appears there was a regression. When I type \"Ma\" and select it clears the dropdown search selection. It looks like this is working on the core Semanatic-UI page, but not on the React version.\r\n\r\nBest,\r\nAndrew",
+      "comments": [
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-691316233",
+          "body": "\ud83d\udc4b Thanks for opening your first issue here! If you're reporting a \ud83d\udc1e bug, please make sure you've completed all the fields in the issue template so we can best help.\n\nWe get a lot of issues on this repo, so please be patient and we will get back to you as soon as we can.\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-692983400",
+          "body": "Any thoughts or potential direction on how to resolve this? I can take a crack at a PR if it's a simple fix. @levithomason @creedmangrum"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-692985749",
+          "body": "Hi @AndrewCi I actually haven't been following this. I'm still using a version where this was working. I'm a bit busy now, but in the next couple days I might be able to take a look. Maybe @levithomason could help out though. My fix that i proposed wasn't originally added as it was fixed from another PR. "
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-692986835",
+          "body": "Hi creed - thanks for getting back to me. What version are you using? If I could identify I might consider moving to that version as a stopgap. "
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-693284383",
+          "body": "@AndrewCi @creedmangrum it's not a regression it's a fix that was done in `semantic-ui-react@0.84.0` (#3317) to align the behavior between `click` and <kbd>Enter</kbd> (#2162) & SUI behavior.\r\n\r\nTo keep previous behavior when `searchQuery` is kept you can handle `searchQuery` manually, I made a CodeSandbox: https://codesandbox.io/s/goofy-platform-5mol3?file=/example.js\r\n\r\nPlease let me know if it works for you \ud83d\udc4d \r\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-693712186",
+          "body": "> @AndrewCi @creedmangrum it's not a regression it's a fix that was done in `semantic-ui-react@0.84.0` (#3317) to align the behavior between `click` and Enter (#2162) & SUI behavior.\r\n> \r\n> To keep previous behavior when `searchQuery` is kept you can handle `searchQuery` manually, I made a CodeSandbox: https://codesandbox.io/s/goofy-platform-5mol3?file=/example.js\r\n> \r\n> Please let me know if it works for you \ud83d\udc4d\r\n\r\n@layershifter thank you for the response. This works 90%. The only difference between your fix and the standard Semantic UI behavior is that when a user selects a response based on a search query the typed text still appears. For example, if you type in \"me\" in your example two options appear. In your example when an option is selected \"me\" still appears in the dropdown; however, in the standard Semantic UI this \"me\" input is cleared upon selection with the drop down values still loaded.\r\n\r\nAny thoughts? I was playing around with the available props and couldn't get the behavior to line up 1:1.\r\n\r\nEDIT: To provide an update - I tried playing around w/ a ref to the 'sizer' element with no luck. Hoping that can provide some direction."
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-694149307",
+          "body": "I updated the CodeSandbox to match that behavior: https://codesandbox.io/s/goofy-platform-5mol3?file=/example.js. Is that what you would like to archive?\r\n\r\nIMO, it's very confusing especially from accessibility POV as user doesn't know about his input \ud83e\udd14  "
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4063#issuecomment-694312091",
+          "body": "@layershifter awesome work thank you so much! This was exactly the behavior I expected and it matches the behavior from the base Semantic UI library. I actually think it's better from a usability perspective - since the results are already loaded upon search you eliminate the need for a user to have to backspace to clear their original search if they have searching for multiple keywords. For example, if I type in \"me\" which loads 2 results and then I want to search for \"cat\" I need to backspace twice to clear \"me\", with this currently iteration you eliminate that backspace step."
+        }
+      ]
+    }
+  ]
+}

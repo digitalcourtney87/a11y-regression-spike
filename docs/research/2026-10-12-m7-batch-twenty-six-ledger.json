@@ -1,0 +1,407 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "twenty-six",
+  "queries": [],
+  "candidates": [
+    {
+      "repo": "mui/material-ui",
+      "number": 46734,
+      "title": "[autocomplete] Regression with 7.3 and Playwright",
+      "url": "https://github.com/mui/material-ui/issues/46734",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "unsplit reproduction",
+      "reason": "Source-qualified unsplit fixture7.2.0/7.3.0/fixed7.3.3. Maintainer later confirms supported freeSolo+autoHighlight empty-options construct. Checks pending.",
+      "issueBody": "### Steps to reproduce\n\nSteps:\n1. Create a MUI AutoComplete with `freeSolo={true}`\n2. Use Playwright to `.fill(\"foobar\")` and `.press(\"Enter\")`\n\n\n### Current behavior\n\nStarting with Material UI 7.3 `onChange` is called with `[undefined]` when run within Playwright. I wasn't able to reproduce the behavior when interacting manually with the Autocomplete field.\n\n### Expected behavior\n\n`onChange` should be called with `[\"foobar\"]` like in Material UI 7.2.\n\n### Context\n\n_No response_\n\n### Your environment\n\n<details>\n  <summary><code>npx @mui/envinfo</code></summary>\n\n```\n  Don't forget to mention which browser you used.\n  Output from `npx @mui/envinfo` goes here.\n```\n</details>\n\n\n**Search keywords**: playwright autocomplete",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3182781291",
+          "body": "@tux21b Would you mind providing a minimal repro?\n\nComparing [v7.2.0 against v7.3.0](https://github.com/mui/material-ui/compare/v7.2.0...v7.3.0), I don't see any changes to Autocomplete other than https://github.com/mui/material-ui/commit/472cc721ccb96a79dbf362cea3f6cd269e11be2a#diff-a3e15b1f22a8ed2de23c8cee46ea92a1d2828d4718cb471c6404d9baadd2c68f"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3206029483",
+          "body": "Since the issue is missing key information and has been inactive for 7 days, it has been automatically closed. If you wish to see the issue reopened, please provide the missing information."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3257138374",
+          "body": "We're seeing the same behavior in our app with MUI v7.3+ without Playwright. Downgrading to v7.2.0 fixed the issue. I will try to create a reproduction repo"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3257362536",
+          "body": "I was able to reproduce it here: https://stackblitz.com/edit/zl8qpkqz?file=src%2FDemo.tsx,package.json\n\nTo reproduce: enter any text in the text field and blur out of the field. The value should be whatever text you entered but will stay undefined.\n\nThe behavior is triggered when the `options` array is empty and `autoHighlight` is set to `true`.\n\nThe bug was introduced with v7.3.0. Downgrading to v7.2.0 fixes it."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3258108926",
+          "body": "Since the issue is missing key information and has been inactive for 7 days, it has been automatically closed. If you wish to see the issue reopened, please provide the missing information."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3258148198",
+          "body": "Thanks for posting a reproducable example and for letting me know that I am not the only one who can not use MUI >=7.3 because of regressions.\n\nI am not sure why the bot has immediatelly closed the issue again, lets hope a reply will change its mind."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3264559048",
+          "body": "It is related to #46489, but that shouldn't be the regression because it actually found the wrong usage of the `freeSolo + autoHighlight` prop combination. The reason is the same as https://github.com/mui/material-ui/issues/46729#issuecomment-3216538809:\n\n> Using `freeSolo` together with `autoHighlight` doesn\u2019t really make sense. If the intent is to allow arbitrary input (`freeSolo`), then automatically highlighting the first matching option contradicts that behavior."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3264605231",
+          "body": "Thank you for your reply @ZeeshanTamboli \n\nIn our case, the autocompete is used for selecting from an existing set of options as well as for creating a new entry in that set so auto highlighting the first match might be useful so that the user doesn't try to recreate an already existing entry."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3264610431",
+          "body": "> In our case, the autocompete is used for selecting from an existing set of options as well as for creating a new entry in that set so auto highlighting the first match might be useful so that the user doesn't try to recreate an already existing entry.\n\n@olivier-lxo So why is your options array empty in the provided reproduction?"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3264628647",
+          "body": "It is initially empty when the user first onboards. The user will then add entries to it over time."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3269133982",
+          "body": "@olivier-lxo You are right. It should work with freeSolo + autoHighlight even when there are no options so that you can add them later and enable highlighting first option. Since it used to work before it's a regression from #46489. I'll try to fix this in #46894."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3269365704",
+          "body": "Sounds great. Thank you!"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3287408742",
+          "body": "@olivier-lxo @tux21b I\u2019ve opened a PR with a fix: #46894.\n\nIf you have a moment to try it out, that would be really helpful.\n\nYou can test the preview build by updating your `@mui/material` dependency:\n\n```diff\n- \"@mui/material\": \"latest\" // or any version\n+ \"@mui/material\": \"https://pkg.pr.new/mui/material-ui/@mui/material@f79bf99\"\n```\n\nThen run `npm install` again. Please let me know if this resolves the issue and whether you spot any side effects."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3290678377",
+          "body": "@ZeeshanTamboli it looks good on our side. Thank you!"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/46734#issuecomment-3292608957",
+          "body": "**This issue has been closed.** If you have a similar problem but not exactly the same, please open a [new issue](https://github.com/mui/material-ui/issues/new/choose).\nNow, if you have additional information related to this issue or things that could help future readers, feel free to leave a comment."
+        }
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 45477,
+      "title": "[Snackbar] v6.4.6 & React 18 regression `ownerState` failed prop type warning",
+      "url": "https://github.com/mui/material-ui/issues/45477",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Prop-type warning, no original user-facing keyboard failure established.",
+      "issueBody": "### Steps to reproduce\n\nSteps:\n\n1. Open this link to live example: https://stackblitz.com/edit/vitejs-vite-zjqfd6gv\n2. Launch the project and open the preview in a new tab\n3. Press the Open Snackbar button\n4. The Snackbar appears but this gets error logged to the console:\n![Image](https://github.com/user-attachments/assets/7993c655-dbe6-4f42-853d-1213c41a7149)\n5. Ether downgrade mui to 6.4.5 or upgrade React to v19 to resolve the issue\n\nThe CustomizedSnackbars component is copied from here: https://mui.com/material-ui/react-snackbar/#use-with-alerts (from the Stackblitz version, the Code Sandbox link seems to be broken)\n\n\n### Current behavior\n\nThis error gets logged when opening the snackbar for the first time and when using mui 6.4.6 and React 18.x:\n\n![Image](https://github.com/user-attachments/assets/40ef0363-992d-4458-91fe-cfd5eed922f1)\n\n### Expected behavior\n\nThe code should be error free like it was on version 6.4.5\n\n### Context\n\n_No response_\n\n### Your environment\n\n<details>\n  <summary><code>npx @mui/envinfo</code></summary>\n\n```\n  Browser does not seem to matter. Happens on FF and Chrome\nSystem:\n    OS: Windows 11 10.0.26100\n  Binaries:\n    Node: 22.14.0 - C:\\Program Files\\nodejs\\node.EXE\n    npm: 11.1.0 - C:\\Program Files\\nodejs\\npm.CMD\n    pnpm: Not Found\n  Browsers:\n    Chrome: Not Found\n    Edge: Chromium (132.0.2957.115)\n  npmPackages:\n    @emotion/react: ^11.11.1 => 11.14.0\n    @emotion/styled: ^11.11.0 => 11.14.0\n    @mui/core-downloads-tracker:  6.4.6\n    @mui/icons-material: ^6.0.0 => 6.4.6\n    @mui/material: ^6.0.0 => 6.4.6\n    @mui/private-theming:  6.4.6\n    @mui/styled-engine:  6.4.6\n    @mui/system:  6.4.6\n    @mui/types:  7.2.21\n    @mui/utils:  6.4.6\n    @mui/x-data-grid: ^7.0.0 => 7.27.2\n    @mui/x-date-pickers: ^7.0.0 => 7.27.1\n    @mui/x-internals:  7.26.0\n    @types/react: ^18.3.3 => 18.3.18\n    react: ^18.3.1 => 18.3.1\n    react-dom: ^18.3.1 => 18.3.1\n    typescript: ^5.5.4 => 5.8.2\n```\n</details>\n\n\n**Search keywords**: ownerState",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2697044506",
+          "body": "Thanks for reporting this @reihwald, I can reproduce it with just a span (instead of Alert) https://codesandbox.io/p/sandbox/cocky-chihiro-mwrrxs"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2697159553",
+          "body": "I suspect it's this line here? https://github.com/mui/material-ui/blob/master/packages/mui-material/src/Snackbar/Snackbar.js#L239"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2700155745",
+          "body": "This [PR](https://github.com/mui/material-ui/pull/45161) fixes the issue for v7. @DiegoAndai should we cherry pick it to v6.x?"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2701702776",
+          "body": "@siriwatknp I'm experiencing this issue as well. Please fix ASAP"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2701726918",
+          "body": "Yes @siriwatknp, thanks. I'll cherry-pick it."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2703710507",
+          "body": "The fix will be available on the next Material UI v6 release early next week (`>6.4.7`)"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2703712049",
+          "body": "**This issue has been closed.** If you have a similar problem but not exactly the same, please open a [new issue](https://github.com/mui/material-ui/issues/new/choose).\nNow, if you have additional information related to this issue or things that could help future readers, feel free to leave a comment.\n> [!NOTE]\n> @reihwald How did we do? Your experience with our support team matters to us. If you have a moment, please share your thoughts in this short [Support Satisfaction survey](https://tally.mui.com/support-satisfaction-survey?issue=45477&productId=material-ui)."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2722063784",
+          "body": "> The fix will be available on the next Material UI v6 release early next week (`>6.4.7`) \n\nThank you for fixing this! Is there a forecasted date 6.4.8 will go out to include this? @DiegoAndai "
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/45477#issuecomment-2725274736",
+          "body": "Hey @dprensha, it should be out early next week"
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 8911,
+      "title": "Add Percy visual regression testing (VRT) snapshots for all components",
+      "url": "https://github.com/carbon-design-system/carbon/issues/8911",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Visual-testing infrastructure request, not keyboard regression.",
+      "issueBody": "### Summary\r\n\r\nIn #8282 Cypress was set up for e2e testing and also added the Percy integration to facilitate visual regression testing via snapshots taken in the e2e tests. We need to enable a snapshot for each component, this epic/issue is to track the status of adding a single baseline snapshot for each component.\r\n\r\n### Process\r\n\r\nHigh level steps for each component:\r\n1. List in [a comment below](https://github.com/carbon-design-system/carbon/issues/8911#issuecomment-882998388)\r\n1. Open the PR, ensure percy status check UI shows the component has an associated snapshot\r\n   - This may require approval in the Percy UI\r\n\r\n### Components\r\n- [x] Accordion\r\n- [x] AccordionItem\r\n- [x] #9263\r\n- [x] AspectRatio https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] Breadcrumb https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] BreadcrumbItem https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] #9264\r\n- [x] Button https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9265\r\n- [x] ButtonSet https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] Modal https://github.com/carbon-design-system/carbon/pull/8958\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9266\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9267\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9268\r\n- [ ] Add VRT for ContentSwitcher\r\n- [ ] Add VRT for Copy\r\n- [ ] Add VRT for CopyButton\r\n- [ ] Add VRT for DataTable\r\n- [ ] Add VRT for DatePicker\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9274\r\n- [ ] Add VRT for ErrorBoundary\r\n- [ ] Add VRT for FileUploader\r\n- [ ] Add VRT for Form\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9278\r\n- [x] #9279\r\n- [ ] Add VRT for List components\r\n- [ ] Add VRT for Loading\r\n- [x] https://github.com/carbon-design-system/carbon/issues/9283\r\n- [ ] Add VRT for Notification components\r\n- [ ] Add VRT for NumberInput\r\n- [ ] Add VRT for OverflowMenu\r\n- [ ] Add VRT for Pagination\r\n- [ ] Add VRT for ProgressIndicator\r\n- [ ] Add VRT for RadioButton\r\n- [ ] Add VRT for Search\r\n- [ ] Add VRT for Select\r\n- [ ] Add VRT for Skeleton\r\n- [ ] Add VRT for SkipToContent\r\n- [ ] Add VRT for Slider\r\n- [ ] Add VRT for StructuredList\r\n- [x] Add VRT for Tab/Tabs\r\n- [x] Add VRT for Tag #9949\r\n- [ ] Add VRT for TextArea, TextInput\r\n- [ ] Add VRT for Tile components\r\n- [ ] Add VRT for TimePicker\r\n- [ ] Add VRT for Toggle\r\n- [ ] Add VRT for Tooltip\r\n- [ ] Add VRT for UIShell\r\n- [ ] Add VRT for unstable_Heading\r\n- [ ] Add VRT for unstable_Menu\r\n- [ ] Add VRT for unstable_PageSelector\r\n- [ ] Add VRT for unstable_Pagination\r\n- [ ] Add VRT for unstable_ProgressBar\r\n- [ ] Add VRT for unstable_Section\r\n- [ ] Add VRT for unstable_TreeNode\r\n- [ ] Add VRT for unstable_TreeView",
+      "comments": [
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/8911#issuecomment-864176279",
+          "body": "Here's a super barebones template I've been starting from when adding a `component-test.e2e.js` file for a component that doesn't have one already:\r\n\r\n```js\r\n/**\r\n * Copyright IBM Corp. 2016, 2018\r\n *\r\n * This source code is licensed under the Apache-2.0 license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n */\r\n\r\nimport 'carbon-components/scss/components/component/_component.scss';\r\n\r\nimport React from 'react';\r\nimport { mount } from '@cypress/react';\r\nimport { Component } from './Component';\r\n\r\ndescribe('Component', () => {\r\n  beforeEach(() => {\r\n    mount(<Component>sample_text</Component>);\r\n  });\r\n\r\n  it('should render', () => {\r\n    cy.findByText(/sample_text/).should('be.visible');\r\n\r\n    // snapshots should always be taken _after_ an assertion that\r\n    // a element/component should be visible. This is to ensure\r\n    // the DOM has settled and the element has fully loaded.\r\n    cy.percySnapshot();\r\n  });\r\n});\r\n\r\n```\r\n\r\nIt's helpful to look at the stories to understand common permutations or configurations of the component to get the component into a \"default\" state for baseline snapshots."
+        },
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/8911#issuecomment-882998388",
+          "body": "Here's a guide on what I've been doing to add these:\r\n\r\n1. If the component doesn't have an .e2e file, create one with the template from above.\r\n2. Modify the sass path, validate it's correct\r\n3. Modify the component import\r\n4. Render the component into a default state \r\n   - For this I've been looking at the storybook stories and picking out the most general/simple one and essentially copying it over to the test file.\r\n   - Be sure to render all the different component state/display variants (size props, type/kind props, checked, open/close etc)\r\n5. Remove any unnecessary code relating to the story (bx/prefix code, extraneous components, state wrappers, etc)\r\n6. Add some type of unique text content to the component so it's easily queryable for interactions\r\n7. Modify the 'should render' `it` block with an appropriate query\r\n8. Add any additional test blocks for component interaction variants (checked, open/closed, etc)\r\n9. `cd` into `packages/react` and run `yarn cypress open-ct`\r\n    - this will open the cypress gui in a new instance of chrome where you can select and run tests, and view the UI it's snapshotting and testing against.\r\n10. Make any modifications needed, save and PR \ud83c\udf89 \r\n11. Ensure percy status check UI shows the component has an associated snapshot. This may require approval in the Percy UI"
+        },
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/8911#issuecomment-885897471",
+          "body": "Helpful links I've referenced along the way:\r\n\r\n- [Cypress' `viewport()` documentation](https://docs.cypress.io/api/commands/viewport)\r\n- [Cypress' assertion documentation](https://docs.cypress.io/guides/references/assertions)\r\n- [Overview of the `@testing-library/cypress` package](https://testing-library.com/docs/cypress-testing-library/intro/) that provides RTL-style queries in cypress tests\r\n- [List of examples of all RTL-style queries](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js) made available by the `@testing-library/cypress` package"
+        },
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/8911#issuecomment-1121268265",
+          "body": "Closing. We've migrated away from cypress to instead use playwright and added baseline VRT snapshots for all components in https://github.com/carbon-design-system/carbon/pull/11302"
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 8523,
+      "title": "Tile: Visual regression for selectable tiles",
+      "url": "https://github.com/carbon-design-system/carbon/issues/8523",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Visual tile styling criterion.",
+      "issueBody": "## What package(s) are you using?\r\n\r\n- [x] `carbon-components`\r\n- [x] `carbon-components-react`\r\n\r\n## Detailed description\r\n\r\n> Describe in detail the issue you're having.\r\n\r\n`carbon-components@10.33.0` introduced a visual regression for selectable tiles. Every selected tile that is rendered after another selected tile misses its top border.\r\n\r\n> Is this issue related to a specific component?\r\n\r\n`SelectableTile`\r\n\r\n> What did you expect to happen? What happened instead? What would you like to\r\n> see changed?\r\n\r\nThe tiles should have a top border\r\n\r\n> What browser are you working in?\r\n\r\nChrome 90\r\n\r\n> What version of the Carbon Design System are you using?\r\n\r\n`carbon-components@10.33.0`\r\n`carbon-components-react@7.33.0`\r\n\r\n## Steps to reproduce the issue\r\n\r\n1. Use two or more `SelectableTile`s\r\n2. Lay them out horizontally or with a spacing in between\r\n3. Select them\r\n\r\n> Please create a reduced test case in CodeSandbox\r\n\r\nhttps://codesandbox.io/s/stupefied-thunder-1qt2g\r\n\r\n## Additional information\r\n\r\n![Screen Recording 2021-04-28 at 11 05 42](https://user-images.githubusercontent.com/28265588/116378633-9e153600-a812-11eb-9208-664a835b596b.gif)\r\n\r\nThe visual design (horizontally layed out) is taken from the [Tile component usage guidelines](https://www.carbondesignsystem.com/components/tile/usage/#selectable)",
+      "comments": [
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/8523#issuecomment-899694988",
+          "body": "I see that this problem was fixed in https://github.com/carbon-design-system/carbon/pull/8529 but it looks like it was recreated in https://github.com/carbon-design-system/carbon/pull/9067."
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 23064,
+      "title": "Select: add visual regression tests",
+      "url": "https://github.com/microsoft/fluentui/issues/23064",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Visual test coverage request, not library regression.",
+      "issueBody": "## Problem\r\n\r\nSelect recently had a [regression where its icon was incorrectly laid out](https://github.com/microsoft/fluentui/pull/23049). There is no immediately obvious change that lead to this but visual regression tests would have caught it.\r\n\r\nAdd visual regression (VR) tests for v9 Select",
+      "comments": [
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/23064#issuecomment-1285500648",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes. \n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 21814,
+      "title": "DropDown Multiple Selection Regression Bug",
+      "url": "https://github.com/microsoft/fluentui/issues/21814",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Original primary symptom pointer scrollbar/hover wheel behavior.",
+      "issueBody": "<!--\r\nThanks for contacting us! We're here to help.\r\n\r\nBefore you report an issue, check if it's been reported before:\r\n\r\n  * Search: https://github.com/microsoft/fluentui/search?type=Issues\r\n  * Search by area or component: https://github.com/microsoft/fluentui/issues/labels\r\n\r\nNote that if you do not provide enough information to reproduce the issue, we may not be able to take action on your report.\r\n-->\r\n\r\n### Environment Information\r\n\r\n- **Package version(s)**: (fill this out)\r\nAny version >= 0.52.2. This is the rough version I can trace on the demo web. This is a regression bug, previous versions are good. It could be completely reproducible in https://fluentsite.z22.web.core.windows.net/0.52.2/components/dropdown/definition#types-multiple\r\n\r\n- **Browser and OS versions**: (fill this out if relevant)\r\nN/A\r\n\r\n### Please provide a reproduction of the bug in a codepen:\r\n1. go to dropdown => multiple selection \r\n2. selection all dropdown options and make sure there is a scroll bar\r\n3. mouse hover inside the dropdown but not  on any pills\r\n4. [try scroll up and down, the page is scrolling instead of the expected dropdown box.](https://gyazo.com/bab85e6e1156afa3f6ea3af1c359db0a)\r\n5. [Drag and move the scroll bar of the dropdown box, not work\r\n](https://gyazo.com/f2f15dd9afdafe1ae314837f634da5a9)\r\n6. now, hover mouse pointer on pill, and scroll. it only works when hovering on pills.\r\n\r\n#### Actual behavior:\r\n\r\nPlease see the attached gif above\r\n\r\n#### Expected behavior:\r\n\r\n[A good example in vrsion 0.51.7](https://gyazo.com/5f1bd90ec0e2582e6f99522157286e73)\r\n\r\n### Priorities and help requested:\r\n\r\nAre you willing to submit a PR to fix? (Yes, No)\r\nNo. \r\nRequested priority: (Blocking, High, Normal, Low)\r\nHigh\r\nProducts/sites affected: (if applicable)\r\nMicrosoft Product",
+      "comments": [
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/21814#issuecomment-1194845215",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes. \n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/21814#issuecomment-1195777657",
+          "body": "This issue is still reproducible on 0.63.0."
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/21814#issuecomment-1195818310",
+          "body": "@sctamms do you want me to reopen this one?"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/21814#issuecomment-1195863113",
+          "body": "@khmakoto Just checked in with the team; we will move away from this dependency in the future so feel free to keep closed."
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 18024,
+      "title": "[Bug Report][3.3.7] VSwitch regression - readonly switch is not clickable anymore",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/18024",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Readonly switch intentional no-click behavior; original criterion pointer click.",
+      "issueBody": "### Environment\r\n**Vuetify Version:** 3.3.7\r\n**Last working version:** 3.3.6\r\n**Vue Version:** 3.3.4\r\n**Browsers:** Chrome 115.0.0.0\r\n**OS:** Linux x86_64\r\n\r\n### Steps to reproduce\r\nCreate a v-switch with the readonly property set to true and try to click it.\r\n\r\n### Expected Behavior\r\nExpected the click event to be triggered even when the state of the switch does not change\r\n\r\n### Actual Behavior\r\nNo click event is triggered. It worked prior to version 3.3.7\r\n\r\n### Reproduction Link\r\n[https://play.vuetifyjs.com/#...](https://play.vuetifyjs.com/#eNqlUctuwjAQ/BXLl4JE4gOVKqG0ot+BOZh4aVz8ku2EIpR/r+MYisKhVD3ZO7ue2Rlvzvjd2rJrAa9wFUBZyQK8UY1Q1RXM2nRNRW10YEKDy1AC/VGEukGN4FBwiH3p0coB40bL0yvFwbVAMVrXUtSHWKcTeITIX2j2TPpfeCoyXXFARgcVuXEWS187YUMagi9rXEAc9qyVAZ1HMgWhMdyvLjVCWXA2/4EiaLQ3EkppPmZPeeJpfun3i/E2nv2wxlUYL7BQg3KhmC0/vdEx/8RMc8NTfJWnOH7QUFPchGD9ipCa6/iMgxSdKzUEoq0i6zhGXKuDUDFHo9bLclk+Ey58uIVL8KrYOXP04CIJxXnRJBPE/vSAVJ5MCi+jQoYKyXZ+kLijJlGvA1c40BwcuEcdTZ7dupq07pzl5PuYtxT64CdR1z7FvLks+S/LiWxg2g6C/QKnPaNyeoC33/wOIt4=)\r\n\r\n### Other comments\r\nI use this to show a \"Are you sure?\" dialog before changing the state of the switch myself.\r\n\r\n\r\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/18024#issuecomment-1673116922",
+          "body": "Tooltips are unfortunately also disabled now when the switch is in readonly mode."
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/18024#issuecomment-1673191155",
+          "body": "b32d03c3a774087cceed17df9b1b138e3fce5ca3\r\n\r\nDoesn't seem to be possible without #15904"
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/18024#issuecomment-1685817095",
+          "body": "I see #15904 made it into v3.4.0-alpha.0. Great!\r\nI did try v3.4.0-alpha.0 (using the Reproduction Link) but the \"clicked\" event is still not there in readonly mode."
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/18024#issuecomment-1794750409",
+          "body": "I just tried with v3.4.0-beta.0, but not luck. Will this issue be fixed in v3.4.0? \r\n\r\nThanks"
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 16637,
+      "title": "[Bug Report][3.1.4] v-text-field - change event not handled by component (Vuetify 2 regression)",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/16637",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Vuetify2->3 framework change/payload contract, no same-framework working pair.",
+      "issueBody": "### Environment\r\n**Vuetify Version:** 3.1.4\r\n**Last working version:** 2.6.14\r\n**Vue Version:** 3.2.47\r\n**Browsers:** Chrome 109.0.0.0\r\n**OS:** Windows 10\r\n\r\n### Steps to reproduce\r\nIn Vuetify 2, one could use the `change` event on v-text-field to mimic the behavior of the .lazy modifier on `input` HTML elements.\r\n\r\nIn Vuetify 3, v-text-field no longer has specific handling for `change`, so it instead falls to the HTML `input` element and receives an `Event` as a payload, rather than the value of the text field like it did in Vuetify 2.\r\n\r\n### Expected Behavior\r\n`change` event on v-text-field is emitted with the text field's value\r\n\r\n### Actual Behavior\r\n`change` event on v-text-field is emitted with the raw Event object\r\n\r\n### Reproduction Link\r\n[https://play.vuetifyjs.com/#...](https://play.vuetifyjs.com/#eNqVUcuu0zAQ/ZXBm7ZSEgOXVWlREULiA5BYNF34JpPG3Pgh2wlcRfl3xnlUoReQ2CQez5kz5xyfe/bR2qxrke3ZIaCyjQj4IdcAhy4V1o7HsVBC6rka64A/Q1pJbEqgpimxOeZM+WvO4FTUQl/xaPSn8QD8Nrj8vz5bBKkh1AiRCSYm8Wg6TEDoMnY0WIfeA+qADoyDokHhoDJF629K6rc3coB53+eORvz+huErUN9P6ibMMMwG+cphLCbvB77KhEpfOGkDeAxtbEtljQvQg8MqoY8oguwQBqicUbChWDdxrDDaB6Bs4BiR280XbBoD34xryleb3QJY6xqRE932fNm9z3XVaiqNhiXVrRVOKKRodn1UvR7PbOvrFSDX5PPAJ/kknCVs0k6mbfbdG03vP7Lkc8PnbA/jTbwjJ7HOWR2C9XvOW22frllhFD9Rj7tWB6kwLY06PWQP2etUNLYW2TteSh/W7Qy9Sh+d+eHR0eKcJasdQVbPf9szt4n+zUI7X0XKF1Sc+Dt0qUNdokP3T/l32D9ZuIO8sBFXU8YDJdtI/eTvQi38GOh5Ufhf/pTU2UgQpy9xyZCw3zTS1nGOXX4B0Q1GWQ==)\r\n\r\n\r\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/16637#issuecomment-1434260123",
+          "body": "I do have the same issue and currently have to workaround, by listening to the `update:focused` event while also listening to the `update:modelValue` event to check, wether a change of the value has actually happened.\r\n\r\nIt would be nice, if this would work like it did in Vuetify 2."
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/16637#issuecomment-1731267226",
+          "body": "Same need here. Or add the possibility to use the `.lazy` modifier to simplify all of it"
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 1517,
+      "title": "[Labs/Popover2] regression from original Popover for .pt-button-group",
+      "url": "https://github.com/palantir/blueprint/issues/1517",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Popover2 new-component styling compared to other API, no same-package working-release keyboard criterion established.",
+      "issueBody": "`react-popper` adds an extra wrapper tag:\r\n\r\nhttps://github.com/souporserious/react-popper/blob/ef520ee1213f30d3af3f10c6f5b4a04a888deb73/src/Manager.jsx#L36\r\n\r\n**But**\r\n\r\n`.pt-button-group` expects its **direct children** to be `.pt-button` or `.pt-popover-target` : \r\nhttps://github.com/palantir/blueprint/blob/dd90bfa0943dd6ac2ea1d233162cc3c21aa4e701/packages/core/src/components/button/_button-group.scss#L102-L116\r\n\r\nSetting `rootElementTag` to `false`, which should remove `react-popper`'s Manager's wrapper does not work:\r\n\r\n```\r\ninvariant.js:44 Uncaught Error: Manager.render(): A valid React element (or null) must be returned. You may have returned undefined, an array or some other invalid object.\r\n```\r\n\r\nIt's because `children` is an array of 2 React components:\r\n\r\nhttps://github.com/palantir/blueprint/blob/dd90bfa0943dd6ac2ea1d233162cc3c21aa4e701/packages/labs/src/components/popover/popover2.tsx#L268-L288\r\n\r\nhttps://github.com/souporserious/react-popper/blob/ef520ee1213f30d3af3f10c6f5b4a04a888deb73/src/Manager.jsx#L38-L40\r\n\r\nOf course I hacked something in my own project and Popover2 is in Lab so I have no expectation or need for this getting fixed before it is moved to Core to replace Popover for `2.0`.\r\n\r\nThanks for the great work, as usual!",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/1517#issuecomment-326301548",
+          "body": "For anyone looking for a quick fix, this should help:\r\n\r\n```scss\r\n.pt-button-group:not(.pt-minimal) {\r\n  :not(:first-child) .pt-popover-target .pt-button {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0;\r\n  }\r\n\r\n  :not(:last-child) .pt-popover-target .pt-button {\r\n    margin-right: -$button-border-width;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0;\r\n  }\r\n}\r\n```"
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/1517#issuecomment-333651032",
+          "body": "I also fixed a separator issue with `.minimal`:\r\n\r\n```scss\r\n.pt-button-group {\r\n  &.pt-minimal {\r\n    > :last-child .pt-popover-target .pt-button {\r\n      margin-right: 0;\r\n      &::after {\r\n        display: none;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n``` "
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/1517#issuecomment-872516930",
+          "body": "> For anyone looking for a quick fix, this should help:\r\n> \r\n> ```css-scss\r\n> .pt-button-group:not(.pt-minimal) {\r\n>   :not(:first-child) .pt-popover-target .pt-button {\r\n>     border-top-left-radius: 0;\r\n>     border-bottom-left-radius: 0;\r\n>   }\r\n> \r\n>   :not(:last-child) .pt-popover-target .pt-button {\r\n>     margin-right: -$button-border-width;\r\n>     border-top-right-radius: 0;\r\n>     border-bottom-right-radius: 0;\r\n>   }\r\n> }\r\n> ```\r\n\r\nHi Benoit, I'm running into this issue. Where should the above css go to fix the issue?"
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/1517#issuecomment-872552202",
+          "body": "@marcoamonteiro this is a very old issue and it refers to an old version of Popover2. If you are experiencing a similar problem now with `@blueprintjs/popover2`, please file a new issue."
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 340,
+      "title": "Regression in DateInput",
+      "url": "https://github.com/palantir/blueprint/issues/340",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Reporter explicitly says documented value is Date, string unsupported; excluded under P22 supported last-good construct rule.",
+      "issueBody": "Hi guys!\r\n\r\nI got a regression in updating from 1.1.0 to 1.2.0 (latest).\r\n\r\nThe bug comes from [this PR](https://github.com/palantir/blueprint/pull/297).\r\n\r\nThe component crashes during its instantiation because of [this change](https://github.com/palantir/blueprint/pull/297/files#diff-2899fd9fc14d599c6e4062f791d99120L135).\r\n\r\nSome screenshots:\r\n\r\n![screen shot 2016-12-09 at 00 47 57](https://cloud.githubusercontent.com/assets/591804/21040618/b87be8aa-bdab-11e6-9766-0734501da2a1.png)\r\n\r\n![screen shot 2016-12-09 at 00 47 24](https://cloud.githubusercontent.com/assets/591804/21040620/bbc5d106-bdab-11e6-9b19-c6de34328d76.png)\r\n\r\nIt worked before to pass a `string` to the component because of the `moment(date)`.\r\n\r\nNow it doesn't work anymore because of the `moment([date.getFullYear(), ...])`.\r\n\r\nTo be honest, your doc says that `value` should be a `Date` and not a `string`, so...\r\n\r\nWe could indicate in the changelog the potential breaking change and a possible solution, e.g.\r\n\r\n> replacing `value={value}` by `value={new Date(value)}`\r\n\r\nOr maybe a workaround in the code to keep the previous behaviour?",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-265970552",
+          "body": "Thanks for filing, @ggregoire! This is helpful context, but I'm going to close this as a duplicate so that we can track the issue in a single place in #280. Feel free to chime in over there."
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266022069",
+          "body": "Actually the correct duplicate is #322. Fixed for today's upcoming release."
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266079234",
+          "body": "> Thanks for filing, @ggregoire! This is helpful context, but I'm going to close this\r\n\r\n> Fixed for today's upcoming release.\r\n\r\nGuys, did you read my bug description beyond the first 3 lines?\r\n\r\nHow [this fix](https://github.com/mfedderly/blueprint/commit/76a1ee7b29f71b30b8c60ae371c5283950ea7fbd) could fix this?\r\n\r\n![screen shot 2016-12-09 at 00 47 24](https://cloud.githubusercontent.com/assets/591804/21040620/bbc5d106-bdab-11e6-9b19-c6de34328d76.png)\r\n\r\nCould you change this\r\n\r\n```javascript\r\nif (null == date) {\r\n    return moment(null);\r\n}\r\n```\r\n\r\nto\r\n\r\n```javascript\r\nif (null == date || typeof date === \"string\") {\r\n    return moment(date);\r\n}\r\n```\r\n\r\nfor today's upcoming release?\r\n\r\nThanks."
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266083171",
+          "body": "Some tests to avoid future regressions:\r\n\r\n```javascript\r\nit(\"renders without crashing\", () => {\r\n  const DATE_NULL = null;\r\n  ReactDOM.render(<DateInput value={DATE_NULL} />, document.createElement(\"div\"))\r\n\r\n  const DATE_STRING = \"1988-08-07 11:01:12\";\r\n  ReactDOM.render(<DateInput value={DATE_STRING} />, document.createElement(\"div\"))\r\n})\r\n```"
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266103749",
+          "body": "Hey, you're right @ggregoire, sorry I overlooked that. Opened a new PR #342 which we will try to merge for today's upcoming release."
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266110131",
+          "body": "@adidahiya @cmslewis @giladgray Thanks for looking into it! :)"
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/340#issuecomment-266116755",
+          "body": "Whoops, sorry about that @ggregoire. Thanks for staying vigilant. "
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 28812,
+      "title": "Popover regression from 4.2.x to 4.3.x",
+      "url": "https://github.com/twbs/bootstrap/issues/28812",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Intentional sanitizer behavior documented by maintainer, no applicable restoration fix.",
+      "issueBody": "(Mac OS Mojave 10.14.4, Chrome 74.0.3729.157)\r\n\r\nIt looks like more complex `data-content` for a [Popover](https://getbootstrap.com/docs/4.3/components/popovers/) is not rendered correctly. For example, these two spans with a popover ([fiddle](https://jsfiddle.net/awjLxzhv/1/)):\r\n```html\r\n<span id=\"span-id-1\" data-toggle=\"popover\" data-placement=\"right\" data-html=\"true\" title=\"Title\" data-content=\"<button type='button' class='btn btn-secondary btn-sm' id='btn-id-1'>Button</button>\">POP</span>\r\n<span id=\"span-id-2\" data-toggle=\"popover\" data-placement=\"right\" data-html=\"true\" title=\"Title\" data-content=\"&lt;button type='button' class='btn btn-secondary btn-sm' id='btn'&gt;Button&lt;/button&gt;\">POP</span>\r\n```\r\n work fine with [v4.2.1](https://usebootstrap.com/cdn/4.2.1)\r\n\r\n![popover-4 2 1](https://user-images.githubusercontent.com/12053937/58236268-e2297180-7d85-11e9-958d-c1dc359c1589.jpg)\r\n\r\nbut the button in the Popover disappear when I switch to [v4.3.2](https://usebootstrap.com/cdn/4.3.1)\r\n\r\n![popover-4 3 1](https://user-images.githubusercontent.com/12053937/58236278-e6ee2580-7d85-11e9-9798-b99f32c8e4b3.jpg)\r\n\r\nThis seems to be the case with input elements in general, whereas text in `p` and `span` shows up ok.",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/28812#issuecomment-495117966",
+          "body": "Hi @jenstroeger,\r\n\r\nThat's the correct behavior and you'll find why by reading that: https://blog.getbootstrap.com/2019/02/13/bootstrap-4-3-1-and-3-4-1/\r\n\r\nAnd you'll find how to fix that behavior here: https://getbootstrap.com/docs/4.3/getting-started/javascript/#sanitizer\r\n\r\nBTW it's a good practice to read changelogs when you update any libs \ud83d\udc4d "
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/28812#issuecomment-495127734",
+          "body": "@Johann-S, ugh, yes I missed that. All fixed and working now again, thank you \ud83d\udc4d\ud83c\udffc"
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 25428,
+      "title": "Popover positioning regression",
+      "url": "https://github.com/twbs/bootstrap/issues/25428",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "not admitted",
+      "reason": "Popover positioning visual criterion.",
+      "issueBody": "I built multi-level menu using Bootstrap 4 popovers. It worked like a harm with Popper 1.12.6 (Bootstrap 4-beta2), but since 1.12.7 menu positioning is broken. Tested with all versions including 1.13.0-next, and Bootstrap 4.0.\r\n\r\nLooks like the second-level popover is placed incorrectly. It works if I use Bootstrap 4.0 with Popper 1.12.6.\r\n\r\nhttps://codepen.io/anon/pen/mpYmVX\r\n\r\nI've found out that removing my `.popover-body { overflow-x: hidden; }` fixes the issue, but I need the popover scrollable.\r\n\r\nI created also https://github.com/FezVrasta/popper.js/issues/532, but I can't provide Popper-only test case.",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-360262641",
+          "body": "We'll have to look into why we're including that overflow."
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-360379212",
+          "body": "Sorry if I wasn't clear. That overflow style is added by my custom css not Bootstrap. However, I think it's a valid use-case even if you didn't think about popovers containing buttons that open another popovers before.\r\n"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-360759879",
+          "body": "I also have a popover placement issue from popper 1.12.7\r\nStill broken with popper 1.12.9\r\n1.12.6 works well\r\n\r\nAfter few investigation, it seems that if the element triggering the popover has a container with an overflow set to scroll or hidden and the popover doesn't have enough space to position itself in the container with the right placement then the popover rollback to an unexpected position.\r\n\r\nBootstrap 4.0.0 + popper 1.12.9 + container with overflow set to scroll > unexpected position\r\nhttps://codepen.io/anon/pen/RxXKgY\r\n\r\nBootstrap 4.0.0 + popper 1.12.6 + container without overflow > expected position\r\nhttps://codepen.io/anon/pen/opKBQM"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-361170069",
+          "body": "Created a new Popper ticket with simpler test case https://github.com/FezVrasta/popper.js/issues/535"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-361900574",
+          "body": "A workaround is to set `boundary: 'window'` (or 'viewport') in popover config. Maybe this should become a default for popover if Popper.js does not fix the issue on their side. For more see https://github.com/FezVrasta/popper.js/issues/535\r\n\r\n@Johann-S you think you can fix that, or you rather wait for @FezVrasta for an opinion?"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-371560903",
+          "body": "@ tompat you helped me bro.\r\nWith the sroll issue, working as expected\r\n"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-371781447",
+          "body": "@alecpl we have boundary option in our Popover/Tooltip plugins see : https://getbootstrap.com/docs/4.0/components/popovers/#options\r\n\r\nIs it still an issue ?"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-371783490",
+          "body": "As I said before it works with `boundary: 'window'`, but not with default settings."
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-371797403",
+          "body": "@mdo this issue can be solve if folks use `boundary: 'window'` for their Popovers but not sure if it's enough to close this issue \ud83e\udd14 "
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-380512546",
+          "body": "This happens because Popper.js considers as boundary element the closest `overflow !== initial` parent, this because in most of the cases this will make any popper get cut out by the parent.\r\n\r\nWe may improve the way the boundary element is detected to better detect this specific case where the `overflow !== initial` is not actually going to cut out a `position: absolute` popper.\r\n\r\nhttps://github.com/FezVrasta/popper.js/issues/611"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/25428#issuecomment-403749504",
+          "body": "I'll close this issue, because there is a solution using `boundary: window`"
+        }
+      ]
+    }
+  ]
+}
