@@ -473,3 +473,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 — P42 approved; fresh controls and criteria registered before cursor v2. See DR-0120 and docs/plans/2026-10-12-m9-registered-criteria.md.
 
 2026-10-12 — M9 registered evaluation complete: cursor v2 accepted for future registered studies, focus readers unchanged. See DR-0121 and docs/reports/M9-registered-evaluation.md.
+
+2026-10-12 — M9 closed after PR21 merge; archive published on results at `5774bab`. See DR-0122. No new execution.

@@ -1,6 +1,6 @@
 # M9 registered evaluation: cursor identity and focus-name reads
 
-Status: the authorised P42/DR-0120 run is complete; owner gate acceptance is pending. PR20 merged the registration through the retirement (`cfa43b3`) before these results existed, so they follow in a separate gate PR. All evidence is EXPLORATORY. No M7 verdict, detection rate, corpus, oracle, trigger or `protocol-freeze-v4` change. Registered criteria: [2026-10-12-m9-registered-criteria.md](../plans/2026-10-12-m9-registered-criteria.md). Proposal: [M9-remedy-evaluation-proposal.md](../plans/M9-remedy-evaluation-proposal.md).
+Status: the authorised P42/DR-0120 run is complete; accepted through PR21 merge on 2026-10-12 (DR-0122). PR20 merged the registration through the retirement (`cfa43b3`) before these results existed, so they follow in a separate gate PR. All evidence is EXPLORATORY. No M7 verdict, detection rate, corpus, oracle, trigger or `protocol-freeze-v4` change. Registered criteria: [2026-10-12-m9-registered-criteria.md](../plans/2026-10-12-m9-registered-criteria.md). Proposal: [M9-remedy-evaluation-proposal.md](../plans/M9-remedy-evaluation-proposal.md).
 
 ## Result
 
@@ -82,7 +82,7 @@ The table shows the early reads in each leg, the full-tree reads and NVDA's focu
 
 The job durations are administrative times, not billing or collector latency.
 
-The complete raw archive has 40 files, 151,272 bytes compressed, and was verified file for file against its [manifest](../research/m9-evaluation-evidence/archive-manifest.json). Bundle SHA-256: `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`. It contains no NVDA binaries. It is prepared locally for D6 publication on results after the owner accepts this gate.
+The complete raw archive has 40 files, 151,272 bytes compressed, and was verified file for file against its [manifest](../research/m9-evaluation-evidence/archive-manifest.json). Bundle SHA-256: `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`. It contains no NVDA binaries. It is published under D6 on results at `5774bab`, under `m9-registered-evaluation/` ([publication record](../research/m9-evaluation-evidence/archive-publication.json), DR-0122).
 
 ## Next step
 

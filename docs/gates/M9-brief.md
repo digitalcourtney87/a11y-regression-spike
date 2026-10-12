@@ -1,6 +1,6 @@
 # M9 gate brief
 
-2026-10-12. [Report](../reports/M9-registered-evaluation.md).
+2026-10-12. Both items accepted by the owner through PR21 merge on 2026-10-12 (DR-0122). [Report](../reports/M9-registered-evaluation.md).
 
 P42/DR-0120's single dispatch is consumed by run 38315343825. It used exactly two Windows jobs, which took 16m49s in total, against a cap of 120 runner-minutes. The run produced twenty valid exploratory blocks from 60 base-only attempts, and all 40 K1 brackets pass. There were no retries. The workflow is retired in source and disabled in GitHub.
 
@@ -16,6 +16,6 @@ Every registered prediction holds in 3/3 repetitions:
 
 **Reader decision.** DR-0120 item 3 already settled what happens when the readers agree with NVDA, so it needs no new owner decision. They did agree, so the Vuetify goal failure stays a journey-goal limit. Separately, owned markup with a hidden label and an `aria-hidden` copy reproduces Vuetify's "edit blank" signature exactly. That shows the mechanism is sufficient for the symptom, not that Vuetify uses it.
 
-**Cost and archive.** M8 and M9 together used 50m29s across six jobs. Model effort is estimated at tens of thousands of output tokens, single-agent. The independent gate review used about 219,000 subagent tokens. The 40-file raw archive is verified (SHA-256 `5a4fadb4…`) and will be published on results under D6 after acceptance.
+**Cost and archive.** M8 and M9 together used 50m29s across six jobs. Model effort is estimated at tens of thousands of output tokens, single-agent. The independent gate review used about 219,000 subagent tokens. The 40-file raw archive is verified (SHA-256 `5a4fadb4…`) and is published on results at `5774bab` under D6.
 
 No further run is requested. The Phase 1 decision remains on 27 November 2026.

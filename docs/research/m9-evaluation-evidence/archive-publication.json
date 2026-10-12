@@ -1,0 +1,15 @@
+{
+  "status": "published",
+  "resultsCommit": "5774bab629a68509c02d8789c69714b5cc633738",
+  "path": "m9-registered-evaluation/",
+  "url": "https://github.com/digitalcourtney87/a11y-regression-spike/tree/5774bab629a68509c02d8789c69714b5cc633738/m9-registered-evaluation",
+  "ownerAcceptanceMerge": "f1bc20266b9e834fe219c126c58b1f706665127b",
+  "runId": 38315343825,
+  "bundleSha256": "5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d",
+  "bundleBytes": 151272,
+  "rawFilesVerified": 40,
+  "verifiedFromPushedBranch": true,
+  "registeredResultsReproducedFromPublishedArchive": true,
+  "nvdaBinariesIncluded": false,
+  "earlierArchivesPreserved": true
+}

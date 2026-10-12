@@ -4287,3 +4287,20 @@ Checklist: docs/plans/2026-10-12-m9-implementation.md.
 - **Archive.** The complete raw archive (40 files, 151,272 bytes, SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`) is verified by extraction. It will be published on results under D6 after acceptance.
 
 An independent gate review found no critical issues. It reproduced the analysis and the audit byte for byte and verified the archive. Its two wording corrections (C1's scope and the C1 deviation) and its minor notes are applied in the report, the brief and this record. The registered files, the analysis script and the results are unchanged. Report: docs/reports/M9-registered-evaluation.md. Brief: docs/gates/M9-brief.md.
+
+## DR-0122 Owner acceptance of the M9 gate and archive
+
+2026-10-12. Accepted. The owner merged PR21 at `f1bc20266b9e834fe219c126c58b1f706665127b` and instructed:
+
+> Merged, please publish the archive and continue
+
+Both items in docs/gates/M9-brief.md are accepted through that merge:
+
+1. The M9 evidence stands with its stated limits.
+2. Cursor v2 is the cursor model to register in any future study. v1 remains the frozen model behind M7 under `protocol-freeze-v4`, with no rescore. Using v2 in a study still needs that study's own registration or freeze.
+
+The focus readers stay unchanged, and the Vuetify goal failure stays a journey-goal limit (DR-0120 item 3). M9 is closed.
+
+Under D6, the prepared archive is published to results at `5774bab629a68509c02d8789c69714b5cc633738`, directory `m9-registered-evaluation/`. Bundle SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`, 151,272 bytes. All 40 raw files are verified against the committed manifest, again from the pushed branch. The pre-committed analysis reproduces `registered-results.json` byte for byte from the published copy. There are no NVDA binaries, and the six earlier archives are unchanged. The results README gains M9 verification steps (DR-0045). Publication metadata: docs/research/m9-evaluation-evidence/archive-publication.json.
+
+PR21 had no review threads. Devin reported no issues; the Codex review did not run because its usage limit was reached. All three exploratory workflows (P40, P41, P42) remain `disabled_manually`. No further run, remedy, freeze, rescore or Phase 1 commitment is authorised. The proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
