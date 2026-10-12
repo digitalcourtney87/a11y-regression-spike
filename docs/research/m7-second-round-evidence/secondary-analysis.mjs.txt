@@ -1,0 +1,11 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {correctSymptom} from '../../../harness/src/oracles/arms.ts';
+import {oracleRules} from '../../../harness/src/oracles/rules.ts';
+import {wilsonInterval} from '../../../harness/src/score/wilson.ts';
+const d=JSON.parse(readFileSync('artefacts/38276928082/report-m5-test-combined.json','utf8'));
+const items=new Map(readdirSync('corpus/items').filter(n=>n.endsWith('.json')&&!n.includes(' 2.')).map(n=>{const x=JSON.parse(readFileSync('corpus/items/'+n));return [x.id,x];}));
+const rules=oracleRules();
+const rows=d.scores.filter(s=>items.get(s.itemId).expected.kind==='regression');
+const detected=(s,a)=>s.arms[a].verdict==='FAIL'&&s.arms[a].symptoms.some(sym=>correctSymptom(sym,items.get(s.itemId).expected.symptom,rules));
+const result=['C_UNION','C_ADJUDICATED'].map(a=>{const residual=rows.filter(s=>detected(s,a)&&!detected(s,'B2'));const agree=rows.filter(s=>detected(s,a)===detected(s,'B2'));return {arm:a,chosenDevRule:1,residual:{k:residual.length,n:rows.length,wilson:wilsonInterval(residual.length,rows.length),items:residual.map(s=>s.itemId)},agreement:{k:agree.length,n:rows.length,wilson:wilsonInterval(agree.length,rows.length)}};});
+writeFileSync('docs/research/m7-second-round-evidence/secondary-rule-model.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

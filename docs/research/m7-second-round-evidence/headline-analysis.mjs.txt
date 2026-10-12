@@ -1,0 +1,19 @@
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { mulberry32 } from '../../../harness/src/score/stats.ts';
+import { correctSymptom } from '../../../harness/src/oracles/arms.ts';
+import { oracleRules } from '../../../harness/src/oracles/rules.ts';
+const root=process.cwd();
+const input=process.argv[2];
+const data=JSON.parse(readFileSync(input,'utf8'));
+const items=new Map(readdirSync(root+'/corpus/items').filter(n=>n.endsWith('.json')&&!n.includes(' 2.')).map(n=>{const it=JSON.parse(readFileSync(root+'/corpus/items/'+n,'utf8'));return[it.id,it];}));
+const rules=oracleRules();
+const rows=data.scores.filter(s=>items.get(s.itemId).expected.kind==='regression').map(s=>({s,it:items.get(s.itemId)}));
+const pairs=[['B2','B'],['C_UNION','B2'],['C_ADJUDICATED','B2'],['D_UNION','C_UNION'],['D_ADJUDICATED','C_ADJUDICATED']];
+const detected=(r,a)=>r.s.arms[a].verdict==='FAIL'&&r.s.arms[a].symptoms.some(sym=>correctSymptom(sym,r.it.expected.symptom,rules));
+function mean(rs,a){const by=new Map();for(const r of rs){const key=r.it.expected.symptom;const c=by.get(key)||[0,0];c[0]+=Number(detected(r,a));c[1]++;by.set(key,c);}return [...by.values()].reduce((t,[k,n])=>t+k/n,0)/by.size;}
+const clusters=[...new Set(rows.map(r=>r.it.patternId))].sort();
+const byCluster=new Map(clusters.map(c=>[c,rows.filter(r=>r.it.patternId===c)]));
+const comparisons=pairs.map(([x,y])=>{const rand=mulberry32(20261005),samples=[];for(let i=0;i<10000;i++){const rs=Array.from({length:clusters.length},()=>byCluster.get(clusters[Math.floor(rand()*clusters.length)])).flat();samples.push(mean(rs,x)-mean(rs,y));}samples.sort((a,b)=>a-b);const lower=samples[250],upper=samples[9750];return {x,y,point:mean(rows,x)-mean(rows,y),lower,upper,call:lower>0||upper<0?'difference':lower>-.08&&upper<.08?'equivalent within 0.08':'inconclusive'};});
+const result={regressions:rows.length,clusters:clusters.length,seed:20261005,resamples:10000,comparisons};
+console.log(JSON.stringify(result,null,2));
+if(process.argv[3])writeFileSync(process.argv[3],JSON.stringify(result,null,2)+'\n');
