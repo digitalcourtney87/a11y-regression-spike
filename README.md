@@ -44,3 +44,14 @@ Extract the three corpus bundles into one directory. The block bundles hold `.js
     zstd -d -c ../results-wt/g4/g4-soak.tar.zst | tar -xf - -C artefacts/g4-repro/soak
 
 Scoring the corpus needs a checkout whose frozen hash matches `protocol-freeze-v3`. The soak report is `npm run report:phase0 -- artefacts/g4-repro/soak`.
+
+## Verify and rebuild the G4 second round
+
+The owner accepted the amended77-pattern analysis by merging PR14 on2026-10-12. `g4-second-round/` preserves all704 files of run38276928082 plus the combined scorer outputs. The original59-pattern corpus and soak remain under `g4/`. No evidence or NVDA binaries were added to the main branch archive.
+
+    (cd ../results-wt/g4-second-round && shasum -a 256 -c SHA256SUMS)
+    mkdir -p artefacts/g4-repro/second-round
+    zstd -d -c ../results-wt/g4-second-round/g4-second-round-evidence.tar.zst | tar -xf - -C artefacts/g4-repro/second-round
+    npm run score -- --split test --runs artefacts/g4-repro/corpus,artefacts/g4-repro/second-round
+
+First rebuild the original corpus with the three bundles above. Combined scoring requires a checkout whose frozen hash matches `protocol-freeze-v4`, not v3. The second-round MANIFEST lists every raw file hash, the freeze commit/hash, run ids, image and package pins. The prepared bundle was verified byte-for-byte before publication and is under50MB.
