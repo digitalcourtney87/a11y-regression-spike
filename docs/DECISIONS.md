@@ -4304,3 +4304,21 @@ The focus readers stay unchanged, and the Vuetify goal failure stays a journey-g
 Under D6, the prepared archive is published to results at `5774bab629a68509c02d8789c69714b5cc633738`, directory `m9-registered-evaluation/`. Bundle SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`, 151,272 bytes. All 40 raw files are verified against the committed manifest, again from the pushed branch. The pre-committed analysis reproduces `registered-results.json` byte for byte from the published copy. There are no NVDA binaries, and the six earlier archives are unchanged. The results README gains M9 verification steps (DR-0045). Publication metadata: docs/research/m9-evaluation-evidence/archive-publication.json.
 
 PR21 had no review threads. Devin reported no issues; the Codex review did not run because its usage limit was reached. All three exploratory workflows (P40, P41, P42) remain `disabled_manually`. No further run, remedy, freeze, rescore or Phase 1 commitment is authorised. The proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
+
+## DR-0123 Decision pack drafted for 27 November
+
+2026-10-13. Drafted at the owner's request after PR22 merged at `0733684ce9d5ee2a3103152e8c5cd728077aeb03` ("Merged, please draft the decision pack"). This is documentation only: no run, measurement, verdict or frozen-path change.
+
+The pack (docs/gates/decision-2026-11-27.md) summarises the accepted records for the proceed/stop decision (DR-0003). It covers:
+
+- the hypotheses with their confirmatory intervals at 77 patterns;
+- the failure taxonomy and baseline-reachability causes;
+- measured costs;
+- risks and reproduce commands.
+
+The brief has five yes/no items. The technical recommendation is to proceed in a scoped form. Under it, events (B2) are the core detector and NVDA runs selectively (Arm D UNION). NVDA's value under adjudication is treated as unsettled, and journey reachability is addressed before any confirmatory study. Commercial content is excluded (DR-0014).
+
+Decisions under DR-0045:
+
+- **Measured runner time.** It comes from the GitHub Actions API: per-job durations for all 258 workflow runs, recorded with a read-only derivation in docs/research/decision-pack-evidence/. The totals are 6,366.5 Windows and 106.8 Linux job-minutes. These are administrative durations; the money cost is £0 on public standard runners, as recorded at G2.
+- **Model spend.** It stays with the owner's dashboard (P7). The pack cites only the recorded subagent figures.

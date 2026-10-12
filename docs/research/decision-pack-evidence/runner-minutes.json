@@ -1,0 +1,3438 @@
+{
+ "repository": "digitalcourtney87/a11y-regression-spike",
+ "method": "Sum of per-job completed_at - started_at from the GitHub Actions API; administrative durations, not billing.",
+ "runs": 258,
+ "totalMinutes": {
+  "windows": 6366.5,
+  "linux": 106.8,
+  "other": 0.0
+ },
+ "byWorkflowMinutes": {
+  "ci": {
+   "runs": 144,
+   "jobs": 144,
+   "windows": 0.0,
+   "linux": 100.1,
+   "other": 0.0
+  },
+  "m3-oss-repro": {
+   "runs": 46,
+   "jobs": 333,
+   "windows": 768.4,
+   "linux": 4.0,
+   "other": 0.0
+  },
+  "m3-spa-build": {
+   "runs": 16,
+   "jobs": 51,
+   "windows": 137.9,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "m3-spa-probe": {
+   "runs": 2,
+   "jobs": 6,
+   "windows": 11.0,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "m4-items": {
+   "runs": 32,
+   "jobs": 510,
+   "windows": 4819.5,
+   "linux": 2.7,
+   "other": 0.0
+  },
+  "m8-calibration": {
+   "runs": 1,
+   "jobs": 2,
+   "windows": 14.0,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "m8-working-recovery": {
+   "runs": 1,
+   "jobs": 2,
+   "windows": 19.6,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "m9-registered-evaluation": {
+   "runs": 1,
+   "jobs": 2,
+   "windows": 16.8,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "phase0-nvda": {
+   "runs": 11,
+   "jobs": 101,
+   "windows": 559.5,
+   "linux": 0.0,
+   "other": 0.0
+  },
+  "phase0-probe": {
+   "runs": 4,
+   "jobs": 8,
+   "windows": 19.7,
+   "linux": 0.0,
+   "other": 0.0
+  }
+ },
+ "perRun": [
+  {
+   "id": 36989015142,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-02T09:18:25Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 18.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37081498265,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T00:18:22Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 25.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37110866991,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T08:47:21Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 26.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37111216261,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T08:53:42Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 26.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37111758115,
+   "workflow": "phase0-probe",
+   "event": "push",
+   "conclusion": "failure",
+   "started": "2026-10-03T09:03:26Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 98.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37111906022,
+   "workflow": "phase0-probe",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T09:06:04Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 343.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37112285497,
+   "workflow": "phase0-probe",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T09:12:50Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 389.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37113715078,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T09:38:11Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 24.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37114407343,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T09:50:39Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 190.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37114407991,
+   "workflow": "phase0-probe",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T09:50:39Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 351.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37114709402,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T09:56:09Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 2263.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37115887572,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T10:16:48Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 4256.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37116163297,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T10:21:44Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 40.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37116243563,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T10:23:10Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37116418050,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T10:26:19Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 108.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37118051291,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T10:56:49Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 25.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37118438264,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T11:03:48Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 27.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119067877,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T11:15:24Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 172.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119070288,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T11:15:26Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119295670,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T11:19:38Z",
+   "jobs": 20,
+   "seconds": {
+    "windows": 5197.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119303535,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T11:19:47Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 32.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119611190,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-03T11:25:32Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 23.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119629441,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T11:25:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119632093,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T11:25:57Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 4422.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37119638620,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T11:26:05Z",
+   "jobs": 20,
+   "seconds": {
+    "windows": 3910.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37120683772,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T11:45:38Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37122536874,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T12:20:12Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1382.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37122539791,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T12:20:15Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37123001417,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T12:28:44Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 35.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37123262057,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T12:33:35Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37125153236,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T13:08:04Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 356.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37125434566,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T13:13:09Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37125908965,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T13:21:42Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 37.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37126215365,
+   "workflow": "m3-spa-probe",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T13:27:02Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 326.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37128795149,
+   "workflow": "m3-spa-probe",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:12:03Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 334.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37128795172,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "cancelled",
+   "started": "2026-10-03T14:12:03Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 54.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37128843985,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "failure",
+   "started": "2026-10-03T14:12:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 96.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37129009688,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:15:48Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 113.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37129580999,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:26:15Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 264.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37129754992,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:29:13Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 232.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37130160420,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:35:45Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 521.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37131615626,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "cancelled",
+   "started": "2026-10-03T14:59:25Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 485.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37131615681,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T14:59:25Z",
+   "jobs": 13,
+   "seconds": {
+    "windows": 1318.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37131752425,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:01:21Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 680.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37132740946,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:17:48Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 605.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37132740948,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:17:48Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 835.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37133618945,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "failure",
+   "started": "2026-10-03T15:32:45Z",
+   "jobs": 14,
+   "seconds": {
+    "windows": 1506.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37133618986,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:32:45Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 604.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134051642,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:40:09Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 578.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134051657,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "cancelled",
+   "started": "2026-10-03T15:40:09Z",
+   "jobs": 13,
+   "seconds": {
+    "windows": 1472.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134314476,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:44:33Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 701.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134314487,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:44:33Z",
+   "jobs": 12,
+   "seconds": {
+    "windows": 1301.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134734243,
+   "workflow": "m3-oss-repro",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:51:39Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 607.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37134734255,
+   "workflow": "m3-spa-build",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T15:51:39Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 616.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37135248823,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T16:00:19Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37136714091,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T16:24:10Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37139054732,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:02:23Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1031.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37139594634,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:11:27Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 934.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37140040580,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:18:42Z",
+   "jobs": 11,
+   "seconds": {
+    "windows": 2115.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37140786020,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:30:52Z",
+   "jobs": 11,
+   "seconds": {
+    "windows": 2192.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37141599755,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:44:08Z",
+   "jobs": 11,
+   "seconds": {
+    "windows": 2128.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37142093929,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:52:14Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 600.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37142491385,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T17:58:52Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 2083.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37143043955,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T18:07:43Z",
+   "jobs": 31,
+   "seconds": {
+    "windows": 26247.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37145610510,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T18:48:53Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 1026.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37146240397,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T18:59:06Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 71.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37148660221,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T19:39:15Z",
+   "jobs": 31,
+   "seconds": {
+    "windows": 26607.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37148663343,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T19:39:18Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 40.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37151361703,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-03T20:23:27Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37151395346,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T20:24:01Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37151537838,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T20:26:22Z",
+   "jobs": 31,
+   "seconds": {
+    "windows": 26274.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37151541484,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T20:26:26Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37154136328,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T21:09:56Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 2995.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37154139699,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T21:10:00Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37155995193,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T21:41:35Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 26.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37156210632,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T21:45:33Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 3025.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37156210650,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T21:45:33Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37157013736,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T22:01:04Z",
+   "jobs": 31,
+   "seconds": {
+    "windows": 26511.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37159803531,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T22:50:49Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 40.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37161106040,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T23:14:08Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 1027.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37161666333,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T23:24:19Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 1076.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37161698645,
+   "workflow": "m3-spa-build",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T23:24:57Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 839.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37162157850,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T23:33:28Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 1027.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37162479815,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-03T23:39:47Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 2032.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37162503892,
+   "workflow": "m3-spa-build",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-03T23:40:13Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 970.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37163250152,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-03T23:54:34Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37167227630,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-04T01:10:59Z",
+   "jobs": 31,
+   "seconds": {
+    "windows": 26374.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37167227663,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-04T01:10:59Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37168262367,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-04T01:31:14Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 904.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37168915475,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-04T01:44:16Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1299.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37169312828,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-04T01:52:21Z",
+   "jobs": 9,
+   "seconds": {
+    "windows": 2749.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 37169335614,
+   "workflow": "m3-spa-build",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-04T01:52:47Z",
+   "jobs": 4,
+   "seconds": {
+    "windows": 916.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38151638666,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T15:31:35Z",
+   "jobs": 17,
+   "seconds": {
+    "windows": 2132.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38151643266,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T15:31:39Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 777.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38152045502,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T15:37:24Z",
+   "jobs": 17,
+   "seconds": {
+    "windows": 2493.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38152360106,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T15:41:52Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 347.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38152662474,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T15:46:07Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 275.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38152902505,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T15:49:35Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 799.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38153476663,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T15:58:00Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 32.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38153637875,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T16:00:24Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 354.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38153637894,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T16:00:24Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38154870122,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T16:17:58Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38154876479,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T16:18:03Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38154911791,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T16:18:34Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 355.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38155494943,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T16:26:51Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38155507806,
+   "workflow": "m4-items",
+   "event": "push",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T16:27:02Z",
+   "jobs": 3,
+   "seconds": {
+    "windows": 44.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38155512025,
+   "workflow": "m4-items",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T16:27:05Z",
+   "jobs": 81,
+   "seconds": {
+    "windows": 24095.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38155513822,
+   "workflow": "phase0-nvda",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T16:27:07Z",
+   "jobs": 20,
+   "seconds": {
+    "windows": 11315.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38156720011,
+   "workflow": "m4-items",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T16:44:33Z",
+   "jobs": 81,
+   "seconds": {
+    "windows": 74646.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38156850373,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T16:46:25Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 26.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38157219478,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T16:51:49Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38173756427,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T20:48:35Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 842.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38174040191,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T20:52:44Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 783.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38174485006,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T20:59:24Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 45.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38174572204,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T21:00:36Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 797.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38175147535,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:08:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38175379953,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T21:12:09Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 873.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38175383368,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:12:12Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38175838328,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T21:18:47Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 8.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38175845787,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:18:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 45.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38176427417,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-11T21:27:15Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38176701257,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:31:07Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38176937862,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T21:34:36Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 902.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38176941608,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:34:39Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38177196773,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:38:22Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38177297242,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T21:39:52Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 817.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38177766395,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:46:45Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 37.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38178617035,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T21:59:50Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 927.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38178619484,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T21:59:52Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38178679721,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:00:38Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38178932799,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:04:17Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38178948350,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T22:04:31Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 885.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38179257999,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T22:09:05Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 918.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38179261270,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:09:08Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 50.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38180235709,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T22:23:32Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 850.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38180238916,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:23:35Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38181259137,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T22:39:00Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 970.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38181261311,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:39:02Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38181550220,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:43:28Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 45.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38181647925,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T22:44:57Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1078.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38182275389,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T22:54:47Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183199621,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T23:09:17Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 633.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183202473,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T23:09:20Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183329827,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T23:11:17Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183361845,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T23:11:48Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 860.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183405844,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T23:12:28Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183527424,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "failure",
+   "started": "2026-10-11T23:14:23Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 24.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183612490,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-11T23:15:41Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1034.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183616346,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-11T23:15:44Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183662508,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T23:16:27Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 52.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38183745383,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-11T23:17:49Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38211936352,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T06:19:07Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1075.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38211939572,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:19:10Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38212001736,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:19:57Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38212509902,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:26:15Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38212601361,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T06:27:26Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 925.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38212606177,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T06:27:29Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38212648914,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:28:02Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213037408,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T06:32:41Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1069.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213039398,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:32:42Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 30.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213153685,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:34:07Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213249342,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:35:16Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213610821,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T06:39:38Z",
+   "jobs": 8,
+   "seconds": {
+    "windows": 1119.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38213613754,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:39:40Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 35.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214207090,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:46:41Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 35.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214260193,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:47:19Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214490819,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T06:50:05Z",
+   "jobs": 9,
+   "seconds": {
+    "windows": 1145.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214495446,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:50:08Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214590437,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:51:13Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38214696117,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T06:52:28Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38215453781,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:01:05Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38215953512,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T07:06:44Z",
+   "jobs": 8,
+   "seconds": {
+    "windows": 1016.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38215957810,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:06:47Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38216214950,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:09:44Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 55.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38216780105,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T07:15:59Z",
+   "jobs": 8,
+   "seconds": {
+    "windows": 1179.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38217310424,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:21:48Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38217997072,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:29:08Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38218144064,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:30:39Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38219370287,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T07:43:46Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1065.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38219373725,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T07:43:48Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 37.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38225835969,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T08:48:19Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38226318174,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T08:52:56Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 933.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38226561593,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T08:55:21Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38226873394,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T08:58:19Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 822.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38226878192,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T08:58:21Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 35.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38227172822,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:01:06Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38227533511,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T09:04:28Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1093.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38227539270,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T09:04:31Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38227612172,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:05:13Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38227924229,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:08:07Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228262460,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T09:11:19Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 931.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228270017,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:11:23Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228365849,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T09:12:16Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228432526,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:12:54Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 39.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228576972,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T09:14:18Z",
+   "jobs": 7,
+   "seconds": {
+    "windows": 1027.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38228941441,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:17:35Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38229251699,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T09:20:25Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 942.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38229258919,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:20:29Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38229416776,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:21:57Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38229779177,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T09:25:22Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1047.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38229785568,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:25:25Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38230025922,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:27:40Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 38.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38231384520,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T09:40:17Z",
+   "jobs": 8,
+   "seconds": {
+    "windows": 1292.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38231390417,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:40:20Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38231820140,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:44:24Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38232414560,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T09:49:55Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 1299.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38232421757,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:50:00Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38232643822,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T09:52:01Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 69.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38234013533,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T10:04:35Z",
+   "jobs": 10,
+   "seconds": {
+    "windows": 1374.0,
+    "linux": 8.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38234020491,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T10:04:38Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 40.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38235235122,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T10:16:00Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1083.0,
+    "linux": 3.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38235241383,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T10:16:04Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 29.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38235360561,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T10:17:13Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38236198602,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T10:25:11Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 978.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38236211260,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T10:25:18Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 52.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38237508425,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T10:37:39Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38241500151,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T11:15:37Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 1023.0,
+    "linux": 4.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38241505422,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T11:15:40Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 37.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38241794977,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T11:18:23Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38242172957,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T11:21:57Z",
+   "jobs": 6,
+   "seconds": {
+    "windows": 969.0,
+    "linux": 6.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38244032876,
+   "workflow": "m3-oss-repro",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T11:39:13Z",
+   "jobs": 5,
+   "seconds": {
+    "windows": 916.0,
+    "linux": 7.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38244039928,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T11:39:17Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 37.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38245000620,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T11:48:11Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 32.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38275960492,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T16:14:09Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38276928082,
+   "workflow": "m4-items",
+   "event": "workflow_dispatch",
+   "conclusion": "success",
+   "started": "2026-10-12T16:22:22Z",
+   "jobs": 37,
+   "seconds": {
+    "windows": 24174.0,
+    "linux": 5.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38277421611,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T16:26:35Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38281138848,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T16:58:51Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 30.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38294689562,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T19:00:04Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 30.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38295933876,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T19:11:02Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38296680738,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T19:17:39Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 59.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38298492501,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "failure",
+   "started": "2026-10-12T19:33:59Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 42.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38298775548,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T19:36:33Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38299059098,
+   "workflow": "m8-calibration",
+   "event": "push",
+   "conclusion": "failure",
+   "started": "2026-10-12T19:39:11Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 842.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38299064172,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T19:39:14Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 44.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38300158837,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "failure",
+   "started": "2026-10-12T19:49:13Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 33.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38300368608,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T19:51:06Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38302518156,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T20:10:50Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38304548178,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T20:29:26Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 52.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38306913893,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T20:51:27Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 53.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38307204383,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T20:54:10Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 47.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38307364080,
+   "workflow": "m8-working-recovery",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T20:55:39Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 1178.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38307370661,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T20:55:43Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 58.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38309421719,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T21:14:57Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38311854322,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T21:38:07Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 51.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38312739563,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T21:46:45Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 50.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38312896237,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T21:48:18Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 52.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38313618130,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T21:55:22Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38313831609,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T21:57:33Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 46.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38315076817,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T22:10:11Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 49.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38315310051,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T22:12:29Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38315343825,
+   "workflow": "m9-registered-evaluation",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T22:12:50Z",
+   "jobs": 2,
+   "seconds": {
+    "windows": 1009.0,
+    "linux": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38315348706,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "cancelled",
+   "started": "2026-10-12T22:12:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38315417975,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T22:13:37Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38316871372,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T22:28:37Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 48.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38318278898,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T22:43:34Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38319396398,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T22:55:41Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 41.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38319595780,
+   "workflow": "ci",
+   "event": "pull_request",
+   "conclusion": "success",
+   "started": "2026-10-12T22:57:53Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 36.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": 38319708384,
+   "workflow": "ci",
+   "event": "push",
+   "conclusion": "success",
+   "started": "2026-10-12T22:59:08Z",
+   "jobs": 1,
+   "seconds": {
+    "windows": 0.0,
+    "linux": 43.0,
+    "other": 0.0
+   }
+  }
+ ]
+}
