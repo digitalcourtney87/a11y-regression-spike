@@ -1,3 +1,7 @@
+import { pruneAxTree, flattenAxTree } from "../../../harness/src/runner/axTree.ts";
+import { nextIndex, lineAt } from "../../../harness/src/runner/virtualCursor.ts";
+import { nodeMatchesGoal } from "../../../harness/src/runner/goals.ts";
+
 // Issue-derived task: mount the documented combobox and choose Beta by keyboard.
 export default async function check({ page, fresh }) {
   const scenario = async (p, keyboard, twin = false) => {
@@ -27,13 +31,28 @@ export default async function check({ page, fresh }) {
       if (await input.count() === 0) return { holds: false, detail: "Assignee input absent after documented combobox mount" };
       await input.click();
     }
-    await p.keyboard.press("Control+a");
+    if (!await input.evaluate((el) => el.selectionStart === 0 && el.selectionEnd === el.value.length)) throw new Error("Input select-all setup precondition failed");
     await p.keyboard.type("Be");
     await p.keyboard.press("ArrowDown");
     await p.keyboard.press("Enter");
     await p.waitForTimeout(200);
     const chosen = await p.locator("#chosen").textContent();
-    return { holds: chosen === "Chosen Beta", detail: `${chosen} (${keyboard ? "Tab" : "pointer"} entry)` };
+    const session = await p.context().newCDPSession(p);
+    const { nodes } = await session.send("Accessibility.getFullAXTree");
+    const flat = flattenAxTree(pruneAxTree(nodes));
+    let position = -1;
+    let reachedAt = null;
+    for (let attempt = 1; attempt <= 60; attempt++) {
+      const nextLine = nextIndex(flat, position, "BROWSE_NEXT");
+      if (nextLine === null) break;
+      position = nextLine;
+      if (lineAt(flat, position).some((i) => nodeMatchesGoal(flat[i], { name: "Chosen Beta", maxAttempts: 60 }))) {
+        reachedAt = attempt;
+        break;
+      }
+    }
+    await session.detach();
+    return { browseChosenReachedAt: reachedAt, holds: chosen === "Chosen Beta", detail: `${chosen} (${keyboard ? "Tab" : "pointer"} entry)` };
   };
   return { pointer: await scenario(page, false), keyboard: await scenario(await fresh(), true), benignTwin: await scenario(await fresh(), true, true) };
 }

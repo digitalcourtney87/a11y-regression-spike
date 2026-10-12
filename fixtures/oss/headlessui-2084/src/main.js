@@ -13,7 +13,7 @@ createApp({ setup() {
     h("button", { onClick: () => { open.value = true; } }, "Choose assignee"),
     open.value ? h(Combobox, { as: "div", modelValue: selected.value, "onUpdate:modelValue": (person) => { selected.value = person; } }, { default: () => [
       h(ComboboxLabel, null, { default: () => "Assignee" }),
-      h(ComboboxInput, { id: "assignee", displayValue: (person) => person.name, onChange: (event) => { query.value = event.target.value; } }),
+      h(ComboboxInput, { id: "assignee", onFocus: (event) => event.target.select(), onClick: (event) => event.target.select(), displayValue: (person) => person.name, onChange: (event) => { query.value = event.target.value; } }),
       h(ComboboxButton, null, { default: () => "Show choices" }),
       h(ComboboxOptions, null, { default: () => filtered.value.map((person) => h(ComboboxOption, { key: person.id, value: person }, { default: () => person.name })) }),
     ] }) : null,

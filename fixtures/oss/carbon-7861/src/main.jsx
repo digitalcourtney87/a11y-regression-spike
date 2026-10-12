@@ -8,6 +8,6 @@ import "./local.css";
 const items = [{ id: "alpha", text: "Alpha" }, { id: "beta", text: "Beta" }];
 function App() {
   const [selected, setSelected] = useState([]);
-  return <main style={{ padding: "2rem" }}><h1>Filterable selection</h1><MultiSelect.Filterable id="choice" titleText="Choices" placeholder="Choose items" items={items} itemToString={(item) => item?.text ?? ""} onChange={({ selectedItems }) => setSelected(selectedItems)} /><p id="chosen">Chosen {selected.map((item) => item.text).join(", ") || "none"}</p></main>;
+  return <main style={{ padding: "2rem" }}><h1>Filterable selection</h1><MultiSelect.Filterable id="choice" titleText="Choices" placeholder="Choose items" items={items} itemToString={(item) => item?.text ?? ""} onChange={({ selectedItems }) => setSelected(selectedItems)} /><p id="chosen">{`Chosen ${selected.map((item) => item.text).join(", ") || "none"}`}</p></main>;
 }
 ReactDOM.render(<App />, document.getElementById("root"));
