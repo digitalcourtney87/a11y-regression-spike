@@ -1,0 +1,220 @@
+{
+ "runId": 38307364080,
+ "source": "results m8-working-recovery/ bundle sha256 847c304bcc01756af1395e49ff1f8ea829d6680f709ff7d8303ea1bc1a50d898",
+ "method": "Speech events with receipt QPC from the first Tab's goal-check start up to the second Tab; absent leg has no speech. Read-only; no fixture execution.",
+ "rows": [
+  {
+   "leg": "nvda-absent",
+   "repetition": 1,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "textbox",
+    "backendId": 6
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": null,
+   "stepEndFocus": {
+    "name": "",
+    "role": "none",
+    "backendId": 17
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 6,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  },
+  {
+   "leg": "nvda-absent",
+   "repetition": 2,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "textbox",
+    "backendId": 5
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": null,
+   "stepEndFocus": {
+    "name": "",
+    "role": "none",
+    "backendId": 17
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 5,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  },
+  {
+   "leg": "nvda-absent",
+   "repetition": 3,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "textbox",
+    "backendId": 6
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": null,
+   "stepEndFocus": {
+    "name": "",
+    "role": "none",
+    "backendId": 17
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 6,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  },
+  {
+   "leg": "nvda-present",
+   "repetition": 1,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "editable text"
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": [
+    "main landmark",
+    "edit blank"
+   ],
+   "stepEndFocus": {
+    "name": "Bookmark this tab",
+    "role": "push button"
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 6,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  },
+  {
+   "leg": "nvda-present",
+   "repetition": 2,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "editable text"
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": [
+    "main landmark",
+    "edit blank"
+   ],
+   "stepEndFocus": {
+    "name": "Bookmark this tab",
+    "role": "push button"
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 6,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  },
+  {
+   "leg": "nvda-present",
+   "repetition": 3,
+   "step": "reach-autocomplete",
+   "outcome": "UNREACHABLE",
+   "firstTabGoalRead": {
+    "name": "",
+    "role": "editable text"
+   },
+   "firstTabDomFocus": {
+    "tag": "INPUT",
+    "id": "input-0",
+    "labels": [
+     "Select an item",
+     "Select an item"
+    ]
+   },
+   "speechBetweenFirstAndSecondTab": [
+    "main landmark",
+    "edit blank"
+   ],
+   "stepEndFocus": {
+    "name": "Bookmark this tab",
+    "role": "push button"
+   },
+   "stepEndFullTreeTextboxes": [
+    {
+     "backendId": 6,
+     "name": "Select an item"
+    },
+    {
+     "backendId": 25,
+     "name": ""
+    }
+   ]
+  }
+ ]
+}
