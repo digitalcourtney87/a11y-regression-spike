@@ -459,3 +459,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 M7 second-round freeze and confirmatory dispatch. See DR-0110 and docs/reports/M7-second-round.md.
 
 2026-10-12 M7 second-round execution and combined analysis complete. See DR-0111, docs/gates/G4-second-round.md, docs/gates/G4-second-round-brief.md and docs/reports/M7-second-round.md.
+
+2026-10-12 M7 closed after PR14 merge; second-round evidence archived on results. See DR-0112/0113, docs/reports/M7-followup-diagnosis.md and docs/plans/M8-diagnostic-proposal.md. No new execution or changed confirmatory verdict.

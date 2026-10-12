@@ -1,0 +1,17 @@
+{
+  "archiveRemoteCommitVerified": true,
+  "archiveChecksumVerified": true,
+  "archiveBytes": 4063099,
+  "archiveRawFiles": 704,
+  "sourceRun": 38276928082,
+  "diagnosticItemLegSideRepetitions": 60,
+  "items": 5,
+  "legs": 2,
+  "sides": 2,
+  "repetitions": 3,
+  "newWindowsDispatches": 0,
+  "newLocalFixtureExecutions": 0,
+  "changedFrozenPaths": [],
+  "originalVerdictsChanged": false,
+  "newPilotStatus": "proposed; P40 pending"
+}

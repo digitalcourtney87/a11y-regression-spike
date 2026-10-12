@@ -1,6 +1,6 @@
 # M7 second-round confirmatory run
 
-Status: complete. All 37 workflow jobs (plan plus 36 item jobs) succeeded on 2026-10-12; gate acceptance pending.
+Status: complete. All 37 workflow jobs (plan plus 36 item jobs) succeeded on 2026-10-12; accepted through PR14 merge on 2026-10-12 (DR-0112).
 
 The owner instructed “Please proceed” after the freeze/test/report sequence on 2026-10-12. PR13 merged at `22bbb9a2476fff62b34ac9de266a23ad9abfef22`. Annotated `protocol-freeze-v4` points to that exact commit and records:
 
@@ -38,6 +38,6 @@ Date-picker 5428 produces FAILs, but their symptoms are INTERACTION_FAILS_UNDER_
 
 This corpus has 51 seeded and 26 mined regressions; it is not a population estimate for product defects. No third expansion is pre-registered, and no M8 work has started.
 
-## Prepared D6 archive
+## Published D6 archive
 
-`artefacts/m7-second-round-archive/g4-second-round-evidence.tar.zst`: 704 files, 4,063,099 bytes; SHA-256 `05039cfd225f6674c1a6407541705e49d302ce00248e15c1694e9f7f61c64331`. Every archived file matches the downloaded source byte-for-byte. Mac filesystem metadata is excluded; all raw evidence files are retained and no NVDA binary is included. Manifest/checksums retained under docs/research/m7-second-round-evidence. Publish this prepared archive on results after owner gate acceptance.
+`artefacts/m7-second-round-archive/g4-second-round-evidence.tar.zst`: 704 files, 4,063,099 bytes; SHA-256 `05039cfd225f6674c1a6407541705e49d302ce00248e15c1694e9f7f61c64331`. Every archived file matches the downloaded source byte-for-byte. Mac filesystem metadata is excluded; all raw evidence files are retained and no NVDA binary is included. Manifest/checksums retained under docs/research/m7-second-round-evidence. Published on [results at 5ce8147](https://github.com/digitalcourtney87/a11y-regression-spike/tree/5ce8147bfba23ac7caca208a134c08791be07ff8/g4-second-round) after owner acceptance (DR-0112). The original preparation manifest/checksum is preserved; current publication metadata is in docs/research/m7-followup/archive-publication.json.

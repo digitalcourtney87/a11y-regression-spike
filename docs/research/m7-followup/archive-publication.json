@@ -1,0 +1,11 @@
+{
+  "status": "published",
+  "resultsCommit": "5ce8147bfba23ac7caca208a134c08791be07ff8",
+  "path": "g4-second-round/",
+  "url": "https://github.com/digitalcourtney87/a11y-regression-spike/tree/5ce8147bfba23ac7caca208a134c08791be07ff8/g4-second-round",
+  "ownerAcceptanceMerge": "a18e2a5708beaf99c0af112969e71712177df30d",
+  "bundleSha256": "05039cfd225f6674c1a6407541705e49d302ce00248e15c1694e9f7f61c64331",
+  "bundleBytes": 4063099,
+  "rawFilesVerified": 704,
+  "oldG4ArchivePreserved": true
+}
