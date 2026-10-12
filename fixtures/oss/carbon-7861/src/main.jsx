@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { MultiSelect } from "carbon-components-react";
 import "carbon-components/css/carbon-components.css";
+import "./local.css";
 
 // Issue #7861 / fix #8178: keyboard selection must accept the first filtered item.
 const items = [{ id: "alpha", text: "Alpha" }, { id: "beta", text: "Beta" }];

@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.2.0",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": 7,
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (pointer entry)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": 7,
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (Tab entry)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": 7,
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

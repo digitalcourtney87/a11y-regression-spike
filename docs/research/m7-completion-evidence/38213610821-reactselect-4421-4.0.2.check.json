@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "4.0.2",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Ocean -> ; Chosen Blue (pointer entry)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Ocean -> ; Chosen Blue (Tab entry)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Ocean -> ; Chosen Blue (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}
