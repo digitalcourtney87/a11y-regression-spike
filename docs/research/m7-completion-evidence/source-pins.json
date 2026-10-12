@@ -543,5 +543,67 @@
     "sharedFramework": {
       "vue": "3.2.41"
     }
+  },
+  {
+    "package": "bootstrap",
+    "releases": [
+      {
+        "version": "5.3.1",
+        "license": "MIT",
+        "dist": {
+          "shasum": "8ca07040ad15d7f75891d1504cf14c5dedfb1cfe",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.1.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDTwXCUEF1AI3csvOn7bpcqSyr0bYigEpt+9mEolnsV5AIgM46sAxpCFq9vzKuxYd1CSVsgkOVsHcgbPj/EtUX9cvo=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9651961
+        },
+        "published": "2023-07-26T08:02:20.041Z"
+      },
+      {
+        "version": "5.3.2",
+        "license": "MIT",
+        "dist": {
+          "shasum": "97226583f27aae93b2b28ab23f4c114757ff16ae",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.2.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDrx4VVjwpU5+XqZS8bkHdvesyxX5QkN4f8bZ63+Gb36QIhANcCxLGB350n5wPWps65zbwVnT0zFepl/E29ALb7roJt",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9660342
+        },
+        "published": "2023-09-14T14:27:51.474Z"
+      },
+      {
+        "version": "5.3.3",
+        "license": "MIT",
+        "dist": {
+          "shasum": "de35e1a765c897ac940021900fcbb831602bac38",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.3.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCB3M+cQa7EzKYaDM+5yTXIgKLwlfFYISOOdcxXmuhA9QIgC8m6rDgZbP8AK/woLZYWoifF7xajv4UgxH/Bqj/WokQ=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9665519
+        },
+        "published": "2024-02-20T15:21:20.251Z"
+      }
+    ],
+    "sharedFramework": {
+      "@popperjs/core": "2.11.8"
+    }
   }
 ]

@@ -199,3 +199,9 @@ A-007 batch-twenty unsplit Bootstrap#39189: native data-api modal with valid HTM
 ### A-012: Seventh through ninth second-round mined patterns
 
 2026-10-12; owner completion instruction and “Please continue”, P22/P39; DR-0103. Append Carbon FilterableMultiSelect #7861, Chakra Editable #6693 and Headless Vue Combobox #2084 after matching final exploratory checks/locks, accessible result diagnostics and width-only twins. Registry/pattern/split, nine new items, three twin spec/patches and journeys change frozen set after G4 exposure. Prior assignments/items and measurement/scoring definitions remain unchanged. No cases selected from G4 misses, no new strategy/oracle/threshold/context and no assigned execution before a new owner tag. No tag applied.
+
+### A-013: Tenth second-round mined pattern
+
+2026-10-12; owner completion instruction and “Please continue”, P22/P39; DR-0104. Append Bootstrap#39189 after two matching original activation/focused-dialog checks and dependency locks. Registry/pattern/split, three items and twin spec/patch/journey change the frozen set after G4 exposure. Prior assignments/items and measurement definitions preserved. No cases selected from G4 misses; no assigned execution, new tag or M8 work.
+
+A-007 batch-twenty-three unsplit Base UI#5532/#5432: one composite ref-loop defect with reported1.6.0/1.7.0 and published1.8.0 fix#5441. Same compatible React18.2.0 and react-router7.6.2 across versions; original router tabs mount/settle criterion, native Show tabs activation and ordinary Overview focus. Do not upgrade framework after outcomes to manufacture a failure. Pointer control and fresh width-only twin, existing safe workflow only.

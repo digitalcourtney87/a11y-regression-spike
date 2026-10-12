@@ -4031,3 +4031,18 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Append three existing JOURNEY_BLOCKED patterns, each with a test version pair, CSS_ONLY twin, exact unchanged control and declared journey. Both refs for each share immutable fixture commit de00f9cde16b733ae725f885ba27b3718994f31d. Manual all-test batch records fraction 1, unused seed 0 and three test assignments; preserve prior assignments/items. Journeys use frozen TAB/TYPE/PRESS keys and explicit focus-mode toggle before DOCUMENT_TOP/BROWSE_NEXT. Carbon targets the actual native textbox role, avoiding its older outer button wrapper; Chakra targets resulting Text textbox, Headless targets Assignee combobox. No oracle, trigger, threshold, scoring or execution safeguard changes. Actual assigned NVDA execution remains unperformed until a new owner tag.
 
 **Progress.** Nine of 18 additions built: 68 test, 20 dev, 88 patterns and 228 items; nine still needed, availability unestablished. Bootstrap #39189 is unsplit and scheduled under its recorded source-supported plan. Public source search continues under P39/P22; the repository frame is not a frozen measurement definition. No new tag, confirmatory execution or M8 work.
+
+## DR-0104 Bootstrap colon-id modal admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Bootstrap#39189 reports5.3.1 working/5.3.2 broken for a native data-api modal whose valid HTML id contains a colon. Merged fix#39201 explicitly tests the same colon-id construct; published5.3.3 contains the selector parsing repair. Earlier maintainer speculation about accidental support is retained alongside that source evidence. Direct Popper2.11.8 is identical across versions and predates5.3.1. Independent exploratory runs38219370287/38226318174 match all check outputs and resolved dependency locks, with successful installs/builds. Pointer and pure Tab/Enter activation open and focus the named Details dialog on good/fixed; broken fails with the expected invalid-selector error. No external requests. The fresh width-only twin preserves those results. The broken library error is retained, not hidden or called a setup error.
+
+**Construction.** Append oss--bootstrap-39189 as existing JOURNEY_BLOCKED, test version pair, CSS_ONLY twin and exact unchanged control. Both refs use immutable fixture commit b5c3ccb4bb1387903fa80d8494b5cc07a912cc06. The frozen journey tabs to Open details, then presses Enter once with a dialog|Details focus goal. Manual all-test append, fraction1/unused seed0, preserving prior assignments/items. No new oracle, strategy, threshold, context or changed symptom; no assigned NVDA execution before a new tag. Evidence: docs/research/m7-completion-evidence/bootstrap-repeat-comparison.json.
+
+**Progress.** Ten of18 additions built:69 test,20 dev,89 patterns,231 items; eight still needed. Base UI router-tab construct remains unsplit and exploratory. No new tag or M8 work.

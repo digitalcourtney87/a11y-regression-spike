@@ -777,6 +777,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Combobox displayValue incorrectly evaluates unspecified defaultValue in1.7.5; documented controlled object construct cannot choose Beta. Reported1.7.4 works;1.7.6 guards undefined default values (#2087). Shared Vue3.2.41 and supported uniform native select-all props; original chosen-value criterion, ordinary Chosen Beta browse goal and CSS twin match38215953512/38216780105 (DR-0103)."
+    },
+    {
+      "id": "oss--bootstrap-39189",
+      "batch": "oss-regression",
+      "context": "oss:twbs/bootstrap#39189",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Native modal activation with a valid colon-containing HTML id fails in Bootstrap5.3.2. Reported5.3.1 working and published5.3.3 fix39201 support the same construct, shared Popper2.11.8. Pointer and Tab/Enter must open and focus Details; good/fixed hold, broken retains selector error. Checks and resolved locks match independently (DR-0104)."
     }
   ]
 }
