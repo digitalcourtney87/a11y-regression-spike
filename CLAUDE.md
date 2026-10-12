@@ -1,6 +1,6 @@
 # CLAUDE.md — Accessibility Regression CI falsification spike
 
-This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.15). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
+This is a research harness, not a product. It measures whether event observation and real NVDA detect accessibility regressions that axe and accessibility-tree testing miss. Owner: Courtney. Full brief: HANDOFF.md (v1.16). Protocol extract: docs/PRD-v0.3-technical-extract.md (the full PRD is held privately by the owner).
 
 ## Golden rules
 - Public repository: no secrets, customer data, interview notes or identifiable defects.
@@ -38,7 +38,7 @@ This is a research harness, not a product. It measures whether event observation
 - Archive at each gate (D6): gh run download the gate's runs on this machine, then commit a per-gate tar.zst bundle under 50 MB, with a SHA-256 manifest of run IDs, image versions and pinned versions, to the orphan results branch. Never include NVDA binaries.
 
 ## Current authorisation
-M0–M7. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065), and merged M4 and authorised M5 on 2026-10-03 (DR-0078). The owner started M6 on 2026-10-11 (DR-0088) and M7 on 2026-10-11 (DR-0090), and accepted Gate G4 on 2026-10-11 (DR-0092). `protocol-freeze-v3` is the tag the confirmatory run was scored against. The second round of 18 patterns is built and executed under owner-authorised `protocol-freeze-v4` (DR-0110); combined77-pattern results are recorded in DR-0111 and docs/gates/G4-second-round.md, with gate review pending. M8 is not authorised. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003). The owner authorised v4 and the second-round run on 2026-10-12 (DR-0110); see docs/reports/M7-second-round.md.
+M0–M7. The owner approved Gate G2 on 2026-10-03, which unlocked M3 (DR-0055), merged M3 and authorised M4 on 2026-10-03 (DR-0065), and merged M4 and authorised M5 on 2026-10-03 (DR-0078). The owner started M6 on 2026-10-11 (DR-0088) and M7 on 2026-10-11 (DR-0090), and accepted Gate G4 on 2026-10-11 (DR-0092). `protocol-freeze-v3` is the tag the confirmatory run was scored against. The second round of 18 patterns is built and executed under owner-authorised `protocol-freeze-v4` (DR-0110); the 77-pattern results were accepted through PR14 merge on 2026-10-12 and archived on results at `5ce8147` (DR-0112). M7 is closed. Read-only follow-up is recorded in DR-0113; a bounded M8 diagnostic proposal is ready, with new observations/run budget awaiting P40 approval. The Phase 1 proceed/stop decision stays on Fri 27 Nov 2026, re-planned from Phase 0's measured costs (DR-0003). The owner authorised v4 and the second-round run on 2026-10-12 (DR-0110); see docs/reports/M7-second-round.md.
 
 ## Logs
 - docs/DECISIONS.md — decisions

@@ -151,7 +151,9 @@ Conventions:
 | [DR-0108](#dr-0108-manual-tooltip-admission) | Manual-tooltip admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 76 test |
 | [DR-0109](#dr-0109-restricted-slider-admission-completes-the-second-round-build) | Second-round build complete | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 77 test;18 additions |
 | [DR-0110](#dr-0110-second-round-freeze-and-confirmatory-execution-authorised) | Second-round freeze and execution | Accepted | 2026-10-12 | Owner “Please proceed” | — | v4;54 new items in both legs |
-| [DR-0111](#dr-0111-second-round-results-recorded-gate-review-pending) | Second-round results recorded | Recorded; owner review pending | 2026-10-12 | DR-0110 execution | — | 77 scored; two comparisons unresolved |
+| [DR-0111](#dr-0111-second-round-results-recorded-gate-review-pending) | Second-round results recorded | Recorded; accepted via DR-0112 | 2026-10-12 | DR-0110 execution | — | 77 scored; two comparisons unresolved |
+| [DR-0112](#dr-0112-owner-acceptance-and-archive-of-the-second-round) | Second-round acceptance/archive | Accepted | 2026-10-12 | Owner PR14 merge and continuation | — | M7 closed; archive5ce8147 |
+| [DR-0113](#dr-0113-read-only-follow-up-and-proposed-diagnostic-pilot) | Follow-up diagnosis and proposed pilot | Recorded; P40 proposed | 2026-10-12 | Owner continuation; DR-0045 | — | No new execution; bounded proposal |
 
 ## Pending owner items (hard rule 12)
 
@@ -200,6 +202,7 @@ P5 is no longer pending: it was resolved on 2026-10-03 (decided by Claude under 
 | P37 | **Resolved (approved by the owner 2026-10-03, DR-0081).** **Whether to add regression patterns before the freeze** (deferred to this power table by P21). The test split holds 59 regression patterns. At the planning rates of DR-0080's power table, that estimates a detection rate within about ±0.09–0.13. B2 against B would need about 77 patterns at the dev difference, but that difference rests on 2 discordant items of 20; C against B2 showed none. Proposal: no new batch now; build the 59 test patterns; at the M6 freeze, pre-register a second round sized from this table, triggered if a headline comparison lands in the inconclusive range (PRD §38) | P21; DR-0080 | What is measured (sample size); cost | No longer pending | Approved as recommended |
 | P38 | **Resolved (approved by the owner 2026-10-11, DR-0087).** **KEYBOARD_TRAP when Tab cannot leave a component.** A TAB or SHIFT_TAB step gives KEYBOARD_TRAP when the candidate's focus stays where it was and the base's focus moved: the same node in the tree, or silence from NVDA, in every attempt. No dev pattern has the mechanism, so no dev result changes, and no test item has been run | DR-0083; DR-0087 | What counts as detection (KEYBOARD_TRAP) | No longer pending | Approved as recommended |
 | P39 | **Resolved (approved by the owner 2026-10-11, DR-0092).** How the second round's 18 regression patterns are chosen, now that PROTOCOL §3 has triggered. Build them as the first 59 were (DR-0082 to DR-0086): seeded operators from the M3 catalogue, on controls that do not already carry that operator, in Atomic CRM and react-admin "simple", plus mined pairs that pass P22; each with a benign twin (P20) and an unchanged control when the journey is new; assigned to the test split. The symptoms and items this round missed do not decide which operators or controls are used. They are not executed or scored until the owner tags the amended tree. DR-0093 corrects the build allocation: the existing seeded catalogue has no unused non-dropped patterns; 18 new qualifying mined patterns are required, with availability unestablished | [G4-brief.md](gates/G4-brief.md) item 3; DR-0092 | What is measured (which regressions the second round adds) | No longer pending | Approved as recommended |
+| P40 | **Proposed: bounded exploratory harness calibration after M7.** Controlled known-answer pages and working-release fixtures; diagnostic focus/naming/mode observations; one dispatch, at most two Windows jobs and 120 runner-minutes, no retries or old-test rescoring | [M8-diagnostic-proposal.md](plans/M8-diagnostic-proposal.md); DR-0113 | What is measured and new cost envelope | Pending | Yes; diagnose the recorded baseline limits before designing another study |
 
 Other hard-rule-12 questions are conditional and arise only if M1a or a later milestone triggers them (the FAIL rules for candidate-only check failures and the handling of duplicates were settled by P35 and P36, DR-0081): a self-signed or otherwise unverifiable Scream signature (DR-0040), a separate download for `devcon` (DR-0012), a relay certificate other than the one in the pinned NVDA asset, which would need another trust source for the tap (DR-0009), an effective eSpeak NG rate other than 30 or another reason to change it (DR-0041), a change to any G1 or G2 criterion from M2 data (DR-0013), and the final BenignType descriptions at the M6 freeze review (DR-0030).
 
@@ -4157,3 +4160,27 @@ The owner merged PR13 and authorised the next freeze/test/report sequence. Publi
 ## DR-0111 Second-round results recorded; gate review pending
 
 2026-10-12. Recorded under the owner-authorised DR-0110 execution; gate acceptance pending. All 37 jobs in run38276928082 succeed; 108 valid confirmatory blocks, 54 new items, both legs, 216 passing K1 brackets, no fatal or invalid-package errors. Frozen scorer combines with38156720011: 199 items,77 regression/77 benign/45 unchanged. B2/B difference; C/B2 UNION difference; D/C UNION equivalent within0.08; C/B2 and D/C ADJUDICATED remain inconclusive. False FAILs zero in every arm. Four baseline reachability limits and a wrong-symptom date-picker miss are retained, not repaired or excluded. Full reports: docs/gates/G4-second-round.md and docs/reports/M7-second-round.md; owner decisions: docs/gates/G4-second-round-brief.md. Verified D6 archive prepared locally with manifest/checksum, awaiting gate acceptance for publication. No M8 authority or third expansion.
+
+## DR-0112 Owner acceptance and archive of the second round
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Authority | Owner merged PR14 at a18e2a5708beaf99c0af112969e71712177df30d and continued the task |
+
+**Owner's instruction:**
+
+> Merged, please continue
+
+The two G4 second-round brief items are accepted through that merge: retain the 77-pattern headline calls and disclosed limits, and close the pre-registered second round without retuning or a third expansion. M7 is complete. Both adjudicated comparisons remain inconclusive; the UNION addition of NVDA is supported under the registered analysis. No extra measurement is inferred from gate acceptance.
+
+Under the approved D6 instruction, publish the prepared second-round archive to results at 5ce8147bfba23ac7caca208a134c08791be07ff8, directory g4-second-round/. Bundle SHA-256 05039cfd225f6674c1a6407541705e49d302ce00248e15c1694e9f7f61c64331, 4,063,099 bytes. All 704 archived files are verified byte-for-byte against the retained preparation manifest; no NVDA binaries. Original G4 corpus and soak remain unchanged. Protocol-freeze-v4 is preserved. Publication metadata: docs/research/m7-followup/archive-publication.json.
+
+The owner continuation is carried forward with read-only diagnosis and a concrete next-task proposal (DR-0113). M8's new observations and run budget are proposed in P40, not executed. Phase 1 decision date remains 27 November 2026.
+
+## DR-0113 Read-only follow-up and proposed diagnostic pilot
+
+2026-10-12. Read-only follow-up under the owner continuation/DR-0045; no new Windows run, frozen-path edit or verdict change. Retained trace evidence confirms an early/late goal timing mismatch on Bootstrap #39189, unnamed native input at Vuetify #22770 entry, missing later browse speech despite correct baseline content for Calendar #4620/Carbon #7861, and a goal/expectation mismatch for date-picker #5428. Mode/context causes remain hypotheses; no revised detection rate is calculated. Report: docs/reports/M7-followup-diagnosis.md.
+
+**Proposed by Claude (not yet owner-approved), P40:** a bounded exploratory calibration pilot on controlled pages and working releases, at most two Windows jobs/120 runner-minutes. Adding diagnostic observations and a new cost envelope is hard rule 12, so implementation/dispatch waits for the concrete proposal's approval. No new confirmatory sample, altered original verdict, broken-release retry, extra soak or third expansion is proposed. Plan: docs/plans/M8-diagnostic-proposal.md.
