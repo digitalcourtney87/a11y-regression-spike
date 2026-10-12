@@ -457,3 +457,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 M7 second-round pattern construction complete. See DR-0107–0109, A-016–018, docs/reports/M7-second-round-build.md and final batch/evidence records.77 test patterns built; no new freeze tag or assigned execution.
 
 2026-10-12 M7 second-round freeze and confirmatory dispatch. See DR-0110 and docs/reports/M7-second-round.md.
+
+2026-10-12 M7 second-round execution and combined analysis complete. See DR-0111, docs/gates/G4-second-round.md, docs/gates/G4-second-round-brief.md and docs/reports/M7-second-round.md.

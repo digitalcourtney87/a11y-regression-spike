@@ -1,0 +1,20 @@
+{
+  "freezeGuardAccepted": true,
+  "protocolSha256": "65e188e8b79471aaa42713aaf4a635ef87696e894c4e7918b140ac77ffff9a5a",
+  "fullTestItemsScored": 199,
+  "regressionPatterns": 77,
+  "newItems": 54,
+  "newBlocks": 108,
+  "uniqueNewItemLegPairs": 108,
+  "noMissingItemOverride": true,
+  "allNewBlocksValidConfirmatory": true,
+  "allNewBracketingChecksPassed": 216,
+  "archiveFilesByteVerified": 704,
+  "archiveBytes": 4063099,
+  "originalItemBytesPreserved": true,
+  "firstRoundHeadlineIntervalsReproducedExactly": true,
+  "localLintPassed": true,
+  "localTypecheckPassed": true,
+  "noFrozenPathsChanged": true,
+  "outcomeDrivenReruns": 0
+}

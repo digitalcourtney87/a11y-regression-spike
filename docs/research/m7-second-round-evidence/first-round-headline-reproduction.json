@@ -1,0 +1,48 @@
+{
+  "regressions": 59,
+  "clusters": 59,
+  "seed": 20261005,
+  "resamples": 10000,
+  "comparisons": [
+    {
+      "x": "B2",
+      "y": "B",
+      "point": 0.07936507936507942,
+      "lower": 0.011904761904761862,
+      "upper": 0.1322314049586777,
+      "call": "difference"
+    },
+    {
+      "x": "C_UNION",
+      "y": "B2",
+      "point": 0.044642857142857206,
+      "lower": 0,
+      "upper": 0.10238095238095246,
+      "call": "inconclusive"
+    },
+    {
+      "x": "C_ADJUDICATED",
+      "y": "B2",
+      "point": -0.060317460317460436,
+      "lower": -0.14930555555555558,
+      "upper": 0.03571428571428559,
+      "call": "inconclusive"
+    },
+    {
+      "x": "D_UNION",
+      "y": "C_UNION",
+      "point": -0.011904761904762085,
+      "lower": -0.04166666666666663,
+      "upper": 0,
+      "call": "equivalent within 0.08"
+    },
+    {
+      "x": "D_ADJUDICATED",
+      "y": "C_ADJUDICATED",
+      "point": 0.025595238095238115,
+      "lower": -0.025000000000000022,
+      "upper": 0.08958333333333335,
+      "call": "inconclusive"
+    }
+  ]
+}

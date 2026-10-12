@@ -1,0 +1,60 @@
+[
+  {
+    "arm": "C_UNION",
+    "chosenDevRule": 1,
+    "residual": {
+      "k": 5,
+      "n": 77,
+      "wilson": {
+        "point": 0.06493506493506493,
+        "lower": 0.028053080270151097,
+        "upper": 0.1431642514410465
+      },
+      "items": [
+        "acrm-error-not-announced-form-control",
+        "oss-bootstrap-35496",
+        "oss-bootstrap-39189",
+        "oss-vuetify-21591",
+        "ras-error-not-announced-title"
+      ]
+    },
+    "agreement": {
+      "k": 72,
+      "n": 77,
+      "wilson": {
+        "point": 0.935064935064935,
+        "lower": 0.8568357485589534,
+        "upper": 0.9719469197298488
+      }
+    }
+  },
+  {
+    "arm": "C_ADJUDICATED",
+    "chosenDevRule": 1,
+    "residual": {
+      "k": 5,
+      "n": 77,
+      "wilson": {
+        "point": 0.06493506493506493,
+        "lower": 0.028053080270151097,
+        "upper": 0.1431642514410465
+      },
+      "items": [
+        "acrm-error-not-announced-form-control",
+        "oss-bootstrap-35496",
+        "oss-bootstrap-39189",
+        "oss-vuetify-21591",
+        "ras-error-not-announced-title"
+      ]
+    },
+    "agreement": {
+      "k": 66,
+      "n": 77,
+      "wilson": {
+        "point": 0.8571428571428571,
+        "lower": 0.7620272974704644,
+        "upper": 0.9183166839606419
+      }
+    }
+  }
+]

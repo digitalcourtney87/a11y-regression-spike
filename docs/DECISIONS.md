@@ -151,6 +151,7 @@ Conventions:
 | [DR-0108](#dr-0108-manual-tooltip-admission) | Manual-tooltip admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 76 test |
 | [DR-0109](#dr-0109-restricted-slider-admission-completes-the-second-round-build) | Second-round build complete | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 77 test;18 additions |
 | [DR-0110](#dr-0110-second-round-freeze-and-confirmatory-execution-authorised) | Second-round freeze and execution | Accepted | 2026-10-12 | Owner “Please proceed” | — | v4;54 new items in both legs |
+| [DR-0111](#dr-0111-second-round-results-recorded-gate-review-pending) | Second-round results recorded | Recorded; owner review pending | 2026-10-12 | DR-0110 execution | — | 77 scored; two comparisons unresolved |
 
 ## Pending owner items (hard rule 12)
 
@@ -4152,3 +4153,7 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 | Scope | M7 second round; M8 remains unauthorised |
 
 The owner merged PR13 and authorised the next freeze/test/report sequence. Publish annotated `protocol-freeze-v4` at merged commit22bbb9a2476fff62b34ac9de266a23ad9abfef22, hash65e188e8b79471aaa42713aaf4a635ef87696e894c4e7918b140ac77ffff9a5a. Freeze guard accepted before dispatch38276928082. Run54 newly added assigned items in both legs with unchanged frozen checks/default repetitions; combine with original run38156720011 for77 regression patterns. Preserve prior analysis and amendments; no measurement changes or M8 authority. Plan and results: docs/reports/M7-second-round.md.
+
+## DR-0111 Second-round results recorded; gate review pending
+
+2026-10-12. Recorded under the owner-authorised DR-0110 execution; gate acceptance pending. All 37 jobs in run38276928082 succeed; 108 valid confirmatory blocks, 54 new items, both legs, 216 passing K1 brackets, no fatal or invalid-package errors. Frozen scorer combines with38156720011: 199 items,77 regression/77 benign/45 unchanged. B2/B difference; C/B2 UNION difference; D/C UNION equivalent within0.08; C/B2 and D/C ADJUDICATED remain inconclusive. False FAILs zero in every arm. Four baseline reachability limits and a wrong-symptom date-picker miss are retained, not repaired or excluded. Full reports: docs/gates/G4-second-round.md and docs/reports/M7-second-round.md; owner decisions: docs/gates/G4-second-round-brief.md. Verified D6 archive prepared locally with manifest/checksum, awaiting gate acceptance for publication. No M8 authority or third expansion.

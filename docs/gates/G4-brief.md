@@ -1,5 +1,6 @@
 # G4 brief (one page)
 
+**Second-round update (2026-10-12):** the77-pattern analysis is in [G4-second-round-brief.md](G4-second-round-brief.md). This accepted first-round record is preserved.
 **Result:** the owner approved all seven items on 2026-10-11 (DR-0092). Corpus run [38156720011](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38156720011) on `protocol-freeze-v3` (`8082479`; `protocol-sha256: 508302c493d1e35225fc409ea4d01c3c7e4b7b982c819efedac4783627d60ab2`). 145 items, both legs, 0 fatals. Soak run [38155513822](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38155513822): 0 K1 failures in 599 valid attempts per leg. Full report: [G4.md](G4.md).
 
 | # | Question (hard rule 12) | Why it matters | Recommendation |
