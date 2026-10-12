@@ -1,0 +1,12 @@
+{
+  "approval": "DR-0120",
+  "dispatches": 1,
+  "jobs": 2,
+  "timeoutMinutes": 60,
+  "repetitions": 3,
+  "cases": [
+    "p42-cursor",
+    "p42-cursor-v2",
+    "p42-focus"
+  ]
+}
