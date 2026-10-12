@@ -28,7 +28,7 @@ test("the consumed P40 pilot cannot start another Windows job", () => {
 });
 
 
-test("P41 has only two capped Windows legs and refuses manual/retry triggers", () => {
+test("consumed P41 retains its two-leg budget but cannot start another job", () => {
   const workflow = parse(readFileSync(resolve(import.meta.dirname, "../../../.github/workflows/m8-working-recovery.yml"), "utf8")) as CalibrationWorkflow & { on: Record<string, unknown> };
   expect(workflow.on).not.toHaveProperty("workflow_dispatch");
   expect(Object.keys(workflow.jobs)).toEqual(["calibration"]);
@@ -37,5 +37,5 @@ test("P41 has only two capped Windows legs and refuses manual/retry triggers", (
   expect(job["runs-on"]).toBe("windows-2025");
   expect(job.strategy.matrix.leg).toEqual(["nvda-absent", "nvda-present"]);
   expect(job["timeout-minutes"]).toBe(60);
-  expect(job).toHaveProperty("if", "${{ github.run_attempt == 1 }}");
+  expect(job).toHaveProperty("if", "${{ false }}");
 });

@@ -1,6 +1,6 @@
 # Proposed M8 recovery: missing working-release comparisons
 
-Status: approved, P41/DR-0116, by “Merged, please continue” following PR16 merge. One recovery dispatch is authorised. P40's one dispatch is complete with all four working-release builds unavailable because of the now-corrected log path. The owned controls have valid data and will not be repeated in this recovery.
+Status: approved, P41/DR-0116, by “Merged, please continue” following PR16 merge. The single recovery dispatch is now consumed by successful run 38307364080 (DR-0117); no further dispatch is authorised. P40's one dispatch is complete with all four working-release builds unavailable because of the now-corrected log path. The owned controls have valid data and will not be repeated in this recovery.
 
 Authorised: one additional dispatch, capped at two standard Windows jobs (one per leg), 60 minutes each/120 additional runner-minutes, with no retry.
 

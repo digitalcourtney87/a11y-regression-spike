@@ -1,0 +1,13 @@
+{
+  "portableTests": 771,
+  "testFiles": 45,
+  "typecheck": "pass",
+  "localLint": "pass with only unrelated untracked duplicate * 2.mjs files excluded; no repository lint policy change",
+  "ordinaryCiBeforeDispatch": 38307204383,
+  "ordinaryCiRequestHead": 38307370661,
+  "recoveryRun": 38307364080,
+  "recoveryConclusion": "success",
+  "archiveInventory": "Every regular file hashes identically after decompression; no prohibited NVDA binaries.",
+  "protectedM7Files": "No diff from protocol-freeze-v4 for corpus, original OSS fixtures/journeys, oracles or trigger table.",
+  "finalCi": "Normal unmodified lint/typecheck/tests and PowerShell checks required on final PR head."
+}

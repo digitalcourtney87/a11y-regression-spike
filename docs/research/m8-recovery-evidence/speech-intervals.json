@@ -1,0 +1,114 @@
+{
+  "runId": 38307364080,
+  "method": "Disjoint retained QPC receipt intervals around diagnostic reads. Cumulative end snapshots are not late-only announcements; exact primary goal-read time is unavailable. Boundary-equal events belong to earlier interval.",
+  "records": [
+    {
+      "journey": "oss-fluent-4620",
+      "repetition": 1,
+      "step": "reach-expected-month",
+      "boundsQpcNs": [
+        2092095433800,
+        2093000136100,
+        2093001226900,
+        2094011780600,
+        2094013334400
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "oss-fluent-4620",
+      "repetition": 2,
+      "step": "reach-expected-month",
+      "boundsQpcNs": [
+        2162772937400,
+        2163678949200,
+        2163679996700,
+        2164688263900,
+        2164690331500
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "oss-fluent-4620",
+      "repetition": 3,
+      "step": "reach-expected-month",
+      "boundsQpcNs": [
+        2233458280700,
+        2234364336900,
+        2234365497400,
+        2235373569200,
+        2235375262900
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "oss-carbon-7861",
+      "repetition": 1,
+      "step": "reach-result",
+      "boundsQpcNs": [
+        2330303128700,
+        2331208522500,
+        2331209822500,
+        2332217625500,
+        2332219543800
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "oss-carbon-7861",
+      "repetition": 2,
+      "step": "reach-result",
+      "boundsQpcNs": [
+        2401926958200,
+        2402833949400,
+        2402835027500,
+        2403842821600,
+        2403844655400
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "oss-carbon-7861",
+      "repetition": 3,
+      "step": "reach-result",
+      "boundsQpcNs": [
+        2473564572100,
+        2474470381600,
+        2474471527400,
+        2475479795100,
+        2475481441900
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    }
+  ]
+}

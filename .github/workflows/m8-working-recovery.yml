@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   calibration:
-    # Rerunning failed jobs is outside the single-dispatch allowance.
-    if: ${{ github.run_attempt == 1 }}
+    # P41 consumed by run 38307364080; no further dispatch is authorised.
+    if: ${{ false }}
     runs-on: windows-2025
     timeout-minutes: 60
     strategy:
