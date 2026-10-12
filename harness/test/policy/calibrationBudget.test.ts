@@ -19,3 +19,10 @@ test("the pilot has one static two-leg job and stays within the P40 limit", () =
   expect(job["timeout-minutes"]).toBeLessThanOrEqual(60);
   expect(job.strategy.matrix.leg.length * job["timeout-minutes"]).toBeLessThanOrEqual(120);
 });
+
+
+test("the consumed P40 pilot cannot start another Windows job", () => {
+  const workflow = parse(readFileSync(resolve(import.meta.dirname, "../../../.github/workflows/m8-calibration.yml"), "utf8")) as { on: Record<string, unknown>; jobs: { calibration: { if?: string } } };
+  expect(workflow.on).not.toHaveProperty("workflow_dispatch");
+  expect(workflow.jobs.calibration.if).toBe("${{ false }}");
+});

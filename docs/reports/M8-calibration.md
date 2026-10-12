@@ -16,6 +16,12 @@ Both owned-control groups completed: four controlled scenarios in each leg, eigh
 
 Source data: [audit](../research/m8-calibration-evidence/evidence-audit.json), [control results](../research/m8-calibration-evidence/control-results.json), [workflow metadata](../research/m8-calibration-evidence/workflow-run.json). Expected total was 16 blocks/48 attempts including the working fixtures; only the eight owned-control blocks/24 attempts were collected. Missing comparisons remain explicit. No assigned corpus item was loaded, no candidate side executed and no scorer was used.
 
+## Speech interval interpretation
+
+The raw observation-end `goal.speech` is cumulative since the last input and can repeat speech already seen by the primary goal check. It is not a late-only announcement record. The original receipt timestamps are retained in each attempt's `speechEvents`; [the interval audit](../research/m8-calibration-evidence/speech-intervals.json) partitions them into disjoint intervals before/during the early diagnostic and before/during the end diagnostic. [The read-only derivation](../research/m8-calibration-evidence/derive-speech-intervals.py) preserves every timestamp and event. Diagnostic boundaries bracket the additional reads; the exact primary goal-read timestamp is not separately captured, so these intervals do not establish its exact latency.
+
+Chosen Alpha arrived before the early diagnostic in all three document-context repetitions, and no speech arrived in the remaining intervals. The repeated cumulative end snapshot does not indicate delayed feedback. Primary outcomes and archived raw evidence remain unchanged.
+
 ## Controlled findings
 
 Every row describes all three repetitions per leg. Predictions were declared in [the criteria](../plans/2026-10-12-m8-calibration-criteria.md) before dispatch.
@@ -56,3 +62,7 @@ M8's controlled calibration has useful findings, but the four working-release co
 ## Gate review and archive
 
 Independent gate review under the requesting-code-review skill found no actionable Critical/Important/Minor defects. It checked the isolation, raw counts, job durations, path repair and all 12 replay steps; 13 targeted portable tests pass. Owner brief: [M8 calibration gate](../gates/M8-calibration-brief.md). The complete failed-run evidence archive is prepared and verified, with its [manifest and checksum](../research/m8-calibration-evidence/archive-manifest.json) retained alongside the audit; publish under D6 after owner acceptance. The working-release build repair remains unverified in Windows, and P41 is pending.
+
+## PR16 bot feedback follow-up
+
+The handoff is now v1.17 and clearly separates current P40-consumed/P41-pending authority from historical records. Calibration rejects any shard other than 1/1 before selecting items. Regression tests failed before these guards and passed afterward. The P40 workflow is disabled in GitHub (including old refs), its manual trigger is removed, and its Windows job is unconditionally skipped in this head. P41 requires a separately approved request/workflow; no new dispatch occurred. Cumulative speech has been audited in disjoint retained-event intervals above, without changing what is collected.

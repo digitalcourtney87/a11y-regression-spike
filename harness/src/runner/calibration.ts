@@ -16,6 +16,7 @@ export interface CalibrationRequest {
   sides: string;
   items: string;
   reps: string;
+  shard: string;
 }
 
 /** Refuses corpus execution, candidates or requests outside the approved calibration manifest. */
@@ -24,6 +25,7 @@ export function calibrationCaseFor(request: CalibrationRequest): CalibrationCase
   const selected = CALIBRATION_CASES.find((c) => c.id === request.caseId);
   if (selected === undefined) throw new Error(`unknown calibration case ${request.caseId}`);
   if (request.split !== "dev" || request.sides !== "base" || request.items !== "" || request.reps !== "3") throw new Error("calibration requires dev, base only, no item ids and exactly three repetitions");
+  if (request.shard !== "1/1") throw new Error("calibration requires all declared journeys in shard 1/1");
   if (request.app !== selected.app || request.journeys !== selected.journeys.join(",")) throw new Error("calibration app/journeys must match the approved case manifest");
   return selected;
 }

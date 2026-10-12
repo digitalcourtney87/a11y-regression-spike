@@ -4,7 +4,6 @@ on:
   push:
     branches: ["codex/m8-calibration-pilot"]
     paths: [.github/m8-request.json]
-  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -12,6 +11,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   calibration:
+    # P40 consumed by run 38299059098. P41 needs its own approval/request.
+    if: ${{ false }}
     runs-on: windows-2025
     timeout-minutes: 60
     strategy:

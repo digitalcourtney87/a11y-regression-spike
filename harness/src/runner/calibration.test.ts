@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 
 import { calibrationCaseFor, calibrationItems, captureCalibrationPoint } from "./calibration.ts";
 
-const request = { caseId: "bootstrap-modal", app: "oss/bootstrap-39189", journeys: "oss-bootstrap-39189", split: "dev", sides: "base", items: "", reps: "3" };
+const request = { caseId: "bootstrap-modal", app: "oss/bootstrap-39189", journeys: "oss-bootstrap-39189", split: "dev", sides: "base", items: "", reps: "3", shard: "1/1" };
 
 describe("M8 calibration isolation", () => {
   test("leaves ordinary runs on their existing path", () => {
@@ -14,6 +14,8 @@ describe("M8 calibration isolation", () => {
     { sides: "both" },
     { items: "oss-bootstrap-39189" },
     { reps: "5" },
+    { shard: "1/2" },
+    { shard: "2/2" },
     { app: "oss/carbon-7861" },
     { journeys: "oss-bootstrap-39189,oss-carbon-7861" },
     { caseId: "unregistered-case" },

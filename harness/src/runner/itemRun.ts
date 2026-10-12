@@ -169,7 +169,7 @@ if (args.app === undefined) throw new Error("--app is required");
 const app: string = args.app;
 if (args.sides !== "both" && args.sides !== "base") throw new Error("--sides must be both or base");
 if (args.journeys !== "" && args.sides !== "base") throw new Error("--journeys develops journeys on the base build only: pass --sides base");
-const calibration = calibrationCaseFor({ caseId: args.calibration, app, journeys: args.journeys, split: args.split, sides: args.sides, items: args.items, reps: args.reps });
+const calibration = calibrationCaseFor({ caseId: args.calibration, app, journeys: args.journeys, split: args.split, sides: args.sides, items: args.items, reps: args.reps, shard: args.shard });
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outDir = resolve(args.out);
 const appKey = app.replace("/", "-");
@@ -615,6 +615,8 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
     const m = await rt.helper.msaaFocus(rt.hwnd);
     run.focusAtEnd = { name: m.name ?? "", role: m.roleText ?? "" };
   }
+  // Speech here is cumulative since last input. Use retained speechEvents QPC timestamps
+  // and diagnostic boundaries for disjoint early/late intervals; never infer delayed arrival from this snapshot.
   if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("observation-end", leg, () => goalTarget(rt, step, absent, lastInputAt), diagnosticFocus, qpcNowNs));
   const ids = [...new Set(step.expectations.flatMap((e) => (e.type === "focusOn" || e.type === "stateIs" ? [e.value.split("|")[1] ?? ""] : [])).filter((n) => n.startsWith("#")).map((n) => n.slice(1)))];
   if (ids.length > 0) run.targets = await Promise.all(ids.map(async (id) => ({ id, backendId: await backendIdById(rt.cdp, id).catch(() => null) })));
