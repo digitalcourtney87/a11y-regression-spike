@@ -4100,3 +4100,18 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Negative evidence.** react-modal#732 final forward/reverse checks fail wrap but do not show original reported focus escape: no outside DOM focus events and document.hasFocus remains true. Keep all results, do not reclassify a related failure to count it. The recorded controlled date-picker#5366 fixture fails ArrowDown entry everywhere; uniform native Tab-to-day preparation then fails original keyboard closing on good/broken/fixed, while pointer close holds everywhere. Retire both without admission or controller workaround. Source/check archives retain attempts, not executable fixtures. These statements concern recorded fixtures, not proof no defect exists in other constructs. Build-only test-twin run38229779177 records21 completed mined test twins with all apply/revert/install/build exits zero; no assigned loading/checking.
 
 **Progress.** Sixteen of18 additions built:75 test,20 dev,95 patterns,249 items; two still needed. Bootstrap manual-tooltip candidate is unsplit source preparation. No new tag or M8 work.
+
+## DR-0108 Manual-tooltip admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Bootstrap#15168 reports3.2.0 working/3.3.0 broken for manual tooltip initialized with selector. The first source comment explains string methods failing after the selector-handling change14189. Merged15466 reverts that map-backed instance storage; published3.3.2 restores string-method dispatch. Same jQuery1.11.1 before good, same vanilla context throughout. Native labeled Show help button initializes the supported manual selector/title options and calls show; generated aria-describedby links actual trigger to plain Extra information. Good/fixed show information and ordinary browse reaches line3; broken fails with expected i[n]-method error and goal absent. Pointer and fresh width-only twin agree. Runs38235235122/38236198602 match all check outputs and resolved locks exactly; installs/builds succeed, no external requests. Original linked fiddle returned403; no claim its code was inspected. Construction uses original issue/API and published/fix source, not an escaped-selector workaround.
+
+**Construction.** Add one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and native TAB/Enter/document-top/browse journey. Both refs share immutable fixture commit c4d00480ee6b88261716c9604520b7994df9679e. Manual all-test append, fraction1/unused seed0. Previous assignments/items preserved. No changed oracle, key, threshold, context or local third-party execution; assigned NVDA remains unperformed. Evidence: docs/research/m7-completion-evidence/bootstrap-15168-repeat-comparison.json.
+
+**Progress.** Seventeen of18 additions built:76 test,20 dev,96 patterns,252 items; one still needed. MUI restricted Slider45049 is unsplit source preparation. No new tag or M8 work.

@@ -18,7 +18,7 @@ export default async function check({ page, fresh }) {
     } else {
       const box = await p.locator(".MuiSlider-root").boundingBox();
       if (!box) throw new Error("Slider bounds missing");
-      await p.mouse.click(box.x + box.width * 0.3, box.y + box.height / 2);
+      await p.mouse.click(box.x + box.width * 0.99, box.y + box.height / 2);
     }
     const initial = await slider.getAttribute("aria-valuenow");
     if (initial !== "30") throw new Error(`Initial upper mark differs: ${initial}`);

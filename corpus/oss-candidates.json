@@ -633,6 +633,30 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "bootstrap-15168",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#15168",
+        "PR #14189",
+        "PR #15466"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "licence": "MIT",
+      "good": "3.2.0",
+      "broken": "3.3.0",
+      "fixed": "3.3.2",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Manual Tooltip string-method dispatch fails after selector initialization in3.3.0. Reported3.2.0 working, published3.3.2 reverts14189 via15466. Same jQuery1.11.1, vanilla context. Native Show help activation must show Extra information; good/fixed browse goal line3, absent broken with expected method error. Final outputs and locks match independently (DR-0108).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38236198602,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

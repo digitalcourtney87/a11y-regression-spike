@@ -1,0 +1,47 @@
+{
+  "id": "oss-bootstrap-15168",
+  "version": "1",
+  "app": "oss/bootstrap-15168",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-help",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "role": "button",
+        "name": "Show help",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "show-help",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-information",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Extra information",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

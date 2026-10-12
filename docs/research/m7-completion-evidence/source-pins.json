@@ -1142,5 +1142,70 @@
       "react": "16.14.0",
       "react-dom": "16.14.0"
     }
+  },
+  {
+    "package": "bootstrap",
+    "releases": [
+      {
+        "version": "3.2.0",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "a0726e7c12e79f4a2a504f8d1ee9f2850a83f637",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.2.0.tgz",
+          "integrity": "sha512-MVUiqgpLinHRQlO8RIEsua7gmA+OHPD9wQU2ShAl+PzqmPXC0qzPgrynZEWTA6YlSY+APl7NEF3jXhBixadAvg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDhSGDQkLs/RfoEFNpQRdKzmXoOop/330ArA6XzTUjsPgIgE9Mttm07ct0qkAjzjsQ4qBj5+HfIgLxqzMKqiputmjA=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2014-06-26T16:44:01.175Z"
+      },
+      {
+        "version": "3.3.0",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "27d83ec81c51b3f86d20cf610ded3724e4b7ace3",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.0.tgz",
+          "integrity": "sha512-ELzD57D1ss/3H8/HdYg/zYneTU6Zkk4USICly/H8qsvh+KqklKf1KcB39KAHPkQjubodYSFrwrz2FFYxnqYwxg==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC0LDrI015JLAlepvoPtWMurP9ok3BiC/POsSy6pysCpAIhAMzpIGCKM9cD8rJ1LM9yAoHNT5+/9ooQ8+RxN4soS8Jj",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2014-10-29T19:20:49.068Z"
+      },
+      {
+        "version": "3.3.2",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "43b0283dfb2ac83b12cd3dc1f4238f5042ed02cc",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.2.tgz",
+          "integrity": "sha512-4aP7n3MWfOyASkwezPN2Q7PBczCaaU/pD7sFA+1YlP8SVF4gjTQPbTKMeBopCg3S6ScUzmU64SFmWkE4Kx31kw==",
+          "signatures": [
+            {
+              "sig": "MEUCIDBX00waRhvs0s2SObYtAn2/DtLxh81mMkiLScq9Z6QMAiEA7zMT3V29ZM5IkOlsvZ90xld4iX6Z6WcMaUMAd90k0zA=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2015-01-19T17:18:50.245Z"
+      }
+    ],
+    "sharedFramework": {
+      "jquery": "1.11.1"
+    }
   }
 ]

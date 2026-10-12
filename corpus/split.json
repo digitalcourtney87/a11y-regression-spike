@@ -248,6 +248,17 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-manual-tooltip",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -288,6 +299,7 @@
     "atomic-crm--toast-region-created-populated": "test",
     "oss--baseui-5532": "test",
     "oss--blueprint-6163": "test",
+    "oss--bootstrap-15168": "test",
     "oss--bootstrap-35496": "test",
     "oss--bootstrap-39189": "test",
     "oss--carbon-18824": "test",

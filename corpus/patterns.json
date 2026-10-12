@@ -840,6 +840,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "SearchBox no longer calls supported deprecated onChanged in8.19.1. Source-supported7.167.0 working, published8.21.0 fix18715 restores callback. Same React16.14.0, internal companion resolves with unchanged release-cutoff method. Typed abc must produce Query abc, ordinary browse goal line5; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+    },
+    {
+      "id": "oss--bootstrap-15168",
+      "batch": "oss-regression",
+      "context": "oss:twbs/bootstrap#15168",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Manual Tooltip string-method dispatch fails after selector initialization in3.3.0. Reported3.2.0 working, published3.3.2 reverts14189 via15466. Same jQuery1.11.1, vanilla context. Native Show help activation must show Extra information; good/fixed browse goal line3, absent broken with expected method error. Final outputs and locks match independently (DR-0108)."
     }
   ]
 }
