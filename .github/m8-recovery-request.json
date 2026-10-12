@@ -1,0 +1,13 @@
+{
+  "approval": "DR-0116",
+  "dispatches": 1,
+  "jobs": 2,
+  "timeoutMinutes": 60,
+  "repetitions": 3,
+  "cases": [
+    "bootstrap-modal",
+    "vuetify-input",
+    "calendar",
+    "multiselect"
+  ]
+}
