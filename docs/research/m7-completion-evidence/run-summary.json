@@ -1,7 +1,139 @@
 {
   "phase": "EXPLORATORY",
-  "scope": "Completion exploratory dispatch metadata. Job success is not install/build/check success; inspect builds/checks. Canceled remaining jobs are retained, not called successful. Times are GitHub metadata, not collector timebase measurements.",
+  "scope": "Branch source-reproduction dispatch metadata, including failed/cancelled attempts and final build-only verification. Job success does not imply successful installs/builds/checks; inspect artifact JSON. GitHub timestamps are metadata, not collector timing or monetary cost.",
   "runs": [
+    {
+      "id": 38176937862,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38176937862",
+      "head_sha": "ca2d1e90afc40dc90a981f99b45ec71426fc5afe",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-11T21:34:36Z",
+      "run_started_at": "2026-10-11T21:34:36Z",
+      "updated_at": "2026-10-11T21:40:20Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:34:40Z",
+          "completed_at": "2026-10-11T21:34:45Z",
+          "runner_name": "GitHub Actions 1000006207",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:34:40Z",
+          "completed_at": "2026-10-11T21:37:01Z",
+          "runner_name": "GitHub Actions 1000006206",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:34:48Z",
+          "completed_at": "2026-10-11T21:36:25Z",
+          "runner_name": "GitHub Actions 1000006209",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:34:48Z",
+          "completed_at": "2026-10-11T21:38:09Z",
+          "runner_name": "GitHub Actions 1000006211",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (ras-8637)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:34:48Z",
+          "completed_at": "2026-10-11T21:37:00Z",
+          "runner_name": "GitHub Actions 1000006210",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-11T21:34:48Z",
+          "completed_at": "2026-10-11T21:40:19Z",
+          "runner_name": "GitHub Actions 1000006212",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38177297242,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38177297242",
+      "head_sha": "613899074a9864fff939ebaa29bdca6b77fc0ae5",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-11T21:39:52Z",
+      "run_started_at": "2026-10-11T21:39:52Z",
+      "updated_at": "2026-10-11T21:44:09Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:22Z",
+          "completed_at": "2026-10-11T21:40:28Z",
+          "runner_name": "GitHub Actions 1000006214",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:22Z",
+          "completed_at": "2026-10-11T21:42:41Z",
+          "runner_name": "GitHub Actions 1000006215",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (ras-8637)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:30Z",
+          "completed_at": "2026-10-11T21:42:45Z",
+          "runner_name": "GitHub Actions 1000006216",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:30Z",
+          "completed_at": "2026-10-11T21:44:03Z",
+          "runner_name": "GitHub Actions 1000006217",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:30Z",
+          "completed_at": "2026-10-11T21:42:22Z",
+          "runner_name": "GitHub Actions 1000006218",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T21:40:30Z",
+          "completed_at": "2026-10-11T21:44:08Z",
+          "runner_name": "GitHub Actions 1000006219",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
     {
       "id": 38178617035,
       "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38178617035",
@@ -1405,6 +1537,972 @@
           "started_at": "2026-10-12T08:59:26Z",
           "completed_at": "2026-10-12T09:01:16Z",
           "runner_name": "GitHub Actions 1000006389",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38227533511,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38227533511",
+      "head_sha": "591b86ea4a2ae4678b059f3c289b700707ca9ee5",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T09:04:28Z",
+      "run_started_at": "2026-10-12T09:04:28Z",
+      "updated_at": "2026-10-12T09:10:46Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:32Z",
+          "completed_at": "2026-10-12T09:04:38Z",
+          "runner_name": "GitHub Actions 1000006393",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:31Z",
+          "completed_at": "2026-10-12T09:08:41Z",
+          "runner_name": "GitHub Actions 1000006392",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (datepicker-5428)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:40Z",
+          "completed_at": "2026-10-12T09:07:11Z",
+          "runner_name": "GitHub Actions 1000006395",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (baseui-5532)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:40Z",
+          "completed_at": "2026-10-12T09:06:00Z",
+          "runner_name": "GitHub Actions 1000006398",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:40Z",
+          "completed_at": "2026-10-12T09:07:20Z",
+          "runner_name": "GitHub Actions 1000006396",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:40Z",
+          "completed_at": "2026-10-12T09:10:45Z",
+          "runner_name": "GitHub Actions 1000006397",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:04:40Z",
+          "completed_at": "2026-10-12T09:06:07Z",
+          "runner_name": "GitHub Actions 1000006399",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38228262460,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38228262460",
+      "head_sha": "e9969cde4df14c4c92e52a38071f8189fe3611e5",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-12T09:11:19Z",
+      "run_started_at": "2026-10-12T09:11:19Z",
+      "updated_at": "2026-10-12T09:15:34Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:11:22Z",
+          "completed_at": "2026-10-12T09:11:29Z",
+          "runner_name": "GitHub Actions 1000006403",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:11:22Z",
+          "completed_at": "2026-10-12T09:15:24Z",
+          "runner_name": "GitHub Actions 1000006402",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (datepicker-5428)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:11:31Z",
+          "completed_at": "2026-10-12T09:13:11Z",
+          "runner_name": "GitHub Actions 1000006405",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:11:31Z",
+          "completed_at": "2026-10-12T09:15:34Z",
+          "runner_name": "GitHub Actions 1000006406",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:11:31Z",
+          "completed_at": "2026-10-12T09:14:32Z",
+          "runner_name": "GitHub Actions 1000006408",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:11:31Z",
+          "completed_at": "2026-10-12T09:12:51Z",
+          "runner_name": "GitHub Actions 1000006407",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-46734)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:11:32Z",
+          "completed_at": "2026-10-12T09:12:57Z",
+          "runner_name": "GitHub Actions 1000006409",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38228576972,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38228576972",
+      "head_sha": "758b134bba2120c7a09c92ed7d232d5a3a9d571a",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-12T09:14:18Z",
+      "run_started_at": "2026-10-12T09:14:18Z",
+      "updated_at": "2026-10-12T09:21:13Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:36Z",
+          "completed_at": "2026-10-12T09:19:09Z",
+          "runner_name": "GitHub Actions 1000006412",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:37Z",
+          "completed_at": "2026-10-12T09:15:44Z",
+          "runner_name": "GitHub Actions 1000006413",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:15:48Z",
+          "completed_at": "2026-10-12T09:21:12Z",
+          "runner_name": "GitHub Actions 1000006415",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (datepicker-5428)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:47Z",
+          "completed_at": "2026-10-12T09:17:20Z",
+          "runner_name": "GitHub Actions 1000006414",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:47Z",
+          "completed_at": "2026-10-12T09:17:24Z",
+          "runner_name": "GitHub Actions 1000006416",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:47Z",
+          "completed_at": "2026-10-12T09:19:12Z",
+          "runner_name": "GitHub Actions 1000006418",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-46734)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:15:47Z",
+          "completed_at": "2026-10-12T09:17:22Z",
+          "runner_name": "GitHub Actions 1000006417",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38229251699,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38229251699",
+      "head_sha": "7981820e31bf3e41b254fcd7e389aab25d764f6f",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-12T09:20:25Z",
+      "run_started_at": "2026-10-12T09:20:25Z",
+      "updated_at": "2026-10-12T09:26:49Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:21:15Z",
+          "completed_at": "2026-10-12T09:26:13Z",
+          "runner_name": "GitHub Actions 1000006421",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:21:15Z",
+          "completed_at": "2026-10-12T09:21:21Z",
+          "runner_name": "GitHub Actions 1000006422",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (reactmodal-732)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:21:24Z",
+          "completed_at": "2026-10-12T09:22:35Z",
+          "runner_name": "GitHub Actions 1000006424",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:21:24Z",
+          "completed_at": "2026-10-12T09:23:15Z",
+          "runner_name": "GitHub Actions 1000006425",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-10-12T09:21:24Z",
+          "completed_at": "2026-10-12T09:26:48Z",
+          "runner_name": "GitHub Actions 1000006423",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:21:24Z",
+          "completed_at": "2026-10-12T09:23:42Z",
+          "runner_name": "GitHub Actions 1000006426",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38229779177,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38229779177",
+      "head_sha": "9b6ebb3eaa2d0f04b97b1ca4d321dc91fa03d658",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T09:25:22Z",
+      "run_started_at": "2026-10-12T09:25:22Z",
+      "updated_at": "2026-10-12T09:33:02Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:26:51Z",
+          "completed_at": "2026-10-12T09:31:29Z",
+          "runner_name": "GitHub Actions 1000006429",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:26:52Z",
+          "completed_at": "2026-10-12T09:26:57Z",
+          "runner_name": "GitHub Actions 1000006430",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:27:00Z",
+          "completed_at": "2026-10-12T09:33:02Z",
+          "runner_name": "GitHub Actions 1000006431",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:27:00Z",
+          "completed_at": "2026-10-12T09:28:43Z",
+          "runner_name": "GitHub Actions 1000006432",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:27:02Z",
+          "completed_at": "2026-10-12T09:30:22Z",
+          "runner_name": "GitHub Actions 1000006433",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (reactmodal-732)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:27:00Z",
+          "completed_at": "2026-10-12T09:28:44Z",
+          "runner_name": "GitHub Actions 1000006434",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38231384520,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38231384520",
+      "head_sha": "330dc9a93096966084ae7414a784f9da457de75f",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T09:40:17Z",
+      "run_started_at": "2026-10-12T09:40:17Z",
+      "updated_at": "2026-10-12T09:46:43Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:22Z",
+          "completed_at": "2026-10-12T09:45:02Z",
+          "runner_name": "GitHub Actions 1000006436",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:22Z",
+          "completed_at": "2026-10-12T09:40:26Z",
+          "runner_name": "GitHub Actions 1000006437",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-44048)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:29Z",
+          "completed_at": "2026-10-12T09:42:14Z",
+          "runner_name": "GitHub Actions 1000006439",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:29Z",
+          "completed_at": "2026-10-12T09:44:05Z",
+          "runner_name": "GitHub Actions 1000006442",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:28Z",
+          "completed_at": "2026-10-12T09:46:42Z",
+          "runner_name": "GitHub Actions 1000006441",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-8392)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:29Z",
+          "completed_at": "2026-10-12T09:42:59Z",
+          "runner_name": "GitHub Actions 1000006440",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (reactmodal-732)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:29Z",
+          "completed_at": "2026-10-12T09:41:43Z",
+          "runner_name": "GitHub Actions 1000006443",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:40:29Z",
+          "completed_at": "2026-10-12T09:42:02Z",
+          "runner_name": "GitHub Actions 1000006444",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38232414560,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38232414560",
+      "head_sha": "70b4cf64b125c66e388fbe46b8351072e0e23b1d",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T09:49:55Z",
+      "run_started_at": "2026-10-12T09:49:55Z",
+      "updated_at": "2026-10-12T09:54:29Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:49:59Z",
+          "completed_at": "2026-10-12T09:50:05Z",
+          "runner_name": "GitHub Actions 1000006447",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:49:59Z",
+          "completed_at": "2026-10-12T09:52:55Z",
+          "runner_name": "GitHub Actions 1000006446",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:53:22Z",
+          "runner_name": "GitHub Actions 1000006449",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (datepicker-5366)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:08Z",
+          "completed_at": "2026-10-12T09:51:38Z",
+          "runner_name": "GitHub Actions 1000006456",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:08Z",
+          "completed_at": "2026-10-12T09:51:58Z",
+          "runner_name": "GitHub Actions 1000006450",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:54:28Z",
+          "runner_name": "GitHub Actions 1000006452",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (reactmodal-732)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:51:22Z",
+          "runner_name": "GitHub Actions 1000006451",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-8392)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:52:44Z",
+          "runner_name": "GitHub Actions 1000006453",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-44048)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:52:14Z",
+          "runner_name": "GitHub Actions 1000006454",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-18714)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T09:50:07Z",
+          "completed_at": "2026-10-12T09:51:55Z",
+          "runner_name": "GitHub Actions 1000006455",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38234013533,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38234013533",
+      "head_sha": "d0cde5e051566a7acf06fff1f0fa8a237ecce242",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T10:04:35Z",
+      "run_started_at": "2026-10-12T10:04:35Z",
+      "updated_at": "2026-10-12T10:10:05Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:38Z",
+          "completed_at": "2026-10-12T10:04:46Z",
+          "runner_name": "GitHub Actions 1000006458",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:38Z",
+          "completed_at": "2026-10-12T10:09:09Z",
+          "runner_name": "GitHub Actions 1000006459",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-8392)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:07:20Z",
+          "runner_name": "GitHub Actions 1000006461",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:10:04Z",
+          "runner_name": "GitHub Actions 1000006463",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-44048)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:06:18Z",
+          "runner_name": "GitHub Actions 1000006462",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (datepicker-5366)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:06:27Z",
+          "runner_name": "GitHub Actions 1000006465",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (reactmodal-732)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:06:08Z",
+          "runner_name": "GitHub Actions 1000006466",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:06:52Z",
+          "runner_name": "GitHub Actions 1000006464",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-18714)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:48Z",
+          "completed_at": "2026-10-12T10:06:06Z",
+          "runner_name": "GitHub Actions 1000006467",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:04:49Z",
+          "completed_at": "2026-10-12T10:07:33Z",
+          "runner_name": "GitHub Actions 1000006468",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38235235122,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38235235122",
+      "head_sha": "c4d00480ee6b88261716c9604520b7994df9679e",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T10:16:00Z",
+      "run_started_at": "2026-10-12T10:16:00Z",
+      "updated_at": "2026-10-12T10:22:19Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:04Z",
+          "completed_at": "2026-10-12T10:21:22Z",
+          "runner_name": "GitHub Actions 1000006470",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:04Z",
+          "completed_at": "2026-10-12T10:16:07Z",
+          "runner_name": "GitHub Actions 1000006469",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:10Z",
+          "completed_at": "2026-10-12T10:18:02Z",
+          "runner_name": "GitHub Actions 1000006472",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:10Z",
+          "completed_at": "2026-10-12T10:22:18Z",
+          "runner_name": "GitHub Actions 1000006473",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (bootstrap-15168)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:10Z",
+          "completed_at": "2026-10-12T10:17:27Z",
+          "runner_name": "GitHub Actions 1000006474",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:16:09Z",
+          "completed_at": "2026-10-12T10:19:37Z",
+          "runner_name": "GitHub Actions 1000006475",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38236198602,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38236198602",
+      "head_sha": "de9bfdb84555f8afd4b6e13016090acf7791cdb5",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T10:25:11Z",
+      "run_started_at": "2026-10-12T10:25:11Z",
+      "updated_at": "2026-10-12T10:31:56Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:14Z",
+          "completed_at": "2026-10-12T10:28:41Z",
+          "runner_name": "GitHub Actions 1000006477",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:14Z",
+          "completed_at": "2026-10-12T10:25:18Z",
+          "runner_name": "GitHub Actions 1000006478",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:20Z",
+          "completed_at": "2026-10-12T10:27:12Z",
+          "runner_name": "GitHub Actions 1000006480",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:20Z",
+          "completed_at": "2026-10-12T10:31:55Z",
+          "runner_name": "GitHub Actions 1000006481",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:20Z",
+          "completed_at": "2026-10-12T10:28:31Z",
+          "runner_name": "GitHub Actions 1000006479",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (bootstrap-15168)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T10:25:20Z",
+          "completed_at": "2026-10-12T10:26:33Z",
+          "runner_name": "GitHub Actions 1000006482",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38241500151,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38241500151",
+      "head_sha": "4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T11:15:37Z",
+      "run_started_at": "2026-10-12T11:15:37Z",
+      "updated_at": "2026-10-12T11:21:08Z",
+      "jobs": [
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:40Z",
+          "completed_at": "2026-10-12T11:21:07Z",
+          "runner_name": "GitHub Actions 1000006485",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:40Z",
+          "completed_at": "2026-10-12T11:15:44Z",
+          "runner_name": "GitHub Actions 1000006486",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:46Z",
+          "completed_at": "2026-10-12T11:18:46Z",
+          "runner_name": "GitHub Actions 1000006487",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:46Z",
+          "completed_at": "2026-10-12T11:20:57Z",
+          "runner_name": "GitHub Actions 1000006488",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-45049)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:46Z",
+          "completed_at": "2026-10-12T11:17:18Z",
+          "runner_name": "GitHub Actions 1000006489",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:15:46Z",
+          "completed_at": "2026-10-12T11:17:39Z",
+          "runner_name": "GitHub Actions 1000006490",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38242172957,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38242172957",
+      "head_sha": "a10db7ad18489bf55f4cdd9d5e4db891a19beedf",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T11:21:57Z",
+      "run_started_at": "2026-10-12T11:21:57Z",
+      "updated_at": "2026-10-12T11:28:07Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:00Z",
+          "completed_at": "2026-10-12T11:22:06Z",
+          "runner_name": "GitHub Actions 1000006493",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:00Z",
+          "completed_at": "2026-10-12T11:26:39Z",
+          "runner_name": "GitHub Actions 1000006494",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:09Z",
+          "completed_at": "2026-10-12T11:23:29Z",
+          "runner_name": "GitHub Actions 1000006495",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:09Z",
+          "completed_at": "2026-10-12T11:28:06Z",
+          "runner_name": "GitHub Actions 1000006496",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:09Z",
+          "completed_at": "2026-10-12T11:24:52Z",
+          "runner_name": "GitHub Actions 1000006498",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (mui-45049)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:22:09Z",
+          "completed_at": "2026-10-12T11:23:39Z",
+          "runner_name": "GitHub Actions 1000006497",
+          "runner_group_name": "GitHub Actions"
+        }
+      ]
+    },
+    {
+      "id": 38244032876,
+      "html_url": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38244032876",
+      "head_sha": "d84585c36284ff32d9ee50e3646ed49d322af977",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-12T11:39:13Z",
+      "run_started_at": "2026-10-12T11:39:13Z",
+      "updated_at": "2026-10-12T11:45:17Z",
+      "jobs": [
+        {
+          "name": "list",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:39:17Z",
+          "completed_at": "2026-10-12T11:39:24Z",
+          "runner_name": "GitHub Actions 1000006500",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "test-twins",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:39:17Z",
+          "completed_at": "2026-10-12T11:43:43Z",
+          "runner_name": "GitHub Actions 1000006499",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (fluent-35927)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:39:26Z",
+          "completed_at": "2026-10-12T11:42:34Z",
+          "runner_name": "GitHub Actions 1000006502",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (rac-8697)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:39:27Z",
+          "completed_at": "2026-10-12T11:41:18Z",
+          "runner_name": "GitHub Actions 1000006504",
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "name": "fixture (carbon-19563)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-12T11:39:26Z",
+          "completed_at": "2026-10-12T11:45:17Z",
+          "runner_name": "GitHub Actions 1000006503",
           "runner_group_name": "GitHub Actions"
         }
       ]

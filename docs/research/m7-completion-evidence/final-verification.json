@@ -1,0 +1,23 @@
+{
+  "run": 38244032876,
+  "headSha": "d84585c36284ff32d9ee50e3646ed49d322af977",
+  "workflowConclusion": "success",
+  "fixtureJobs": [
+    "fixture (fluent-35927)",
+    "fixture (rac-8697)",
+    "fixture (carbon-19563)"
+  ],
+  "allFixtureJobsDevOnly": true,
+  "assignedMinedTwinsBuilt": 26,
+  "allApplyInstallBuildRevertExitsZero": true,
+  "assignedFixturesLoadedOrChecked": false,
+  "corpusItems": 255,
+  "testPatterns": 77,
+  "devPatterns": 20,
+  "newMinedPatterns": 18,
+  "localTestsPassed": 740,
+  "lintPassed": true,
+  "typecheckPassed": true,
+  "constructionAudit": "construction-audit.json",
+  "buildOnlyEvidence": "38244032876-test-twins-builds.json"
+}
