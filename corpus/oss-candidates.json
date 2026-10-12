@@ -490,6 +490,30 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "baseui-5532",
+      "repo": "mui/base-ui",
+      "refs": [
+        "#5532",
+        "#5432",
+        "PR #5441"
+      ],
+      "stack": "react",
+      "package": "@base-ui/react",
+      "licence": "MIT",
+      "good": "1.6.0",
+      "broken": "1.7.0",
+      "fixed": "1.8.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Router-rendered Tabs.Tab enters an infinite composite-ref update loop in1.7.0, preventing tabs rendering. Reported1.6.0 working, published1.8.0 contains merged5441 unchanged-map guard. Shared React18.2.0/router7.6.2; pointer and native Show tabs activation, ordinary Overview tab focus and width twin match independently (DR-0105).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38227533511,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

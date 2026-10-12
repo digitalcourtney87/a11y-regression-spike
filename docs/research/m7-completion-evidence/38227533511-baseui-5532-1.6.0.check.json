@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "1.6.0",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Tabs settled=true; Overview focused=false (click)"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "Tabs settled=true; Overview focused=true (Enter)"
+    },
+    "benignTwin": {
+      "holds": true,
+      "detail": "Tabs settled=true; Overview focused=true (Enter)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

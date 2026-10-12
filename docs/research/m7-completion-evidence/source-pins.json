@@ -605,5 +605,116 @@
     "sharedFramework": {
       "@popperjs/core": "2.11.8"
     }
+  },
+  {
+    "package": "@base-ui/react",
+    "releases": [
+      {
+        "version": "1.6.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "143a892157224a57046f3f4886c025eba173c258",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.6.0.tgz",
+          "fileCount": 3187,
+          "integrity": "sha512-/jzjTWJYXhRFO45Bev9lc3cHbmjzCMpUqbMZ2AgKy/z25mY9B6shGSNcXcjQar9n5doM0KYW1W8fcFv2jZBuMw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCqJwVsxrpkViG5kp7K/QB3sKZJn3kJErg2uZPwEFtc3QIgCbEkiee0VYWA1cV3WtLe/PdcGamb6Ib7SvXRgpLhiTY=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.6.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9282630
+        },
+        "published": "2026-06-18T12:04:15.326Z"
+      },
+      {
+        "version": "1.7.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "e42eeb6dcfad26be1077d805d46fb812092b4cfc",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.7.0.tgz",
+          "fileCount": 3240,
+          "integrity": "sha512-j+8QjX44C32jrXD/qyEAGpFr70FRpGL2CY61mQd9nBPWN737CK0xxD1ceJ055rW4RtdvFDT1e7otzdlfxvsYug==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCPGkH7q2pWHivhm96ntGTTWvxI0tDdhWit47MRdsTlNwIgXykZrm1d2WDBh8kcJLaBmKr37X1jyEsV/PFUbYah900=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "sig": "MEUCIQD8mPv3sr+Ogk7gF8gI8pyXv8/MFAVhWtNrv+J8eK88RAIgOSm7EzxGuPTSJTZMZkY2pjOIhlZKPhuE86YaK+TMk7E=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.7.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9491657
+        },
+        "published": "2026-08-04T09:55:20.089Z"
+      },
+      {
+        "version": "1.8.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "b13699aec1e7891dc8859dbddbba0016e894dcf3",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.8.0.tgz",
+          "fileCount": 3269,
+          "integrity": "sha512-P0/1sxo6SBVZOklKMIedvTWqw2s2IQzi9x5bIVsXu980cuSOD4NeuRSs+/L7LZQfDkZP/uRZyGPyfFl/B1oH+Q==",
+          "signatures": [
+            {
+              "sig": "MEUCIGb1SQ3AiBicQERVseJMbCUo0eHlh9yDEnnZ7bcHJ0EfAiEAtiJGcJMFjNUCOA1Wkj1KQtHcJ/IAtzBu5lyUR+qXh08=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "sig": "MEYCIQCtsWKihHa/cjP7yaBhLe/EEXIAkOGAcfVUomLb1YM9TQIhAM40Pm/MmYbdfdFhC0ofIoRl0ierpuebY7i3GaSUTsnN",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.8.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9628362
+        },
+        "published": "2026-09-04T08:52:51.986Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-router": "7.6.2"
+    }
   }
 ]

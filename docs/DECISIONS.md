@@ -4046,3 +4046,18 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Append oss--bootstrap-39189 as existing JOURNEY_BLOCKED, test version pair, CSS_ONLY twin and exact unchanged control. Both refs use immutable fixture commit b5c3ccb4bb1387903fa80d8494b5cc07a912cc06. The frozen journey tabs to Open details, then presses Enter once with a dialog|Details focus goal. Manual all-test append, fraction1/unused seed0, preserving prior assignments/items. No new oracle, strategy, threshold, context or changed symptom; no assigned NVDA execution before a new tag. Evidence: docs/research/m7-completion-evidence/bootstrap-repeat-comparison.json.
 
 **Progress.** Ten of18 additions built:69 test,20 dev,89 patterns,231 items; eight still needed. Base UI router-tab construct remains unsplit and exploratory. No new tag or M8 work.
+
+## DR-0105 Base UI router-tab admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Base UI#5532/#5432 describe the same defect and count once. Reported1.6.0 working/1.7.0 broken; merged5441 and published1.8.0 compare the composite item snapshot before publishing a new map. Fix tests support router-Link Tabs.Tab and unstable merged refs. Shared direct React/react-dom18.2.0 and react-router7.6.2 satisfy all peer ranges and predate1.6.0. The reported mount/settle criterion is reproduced without upgrading to React19 or manually manufacturing refs: a normal native Show tabs button reveals two router-link tabs. Good/fixed render both and allow pure keyboard focus to Overview, broken crashes with React update-depth error185. Fresh width-only twin preserves these results. Runs38226873394/38227533511 match final checks and dependency locks exactly; candidate installs/builds succeed, no external requests. Broken page errors retained.
+
+**Construction.** Append one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and TAB/Enter/TAB journey to tab|Overview. Both refs share fixture commit41ce0d124c7cf0c1e94504b772337dc0dfd91a0c. Manual all-test append, fraction1/unused seed0; preserve prior assignments/items. No changed oracle, strategy, threshold or context. Real assigned NVDA execution remains unperformed. Evidence: docs/research/m7-completion-evidence/baseui-repeat-comparison.json.
+
+**Progress.** Eleven of18 additions built:70 test,20 dev,90 patterns,234 items; seven still needed. react-datepicker remains unsplit pending its original criterion and repeat. No new tag or M8 work.

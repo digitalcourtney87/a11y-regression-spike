@@ -1,0 +1,11 @@
+--- a/fixtures/oss/baseui-5532/src/main.jsx
++++ b/fixtures/oss/baseui-5532/src/main.jsx
+@@ -5,7 +5,7 @@
+ 
+ function App() {
+   const [shown, setShown] = useState(false);
+-  return <main>
++  return <main style={{ maxWidth: "480px" }}>
+     <h1>Router tabs</h1>
+     <button onClick={() => setShown(true)}>Show tabs</button>
+     {shown && <MemoryRouter>

@@ -1,0 +1,16 @@
+{
+  "id": "oss-baseui-5532-twin",
+  "patternId": "oss--baseui-5532",
+  "operator": "css-only",
+  "app": "oss/baseui-5532",
+  "journeyId": "oss-baseui-5532",
+  "target": "Main width only; router links, tabs and ref behavior unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-baseui-5532"
+}

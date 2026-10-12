@@ -1,0 +1,21 @@
+{
+  "id": "oss-baseui-5532-unchanged",
+  "source": "oss-history",
+  "patternId": "oss--baseui-5532",
+  "split": "test",
+  "app": "oss/baseui-5532",
+  "journeyId": "oss-baseui-5532",
+  "base": {
+    "ref": "oss/baseui-5532@41ce0d124c7cf0c1e94504b772337dc0dfd91a0c+@base-ui/react@1.6.0"
+  },
+  "candidate": {
+    "ref": "oss/baseui-5532@41ce0d124c7cf0c1e94504b772337dc0dfd91a0c+@base-ui/react@1.6.0"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-baseui-5532 (P15/P39, DR-0105)",
+    "licence": "MIT (Base UI)"
+  }
+}

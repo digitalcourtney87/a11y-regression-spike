@@ -786,6 +786,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Native modal activation with a valid colon-containing HTML id fails in Bootstrap5.3.2. Reported5.3.1 working and published5.3.3 fix39201 support the same construct, shared Popper2.11.8. Pointer and Tab/Enter must open and focus Details; good/fixed hold, broken retains selector error. Checks and resolved locks match independently (DR-0104)."
+    },
+    {
+      "id": "oss--baseui-5532",
+      "batch": "oss-regression",
+      "context": "oss:mui/base-ui#5532",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Router-rendered Tabs.Tab enters an infinite composite-ref update loop in1.7.0, preventing tabs rendering. Reported1.6.0 working, published1.8.0 contains merged5441 unchanged-map guard. Shared React18.2.0/router7.6.2; pointer and native Show tabs activation, ordinary Overview tab focus and width twin match independently (DR-0105)."
     }
   ]
 }
