@@ -1,0 +1,2829 @@
+{
+ "approval": "P42/DR-0120",
+ "blocks": {
+  "C1 v1": "usable",
+  "C1 v2": "usable",
+  "C1 nvda": "usable",
+  "C2 v1": "usable",
+  "C2 v2": "usable",
+  "C2 nvda": "usable",
+  "C3 v1": "usable",
+  "C3 v2": "usable",
+  "C3 nvda": "usable",
+  "C4 v1": "usable",
+  "C4 v2": "usable",
+  "C4 nvda": "usable",
+  "F1 nvda-absent": "usable",
+  "F1 nvda-present": "usable",
+  "F2 nvda-absent": "usable",
+  "F2 nvda-present": "usable",
+  "F3 nvda-absent": "usable",
+  "F3 nvda-present": "usable",
+  "F4 nvda-absent": "usable",
+  "F4 nvda-present": "usable"
+ },
+ "decisionRules": {
+  "rule1CursorV2": {
+   "accepted": true,
+   "v2OnC1toC3": {
+    "C1": {
+     "n": 3,
+     "holds": true
+    },
+    "C2": {
+     "n": 3,
+     "holds": true
+    },
+    "C3": {
+     "n": 3,
+     "holds": true
+    }
+   },
+   "c4LinesEqual": {
+    "n": 3,
+    "holds": true
+   },
+   "nvdaReachesTargets": {
+    "C1": {
+     "n": 3,
+     "holds": true
+    },
+    "C2": {
+     "n": 3,
+     "holds": true
+    },
+    "C3": {
+     "n": 3,
+     "holds": true
+    },
+    "C4": {
+     "n": 3,
+     "holds": true
+    }
+   },
+   "positiveControlC1": {
+    "n": 3,
+    "holds": true
+   }
+  },
+  "rule2FocusReaders": {
+   "unchanged": true,
+   "byControl": {
+    "F1": {
+     "absentEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "msaaEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "nvdaFocusSpeechNamed": [
+      true,
+      true,
+      true
+     ],
+     "absentFullTreeEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "verdict": "agree"
+    },
+    "F2": {
+     "absentEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "msaaEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "nvdaFocusSpeechNamed": [
+      false,
+      false,
+      false
+     ],
+     "absentFullTreeEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "verdict": "agree"
+    },
+    "F3": {
+     "absentEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "msaaEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "nvdaFocusSpeechNamed": [
+      false,
+      false,
+      false
+     ],
+     "absentFullTreeEarlyNamed": [
+      false,
+      false,
+      false
+     ],
+     "verdict": "agree"
+    },
+    "F4": {
+     "absentEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "msaaEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "nvdaFocusSpeechNamed": [
+      true,
+      true,
+      true
+     ],
+     "absentFullTreeEarlyNamed": [
+      true,
+      true,
+      true
+     ],
+     "verdict": "agree"
+    }
+   }
+  }
+ },
+ "predictions": {
+  "C1 NVDA reaches": {
+   "n": 3,
+   "holds": true
+  },
+  "C1 v2 reaches, no repeat": {
+   "n": 3,
+   "holds": true
+  },
+  "C1 v1 repeats a marker and does not reach (positive control)": {
+   "n": 3,
+   "holds": true
+  },
+  "C2 NVDA reaches": {
+   "n": 3,
+   "holds": true
+  },
+  "C2 v2 reaches, no repeat": {
+   "n": 3,
+   "holds": true
+  },
+  "C3 NVDA reaches": {
+   "n": 3,
+   "holds": true
+  },
+  "C3 v1 and v2 reach, v2 attempts <= v1": {
+   "n": 3,
+   "holds": true
+  },
+  "C4 v1 and v2 identical lines": {
+   "n": 3,
+   "holds": true
+  },
+  "C4 v1 stays on last line past end": {
+   "n": 3,
+   "holds": true
+  },
+  "C4 v2 stays on last line past end": {
+   "n": 3,
+   "holds": true
+  },
+  "F1 all early reads and NVDA focus speech named": {
+   "n": 6,
+   "holds": true
+  },
+  "F2 all early reads and NVDA focus speech unnamed": {
+   "n": 6,
+   "holds": true
+  },
+  "F3 early reads and NVDA focus speech unnamed": {
+   "n": 6,
+   "holds": true
+  },
+  "F3 end reads named": {
+   "holds": true
+  },
+  "F4 all early reads and NVDA focus speech named": {
+   "n": 6,
+   "holds": true
+  }
+ },
+ "recordedNotPredicted": {
+  "C2 v1 outcomes": [
+   [
+    "UNREACHABLE",
+    true
+   ],
+   [
+    "UNREACHABLE",
+    true
+   ],
+   [
+    "UNREACHABLE",
+    true
+   ]
+  ],
+  "C4 NVDA past-end outcomes": [
+   "REACHED",
+   "REACHED",
+   "REACHED"
+  ],
+  "F3 NVDA late speech named": [
+   true,
+   true,
+   true
+  ]
+ },
+ "cursor": {
+  "C1": {
+   "v1": {
+    "1": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 15,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 15,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 15,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "1. ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    }
+   },
+   "v2": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 6,
+      "attempts": 6,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "1. ",
+         "StaticText"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "River bridge",
+         "option"
+        ],
+        [
+         "2. ",
+         "StaticText"
+        ],
+        [
+         "River bridge",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Market square",
+         "option"
+        ],
+        [
+         "3. ",
+         "StaticText"
+        ],
+        [
+         "Market square",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Marker target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 6,
+      "attempts": 6,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "1. ",
+         "StaticText"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "River bridge",
+         "option"
+        ],
+        [
+         "2. ",
+         "StaticText"
+        ],
+        [
+         "River bridge",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Market square",
+         "option"
+        ],
+        [
+         "3. ",
+         "StaticText"
+        ],
+        [
+         "Market square",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Marker target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 6,
+      "attempts": 6,
+      "lines": [
+       [
+        [
+         "Marker list",
+         "heading"
+        ],
+        [
+         "Marker list",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Route stops",
+         "listbox"
+        ]
+       ],
+       [
+        [
+         "North gate",
+         "option"
+        ],
+        [
+         "1. ",
+         "StaticText"
+        ],
+        [
+         "North gate",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "River bridge",
+         "option"
+        ],
+        [
+         "2. ",
+         "StaticText"
+        ],
+        [
+         "River bridge",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Market square",
+         "option"
+        ],
+        [
+         "3. ",
+         "StaticText"
+        ],
+        [
+         "Market square",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Marker target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    }
+   },
+   "nvda": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Route stops list North gate"
+       ],
+       [
+        "Marker target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Route stops list North gate"
+       ],
+       [
+        "Marker target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Route stops list North gate"
+       ],
+       [
+        "Marker target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    }
+   }
+  },
+  "C2": {
+   "v1": {
+    "1": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 10,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 10,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "UNREACHABLE",
+      "reachedAt": null,
+      "attempts": 10,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": true
+     },
+     "past-end": null
+    }
+   },
+   "v2": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Check the second panel before continuing.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Generated target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Check the second panel before continuing.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Generated target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "lines": [
+       [
+        [
+         "Generated text",
+         "heading"
+        ],
+        [
+         "Generated text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Note: ",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Check the second panel before continuing.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Generated target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    }
+   },
+   "nvda": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Note: Check the second panel before continuing."
+       ],
+       [
+        "Generated target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Note: Check the second panel before continuing."
+       ],
+       [
+        "Generated target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Note: Check the second panel before continuing."
+       ],
+       [
+        "Generated target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    }
+   }
+  },
+  "C3": {
+   "v1": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    }
+   },
+   "v2": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 3,
+      "attempts": 3,
+      "lines": [
+       [
+        [
+         "Wrapped text",
+         "heading"
+        ],
+        [
+         "Wrapped text",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapped sentence one.",
+         "StaticText"
+        ],
+        [
+         "Wrapped sentence two.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Wrapper target reached",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": null
+    }
+   },
+   "nvda": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Wrapped sentence one. Wrapped sentence two."
+       ],
+       [
+        "Wrapper target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Wrapped sentence one. Wrapped sentence two."
+       ],
+       [
+        "Wrapper target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 2,
+      "attempts": 2,
+      "speech": [
+       [
+        "Wrapped sentence one. Wrapped sentence two."
+       ],
+       [
+        "Wrapper target reached"
+       ]
+      ]
+     },
+     "past-end": null
+    }
+   }
+  },
+  "C4": {
+   "v1": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    }
+   },
+   "v2": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 5,
+      "attempts": 5,
+      "lines": [
+       [
+        [
+         "Plain page",
+         "heading"
+        ],
+        [
+         "Plain page",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain paragraph one.",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain action",
+         "button"
+        ],
+        [
+         "Plain action",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain section",
+         "heading"
+        ],
+        [
+         "Plain section",
+         "StaticText"
+        ]
+       ],
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "lines": [
+       [
+        [
+         "Plain final line.",
+         "StaticText"
+        ]
+       ]
+      ],
+      "repeatedPosition": false
+     }
+    }
+   },
+   "nvda": {
+    "1": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "speech": [
+       [
+        "Plain paragraph one."
+       ],
+       [
+        "button Plain action"
+       ],
+       [
+        "heading level 2 Plain section"
+       ],
+       [
+        "Plain final line."
+       ]
+      ]
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "speech": [
+       [
+        "Plain final line."
+       ]
+      ]
+     }
+    },
+    "2": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "speech": [
+       [
+        "Plain paragraph one."
+       ],
+       [
+        "button Plain action"
+       ],
+       [
+        "heading level 2 Plain section"
+       ],
+       [
+        "Plain final line."
+       ]
+      ]
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "speech": [
+       [
+        "Plain final line."
+       ]
+      ]
+     }
+    },
+    "3": {
+     "read-to-target": {
+      "outcome": "REACHED",
+      "reachedAt": 4,
+      "attempts": 4,
+      "speech": [
+       [
+        "Plain paragraph one."
+       ],
+       [
+        "button Plain action"
+       ],
+       [
+        "heading level 2 Plain section"
+       ],
+       [
+        "Plain final line."
+       ]
+      ]
+     },
+     "past-end": {
+      "outcome": "REACHED",
+      "reachedAt": 1,
+      "attempts": 1,
+      "speech": [
+       [
+        "Plain final line."
+       ]
+      ]
+     }
+    }
+   }
+  }
+ },
+ "focus": {
+  "F1": {
+   "label": "Delivery note",
+   "nvda-absent": {
+    "1": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "2": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "3": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Delivery note edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "2": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Delivery note edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "3": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Delivery note",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Delivery note",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Delivery note",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Delivery note edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    }
+   }
+  },
+  "F2": {
+   "label": "Billing code",
+   "nvda-absent": {
+    "1": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "2": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "3": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "2": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "3": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "",
+      "named": false
+     },
+     "fullTreeEarly": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 18,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    }
+   }
+  },
+  "F3": {
+   "label": "Account reference",
+   "nvda-absent": {
+    "1": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "2": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "3": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [
+       "Account reference"
+      ],
+      "named": true
+     }
+    },
+    "2": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [
+       "Account reference"
+      ],
+      "named": true
+     }
+    },
+    "3": {
+     "outcome": "UNREACHABLE",
+     "earlyRead": {
+      "name": "",
+      "role": "editable text",
+      "named": false
+     },
+     "endRead": {
+      "name": "Account reference",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 16,
+      "name": "",
+      "role": "textbox",
+      "named": false
+     },
+     "fullTreeEnd": {
+      "backendId": 16,
+      "name": "Account reference",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "edit blank"
+      ],
+      "named": false
+     },
+     "lateSpeech": {
+      "utterances": [
+       "Account reference"
+      ],
+      "named": true
+     }
+    }
+   }
+  },
+  "F4": {
+   "label": "Item name",
+   "nvda-absent": {
+    "1": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "2": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    },
+    "3": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": []
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Item name edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "2": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Item name edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    },
+    "3": {
+     "outcome": "REACHED",
+     "earlyRead": {
+      "name": "Item name",
+      "role": "editable text",
+      "named": true
+     },
+     "endRead": {
+      "name": "Item name",
+      "named": true
+     },
+     "fullTreeEarly": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeEnd": {
+      "backendId": 17,
+      "name": "Item name",
+      "role": "textbox",
+      "named": true
+     },
+     "fullTreeErrors": [],
+     "readErrors": [],
+     "focusSpeech": {
+      "utterances": [
+       "main landmark",
+       "Item name edit blank"
+      ],
+      "named": true
+     },
+     "lateSpeech": {
+      "utterances": [],
+      "named": false
+     }
+    }
+   }
+  }
+ }
+}
