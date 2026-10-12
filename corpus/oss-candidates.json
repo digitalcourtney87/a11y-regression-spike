@@ -657,6 +657,30 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "mui-45049",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#45049",
+        "PR #44537",
+        "PR #45050"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "6.1.10",
+      "broken": "6.2.0",
+      "fixed": "6.4.2",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Restricted Slider arrow handling sets last allowed mark to NaN in6.2.0. Reported6.1.10 working, published6.4.2 fix45050 uses inclusive mark boundaries. Same React18.2.0 and Emotion11.13.3/11.13.0. Native ArrowRight at30 must retain Level30; good/fixed browse line3, broken NaN/absent. Final original checks, CSS twin and locks match independently (DR-0109).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38242172957,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

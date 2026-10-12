@@ -245,3 +245,7 @@ A-007 Slider pre-first-outcome preparation: explicitly match native min10/max30 
 ### A-017: Seventeenth second-round mined pattern
 
 2026-10-12; owner completion instruction and “Please continue”, P22/P39; DR-0108. Append Bootstrap manual-tooltip pattern after matching final original checks/locks. Registry/pattern/split, three items and twin spec/patch/journey change frozen set after G4 exposure. Same vanilla stack and jQuery pin within pair; prior assignments/items and measurement definitions preserved. No assigned execution, new tag or M8 work.
+
+### A-018: Eighteenth second-round mined pattern; build complete
+
+2026-10-12; owner completion instruction and “Please continue”, P22/P39; DR-0109. Append MUI restricted-slider boundary after two matching original checks/locks. Registry/pattern/split, three items and twin spec/patch/journey change frozen set after G4 exposure. All18 additions are mined;77 test patterns now built. Original59 test assignments and original-freeze items preserved; earlier new-round URL-only corrections recorded A-016. No changed measurement definitions, assigned execution, new tag or M8 work. Confirmatory execution remains gated by new owner freeze instruction.

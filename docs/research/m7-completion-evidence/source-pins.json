@@ -1207,5 +1207,94 @@
     "sharedFramework": {
       "jquery": "1.11.1"
     }
+  },
+  {
+    "package": "@mui/material",
+    "releases": [
+      {
+        "version": "6.1.10",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.1.10"
+        },
+        "dist": {
+          "shasum": "eab2a9df24c68548d0df2b5b25c0410311313ff9",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.1.10.tgz",
+          "fileCount": 2421,
+          "integrity": "sha512-txnwYObY4N9ugv5T2n5h1KcbISegZ6l65w1/7tpSU5OB6MQCU94YkP8n/3slDw2KcEfRk4+4D8EUGfhSPMODEQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDyFpqPFo3DFUn58wk6YawEV1l3+Lh7QfipjzWNY2deOgIgM3G5LSbd8A1YZL08u/sknHqZhqol5+iHuZW41RtGaPg=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6291309
+        },
+        "published": "2024-12-04T10:02:44.881Z"
+      },
+      {
+        "version": "6.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.2.0"
+        },
+        "dist": {
+          "shasum": "e649438c3de3d26c8e79845711572a4ae34125bb",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.2.0.tgz",
+          "fileCount": 2421,
+          "integrity": "sha512-7FXXUPIyYzP02a7GvqwJ7ocmdP+FkvLvmy/uxG1TDmTlsr8nEClQp75uxiVznJqAY/jJy4d+Rj/fNWNxwidrYQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIHez/FwkpV/EpxrplC7JzI/XNWfmhX0yqabMmqSIqGuLAiEA44hScBGRftXra0X88D9NztwO8sN0yAx8SqrR3RZHb7M=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6304756
+        },
+        "published": "2024-12-11T02:02:20.329Z"
+      },
+      {
+        "version": "6.4.2",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.4.2"
+        },
+        "dist": {
+          "shasum": "480ecc683584d598efafd703655ecaac16335995",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.4.2.tgz",
+          "fileCount": 2441,
+          "integrity": "sha512-9jKr53KbAJyyBRx8LRmX7ATXHlGtxVQdPgm1uyXMoEPMVkSJW1yO3vFgfYoDbGx4ZHcCNuWa4FkFIPWVt9fghA==",
+          "signatures": [
+            {
+              "sig": "MEUCIFIjhzXnMtnRe+Q2gpzDZ6zW8TaLgKxGcNoFKJpFFbTjAiEAgLXuEKFhktFjM3JV4Y9FjmYJ+v54vo9Jzm3RxYmcRb4=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 6407534
+        },
+        "published": "2025-01-29T15:49:03.585Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.13.3",
+      "@emotion/styled": "11.13.0"
+    }
   }
 ]

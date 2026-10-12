@@ -1,0 +1,405 @@
+{
+  "testPatterns": 77,
+  "additions": 18,
+  "allMined": true,
+  "originalAssignmentsPreserved": true,
+  "originalItemBytesPreserved": true,
+  "records": [
+    {
+      "id": "baseui-5532",
+      "good": "1.6.0",
+      "goodPublished": "2026-06-18T12:04:15.326Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-router",
+          "version": "7.6.2",
+          "published": "2025-06-03T20:43:05.330Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "bootstrap-15168",
+      "good": "3.2.0",
+      "goodPublished": "2014-06-26T16:44:01.175Z",
+      "directPins": [
+        {
+          "package": "jquery",
+          "version": "1.11.1",
+          "published": "2014-05-01T18:05:32.863Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "bootstrap-39189",
+      "good": "5.3.1",
+      "goodPublished": "2023-07-26T08:02:20.041Z",
+      "directPins": [
+        {
+          "package": "@popperjs/core",
+          "version": "2.11.8",
+          "published": "2023-05-26T17:27:25.366Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "carbon-7861",
+      "good": "7.28.0",
+      "goodPublished": "2021-02-04T16:53:43.175Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:05.812Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:26.085Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "carbon-8392",
+      "good": "7.31.0",
+      "goodPublished": "2021-03-18T21:36:23.769Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:05.812Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:26.085Z",
+          "beforeGood": true
+        },
+        {
+          "package": "carbon-components",
+          "version": "10.30.0",
+          "published": "2021-03-04T23:19:34.044Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "chakra-6693",
+      "good": "2.2.8",
+      "goodPublished": "2022-08-14T07:11:07.144Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/react",
+          "version": "11.10.0",
+          "published": "2022-07-31T09:06:37.073Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/styled",
+          "version": "11.10.0",
+          "published": "2022-07-31T09:06:36.928Z",
+          "beforeGood": true
+        },
+        {
+          "package": "framer-motion",
+          "version": "6.5.1",
+          "published": "2022-07-14T09:03:44.198Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "datepicker-5428",
+      "good": "6.9.0",
+      "goodPublished": "2024-04-18T07:26:54.454Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "fluent-18714",
+      "good": "7.167.0",
+      "goodPublished": "2021-04-15T12:23:01.263Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:05.812Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:26.085Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "fluent-27997",
+      "good": "9.19.1",
+      "goodPublished": "2023-04-24T08:11:59.234Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "fluent-4620",
+      "good": "5.40.2",
+      "goodPublished": "2018-01-19T11:14:37.238Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "16.2.0",
+          "published": "2017-11-28T21:32:28.829Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "16.2.0",
+          "published": "2017-11-28T21:32:29.110Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "headlessui-2084",
+      "good": "1.7.4",
+      "goodPublished": "2022-11-03T15:22:19.805Z",
+      "directPins": [
+        {
+          "package": "vue",
+          "version": "3.2.41",
+          "published": "2022-10-14T10:41:34.401Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "mui-44048",
+      "good": "5.10.17",
+      "goodPublished": "2022-12-06T10:59:27.105Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/react",
+          "version": "11.10.5",
+          "published": "2022-10-27T08:33:49.839Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/styled",
+          "version": "11.10.5",
+          "published": "2022-10-27T08:33:49.602Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "mui-45049",
+      "good": "6.1.10",
+      "goodPublished": "2024-12-04T10:02:44.881Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/react",
+          "version": "11.13.3",
+          "published": "2024-08-21T09:24:50.526Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/styled",
+          "version": "11.13.0",
+          "published": "2024-07-20T07:37:30.309Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "mui-46734",
+      "good": "7.2.0",
+      "goodPublished": "2025-06-30T08:58:52.810Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:38.369Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.2.0",
+          "published": "2022-06-14T19:46:48.370Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/react",
+          "version": "11.14.0",
+          "published": "2024-12-09T08:43:27.996Z",
+          "beforeGood": true
+        },
+        {
+          "package": "@emotion/styled",
+          "version": "11.14.0",
+          "published": "2024-12-09T08:43:28.080Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "ras-8637",
+      "good": "3.42.2",
+      "goodPublished": "2025-06-10T18:12:46.845Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "18.3.1",
+          "published": "2024-04-26T16:42:26.496Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "18.3.1",
+          "published": "2024-04-26T16:42:49.931Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "reactselect-4421",
+      "good": "3.2.0",
+      "goodPublished": "2021-01-13T13:42:50.781Z",
+      "directPins": [
+        {
+          "package": "react",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:05.812Z",
+          "beforeGood": true
+        },
+        {
+          "package": "react-dom",
+          "version": "16.14.0",
+          "published": "2020-10-14T19:38:26.085Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "vuetify-21591",
+      "good": "3.4.9",
+      "goodPublished": "2023-12-28T02:02:31.189Z",
+      "directPins": [
+        {
+          "package": "vue",
+          "version": "3.3.8",
+          "published": "2023-11-06T10:55:05.485Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    },
+    {
+      "id": "vuetify-22770",
+      "good": "3.3.6",
+      "goodPublished": "2023-06-27T21:01:18.411Z",
+      "directPins": [
+        {
+          "package": "vue",
+          "version": "3.3.4",
+          "published": "2023-05-18T08:31:34.064Z",
+          "beforeGood": true
+        }
+      ],
+      "twinPatchApplies": true
+    }
+  ]
+}

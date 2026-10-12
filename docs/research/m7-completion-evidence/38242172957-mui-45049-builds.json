@@ -1,0 +1,23 @@
+[
+  {
+    "label": "6.1.10",
+    "version": "6.1.10",
+    "before": "2024-12-05T10:02:44Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "6.2.0",
+    "version": "6.2.0",
+    "before": "2024-12-12T02:02:20Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "6.4.2",
+    "version": "6.4.2",
+    "before": "2025-01-30T15:49:03Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

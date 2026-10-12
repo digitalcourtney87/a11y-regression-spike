@@ -259,6 +259,17 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-restricted-slider",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -317,6 +328,7 @@
     "oss--fluent-7796": "test",
     "oss--headlessui-2084": "test",
     "oss--mui-44048": "test",
+    "oss--mui-45049": "test",
     "oss--mui-46734": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",

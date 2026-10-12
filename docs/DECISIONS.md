@@ -140,6 +140,16 @@ Conventions:
 | [DR-0098](#dr-0098-broader-mining-pass-and-datefield-admission) | Broader mining pass and DateField admission | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | Second addition built; 16 still needed |
 
 | [DR-0099](#dr-0099-completion-batches-and-vuetify-navigation-admission) | Completion batches and Vuetify navigation admission | Accepted | 2026-10-11 | Owner instruction to finish patterns; P22/P39 | — | 62 test patterns; completion continues |
+| [DR-0100](#dr-0100-datagrid-admission-after-source-boundary-correction) | DataGrid admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 63 test |
+| [DR-0101](#dr-0101-zero-delay-vuetify-menu-admission) | Zero-delay menu admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 64 test |
+| [DR-0102](#dr-0102-grouped-react-select-admission) | Grouped react-select admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 65 test |
+| [DR-0103](#dr-0103-three-final-input-pattern-admissions) | Three input admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 68 test |
+| [DR-0104](#dr-0104-bootstrap-colon-id-modal-admission) | Colon-id modal admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 69 test |
+| [DR-0105](#dr-0105-base-ui-router-tab-admission) | Router-tab admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 70 test |
+| [DR-0106](#dr-0106-date-navigation-and-empty-option-selection-admissions) | Date and selection admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 72 test |
+| [DR-0107](#dr-0107-three-content-and-callback-admissions-rejected-diagnostics-retained) | Content and callback admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 75 test |
+| [DR-0108](#dr-0108-manual-tooltip-admission) | Manual-tooltip admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 76 test |
+| [DR-0109](#dr-0109-restricted-slider-admission-completes-the-second-round-build) | Second-round build complete | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 77 test;18 additions |
 
 ## Pending owner items (hard rule 12)
 
@@ -4115,3 +4125,18 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Add one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and native TAB/Enter/document-top/browse journey. Both refs share immutable fixture commit c4d00480ee6b88261716c9604520b7994df9679e. Manual all-test append, fraction1/unused seed0. Previous assignments/items preserved. No changed oracle, key, threshold, context or local third-party execution; assigned NVDA remains unperformed. Evidence: docs/research/m7-completion-evidence/bootstrap-15168-repeat-comparison.json.
 
 **Progress.** Seventeen of18 additions built:76 test,20 dev,96 patterns,252 items; one still needed. MUI restricted Slider45049 is unsplit source preparation. No new tag or M8 work.
+
+## DR-0109 Restricted-slider admission completes the second-round build
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** MUI#45049 source comment identifies6.1.10 working/6.2.0 broken after44537's custom keyboard handling. Published6.4.2 contains45050 inclusive mark-boundary checks;6.4.1 predates merge and is not called fixed. Same React18.2.0, Emotion/react11.13.3 and Emotion/styled11.13.0 before earliest. Fix's own controlled marks10/20/30, step=null and value30 support the original right-edge requirement; explicit native bounds10..30 match the allowed marks before any outcome. Native Tab/ArrowRight at upper mark must retain30 rather than NaN. Good/fixed do, broken returns NaN; ordinary Level30 browse goal line3/absent. Original pointer-entry/ArrowRight path and fresh width-only twin agree. Runs38241500151/38242172957 match all final check outputs and dependency locks; installs/builds succeed, no page errors/external requests. Evidence: docs/research/m7-completion-evidence/mui-45049-repeat-comparison.json.
+
+**Construction.** Add existing JOURNEY_BLOCKED test version pair, CSS_ONLY twin, exact unchanged control and TAB/ArrowRight/focus-mode-toggle/document-top/browse journey. Both refs share fixture commit4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e. Manual all-test append, fraction1/unused seed0; previous assignments/items preserved. No changed oracle, strategy, threshold, context or local third-party execution. Actual assigned NVDA remains unperformed before a new tag.
+
+**Completion.** All18 required new mined patterns are built:77 test,20 dev,97 total patterns,255 items. Original59 test assignments and all original-freeze item bytes are unchanged. Four previously admitted new-round source URLs were corrected under A-016; measurement/ref/expectation fields preserved. Full local suite passes740 tests; source/corpus validation and build-only control verification accompany the completion report. This completes pattern construction, not confirmatory execution or M8. No new tag applied.

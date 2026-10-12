@@ -849,6 +849,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Manual Tooltip string-method dispatch fails after selector initialization in3.3.0. Reported3.2.0 working, published3.3.2 reverts14189 via15466. Same jQuery1.11.1, vanilla context. Native Show help activation must show Extra information; good/fixed browse goal line3, absent broken with expected method error. Final outputs and locks match independently (DR-0108)."
+    },
+    {
+      "id": "oss--mui-45049",
+      "batch": "oss-regression",
+      "context": "oss:mui/material-ui#45049",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Restricted Slider arrow handling sets last allowed mark to NaN in6.2.0. Reported6.1.10 working, published6.4.2 fix45050 uses inclusive mark boundaries. Same React18.2.0 and Emotion11.13.3/11.13.0. Native ArrowRight at30 must retain Level30; good/fixed browse line3, broken NaN/absent. Final original checks, CSS twin and locks match independently (DR-0109)."
     }
   ]
 }

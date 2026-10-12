@@ -1,0 +1,10 @@
+--- a/fixtures/oss/mui-45049/src/main.jsx
++++ b/fixtures/oss/mui-45049/src/main.jsx
+@@ -4,6 +4,6 @@
+ const marks = [{ value: 10 }, { value: 20 }, { value: 30 }];
+ function App() {
+   const [value, setValue] = useState(30);
+-  return <main><h1>Restricted marks</h1><Slider aria-label="Level" marks={marks} step={null} min={10} max={30} value={value} onChange={(_event, next) => setValue(next)} style={{ width: "300px", margin: "2rem" }} /><p>{`Level ${value}`}</p></main>;
++  return <main style={{ maxWidth: "480px" }}><h1>Restricted marks</h1><Slider aria-label="Level" marks={marks} step={null} min={10} max={30} value={value} onChange={(_event, next) => setValue(next)} style={{ width: "300px", margin: "2rem" }} /><p>{`Level ${value}`}</p></main>;
+ }
+ createRoot(document.getElementById("root")).render(<App />);

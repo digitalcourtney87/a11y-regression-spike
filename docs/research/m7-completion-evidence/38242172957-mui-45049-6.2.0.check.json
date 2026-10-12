@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "6.2.0",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": null,
+      "holds": false,
+      "detail": "Upper mark after ArrowRight=NaN"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": null,
+      "holds": false,
+      "detail": "Upper mark after ArrowRight=NaN"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": null,
+      "holds": false,
+      "detail": "Upper mark after ArrowRight=NaN"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

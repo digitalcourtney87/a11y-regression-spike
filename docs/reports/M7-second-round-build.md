@@ -1,0 +1,34 @@
+# M7 second-round build — complete, EXPLORATORY
+
+All18 pre-registered new mined patterns are constructed. The corpus now holds77 test and20 dev patterns (97 total),255 items. Each addition has a qualifying source-supported stable package pair, common direct framework pins, original keyboard reproduction, applicable library fix, benign CSS twin, exact unchanged control and declared frozen-strategy journey.
+
+Original59 test assignments and original-freeze item bytes are unchanged. No additional seeded pattern is counted. New-round metadata source-link corrections are documented in A-016; refs, expectations and measurement definitions remain unchanged. The source frame was broadened within the authorised OSS context, using recorded query order, filters/caps and independent source evidence, without selecting from G4 misses. No detection/scoring rule, trigger, threshold or driver strategy changes.
+
+Every admission follows independent matching final native check outputs and resolved dependency locks. These checks ran before assignment in the existing safe Windows workflow: fixed Chrome/Node, standard runners, contents read, no secrets, install scripts disabled. No third-party code executed locally. Fixed releases below were checked when listed; source-only fixes are documented in their decision records rather than claimed as executed. Actual NVDA journeys and scored assigned-test execution remain unperformed.
+
+| Pattern/source | Package | Working → broken | Fix | Repeated native proof |
+|---|---|---|---|---|
+| [baseui-5532](https://github.com/mui/base-ui/issues/5532) | @base-ui/react | 1.6.0 → 1.7.0 | 1.8.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38227533511) |
+| [bootstrap-15168](https://github.com/twbs/bootstrap/issues/15168) | bootstrap | 3.2.0 → 3.3.0 | 3.3.2 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38236198602) |
+| [bootstrap-39189](https://github.com/twbs/bootstrap/issues/39189) | bootstrap | 5.3.1 → 5.3.2 | 5.3.3 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38226318174) |
+| [carbon-7861](https://github.com/carbon-design-system/carbon/issues/7861) | carbon-components-react | 7.28.0 → 7.29.0 | 7.32.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38216780105) |
+| [carbon-8392](https://github.com/carbon-design-system/carbon/issues/8392) | carbon-components-react | 7.31.0 → 7.32.0 | 7.33.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38234013533) |
+| [chakra-6693](https://github.com/chakra-ui/chakra-ui/issues/6693) | @chakra-ui/react | 2.2.8 → 2.2.9 | 2.3.4 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38216780105) |
+| [datepicker-5428](https://github.com/Hacker0x01/react-datepicker/issues/5428) | react-datepicker | 6.9.0 → 7.0.0 | 8.2.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38228576972) |
+| [fluent-18714](https://github.com/microsoft/fluentui/issues/18714) | @fluentui/react | 7.167.0 → 8.19.1 | 8.21.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38234013533) |
+| [fluent-27997](https://github.com/microsoft/fluentui/issues/27997) | @fluentui/react-components | 9.19.1 → 9.20.0 | 9.20.4 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38181647925) |
+| [fluent-4620](https://github.com/microsoft/fluentui/issues/4620) | office-ui-fabric-react | 5.40.2 → 5.41.0 | 5.90.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38175379953) |
+| [headlessui-2084](https://github.com/tailwindlabs/headlessui/issues/2084) | @headlessui/vue | 1.7.4 → 1.7.5 | 1.7.6 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38216780105) |
+| [mui-44048](https://github.com/mui/material-ui/issues/44048) | @mui/material | 5.10.17 → 5.16.7 | 5.16.14 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38232414560) |
+| [mui-45049](https://github.com/mui/material-ui/issues/45049) | @mui/material | 6.1.10 → 6.2.0 | 6.4.2 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38242172957) |
+| [mui-46734](https://github.com/mui/material-ui/issues/46734) | @mui/material | 7.2.0 → 7.3.0 | 7.3.3 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38228576972) |
+| [ras-8637](https://github.com/adobe/react-spectrum/issues/8637) | @adobe/react-spectrum | 3.42.2 → 3.43.0 | 3.44.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38177297242) |
+| [reactselect-4421](https://github.com/JedWatson/react-select/issues/4421) | react-select | 3.2.0 → 4.0.2 | 4.1.0 | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38214490819) |
+| [vuetify-21591](https://github.com/vuetifyjs/vuetify/issues/21591) | vuetify | 3.4.9 → 3.4.10 | source-only | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38211936352) |
+| [vuetify-22770](https://github.com/vuetifyjs/vuetify/issues/22770) | vuetify | 3.3.6 → 3.3.7 | source-only | [native evidence](https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38179257999) |
+
+Full local validation: corpus/schema checks, lint/typecheck and740 tests pass. All18 new twin patches apply; original assignments/items and direct framework-pin chronology are audited. Final Windows build-only test-twin verification is recorded below after completion; it does not load or check assigned fixtures.
+
+Rejected/source-only leads remain in the query ledgers and immutable attempts. Notable failures include Mantine's non-regressing keyboard criterion, Carbon passive-modal's inapplicable fix, react-modal's related wrap failure without original escape evidence, and the recorded controlled date-picker's closing criterion failing every release. These are not silently counted or reclassified. The Carbon Saved-heading collision was corrected before final repetition, and failed imports/builds/preconditions remain in the evidence.
+
+Decision/amendment trail: DR-0096,DR-0098–0109 and A-004–018. Raw checks/builds, repeat comparisons, source pins, query ledgers and SHA-256 manifests are retained in docs/research. The prior protocol-freeze-v3 stays unchanged. A new owner freeze instruction is required before confirmatory execution; M8 remains unauthorised.

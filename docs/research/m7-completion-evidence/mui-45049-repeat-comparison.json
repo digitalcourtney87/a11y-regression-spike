@@ -1,0 +1,16 @@
+{
+  "firstFinalFixtureRun": 38241500151,
+  "repeatRun": 38242172957,
+  "checkOutputsIdentical": true,
+  "locksIdentical": true,
+  "versions": [
+    "6.1.10",
+    "6.2.0",
+    "6.4.2"
+  ],
+  "lockHashes": {
+    "6.1.10": "fedc60770e204fbd4d445aa7c3964b1efa55f97210e44e17fb413c2264629fe8",
+    "6.2.0": "4c6c08ed4da294b65f6ebb5ae063337eb04c2c01be8339e147e14eb8be3b4b99",
+    "6.4.2": "1f5cb2a81ead120ab85d32791614df6dd340bf0c29c69084d20804eaaccbe7a8"
+  }
+}
