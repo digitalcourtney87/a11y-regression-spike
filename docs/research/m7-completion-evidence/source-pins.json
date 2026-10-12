@@ -217,5 +217,83 @@
     "sharedFramework": {
       "vue": "3.3.8"
     }
+  },
+  {
+    "package": "react-select",
+    "releases": [
+      {
+        "version": "3.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "de9284700196f5f9b5277c5d850a9ce85f5c72fe",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-3.2.0.tgz",
+          "fileCount": 119,
+          "integrity": "sha512-B/q3TnCZXEKItO0fFN/I0tWOX3WJvi/X2wtdffmwSQVRwg5BpValScTO1vdic9AxlUgmeSzib2hAZAwIUQUZGQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDnxKQZqgtvsHB+e0LRJh7GFDSSm55gmg7fa4U3N6onWgIgJltJSEmqHwz8sCPuyFIcdYB5DF7ewDy8CJro5W0/ZaM=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1379531,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf/vjbCRA9TVsSAnZWagAAHjkP/R5ulx6KjN+3W+nOXtgR\n6VjcXE1wMU1Xalauv+6N2bLMNzL/QdS0sOhV87BnKupv5GlrBuUuaVkTTHIK\nv91OINiAe8ZtzhWDoumNDQpnVWzPUpGKPdFmpDhbUzqMAIsMJ+FfxyBzKcR9\n3GQ57BSvY4M/rcI7iJUxqvL1SSs+TC5Qfj91xz3H2k0lWfBDCeo2Zmr1DoNP\nDn1lfTiyQPrNLbXSdUXqeK4vd4rBXjMF5du2pJNuxR6eVWUp0xQLK5d2JsAn\nDeASgxUbEuNRRIinL/7XAVIRcF+XtbOyZ6vSKbHiwz8I9t0wTLNNT/q9itO6\nTSkweRf49pKZ+aCxJ/fimSC2NJZFtfqHJEiONwxOqauiXhHyDVo7iMYgIdiW\nyQKAVu8H9zU8ohTxfpjLzFA6AYSoKZlnj00xFKIpP7shwFX/mnwADbQVl94+\naDyhWrtEQvDzYovW/yEgg72KeyL6iyQTVuxmKFUk0/mt0ollp4axQde4YLVy\nQdB0gcG1gBfhURto2KIXI71d/4DUaTLSoXyBGg/4c9LrSq+ArM1EePpTlmVX\nv1pNA83fqle4xKxNi+0PfWgkOlQMKZZFglfXXTH8mHHp0UTF5eGUt83q7sJ4\nUeK2O6KILEsTpsZs2SS+wYHonTA+kCmF8BJNO13ZxSouqdUxYLQaV0ry6npe\n5/FB\r\n=S1Ni\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-01-13T13:42:50.781Z"
+      },
+      {
+        "version": "4.0.2",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "4dcca9f38d6a41e01f2dc7673e244a325e3b4e0e",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-4.0.2.tgz",
+          "fileCount": 116,
+          "integrity": "sha512-BiihrRpRIBBvNqofNZIBpo08Kw8DBHb/kgpIDW4bxgkttk50Sxf0alEIKobns3U7UJXk/CA4rsFUueQEg9Pm5A==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDLRpiNh2J2lRhQ99ZrT8CWZHSVygE+flt6Vt/sBfPtIQIgNNgk5mQo5+YTODm+46WsLDPYjgL/NxpsUTlJi9k7Y3c=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1357535,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgC2BMCRA9TVsSAnZWagAACzgP/3CxeTTZRUV20CU3BEIY\ncUHvQrxg8R7VtTjB6iaeFqGeAWlurnYsKgewCOzCa2TzPNBigbNH4iwZuIgc\nagDQENxFmUOLZY2NGYAIu+TqXZqwPyDBuSLmwmF5gfUFhbYGu/JEYbtZpQUv\n/8zWfp2xgTaFloOYt27lA8EtNLI53y/UJ/5BtFLS83ksNQfYkVvD2b2dBq1k\nO2La/ynw9qWhCwTAwWR3l5HLVASWkvv22vo4NZkPkTSXkn0SVryffDkVLDte\n5hx/bwSECGeFn8CTEwDwhbA0UfPFKElYFsq5iHpHHQyOhmthKyGqf5DztsK0\nXdpkPNzaVI3Yjf6y7/qn3EbZtLSyWWk4pDA6NKvDKc+nQ3GMZDjbbgKyWjne\nvQspm8uul3pAjQYuZrKNwQqNmpSUqqswcJXJhlibJwva6o3+AQGxwf6Lgn/2\ns1GpjPlzBT0PzTIjPHHexpvv7sWXD5Ax8qzT9VbSAowy0JmaA2Fn6Lomiu0j\nSSFUNMuwk8I0U6AzANHlO8OXHyyzxNj3L7X4IjNXLjTdmLL6oI9JQaySTdXu\netFzogciXycsSth31DH30FMzxylpwcdLXKURwLJLq9KWzAIx9olrACCK5DSq\n7XfDmPaNOHKGihcAlCjvORl3U0Hrffx0Hc7bN8gTf1HjczVWFC6yRGBw2IGY\ndsA7\r\n=gGWM\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-01-22T23:31:23.849Z"
+      },
+      {
+        "version": "4.1.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "7ce06b4e8e79b8f58d09a15d25c705abb1ac4885",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-4.1.0.tgz",
+          "fileCount": 116,
+          "integrity": "sha512-OYn+jL8TXMMaZtosErpkdvoI1UWN4ZqMFulIRp5r5bbuqe4OaZN7yv1BNq7PdAJgRu2E19ODFiV1SgJ6wPUaeA==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC3Y9s4dbcD61wqo43S2ZRnIDIWEZ3zCAuk4BLfcNO2uAIhAO8bq2xIBVhmXXsNkBRB0lg8GTlYSyuBw7KsQ7g1KDIt",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1302557,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgHzW3CRA9TVsSAnZWagAAyCcQAJrdO/jUTcKkmyr7zC0f\nOqZZpSfS91vWN4jG/t/DguTnqNmLKohGprEbaxy0ejGxF041JkjtDMcfBBBS\nIqVhZqZXnZ5BpTPWpMG5gac2pQEciYGNkuWniJCs/W0ByVP+7EraEI1ay9Ou\ngJv9wezxGevNYgrqApDKKYWXA1aSYV+hffY8+4dAXo0N0tz1AbOqygYbVxCH\nrUZP56uW75P+EF9/f46p9txpeW89PxIrAsUXD45ce2MM2sd1McDK4YCapIK1\nOQi/e+FAI2Z5DJwtvP9V+m/zOan2fxiwzF/m3/1eL5te6H9UGr/6/aUTdZ7T\nLIWqdIL8XnS6bC4jUK4ngjooK7oqcRGx5U5f8rfHYXxOeWQ4p2I4kwKyYFVp\nA0SX2QnqHLwZgkPkt63KckWP+GhFSk6+42ETfUySHLyLBkXKmLROFWsNcSid\nGFOV6nZChmparaJsKyVpV4SUeyn0ezw1Tv5reE+WCrNRkjDSoKjVhSaeI0k5\nyymaMe4kWv+0BrCHKLOD+CWVYrA8vlmUC4uwF8wfMlFHeLggP/2WqTEMPDcJ\nS9mLJJ4K3GmO2KAQO19XJbFwZE4+7Qf+gF3J74q/VM7ymFpRgSnDuKv/8CPC\nUVyHgGY/iijuFhfNaN4nhp0b7csZdvs1Jcb/mAD3ATLFEhPtzYsAdYPfWpKt\nQU9q\r\n=ZtX6\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-02-07T00:35:02.886Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "16.14.0",
+      "react-dom": "16.14.0"
+    }
   }
 ]

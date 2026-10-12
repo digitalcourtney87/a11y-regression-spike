@@ -741,6 +741,15 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Zero-delay hover menu closes on keyboard entry after deferred delay became synchronous. Supported interactive item setup preserves original one-ArrowDown focus/open/visible criterion. Published3.4.9/3.4.10 sources and fix#22242; identical exploratory checks/locks and width-only twin in38183612490/38211936352; earlier noninteractive setup failure retained (DR-0101)."
+    },
+    {
+      "id": "oss--reactselect-4421",
+      "batch": "oss-regression",
+      "context": "oss:JedWatson/react-select#4421",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Grouped filtered keyboard navigation uses unfiltered group options: after filtering o, ArrowDown/Enter chooses hidden Blue instead of Orange. Reported stable3.2.0/4.0.2 pair and fix#4422 in4.1.0, shared React16.14.0. Original selection criterion plus existing-model browse goal and CSS twin match independently in38213610821/38214490819; earlier setup failures retained (DR-0102)."
     }
   ]
 }

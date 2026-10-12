@@ -3995,3 +3995,20 @@ Runs38183612490 and38211936352 then independently match all check outputs and re
 **Construction.** Append oss--vuetify-21591 with existing JOURNEY_BLOCKED, one test version-pair item, CSS_ONLY twin and exact unchanged control. Both refs pin immutable fixture commit3cfccafbb4a28a492a22dfc88355e2b336328b46. Manual P39 all-test batch has fraction1 and unused seed0; prior assignments/items are preserved. Journey: TAB to Test menu, explicit focus-mode toggle (native button does not automatically enter NVDA focus mode), ArrowDown with one-attempt Item1 goal. No new oracle, trigger, threshold or scoring definition. Actual assigned NVDA execution remains unperformed until a new tag.
 
 **Progress and limits.** Five of18 additions built:64 test,20 dev,84 patterns,216 items;13 still needed, availability unestablished. Mantine is excluded because its keyboard criterion fails on good/fixed too; its source is retained as non-executable text and raw failures retained. Grouped-select first attempt38183612490 fails all releases before behavior because render targets app while HTML supplies root; uniformly repair mount under P22 rule8. Recorded source searches/ledgers continue. No freeze tag, confirmatory execution or M8 work.
+
+## DR-0102 Grouped react-select admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner completion instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Issue#4421 reports the stable working/broken pair3.2.0/4.0.2; fix#4422 in4.1.0 uses filtered categorized group entries rather than original unfiltered group data. All three releases share React/react-dom16.14.0. After filtering `o`, one ArrowDown and Enter must choose Orange after Ocean. Broken chooses hidden Blue. Initial attempts fail uniformly because of a wrong mount target, then placeholder interception; use the normal control click surface and documented focused-option class marker, retaining the criterion. The older API uses live announcements rather than aria-activedescendant; no new oracle follows from that.
+
+Final ordinary feedback and existing-model browse diagnostic in runs38213610821 and38214490819 agree exactly, including resolved dependency locks: Chosen Orange is reachable on line7 in good/fixed and absent in broken. Fresh width-only twin agrees. All candidate installs/builds succeed, no page errors/external requests. Earlier successful behavioral checks38212601361/38213037408 and failed setup attempts are retained separately. Evidence and hashes: `docs/research/m7-completion-evidence/reactselect-repeat-comparison.json`.
+
+**Construction.** Add oss--reactselect-4421 with existing JOURNEY_BLOCKED, test version pair, CSS_ONLY twin and exact unchanged control. Both refs use immutable fixture commit ed89089afce19fff4ea2ac6050a24e97514bda4a. Manual P39 all-test append (fraction1, unused seed0), preserving previous assignments/items. Journey uses existing TAB/TYPE/ArrowDown/Enter, explicit focus-mode toggle before DOCUMENT_TOP/BROWSE_NEXT to Chosen Orange. Real assigned NVDA execution remains unperformed until a new tag. No changed oracle, trigger, threshold, scoring or workflow safeguard.
+
+**Progress.** Six of18 additions built:65 test,20 dev,85 total patterns,219 items;12 still needed, availability unestablished. FilterableMultiSelect, Chakra Editable and Headless Vue remain unsplit until final repeated diagnostics are complete. Passive-modal default path is excluded for no applicable library fix, independently of its exploratory outcomes. Continue recorded source/reproduction batches. No new tag, confirmatory execution or M8 work.

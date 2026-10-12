@@ -1,0 +1,21 @@
+{
+  "id": "oss-reactselect-4421-unchanged",
+  "source": "oss-history",
+  "patternId": "oss--reactselect-4421",
+  "split": "test",
+  "app": "oss/reactselect-4421",
+  "journeyId": "oss-reactselect-4421",
+  "base": {
+    "ref": "oss/reactselect-4421@ed89089afce19fff4ea2ac6050a24e97514bda4a+react-select@3.2.0"
+  },
+  "candidate": {
+    "ref": "oss/reactselect-4421@ed89089afce19fff4ea2ac6050a24e97514bda4a+react-select@3.2.0"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-reactselect-4421 (P15/P39, DR-0102)",
+    "licence": "MIT (react-select)"
+  }
+}

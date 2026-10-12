@@ -1,0 +1,69 @@
+{
+  "id": "oss-reactselect-4421",
+  "version": "1",
+  "app": "oss/reactselect-4421",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-color",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Color",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "filter-colors",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "o"
+    },
+    {
+      "kind": "at",
+      "id": "next-filtered-color",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown"
+    },
+    {
+      "kind": "at",
+      "id": "choose-color",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "browse-result",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-chosen-orange",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Chosen Orange",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

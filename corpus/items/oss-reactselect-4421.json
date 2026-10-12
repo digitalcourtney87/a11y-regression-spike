@@ -1,0 +1,24 @@
+{
+  "id": "oss-reactselect-4421",
+  "source": "oss-history",
+  "patternId": "oss--reactselect-4421",
+  "split": "test",
+  "app": "oss/reactselect-4421",
+  "journeyId": "oss-reactselect-4421",
+  "base": {
+    "ref": "oss/reactselect-4421@ed89089afce19fff4ea2ac6050a24e97514bda4a+react-select@3.2.0"
+  },
+  "candidate": {
+    "ref": "oss/reactselect-4421@ed89089afce19fff4ea2ac6050a24e97514bda4a+react-select@4.0.2"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Grouped filtered keyboard navigation uses unfiltered group options: after filtering o, ArrowDown/Enter chooses hidden Blue instead of Orange. Reported stable3.2.0/4.0.2 pair and fix#4422 in4.1.0, shared React16.14.0. Original selection criterion plus existing-model browse goal and CSS twin match independently in38213610821/38214490819; earlier setup failures retained (DR-0102)."
+  },
+  "provenance": {
+    "origin": "mined from JedWatson/react-select (#4421, PR #4422); verified by m3-oss-repro run 38214490819; second-round admission DR-0102",
+    "licence": "MIT (react-select)",
+    "url": "https://github.com/JedWatson/react-select/issues/4421"
+  }
+}
