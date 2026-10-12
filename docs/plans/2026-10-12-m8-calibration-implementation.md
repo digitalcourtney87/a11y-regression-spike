@@ -10,7 +10,7 @@ Alternatives considered: a second independent AT runner would duplicate handover
 - [x] Implement portable calibration definitions/observation helper and the opt-in runner path.
 - [x] Add controlled pages and journeys; predeclare their expected content/early-late observations and browse hypotheses.
 - [x] Build/launch script and one static two-leg workflow, capped 60 minutes/job. No request file until checks pass.
-- [ ] Run targeted tests, full suite, lint/typecheck and workflow/clock safety policies; commit/push and verify ordinary CI.
+- [x] Run targeted tests, full suite, lint/typecheck and workflow/clock safety policies; commit/push and verify ordinary CI.
 - [ ] Commit the single dispatch request; retain both jobs regardless of outcome. Download, audit and report failures/unavailable observations; do not rerun.
 - [ ] Prepare evidence/archive and reviewable result PR. Original M7 corpus, scores, oracles and freeze-v4 remain unchanged.
 
