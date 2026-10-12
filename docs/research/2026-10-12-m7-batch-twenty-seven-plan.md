@@ -1,0 +1,3 @@
+# M7 completion batch twenty-seven — EXPLORATORY, before source follow-up
+
+No new search queries. Follow the next two still-new query-capped issues from each recorded batch21 query, preserving original query/hit order and excluding registry/ledger candidates. At most32 source follow-ups. Up to two new fixtures/two dispatches only after P22 source qualification. Existing repaired date-picker and MUI unsplit candidates may independently repeat in this batch without exceeding the two-dispatch limit, retaining their original criteria. Same supported framework pins/context and security, no G4-miss selection, no assigned execution, no new tag. Continue to77;70 admitted now.
