@@ -55,3 +55,15 @@ The owner accepted the amended77-pattern analysis by merging PR14 on2026-10-12. 
     npm run score -- --split test --runs artefacts/g4-repro/corpus,artefacts/g4-repro/second-round
 
 First rebuild the original corpus with the three bundles above. Combined scoring requires a checkout whose frozen hash matches `protocol-freeze-v4`, not v3. The second-round MANIFEST lists every raw file hash, the freeze commit/hash, run ids, image and package pins. The prepared bundle was verified byte-for-byte before publication and is under50MB.
+
+## Verify the M8 exploratory archives
+
+Both M8 archives are EXPLORATORY and outside the frozen experiment. `m8-calibration/` holds the complete partial P40 pilot, run 38299059098, accepted by the owner's PR16 merge. `m8-working-recovery/` holds the complete P41 working-only recovery, run 38307364080, accepted by the owner's PR17 merge. Each `archive-manifest.json` lists every raw file's SHA-256, the run, the head commit and the image and package pins. Neither archive contains NVDA binaries.
+
+    (cd ../results-wt/m8-calibration && echo "fe7354308098544a2e239ce25b0be3ca7bf7a9fe3b4c692d39b1cb1bbd31ee01  m8-calibration.tar.zst" | shasum -a 256 -c -)
+    (cd ../results-wt/m8-working-recovery && shasum -a 256 -c SHA256SUMS)
+    mkdir -p artefacts/m8-repro/calibration artefacts/m8-repro/recovery
+    zstd -d -c ../results-wt/m8-calibration/m8-calibration.tar.zst | tar -xf - -C artefacts/m8-repro/calibration
+    zstd -d -c ../results-wt/m8-working-recovery/m8-working-recovery.tar.zst | tar -xf - -C artefacts/m8-repro/recovery
+
+Findings and limits are in `docs/reports/M8-calibration.md` and `docs/reports/M8-working-recovery.md` on main. They are not revised M7 detection rates.

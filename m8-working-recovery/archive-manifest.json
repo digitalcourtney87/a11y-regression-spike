@@ -1,0 +1,334 @@
+{
+  "runId": 38307364080,
+  "runUrl": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38307364080",
+  "experimentalHead": "2c4ed7809b110cb263e44031d02e43b414171389",
+  "approval": "P41/DR-0116",
+  "label": "EXPLORATORY",
+  "outcome": "complete working-only recovery: eight valid blocks,24 attempts,all eight working builds successful",
+  "bundle": "m8-working-recovery.tar.zst",
+  "bytes": 356268,
+  "sha256": "847c304bcc01756af1395e49ff1f8ea829d6680f709ff7d8303ea1bc1a50d898",
+  "files": 70,
+  "inventory": {
+    "m8-working-recovery-nvda-absent/bootstrap-modal/blocks/m8-oss-bootstrap-39189.json.gz": "c97551701e8b9a83e01bc9afbd086b8c6ad2ebf78ecd8e507f084085601fdeb2",
+    "m8-working-recovery-nvda-absent/bootstrap-modal/blocks-oss-bootstrap-39189-nvda-absent-1of1.jsonl": "44eaad339c9cffb545247de68722049f1a0b2961e62fd3ada56be47499d711b5",
+    "m8-working-recovery-nvda-absent/bootstrap-modal/summary-oss-bootstrap-39189-nvda-absent-1of1.json": "318980e549e1937cacd930bde0dda21592fd273c50840b78bb8e15d3d93373e2",
+    "m8-working-recovery-nvda-absent/build-logs/bootstrap-modal.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/bootstrap-modal.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/bootstrap-modal.install.log": "162c1d040916a06e620951bded4dd03b6dbaa4417ee55bf3885af1d8aa3814cf",
+    "m8-working-recovery-nvda-absent/build-logs/bootstrap-modal.package-lock.json": "137d5d694074740bec97d9892e98dba38231b4ea02baca0fbbf0caa163292216",
+    "m8-working-recovery-nvda-absent/build-logs/calendar.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/calendar.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/calendar.install.log": "36bb6bafd8991c4e5d02088515e875a9afcae6504b84a054c1a366517a7ef862",
+    "m8-working-recovery-nvda-absent/build-logs/calendar.package-lock.json": "db08a8c0d3ef60074e4103545656a27755c3b7783301450a306b576859108622",
+    "m8-working-recovery-nvda-absent/build-logs/multiselect.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/multiselect.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/multiselect.install.log": "259283e8e917de67c953ded9d2bab46d2c05e307e14c116b2b2a9c36a406d70a",
+    "m8-working-recovery-nvda-absent/build-logs/multiselect.package-lock.json": "39ff3d19aaff34905968bb92a389dcc7eb9788cbcf54e66929348ec891355f00",
+    "m8-working-recovery-nvda-absent/build-logs/tools.log": "3270eaaef84545faf2c382e76ab1aa9c96fb664dcbbe4c644bed55f8ca5f56e9",
+    "m8-working-recovery-nvda-absent/build-logs/vuetify-input.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/vuetify-input.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-absent/build-logs/vuetify-input.install.log": "78fe650b7c7807530884dbdebd4bcf2c65c5a8704534a5eecedeb981d199dab9",
+    "m8-working-recovery-nvda-absent/build-logs/vuetify-input.package-lock.json": "2e3b7e8b1a6e7295c63ac37fb502f2ac2e33afb8ae009145d057d181f3d4b830",
+    "m8-working-recovery-nvda-absent/builds.json": "7ab62a78787d589034211b00ee325d18d1311b12e66bd79e7ba761bbb3ff8a45",
+    "m8-working-recovery-nvda-absent/calendar/blocks/m8-oss-fluent-4620.json.gz": "e7a1c08e726d7143185cf4b1198e99f0c983ac48bdd4fff15dda6ab40339c021",
+    "m8-working-recovery-nvda-absent/calendar/blocks-oss-fluent-4620-nvda-absent-1of1.jsonl": "74a763b5e4d34c0d6a5006a857717941ae41fca51f0ca5cf284c66a06f6a39ef",
+    "m8-working-recovery-nvda-absent/calendar/summary-oss-fluent-4620-nvda-absent-1of1.json": "2bd7343e37613486d477c70bea0859ba9f63a3ea286eac030baee710dd1878f9",
+    "m8-working-recovery-nvda-absent/env.json": "81d4532fbd2f01271eaa869ea65fcaf5344c88783ad0f8c35d2b3bc453c2d01f",
+    "m8-working-recovery-nvda-absent/multiselect/blocks/m8-oss-carbon-7861.json.gz": "d4dfb4b15bf8cf2c88f9c22d76696495be5452505f2b2f134e151ed9e28a7f3a",
+    "m8-working-recovery-nvda-absent/multiselect/blocks-oss-carbon-7861-nvda-absent-1of1.jsonl": "c20adf035b6337c7c42e0c52e0a57467fae2771ffa3cb236608602d2a85c101e",
+    "m8-working-recovery-nvda-absent/multiselect/summary-oss-carbon-7861-nvda-absent-1of1.json": "a3bc620e507aa34e2fcd176d72e213bf3efaf6017b616a0b0bbea4dc1734b06f",
+    "m8-working-recovery-nvda-absent/pilot-summary.json": "d365b8f553ad32bba4046ffaaaedc9c08ad8ea8c54760b3c338994cad3e63389",
+    "m8-working-recovery-nvda-absent/scream-signature.json": "bbb28b6c9eaad3ada4bf374f9a3c41561eec9d72f54f8cd14721c9a60d53c1d5",
+    "m8-working-recovery-nvda-absent/vuetify-input/blocks/m8-oss-vuetify-22770.json.gz": "a563717cebb2d586753e8bb4cfb5f6c0a16fd3e592bc3502f8ba94b0ace989f0",
+    "m8-working-recovery-nvda-absent/vuetify-input/blocks-oss-vuetify-22770-nvda-absent-1of1.jsonl": "abdec6712c97fb71e6209a8203ec0f439ac69412199d23df83b4ed44a577714c",
+    "m8-working-recovery-nvda-absent/vuetify-input/summary-oss-vuetify-22770-nvda-absent-1of1.json": "d31c7cb3680c8dd32c88696d9f2de123f9e8cc1d453033b25218d5a68cdb31a4",
+    "m8-working-recovery-nvda-present/bootstrap-modal/blocks/m8-oss-bootstrap-39189.json.gz": "f72b330032233316422da5f86f01cba9f96ec423614fb4af6673d8097c074d26",
+    "m8-working-recovery-nvda-present/bootstrap-modal/blocks-oss-bootstrap-39189-nvda-present-1of1.jsonl": "e52d1e6f49a999715b43f765278793d20e20c65ead4f8933be7471ebe802b029",
+    "m8-working-recovery-nvda-present/bootstrap-modal/nvda-oss-bootstrap-39189-nvda-present-1of1.log": "5edfbc09f2e3e1a1d5ac6b284647f6c19096e99a14aced8a9d2e6c6da923a988",
+    "m8-working-recovery-nvda-present/bootstrap-modal/summary-oss-bootstrap-39189-nvda-present-1of1.json": "0a62109bc83f4c5f4afda1aea5d9205e1199e38cc24b1ac1d4004a682a7dfc55",
+    "m8-working-recovery-nvda-present/build-logs/bootstrap-modal.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/bootstrap-modal.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/bootstrap-modal.install.log": "162c1d040916a06e620951bded4dd03b6dbaa4417ee55bf3885af1d8aa3814cf",
+    "m8-working-recovery-nvda-present/build-logs/bootstrap-modal.package-lock.json": "137d5d694074740bec97d9892e98dba38231b4ea02baca0fbbf0caa163292216",
+    "m8-working-recovery-nvda-present/build-logs/calendar.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/calendar.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/calendar.install.log": "6a750e5951ecba3ee034f099e493635224202f9d7d3e53937ee59b8f3e60da42",
+    "m8-working-recovery-nvda-present/build-logs/calendar.package-lock.json": "db08a8c0d3ef60074e4103545656a27755c3b7783301450a306b576859108622",
+    "m8-working-recovery-nvda-present/build-logs/multiselect.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/multiselect.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/multiselect.install.log": "420ae45ebf493ce17cd9f0de79cd04eee8468d57f534c051382b8d573af414ce",
+    "m8-working-recovery-nvda-present/build-logs/multiselect.package-lock.json": "39ff3d19aaff34905968bb92a389dcc7eb9788cbcf54e66929348ec891355f00",
+    "m8-working-recovery-nvda-present/build-logs/tools.log": "7f863ca125ef6dbe7993daf73cbc40e5a6c55782970996fe98ac671db4a7449a",
+    "m8-working-recovery-nvda-present/build-logs/vuetify-input.build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/vuetify-input.fixture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "m8-working-recovery-nvda-present/build-logs/vuetify-input.install.log": "0fd1680de5bbac1e0a58b603f6a3a9ea7944ef3dc0c11f11479cbae0005b72fe",
+    "m8-working-recovery-nvda-present/build-logs/vuetify-input.package-lock.json": "2e3b7e8b1a6e7295c63ac37fb502f2ac2e33afb8ae009145d057d181f3d4b830",
+    "m8-working-recovery-nvda-present/builds.json": "7ab62a78787d589034211b00ee325d18d1311b12e66bd79e7ba761bbb3ff8a45",
+    "m8-working-recovery-nvda-present/calendar/blocks/m8-oss-fluent-4620.json.gz": "f85ff86acb8f82c244fb9f09c6e0cf6b94e32a6c6aaac52ca1f8bf4e3de89714",
+    "m8-working-recovery-nvda-present/calendar/blocks-oss-fluent-4620-nvda-present-1of1.jsonl": "221524a37e12f30fc1f03a672c5254b8f1a312d34d39c26d6d288f05f6034d98",
+    "m8-working-recovery-nvda-present/calendar/nvda-oss-fluent-4620-nvda-present-1of1.log": "9ee5cde662e74560521785baa1003fc42211cd7d714762cead623e882defeac0",
+    "m8-working-recovery-nvda-present/calendar/summary-oss-fluent-4620-nvda-present-1of1.json": "770c96c83bae8c603efb304377a969e764f231f53869f693a71e45bc83f5c104",
+    "m8-working-recovery-nvda-present/env.json": "78f2347a42e8ee4836e0a5a7846e62860a12dd8c73f3e9ebf2c6a4a6fe9f2d84",
+    "m8-working-recovery-nvda-present/multiselect/blocks/m8-oss-carbon-7861.json.gz": "6bc7d4de102df895181b1867eb6c876b041713a33ee15f5c7f2439066901bb16",
+    "m8-working-recovery-nvda-present/multiselect/blocks-oss-carbon-7861-nvda-present-1of1.jsonl": "82b9b108d66b4baa4084636c2e84a32ce0edc4b946949242eec93948819ca96f",
+    "m8-working-recovery-nvda-present/multiselect/nvda-oss-carbon-7861-nvda-present-1of1.log": "282c9b46254a38d80a00589af5808c40aa974e414d5a3cf740cb239c617c8657",
+    "m8-working-recovery-nvda-present/multiselect/summary-oss-carbon-7861-nvda-present-1of1.json": "e43a1d79adce4f122278164fd66cf1a97d11482192ee58d5eea4119f6c3b462c",
+    "m8-working-recovery-nvda-present/pilot-summary.json": "759db7aad52c54cc42b059e3f0f79db9a6aca07d05319feb28f751e54469be20",
+    "m8-working-recovery-nvda-present/scream-signature.json": "bbb28b6c9eaad3ada4bf374f9a3c41561eec9d72f54f8cd14721c9a60d53c1d5",
+    "m8-working-recovery-nvda-present/vuetify-input/blocks/m8-oss-vuetify-22770.json.gz": "1a72267dc4c92ad0b1fbffd10666f6c060fce84fe5a660f76d3c888724a79ec0",
+    "m8-working-recovery-nvda-present/vuetify-input/blocks-oss-vuetify-22770-nvda-present-1of1.jsonl": "991f00ebb61c3348a7c403fcc78d73b21065f098e6ca40763a4cd1eeb74a334a",
+    "m8-working-recovery-nvda-present/vuetify-input/nvda-oss-vuetify-22770-nvda-present-1of1.log": "7ab303fc5ae6c3e9979a94e825b597a1014a5021fc988f448cdb22783cec5dd3",
+    "m8-working-recovery-nvda-present/vuetify-input/summary-oss-vuetify-22770-nvda-present-1of1.json": "ef6dad7f83082fbf602fd54bec6e270357b6cb17eed1eee460ae8ab7e1673791"
+  },
+  "counts": {
+    "summaries": 8,
+    "blocks": 8,
+    "attempts": 24,
+    "labels": {
+      "EXPLORATORY": 8
+    },
+    "sides": {
+      "base": 24
+    },
+    "validity": {
+      "VALID": 8
+    },
+    "fatals": 0,
+    "invalidPackages": 0,
+    "diagnosticErrors": 0
+  },
+  "manifests": [
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "0.3.1 (sha256 9e901d285df659f0a2fd2e827aa70aad4cee91a2b63b12fb087c447eebebd121)",
+      "dotnetVersion": "10.0.12",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "0.3.1 (sha256 9e901d285df659f0a2fd2e827aa70aad4cee91a2b63b12fb087c447eebebd121)",
+      "dotnetVersion": "10.0.12",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "0.3.1 (sha256 9e901d285df659f0a2fd2e827aa70aad4cee91a2b63b12fb087c447eebebd121)",
+      "dotnetVersion": "10.0.12",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "0.3.1 (sha256 9e901d285df659f0a2fd2e827aa70aad4cee91a2b63b12fb087c447eebebd121)",
+      "dotnetVersion": "10.0.12",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "not run in this leg (P4)",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      },
+      "nvdaVersion": "2026.2",
+      "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+      "adapter": {
+        "name": "guidepup",
+        "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+      },
+      "nvdaChannel": "IA2",
+      "synth": {
+        "name": "espeak",
+        "rate": 30,
+        "rateBoost": false
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "not run in this leg (P4)",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      },
+      "nvdaVersion": "2026.2",
+      "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+      "adapter": {
+        "name": "guidepup",
+        "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+      },
+      "nvdaChannel": "IA2",
+      "synth": {
+        "name": "espeak",
+        "rate": 30,
+        "rateBoost": false
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "not run in this leg (P4)",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      },
+      "nvdaVersion": "2026.2",
+      "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+      "adapter": {
+        "name": "guidepup",
+        "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+      },
+      "nvdaChannel": "IA2",
+      "synth": {
+        "name": "espeak",
+        "rate": 30,
+        "rateBoost": false
+      }
+    },
+    {
+      "harnessCommit": "2c4ed7809b110cb263e44031d02e43b414171389",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "not run in this leg (P4)",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      },
+      "nvdaVersion": "2026.2",
+      "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+      "adapter": {
+        "name": "guidepup",
+        "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+      },
+      "nvdaChannel": "IA2",
+      "synth": {
+        "name": "espeak",
+        "rate": 30,
+        "rateBoost": false
+      }
+    }
+  ],
+  "jobSeconds": [
+    383,
+    795
+  ],
+  "totalJobSeconds": 1178,
+  "authority": {
+    "execution": "P41/DR-0116",
+    "experimentalHead": "2c4ed7809b110cb263e44031d02e43b414171389",
+    "rawChildField": "calibrationApproval=P40/DR-0114 is inherited from original instrumentation; it does not authorise this recovery dispatch. Raw values are retained, not relabelled. Parent pilot-summary and request bind execution to P41/DR-0116."
+  },
+  "publication": "Prepared locally; publish to results under D6 after owner accepts the PR17 gate."
+}
