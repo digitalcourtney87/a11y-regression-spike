@@ -475,3 +475,7 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 — M9 registered evaluation complete: cursor v2 accepted for future registered studies, focus readers unchanged. See DR-0121 and docs/reports/M9-registered-evaluation.md.
 
 2026-10-12 — M9 closed after PR21 merge; archive published on results at `5774bab`. See DR-0122. No new execution.
+
+2026-10-13 — Decision pack for 27 November drafted. See DR-0123 and docs/gates/decision-2026-11-27.md. No new execution.
+
+2026-10-13 — EXPLORATORY decision-pack addendum from existing evidence (masked re-scoring, retention, timing, reachability). See DR-0124 and docs/decision-2026-11-27-addendum.md. No new execution.

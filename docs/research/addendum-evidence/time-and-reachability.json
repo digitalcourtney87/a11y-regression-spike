@@ -1,0 +1,218 @@
+{
+ "label": "EXPLORATORY",
+ "method": "EXPLORATORY, read-only: per-journey time components and baseline goal reachability for the addendum.",
+ "journeysWithBothLegs": 199,
+ "triggeredJourneys": 148,
+ "componentsSeconds": {
+  "absentSpan": {
+   "n": 199,
+   "median": 8.73462105,
+   "p25": 6.3717168,
+   "p75": 14.858443425,
+   "p90": 22.48184766,
+   "max": 27.68904885
+  },
+  "presentSpan": {
+   "n": 199,
+   "median": 15.07268405,
+   "p25": 8.9487065,
+   "p75": 33.034721275,
+   "p90": 54.23004489,
+   "max": 67.1877598
+  },
+  "presentSegments": {
+   "n": 199,
+   "median": 14.9602869,
+   "p25": 8.923557625,
+   "p75": 32.888652675,
+   "p90": 53.85827903,
+   "max": 66.9021304
+  },
+  "triggeredSegmentsWhenTriggered": {
+   "n": 148,
+   "median": 4.310841925,
+   "p25": 2.9062859999999997,
+   "p75": 5.9080928875,
+   "p90": 8.13935695,
+   "max": 9.1342324
+  },
+  "gapAbsent": {
+   "n": 1063,
+   "median": 16.4334926,
+   "p25": 13.43718765,
+   "p75": 21.43991705,
+   "p90": 32.55106628,
+   "max": 41.3055704
+  },
+  "gapPresent": {
+   "n": 1063,
+   "median": 4.8073206,
+   "p25": 4.5547968999999995,
+   "p75": 5.0526281,
+   "p90": 5.490320840000001,
+   "max": 16.0403658
+  },
+  "leadAbsent": {
+   "n": 50,
+   "median": 17.358243899999998,
+   "p25": 16.426714725,
+   "p75": 17.99563795,
+   "p90": 18.848045350000007,
+   "max": 42.377388
+  },
+  "leadPresent": {
+   "n": 50,
+   "median": 24.5152327,
+   "p25": 23.421415324999998,
+   "p75": 28.910366175,
+   "p90": 35.0740953,
+   "max": 54.4358355
+  },
+  "nvdaStartupEstimate": 7.156988800000001
+ },
+ "perJourneySeconds": {
+  "warm": {
+   "C": {
+    "n": 199,
+    "median": 45.217850150000004,
+    "p25": 36.876224300000004,
+    "p75": 69.55509810000001,
+    "p90": 97.02671413000002,
+    "max": 108.69545219999999
+   },
+   "D_attachAtTrigger": {
+    "n": 199,
+    "median": 32.69572685,
+    "p25": 26.492296225,
+    "p75": 39.286395525,
+    "p90": 47.54697034,
+    "max": 58.0597264
+   },
+   "D_fullNvdaJourneyWhenTriggered": {
+    "n": 199,
+    "median": 42.795784600000005,
+    "p25": 29.430876775,
+    "p75": 68.85262475,
+    "p90": 97.02671413000002,
+    "max": 108.69545219999999
+   },
+   "totalsSecondsPerAttemptSet": {
+    "C": 11098.0124629,
+    "D_attachAtTrigger": 6909.5974332000005,
+    "D_fullNvdaJourneyWhenTriggered": 10191.72831055
+   }
+  },
+  "cold": {
+   "C": {
+    "n": 199,
+    "median": 52.374838950000004,
+    "p25": 44.0332131,
+    "p75": 76.7120869,
+    "p90": 104.18370293000002,
+    "max": 115.852441
+   },
+   "D_attachAtTrigger": {
+    "n": 199,
+    "median": 39.781210800000004,
+    "p25": 32.7130155,
+    "p75": 46.443384325,
+    "p90": 54.70395914,
+    "max": 65.2167152
+   },
+   "D_fullNvdaJourneyWhenTriggered": {
+    "n": 199,
+    "median": 49.9527734,
+    "p25": 32.7130155,
+    "p75": 76.00961355,
+    "p90": 104.18370293000002,
+    "max": 115.852441
+   },
+   "totalsSecondsPerAttemptSet": {
+    "C": 12522.2532341,
+    "D_attachAtTrigger": 7968.831775600001,
+    "D_fullNvdaJourneyWhenTriggered": 11250.96265295
+   }
+  }
+ },
+ "reachability": {
+  "patternsWithBaselineGoalFailure": 4,
+  "patternsTotal": 77,
+  "byPattern": {
+   "oss--bootstrap-39189": {
+    "nvda-absent": {
+     "baseAttempts": 9,
+     "failedAttempts": 9,
+     "steps": [
+      "open-details"
+     ],
+     "items": [
+      "oss-bootstrap-39189",
+      "oss-bootstrap-39189-twin",
+      "oss-bootstrap-39189-unchanged"
+     ]
+    }
+   },
+   "oss--carbon-7861": {
+    "nvda-present": {
+     "baseAttempts": 9,
+     "failedAttempts": 9,
+     "steps": [
+      "reach-result"
+     ],
+     "items": [
+      "oss-carbon-7861",
+      "oss-carbon-7861-twin",
+      "oss-carbon-7861-unchanged"
+     ]
+    }
+   },
+   "oss--fluent-4620": {
+    "nvda-present": {
+     "baseAttempts": 9,
+     "failedAttempts": 9,
+     "steps": [
+      "reach-expected-month"
+     ],
+     "items": [
+      "oss-fluent-4620",
+      "oss-fluent-4620-twin",
+      "oss-fluent-4620-unchanged"
+     ]
+    }
+   },
+   "oss--vuetify-22770": {
+    "nvda-absent": {
+     "baseAttempts": 9,
+     "failedAttempts": 9,
+     "steps": [
+      "reach-autocomplete"
+     ],
+     "items": [
+      "oss-vuetify-22770",
+      "oss-vuetify-22770-twin",
+      "oss-vuetify-22770-unchanged"
+     ]
+    },
+    "nvda-present": {
+     "baseAttempts": 9,
+     "failedAttempts": 9,
+     "steps": [
+      "reach-autocomplete"
+     ],
+     "items": [
+      "oss-vuetify-22770",
+      "oss-vuetify-22770-twin",
+      "oss-vuetify-22770-unchanged"
+     ]
+    }
+   }
+  }
+ },
+ "soakBoundsK1": {
+  "valid": 599,
+  "failures": 0,
+  "oneSided95ExactUpper": 0.004988737202775151,
+  "ruleOfThree": 0.005008347245409015,
+  "twoSided95ExactUpper": 0.006139472361542442
+ }
+}

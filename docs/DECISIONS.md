@@ -4304,3 +4304,52 @@ The focus readers stay unchanged, and the Vuetify goal failure stays a journey-g
 Under D6, the prepared archive is published to results at `5774bab629a68509c02d8789c69714b5cc633738`, directory `m9-registered-evaluation/`. Bundle SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`, 151,272 bytes. All 40 raw files are verified against the committed manifest, again from the pushed branch. The pre-committed analysis reproduces `registered-results.json` byte for byte from the published copy. There are no NVDA binaries, and the six earlier archives are unchanged. The results README gains M9 verification steps (DR-0045). Publication metadata: docs/research/m9-evaluation-evidence/archive-publication.json.
 
 PR21 had no review threads. Devin reported no issues; the Codex review did not run because its usage limit was reached. All three exploratory workflows (P40, P41, P42) remain `disabled_manually`. No further run, remedy, freeze, rescore or Phase 1 commitment is authorised. The proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
+
+## DR-0123 Decision pack drafted for 27 November
+
+2026-10-13. Drafted at the owner's request after PR22 merged at `0733684ce9d5ee2a3103152e8c5cd728077aeb03` ("Merged, please draft the decision pack"). This is documentation only: no run, measurement, verdict or frozen-path change.
+
+The pack (docs/gates/decision-2026-11-27.md) summarises the accepted records for the proceed/stop decision (DR-0003). It covers:
+
+- the hypotheses with their confirmatory intervals at 77 patterns;
+- the failure taxonomy and baseline-reachability causes;
+- measured costs;
+- risks and reproduce commands.
+
+The brief has five yes/no items. The technical recommendation is to proceed in a scoped form. Under it, events (B2) are the core detector and NVDA runs selectively (Arm D UNION). NVDA's value under adjudication is treated as unsettled, and journey reachability is addressed before any confirmatory study. Commercial content is excluded (DR-0014).
+
+Decisions under DR-0045:
+
+- **Measured runner time.** It comes from the GitHub Actions API: per-job durations for all 258 workflow runs, recorded with a read-only derivation in docs/research/decision-pack-evidence/. The totals are 6,366.5 Windows and 106.8 Linux job-minutes. These are administrative durations; the money cost is £0 on public standard runners, as recorded at G2.
+- **Model spend.** It stays with the owner's dashboard (P7). The pack cites only the recorded subagent figures.
+
+## DR-0124 Decision-pack addendum and standing instruction to 27 November
+
+2026-10-13. The owner requested a decision-pack addendum, to use existing evidence only, with these conditions:
+
+> no new Windows jobs, corpus rounds or calibration studies. Work on main, label everything EXPLORATORY, and create no new freeze tag.
+
+They also gave a standing instruction:
+
+> Until 27 November: no new harness, corpus or calibration work unless I ask. Hold the brief's items until the addendum is in.
+
+**Delivered.** docs/decision-2026-11-27-addendum.md, labelled EXPLORATORY. Evidence and commands are in docs/research/addendum-evidence/. Every figure comes from the unchanged `protocol-freeze-v4` scorer, run from a v4 checkout on the published G4 archives. That scorer reproduced the committed combined scores and all ten accepted headline intervals exactly before any new analysis.
+
+**Findings:**
+- **H3, PRD §52 retention.** Under UNION, D keeps 4 of C's 5 added detections (Wilson 38–96%). The ratio is undefined under ADJUDICATED.
+- **B2 decomposition.** Masking WinEvents removes all of H1's gain; masking the DOM timeline removes none.
+- **REVIEW rates.** Reported per arm. The rule-model analysis was run as pre-registered.
+- **Per-journey runner time.** It is built from QPC-stamped components only (DR-0039). NVDA is needed on 74% of journeys, so D's runner time is 62–92% of C's.
+- **H4 split.** Instruments: K1 soak upper bound 0.50% one-sided, 0.61% two-sided. Journeys: 4 of 77 patterns failed a baseline goal.
+- **Spend.** £0 metered against the £150 cap.
+- **Recommendation.** Restated in PRD §42 terms as PIVOT (technical), with CASCADE the alternative.
+- **Public write-up.** A draft of under 1,000 words, for owner review only.
+
+Decisions under DR-0045:
+
+- **Item 1 wording qualified.** The requested sentence said the ±0.08 test "cannot fail" under UNION. Every item satisfies B2 ⊆ D ⊆ C, which bounds D−C to between −(C−B2) and 0. So the test cannot fail on its upper side, but it can fail on its lower side: a D keeping nothing would give −0.115 to −0.009. The pack and the addendum state this precise form.
+- **Where the work lives.** PR23, which holds the pack, was still open. The addendum and the pack edits therefore go on that branch, which is current with main, so merging lands both on main together. Nothing is pushed directly to main.
+- **Cost-script fix.** The runner-minutes derivation is bounded at run 38319708384 by default, answering Devin's review of PR23. A bounded re-run reproduces all 258 runs and every total exactly.
+- **Carbon wording.** The pack's reachability row no longer says Carbon sits inside an application container. Only Calendar's ancestor has role=application (M8).
+
+No harness, corpus, calibration, freeze or verdict change. The brief's items are held.
