@@ -1,8 +1,8 @@
 # Proposed M8 recovery: missing working-release comparisons
 
-Status: proposed, P41; no dispatch authorised. P40's one dispatch is complete with all four working-release builds unavailable because of the now-corrected log path. The owned controls have valid data and will not be repeated in this recovery.
+Status: approved, P41/DR-0116, by “Merged, please continue” following PR16 merge. The single recovery dispatch is now consumed by successful run 38307364080 (DR-0117); no further dispatch is authorised. P40's one dispatch is complete with all four working-release builds unavailable because of the now-corrected log path. The owned controls have valid data and will not be repeated in this recovery.
 
-Approve one additional dispatch, capped at two standard Windows jobs (one per leg), 60 minutes each/120 additional runner-minutes, with no retry?
+Authorised: one additional dispatch, capped at two standard Windows jobs (one per leg), 60 minutes each/120 additional runner-minutes, with no retry.
 
 Scope: Bootstrap 5.3.1, Vuetify 3.3.6, Calendar 5.40.2 and Carbon FilterableMultiSelect 7.28.0; their same original working fixtures/journeys and the already-approved early/late diagnostic observations, three base-only repetitions each. Expected eight blocks/24 attempts. No candidates, assigned corpus item, new measurement, changed navigation, detector fix or old-test rescore. Reuse the same pinned environment, read-only permissions, script-disabled installs and no-secret boundary. Retain all failures and unavailable mode evidence.
 

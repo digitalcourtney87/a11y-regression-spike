@@ -1,0 +1,22 @@
+{
+  "role": "independent read-only M8 recovery gate reviewer",
+  "experimentalHead": "2c4ed7809b110cb263e44031d02e43b414171389",
+  "finalPackageReviewed": "report, gate brief, derived/raw evidence and retirement changes before commit",
+  "criticalFindings": [],
+  "importantFindings": [],
+  "minorFindings": [],
+  "priorProvenanceFinding": "Resolved by explicit P40 instrumentation/P41 execution distinction in report/audit; raw values preserved.",
+  "targetedTestsPassed": 27,
+  "verified": {
+    "blocks": 8,
+    "attempts": 24,
+    "K1Passed": 16,
+    "successfulBuilds": 8,
+    "VuetifyAttemptsWithThreeOmittedSteps": 6,
+    "totalJobSeconds": 1178,
+    "archiveFiles": 70,
+    "archiveBytes": 356268,
+    "bothWorkflowsDisabled": true
+  },
+  "assessment": "Ready for owner gate review; archive publication pending acceptance."
+}

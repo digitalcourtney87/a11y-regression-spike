@@ -66,3 +66,5 @@ Independent gate review under the requesting-code-review skill found no actionab
 ## PR16 bot feedback follow-up
 
 The handoff is now v1.17 and clearly separates current P40-consumed/P41-pending authority from historical records. Calibration rejects any shard other than 1/1 before selecting items. Regression tests failed before these guards and passed afterward. The P40 workflow is disabled in GitHub (including old refs), its manual trigger is removed, and its Windows job is unconditionally skipped in this head. P41 requires a separately approved request/workflow; no new dispatch occurred. Cumulative speech has been audited in disjoint retained-event intervals above, without changing what is collected.
+
+PR16 accepted by owner merge at `90598341c4e5b9d40c889ff9273119f3360c7e82`. Complete pilot archive published on results at `dbf0fc2`, under `m8-calibration/`, with the original manifest and bundle SHA-256 unchanged. DR-0116 approves one separate working-only recovery dispatch; the failed original run remains retained and the original P40 workflow remains disabled.

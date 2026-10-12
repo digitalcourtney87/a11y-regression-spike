@@ -26,3 +26,16 @@ test("the consumed P40 pilot cannot start another Windows job", () => {
   expect(workflow.on).not.toHaveProperty("workflow_dispatch");
   expect(workflow.jobs.calibration.if).toBe("${{ false }}");
 });
+
+
+test("consumed P41 retains its two-leg budget but cannot start another job", () => {
+  const workflow = parse(readFileSync(resolve(import.meta.dirname, "../../../.github/workflows/m8-working-recovery.yml"), "utf8")) as CalibrationWorkflow & { on: Record<string, unknown> };
+  expect(workflow.on).not.toHaveProperty("workflow_dispatch");
+  expect(Object.keys(workflow.jobs)).toEqual(["calibration"]);
+  const job = workflow.jobs.calibration;
+  if (job === undefined) throw new Error("missing recovery job");
+  expect(job["runs-on"]).toBe("windows-2025");
+  expect(job.strategy.matrix.leg).toEqual(["nvda-absent", "nvda-present"]);
+  expect(job["timeout-minutes"]).toBe(60);
+  expect(job).toHaveProperty("if", "${{ false }}");
+});
