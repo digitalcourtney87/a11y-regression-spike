@@ -1,0 +1,11 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.0.0",
+  "result": {
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Date', exact: true })\u001b[22m\n"
+  },
+  "external": [],
+  "pageErrors": [
+    "Minified React error #130; visit https://reactjs.org/docs/error-decoder.html?invariant=130&args[]=object&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+  ]
+}
