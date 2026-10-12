@@ -2,6 +2,8 @@
 
 This brief accompanies the [decision pack](decision-2026-11-27.md) and was drafted on 2026-10-13.
 
+**On hold (owner, 13 October 2026)** until the [addendum](../decision-2026-11-27-addendum.md) is in. The addendum's technical reading is PIVOT rather than CASCADE. If you accept it, item 2 should be revised to test an event-first proposition separately, keeping NVDA for adjudication research.
+
 **Technical recommendation: proceed, in a scoped form.** That means a design where events (B2) are the core detector and NVDA runs selectively at triggered steps, with journey reachability addressed first. The proceed/stop decision itself, and every commercial judgement, are the owner's. They are outside this repository.
 
 | Finding at 77 patterns | Result |

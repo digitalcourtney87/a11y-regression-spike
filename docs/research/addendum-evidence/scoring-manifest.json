@@ -1,0 +1,24 @@
+{
+ "label": "EXPLORATORY",
+ "frozenScorer": {
+  "tag": "protocol-freeze-v4",
+  "commit": "22bbb9a2476fff62b34ac9de266a23ad9abfef22",
+  "protocolSha256": "65e188e8b79471aaa42713aaf4a635ef87696e894c4e7918b140ac77ffff9a5a"
+ },
+ "inputs": {
+  "corpus": "results g4/ (run 38156720011), SHA256SUMS verified",
+  "secondRound": "results g4-second-round/ (run 38276928082), SHA256SUMS verified"
+ },
+ "scorerOutputsSha256": {
+  "unmasked": "de7bc6e2e2f02ae7e9fb0cfd6ef9c4a90af8e94ddfd61294b4e75e108ee5ace5",
+  "dom-only": "647abde06857aa03f1f0a4a14cd691c0d449ae34fada38baaa397fe62db2eebe",
+  "winevents-only": "d1fed13dca9c328858722043913d205cdd5b5a4ce4f81f3b52f8a1253a86b259"
+ },
+ "commands": [
+  "python3 -I mask-b2-sources.py <dom-only|winevents-only> <run dir> <out dir>   # for each of the two runs",
+  "npm run score -- --split test --runs <corpus>,<second-round> --json <scores.json>   # from a protocol-freeze-v4 checkout, unchanged",
+  "cp addendum-analysis.mjs.txt /tmp/addendum-analysis.mjs && node /tmp/addendum-analysis.mjs <v4 checkout> unmasked.json dom-only.json winevents-only.json second-round-items.json ../m7-second-round-evidence/secondary-rule-model.json",
+  "python3 -I derive-time-and-reachability.py <corpus run> <second-round run> unmasked.json <v4 checkout>/corpus/items"
+ ],
+ "unmaskedMatchesCommittedCombinedScores": "identical label, split, metrics and all 199 item scores; only the recorded run directory paths differ"
+}

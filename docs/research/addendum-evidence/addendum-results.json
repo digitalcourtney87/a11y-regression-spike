@@ -1,0 +1,827 @@
+{
+ "label": "EXPLORATORY",
+ "method": "Post hoc analyses of the accepted M7 confirmatory evidence, scored by the unchanged protocol-freeze-v4 scorer; masked variants re-score copies of the evidence with one B2 source emptied.",
+ "patterns77": {
+  "items": 199,
+  "regressions": 77,
+  "patterns": 77,
+  "detections": {
+   "A": {
+    "k": 13,
+    "uniform": 0.15714285714285714
+   },
+   "B": {
+    "k": 57,
+    "uniform": 0.6682539682539682
+   },
+   "B2": {
+    "k": 61,
+    "uniform": 0.7476190476190476
+   },
+   "C_UNION": {
+    "k": 66,
+    "uniform": 0.8005952380952381
+   },
+   "C_ADJUDICATED": {
+    "k": 60,
+    "uniform": 0.6929563492063492
+   },
+   "D_UNION": {
+    "k": 65,
+    "uniform": 0.7886904761904762
+   },
+   "D_ADJUDICATED": {
+    "k": 62,
+    "uniform": 0.722718253968254
+   },
+   "B2_DOM_ONLY": {
+    "k": 57,
+    "uniform": 0.6682539682539682
+   },
+   "B2_WINEVENTS_ONLY": {
+    "k": 61,
+    "uniform": 0.7476190476190476
+   }
+  },
+  "headline": [
+   {
+    "x": "B2",
+    "y": "B",
+    "clusters": 77,
+    "point": 0.07936507936507942,
+    "lower": 0.01041666666666663,
+    "upper": 0.1333333333333333,
+    "call": "difference"
+   },
+   {
+    "x": "C_UNION",
+    "y": "B2",
+    "clusters": 77,
+    "point": 0.05297619047619051,
+    "lower": 0.00877192982456132,
+    "upper": 0.11549707602339154,
+    "call": "difference"
+   },
+   {
+    "x": "C_ADJUDICATED",
+    "y": "B2",
+    "clusters": 77,
+    "point": -0.05466269841269844,
+    "lower": -0.14444444444444438,
+    "upper": 0.04551066217732891,
+    "call": "inconclusive"
+   },
+   {
+    "x": "D_UNION",
+    "y": "C_UNION",
+    "clusters": 77,
+    "point": -0.011904761904761973,
+    "lower": -0.04166666666666663,
+    "upper": 0,
+    "call": "equivalent within 0.08"
+   },
+   {
+    "x": "D_ADJUDICATED",
+    "y": "C_ADJUDICATED",
+    "clusters": 77,
+    "point": 0.029761904761904767,
+    "lower": -0.022727272727272707,
+    "upper": 0.09499999999999997,
+    "call": "inconclusive"
+   }
+  ],
+  "retention": [
+   {
+    "combination": "UNION",
+    "countMetric": {
+     "cAddedOverB2": [
+      "acrm-error-not-announced-form-control",
+      "oss-bootstrap-35496",
+      "oss-bootstrap-39189",
+      "oss-vuetify-21591",
+      "ras-error-not-announced-title"
+     ],
+     "dRetains": [
+      "oss-bootstrap-35496",
+      "oss-bootstrap-39189",
+      "oss-vuetify-21591",
+      "ras-error-not-announced-title"
+     ],
+     "k": 4,
+     "n": 5,
+     "point": 0.8,
+     "lower": 0.375534627029995,
+     "upper": 0.9637758917743693
+    },
+    "rateMetric": {
+     "point": 0.7752808988764034,
+     "cMinusB2": 0.05297619047619051,
+     "dMinusB2": 0.04107142857142854,
+     "bootstrapDefined": 9954,
+     "bootstrapUndefined": 46,
+     "lower": 0.17857142857142702,
+     "upper": 1
+    },
+    "dDetectsNotC": [],
+    "b2DetectsNotD": []
+   },
+   {
+    "combination": "ADJUDICATED",
+    "countMetric": {
+     "cAddedOverB2": [
+      "acrm-error-not-announced-form-control",
+      "oss-bootstrap-35496",
+      "oss-bootstrap-39189",
+      "oss-vuetify-21591",
+      "ras-error-not-announced-title"
+     ],
+     "dRetains": [
+      "oss-bootstrap-35496",
+      "oss-bootstrap-39189",
+      "oss-vuetify-21591",
+      "ras-error-not-announced-title"
+     ],
+     "k": 4,
+     "n": 5,
+     "point": 0.8,
+     "lower": 0.375534627029995,
+     "upper": 0.9637758917743693
+    },
+    "rateMetric": {
+     "point": null,
+     "cMinusB2": -0.05466269841269844,
+     "dMinusB2": -0.024900793650793673,
+     "bootstrapDefined": 1469,
+     "bootstrapUndefined": 8531,
+     "lower": -4.400000000000297,
+     "upper": 14.307692307692454
+    },
+    "dDetectsNotC": [
+     "acrm-navigation-hidden-header",
+     "acrm-pointer-only-activation-edit-contact",
+     "oss-fluent-4620"
+    ],
+    "b2DetectsNotD": [
+     "acrm-expanded-not-updated-theme",
+     "acrm-live-update-repeated-toast",
+     "ras-live-update-repeated-post-saved"
+    ]
+   }
+  ],
+  "unionOrdering": {
+   "b2NotInD": 0,
+   "dNotInC": 0
+  },
+  "nvdaSegmentSeconds": {
+   "C": 4605.102852563335,
+   "D": 688.9020966800002,
+   "dShareOfC": 0.14959537685386054
+  },
+  "review": {
+   "benign": {
+    "A": {
+     "k": 1,
+     "n": 77,
+     "point": 0.012987012987012988,
+     "lower": 0.0022962172717436932,
+     "upper": 0.06996198986765662
+    },
+    "B": {
+     "k": 3,
+     "n": 77,
+     "point": 0.03896103896103896,
+     "lower": 0.013337949936813483,
+     "upper": 0.10839981948848548
+    },
+    "B2": {
+     "k": 3,
+     "n": 77,
+     "point": 0.03896103896103896,
+     "lower": 0.013337949936813483,
+     "upper": 0.10839981948848548
+    },
+    "C_UNION": {
+     "k": 5,
+     "n": 77,
+     "point": 0.06493506493506493,
+     "lower": 0.028053080270151097,
+     "upper": 0.1431642514410465
+    },
+    "C_ADJUDICATED": {
+     "k": 5,
+     "n": 77,
+     "point": 0.06493506493506493,
+     "lower": 0.028053080270151097,
+     "upper": 0.1431642514410465
+    },
+    "D_UNION": {
+     "k": 3,
+     "n": 77,
+     "point": 0.03896103896103896,
+     "lower": 0.013337949936813483,
+     "upper": 0.10839981948848548
+    },
+    "D_ADJUDICATED": {
+     "k": 3,
+     "n": 77,
+     "point": 0.03896103896103896,
+     "lower": 0.013337949936813483,
+     "upper": 0.10839981948848548
+    }
+   },
+   "unchanged": {
+    "A": {
+     "k": 0,
+     "n": 45,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.07865159987608598
+    },
+    "B": {
+     "k": 2,
+     "n": 45,
+     "point": 0.044444444444444446,
+     "lower": 0.012274126596112905,
+     "upper": 0.1482751088465432
+    },
+    "B2": {
+     "k": 2,
+     "n": 45,
+     "point": 0.044444444444444446,
+     "lower": 0.012274126596112905,
+     "upper": 0.1482751088465432
+    },
+    "C_UNION": {
+     "k": 4,
+     "n": 45,
+     "point": 0.08888888888888889,
+     "lower": 0.03511111648229477,
+     "upper": 0.20733575452693148
+    },
+    "C_ADJUDICATED": {
+     "k": 4,
+     "n": 45,
+     "point": 0.08888888888888889,
+     "lower": 0.03511111648229477,
+     "upper": 0.20733575452693148
+    },
+    "D_UNION": {
+     "k": 2,
+     "n": 45,
+     "point": 0.044444444444444446,
+     "lower": 0.012274126596112905,
+     "upper": 0.1482751088465432
+    },
+    "D_ADJUDICATED": {
+     "k": 2,
+     "n": 45,
+     "point": 0.044444444444444446,
+     "lower": 0.012274126596112905,
+     "upper": 0.1482751088465432
+    }
+   }
+  },
+  "b2Decomposition": {
+   "differences": [
+    {
+     "x": "B2_DOM_ONLY",
+     "y": "B",
+     "clusters": 77,
+     "point": 0,
+     "lower": 0,
+     "upper": 0,
+     "call": "equivalent within 0.08"
+    },
+    {
+     "x": "B2_WINEVENTS_ONLY",
+     "y": "B",
+     "clusters": 77,
+     "point": 0.07936507936507942,
+     "lower": 0.01041666666666663,
+     "upper": 0.1333333333333333,
+     "call": "difference"
+    },
+    {
+     "x": "B2",
+     "y": "B2_WINEVENTS_ONLY",
+     "clusters": 77,
+     "point": 0,
+     "lower": 0,
+     "upper": 0,
+     "call": "equivalent within 0.08"
+    },
+    {
+     "x": "B2",
+     "y": "B2_DOM_ONLY",
+     "clusters": 77,
+     "point": 0.07936507936507942,
+     "lower": 0.01041666666666663,
+     "upper": 0.1333333333333333,
+     "call": "difference"
+    }
+   ],
+   "lostWithoutWinEvents": [
+    [
+     "acrm-busy-left-true-toaster",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "acrm-live-update-repeated-toast",
+     "ANNOUNCEMENT_DUPLICATED"
+    ],
+    [
+     "acrm-toast-region-created-populated",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "ras-live-update-repeated-post-saved",
+     "ANNOUNCEMENT_DUPLICATED"
+    ]
+   ],
+   "lostWithoutTimeline": [],
+   "gainedUnderMask": [],
+   "b2OverBItems": [
+    [
+     "acrm-busy-left-true-toaster",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "acrm-live-update-repeated-toast",
+     "ANNOUNCEMENT_DUPLICATED"
+    ],
+    [
+     "acrm-toast-region-created-populated",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "ras-live-update-repeated-post-saved",
+     "ANNOUNCEMENT_DUPLICATED"
+    ]
+   ],
+   "maskedNonRegression": {
+    "B2_DOM_ONLY": {
+     "benign": {
+      "FAIL": 0,
+      "REVIEW": 3,
+      "n": 77
+     },
+     "unchanged": {
+      "FAIL": 0,
+      "REVIEW": 2,
+      "n": 45
+     }
+    },
+    "B2_WINEVENTS_ONLY": {
+     "benign": {
+      "FAIL": 0,
+      "REVIEW": 3,
+      "n": 77
+     },
+     "unchanged": {
+      "FAIL": 0,
+      "REVIEW": 2,
+      "n": 45
+     }
+    }
+   },
+   "leakCheckAandBUnchanged": true
+  }
+ },
+ "patterns59": {
+  "items": 145,
+  "regressions": 59,
+  "patterns": 59,
+  "detections": {
+   "A": {
+    "k": 11,
+    "uniform": 0.1488095238095238
+   },
+   "B": {
+    "k": 43,
+    "uniform": 0.6946428571428571
+   },
+   "B2": {
+    "k": 47,
+    "uniform": 0.7740079365079365
+   },
+   "C_UNION": {
+    "k": 50,
+    "uniform": 0.8186507936507937
+   },
+   "C_ADJUDICATED": {
+    "k": 45,
+    "uniform": 0.7136904761904761
+   },
+   "D_UNION": {
+    "k": 49,
+    "uniform": 0.8067460317460317
+   },
+   "D_ADJUDICATED": {
+    "k": 46,
+    "uniform": 0.7392857142857142
+   },
+   "B2_DOM_ONLY": {
+    "k": 43,
+    "uniform": 0.6946428571428571
+   },
+   "B2_WINEVENTS_ONLY": {
+    "k": 47,
+    "uniform": 0.7740079365079365
+   }
+  },
+  "headline": [
+   {
+    "x": "B2",
+    "y": "B",
+    "clusters": 59,
+    "point": 0.07936507936507942,
+    "lower": 0.011904761904761862,
+    "upper": 0.1322314049586777,
+    "call": "difference"
+   },
+   {
+    "x": "C_UNION",
+    "y": "B2",
+    "clusters": 59,
+    "point": 0.044642857142857206,
+    "lower": 0,
+    "upper": 0.10238095238095246,
+    "call": "inconclusive"
+   },
+   {
+    "x": "C_ADJUDICATED",
+    "y": "B2",
+    "clusters": 59,
+    "point": -0.060317460317460436,
+    "lower": -0.14930555555555558,
+    "upper": 0.03571428571428559,
+    "call": "inconclusive"
+   },
+   {
+    "x": "D_UNION",
+    "y": "C_UNION",
+    "clusters": 59,
+    "point": -0.011904761904762085,
+    "lower": -0.04166666666666663,
+    "upper": 0,
+    "call": "equivalent within 0.08"
+   },
+   {
+    "x": "D_ADJUDICATED",
+    "y": "C_ADJUDICATED",
+    "clusters": 59,
+    "point": 0.025595238095238115,
+    "lower": -0.025000000000000022,
+    "upper": 0.08958333333333335,
+    "call": "inconclusive"
+   }
+  ],
+  "retention": [
+   {
+    "combination": "UNION",
+    "countMetric": {
+     "cAddedOverB2": [
+      "acrm-error-not-announced-form-control",
+      "oss-bootstrap-35496",
+      "ras-error-not-announced-title"
+     ],
+     "dRetains": [
+      "oss-bootstrap-35496",
+      "ras-error-not-announced-title"
+     ],
+     "k": 2,
+     "n": 3,
+     "point": 0.6666666666666666,
+     "lower": 0.2076595988078242,
+     "upper": 0.9385080559790691
+    },
+    "rateMetric": {
+     "point": 0.7333333333333297,
+     "cMinusB2": 0.044642857142857206,
+     "dMinusB2": 0.03273809523809512,
+     "bootstrapDefined": 9538,
+     "bootstrapUndefined": 462,
+     "lower": 0,
+     "upper": 1
+    },
+    "dDetectsNotC": [],
+    "b2DetectsNotD": []
+   },
+   {
+    "combination": "ADJUDICATED",
+    "countMetric": {
+     "cAddedOverB2": [
+      "acrm-error-not-announced-form-control",
+      "oss-bootstrap-35496",
+      "ras-error-not-announced-title"
+     ],
+     "dRetains": [
+      "oss-bootstrap-35496",
+      "ras-error-not-announced-title"
+     ],
+     "k": 2,
+     "n": 3,
+     "point": 0.6666666666666666,
+     "lower": 0.2076595988078242,
+     "upper": 0.9385080559790691
+    },
+    "rateMetric": {
+     "point": null,
+     "cMinusB2": -0.060317460317460436,
+     "dMinusB2": -0.03472222222222232,
+     "bootstrapDefined": 1126,
+     "bootstrapUndefined": 8874,
+     "lower": -4.000000000000047,
+     "upper": 12.999999999999757
+    },
+    "dDetectsNotC": [
+     "acrm-navigation-hidden-header",
+     "acrm-pointer-only-activation-edit-contact"
+    ],
+    "b2DetectsNotD": [
+     "acrm-expanded-not-updated-theme",
+     "acrm-live-update-repeated-toast",
+     "ras-live-update-repeated-post-saved"
+    ]
+   }
+  ],
+  "unionOrdering": {
+   "b2NotInD": 0,
+   "dNotInC": 0
+  },
+  "nvdaSegmentSeconds": {
+   "C": 3412.547465563333,
+   "D": 568.5828483966668,
+   "dShareOfC": 0.16661536700495588
+  },
+  "review": {
+   "benign": {
+    "A": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "B": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "B2": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "C_UNION": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "C_ADJUDICATED": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "D_UNION": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    },
+    "D_ADJUDICATED": {
+     "k": 1,
+     "n": 59,
+     "point": 0.01694915254237288,
+     "lower": 0.002998233885205405,
+     "upper": 0.08995726054929187
+    }
+   },
+   "unchanged": {
+    "A": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "B": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "B2": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "C_UNION": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "C_ADJUDICATED": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "D_UNION": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    },
+    "D_ADJUDICATED": {
+     "k": 0,
+     "n": 27,
+     "point": 0,
+     "lower": 0,
+     "upper": 0.12455503146207125
+    }
+   }
+  },
+  "b2Decomposition": {
+   "differences": [
+    {
+     "x": "B2_DOM_ONLY",
+     "y": "B",
+     "clusters": 59,
+     "point": 0,
+     "lower": 0,
+     "upper": 0,
+     "call": "equivalent within 0.08"
+    },
+    {
+     "x": "B2_WINEVENTS_ONLY",
+     "y": "B",
+     "clusters": 59,
+     "point": 0.07936507936507942,
+     "lower": 0.011904761904761862,
+     "upper": 0.1322314049586777,
+     "call": "difference"
+    },
+    {
+     "x": "B2",
+     "y": "B2_WINEVENTS_ONLY",
+     "clusters": 59,
+     "point": 0,
+     "lower": 0,
+     "upper": 0,
+     "call": "equivalent within 0.08"
+    },
+    {
+     "x": "B2",
+     "y": "B2_DOM_ONLY",
+     "clusters": 59,
+     "point": 0.07936507936507942,
+     "lower": 0.011904761904761862,
+     "upper": 0.1322314049586777,
+     "call": "difference"
+    }
+   ],
+   "lostWithoutWinEvents": [
+    [
+     "acrm-busy-left-true-toaster",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "acrm-live-update-repeated-toast",
+     "ANNOUNCEMENT_DUPLICATED"
+    ],
+    [
+     "acrm-toast-region-created-populated",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "ras-live-update-repeated-post-saved",
+     "ANNOUNCEMENT_DUPLICATED"
+    ]
+   ],
+   "lostWithoutTimeline": [],
+   "gainedUnderMask": [],
+   "b2OverBItems": [
+    [
+     "acrm-busy-left-true-toaster",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "acrm-live-update-repeated-toast",
+     "ANNOUNCEMENT_DUPLICATED"
+    ],
+    [
+     "acrm-toast-region-created-populated",
+     "ANNOUNCEMENT_MISSING"
+    ],
+    [
+     "ras-live-update-repeated-post-saved",
+     "ANNOUNCEMENT_DUPLICATED"
+    ]
+   ],
+   "maskedNonRegression": {
+    "B2_DOM_ONLY": {
+     "benign": {
+      "FAIL": 0,
+      "REVIEW": 1,
+      "n": 59
+     },
+     "unchanged": {
+      "FAIL": 0,
+      "REVIEW": 0,
+      "n": 27
+     }
+    },
+    "B2_WINEVENTS_ONLY": {
+     "benign": {
+      "FAIL": 0,
+      "REVIEW": 1,
+      "n": 59
+     },
+     "unchanged": {
+      "FAIL": 0,
+      "REVIEW": 0,
+      "n": 27
+     }
+    }
+   },
+   "leakCheckAandBUnchanged": true
+  }
+ },
+ "ruleModel": [
+  {
+   "arm": "C_UNION",
+   "chosenDevRule": 1,
+   "residual": {
+    "k": 5,
+    "n": 77,
+    "wilson": {
+     "point": 0.06493506493506493,
+     "lower": 0.028053080270151097,
+     "upper": 0.1431642514410465
+    },
+    "items": [
+     "acrm-error-not-announced-form-control",
+     "oss-bootstrap-35496",
+     "oss-bootstrap-39189",
+     "oss-vuetify-21591",
+     "ras-error-not-announced-title"
+    ]
+   },
+   "agreement": {
+    "k": 72,
+    "n": 77,
+    "wilson": {
+     "point": 0.935064935064935,
+     "lower": 0.8568357485589534,
+     "upper": 0.9719469197298488
+    }
+   }
+  },
+  {
+   "arm": "C_ADJUDICATED",
+   "chosenDevRule": 1,
+   "residual": {
+    "k": 5,
+    "n": 77,
+    "wilson": {
+     "point": 0.06493506493506493,
+     "lower": 0.028053080270151097,
+     "upper": 0.1431642514410465
+    },
+    "items": [
+     "acrm-error-not-announced-form-control",
+     "oss-bootstrap-35496",
+     "oss-bootstrap-39189",
+     "oss-vuetify-21591",
+     "ras-error-not-announced-title"
+    ]
+   },
+   "agreement": {
+    "k": 66,
+    "n": 77,
+    "wilson": {
+     "point": 0.8571428571428571,
+     "lower": 0.7620272974704644,
+     "upper": 0.9183166839606419
+    }
+   }
+  }
+ ]
+}

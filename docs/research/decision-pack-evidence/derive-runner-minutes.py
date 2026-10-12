@@ -1,14 +1,20 @@
 """Read-only: measured GitHub Actions job time for every workflow run in the repository, by workflow and runner OS.
 
-Usage: python3 -I derive-runner-minutes.py > runner-minutes.json  (needs an authenticated `gh`).
+Usage: python3 -I derive-runner-minutes.py [--until-run ID] > runner-minutes.json  (needs an authenticated `gh`).
+The decision pack's snapshot is bounded at run 38319708384 (the default), so later runs never change it;
+pass --until-run 0 for an unbounded current-cost report.
 Job time is completed_at minus started_at per job, as GitHub reports it; skipped jobs count as zero.
 These are administrative durations, not billing; the repository is public and uses standard runners.
 """
-import json, subprocess
+import argparse, json, subprocess
 from collections import defaultdict
 from datetime import datetime
 
 REPO = "digitalcourtney87/a11y-regression-spike"
+SNAPSHOT_UNTIL_RUN = 38319708384  # last run in the committed decision-pack snapshot
+parser = argparse.ArgumentParser()
+parser.add_argument("--until-run", type=int, default=SNAPSHOT_UNTIL_RUN)
+until = parser.parse_args().until_run
 
 
 def api(path):
@@ -29,7 +35,7 @@ def ts(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
-runs = [r for page in api(f"repos/{REPO}/actions/runs?per_page=100") for r in page["workflow_runs"]]
+runs = [r for page in api(f"repos/{REPO}/actions/runs?per_page=100") for r in page["workflow_runs"] if until == 0 or r["id"] <= until]
 by_workflow = defaultdict(lambda: {"runs": 0, "jobs": 0, "seconds": {"windows": 0.0, "linux": 0.0, "other": 0.0}})
 per_run = []
 for r in sorted(runs, key=lambda x: x["id"]):
@@ -52,6 +58,7 @@ for r in sorted(runs, key=lambda x: x["id"]):
 total = {k: round(sum(w["seconds"][k] for w in by_workflow.values()) / 60, 1) for k in ("windows", "linux", "other")}
 print(json.dumps({
     "repository": REPO,
+    "untilRun": until or None,
     "method": "Sum of per-job completed_at - started_at from the GitHub Actions API; administrative durations, not billing.",
     "runs": len(per_run),
     "totalMinutes": total,

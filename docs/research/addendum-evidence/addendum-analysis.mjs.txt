@@ -1,0 +1,115 @@
+// EXPLORATORY analyses for the decision-pack addendum (owner request, 2026-10-13). Post hoc, on exposed
+// confirmatory evidence; no verdict, oracle, trigger or threshold changes.
+//
+// Stored as .mjs.txt (as headline-analysis.mjs.txt) so repository lint skips it; copy to a .mjs name to run.
+// usage: node addendum-analysis.mjs <protocol-freeze-v4 checkout> <unmasked scores> <dom-only scores>
+//          <winevents-only scores> <second-round item ids json> <secondary-rule-model json>
+//
+// Detection, the symptom-uniform rate and the paired pattern bootstrap (seed 20261005, 10000 resamples,
+// percentile samples[250]/[9750]) are those of docs/research/m7-second-round-evidence/headline-analysis.mjs.txt.
+// The frozen checkout supplies correctSymptom, oracleRules, wilsonInterval, mulberry32 and corpus/items.
+import { readFileSync, readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+
+const [root, unmaskedPath, domPath, winPath, secondRoundPath, ruleModelPath] = process.argv.slice(2);
+const imp = (p) => import(pathToFileURL(`${root}/${p}`).href);
+const { mulberry32 } = await imp('harness/src/score/stats.ts');
+const { correctSymptom } = await imp('harness/src/oracles/arms.ts');
+const { oracleRules } = await imp('harness/src/oracles/rules.ts');
+const { wilsonInterval } = await imp('harness/src/score/wilson.ts');
+const rules = oracleRules();
+const load = (p) => JSON.parse(readFileSync(p, 'utf8'));
+const items = new Map(readdirSync(`${root}/corpus/items`).filter((n) => n.endsWith('.json') && !n.includes(' 2.')).map((n) => { const it = load(`${root}/corpus/items/${n}`); return [it.id, it]; }));
+const secondRound = new Set(load(secondRoundPath));
+
+const variants = { full: load(unmaskedPath), dom: load(domPath), win: load(winPath) };
+const byId = Object.fromEntries(Object.entries(variants).map(([k, v]) => [k, new Map(v.scores.map((s) => [s.itemId, s]))]));
+const ARMS = ['A', 'B', 'B2', 'C_UNION', 'C_ADJUDICATED', 'D_UNION', 'D_ADJUDICATED'];
+
+// One row per item, with every arm from the unmasked scores plus the two masked B2 variants (and their masked A/B for the leak check).
+const allRows = [...byId.full.keys()].sort().map((id) => {
+  const it = items.get(id);
+  const arms = Object.fromEntries(ARMS.map((a) => [a, byId.full.get(id).arms[a]]));
+  arms.B2_DOM_ONLY = byId.dom.get(id).arms.B2;
+  arms.B2_WINEVENTS_ONLY = byId.win.get(id).arms.B2;
+  for (const v of ['dom', 'win']) for (const a of ['A', 'B']) arms[`${a}_${v}`] = byId[v].get(id).arms[a];
+  return { id, it, arms, round: secondRound.has(id) ? 2 : 1, nvdaMs: byId.full.get(id).nvdaMs };
+});
+
+const detected = (r, a) => r.arms[a].verdict === 'FAIL' && r.arms[a].symptoms.some((sym) => correctSymptom(sym, r.it.expected.symptom, rules));
+function mean(rs, a) {
+  const by = new Map();
+  for (const r of rs) { const k = r.it.expected.symptom; const c = by.get(k) || [0, 0]; c[0] += Number(detected(r, a)); c[1]++; by.set(k, c); }
+  return [...by.values()].reduce((t, [k, n]) => t + k / n, 0) / by.size;
+}
+const call = (lo, hi) => (lo > 0 || hi < 0 ? 'difference' : lo > -0.08 && hi < 0.08 ? 'equivalent within 0.08' : 'inconclusive');
+const wil = (k, n) => { const w = wilsonInterval(k, n); return { k, n, point: w.point, lower: w.lower, upper: w.upper }; };
+
+function bootstrap(rows, statistic) {
+  const clusters = [...new Set(rows.map((r) => r.it.patternId))].sort();
+  const byCluster = new Map(clusters.map((c) => [c, rows.filter((r) => r.it.patternId === c)]));
+  const rand = mulberry32(20261005);
+  const samples = [];
+  for (let i = 0; i < 10000; i++) samples.push(statistic(Array.from({ length: clusters.length }, () => byCluster.get(clusters[Math.floor(rand() * clusters.length)])).flat()));
+  return { clusters: clusters.length, samples };
+}
+function difference(rows, x, y) {
+  const { clusters, samples } = bootstrap(rows, (rs) => mean(rs, x) - mean(rs, y));
+  samples.sort((a, b) => a - b);
+  return { x, y, clusters, point: mean(rows, x) - mean(rows, y), lower: samples[250], upper: samples[9750], call: call(samples[250], samples[9750]) };
+}
+const HEADLINE = [['B2', 'B'], ['C_UNION', 'B2'], ['C_ADJUDICATED', 'B2'], ['D_UNION', 'C_UNION'], ['D_ADJUDICATED', 'C_ADJUDICATED']];
+
+function retention(rows, comb) {
+  const C = `C_${comb}`, D = `D_${comb}`;
+  const added = rows.filter((r) => detected(r, C) && !detected(r, 'B2'));
+  const retained = added.filter((r) => detected(r, D));
+  const ratio = (rs) => { const den = mean(rs, C) - mean(rs, 'B2'); return den > 0 ? (mean(rs, D) - mean(rs, 'B2')) / den : null; };
+  const { samples } = bootstrap(rows, ratio);
+  const defined = samples.filter((s) => s !== null).sort((a, b) => a - b);
+  const pct = (p) => defined[Math.min(defined.length - 1, Math.floor(p * defined.length))];
+  return {
+    combination: comb,
+    countMetric: { cAddedOverB2: added.map((r) => r.id), dRetains: retained.map((r) => r.id), ...wil(retained.length, added.length) },
+    rateMetric: { point: ratio(rows), cMinusB2: mean(rows, C) - mean(rows, 'B2'), dMinusB2: mean(rows, D) - mean(rows, 'B2'), bootstrapDefined: defined.length, bootstrapUndefined: samples.length - defined.length, lower: defined.length ? pct(0.025) : null, upper: defined.length ? pct(0.975) : null },
+    dDetectsNotC: rows.filter((r) => detected(r, D) && !detected(r, C)).map((r) => r.id),
+    b2DetectsNotD: rows.filter((r) => detected(r, 'B2') && !detected(r, D)).map((r) => r.id),
+  };
+}
+
+function review(rows, kind) {
+  const rs = rows.filter((r) => r.it.expected.kind === kind);
+  return Object.fromEntries(ARMS.map((a) => [a, wil(rs.filter((r) => r.arms[a].verdict === 'REVIEW').length, rs.length)]));
+}
+
+function analyse(rows) {
+  const reg = rows.filter((r) => r.it.expected.kind === 'regression');
+  const nvdaAll = rows.reduce((t, r) => t + (r.nvdaMs?.all ?? 0), 0), nvdaTriggered = rows.reduce((t, r) => t + (r.nvdaMs?.triggered ?? 0), 0);
+  return {
+    items: rows.length, regressions: reg.length, patterns: new Set(reg.map((r) => r.it.patternId)).size,
+    detections: Object.fromEntries([...ARMS, 'B2_DOM_ONLY', 'B2_WINEVENTS_ONLY'].map((a) => [a, { k: reg.filter((r) => detected(r, a)).length, uniform: mean(reg, a) }])),
+    headline: HEADLINE.map(([x, y]) => difference(reg, x, y)),
+    retention: ['UNION', 'ADJUDICATED'].map((c) => retention(reg, c)),
+    unionOrdering: { b2NotInD: reg.filter((r) => detected(r, 'B2') && !detected(r, 'D_UNION')).length, dNotInC: reg.filter((r) => detected(r, 'D_UNION') && !detected(r, 'C_UNION')).length },
+    nvdaSegmentSeconds: { C: nvdaAll / 1000, D: nvdaTriggered / 1000, dShareOfC: nvdaTriggered / nvdaAll },
+    review: { benign: review(rows, 'benign'), unchanged: review(rows, 'unchanged') },
+    b2Decomposition: {
+      differences: [difference(reg, 'B2_DOM_ONLY', 'B'), difference(reg, 'B2_WINEVENTS_ONLY', 'B'), difference(reg, 'B2', 'B2_WINEVENTS_ONLY'), difference(reg, 'B2', 'B2_DOM_ONLY')],
+      lostWithoutWinEvents: reg.filter((r) => detected(r, 'B2') && !detected(r, 'B2_DOM_ONLY')).map((r) => [r.id, r.it.expected.symptom]),
+      lostWithoutTimeline: reg.filter((r) => detected(r, 'B2') && !detected(r, 'B2_WINEVENTS_ONLY')).map((r) => [r.id, r.it.expected.symptom]),
+      gainedUnderMask: reg.filter((r) => !detected(r, 'B2') && (detected(r, 'B2_DOM_ONLY') || detected(r, 'B2_WINEVENTS_ONLY'))).map((r) => r.id),
+      b2OverBItems: reg.filter((r) => detected(r, 'B2') && !detected(r, 'B')).map((r) => [r.id, r.it.expected.symptom]),
+      maskedNonRegression: Object.fromEntries(['B2_DOM_ONLY', 'B2_WINEVENTS_ONLY'].map((a) => [a, Object.fromEntries(['benign', 'unchanged'].map((k) => { const rs = rows.filter((r) => r.it.expected.kind === k); return [k, { FAIL: rs.filter((r) => r.arms[a].verdict === 'FAIL').length, REVIEW: rs.filter((r) => r.arms[a].verdict === 'REVIEW').length, n: rs.length }]; }))])),
+      leakCheckAandBUnchanged: rows.every((r) => ['dom', 'win'].every((v) => ['A', 'B'].every((a) => JSON.stringify(r.arms[`${a}_${v}`]) === JSON.stringify(r.arms[a])))),
+    },
+  };
+}
+
+const out = {
+  label: 'EXPLORATORY',
+  method: 'Post hoc analyses of the accepted M7 confirmatory evidence, scored by the unchanged protocol-freeze-v4 scorer; masked variants re-score copies of the evidence with one B2 source emptied.',
+  patterns77: analyse(allRows),
+  patterns59: analyse(allRows.filter((r) => r.round === 1)),
+  ruleModel: load(ruleModelPath),
+};
+console.log(JSON.stringify(out, null, 1));
