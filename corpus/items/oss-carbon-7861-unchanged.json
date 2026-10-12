@@ -1,0 +1,21 @@
+{
+  "id": "oss-carbon-7861-unchanged",
+  "source": "oss-history",
+  "patternId": "oss--carbon-7861",
+  "split": "test",
+  "app": "oss/carbon-7861",
+  "journeyId": "oss-carbon-7861",
+  "base": {
+    "ref": "oss/carbon-7861@de00f9cde16b733ae725f885ba27b3718994f31d+carbon-components-react@7.28.0"
+  },
+  "candidate": {
+    "ref": "oss/carbon-7861@de00f9cde16b733ae725f885ba27b3718994f31d+carbon-components-react@7.28.0"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-carbon-7861 (P15/P39, DR-0103)",
+    "licence": "Apache-2.0 (carbon-components-react)"
+  }
+}

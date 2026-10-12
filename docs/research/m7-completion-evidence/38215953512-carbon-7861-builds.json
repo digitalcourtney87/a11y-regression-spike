@@ -1,0 +1,23 @@
+[
+  {
+    "label": "7.28.0",
+    "version": "7.28.0",
+    "before": "2021-02-05T16:53:43Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "7.29.0",
+    "version": "7.29.0",
+    "before": "2021-02-20T20:22:46Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "7.32.0",
+    "version": "7.32.0",
+    "before": "2021-04-03T01:52:33Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

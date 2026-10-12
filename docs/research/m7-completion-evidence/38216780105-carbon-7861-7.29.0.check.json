@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.29.0",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": 13,
+      "holds": true,
+      "detail": "Chosen Alpha (option click)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen none (ArrowDown/Enter)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen none (ArrowDown/Enter)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

@@ -750,6 +750,33 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Grouped filtered keyboard navigation uses unfiltered group options: after filtering o, ArrowDown/Enter chooses hidden Blue instead of Orange. Reported stable3.2.0/4.0.2 pair and fix#4422 in4.1.0, shared React16.14.0. Original selection criterion plus existing-model browse goal and CSS twin match independently in38213610821/38214490819; earlier setup failures retained (DR-0102)."
+    },
+    {
+      "id": "oss--carbon-7861",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#7861",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "First filtered-option index0 becomes null through || null in7.29.0;7.32.0 fixes it. ArrowDown/Enter selects Alpha on7.28.0/fixed, none on broken; pointer option click works all. Same React16.14.0, system font, ordinary Chosen Alpha feedback and width twin; final checks/locks match38215953512/38216780105 (DR-0103)."
+    },
+    {
+      "id": "oss--chakra-6693",
+      "batch": "oss-regression",
+      "context": "oss:chakra-ui/chakra-ui#6693",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Editable onEdit identity changes reselect all text on every controlled onChange in2.2.9: typing abc leaves c. Reported2.2.8 works;2.3.4 contains editable2.0.11 callback stabilization. Shared React18.2/Emotion11.10/motion6.5.1. Original typing criterion, default selected-text entry, ordinary Entered abc browse goal and CSS twin match38215953512/38216780105 (DR-0103)."
+    },
+    {
+      "id": "oss--headlessui-2084",
+      "batch": "oss-regression",
+      "context": "oss:tailwindlabs/headlessui#2084",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Combobox displayValue incorrectly evaluates unspecified defaultValue in1.7.5; documented controlled object construct cannot choose Beta. Reported1.7.4 works;1.7.6 guards undefined default values (#2087). Shared Vue3.2.41 and supported uniform native select-all props; original chosen-value criterion, ordinary Chosen Beta browse goal and CSS twin match38215953512/38216780105 (DR-0103)."
     }
   ]
 }

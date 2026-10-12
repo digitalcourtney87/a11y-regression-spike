@@ -1,0 +1,90 @@
+{
+  "id": "oss-headlessui-2084",
+  "version": "1",
+  "app": "oss/headlessui-2084",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-opener",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Choose assignee",
+        "role": "button",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "mount-combobox",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "reach-assignee",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Assignee",
+        "role": "combobox",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "filter-beta",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "Be"
+    },
+    {
+      "kind": "at",
+      "id": "highlight-beta",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown"
+    },
+    {
+      "kind": "at",
+      "id": "choose-beta",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "browse-result",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-result",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Chosen Beta",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

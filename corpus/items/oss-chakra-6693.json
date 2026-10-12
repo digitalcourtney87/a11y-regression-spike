@@ -1,0 +1,24 @@
+{
+  "id": "oss-chakra-6693",
+  "source": "oss-history",
+  "patternId": "oss--chakra-6693",
+  "split": "test",
+  "app": "oss/chakra-6693",
+  "journeyId": "oss-chakra-6693",
+  "base": {
+    "ref": "oss/chakra-6693@de00f9cde16b733ae725f885ba27b3718994f31d+@chakra-ui/react@2.2.8"
+  },
+  "candidate": {
+    "ref": "oss/chakra-6693@de00f9cde16b733ae725f885ba27b3718994f31d+@chakra-ui/react@2.2.9"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Editable onEdit identity changes reselect all text on every controlled onChange in2.2.9: typing abc leaves c. Reported2.2.8 works;2.3.4 contains editable2.0.11 callback stabilization. Shared React18.2/Emotion11.10/motion6.5.1. Original typing criterion, default selected-text entry, ordinary Entered abc browse goal and CSS twin match38215953512/38216780105 (DR-0103)."
+  },
+  "provenance": {
+    "origin": "mined from chakra-ui/chakra-ui (#6693, @chakra-ui/editable 2.0.11 callback-ref fix); verified by m3-oss-repro run 38216780105; second-round admission DR-0103",
+    "licence": "MIT (@chakra-ui/react)",
+    "url": "https://github.com/chakra-ui/chakra-ui/issues/6693"
+  }
+}

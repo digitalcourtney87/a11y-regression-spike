@@ -1,0 +1,23 @@
+[
+  {
+    "label": "1.7.4",
+    "version": "1.7.4",
+    "before": "2022-11-04T15:22:19Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "1.7.5",
+    "version": "1.7.5",
+    "before": "2022-12-09T22:18:44Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "1.7.6",
+    "version": "1.7.6",
+    "before": "2022-12-16T16:36:03Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

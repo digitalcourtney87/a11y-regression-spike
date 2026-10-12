@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "2.2.9",
+  "result": {
+    "pointer": {
+      "browseEnteredReachedAt": null,
+      "holds": false,
+      "detail": "typed abc -> c (pointer entry)"
+    },
+    "keyboard": {
+      "browseEnteredReachedAt": null,
+      "holds": false,
+      "detail": "typed abc -> c (Tab entry)"
+    },
+    "benignTwin": {
+      "browseEnteredReachedAt": null,
+      "holds": false,
+      "detail": "typed abc -> c (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

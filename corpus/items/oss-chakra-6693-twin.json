@@ -1,0 +1,22 @@
+{
+  "id": "oss-chakra-6693-twin",
+  "source": "seeded",
+  "patternId": "oss--chakra-6693",
+  "split": "test",
+  "app": "oss/chakra-6693",
+  "journeyId": "oss-chakra-6693",
+  "base": {
+    "ref": "oss/chakra-6693@de00f9cde16b733ae725f885ba27b3718994f31d+@chakra-ui/react@2.2.8"
+  },
+  "candidate": {
+    "patch": "oss-chakra-6693-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0103)",
+    "licence": "MIT (@chakra-ui/react)"
+  }
+}

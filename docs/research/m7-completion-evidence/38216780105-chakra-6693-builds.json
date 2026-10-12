@@ -1,0 +1,23 @@
+[
+  {
+    "label": "2.2.8",
+    "version": "2.2.8",
+    "before": "2022-08-15T07:11:07Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "2.2.9",
+    "version": "2.2.9",
+    "before": "2022-08-25T08:47:12Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "2.3.4",
+    "version": "2.3.4",
+    "before": "2022-09-20T13:31:23Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

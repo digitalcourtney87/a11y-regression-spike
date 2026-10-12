@@ -1,0 +1,22 @@
+{
+  "id": "oss-headlessui-2084-twin",
+  "source": "seeded",
+  "patternId": "oss--headlessui-2084",
+  "split": "test",
+  "app": "oss/headlessui-2084",
+  "journeyId": "oss-headlessui-2084",
+  "base": {
+    "ref": "oss/headlessui-2084@de00f9cde16b733ae725f885ba27b3718994f31d+@headlessui/vue@1.7.4"
+  },
+  "candidate": {
+    "patch": "oss-headlessui-2084-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0103)",
+    "licence": "MIT (@headlessui/vue)"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "1.7.4",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": 6,
+      "holds": true,
+      "detail": "Chosen Beta (pointer entry)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": 6,
+      "holds": true,
+      "detail": "Chosen Beta (Tab entry)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": 6,
+      "holds": true,
+      "detail": "Chosen Beta (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

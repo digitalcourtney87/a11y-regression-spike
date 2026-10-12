@@ -1,0 +1,54 @@
+{
+  "id": "oss-chakra-6693",
+  "version": "1",
+  "app": "oss/chakra-6693",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-text",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Text",
+        "role": "textbox",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "enter-text",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "abc"
+    },
+    {
+      "kind": "at",
+      "id": "browse-result",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-result",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Entered abc",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

@@ -398,6 +398,75 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "carbon-7861",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#7861",
+        "PR #8178"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "licence": "Apache-2.0",
+      "good": "7.28.0",
+      "broken": "7.29.0",
+      "fixed": "7.32.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "First filtered-option index0 becomes null through || null in7.29.0;7.32.0 fixes it. ArrowDown/Enter selects Alpha on7.28.0/fixed, none on broken; pointer option click works all. Same React16.14.0, system font, ordinary Chosen Alpha feedback and width twin; final checks/locks match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": false,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "chakra-6693",
+      "repo": "chakra-ui/chakra-ui",
+      "refs": [
+        "#6693",
+        "@chakra-ui/editable 2.0.11 callback-ref fix"
+      ],
+      "stack": "react",
+      "package": "@chakra-ui/react",
+      "licence": "MIT",
+      "good": "2.2.8",
+      "broken": "2.2.9",
+      "fixed": "2.3.4",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Editable onEdit identity changes reselect all text on every controlled onChange in2.2.9: typing abc leaves c. Reported2.2.8 works;2.3.4 contains editable2.0.11 callback stabilization. Shared React18.2/Emotion11.10/motion6.5.1. Original typing criterion, default selected-text entry, ordinary Entered abc browse goal and CSS twin match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "headlessui-2084",
+      "repo": "tailwindlabs/headlessui",
+      "refs": [
+        "#2084",
+        "PR #2087"
+      ],
+      "stack": "vanilla",
+      "package": "@headlessui/vue",
+      "licence": "MIT",
+      "good": "1.7.4",
+      "broken": "1.7.5",
+      "fixed": "1.7.6",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Combobox displayValue incorrectly evaluates unspecified defaultValue in1.7.5; documented controlled object construct cannot choose Beta. Reported1.7.4 works;1.7.6 guards undefined default values (#2087). Shared Vue3.2.41 and supported uniform native select-all props; original chosen-value criterion, ordinary Chosen Beta browse goal and CSS twin match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

@@ -1,0 +1,11 @@
+--- a/fixtures/oss/headlessui-2084/src/main.js
++++ b/fixtures/oss/headlessui-2084/src/main.js
+@@ -8,7 +8,7 @@
+   const selected = ref(people[0]);
+   const query = ref("");
+   const filtered = computed(() => people.filter((person) => person.name.toLowerCase().includes(query.value.toLowerCase())));
+-  return () => h("main", null, [
++  return () => h("main", { style: { maxWidth: "480px" } }, [
+     h("h1", "Assignee selection"),
+     h("button", { onClick: () => { open.value = true; } }, "Choose assignee"),
+     open.value ? h(Combobox, { as: "div", modelValue: selected.value, "onUpdate:modelValue": (person) => { selected.value = person; } }, { default: () => [

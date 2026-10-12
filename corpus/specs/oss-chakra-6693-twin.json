@@ -1,0 +1,16 @@
+{
+  "id": "oss-chakra-6693-twin",
+  "patternId": "oss--chakra-6693",
+  "operator": "css-only",
+  "app": "oss/chakra-6693",
+  "journeyId": "oss-chakra-6693",
+  "target": "Main width only; input props, values and event handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-chakra-6693"
+}

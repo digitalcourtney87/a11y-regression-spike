@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-7861-twin",
+  "patternId": "oss--carbon-7861",
+  "operator": "css-only",
+  "app": "oss/carbon-7861",
+  "journeyId": "oss-carbon-7861",
+  "target": "Main width only; input props, values and event handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main style={{ padding: \"2rem\" }}>",
+      "replace": "<main style={{ padding: \"2rem\", maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-carbon-7861"
+}

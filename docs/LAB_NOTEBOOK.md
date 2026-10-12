@@ -445,3 +445,7 @@ DR-0101; A-010; [matching menu evidence](research/m7-completion-evidence/menu-re
 ### 2026-10-12 — EXPLORATORY: grouped-select admission
 
 DR-0102; A-011; [matching grouped-select evidence](research/m7-completion-evidence/reactselect-repeat-comparison.json). Completion continues; no new tag or assigned execution.
+
+### 2026-10-12 — EXPLORATORY: three input admissions
+
+DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repeat-comparison.json), [Chakra repeat](research/m7-completion-evidence/chakra-6693-repeat-comparison.json), [Headless repeat](research/m7-completion-evidence/headlessui-2084-repeat-comparison.json). Completion continues, no new tag or assigned execution.
