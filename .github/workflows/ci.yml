@@ -34,6 +34,13 @@ jobs:
           $errors = $null
           [System.Management.Automation.Language.Parser]::ParseFile('harness/src/runner/calibrationBuild.ps1', [ref]$tokens, [ref]$errors) | Out-Null
           if ($errors.Count -ne 0) { $errors | ForEach-Object { Write-Error $_.Message }; exit 1 }
+          $logRoot = ./harness/src/runner/calibrationBuild.ps1 -Out artefacts/m8-path-proof/builds -Evidence artefacts/m8-path-proof/evidence -ValidatePathsOnly
+          if (-not [System.IO.Path]::IsPathRooted($logRoot)) { throw 'M8 log root must remain absolute after switching into a fixture work directory' }
+          $work = Join-Path $env:RUNNER_TEMP 'm8-path-proof-work'
+          New-Item -ItemType Directory -Force -Path $work | Out-Null
+          Push-Location $work
+          try { 'path regression check' | Out-File (Join-Path $logRoot 'probe.log') } finally { Pop-Location }
+          if (-not (Test-Path artefacts/m8-path-proof/evidence/build-logs/probe.log)) { throw 'M8 log was redirected by the fixture working directory' }
       - run: npm test
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:

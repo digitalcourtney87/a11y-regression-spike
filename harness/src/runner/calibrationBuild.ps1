@@ -1,11 +1,12 @@
 # P40: working builds only. No corpus registry, candidate release or patch is read.
-param([string]$Out = "builds", [string]$Evidence = "artefacts/calibration")
+param([string]$Out = "builds", [string]$Evidence = "artefacts/calibration", [switch]$ValidatePathsOnly)
 $ErrorActionPreference = "Stop"
 $repo = (Get-Location).Path
 New-Item -ItemType Directory -Force -Path $Out, $Evidence | Out-Null
 $cases = Get-Content harness/src/runner/calibration-cases.json -Raw | ConvertFrom-Json
 $logs = Join-Path $Evidence "build-logs"
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
+if ($ValidatePathsOnly) { Write-Output $logs; return }
 $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-m8"
 $tools = Join-Path $env:RUNNER_TEMP "m8-tools"
 New-Item -ItemType Directory -Force -Path $tools | Out-Null
