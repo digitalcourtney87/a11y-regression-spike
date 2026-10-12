@@ -1,0 +1,353 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "nineteen",
+  "queries": [
+    {
+      "query": "repo:floating-ui/floating-ui is:issue is:closed keyboard in:title",
+      "totalHits": 7,
+      "hits": [
+        {
+          "number": 3086,
+          "title": "`useClick`'s keyboard event works differently from mouse clicks.",
+          "disposition": "selected"
+        },
+        {
+          "number": 2836,
+          "title": "focus is visible even if keyboard is not being used",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2537,
+          "title": "Keyboard Navigation with useListNavigation in floating-ui/react@0.25.4 Does Not Fully Support onKeydown Event",
+          "disposition": "selected"
+        },
+        {
+          "number": 2433,
+          "title": "There is a problem with the vertical position calculation when the keyboard is opened on the ios mobile terminal",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2090,
+          "title": "[React] Configure keyboard events in `useListNavigation` hook",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1629,
+          "title": "[Floating-UI] keyboard navigation works weird with react-virtual",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 805,
+          "title": "Positioning not correct on iOs when keyboard is open",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:floating-ui/floating-ui is:issue is:closed focus in:title",
+      "totalHits": 36,
+      "hits": [
+        {
+          "number": 3392,
+          "title": "useListNavigation focuses the floating element when the mouse hovers disabled button items or leaves the floating menu",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3375,
+          "title": "Bug: Focus guards created despite guards={false}",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3252,
+          "title": "aria-hidden on descendant retained focus error",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3238,
+          "title": "Tab focus order isn\u2019t correct using Iframe and FloatingPortal.",
+          "disposition": "selected"
+        },
+        {
+          "number": 3212,
+          "title": "[React] Focus test failing since 0.26.1 due to `visibleOnly` option for `useFocus`",
+          "disposition": "selected"
+        },
+        {
+          "number": 3029,
+          "title": "FloatingFocusManager incorrect focus restore when the the reference unmounts before the floating element is closed",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3009,
+          "title": "While the `modal={true}` & `initialFocus={-1}` - the `Tab` focuses on the last tabbable element within the `floating`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3001,
+          "title": "Root menu focus moves when press the `Home` or `End` keys in an opened submenus.(using virtual nested dropdownMenu) ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2966,
+          "title": "Button in Popover getting focus visible on hover",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2903,
+          "title": "When the focused element of a `FloatingFocusManager` is removed from the dom focus escapes to the `body`",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2883,
+          "title": "useListNavigation moves focus into list unexpectedly when an item is dynamically removed from the list",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2874,
+          "title": "Regression in @floating-ui/react@0.26.10 and return focus",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 2861,
+          "title": "List navigation doesn't scroll to selected item when other focusable elements are present in popover",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2836,
+          "title": "focus is visible even if keyboard is not being used",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2760,
+          "title": "useFocus: floating element does not disappear if it has focusable children and you blur by tabbing",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2758,
+          "title": "Dynamic focus manager elements create ARIA violations.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2639,
+          "title": "[React] `FloatingFocusManager` focus sequence skips the first element on reference element trigger",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2607,
+          "title": "[React] Focus is not trapped inside mounted floating element if another floating element unmounts",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2601,
+          "title": "Avoid obscuring focused elements",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2591,
+          "title": "Focus returned from closing a dialog opens tooltip",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2587,
+          "title": "[React] Find focusable children of reference if it's not focusable",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2575,
+          "title": "Losing focus with `useFocus` not closing the floating element inside an iframe",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2574,
+          "title": "Restrict useFocus to only elements that has `:focus-visible` pseudo class applied",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2533,
+          "title": "[React] Safari/Webkit focus returns with delay (in tree) and close new floating element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2505,
+          "title": "Floating element doesn't trap focus if reference is a combobox",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2462,
+          "title": "aria-hidden-focus violation",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2128,
+          "title": "[React] Focus management and prop getters for external reference",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2126,
+          "title": "Link/button got focused automatically inside Dropdown Menu",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2107,
+          "title": "[React] Focus floating element in `useListNavigation` when item loses focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1999,
+          "title": "useHover sets focus on reference, causing focus indicator to appear",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:emilkowalski/sonner is:issue is:closed keyboard in:title",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 701,
+          "title": "When `hotKey` is set to an empty array, keyboard operations become erratic.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 289,
+          "title": "Sonner is hidden behind keyboard on mobile",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:emilkowalski/sonner is:issue is:closed focus in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:dip/cmdk is:issue is:closed keyboard in:title",
+      "totalHits": 4,
+      "hits": [
+        {
+          "number": 322,
+          "title": "Unaccessible keyboard navigation through items when no CommandInput",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 286,
+          "title": "Keyboard Shortcuts Not Working When Items Placed in Portal",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 249,
+          "title": "[feature] keyboard shortcuts for list items",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 51,
+          "title": "Ignore Safari pointer events on keyboard navigation ",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:dip/cmdk is:issue is:closed focus in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 277,
+          "title": "focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 259,
+          "title": "How to focus on the last element by ArrowUp click?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 167,
+          "title": "Focus propagation when used in Radix Dialogue",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "floating-ui/floating-ui",
+      "number": 3086,
+      "title": "`useClick`'s keyboard event works differently from mouse clicks.",
+      "url": "https://github.com/floating-ui/floating-ui/issues/3086",
+      "origin": "repo:floating-ui/floating-ui is:issue is:closed keyboard in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "**Describe the bug** A clear and concise description of what the bug is.\r\n\r\nI used `useClick` to toggle the open state of the trigger button.\r\nHere, if you toggle the open state using a `mouse click`, there are no activated items when the dropdown is opened.(`activeIndex: null`)\r\nHowever, if you toggle the open state using the keyboard(`Enter` or `Space`), the first item will be activated when the dropdown opens.(`activeIndex: 0`)\r\n\r\nIs there a way to set it to work the same way as a mouse?\r\n\r\n**To Reproduce**\r\n\r\n[CodeSandBox](https://codesandbox.io/p/sandbox/floating-ui-menu-virtual-forked-65m7c9?workspaceId=79fa430e-0033-4659-a9df-1d34337554d0)\r\n\r\nSteps to reproduce the behavior:\r\n\r\n* Mouse click: Click `input`.\r\n* Using the keyboard: Focus on `input` and press `Enter` or `Space`.\r\n\r\n**Expected behavior** \r\n\r\nWhen you toggle the open state using the keyboard, no items are activated.(`activeIndex: null`) In other words, it operates the same as a mouse click.\r\n\r\n**Screenshots**\r\n\r\n| Mouse Click | Keyboard Press |\r\n|-------------|-----------------|\r\n| ![image-mouse](https://github.com/user-attachments/assets/8912ab83-2786-4c5f-b756-219a41c3f445) | ![image-keyboard](https://github.com/user-attachments/assets/0fbf5675-990c-40a8-ad62-a2edae55deb8)  |\r\n\r\n\r\n**Context:**\r\n\r\n- OS: mac OS(Sonoma)\r\n- Browser: Chrome\r\n- Version: @floating-ui/react : 0.26.25\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3086#issuecomment-2418840004",
+          "body": "`useListNavigation` has an option called `focusItemOnOpen`, which can be set to `false`. `auto` (the default) has this behavior difference."
+        },
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3086#issuecomment-2418891729",
+          "body": "Thank you for the quick reply!!!"
+        }
+      ]
+    },
+    {
+      "repo": "floating-ui/floating-ui",
+      "number": 2537,
+      "title": "Keyboard Navigation with useListNavigation in floating-ui/react@0.25.4 Does Not Fully Support onKeydown Event",
+      "url": "https://github.com/floating-ui/floating-ui/issues/2537",
+      "origin": "repo:floating-ui/floating-ui is:issue is:closed keyboard in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "**Describe the bug**\r\nKeyboard navigation with useListNavigation in floating-ui/react@0.25.4 doesn't fully support onKeydown events for the Enter key, while using a virtualized list (virtual=true).\r\n\r\nI'm using the latest version of floating-ui/react@0.25.4 and testing keyboard navigation with the useListNavigation hook in a virtualized list (virtual=true). My goal is to execute corresponding menu actions when the Enter key is pressed.\r\n\r\nI noticed that the onClick event works as expected for the menu items, but the onKeydown event is only responsive to ArrowRight and ArrowLeft keys. Given that it's an onKeydown event, my expectation is that it should listen to all keyboard keys. Specifically, when the Enter key is pressed, I would like to trigger subsequent actions by emitting an event like tree?.events.emit(\"onKeyDown\").\r\n\r\nIs this behavior intended, or is it a bug? Would appreciate any guidance on how to achieve my intended functionality.\r\n\r\n**To Reproduce**\r\n\r\n1. Implement useListNavigation with virtual=true based on the official DropDown example.\r\n2. Use keyboard navigation to select a menu item.\r\n3. Press the Enter key.\r\n4. Observe that onClick works but onKeydown only responds to ArrowRight and ArrowLeft keys.\r\n\r\n**Expected behavior**\r\nThe onKeydown event should be capable of listening to all keyboard keys. When the Enter key is pressed, subsequent actions should be triggered, potentially using tree?.events.emit(\"onKeyDown\").\r\n\r\n**Screenshots**\r\n<img width=\"1008\" alt=\"image\" src=\"https://github.com/floating-ui/floating-ui/assets/41875799/c81f2386-ad97-462f-a35b-7804cb0e05cb\">\r\n\r\n<img width=\"1322\" alt=\"image\" src=\"https://github.com/floating-ui/floating-ui/assets/41875799/b5971ffc-1753-4b43-9c25-8ba13580605d\">\r\n\r\n\r\n**Context:**\r\n - Version :floating-ui/react@0.25.4\r\n\r\n**Additional context**\r\nGiven that it's an onKeydown event, it should ideally be capable of recognizing all keys on the keyboard, including the Enter key, to perform the expected actions.\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/2537#issuecomment-1712637182",
+          "body": "When the Enter key is pressed, you need to handle actions yourself. The `virtualItemRef.current` value determines which element was \"clicked\" virtually. "
+        },
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/2537#issuecomment-1712695796",
+          "body": "After capturing the Enter event with the following code, I dispatched a Click event, triggering the same process as the Click event. Thank you for your answer.\r\n\r\n```\r\n    useEffect(() => {\r\n      !isNested &&\r\n        document?.addEventListener('keydown', (event) => {\r\n          if (event.key === 'Enter') {\r\n            const e = new Event('click', {\r\n              bubbles: true,\r\n              cancelable: true,\r\n            });\r\n            virtualItemRef.current.dispatchEvent(e);\r\n          }\r\n        });\r\n      return () => {\r\n        !isNested &&\r\n          document?.removeEventListener('keydown', (event) => {\r\n            console.log('element keydown', event.key);\r\n          });\r\n      };\r\n    }, []);\r\n```\r\n"
+        }
+      ]
+    },
+    {
+      "repo": "floating-ui/floating-ui",
+      "number": 3238,
+      "title": "Tab focus order isn\u2019t correct using Iframe and FloatingPortal.",
+      "url": "https://github.com/floating-ui/floating-ui/issues/3238",
+      "origin": "repo:floating-ui/floating-ui is:issue is:closed focus in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "Tab focus order isn\u2019t correct using Iframe and FloatingPortal.\n\nIn our application, we use Iframe to integrate widgets into the host page.\nAlso, we use FloatingPortal with custom root to avoid render tooltips in the host page and render into our iframe.\n\nBut we found problems\u2028- when we use `initialFocus={-1}` for FloatingFocusManager, after opening the Tooltip by TAB button, the next focus is not put on the first focusable element in the Tooltip and put on the first focusable on the host page - and as a result, the focusing order is disrupted\n\nIf we use `initialFocus` with default value - the focus is put on the first focusable element in the Tooltip, but after focusing on the last element it does not come back to the target element but returns to the first focused element on the host page\n\n**Steps to reproduce the behavior:**\n\nCodesandbox with demo - https://codesandbox.io/p/sandbox/floating-ui-iframe-problem-67s2v5\n\n**If InitialFocus={-1}:**\n1. Go to page\n2. Start press TAB button\n3. Focus the button called \u201cOpen popover\u201d\n4. Press Enter or Space\n5. Press Tab again\n6. Focus put on the first focusable element on the host page\n\nhttps://github.com/user-attachments/assets/6e862990-083c-4b2e-ab68-10e107a8b2e9\n\n**If InitialFocus=default:**\n1. Go to page\n2. Start press TAB button\n3. Focus the button called \u201cOpen popover\u201d\n4. Press Enter or Space\n5. Press Tab again and finish focusing element in the Tooltip\n6. After the last element, focus put on the first focusable element on the host page\n\nhttps://github.com/user-attachments/assets/f9c2ec54-b1ca-4193-aacd-d56d7adc4dc0\n\n**Expected behavior** \n**If InitialFocus={-1}**\n1. Next focus put on the first focusable element on the Tooltip\n2. After focusing the last focusable element on the Tooltip, focus move to the next focusable element in Iframe(\u201cLink in iframe 2\u201d - in demo)\n\n**If InitialFocus=default**\n1. After focusing the last focusable element on the Tooltip, focus move to the next focusable element in Iframe(\u201cLink in iframe 2\u201d - in demo)\n\n**In our case we would like to prefer InitialFocus={-1}**\n\n\n**Context:**\n\n- OS: macOS 15.2\n- Browser: chrome\n- Version 133.0.6943.98\u00a0\n\n**Additional context** \nI think the problem appears in [this place](https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/utils/tabbable.ts#L35), because we found elements in the root document, but iframe contains its own document context.\n",
+      "comments": [
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3238#issuecomment-2689297430",
+          "body": "> I think the problem appears in [this place](https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/utils/tabbable.ts#L35), because we found elements in the root document, but iframe contains its own document context.\n\nYes, most likely this is the issue"
+        }
+      ]
+    },
+    {
+      "repo": "floating-ui/floating-ui",
+      "number": 3212,
+      "title": "[React] Focus test failing since 0.26.1 due to `visibleOnly` option for `useFocus`",
+      "url": "https://github.com/floating-ui/floating-ui/issues/3212",
+      "origin": "repo:floating-ui/floating-ui is:issue is:closed focus in:title",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "Focus test failing ~~in React 19~~ with Floating-UI ~~@0.27.3~~ @0.27.5\n\n**Environment:**\nReact: 18.x | 19.x\nFloating-UI: ~~0.27.3~~ 0.27.5\nTesting Setup: (Jest/React Testing Library, etc.)\nOther Details: The tooltip, built with Floating-UI, works fine in the UI but fails in tests when focusing on the trigger element.\n\n**Steps to Reproduce:**\nI've used the official Tooltip example which is very similar to our product's implementation of Floating-UI.\n1. Open the prepared [CodeSandbox link](https://codesandbox.io/p/devbox/2kfh5v).\n2. Open terminal & run \"pnpm test\", press \"a\" to run all tests.\n\n**Expected Behavior:**\nThe test should pass, and the tooltip should open when the trigger element is focused during tests.\n\n**Actual Behavior:**\nThe tooltip does not open when the trigger element is focused during tests.\n\n**Additional Context:**\n- ~~The issue started after migrating from React 18 to React 19.~~\n- Floating-UI@0.26.0 and older versions works correctly in tests ~~with React 19~~ .\n- UI Works perfectly in the DEV environment.",
+      "comments": [
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3212#issuecomment-2630184012",
+          "body": "0.26.0 was released on October 2, 2023 but there were many patches between that and the next minor 0.27.0, and now latest 0.27.3. Can you pinpoint which version it started failing in?\n\nThis hook should be responsible: https://github.com/floating-ui/floating-ui/commits/master/packages/react/src/hooks/useFocus.ts\n\n#2600 was released after 0.26.0 and could be a problem for instance"
+        },
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3212#issuecomment-2630296726",
+          "body": "> 0.26.0 was released on October 2, 2023 but there were many patches between that and the next minor 0.27.0, and now latest 0.27.3. Can you pinpoint which version it started failing in?\n> \n> This hook should be responsible: https://github.com/floating-ui/floating-ui/commits/master/packages/react/src/hooks/useFocus.ts\n> \n> [#2600](https://github.com/floating-ui/floating-ui/pull/2600) was released after 0.26.0 and could be a problem for instance\n\nIt stated failing at 0.26.1 ."
+        },
+        {
+          "url": "https://github.com/floating-ui/floating-ui/issues/3212#issuecomment-2721995321",
+          "body": "Hey, \n\nI have the same problem with \"tab\" focusing in tests.\nAfter some debugging I found the test breaks in [line 125](https://github.com/floating-ui/floating-ui/blob/b9ad108d9b0257fe1d7d25a3b187fd5189062b9a/packages/react/src/hooks/useFocus.ts#L125) of the `useFocus` hook.\nPreviously the `:focus-visible` check threw an Error in the jsdom environment and the fallback was used.\n\nAs far as I understand, jsdom uses [nwsapi](https://github.com/dperini/nwsapi) to match CSS selectors, but the nwsapi dependency is not pinnend to a specific version. The current version of nwsapi (2.2.18) does not throw an Error for the `:focus-visible` check, but returns `false` which leads to an early return of the `onFocus` callback and no tooltip.\n\nA fast workaround is to set `visibleOnly: false` on the `useFocus` hook.\n\nI hope that helps and was kinda understandable \ud83d\ude04 "
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1872 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "fourteen",
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 4150,
+          "title": "`Slot` throws when a lazy child resolves to another lazy child (regression left over from #3165 / #3680, likely also #4082)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4072,
+          "title": "RSC regression on Slot",
+          "disposition": "selected"
+        },
+        {
+          "number": 4014,
+          "title": "[DismissableLayer] Escape handlers go stale on React 19.2 (regression in 1.1.14)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3933,
+          "title": "[1.5.0][Regression] TypeScript type errors - Duplicate index signature for type '`--radix-${string}`'",
+          "disposition": "selected"
+        },
+        {
+          "number": 3780,
+          "title": "[Regression] Radix Slot/asChild prop merging silently fails in RSC dev mode after Next.js 16.0.10 security patch",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2224,
+          "title": "[Regression] Select component trigs Popover closing inside Popover ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1615,
+          "title": "[Dialog][DropdownMenu] Possible regression in auto focus behaviour when opening a dialog from a dropdown",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1354,
+          "title": "[Tooltip] Regression: sometimes opens on touch devices",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 10324,
+          "title": "Modal jumps to the top when dismissed via underlay press in Chrome/Safari (regression in 1.17.0)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10313,
+          "title": "Prebuilt `dist` CSS ships unflattened native nesting since 3.47.2 \u2014 breaks engines below Chrome 112 (regression from 3.47.1)",
+          "disposition": "selected"
+        },
+        {
+          "number": 9937,
+          "title": "April release regression in RAC Table",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9874,
+          "title": "react-aria-components ComboBox: onSelectionChange(null) fired on blur (regression / behavior change vs. earlier 1.x)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9776,
+          "title": "useComboBox: \"Too many re-renders\" infinite loop with inline children (regression in react-aria 3.47.0?)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8637,
+          "title": "DateField UX regression in entering some dates",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8298,
+          "title": "Combobox closes when navigating items with keyboard (May release regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 6784,
+          "title": "Regression in useControlledState signature",
+          "disposition": "selected"
+        },
+        {
+          "number": 5887,
+          "title": "Regression in terms of localization strings/i18n bundling in the latest release",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "totalHits": 39,
+      "hits": [
+        {
+          "number": 48712,
+          "title": "[material] internal/Transition.mjs directory-imports react-transition-group/TransitionGroupContext, breaking Node ESM (regression since 9.1.0)",
+          "disposition": "selected"
+        },
+        {
+          "number": 48692,
+          "title": "Autocomplete `groupBy` breaks after creating a new option when all existing options are selected (regression in 7.3.11)",
+          "disposition": "selected"
+        },
+        {
+          "number": 47926,
+          "title": "CSS regression in 7.3.9",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 47811,
+          "title": "[autocomplete] regression in width behavior in v7.3.8",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 46734,
+          "title": "[autocomplete] Regression with 7.3 and Playwright",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 45477,
+          "title": "[Snackbar] v6.4.6 & React 18 regression `ownerState` failed prop type warning",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 44920,
+          "title": "[internal] Regression test is 5 times slower after React 19 upgrade",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 44534,
+          "title": "[docs-infra] Fix light/dark mode & RTL change speed regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 44048,
+          "title": "[autocomplete] regression in behavior for freeSolo Autocomplete with custom Popper/Paper and no options",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 43741,
+          "title": "[material-ui] Button `color=\"inherit\"` prop regression for `variant=\"contained\"`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41584,
+          "title": "[docs-infra] Skip non React components from visual regression tests",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 37247,
+          "title": "[Input][Joy] Regression with input backgrounds",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 36054,
+          "title": "[useMediaQuery] Regression noSsr: true has no longer any impact",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32136,
+          "title": "[@mui/styles] Regression accessing theme",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 30012,
+          "title": "[chip] Disabled a11y regression in MUIv5",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25866,
+          "title": "[v5.0.0-alpha.31] Doc `Tree View` on dark mode had a regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18484,
+          "title": "[TextField] Programmatically focus, potencial regression in v.4.5.0+",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 18255,
+          "title": "Regression: <Select native id=\"my-id\"> No Longer Has an Id",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18236,
+          "title": "[Chip] Keyboard events regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 17366,
+          "title": "[Radio] Regression in v4.4.1 when no label is used",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 16441,
+          "title": "[Popover] ModalClasses prop regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16184,
+          "title": "Regression: withWidth fails on the server side because of useMediaQuery",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15906,
+          "title": "[Popper] Position flicker regression in v4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14042,
+          "title": "Regression in vertical alignment of Button text in IE11",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13283,
+          "title": "[ButtonBase] Regression in 3.1.2 causes error \"Cannot read property 'focusVisible' of null\"",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13247,
+          "title": "Browser regression when upgrading from 3.2.0 to 3.2.1",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13163,
+          "title": "Regression for browser usage when upgrading from 3.1.2 -> 3.2.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11913,
+          "title": "[Regression] tooltips block pointer events even when not showing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11587,
+          "title": "Regression: Changes from beta 36 to Release added too much css specificity preventing overrides from working properly",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 11576,
+          "title": "v0.20.1 REGRESSION AutoComplete : Enter key doesn't fire onNewRequest",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "totalHits": 32,
+      "hits": [
+        {
+          "number": 22517,
+          "title": "[Bug]: wc multi-select clear selection button regression",
+          "disposition": "selected"
+        },
+        {
+          "number": 22341,
+          "title": "[Bug]: Link component display: inline-flex \u2192 inline regression in v11.104\u2013v11.108, undocumented breaking change",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20832,
+          "title": "[Bug]: Slider: typescript declaration regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 19563,
+          "title": "[Bug]: WC Checkbox regression on checked state",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 19370,
+          "title": "[Regression]: Grid layout broken",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 19242,
+          "title": "[Bug]: Regression in MultiSelect typescript annotations",
+          "disposition": "selected"
+        },
+        {
+          "number": 15724,
+          "title": "[Bug]: Dropdown itemToElement isn't working anymore (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15608,
+          "title": "[Bug]: AccordionItem does not adjust to dynamic contents (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14478,
+          "title": "Add visual regression testing for RTL/bidi styles",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9858,
+          "title": "NumberInput Regression: different button hover CSS for light option enabled and disabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9725,
+          "title": "[SideNavMenu]: regression SideNavMenu no longer collapses in isRail mode when SideNav is not expanded",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8911,
+          "title": "Add Percy visual regression testing (VRT) snapshots for all components",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8786,
+          "title": "Regression: Sketch plugin icon sync commands failing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8523,
+          "title": "Tile: Visual regression for selectable tiles",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8392,
+          "title": "ToastNotification timeout regression after updating to carbon-component-react  v7.32.0.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7724,
+          "title": "[data table] style regression: sort hover is rendering incorrectly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7614,
+          "title": "Regression: Existing Sketch plugin icons are not modified when sync command is run",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6449,
+          "title": "DataTable with stickyHeader styling of rows and headers regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6432,
+          "title": "Using fill=\"currentColor\" for icons causes a regression for certain components in dark themes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6142,
+          "title": "Regression: Header border disappeared",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5623,
+          "title": "ComboBox regression in 10.10 (carbon-components-react 7.10)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4772,
+          "title": "[Code Snippet]: copy button style regression in latest unpublished code",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4568,
+          "title": "[Inline Notification] action button style regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4567,
+          "title": "[Inline Notification] action button style regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4232,
+          "title": "Regression bug: Vanilla Tooltip focus management",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3944,
+          "title": "Regression bug: Disabled button's hover state",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3428,
+          "title": "[Link: Regression styling bug] states colors overwrite disabled color",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3142,
+          "title": "Data Table: regression for position of search icon in batch actions toolbar",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3093,
+          "title": "Data Table: Regression Bug: Table headers aren't bolded",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3092,
+          "title": "Button: Regression bug: disabled button icon color",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "totalHits": 43,
+      "hits": [
+        {
+          "number": 36604,
+          "title": "[Bug]: Tooltip permanently hidden inside tightly-fitted overflow:hidden containers (regression in 9.10.4+)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36007,
+          "title": "[Bug]: Performance regression in rc.11: waitForConnectedDescendants always defers via requestAnimationFrame",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 35473,
+          "title": "[Bug]: Shorthand styles weren't applied correctly and now they cause a visual regression if added",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 35341,
+          "title": "[Bug]: ToastTitle link regression, wrong color is used",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 35009,
+          "title": "[Bug]: Image fading when combining multiple styles is a regression from v8: It is too faded",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 33888,
+          "title": "[Bug]: V9 Searchbox is a regression from V8: There is not option to have an unfixed width",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32946,
+          "title": "[Bug]: Fluent v8 visual regression test snapshots are broken",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32433,
+          "title": "[Bug]: Regression on Dialog styles, removing motions is also removing dialog surface shadows",
+          "disposition": "selected"
+        },
+        {
+          "number": 32040,
+          "title": "[Bug]: Regression issue: The height limit of Combobox with Virtualizer doesn't work",
+          "disposition": "selected"
+        },
+        {
+          "number": 30896,
+          "title": "[Bug]: Tooltip jest test regression after react 18 fix if `autoMount` set to true",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 30165,
+          "title": "[Bug]: Regression v9.42.0 caused by using floating-ui-devtools in http:// non-localhost contexts",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 29819,
+          "title": "[Bug]: Re-Regression - mountNode not available",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 29515,
+          "title": "[Bug]: Regression - mountNode not available",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 28903,
+          "title": "[Feature]: Add shadow DOM visual regression tests for all Fluent v8 controls",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 27997,
+          "title": "[Bug]: DataGrid controlled selection broken (regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 27510,
+          "title": "[Bug]: DatePicker focus of current value (v8 regression) ",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25701,
+          "title": "[Bug]: Regression - `childrenGap` on Stack with `wrap` breaks layout",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25078,
+          "title": "[Epic]: Visual Regression Tool Migration",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 23680,
+          "title": "[Important] Skeleton animation=wave regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 23064,
+          "title": "Select: add visual regression tests",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 22878,
+          "title": "[Bug]-Regression: Absolute-positioned modeless dialogs/modals are no longer visible or repositioned since 8.64.0.",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 21814,
+          "title": "DropDown Multiple Selection Regression Bug",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 20618,
+          "title": "Regression: Callout doesn't resize to content when it shrinks",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18714,
+          "title": "[SearchBox][Regression] onChanged silently broke with the v8 upgrade",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17482,
+          "title": "Question: Are you interested to give a try Creevey as Visual Regression tool?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16027,
+          "title": "[v8] [Regression] SearchBox maximum call stack size on keydown",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15423,
+          "title": "makeStyle regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13012,
+          "title": "Tracking: investigate severities of Chromium Edge High Contrast regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 12504,
+          "title": "Fabric 7 Bundle Size Regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9344,
+          "title": "PR #9295 caused regression in menu icon disabled state for Buttons",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed regression in:title",
+      "totalHits": 6,
+      "hits": [
+        {
+          "number": 3821,
+          "title": "Nested Menu components no longer work (regression in `@headlessui/react \u2265 2.2.3`)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3667,
+          "title": "Potential regression in `Radio` component default tag behavior in v2",
+          "disposition": "selected"
+        },
+        {
+          "number": 3467,
+          "title": "Regression in `@headlessui/react@2.1.x` when using `<TransitionChild>` with `<Dialog>` for the backdrop",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3323,
+          "title": "`data-enter` is not removed when performing exit transition before enter ends (`v2.1.0` transition API regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2084,
+          "title": "Combobox displayValue regression in @headlessui/vue@v1.7.5",
+          "disposition": "selected"
+        },
+        {
+          "number": 1607,
+          "title": "Regression: No transitions on open dialog [v1.6.5]",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "totalHits": 40,
+      "hits": [
+        {
+          "number": 22997,
+          "title": "[Bug Report][4.1.4] Performance regression from 4.1.3 to 4.1.4",
+          "disposition": "selected"
+        },
+        {
+          "number": 22416,
+          "title": "[Bug Report][3.11.2] v-text-area placeholder visible on initial render (overlaps label) regression since v3.11.0-beta.1",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 22218,
+          "title": "[Bug Report][3.10.1] Regression: VSelect menu shifted few pixels to the right again",
+          "disposition": "selected"
+        },
+        {
+          "number": 21492,
+          "title": "[Bug Report][3.8.0] regression - VCalendar monthly view hide days in week",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21022,
+          "title": "[Bug Report][3.7.13] [VNumberInput] regression in 3.7.13, argument passed to rule function becomes string",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20979,
+          "title": "[Bug Report][3.7.12] Regression in v-dialog, the height of the content is not respected any more",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 20480,
+          "title": "[Bug Report][3.7.1] Regression: can no longer generate declarations",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20104,
+          "title": "[Bug Report][3.6.11] [Bug Report][3.6.11] VTreeview component, regression in the indentation of the sub elements",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20021,
+          "title": "[Bug Report][3.6.9] v-icon doesn't display \"icon\" when slot is filled (regression from 3.0.0 beta 5)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 19658,
+          "title": "[Bug Report][3.5.16] Regression in VProgressLinear position inside an appbar",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 18024,
+          "title": "[Bug Report][3.3.7] VSwitch regression - readonly switch is not clickable anymore",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17242,
+          "title": "[Bug Report][3.2.1] `createVuetify` TypeScript regression: Default export of the module has or is using private name 'DateInstance'",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16948,
+          "title": "[Bug Report][3.1.10] Regression[3.0.5->3.1.10]: VProgressLinear invisible in VAppBar extension slot",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16702,
+          "title": "[Bug Report][3.1.5] Regression from 3.1.4 list item exact property now applies active class to not exact links",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16637,
+          "title": "[Bug Report][3.1.4] v-text-field - change event not handled by component (Vuetify 2 regression)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16478,
+          "title": "[Bug Report][3.1.2] Potential v-tabs color regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 15942,
+          "title": "[Bug Report][3.0.0-beta.14] Volar + takeover mode intellisense regression from beta.13",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14624,
+          "title": "[Bug Report][2.6.2] v-app-bar height regression in 2.6.2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 14072,
+          "title": "[Bug Report][2.4.11] V-AutoComplete/V-Combobox regression with tab order when selecting item with mouse click",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 13656,
+          "title": "[Bug Report][2.5.0] Regression: vCarousel in v-if triggers an error",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 13151,
+          "title": "[Bug Report] Regression in VSlider - it sends change events twice, if dragged.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 12922,
+          "title": "[Bug Report] VCalendar regression in click handler when dealing with string categories",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 11600,
+          "title": "[Bug Report] Regression on custom column filter matching behaviour in VDataTable",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9627,
+          "title": "[Bug Report] Tab key in VDialog focuses outside the dialg (regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7608,
+          "title": "[Bug Report] V-Dialog Regression BreaksTinyMCE Inside Dialog",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6635,
+          "title": "[Bug Report] Regression caused by #6431 - search input gets nulled immediately when using an `item-text` function + ajax loading",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6256,
+          "title": "[Bug Report] Activator in disabled menu gets \"pointer\" cursor instead of \"default\" (regression since 1.4.0)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5607,
+          "title": "[Bug Report] Regression in expand transition",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5405,
+          "title": "[Regression] dark animation makes theme transition much slower",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4641,
+          "title": "[Bug Report] Vertical Dividers Regression - Width",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "totalHits": 15,
+      "hits": [
+        {
+          "number": 6471,
+          "title": "Regression on useHotkeys - \"esc\" became \"escape\" ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6248,
+          "title": "Draggable component regression in attaching event listeners",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6015,
+          "title": "Regression for pt-text-selection-color",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 5987,
+          "title": "Regression in box-shadow Sass variable syntax",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 5203,
+          "title": "Icons in buttons tab focus regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4979,
+          "title": "Popover2 Regression: ContextMenu2 scrolls to top when context menu is opened in Chrome and Firefox",
+          "disposition": "selected"
+        },
+        {
+          "number": 4320,
+          "title": "NumericInput regression prevents typing decimal places",
+          "disposition": "selected"
+        },
+        {
+          "number": 4311,
+          "title": "Table enableFocusedCell causes text to be written in a previous unfocused cell (regression between 3.8.0 and 3.8.1)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3487,
+          "title": "[docs-theme] Regression in markdown rendering",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3389,
+          "title": "3.14.0 regression with old react types",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2155,
+          "title": "DateInput ESC key handler regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1517,
+          "title": "[Labs/Popover2] regression from original Popover for .pt-button-group",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1506,
+          "title": "[Core/Tabs2 regression] cannot set to large anymore when using component's API",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1025,
+          "title": "[Table] Investigate perf regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 340,
+          "title": "Regression in DateInput",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed regression in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 1680,
+          "title": "useCombobox hook isOpen state \"regression\"  starting from v9.2.0 ?",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 1101,
+          "title": "[useComboBox] Regression in Menu Option Click 5.4.5",
+          "disposition": "selected"
+        },
+        {
+          "number": 110,
+          "title": "selectItemAtIndex possible regression",
+          "disposition": "selected"
+        }
+      ]
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed regression in:title",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 6855,
+          "title": "Restore legacy Select regression coverage for the migrated issue sandboxes",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 5992,
+          "title": "useSafeLayoutEffect evaluated at module-load time causes SSR warning regression in universal bundles",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3382,
+          "title": "Regression with Menus and 0.4.0",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title",
+      "totalHits": 11,
+      "hits": [
+        {
+          "number": 10797,
+          "title": "Semantic token resolution regression in @chakra-ui/react@3.35.0",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9151,
+          "title": "[Regression] Slider thumb offset issue #2",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8978,
+          "title": "[Regression] Unable to scroll dialog with `scrollBehavior=\"outside\"`",
+          "disposition": "selected"
+        },
+        {
+          "number": 8945,
+          "title": "[Regression] Slider thumb offset issue",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7623,
+          "title": "Regression on minor version bump for some browsers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7277,
+          "title": "SkeletonText regression - no longer shimmers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6693,
+          "title": "Regression: since @chakra-ui/react@2.8.9, using `onEdit` with `onChange` in Editable causes text selection on every keystroke",
+          "disposition": "selected"
+        },
+        {
+          "number": 6096,
+          "title": "regression in toast component and Next.js",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4765,
+          "title": "regression during update from 1.6.6 to 1.6.8 theme became: Dict<any>",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2511,
+          "title": "Menu Regression: Prop gutter is not applied to popper element",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1118,
+          "title": "[Menu] V1 Rendering Performance Regression",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 8883,
+          "title": "`AngleSlider` mouse drag broken since v9.1.0 (regression from v9.0.2)",
+          "disposition": "selected"
+        },
+        {
+          "number": 8393,
+          "title": "Regression in left-padding for List",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8128,
+          "title": "TagsInput regression in 8.2.2",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7951,
+          "title": "Collapse inside Stack spacing regression in 7.17.7->7.17.8",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7437,
+          "title": "Regression with Mantine Popover onClose",
+          "disposition": "selected"
+        },
+        {
+          "number": 6060,
+          "title": "AppShell Footer regression in version 7.7.1",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5848,
+          "title": "`useLocalStorage` regression in 7.6.1",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5288,
+          "title": "MultiSelect/TagsInput (regression): placeholder doesn't dissapear in uncontrolled mode",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2503,
+          "title": "MultiSelect - a regression makes the MultiSelect unusable in some circunstances",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed regression in:title",
+      "totalHits": 42,
+      "hits": [
+        {
+          "number": 41704,
+          "title": "v5.2+ regression: default popover header styles missing",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41395,
+          "title": "Updated navbar focus styles are an accessibility regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 39189,
+          "title": "invalid selector regression in 5.3.2",
+          "disposition": "selected"
+        },
+        {
+          "number": 36947,
+          "title": "Tab active class isn't removed correctly when inside drop-down menu (5.2 regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 36813,
+          "title": "5.2.0 regression: tooltips never close when they are initialized using as `selector` option the attribute `title`",
+          "disposition": "selected"
+        },
+        {
+          "number": 36743,
+          "title": "5.2.0 Regression when recreating disposed tooltips using `title`",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 35126,
+          "title": "New `align-self: center` default for btn class causes regression in vertical button stacks inside flex containers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34982,
+          "title": "Nested modals not working (regression since 5.1.0)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 34736,
+          "title": "Regression in Tooltip: content doesn't update after first show",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34611,
+          "title": "Grid column regression introduced in v5.0.2",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34374,
+          "title": "regression in hr rendering since bootstrap 5",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34335,
+          "title": "v5.0.2 regression: grid col-N now overrides col-breakpoint",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 34012,
+          "title": "5.0.1: row and cell background colours broken when using a non-transparent $table-bg (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 33172,
+          "title": "table-hover regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32629,
+          "title": "Regression: carousel `data-touch=\"false\"` not working",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32384,
+          "title": "Popover overflows container (regression)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 31771,
+          "title": "v5 vertical pills regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 28812,
+          "title": "Popover regression from 4.2.x to 4.3.x",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 26414,
+          "title": "Navbar regression in 4.1.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 25428,
+          "title": "Popover positioning regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 24920,
+          "title": "Dropdown got clipped by fixed-top navbar, 4 alpha 6 -> 4 beta 2 regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 24256,
+          "title": ".table-responsive regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 22667,
+          "title": "Regression in .input-group vs. grid cols",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21876,
+          "title": "tab-pane fade in active regression in Bootstrap 4 alpha 6.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21871,
+          "title": "Regression in label button group alignment in version 4.0.0-alpha.6",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21023,
+          "title": "Custom checkbox alignment possible regression",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 17740,
+          "title": "#12683 in 3.2.0 causes regression for collapsed accordion bottom borders",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16292,
+          "title": "Recent update to .hidden utility class causes regression when mixed with .visible-* classes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 15168,
+          "title": "Tooltip selector regression in v3.3.0",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 14962,
+          "title": "navbar-right button regression",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed regression in:title",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 1579,
+          "title": "Regression: Shoelace components are not defining in Angular",
+          "disposition": "selected"
+        },
+        {
+          "number": 1576,
+          "title": "Documentation regression - some doc fixes were not included when migrating to the 'pages' subdirectory",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1303,
+          "title": "Regression in input[type=datetime-local]: valueAsNumber always returns null",
+          "disposition": "selected"
+        },
+        {
+          "number": 860,
+          "title": "`<sl-dropdown>` cannot keep content in viewport (regression in `2.0.0-beta.81`)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 859,
+          "title": "`<sl-dropdown>` content overflow regression introduced in `2.0.0-beta.80`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 856,
+          "title": "`<sl-dropdown>` content overflow regression introduced in `2.0.0-beta.80`",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 845,
+          "title": "`<sl-menu>` and `<sl-menu-item>` regression in `2.0.0-beta.79` caused by allowing focus on disabled items for improved accessibility",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 766,
+          "title": "`<sl-menu>` caching `<sl-menu-item>`s breaks dynamic toggling of `<sl-menu-item>.disabled` (`2.0.0-beta.74` regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 445,
+          "title": "`<sl-details>` regression in `2.0.0-beta.41`",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 7616,
+          "title": "Set up Loki for Visual Regression Testing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7523,
+          "title": "[EuiProgress] Missing animation on progress bar update - regression",
+          "disposition": "selected"
+        },
+        {
+          "number": 4957,
+          "title": "[EuiDataGrid] regression in displaying Arrays and Objects in expand behavior",
+          "disposition": "selected"
+        },
+        {
+          "number": 4951,
+          "title": "[EuiComboBox] Regression in singleSelection scrolling behavior",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1313,
+          "title": "EuiComboBox no longer supports fullWidth (regression)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 767,
+          "title": "Integrate visual regression testing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 677,
+          "title": "Add guide to writing visual regression tests to README.md",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 521,
+          "title": "Visual regression tests to protect against accidental CSS side effects",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "radix-ui/primitives",
+      "number": 4072,
+      "title": "RSC regression on Slot",
+      "url": "https://github.com/radix-ui/primitives/issues/4072",
+      "origin": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported platform/stack is outside existing frozen browser/framework context (server components, Angular, IE or mobile).",
+      "issueBody": "https://github.com/radix-ui/primitives/pull/3953\n\ncreateContext causes Slot to now be a client directives. Adding 'use client' to every shared component that imports Slot avoids the error, but unnecessarily converts otherwise server-compatible components into client boundaries.\n\n### Expected behavior\n\nThe default Slot component should remain usable within React Server Components when custom mergeProps behaviour or Slot.Provider is not being used. Existing server-compatible components using Slot for asChild composition should not require a client boundary after a patch update.",
+      "comments": [
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5055931865",
+          "body": "Up, same issue, this is a breaking change."
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5070833274",
+          "body": "That change causes now radix-ui/themes components to fail, such as a basic <Flex> component from Radix-ui/themes. So a simple regeneration of the yarn.lock file installs transitively the latest version of radix-ui slot containing the regression, and break the application:\n\n```\n\n\u2a2f TypeError: {imported module ./nodemodules/next/dist/server/route-modules/app-page/vendored/rsc/react.js}.createContext is not a function\n    at module evaluation (app\\page.tsx:1:1)\n    at module evaluation (C:\\Users\\EXF238\\workspace\\toolsuite\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__02fbh2n._.js:68:47)\n> 1 | import { Button, Flex, Text } from '@radix-ui/themes';\n    | ^\n  2 |\n  3 | export default function Home() {\n  4 |   return (\n\n\n GET / 500 in 1887ms (next.js: 1666ms, application-code: 221ms)\n[browser] Uncaught TypeError: createContext only works in Client Components. Add the \"use client\" directive at the top of the file to use it. Read more: https://nextjs.org/docs/messages/context-in-server-component\n    at module evaluation (app/page.tsx:1:1)\n    at module evaluation (app/page.tsx:10:1)\n> 1 | import { Button, Flex, Text } from '@radix-ui/themes';\n    | ^\n  2 |\n  3 | export default function Home() {\n  4 |   return (\n\n\n```"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5072072441",
+          "body": "Released a patch with 1.6.6 that should fix it. Let me know if you still have issues."
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5072816119",
+          "body": "Actually this isn't completely resolved with my patch. Running a few more tests with real builds to try and resolve this without reverting the new API."
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5073440348",
+          "body": "Working on it, will have a more robust fix out today. "
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5075955176",
+          "body": "Ok, confirmed the fix manually with 1.6.7. Fresh Next app builds clean. `Slot` changes should have never made it into the last release anyway so this was unfortunately needless thrash due to a less-than-ideal publishing process.\n\nPrioritizing fixing that next, sorry about that!"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/4072#issuecomment-5089538810",
+          "body": "Thanks for the quick fix \u2014 confirming `@radix-ui/react-slot@1.3.3` resolves this for us.\n\nWe hit the regression via a Renovate bump of `@radix-ui/react-slot` from `1.3.0` \u2192 `1.3.1` in a Next.js 16 App Router app. Server Components that import a shadcn `breadcrumb` (which uses `Slot` without `'use client'`) failed during `next build` page-data collection with:\n\n```\nTypeError: d.createContext is not a function\nError: Failed to collect page data for /p/[projectId]/agents/[modelId]\n```\n\nPinning/overriding to `1.3.3` restores a clean production build without needing to mark breadcrumb as a Client Component."
+        }
+      ]
+    },
+    {
+      "repo": "radix-ui/primitives",
+      "number": 3933,
+      "title": "[1.5.0][Regression] TypeScript type errors - Duplicate index signature for type '`--radix-${string}`'",
+      "url": "https://github.com/radix-ui/primitives/issues/3933",
+      "origin": "repo:radix-ui/primitives is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "## Bug report\n\n### Current Behavior\n\n```\nnode_modules/@radix-ui/react-accordion/dist/index.d.mts:9:9 - error TS2374: Duplicate index signature for type '`--radix-${string}`'.\n\n9         [varName: `--radix-${string}`]: string | number | undefined | null;\n          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nnode_modules/@radix-ui/react-navigation-menu/dist/index.d.mts:12:9 - error TS2374: Duplicate index signature for type '`--radix-${string}`'.\n\n12         [varName: `--radix-${string}`]: string | number | undefined | null;\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nnode_modules/@radix-ui/react-popper/dist/index.d.mts:13:9 - error TS2374: Duplicate index signature for type '`--radix-${string}`'.\n\n13         [varName: `--radix-${string}`]: string | number | undefined | null;\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nnode_modules/@radix-ui/react-scroll-area/dist/index.d.mts:17:9 - error TS2374: Duplicate index signature for type '`--radix-${string}`'.\n\n17         [varName: `--radix-${string}`]: string | number | undefined | null;\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nnode_modules/@radix-ui/react-slider/dist/index.d.mts:10:9 - error TS2374: Duplicate index signature for type '`--radix-${string}`'.\n\n10         [varName: `--radix-${string}`]: string | number | undefined | null;\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nFound 5 errors in 5 files.\n```\n\n### Expected behavior\n\nNo type errors, like 1.4.3\n\n### Reproducible example\n\n```sh\nmkdir radix-type-error\ncd radix-type-error\nnpm init -y\nnpm pkg set type=module\nnpm i typescript react react-dom @types/react @types/react-dom radix-ui\nnpx tsc --init --skipLibCheck false --exactOptionalPropertyTypes false\necho \"import * as radix from 'radix-ui'; console.log(radix);\" > main.ts\nnpx tsc --noEmit\n```\n\n### Suggested solution\n\nAvoid duplicate places all defining:\n```\ndeclare module 'react' {\n    interface CSSProperties {\n        [varName: `--radix-${string}`]: string | number | undefined | null;\n    }\n}\n```\ndefine it in a single, common, place.\n\n### Additional context\n\nThis error is hidden if `skipLibCheck` is set (which skips all type checking of .d.ts files).\nThere's another type error if `exactOptionalPropertyTypes` is turned on, but this is not related to this issue.\n\n### Your environment\n\n<!-- Very important for us to help you debug. Please fill this out! -->\n\n| Software         | Name(s) | Version |\n| ---------------- | ------- | ------- |\n| Radix Package(s) | radix-ui | 1.5.0 |\n| React            | n/a     | 19.2.7 |\n| Browser          | Irrelevant |  |\n| Assistive tech   |         |         |\n| Node             | n/a     | 24.16.0 |\n| npm/yarn/pnpm    | npm | 11.13.0 |\n| Operating System | Irrelevant |         |\n",
+      "comments": [
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/3933#issuecomment-4639503028",
+          "body": "@chaance this regressed in https://github.com/radix-ui/primitives/pull/3884"
+        }
+      ]
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 10313,
+      "title": "Prebuilt `dist` CSS ships unflattened native nesting since 3.47.2 \u2014 breaks engines below Chrome 112 (regression from 3.47.1)",
+      "url": "https://github.com/adobe/react-spectrum/issues/10313",
+      "origin": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "## Summary\n\nSince `@adobe/react-spectrum@3.47.2`, the prebuilt CSS in `dist/private/*.css` contains **native CSS nesting** (`& { \u2026 }`). In `3.47.1` the same rules shipped flat. Native nesting requires Chrome 112+ / Safari 16.5+ / Firefox 117+. On any older engine the parser discards the nested block, so the rule collapses to empty and the component renders unstyled \u2014 for icons this drops `inline-size`/`block-size`, and the SVG expands to fill its container.\n\nThis is a **patch-level** change to published artifacts that silently raised the effective CSS browser floor to Chrome 112, below `react-spectrum`'s own declared support baseline.\n\n<img width=\"1824\" height=\"652\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/96ee21a9-f548-4762-bce4-3ed8e4d9b664\" />\n> **Visual:** a `size=\"S\"` workflow icon rendering at ~18px (3.47.1, flat) vs. ~429px (3.47.2, parsed by an engine without native nesting).\n\n## Regression \u2014 `dist/private/icon_vars.css`, rule `.spectrum-Icon--sizeS`\n\n```css\n/* 3.47.1 \u2014 flat, portable (works everywhere) */\n.\u2026spectrum-Icon--sizeS, .\u2026spectrum-Icon--sizeS img, .\u2026spectrum-Icon--sizeS svg {\n  block-size: var(--spectrum-alias-workflow-icon-size, \u2026);\n  inline-size: var(--spectrum-alias-workflow-icon-size, \u2026);\n}\n\n/* 3.47.2 \u2014 native nesting (needs Chrome \u2265112 / Safari \u226516.5 / Firefox \u2265117) */\n.\u2026spectrum-Icon--sizeS {\n  &, & img, & svg {\n    block-size: var(--spectrum-alias-workflow-icon-size, \u2026);\n    inline-size: var(--spectrum-alias-workflow-icon-size, \u2026);\n  }\n}\n```\n\nOn an engine without native nesting, the unknown `& { \u2026 }` block is discarded and the rule becomes `.spectrum-Icon--sizeS { }`. No size is applied, so the SVG (a `viewBox` with no intrinsic dimensions) resolves its width to **100% of its container**. Live confirmation from an affected host \u2014 the rule serialized via CSSOM:\n\n```js\n// [...document.styleSheets].flatMap(s => [...s.cssRules])\n//   .find(r => r.selectorText?.includes(\"spectrum-Icon--sizeS\")).cssText\n\".spectrum-Icon--sizeS { }\"                       // \u2190 empty on Chromium 99\ngetComputedStyle(iconSvg).inlineSize              // \u2190 \"403px\" (== container width)\n```\n\n## Minimal reproduction\n\nSelf-contained, no build. The right card applies the `3.47.2` rule **exactly as a non-nesting parser retains it**, so it reproduces the bug in any browser. Open the same markup under a real sub-112 engine (e.g. an Adobe CEP panel) and the *unmodified* nested rule fails the same way.\n\n<details><summary><code>repro.html</code></summary>\n\n```html\n<style>\n  .stage { width: 340px; height: 200px; border: 1px solid #ccc; display: flex;\n           align-items: center; justify-content: center; overflow: hidden; }\n  .spectrum-Icon { fill: currentColor; display: inline-block; }\n  --icon: 18px;\n  /* 3.47.1 \u2014 flat */\n  .flat.spectrum-Icon--sizeS, .flat.spectrum-Icon--sizeS svg {\n    block-size: 18px; inline-size: 18px;\n  }\n  /* 3.47.2 as a pre-112 engine parses it: the nested block is dropped \u2192 empty */\n  .oldparse.spectrum-Icon--sizeS { }\n</style>\n\n<p>3.47.1 (flat) \u2014 correct ~18px:</p>\n<div class=\"stage\">\n  <svg class=\"flat spectrum-Icon spectrum-Icon--sizeS\" viewBox=\"0 0 36 36\">\n    <path d=\"M31.7,4.3a7.176,7.176,0,0,0-10.148,0c-.385.386-4.264,4.222-5.351,5.309a8.307,8.307,0,0,1,3.743.607c.519-.52,3.568-3.526,3.783-3.741a4.1,4.1,0,0,1,5.8,5.8L22.408,19.39a4.617,4.617,0,0,1-3.372,1.3,3.953,3.953,0,0,1-2.7-1.109,4.154,4.154,0,0,1-1.241-1.626,2.067,2.067,0,0,0-.428.318l-1.635,1.712a7.144,7.144,0,0,0,1.226,1.673c2.8,2.8,7.875,2.364,10.677-.438L31.7,14.452A7.174,7.174,0,0,0,31.7,4.3Z\"/>\n    <path d=\"M15.926,25.824c-.52.52-3.5,3.547-3.713,3.762a4.1,4.1,0,1,1-5.8-5.8L13.6,16.6a4.58,4.58,0,0,1,3.366-1.292A4.2,4.2,0,0,1,20.75,18.09a2.067,2.067,0,0,0,.428-.318l1.734-1.721a7.165,7.165,0,0,0-1.226-1.673,7.311,7.311,0,0,0-10.26.048L4.239,21.612A7.176,7.176,0,0,0,14.387,31.761c.386-.386,4.194-4.243,5.281-5.33A8.3,8.3,0,0,1,15.926,25.824Z\"/>\n  </svg>\n</div>\n\n<p>3.47.2 parsed without native nesting \u2014 broken (fills container):</p>\n<div class=\"stage\">\n  <svg class=\"oldparse spectrum-Icon spectrum-Icon--sizeS\" viewBox=\"0 0 36 36\">\n    <path d=\"M31.7,4.3a7.176,7.176,0,0,0-10.148,0c-.385.386-4.264,4.222-5.351,5.309a8.307,8.307,0,0,1,3.743.607c.519-.52,3.568-3.526,3.783-3.741a4.1,4.1,0,0,1,5.8,5.8L22.408,19.39a4.617,4.617,0,0,1-3.372,1.3,3.953,3.953,0,0,1-2.7-1.109,4.154,4.154,0,0,1-1.241-1.626,2.067,2.067,0,0,0-.428.318l-1.635,1.712a7.144,7.144,0,0,0,1.226,1.673c2.8,2.8,7.875,2.364,10.677-.438L31.7,14.452A7.174,7.174,0,0,0,31.7,4.3Z\"/>\n    <path d=\"M15.926,25.824c-.52.52-3.5,3.547-3.713,3.762a4.1,4.1,0,1,1-5.8-5.8L13.6,16.6a4.58,4.58,0,0,1,3.366-1.292A4.2,4.2,0,0,1,20.75,18.09a2.067,2.067,0,0,0,.428-.318l1.734-1.721a7.165,7.165,0,0,0-1.226-1.673,7.311,7.311,0,0,0-10.26.048L4.239,21.612A7.176,7.176,0,0,0,14.387,31.761c.386-.386,4.194-4.243,5.281-5.33A8.3,8.3,0,0,1,15.926,25.824Z\"/>\n  </svg>\n</div>\n```\n</details>\n\n## Affected engines\n\n| Engine | Version | Native CSS nesting | Result |\n|---|---|---|---|\n| Chrome / Edge | \u2265 112 | Yes | OK |\n| Adobe CEP (After Effects / Premiere) | Chromium 99 | No | **Broken** |\n| Adobe CEP (older hosts) | Chromium 74\u201388 | No | **Broken** |\n| Safari | < 16.5 | No | **Broken** |\n\n`react-spectrum`'s own `package.json` declares a support baseline of `chrome >= 79, firefox >= 85, safari >= 13` (`targets.legacy-module.engines.browsers`) \u2014 all below the native-nesting threshold. The shipped `dist` CSS no longer meets it. Adobe CEP is a notable real-world consumer: panels run an embedded Chromium (Chromium 99 in current After Effects) and load the prebuilt CSS directly, with no way to upgrade the engine.\n\n## Expected\n\nPrebuilt `dist` CSS stays lowered to the documented baseline (flattened, as `3.47.1` shipped) \u2014 or the support matrix / release notes reflect the raised floor, and this ships in a minor/major rather than a patch.\n\n## Actual\n\n`3.47.2` publishes CSS that only renders correctly on Chrome 112+ / Safari 16.5+ / Firefox 117+. Consumers on `^3.47.1` ranges receive it silently, and dev servers that serve raw CSS (Vite, etc.) don't flatten it, so layouts break at runtime.\n\n## Workaround (for other consumers)\n\nFlatten nesting in your own pipeline \u2014 `postcss-nesting`, or a bundler CSS target below Chrome 112 (esbuild `target: chrome99`, Lightning CSS `targets`). Production bundlers with an old target already do this; dev servers serving raw CSS do not.\n\n## Versions\n\n- `@adobe/react-spectrum`: regressed in `3.47.2` (`3.47.1` unaffected)\n- Verified against: Adobe CEP host, `Chrome/99.0.4844.84 AdobeCEP/12.0.1`\n",
+      "comments": [
+        {
+          "url": "https://github.com/adobe/react-spectrum/issues/10313#issuecomment-4917998789",
+          "body": "Chrome 112 was released in April 2023. We target features that are [baseline widely available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility), which means they have been in all browser engines for 2.5 years. As this has now passed for CSS nesting, it is no longer compiled. Older engines are not supported or tested. CEP is deprecated and no longer supported. You can migrate to UXP or pin to an older version of `@adobe/react-spectrum` for now."
+        }
+      ]
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 6784,
+      "title": "Regression in useControlledState signature",
+      "url": "https://github.com/adobe/react-spectrum/issues/6784",
+      "origin": "repo:adobe/react-spectrum is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "### Provide a general summary of the issue here\n\nIt's not exactly a runtime bug, but a regression in types. The `onChange` callback is allowed to have extra parameters besides the first parameter (the changed value), which is a useful feature. While it still works at runtime, the extra parameters are removed from the retuned setter in [a recent improvement in supporting ts strict mode](https://github.com/adobe/react-spectrum/commit/54d260d736f3e24d02c4277e593f4ab34930f9bd#diff-927eebaa6f590e895634eae7f762db38e91f5f30a71fb8960c620cabfa59d058):\r\n\r\nhttps://github.com/adobe/react-spectrum/blob/54d260d736f3e24d02c4277e593f4ab34930f9bd/packages/%40react-stately/utils/src/useControlledState.ts#L15-L17\r\n\r\n\n\n### \ud83e\udd14 Expected Behavior?\n\nuseControlledState should allow extra parameters to be passed to `onChange` callback.\n\n### \ud83d\ude2f Current Behavior\n\nPassing extra arguments to the returned setter function, which used to compile successfully fails now.\n\n### \ud83d\udc81 Possible Solution\n\nA quick fix would be to just add back the removed `...args: any[]` second parameter:\r\n \r\n ```diff\r\n-export function useControlledState<T, C = T>(value: T, defaultValue: T | undefined, onChange?: (v: C, ...args: any[]) => void): [T, (value: T) => void]; \r\n+export function useControlledState<T, C = T>(value: T, defaultValue: T | undefined, onChange?: (v: C, ...args: any[]) => void): [T, (value: T, ...args: any[]) => void]; \r\n```\r\n\r\nBut with some tweaks, it should be possible to have it typed in a way that extra parameters in the returned setter are typed based on the input `onChange` type.\n\n### \ud83d\udd26 Context\n\nI'm using the extra parameters of the onChange to provide information about the type of interaction that caused the change. the controlled state can change due to two possible types of user interactions.\n\n### \ud83d\udda5\ufe0f Steps to Reproduce\n\n Use the following example:\r\n```ts\r\nfunction MyComponent({\r\n  value,\r\n  defaultValue = 3,\r\n  onChange,\r\n}: {\r\n  value?: number;\r\n  defaultValue?: number;\r\n  onChange: (value: number, reason: \"foo\" | \"bar\") => void;\r\n}) {\r\n  const [state, setState] = useControlledState<number>(\r\n    value,\r\n    defaultValue,\r\n    onChange\r\n  );\r\n  const update = () => {\r\n    setState(3, \"foo\");\r\n  };\r\n}\r\n  ```\n\n### Version\n\n@react-stately/utils@3.10.1\n\n### What browsers are you seeing the problem on?\n\nOther\n\n### If other, please specify.\n\nN/A\n\n### What operating system are you using?\n\nN/A\n\n### \ud83e\udde2 Your Company/Team\n\n_No response_\n\n### \ud83d\udd77 Tracking Issue\n\n_No response_",
+      "comments": [
+        {
+          "url": "https://github.com/adobe/react-spectrum/issues/6784#issuecomment-2254836400",
+          "body": "Seems fine. While technically an undocumented hook, I don't see any harm in adding this back. It doesn't appear to break strict types or affect them otherwise."
+        }
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 48712,
+      "title": "[material] internal/Transition.mjs directory-imports react-transition-group/TransitionGroupContext, breaking Node ESM (regression since 9.1.0)",
+      "url": "https://github.com/mui/material-ui/issues/48712",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "### Steps to reproduce\n\n`@mui/material@9.1.1/internal/Transition.mjs` (new in 9.1.0) contains a **directory import** that Node's native ESM loader cannot resolve:\n\n```js\n// node_modules/@mui/material/internal/Transition.mjs\nimport TransitionGroupContext from 'react-transition-group/TransitionGroupContext';\n```\n\n`react-transition-group@4.4.5` has **no `exports` map**, and `react-transition-group/TransitionGroupContext` is a *directory* whose only content is a legacy redirect `package.json` (`main`/`module` only \u2014 no `index.js`, no extension). Resolving that subpath requires bundler-style directory resolution, which Node's ESM loader does not perform.\n\nMinimal repro \u2014 load the module through Node's ESM loader (any `\"type\": \"module\"` context, or a test runner that externalizes `node_modules` to Node ESM, e.g. Vitest):\n\n```sh\nnode --input-type=module -e \"import '@mui/material/internal/Transition.mjs'\"\n```\n\nWe hit it via Vitest 4 (which externalizes `node_modules` to Node's native ESM loader by default). Any test file importing a MUI component whose graph reaches `internal/Transition.mjs` fails **at import time**.\n\n### Current behavior\n\n```\nError: Directory import '.../node_modules/react-transition-group/TransitionGroupContext' is not supported resolving ES modules imported from .../node_modules/@mui/material/internal/Transition.mjs\nDid you mean to import \"react-transition-group/cjs/TransitionGroupContext.js\"?\n```\n\nThe app's normal Vite dev server and production build are unaffected \u2014 Vite's bundler resolver follows the legacy redirect. Only the Node-native-ESM path breaks.\n\n### Expected behavior\n\nMUI's `.mjs` build should not emit directory imports \u2014 it should import a concrete, Node-ESM-resolvable file (e.g. `react-transition-group/esm/TransitionGroupContext.js`) rather than the bare directory subpath.\n\nThis is a **regression** against the Node-ESM compatibility established in v7.0.0 (#37335, closed):\n\n- **9.0.x**: `internal/Transition.mjs` does not exist; react-transition-group is imported only via the package root (`import { Transition } from 'react-transition-group'`), which resolves cleanly under Node ESM. No error.\n- **9.1.0**: the *Custom Transition component support* feature added `internal/Transition.mjs`, which deep-imports the bare `react-transition-group/TransitionGroupContext` subpath. This introduces the directory import.\n\nRelated: #48644 (remove `react-transition-group` entirely, on the v10 roadmap) would also resolve this, but a v10-only fix leaves the regression standing across all of v9.\n\n### Workaround\n\nIn Vitest/Vite config, inline `@mui/material` so it is routed through Vite's resolver instead of being externalized to Node ESM:\n\n```js\ntest: { server: { deps: { inline: [/@mui\\/material/] } } }\n```\n\nThis works but increases test transform time, so it is undesirable as a standing fix.\n\n### Context\n\n| Tech | Version |\n| --- | --- |\n| `@mui/material` | 9.1.1 (also reproduces on 9.1.0; **not** present in 9.0.x) |\n| `react-transition-group` | 4.4.5 (transitive, `^4.4.5`) |\n| Node | v24.13.1 |\n| Vitest | 4.1.9 |\n\n\n**Search keywords**: ",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/48712#issuecomment-4773667090",
+          "body": "There were a couple of duplicate issues already, it was just fixed in https://github.com/mui/material-ui/commit/8d0216f3d9767dd270555b0ad77df6561fbfa8e0 and the release should follow quickly \n\nEDIT: There's the one that was just closed https://github.com/mui/material-ui/issues/48636#issuecomment-4772201774\n\nEDIT^2: Yooo this triggered a CI action because I used the word \"duplicate\" in a comment "
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48712#issuecomment-4777371666",
+          "body": "@gmackey Just published [v9.1.2](https://www.npmjs.com/package/@mui/material/v/9.1.2) which should fix this"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48712#issuecomment-4777378280",
+          "body": "Duplicate of https://github.com/mui/material-ui/issues/48636"
+        }
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 48692,
+      "title": "Autocomplete `groupBy` breaks after creating a new option when all existing options are selected (regression in 7.3.11)",
+      "url": "https://github.com/mui/material-ui/issues/48692",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "PR48788 closed unmerged; no applicable merged library fix established (batch15).",
+      "issueBody": "### Steps to reproduce\n\n### Current behavior\n\nAfter upgrading from **@mui/material 7.3.9** to **7.3.11**, `Autocomplete` throws an exception when using:\n\n* `multiple={true}`\n* `groupBy`\n* dynamically adding a new option\n* `filterSelectedOptions`\n* all existing options are already selected\n\nThe issue occurs when a new option is created (e.g. on Enter or blur) and becomes the only remaining option in the list because all other options are filtered out as selected.\n\nError:\n\n```txt\nCannot read properties of undefined (reading 'map')\n```\n\nReason :\n\n[https://github.com/mui/material-ui/pull/48327/changes](https://github.com/mui/material-ui/pull/48327/changes)\n\n\nThe exception originates from the grouped rendering path inside Autocomplete.\n\n### Expected behavior\n\nWhen `groupBy` is enabled, newly created options should be processed through the grouping pipeline in the same way as existing options.\n\nThe grouped rendering path should receive grouped option objects:\n\n```js\n[\n  {\n    group: 'All',\n    options: [...]\n  }\n]\n```\n\nand should not receive raw option objects.\n\n### Actual behavior\n\nAfter creating a new option, the grouped rendering path receives a raw option:\n\n```js\n[\n  {\n    id: 'asd',\n    name: 'asd'\n  }\n]\n```\n\nwhile still executing logic that assumes grouped data:\n\n```js\nif (groupBy) {\n  return renderGroup({\n    key: option.key,\n    group: option.group,\n    children: option.options.map(...)\n  });\n}\n```\n\nSince the option is not grouped:\n\n```js\noption.options === undefined\n```\n\nwhich causes:\n\n```txt\nCannot read properties of undefined (reading 'map')\n```\n\n### Reproduction conditions\n\nThe issue reproduces only when all of the following are true:\n\n* `multiple={true}`\n* `groupBy` is provided\n* `filterSelectedOptions` is enabled\n* all existing options are selected\n* a new option is created dynamically\n\nExample flow:\n\n1. Initial options:\n\n```js\n[\n  { id: 1, name: 'A', is_recent: false },\n  { id: 2, name: 'B', is_recent: true }\n]\n```\n\n2. Select all options.\n3. Create a new option:\n\n```js\n{\n  id: 'asd',\n  name: 'asd',\n  is_recent: false\n}\n```\n\n4. Autocomplete crashes.\n\n### Additional observations\n\n* The issue does **not** reproduce when at least one original option remains unselected.\n* Removing `groupBy` completely resolves the issue.\n* The same application code works correctly in **7.3.9**.\n* The issue appears after upgrading to **7.3.11**.\n* Debugging indicates that the grouped rendering path is executed while the rendered options array contains raw options instead of grouped options.\n\n### Suspected cause\n\nThe issue appears related to grouped option caching/rendering logic introduced around:\n\n```js\nconst renderedOptions = popupOpen\n  ? groupedOptions\n  : previousGroupedOptionsRef.current;\n```\n\nDuring the create-option flow, a non-grouped options array seems to be cached or reused, while the grouped rendering path is still executed.\n\n\n\n\n\n\n**Search keywords**: Grouping issue, Autocomplete grouping rendering issue.",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/48692#issuecomment-4756905262",
+          "body": "@mchollangi-cr I can reproduce this with a simpler case, would you mind sharing a repro (e.g. in Stackblitz) of your setup (with creatable options) so I can test the fix \n\nUpdate: here's an attempt at a repro based on the description https://stackblitz.com/edit/untrcq7j?file=src%2FDemo.tsx"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48692#issuecomment-4789550320",
+          "body": "> [@mchollangi-cr](https://github.com/mchollangi-cr) I can reproduce this with a simpler case, would you mind sharing a repro (e.g. in Stackblitz) of your setup (with creatable options) so I can test the fix\n> \n> Update: here's an attempt at a repro based on the description https://stackblitz.com/edit/untrcq7j?file=src%2FDemo.tsx\n\n@mj12albert Yeah this is the same issue i was talking about.\n\n"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48692#issuecomment-4885879766",
+          "body": "I see this issue in my code too, if you don't mind, I'll try to fix this on a PR."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48692#issuecomment-5042943737",
+          "body": "It works when the `grouped` state is removed: https://stackblitz.com/edit/untrcq7j-5zs7bfch?file=src%2FDemo.tsx\n\n```diff\n@@ -24,7 +24,6 @@ export default function AutocompleteGroupByCreateOption() {\n   const [options, setOptions] = React.useState(initialOptions);\n   const [value, setValue] = React.useState(initialOptions);\n-  const [grouped, setGrouped] = React.useState(false);\n \n   return (\n     <Autocomplete\n@@ -38,11 +37,7 @@ export default function AutocompleteGroupByCreateOption() {\n         option.id === valueOption.id\n       }\n-      groupBy={\n-        grouped\n-          ? (option) => (option.is_recent ? 'Recent' : 'All Tags')\n-          : undefined\n-      }\n+      groupBy={(option) => (option.is_recent ? 'Recent' : 'All Tags')}\n       filterOptions={(candidateOptions, params) => {\n         const filtered = filter(candidateOptions, params);\n \n@@ -69,7 +64,6 @@ export default function AutocompleteGroupByCreateOption() {\n \n         if (newOption) {\n           setOptions((currentOptions) => currentOptions.concat(newOption));\n-          setGrouped(true);\n         }\n         setValue(newValue);\n       }}\n```\n\nI don't see the why you want to have the `groupBy` prop conditional i.e initially `undefined`. If `groupBy` is always provided, then `useAutocomplete` produces grouped option objects from the start and the cached options is consistently grouped."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/48692#issuecomment-5117847777",
+          "body": "Since the issue is missing key information and has been inactive for 7 days, it has been automatically closed. If you wish to see the issue reopened, please provide the missing information."
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 22517,
+      "title": "[Bug]: wc multi-select clear selection button regression",
+      "url": "https://github.com/carbon-design-system/carbon/issues/22517",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Package\n\n@carbon/web-components\n\n### Browser\n\nChrome\n\n### Package version\n\n2.57.0\n\n### React version\n\n_No response_\n\n### Description\n\nmulti select clear selection button got regressed. \n\n<img width=\"1840\" height=\"1119\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5193a042-d315-4c19-87fa-4a6fe316e147\" />\n\nneed to fix\n\n### Reproduction/example\n\nhttps://web-components.carbondesignsystem.com/?path=/story/components-multi-select--controlled\n\n### Steps to reproduce\n\nseen in storybook\nhttps://web-components.carbondesignsystem.com/?path=/story/components-multi-select--controlled\n\n<img width=\"335\" height=\"192\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/93c66665-869a-4a1d-8880-174635823d51\" />\n\n### Suggested Severity\n\nSeverity 3 = User can complete task, and/or has a workaround within the user experience of a given component.\n\n### Project name\n\nCarbon\n\n### Code of Conduct\n\n- [x] I agree to follow this project's [Code of Conduct](https://github.com/carbon-design-system/carbon/blob/f555616971a03fd454c0f4daea184adf41fff05b/.github/CODE_OF_CONDUCT.md)\n- [x] I checked the [current issues](https://github.com/carbon-design-system/carbon/issues) for duplicate problems",
+      "comments": [
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/22517#issuecomment-4846879898",
+          "body": "duplicate of #22447\nbut still a regression. as the design was broken from previous version."
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 19242,
+      "title": "[Bug]: Regression in MultiSelect typescript annotations",
+      "url": "https://github.com/carbon-design-system/carbon/issues/19242",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "### Package\n\n@carbon/react\n\n### Browser\n\n_No response_\n\n### Package version\n\n@carbon/react@npm:1.81.0\n\n### React version\n\nreact@npm:18.3.1\n\n### Description\n\n`node_modules/@carbon/react/lib/components/MultiSelect/MultiSelect.d.ts` now export this as the `MultiSelect` component:\n\n```typesript\nexport declare const MultiSelect: React.ForwardRefExoticComponent<MultiSelectProps<unknown> & React.RefAttributes<HTMLButtonElement>>;\n```\n\nWhich used to be a generic, thereby allow something like this to be fully typed:\n\n```tsx\n<MultiSelect<BoxedT>\n    // ... removed for brevity\n    itemToElement={itemToElement ? $itemToElement : undefined}\n/>\n```\n\nbut now it complains about with `Expected 0 type arguments, but got 1` any the typed handlers report issues too because the item is now `unknown`\n\n### Reproduction/example\n\n\u2026\n\n### Steps to reproduce\n\nTry to use `Multiselect` with passing in the generic type for the item\n\n### Suggested Severity\n\nSeverity 3 = User can complete task, and/or has a workaround within the user experience of a given component.\n\n### Application/PAL\n\n_No response_\n\n### Code of Conduct\n\n- [x] I agree to follow this project's [Code of Conduct](https://github.com/carbon-design-system/carbon/blob/f555616971a03fd454c0f4daea184adf41fff05b/.github/CODE_OF_CONDUCT.md)\n- [x] I checked the [current issues](https://github.com/carbon-design-system/carbon/issues) for duplicate problems",
+      "comments": []
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 32433,
+      "title": "[Bug]: Regression on Dialog styles, removing motions is also removing dialog surface shadows",
+      "url": "https://github.com/microsoft/fluentui/issues/32433",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Library\n\nReact Components / v9 (@fluentui/react-components)\n\n### System Info\n\n```shell\n.\n```\n\n\n### Are you reporting an Accessibility issue?\n\nno\n\n### Reproduction\n\nhttps://stackblitz.com/edit/zvy9be?file=src%2Fexample.tsx\n\n### Bug Description\n\n## Actual Behavior\r\n\r\nPossible regression introduce by new motions:\r\n\r\nWhen removing `surfaceMotion` v9 Dialog is also losing its shadow box styles:\r\n\r\n![image](https://github.com/user-attachments/assets/4025617c-65f0-4502-b7ab-5cd863816d58)\r\n\r\n## Expected Behavior\r\n\r\nv9 Dialog should keep box shadow styles:\r\n\r\n![image](https://github.com/user-attachments/assets/c5ffe553-21ee-4480-9344-c9cd89343d95)\r\n\r\n\r\n\r\n\n\n### Logs\n\n_No response_\n\n### Requested priority\n\nHigh\n\n### Products/sites affected\n\n_No response_\n\n### Are you willing to submit a PR to fix?\n\nyes\n\n### Validations\n\n- [X] Check that there isn't already an issue that reports the same bug to avoid creating a duplicate.\n- [X] The provided reproduction is a minimal reproducible example of the bug.",
+      "comments": []
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 32040,
+      "title": "[Bug]: Regression issue: The height limit of Combobox with Virtualizer doesn't work",
+      "url": "https://github.com/microsoft/fluentui/issues/32040",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Library\n\nReact Components / v9 (@fluentui/react-components)\n\n### System Info\n\n```shell\nSystem:\r\n    OS: macOS 14.5\r\n    CPU: (12) arm64 Apple M2 Pro\r\n    Memory: 53.20 MB / 32.00 GB\r\n    Shell: 5.9 - /bin/zsh\r\n  Browsers:\r\n    Brave Browser: 123.1.64.113\r\n    Chrome: 126.0.6478.182\r\n    Edge: 126.0.2592.102\r\n    Safari: 17.5\n```\n\n\n### Are you reporting Accessibility issue?\n\nno\n\n### Reproduction\n\nhttps://stackblitz.com/edit/bt6rq5?file=src%2Fexample.tsx\n\n### Bug Description\n\nJust go to official document: https://react.fluentui.dev/?path=/docs/components-combobox--default\r\nI use the official example: \r\n![image](https://github.com/user-attachments/assets/03b11777-26dc-4854-9782-021fc6d70026)\r\n\r\n\r\n## Actual Behavior\r\nThe height limit doesn't take effect.\r\n![image](https://github.com/user-attachments/assets/efb416c0-f06d-4042-a19a-c493282afc8f)\r\n\r\n\r\n## Expected Behavior\r\nI tested it in the past and the height limit took effect.\n\n### Logs\n\n_No response_\n\n### Requested priority\n\nNormal\n\n### Products/sites affected\n\n_No response_\n\n### Are you willing to submit a PR to fix?\n\nno\n\n### Validations\n\n- [X] Check that there isn't already an issue that reports the same bug to avoid creating a duplicate.\n- [X] The provided reproduction is a minimal reproducible example of the bug.",
+      "comments": [
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/32040#issuecomment-2237578755",
+          "body": "Hi @qjkobe \ud83d\udc4b\ud83c\udffb \r\n\r\nI guess it's similar to this #31972, in order to make `maxHeight` work, please use `positioning={{ autoSize: 'width' }}` or `positioning={{ autoSize: false }}` as it was suggested [here](https://github.com/microsoft/fluentui/issues/31972#issuecomment-2224141308). We will update the storybook example you mentioned. \r\n\r\n\r\n "
+        }
+      ]
+    },
+    {
+      "repo": "tailwindlabs/headlessui",
+      "number": 3667,
+      "title": "Potential regression in `Radio` component default tag behavior in v2",
+      "url": "https://github.com/tailwindlabs/headlessui/issues/3667",
+      "origin": "repo:tailwindlabs/headlessui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "**What package within Headless UI are you using?**\n\n> @headlessui/react\n\n**What version of that package are you using?**\n\n> 2.2.0\n\n**What browser are you using?**\n\n> This issue seems to be a regression introduced in v2 and occurs regardless of the browser version.\n\n**Reproduction URL**\n\n- [Original behavior in v1](https://codesandbox.io/p/devbox/priceless-clarke-tysdgk?workspaceId=ws_MWqX5se1xRWk6BRzxn4PHV)\n- [New behavior in v2](https://codesandbox.io/p/devbox/radio-headlessui-v1-forked-p2dzwx?workspaceId=ws_MWqX5se1xRWk6BRzxn4PHV)\n\n**Describe your issue**\n\nHello **headlessui** team,\n\nWe are updating `@headlessui/react` in one of our projects from v1 to v2. After running multiple visual tests, we have identified a potential regression regarding the `Radio` component, which is not mentioned in the [official upgrade guide](https://github.com/tailwindlabs/headlessui/releases/tag/%40headlessui%2Freact%40v2.0.0). It seems that the default tag for `RadioGroup.Option` component is set to `div` in v1 [radio-group.tsx#380](https://github.com/tailwindlabs/headlessui/blob/%40headlessui/react%40v1.7.19/packages/%40headlessui-react/src/components/radio-group/radio-group.tsx#L380) whereas in v2 the same component which was renamed to `Radio` defines `span` as default tag [radio-group.tsx#468](https://github.com/tailwindlabs/headlessui/blob/%40headlessui/react%40v2.2.0/packages/%40headlessui-react/src/components/radio-group/radio-group.tsx#L468).\n\nGiven the fact that the library `Deprecated RadioGroup.Option component`\n\n> We've deprecated the RadioGroup.Option in favor of the more terse Radio component.\n\nwe would expect the behavior to be consistent. If this is the intended behavior, we totally understand. However, it does break HTML semantics, since div is a block element and span is an inline element. This difference also affects styling, as not all styles apply equally to block and inline elements. I've attached two reproducible examples above so you can see the behavior in action, simply inspect the HTML tag of the Radio element in the preview to verify.\n\n**Mitigation strategies**\n\nIn our case, we'll simply add `as=\"div\"` to the Radio element to render it as a `<div>`, matching the default behavior of `RadioGroup.Option`.\n\n**Potential actions**\n1. If this is not the intended behavior, we should consider creating a fix that sets the default tag of the `Radio` element to `div`, aligning it with `RadioGroup.Option`. However, applying this change could potentially break projects that have already migrated to v2 and adjusted their codebases to accommodate the new behavior.\n2. It may also be worth updating the \"Default element changes\" section in the [v2 release changelog](https://github.com/tailwindlabs/headlessui/releases/tag/%40headlessui%2Freact%40v2.0.0) to mention Radio. Alternatively, a note could be added under the \"Deprecated RadioGroup.Option component\" section to clarify this change.\n\nI'm not sure if this issue has been reported before (I couldn't find anything related on the GitHub Issues page), nor did I see it mentioned in any upgrade guides, but wanted to bring this to your attention. Let me know your input regarding this. I believe we need to communicate it somehow to our user base.\n\nLastly, a big shoutout to @tomaszczubakTW for bringing this regression to my attention and sparking this investigation!\n ",
+      "comments": [
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/3667#issuecomment-3307698925",
+          "body": "Hey!\n\nWhile you can still use the `RadioGroupOption` we do recommend using the `Radio` directly. We use `span` instead of `div` because that's a bit of a better default if you render the radio option next to a label.\n\nThe main reason we created a _new_ component is to make these more breaking changes while maintaining the old `RadioGroupOption`.\n\nIt also better integrates with these new form components like `Field` and `Fieldset`.\n\nI mentioned in the release notes that we changed the default element \ud83d\udc4d "
+        }
+      ]
+    },
+    {
+      "repo": "tailwindlabs/headlessui",
+      "number": 2084,
+      "title": "Combobox displayValue regression in @headlessui/vue@v1.7.5",
+      "url": "https://github.com/tailwindlabs/headlessui/issues/2084",
+      "origin": "repo:tailwindlabs/headlessui is:issue is:closed regression in:title",
+      "disposition": "admitted in later recorded reproduction batch",
+      "reason": "DR-0103; final independent checks/locks and browse goal.",
+      "issueBody": "**What package within Headless UI are you using?**\r\n\r\n@headlessui/vue\r\n\r\n**What version of that package are you using?**\r\n\r\nv1.7.5\r\n\r\n**What browser are you using?**\r\n\r\nFirefox\r\n\r\n**Reproduction URL**\r\n\r\nhttps://stackblitz.com/edit/vue-ls2gkt?file=src/components/Combo.vue\r\n\r\n**Describe your issue**\r\n\r\nThe latest release breaks the use of ``displayValue`` for Combobox. The reproduction link above shows the example from https://headlessui.com/vue/combobox (converted to options API for stackblitz). This code runs in headlessui/vue 1.7.4 but fails in 1.7.5 with error ``person is undefined``.",
+      "comments": [
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/2084#issuecomment-1346751270",
+          "body": "Hey! Thank you for your bug report!\r\nMuch appreciated! \ud83d\ude4f\r\n\r\nThe reason this regressed is because we now also use the `displayValue` for the `defaultValue`, but if you didn't provide one then it would crash. Bad oversight on our part, sorry about that.\r\n\r\nWe now have some tests that should prevent this from happening in the future.\r\n\r\n---\r\n\r\nThis should be fixed by #2087, and will be available in the next release.\r\n\r\nYou can already try it using:\r\n- `npm install @headlessui/react@insiders`.\r\n- `npm install @headlessui/vue@insiders`."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/2084#issuecomment-1347469211",
+          "body": "Is this related?  Building on NextJS fails with a ComboBox\r\nI just updated headless and now it won't build.\r\n\r\n```\r\nRun `npm audit` for details.\r\ninfo  - Linting and checking validity of types  \r\ninfo  - Creating an optimized production build  \r\ninfo  - Compiled successfully\r\ninfo  - Collecting page data  \r\n[    ] info  - Generating static pages (0/27)\r\nError occurred prerendering page \"/sandbox\". Read more: https://nextjs.org/docs/messages/prerender-error\r\nTypeError: Cannot read properties of undefined (reading 'name')\r\n    at displayValue (/home/steve/Documents/GitHub/mavrik/fe-infinity/build/server/chunks/2409.js:604:54)\r\n    at Object.render (file:///home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/@headlessui/react/dist/components/combobox/combobox.js:1:9592)\r\n    at a.b.render (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)\r\n    at a.b.read (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)\r\n    at Object.exports.renderToString (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)\r\n    at Object.renderPage (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/server/render.js:680:46)\r\n    at Object.defaultGetInitialProps (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/server/render.js:350:67)\r\n    at Function.getInitialProps (/home/steve/Documents/GitHub/mavrik/fe-infinity/build/server/chunks/6859.js:28:20)\r\n    at Object.<anonymous> (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/shared/lib/utils.js:75:33)\r\n    at Generator.next (<anonymous>)\r\ninfo  - Generating static pages (27/27)\r\n\r\n> Build error occurred\r\nError: Export encountered errors on following paths:\r\n        /sandbox\r\n    at /home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/export/index.js:404:19\r\n    at runMicrotasks (<anonymous>)\r\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\r\n    at async Span.traceAsyncFn (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/trace/trace.js:79:20)\r\n    at async /home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/build/index.js:1229:21\r\n    at async Span.traceAsyncFn (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/trace/trace.js:79:20)\r\n    at async /home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/build/index.js:1091:17\r\n    at async Span.traceAsyncFn (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/trace/trace.js:79:20)\r\n    at async Object.build [as default] (/home/steve/Documents/GitHub/mavrik/fe-infinity/node_modules/next/dist/build/index.js:65:29)\r\n```\r\n"
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22997,
+      "title": "[Bug Report][4.1.4] Performance regression from 4.1.3 to 4.1.4",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22997",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Environment\n**Vuetify Version:** 4.1.4\n**Vue Version:** 3.5.39\n**OS:** macOS 10.15.7 (current)\n\n### Steps to reproduce\n1. Update Vuetify to 4.1.4.\n2. Start the app e.g. in Vite dev mode.\n3. The whole app becomes very slow. Every navigation, click, etc takes long to show effect.\n\n### Expected Behavior\nFast\n\n### Actual Behavior\nSlow\n\n### Reproduction Link\nNone\n\n### Other comments\nSorry for not being able to provide a working reproduction.\n\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/22997#issuecomment-4923234121",
+          "body": "I can confirm this issue. After upgrading from vuetify@4.1.3 to vuetify@4.1.4, any interaction is taking an extremely long time - it even affects opening the developer console. The browser tab with my Vuetify app seems to crawl to a halt. I suspect this may have something to do with the fix for VMenu: correct click-outside detection when content resizes ([007f546]https://github.com/vuetifyjs/vuetify/commit/007f5462e3381418d8a5b62068a73c2c90dd6e1b)), closes [#22488](https://github.com/vuetifyjs/vuetify/issues/22488)\n\nReverting to vuetify@4.1.3 fixed the issue."
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/22997#issuecomment-4924025304",
+          "body": "Might be same as #22995 "
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22218,
+      "title": "[Bug Report][3.10.1] Regression: VSelect menu shifted few pixels to the right again",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22218",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "\n### Environment\n**Vuetify Version:** 3.10.1\n**Vue Version:** 3.5.22\n**OS:** Windows 10 (current), Windows\n\n### Steps to reproduce\n1. Look at issue #19732 (https://github.com/vuetifyjs/vuetify/issues/19732)\n\n### Expected Behavior\nThe list of options opens exactly under the VSelect as in 3.10.0\n\n### Actual Behavior\nThe list is shifted right unless a margin of 12px is provided around VSelect. This happens in 3.10.1 to 3.10.5\n\n### Reproduction Link\n[https://play.vuetifyjs.com/#...](https://play.vuetifyjs.com/#eNpdkc9qwzAMxl/F+JJL/jLKRsgGo7C9wGCHpgctVluBYxvbzRrG3r1OUpqkt0/yT7L0affHnW2yd2PS7oy85JXH1kjw+FYrxqouAWNGGQJB3U1OAXO+l/ha818S/lSyTZ6bS83vzFjfaOWBFFrWSHAu0AaSfEWNnEOJjV8mGSspTDOU7KItSDpoqwiimEVbLbUFoQf9ESSJMf2J2h4n4gsv4Abx3euW1DHa13zdvANLoHzoflYCrQwzikdGoHLk+8A0ug3fe/iR+AidSGAiMGwp3fIlWxqRLZyYTcxmS2c9sJPrVba4Bv+P+VO6SYtnPoiXtCh4fADpMF7dcMrtr1SJicU=)\n\n\n\n### Images\n![https://cdn.cosmicjs.com/f43f7a10-ac2a-11f0-90fb-8f36ba79c854-issue.png](https://cdn.cosmicjs.com/f43f7a10-ac2a-11f0-90fb-8f36ba79c854-issue.png)\n\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/22218#issuecomment-3418659128",
+          "body": "You will have to explicitly set `:menu-props=\"{ stickToTarget: true }\"`. We had it as default for VMenu for some time, but it had some side-effects, so got reverted."
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 4979,
+      "title": "Popover2 Regression: ContextMenu2 scrolls to top when context menu is opened in Chrome and Firefox",
+      "url": "https://github.com/palantir/blueprint/issues/4979",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "#### Environment\r\n\r\n- __Package version(s)__: @blueprintjs/core@3.51.1, @blueprintjs/popover2@0.12.1\r\n- __Operating System__: macOS Big Sur 11.6 (20G165)\r\n- __Browser name and version__: Chrome 95.0.4638.54 (arm64), Firefox 93.0, _Safari 15.0 (16612.1.29.41.4, 16612) [Safari still works]_\r\n\r\n#### Code Sandbox\r\n\r\nLink to a minimal repro: \r\n\r\nhttps://codesandbox.io/s/blueprint-sandbox-forked-sk3n3 (<- _not_ working with @blueprintjs/popover2@0.12.1)\r\nhttps://codesandbox.io/s/blueprint-sandbox-forked-n4ck3 (<- working with @blueprintjs/popover2@0.12.0)\r\n\r\n#### Steps to reproduce\r\n\r\n1. Use current Firefox or Chrome (see versions above), Safari works as expected\r\n2. Make browser window small enough that you have to scroll down to the context menu trigger\r\n3. Right-click to open the context menu\r\n\r\n#### Actual behavior\r\n\r\nThe viewport will have scrolled up to the top.\r\n\r\n#### Expected behavior\r\n\r\nThe viewport stays as it is and displays the context menu.\r\n\r\n#### Possible solution\r\n\r\nThe regression was introduced between @blueprintjs/popover2@0.12.0 and @blueprintjs/popover2@0.12.1.\r\nLooking at the commits/diff of popover2 between the releases, maybe it's related to the changes of `shouldReturnFocusOnClose`? Though the only changed code I saw was `handleTargetBlur` which (afaik) isn't called during the reproduction. \r\n\r\n\r\nhttps://user-images.githubusercontent.com/7482056/138379066-00f9d880-b9ba-4cb1-9ff2-ab0d1c55c4e5.mov\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/4979#issuecomment-949690908",
+          "body": "essentially a duplicate of #4981"
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 4320,
+      "title": "NumericInput regression prevents typing decimal places",
+      "url": "https://github.com/palantir/blueprint/issues/4320",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "<!-- IF YOU ARE A PALANTIR EMPLOYEE, DO NOT POST INTERNAL LINKS OR REFERENCES HERE -->\r\n\r\n#### Environment\r\n\r\n- __Package version(s)__: core 3.30.0\r\n\r\n#### Code Sandbox\r\n\r\nLink to a minimal repro (fork [this code sandbox](https://codesandbox.io/s/blueprint-sandbox-et9xy)): https://codesandbox.io/s/nice-bartik-3ku3b?file=/src/App.js\r\n\r\n#### Steps to reproduce\r\n\r\n1. Type `.` at the end of input\r\n\r\n#### Actual behavior\r\n\r\nNothing, keystroke is not registered\r\n\r\n#### Expected behavior\r\n\r\nKeystroke is registered and `0.` is shown in the input\r\n\r\n#### Possible solution\r\n\r\nThis regression was caused by https://github.com/palantir/blueprint/pull/4211, so we need to look there for solutions\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/4320#issuecomment-690296989",
+          "body": "Actually, nevermind -- this is an intended change with the fixes made to controlled usage of NumericInput in #4211. The new behavior is correct, but consumers may have been relying on buggy behavior of the component before that change. The recommendation is that controlled usage should _always_ use the second parameter of `onChange`, taking the value as a string, rather than as a parsed number."
+        }
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1101,
+      "title": "[useComboBox] Regression in Menu Option Click 5.4.5",
+      "url": "https://github.com/downshift-js/downshift/issues/1101",
+      "origin": "repo:downshift-js/downshift is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "**Version with Bug**\r\n5.4.5\r\n\r\n**How did you reproduce**\r\nUsing the provided codesandbox links, I switched between 5.4.3, 5.4.4, and 5.4.5\r\n\r\n**What you did**:\r\nOpen the menu with mouse click and selected an item from the list with a mouse click.\r\n\r\n**What actually happened**:\r\nThe menu stayed opened.\r\n\r\n**What was expected**:\r\nThe menu would close on item select.\r\n\r\n**Suggested solution**:\r\nI recommend reverting this commit since it is the only change between 5.4.4. and 5.4.5:\r\n- https://github.com/downshift-js/downshift/commit/19f6bc022746e859b2a2a98fc625eb3aa2882823#commitcomment-40201914",
+      "comments": [
+        {
+          "url": "https://github.com/downshift-js/downshift/issues/1101#issuecomment-650535605",
+          "body": "Hi! This issue is only for the action example. Related to https://github.com/downshift-js/downshift/issues/1100. The other examples are not affected.\r\n\r\nWill fix the example that is affected. Commit stays."
+        }
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 110,
+      "title": "selectItemAtIndex possible regression",
+      "url": "https://github.com/downshift-js/downshift/issues/110",
+      "origin": "repo:downshift-js/downshift is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Source describes intended API/configuration, prerelease migration, example-only repair or application prop-forwarding; no applicable same-construct stable regression established.",
+      "issueBody": "- **Downshift**: 1.0.0-beta-21\r\n- **node version**: 8.2.1\r\n-  **yarn** 0.27.5\r\n\r\nRelevant code or config \r\n- working example: [https://codesandbox.io/s/QMGq4kAY](https://codesandbox.io/s/QMGq4kAY)\r\n\r\nBefore I explain the issue, heres the chunk of code to look for in the demo to be able to reproduce the issue. (around line 131 of the material-combobox.js file)\r\n```javascript\r\n        const _props = getItemProps({\r\n          value: item,\r\n          index,\r\n          \"data-highlighted\": highlightedIndex === index,\r\n          \"data-selected\": selected,\r\n\r\n          //This is the important event.\r\n          onClick: () => {\r\n            //selectItemAtIndex(index) //does not work\r\n            selectItem(item); //works    \r\n            //console.log('highlightedIndex', highlightedIndex)\r\n            //selectHighlightedItem() //does not work.\r\n          }\r\n        });\r\n```\r\n\r\nHowdy! :) When I upgraded to `1.0.0-beta.21` from `1.0.0-beta.14`, some issues such as the clearing of the autocomplete seem totally resolved and just about everything seems to be working well; however, I think two functions that are means to select items might have regressed (as they dont seem to work for me);\r\n\r\nSo I have a function that fires `onClick`. When I use the `selectItem` function, I can select the item directly, with no difficulty. However two functions, `selectHighlightedItem`, `selectItemAtIndex` might have regressed. looking at the code [here: ](https://github.com/paypal/downshift/blob/master/src/downshift.js#L192) my first suspicion would be the `selectItemAtIndex`, since `selectHighlightedItem` (line 204) seems to depend on `selectItemAtIndex` (line 192);\r\n\r\nSome important things to note: \r\n- I am logging every state change using the Handler `onStateChange` and I can see that as I hover over items, and type, the state is properly changing correctly.\r\n- I can also see the desired index is right when I am about to click, and am using the `selectHighlightedItem`, leading me to believe that it is probably fine itself.\r\n- You can reproduce the behavior by commenting and uncommenting the functions in that click handler\r\n- For me this also seems to affect the 'select on enter' that was working beforehand. This is unsurprising when I look [here](https://github.com/paypal/downshift/blob/master/src/downshift.js#L363), (line 363) because the function calls `selectHighlightedItem`, which calls `selectItemAtIndex`\r\n\r\n\r\nIts also possible I overlooked something obvious, and if I did, that won't surprise me at all :) I did my best to update this demo the right way, but if you think I made a mistake when I did, I appreciate the help.\r\n\r\nPlease let me know if I can add any more info :)\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/downshift-js/downshift/issues/110#issuecomment-320980725",
+          "body": "Your issue is we changed `value` to `item` in `getItemProps`. [Here's a working example](https://codesandbox.io/s/oQL7R81YB)."
+        },
+        {
+          "url": "https://github.com/downshift-js/downshift/issues/110#issuecomment-320980847",
+          "body": "Thanks again for keeping up with the changes. Things are solidifying so hopefully you wont have to deal with this in the future :smile:"
+        },
+        {
+          "url": "https://github.com/downshift-js/downshift/issues/110#issuecomment-320986096",
+          "body": "@the-simian I think this also part of your problem https://github.com/paypal/downshift/issues/113"
+        },
+        {
+          "url": "https://github.com/downshift-js/downshift/issues/110#issuecomment-321011636",
+          "body": "Ah yep, there it is!\r\n![image](https://user-images.githubusercontent.com/954596/29083260-c12a5b62-7c2d-11e7-93a6-99d254bdcefa.png)\r\nMan i thought I had gotten everything, but I forgot I had to remap that incoming property\r\n\r\n\ud83d\ude04 Thank you! \ud83d\ude04"
+        }
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 8978,
+      "title": "[Regression] Unable to scroll dialog with `scrollBehavior=\"outside\"`",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/8978",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported platform/stack is outside existing frozen browser/framework context (server components, Angular, IE or mobile).",
+      "issueBody": "### Description\r\n\r\nIn Chakra UI v2, when there's a long modal with `scrollBehavior=\"outside\"` (e.g. go to the `Modal overflow behavior` section of https://v2.chakra-ui.com/docs/components/modal#modal-overflow-behavior, select `outside`, and click `Trigger modal`), it can be scrolled no matter where your mouse is.\r\n\r\nIn Chakra UI v3, when there's a long dialog with `scrollBehavior=\"outside\"` (e.g. go to the `Outside Scroll` section of https://www.chakra-ui.com/docs/components/dialog#outside-scroll and click `Outside Scroll`), it can only be scrolled if your mouse is on top of the dialog. If your mouse is positioned outside of the dialog, it cannot be scrolled. In addition, on iOS Safari, it cannot be scrolled at all.\r\n\r\n### Link to Reproduction\r\n\r\nhttps://www.chakra-ui.com/docs/components/dialog#outside-scroll\r\n\r\n### Steps to reproduce\r\n\r\nGo to the `Outside Scroll` section of https://www.chakra-ui.com/docs/components/dialog#outside-scroll and click `Outside Scroll`. On desktop, you will find that you cannot scroll the dialog if your mouse is not on top of the dialog. On iOS Safari, you will find that you cannot scroll the dialog at all.\r\n\r\nDesktop diagram:\r\n\r\n> ![www chakra-ui com_docs_components_dialog](https://github.com/user-attachments/assets/976e5b45-4c7e-4049-a6ac-e9d6cd629917)\r\n\r\nMobile diagram:\r\n\r\n> <img width=\"375\" src=\"https://github.com/user-attachments/assets/cad89ec8-c0bf-40c8-8390-c743fd64536f\">\r\n\r\n### Chakra UI Version\r\n\r\n3.0.0\r\n\r\n### Browser\r\n\r\nChrome 129.0.6668.90, Safari 18.0.1\r\n\r\n### Operating System\r\n\r\n- [X] macOS\r\n- [ ] Windows\r\n- [ ] Linux\r\n\r\n### Additional Information\r\n\r\n_No response_",
+      "comments": [
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/8978#issuecomment-2436395762",
+          "body": "**Proposal**\r\n\r\nIt would be great to provide a property like scroll=\"body\" to apply scrolling to the body, or scroll=\"modal\" to apply scrolling specifically to the modal."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/8978#issuecomment-2438272059",
+          "body": "I just pushed a fix for this. We'll release an update shortly.\r\n\r\nIf the issue persists after upgrading, I'll re-open it."
+        }
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 6693,
+      "title": "Regression: since @chakra-ui/react@2.8.9, using `onEdit` with `onChange` in Editable causes text selection on every keystroke",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/6693",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title",
+      "disposition": "admitted in later recorded reproduction batch",
+      "reason": "DR-0103; final independent checks/locks and browse goal.",
+      "issueBody": "### Description\n\nWhen I upgraded to 2.2.9, our `<Editable>` implementation, which used `onChange` and `onEdit`, broke - every time I typed a character into the field, it would trigger a selection of all the text and type over it. \n\n### Link to Reproduction\n\nhttps://codesandbox.io/s/dazzling-babycat-djo67m?file=/src/index.tsx\n\n### Steps to reproduce\n\nWhen I upgraded to 2.2.9, our `<Editable>` implementation, which used `onChange` and `onEdit`, broke - every time I typed a character into the field, it would trigger a selection of all the text and type over it. \r\n\r\n1. Go to https://codesandbox.io/s/gifted-pond-z7ms0e?file=/src/index.tsx (using @chakra-ui/react@2.2.8). This represents a simplified version of our in-app implementation of `<Editable>` with `onChange` and `onEdit` handlers. \r\n2. Type characters into the input field. Observe that it works!  \r\n![2 2 8](https://user-images.githubusercontent.com/729524/190245984-3404d58f-4a79-4566-9f77-c3527e778578.gif)\r\n3. Now, go to https://codesandbox.io/s/dazzling-babycat-djo67m?file=/src/index.tsx (using @chakra-ui/react@2.2.9). \r\n4. Type characters into the input field. Observe that they eat themselves. \r\n![2 2 9](https://user-images.githubusercontent.com/729524/190246232-36218d4c-c19d-4d2c-9b07-9c42369a6f5c.gif)\r\n\r\nThe only difference between these two code sandboxes is the Chakra UI version. \r\n\r\nIt's entirely possible, by the way, that we weren't using the handlers properly in our original implementation. I wanted to flag this because we didn't change anything about our code and observed a regression from upgrading our Chakra UI version.\r\n\r\nThank you :) \n\n### Chakra UI Version\n\n2.2.9\n\n### Browser\n\n_No response_\n\n### Operating System\n\n- [X] macOS\n- [ ] Windows\n- [ ] Linux\n\n### Additional Information\n\n_No response_",
+      "comments": [
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/6693#issuecomment-1250973279",
+          "body": "I just pushed a fix for this. We'll release an update shortly.\r\n\r\nIf the issue persists after upgrading, I'll re-open it."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/6693#issuecomment-1251273241",
+          "body": "Thank you so much, @segunadebayo! Have a beautiful week. "
+        }
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 8883,
+      "title": "`AngleSlider` mouse drag broken since v9.1.0 (regression from v9.0.2)",
+      "url": "https://github.com/mantinedev/mantine/issues/8883",
+      "origin": "repo:mantinedev/mantine is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Dependencies check up\n\n- [x] I have verified that I use latest version of all @mantine/* packages\n\n### What version of @mantine/* packages do you have in package.json?\n\n9.1.0\n\n### What package has an issue?\n\n@mantine/core\n\n### What framework do you use?\n\nNext.js\n\n### In which browsers you can reproduce the issue?\n\nChrome\n\n### Describe the bug\n\n## Bug description\n\nMouse drag interaction on `AngleSlider` is broken since v9.1.0. The drag stops immediately after the mouse moves, making the component uncontrollable by mouse. It worked correctly in v9.0.2.\n\n## Reproduction steps\n\n1. Render an `AngleSlider` component\n2. Click and hold the slider knob\n3. Try to drag the mouse\n\n**Expected:** The slider value updates as the mouse moves while held down.  \n**Actual:** The drag stops immediately; value does not follow the mouse.\n\nhttps://github.com/user-attachments/assets/711f98b9-52dd-4b93-87b7-e5cacdc22178\n\n## Root cause\n\nThe regression was introduced by commit `93c6beb` (\"Fix dead code in use-radial move\", Apr 9, 2026), which is included in v9.1.0 but not in v9.0.2.\n\nThe commit added `document.removeEventListener` calls to the **refCallback cleanup function** in `use-radial-move.ts`:\n\n```ts\n// v9.1.0 refCallback cleanup (buggy)\nreturn () => {\n  if (node) {\n    node.removeEventListener('mousedown', onMouseDown);\n    node.removeEventListener('touchstart', handleTouchStart);\n  }\n  // \u2190 These lines were added in 93c6beb\n  document.removeEventListener('mousemove', handleMouseMove, false);\n  document.removeEventListener('mouseup', handleMouseUp, false);\n  document.removeEventListener('touchmove', handleTouchMove, false);\n  document.removeEventListener('touchend', handleTouchEnd, false);\n};\n```\n\nBecause `refCallback` is created with `useCallback([onChange])`, it is **recreated every time `onChange` changes** (which happens on each drag step since `onChange` calls `setState` in the parent). In React 19, when a ref callback is recreated, the previous cleanup function is called immediately before the new callback runs.\n\nThis means:\n1. User starts dragging \u2192 `beginTracking()` adds `mousemove`/`mouseup` listeners to `document`\n2. `onChange(newValue)` triggers a re-render in the parent\n3. The parent's new `onChange` reference causes `refCallback` to be recreated\n4. React 19 calls the **old cleanup**, which removes the `document` listeners\n5. Drag tracking is destroyed mid-drag\n\nIn v9.0.2 the cleanup did **not** remove `document` listeners, so this race condition did not occur.\n\n## Suggested fix\n\nRemove the `document.removeEventListener` calls from the refCallback cleanup, or restructure the hook so that `document` listeners are managed independently of the ref lifecycle.\n\n```ts\n// Suggested fix\nreturn () => {\n  if (node) {\n    node.removeEventListener('mousedown', onMouseDown);\n    node.removeEventListener('touchstart', handleTouchStart);\n  }\n  // Do NOT remove document listeners here\n};\n```\n\n## Version info\n\n| | Version |\n|---|---|\n| Mantine | 9.1.0 (broken), 9.0.2 (works) |\n| Component | `AngleSlider` (uses `use-radial-move` hook internally) |\n\n### If possible, include a link to a codesandbox with a minimal reproduction\n\n_No response_\n\n### Possible fix\n\n_No response_\n\n### Self-service\n\n- [ ] I would be willing to implement a fix for this issue",
+      "comments": [
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/8883#issuecomment-4434054620",
+          "body": "Fixed in 9.2.0"
+        }
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 7437,
+      "title": "Regression with Mantine Popover onClose",
+      "url": "https://github.com/mantinedev/mantine/issues/7437",
+      "origin": "repo:mantinedev/mantine is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Parent7019 maintainer confirms intended onClose contract change; onChange migration, no applicable fix preserving original construct.",
+      "issueBody": "### Dependencies check up\n\n- [x] I have verified that I use latest version of all @mantine/* packages\n\n### What version of @mantine/* packages do you have in package.json?\n\n7.16.2\n\n### What package has an issue?\n\n@mantine/core\n\n### What framework do you use?\n\nVite\n\n### In which browsers you can reproduce the issue?\n\nChrome\n\n### Describe the bug\n\nIn Mantine 7.12.2 if you clicked outside a Popover it would fire the `onClose` callback. (`onChange` still works)\n\nSandbox example here: https://codesandbox.io/p/sandbox/mantine-react-template-forked-c6r3d3?file=%2Fpackage.json%3A18%2C31\n\nIf you change the package.json to 7.16.2 this behaviour breaks. Seems to have been introduced with 7.13.0\n\n### If possible, include a link to a codesandbox with a minimal reproduction\n\n\\https://codesandbox.io/p/sandbox/mantine-react-template-forked-c6r3d3?file=%2Fpackage.json%3A18%2C31\n\n### Possible fix\n\n_No response_\n\n### Self-service\n\n- [ ] I would be willing to implement a fix for this issue",
+      "comments": [
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/7437#issuecomment-2624896878",
+          "body": "Duplicate of https://github.com/mantinedev/mantine/issues/7019\nSee the linked issue to learn more"
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 39189,
+      "title": "invalid selector regression in 5.3.2",
+      "url": "https://github.com/twbs/bootstrap/issues/39189",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title",
+      "disposition": "admitted in later recorded reproduction batch",
+      "reason": "DR-0104; two matching modal activation checks/locks.",
+      "issueBody": "### Prerequisites\n\n- [X] I have [searched](https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue) for duplicate or closed issues\n- [X] I have [validated](https://html5.validator.nu/) any HTML to avoid common problems\n- [X] I have read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md)\n\n### Describe the issue\n\nAfter updating to Bootstrap 5.3.2 we have errors where modals are failing to open due to the query selector failing as invalid \r\n\r\n```\r\nselector-engine.js:41 Uncaught DOMException: Failed to execute 'querySelector' on 'Element': '#j_id22:exampleModal' is not a valid selector.\r\n    at Object.findOne (https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js:6:8558)\r\n    at Object.getElementFromSelector (https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js:6:9299)\r\n    at HTMLButtonElement.<anonymous> (https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js:6:55221)\r\n    at HTMLDocument.n (https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js:6:4238)\r\n```\r\n\r\nThe target is like `data-bs-target=\"#j_id22:exampleModal\"`. This is a common auto generated identifier from JSF where `:` is used as a seperator.\r\n\r\nThis code works in 5.3.1 but fails in 5.3.2\n\n### Reduced test cases\n\nWorking in 5.3.1: https://codepen.io/codylerum/details/OJrjvBx\r\n\r\nFailing in 5.3.2: https://codepen.io/codylerum/pen/WNLEzKz\n\n### What operating system(s) are you seeing the problem on?\n\nmacOS\n\n### What browser(s) are you seeing the problem on?\n\nChrome\n\n### What version of Bootstrap are you using?\n\n5.3.2",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1721480512",
+          "body": "Thanks for reporting this issue @codylerum.\r\nHere's a first quick analysis. I don't have the complete history so I'll make some assumptions.\r\n\r\nI tried your example in different Bootstrap versions:\r\n- v5.1.3: didn't work\r\n- v5.2.0: didn't work\r\n- v5.2.1: didn't work\r\n- v5.2.2: didn't work\r\n- v5.2.3: didn't work\r\n- v5.3.0: worked\r\n- v5.3.1: worked\r\n- v5.3.2: doesn't work anymore\r\n\r\nSo it worked from the following commit https://github.com/twbs/bootstrap/commit/fcdfee90b3a181573ad6d7aeb13aa481b11f2ef5 which was a refactoring. The corresponding PR doesn't mention such new support.\r\nThe commit just before (ef4e2daa48193463b36fdc297d79c6a002e4ee67) didn't work with this example.\r\n\r\nIn v5.3.2, we roll-backed a part of this refactoring commit which broke the fact to handle multiple IDs (see https://github.com/twbs/bootstrap/commit/9900cf33c0d980353303b0fee381199c9ee89fb8).\r\n\r\nMaybe I'm wrong, but without much information, I'd say that it worked during this time (v5.3.0 and v5.3.1) by chance.\r\n\r\nIf this analysis is correct, we could try to make it work by modifying the `getSelector` and by adding this use case in our unit tests.\r\n\r\nThoughts @twbs/js-review?\r\n\r\n_(Putting it in v5.3.3 project for now to not forget it)_"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1721585409",
+          "body": "@julien-deramond It looks like previously our code that generated this inserted a `\\` before the `:` due to how it worked before with jquery. When we upgraded to 5.3.1 this no longer worked so we removed the `\\`\r\n\r\n```\r\nbutton: data-bs-target=\"#j_idt555\\:uploadModal\"\r\n\r\nmodal: id=\"j_idt555:uploadModal\"\r\n```"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1721616995",
+          "body": "We need a test for sure and we should see if we could do a workaround. Otherwise, we might need to revert #38989 and cut a new patch release soon.\r\n\r\n/CC @GeoSot "
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1722181377",
+          "body": "Some precisions here after a few other quick tests.\r\n\r\nConsidering the CodePen provided by OP, if we execute a simple `document.querySelector`, here's what happens:\r\n<img width=\"761\" alt=\"Screenshot 2023-09-16 at 10 30 35\" src=\"https://github.com/twbs/bootstrap/assets/17381666/2422a92b-46f0-499b-8950-93ce99bfb0f5\">\r\n\r\nAs pointed out in https://github.com/twbs/bootstrap/issues/39189#issuecomment-1721585409, some characters need to be escaped when we want to call `querySelector`.\r\n\r\nhttps://github.com/twbs/bootstrap/pull/38989 moved the `parseSelector()` back to where it was to handle the multiple ids. However, removing the `parseSelector()` from the `return` operation doesn't escape the characters anymore in the case of an ID containing special characters, so the final call to `findOne` (which is basically a call to `querySelector()`) fails with `#j_id22:exampleModal` for instance.\r\n\r\nBut putting it back escapes `,` which breaks the handling of multiple IDs (`#hello\\,#world` instead of `#hello,#world`).\r\n\r\nWe could probably do a workaround here if we are capable of knowing in which case we are and return either the `selector` or `parseSelector(selector)` in `getSelector()` (something like that).\r\n\r\nI'll try something next week if nobody finds a solution in between."
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1722588849",
+          "body": "Hello guys. Sorry for the delay, I have pushed a possible solution. Any feedback accepted"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1802650083",
+          "body": "I have this same issue in a different context. \r\n\r\nIn BS 5.3.0, I was able to have a collapse with id \"QueueableTasks.Queue\". This is desired because it is in reference to CakePHP standard of `[Plugin].[controller]`. \r\n\r\nExample: \r\nhttps://codepen.io/umer936-the-looper/pen/wvNJYqQ\r\n\r\nI do not want to remove the period if possible. "
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/39189#issuecomment-1802657479",
+          "body": "One thing I wanted to point out is that the selector-engine uses `document.querySelector()`, which treats \".\" as classes and such. If the expectation is for it to be an id, could using `document.getElementById()` be useful? "
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 36813,
+      "title": "5.2.0 regression: tooltips never close when they are initialized using as `selector` option the attribute `title`",
+      "url": "https://github.com/twbs/bootstrap/issues/36813",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Prerequisites\r\n\r\n- [X] I have [searched](https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue) for duplicate or closed issues\r\n- [X] I have [validated](https://html5.validator.nu/) any HTML to avoid common problems\r\n- [X] I have read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md)\r\n\r\n### Describe the issue\r\n\r\nHi,\r\n\r\nSince Bootstrap v5.2.0, the tooltips never close when they are initialized with `selector` option. It worked fine under Bootstrap v5.1.3. So, I think there is a regression.\r\n\r\nHTML:\r\n```html\r\n<div id=\"btn-box\" class=\"btn-group m-5\">\r\n  <button class=\"btn btn-lg btn-primary\" title=\"Label 1\">Button 1</button>\r\n  <button class=\"btn btn-lg btn-secondary\" title=\"Label 2\">Button 2</button>\r\n</div>\r\n```\r\n\r\nJavaScript:\r\n```js\r\nnew bootstrap.Tooltip('#btn-box', {\r\n    selector: '[title]'\r\n});\r\n```\r\n\r\n### Reduced test cases\r\n\r\n| The tooltip is hidden when the mouse leaves the element | Version | `selector` option |                  CodePen link                   |\r\n| :-----------------------------------------------------: | :-----: | :---------------: | :---------------------------------------------: |\r\n|                           \u2714\ufe0f                            |  5.1.3  |        \u274c         | https://codepen.io/BrokenSourceCode/pen/zYWzZNJ |\r\n|                           \u2714\ufe0f                            |  5.1.3  |        \u2714\ufe0f         | https://codepen.io/BrokenSourceCode/pen/vYRZxNo |\r\n|                           \u2714\ufe0f                            |  5.2.0  |        \u274c         | https://codepen.io/BrokenSourceCode/pen/GRxEWWp |\r\n|                           \u274c                            |  5.2.0  |        \u2714\ufe0f         | https://codepen.io/BrokenSourceCode/pen/ExEXWPp |\r\n\r\n### What operating system(s) are you seeing the problem on?\r\n\r\nWindows\r\n\r\n### What browser(s) are you seeing the problem on?\r\n\r\nChrome\r\n\r\n### What version of Bootstrap are you using?\r\n\r\nv5.2.0",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1194171115",
+          "body": "Same error for me.\r\nhttps://getbootstrap.com/docs/5.2/components/tooltips/#options\r\nPlease could the documentation be updated for this feature - it's kind of hidden away, and the offsite links use jQuery and are older bootstrap versions. It's more than worthy enough to get its own example! "
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1194508986",
+          "body": "_Apparently, it comes from https://github.com/twbs/bootstrap/commit/328f723008cc39292a9f355e2eafb0fd04740656._\r\n\r\nI'll try an explanation and @GeoSot will confirm or not.\r\n\r\nWhen the tooltip appears, `title` is removed from the DOM so the selector can't work anymore if the attribute is removed.\r\n\r\nIn your case, I'd say you can use `data-bs-title` instead of `title`.\r\n\r\n```html\r\n<div id=\"btn-box\" class=\"btn-group m-5\">\r\n  <button class=\"btn btn-lg btn-primary\" data-bs-title=\"Label 1\">Button 1</button>\r\n  <button class=\"btn btn-lg btn-secondary\" data-bs-title=\"Label 2\">Button 2</button>\r\n</div>\r\n```\r\n\r\n```js\r\nnew bootstrap.Tooltip('#btn-box', {\r\n  selector: '[data-bs-title]'\r\n})\r\n```"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195055249",
+          "body": "> _Apparently, it comes from [328f723](https://github.com/twbs/bootstrap/commit/328f723008cc39292a9f355e2eafb0fd04740656)._\r\n> \r\n> I'll try an explanation and @GeoSot will confirm or not.\r\n> \r\n> When the tooltip appears, `title` is removed from the DOM so the selector can't work anymore if the attribute is removed.\r\n> \r\n> In your case, I'd say you can use `data-bs-title` instead of `title`.\r\n> \r\n> ```\r\n> <div id=\"btn-box\" class=\"btn-group m-5\">\r\n>   <button class=\"btn btn-lg btn-primary\" data-bs-title=\"Label 1\">Button 1</button>\r\n>   <button class=\"btn btn-lg btn-secondary\" data-bs-title=\"Label 2\">Button 2</button>\r\n> </div>\r\n> ```\r\n> \r\n> ```js\r\n> new bootstrap.Tooltip('#btn-box', {\r\n>   selector: '[data-bs-title]'\r\n> })\r\n> ```\r\n\r\nWell, I understand where the issue comes from with your explanation, and I also understand how I could use your workaround in my code, thanks. Will the code remains as it is now? Will there be no correction to fix this regression?"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195141449",
+          "body": "> Apparently, it comes from https://github.com/twbs/bootstrap/commit/328f723008cc39292a9f355e2eafb0fd04740656.\r\n\r\nYou are right on this. It was something we had discussed together too, as the title was just left empty.\r\n\r\n@BrokenSourceCode I would prefer to not 'fix' this as it wasn't documented and of course is a bad practice to leave a blank attribute there. So you could, may use any other attr"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195335919",
+          "body": "> > Apparently, it comes from [328f723](https://github.com/twbs/bootstrap/commit/328f723008cc39292a9f355e2eafb0fd04740656).\r\n> \r\n> You are right on this. It was something we had discussed together too, as the title was just left empty.\r\n> \r\n> @BrokenSourceCode I would prefer to not 'fix' this as it wasn't documented and of course is a bad practice to leave a blank attribute there. So you could, may use any other attr\r\n\r\nNo problem, I'll use another selector if you want to keep the code as it is.\r\n\r\nPerhaps it should be mentioned inside the `selector` option [documentation](https://getbootstrap.com/docs/5.2/components/tooltips/#options) that the `title` attribute cannot be used as a selector, right? Since this has changed since Bootstrap 5.2. This could be useful in the future for developers who encounter the same issue as me.\r\n\r\nMaybe like this:\r\n```diff\r\nIf a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to also apply tooltips to dynamically added DOM elements (jQuery.on support). See this issue and an informative example.\r\n+ Note that this option cannot work with the <code>title</code> attribute (such as <code>[title]</code>), because the attribute is removed from the DOM by Bootstrap.\r\n```\r\n"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195336893",
+          "body": "@GeoScot It is documented in https://getbootstrap.com/docs/5.2/components/tooltips/#options and really does need to be fixed as its a regression from several previous releases. Dynamically generated content is pretty common now, and `title=\"something\"` is a useful fallback is something goes wrong"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195338987",
+          "body": "> @GeoScot It is documented in https://getbootstrap.com/docs/5.2/components/tooltips/#options and really does need to be fixed as its a regression from several previous releases. Dynamically generated content is pretty common now, and `title=\"something\"` is a useful fallback is something goes wrong\r\n\r\n@aavmurphy Could you please copy and paste the part of the documentation? I really don't understand of which text you are talking about.\r\n\r\nBut I agree with you that this is a good fallback solution, and also that this is a regression from the previous releases that accepted this behavior.\r\n"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195347396",
+          "body": "@BrokenSourceCode  Its in [https://getbootstrap.com/docs/5.2/components/tooltips](https://getbootstrap.com/docs/5.2/components/tooltips/#options),\r\nscroll down to 'Options',\r\nthen the `selector` row in the table, which says\r\n\"If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to also apply tooltips to dynamically added DOM elements (jQuery.on support). See [this issue](https://github.com/twbs/bootstrap/issues/4215) and [an informative example](https://codepen.io/Johann-S/pen/djJYPb).\"\r\nThe example uses jQuery, and a legacy version of bootstrap, so the documentation could be updated as this functionality makes tooltips *much* easier to use"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195640078",
+          "body": "See #36743"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1210012735",
+          "body": "As the issue was labeled with `awaiting-reply`, but there has been no response in 14 days, this issue will be closed. If you have any questions, you can comment/reply."
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1244059509",
+          "body": "Not fixed in 5.2.1"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1244072822",
+          "body": "> Not fixed in 5.2.1\r\n\r\n@GeoSot said it won't be fixed, because this is a bad practice. See https://github.com/twbs/bootstrap/issues/36813#issuecomment-1195141449. You can use another selector like `[data-bs-toggle=\"tooltip\"]` or as well use your own custom class. The solution below will show you how to fix your issue.\r\n\r\nHTML:\r\n```html\r\n<!-- For `[data-bs-toggle=\"tooltip\"]` selector. -->\r\n<button class=\"btn btn-lg btn-info\" title=\"Label 1\" data-bs-toggle=\"tooltip\">Button 1</button>\r\n<button class=\"btn btn-lg btn-success\" title=\"Label 2\" data-bs-toggle=\"tooltip\">Button 2</button>\r\n\r\n<!-- For `.toggle-tooltip` selector. -->\r\n<button class=\"btn btn-lg btn-warning toggle-tooltip\" title=\"Label 3\">Button 3</button>\r\n<button class=\"btn btn-lg btn-danger toggle-tooltip\" title=\"Label 4\">Button 4</button>\r\n```\r\n\r\nJavaScript:\r\n```js\r\nnew bootstrap.Tooltip('body', {\r\n    selector: '[data-bs-toggle=\"tooltip\"], .toggle-tooltip'\r\n});\r\n```\r\n\r\n-----\r\n\r\nFurthermore, @GeoSot, I suggest adding a note in the documentation of the `selector` option to state that the `title` attribute **MUST NOT** be used as selector.\r\n\r\n![1](https://user-images.githubusercontent.com/59090546/189723904-a4d7cb90-c724-4eed-a7de-6caeffc4372b.png)"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36813#issuecomment-1245312011",
+          "body": "Thanks @BrokenSourceCode !\r\n\r\nTurned out quite easy to fix... just grep the js html templates for `title=` and add a target to use in a selector, `data-bs-tooltip` in my case."
+        }
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 1579,
+      "title": "Regression: Shoelace components are not defining in Angular",
+      "url": "https://github.com/shoelace-style/shoelace/issues/1579",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Reported platform/stack is outside existing frozen browser/framework context (server components, Angular, IE or mobile).",
+      "issueBody": "### Describe the bug\r\nStarting with `^2.5.0` version, Shoelace components are not working in an Angular app. The issue is with the way the components are being defined I think.\r\n### To Reproduce\r\nSteps to reproduce the behavior:\r\n\r\n1. Install angular CLI : `npm install -g @angular/cli`\r\n2. Create test app : `ng new my-app`\r\n3. Install shoelace : `npm install @shoelace-style/shoelace`\r\n4. Add an entry in angular.json to copy assets : `{ \"glob\": \"**/*\", \"input\": \"node_modules/@shoelace-style/shoelace\", \"output\": \"/shoelace\" }`\r\n5. Add CUSTOM_ELEMENTS_SCHEMA to app.module.ts : `schemas: [CUSTOM_ELEMENTS_SCHEMA]`\r\n6.  Add sl-button to app.component.html : `<sl-button>Button</sl-button>`\r\n\r\n### Demo\r\n\r\nCreated a codesandbox for the issue : [codesandbox](https://codesandbox.io/p/sandbox/shoelace-angular-issue-vm4q8d?file=%2Fpackage.json)\r\n\r\n### Browser / OS\r\n - OS: Mac\r\n - Browser: Firefox\r\n - Browser version: 117\r\n\r\n### Additional information\r\nI can see that the shoelace.js is dowloading all the chunks for the components, but they are not being defined.\r\nIf we bump down the version to 2.4.0, it works fine. \r\n",
+      "comments": [
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1579#issuecomment-1735470644",
+          "body": "Prior to [2.5.0](https://shoelace.style/resources/changelog/#id_2_5_0), Shoelace bundled Lit. We now ships two dists:\r\n\r\n`/cdn` - Bundles dependencies for CDN use\r\n`/dist` - No bundling\r\n\r\nThe new `/cdn` dist is the same as what you were using before, so switching to that may work.\r\n\r\nAs for the issue itself, it looks like the modules aren't loading.\r\n\r\n<img width=\"1853\" alt=\"CleanShot 2023-09-26 at 08 40 59@2x\" src=\"https://github.com/shoelace-style/shoelace/assets/55639/2e711aac-e2d9-4ff8-a06c-9edf6fba08d8\">\r\n\r\nThey seem to be missing extensions, which sounds like the same problem as #1561.\r\n\r\n@KonnorRogers Any idea why importing `shoelace.js` would trigger Angular to load extensionless modules?\r\n\r\nThis is one being requested (shows the app, not the module):\r\n\r\nhttps://vm4q8d-4200.csb.app/shoelace/dist/components/format-date/format-date\r\n\r\nHere's what it should be (shows the module):\r\n\r\nhttps://vm4q8d-4200.csb.app/shoelace/dist/components/format-date/format-date.js"
+        }
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 1303,
+      "title": "Regression in input[type=datetime-local]: valueAsNumber always returns null",
+      "url": "https://github.com/shoelace-style/shoelace/issues/1303",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Describe the bug\r\nProperty `valueAsNumber` of `<sl-input type=\"datetime-local\">` always returns `null`. This is happening only in version 2.4.0 and is fine with version 2.3.0. It is related to the fix from my previous issue: https://github.com/shoelace-style/shoelace/issues/1302. I'm sorry to be the cause of this bug.\r\n\r\n### To Reproduce\r\nSteps to reproduce the behavior:\r\n\r\n1. Use `<sl-input type=\"datetime-local\">`\r\n2. Get `valueAsNumber`\r\n\r\n### Demo\r\n\r\nHere is a demo with a comparison to native input:\r\n\r\nhttps://codepen.io/davidkudera/pen/LYgNyvP?editors=1010\r\n\r\n### Browser / OS\r\n - OS: Windows 11\r\n - Browser: Chromium\r\n - Browser version: 112",
+      "comments": [
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1303#issuecomment-1593435728",
+          "body": "Its just a hunch, but it _feels_ like perhaps the inputs are getting garbage collected so we're making new input elements?"
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1303#issuecomment-1593462961",
+          "body": "So I thought it was garbage collection, but honestly I have no clue why this behavior is happening..."
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1303#issuecomment-1602761793",
+          "body": "I believe this is fixed in #1378 with the release of 2.5.0.\r\n\r\nThere is another bug here #1386 specific to `datetime-local`. But at leasts its not \"null\"!\r\n\r\nFeel free to re-open if its not fixed for you."
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1303#issuecomment-1602854121",
+          "body": "Just tested my use case and it works perfectly. Thank you \ud83d\udcaf "
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/1303#issuecomment-1603341205",
+          "body": "@davidkudera theres a good chance this will break in a following bug fix. Chromium browsers don't let you use `valueAsDate` on `datetime-local` inputs.\r\n\r\n#1399 "
+        }
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 7523,
+      "title": "[EuiProgress] Missing animation on progress bar update - regression",
+      "url": "https://github.com/elastic/eui/issues/7523",
+      "origin": "repo:elastic/eui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "**Describe the bug**\r\nI've recently upgraded from EUI v37 to v93.\r\nIt seems that in the meantime, the animation for EuiProgress was lost.\r\nI suspect: https://github.com/elastic/eui/commit/21a24c313a126d54e64f46177e51fdc44a898821\r\n\r\n`src/components/progress/_progress.scss` had \r\n```css\r\n  &::-webkit-progress-value {\r\n    transition: width $euiAnimSpeedNormal linear;\r\n  }\r\n\r\n  &::-moz-progress-bar {\r\n    transition: width $euiAnimSpeedNormal linear;\r\n  }\r\n```\r\n\r\n**Impact and severity**\r\nLow impact.\r\nWorkaround:\r\n\r\n```css\r\n.euiProgress[class*=\"euiProgress-native\"]::-webkit-progress-value {\r\n  transition: width 250ms linear;\r\n}\r\n\r\n.euiProgress[class*=\"euiProgress-native\"]::-moz-progress-bar {\r\n  transition: width 250ms linear;\r\n}\r\n```\r\n\r\n**Environment and versions**\r\n- EUI version: v93\r\n- Browser: Chrome, Firefox\r\n\r\n**To Reproduce**\r\nSteps to reproduce the behavior:\r\n1. Open https://eui.elastic.co/#/display/progress#progress-with-values\r\n2. Click Toggle progress\r\n\r\n**Expected behavior**\r\nWhen updated, progress bar should animate increments.\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/elastic/eui/issues/7523#issuecomment-1954957998",
+          "body": "Grabbing this as part of my support week this week"
+        }
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 4957,
+      "title": "[EuiDataGrid] regression in displaying Arrays and Objects in expand behavior",
+      "url": "https://github.com/elastic/eui/issues/4957",
+      "origin": "repo:elastic/eui is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "It seems like a regression was introduced to the datagrid expand behavior, it adds `Row: 3, Column: 6:` which was not the case before.\r\n\r\n * Json objects can be tested on this [docs page](https://elastic.github.io/eui/#/tabular-content/data-grid-schemas-and-popovers):\r\n\r\n![Screenshot 2021-07-16 at 10 01 23](https://user-images.githubusercontent.com/1261626/125914115-90eaf152-dd8d-4ef7-92a5-3a17adb1858d.png)\r\n\r\n * Arrays before regression:\r\n\r\n![Screenshot 2021-07-16 at 10 04 38](https://user-images.githubusercontent.com/1261626/125914478-325155f5-e80d-467d-8d8e-c7e9626eded2.png)\r\n\r\n\r\n * Arrays after regression:\r\n\r\n<img width=\"324\" alt=\"Screenshot 2021-07-16 at 10 04 05\" src=\"https://user-images.githubusercontent.com/1261626/125914367-086f4fcb-d01a-4dce-a26f-5b99d29b3de1.png\">\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/elastic/eui/issues/4957#issuecomment-881454738",
+          "body": "Looks like the screen-reader text is accidentally being displayed. I'm thinking that because it's probably getting included within the `EuiCodeBlock`, it's screen-reader only classes are getting stripped. I'll take a look. Thanks for the report!"
+        },
+        {
+          "url": "https://github.com/elastic/eui/issues/4957#issuecomment-881469552",
+          "body": "Looks like #4853 [added some wrappers and screen-reader text](https://github.com/elastic/eui/pull/4853/files?file-filters%5B%5D=.js&file-filters%5B%5D=.md&file-filters%5B%5D=.ts&file-filters%5B%5D=.tsx#diff-9d40afa057c929171c16c51ab0a6c842bea939f4328129246a2f2e772257c3bbR137-R167) directly to the cell contents. This contents is what's passed to the popover content and depending on the schema (for code) it [**all** gets wrapped by EuiCodeBlock](https://github.com/elastic/eui/blob/7b6d21e5c6a2ac48ef16faa67069ced0be9547b0/src/components/datagrid/data_grid_body.tsx#L99-L118).\r\n\r\n@VladLasitsa Can you take a look at this? I'm unsure what the extra wrappers and screen-reader text is necessary for / where it can be moved to instead."
+        },
+        {
+          "url": "https://github.com/elastic/eui/issues/4957#issuecomment-881470851",
+          "body": "It also looks like these code blocks were formatted better before that PR as well.\r\n\r\n**Before**\r\n<img width=\"425\" alt=\"Screen Shot 2021-07-16 at 09 57 57 AM\" src=\"https://user-images.githubusercontent.com/549577/125959593-31692baf-de99-4b05-a075-d17c5c8000ef.png\">\r\n\r\n\r\n**After**\r\n<img width=\"462\" alt=\"Screen Shot 2021-07-16 at 09 56 59 AM\" src=\"https://user-images.githubusercontent.com/549577/125959529-25a4e5f0-b398-4f99-87f9-72c1369c7e03.png\">\r\n"
+        },
+        {
+          "url": "https://github.com/elastic/eui/issues/4957#issuecomment-905597322",
+          "body": "Looked at this one some. @cchaos has the problem nailed. This is primarily due to the content using `innerText` which strips out the selectors from the screenreader. Because `innerText` removes the indentation, this is why the formatting comes in worse."
+        }
+      ]
+    }
+  ]
+}

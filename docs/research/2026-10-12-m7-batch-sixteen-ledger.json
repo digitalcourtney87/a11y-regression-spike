@@ -1,0 +1,634 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "sixteen",
+  "queries": [],
+  "candidates": [
+    {
+      "repo": "radix-ui/primitives",
+      "number": 3780,
+      "title": "[Regression] Radix Slot/asChild prop merging silently fails in RSC dev mode after Next.js 16.0.10 security patch",
+      "url": "https://github.com/radix-ui/primitives/issues/3780",
+      "origin": "repo:radix-ui/primitives is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Reported platform/stack is outside existing frozen browser/framework context (server components, Angular, IE or mobile).",
+      "issueBody": "### Describe the bug\nAfter upgrading to Next.js 16.0.10 (React2Shell CVE patch), the Radix UI `Slot` component \nsilently fails to merge props onto child elements when used across a Server Component \u2192 \nClient Component boundary **in local development mode**.\n\nWhen using `asChild={true}` on a Client Component (e.g., Button with `\"use client\"`) \ninside a Server Component, the Slot's className and other props are not serialized/merged \nonto the child element. **The component silently doesn't render at all** - no errors in \nthe console, no hydration warnings, nothing. This makes it extremely difficult to debug.\n\n### To Reproduce\n1. Create a Server Component (no `\"use client\"`)\n2. Inside it, render a Client Component that uses Radix `Slot` with `asChild={true}`\n3. Pass className to the component expecting Slot to merge it onto the child\n4. Run `next dev` (local development mode)\n5. The **entire component fails to render** with no error messages\n\n```\n// Server Component (card.tsx - no \"use client\")\n<Button className=\"text-white\" theme=\"transparent\" asChild>\n  <span>Click me</span>  {/* ENTIRE BUTTON SILENTLY NOT RENDERED */}\n</Button>\n\n// Client Component (button/index.tsx - has \"use client\")\nconst Comp = asChild ? Slot : \"button\";\nreturn <Comp className={cn(base(), className)} {...props}>{children}</Comp>### Expected behavior\nThe `Slot` component should merge the className onto the child `<span>` element, \nor at minimum throw an error/warning if serialization fails.\n```\n\n### Actual behavior\n- The component silently doesn't render\n- No console errors or warnings\n- No React hydration mismatch warnings\n- `document.querySelector()` returns `null` for the element\n- Only discoverable by manually inspecting the DOM\n\n### Workaround\nMoving the className directly onto the child element bypasses the issue:\n<Button theme=\"transparent\" asChild>\n  <span className=\"text-white\">Click me</span>  {/* Works */}\n</Button>### Environment\n- Next.js: 16.0.10\n- React: 19.1.2\n- @radix-ui/react-slot: 1.1.2\n- Node: [your version]\n- OS: macOS\n\n### Additional context\n- This regression appeared after updating to Next.js 16.0.10 which includes patches \n  for CVE-2025-55182 (React2Shell)\n- The security patch likely changed RSC serialization behavior in a way that breaks \n  Slot's prop merging across the RSC boundary\n- **The silent failure makes this extremely difficult to debug** - we spent significant \n  time investigating caching issues, experiment systems, and other potential causes \n  before discovering it was related to `asChild`\n- Removing `asChild` (rendering as `<button>`) makes the component appear\n- Moving className to the child element (avoiding Slot prop merging) also fixes it\n- The issue appears to be specific to **local dev mode** (`next dev`)",
+      "comments": [
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/3780#issuecomment-3923261678",
+          "body": "This looks like the same root cause as #3776 \u2014 Slot doesn't handle RSC-serialized lazy references properly. I have a fix in #3777 that uses `Children.toArray` to resolve lazy children before `cloneElement`. This approach was validated by Mantine in [mantinedev/mantine#8522](https://github.com/mantinedev/mantine/pull/8522).\n\nWould be great to get a maintainer review on #3777 \u2014 it's been open since December."
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/3780#issuecomment-4099703303",
+          "body": "I think I'm having the same issue, and as of upgrading to Next.js v16.2.0 with Turbopack I get a runtime hydration error:\n\n```\n//    '+'   indicates it was rendered on client only\n\n<Primitive.button type=\"button\" aria-haspopup=\"dialog\" aria-expanded={false} ...>\n  <Primitive.button.Slot type=\"button\" aria-haspopup=\"dialog\" aria-expanded={false} ...>\n    <Primitive.button.SlotClone type=\"button\" aria-haspopup=\"dialog\" aria-expanded={false} ...>\n+     <button\n+       className=\"w-full text-center focus-visible:outline-none lg:w-64 lg:pl-5 lg:text-left\"\n+       type=\"button\"\n+       aria-haspopup=\"dialog\"\n+       aria-expanded={false}\n+       aria-controls=\"radix-_R_5l5etqlb_\"\n+       data-state=\"closed\"\n+       onClick={function handleEvent}\n+       ref={function}\n+     >\n```"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/3780#issuecomment-4229748603",
+          "body": "Is this fixed by `@radix-ui/react-slot@1.2.4`? See https://github.com/radix-ui/primitives/issues/3836."
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/3780#issuecomment-4589006706",
+          "body": "Addressed with https://github.com/radix-ui/primitives/commit/cac030cd7e880567f600e2f029fab2c6fa0d2cc9"
+        }
+      ]
+    },
+    {
+      "repo": "radix-ui/primitives",
+      "number": 2224,
+      "title": "[Regression] Select component trigs Popover closing inside Popover ",
+      "url": "https://github.com/radix-ui/primitives/issues/2224",
+      "origin": "repo:radix-ui/primitives is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "## Bug report\r\n\r\n### Current Behavior\r\nFor version `2.0.0-rc.5+` (I didn't check other rc version below `2.0.0-rc.5`), When we have a `Select` inside `Popover`, if we open the select and then click outside without making a selection, both Select and Popover close \r\n<!-- If applicable, add screenshots/videos to help explain the problem. -->\r\n\r\n### Expected behavior\r\nFor lastest version 1.2.2, the unselect behavior only closes the `Select`, `Popover` stays open.\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n### Reproducible example\r\n\r\n[CodeSandbox with 2.0.0-rc.7](https://codesandbox.io/p/sandbox/bold-joana-pd5srf?file=%2Fpackage.json%3A1%2C2)\r\n\r\n\r\n### Your environment\r\n\r\n<!-- Very important for us to help you debug. Please fill this out! -->\r\n\r\nRadix Package\r\n\r\n    \"@radix-ui/react-popover\": \"latest\",\r\n    \"@radix-ui/react-select\": \"^2.0.0-rc.7\",",
+      "comments": [
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1606383954",
+          "body": "Upgrade `Popover` to `v1.0.7-rc.5` and should work fine"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1607878223",
+          "body": "> Upgrade `Popover` to `v1.0.7-rc.5` and should work fine\r\n\r\nThe issue still persist in `next.js`.\r\nI install fresh next.js `typescript` and `tailwindcss` from their official command line. And then install the following and copy paste the exact `PopoverDemo`(basically the `app.tsx` file) from my stackblitz code above.\r\nAt this point, I'm not sure it's a next.js issue or radix, something happens or reference missing during the next.js hydration?\r\n\r\n```\r\n\"@radix-ui/react-popover\": \"1.0.7-rc.5\",\r\n\"@radix-ui/react-select\": \"2.0.0-rc.7\",\r\n```\r\n\r\n\r\n![rp1](https://github.com/radix-ui/primitives/assets/35160613/2ab7a788-7b08-4b70-a4c4-837d9af14eb5)\r\n\r\n\r\n"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1622098486",
+          "body": "it's working here\r\n\r\nMake sure you only have one version of `DismissableLayer` installed. You are probably hitting #1088 \r\n\r\n\r\nhttps://github.com/radix-ui/primitives/assets/48808846/27e12aef-5847-4680-be8c-b7a7d0a4ee82\r\n\r\n"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1622189704",
+          "body": "@joaom00 , thx for your suggestion,  I check there is only one version of `DismissableLayer`, and I'm using page directory instead of app directory, your video appears to be the app directory. \r\nI tried out the linked issue solution but none of them appears to be working.\r\n\r\nFor the sake of experiment, I create a new repo with the problematic code so you can check it out.\r\nhttps://github.com/aboveyunhai/radix-popover-test\r\n\r\n"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1622279008",
+          "body": "Yeah, there are two versions of `DismissableLayer` in your `package-lock.json`. I deleted the `node_modules` and `package-lock.json` and installed again. It's working fine now"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-1622327704",
+          "body": "@joaom00  thx for your help, can confirm it has something to do with the minimal version of `dismissable-layer`, previously I was using the incompatible version.\r\nsince delete `node_modules` is not a direct approach for remote hosting.\r\nAt least for the version I was listing above, using the `overrides` with specific version is probably the way to go.\r\n```ts\r\n \"overrides\": {\r\n\t\t\"@radix-ui/react-dismissable-layer\": \"1.0.4\"\r\n\t}\r\n```\r\nand don't use  `^` like `^1.0.4`, this will install multiple versions that it's above the the given versions as long as it satifisfies the constraints.\r\n"
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues/2224#issuecomment-2488311146",
+          "body": "I've updated '@radix-ui/react-select' to 2.1.2 and it solved the issue.\r\nNot overrides were needed."
+        }
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 47926,
+      "title": "CSS regression in 7.3.9",
+      "url": "https://github.com/mui/material-ui/issues/47926",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Steps to reproduce\n\nSteps:\n1. Open this link to live example: https://stackblitz.com/edit/dlmtqo3v?file=src%2FDemo.tsx\n2. Open dev tools\n3. Inspect the second `<style data-emotion=\"css\">` tag.\n\n### Current behavior\n\nThe CSS contains the following:\n\n```css\n.css-1suf81v-MuiListItemText-root .MuiTypography-root:where(&\f .MuiListItemText-primary),\n.css-1suf81v-MuiListItemText-root .MuiTypography-root:where(&\f .MuiListItemText-secondary) {\n  display:block;\n}\n```\n\n`&` here is invalid - it's interpreted as a CSS nested selector, scoped to `document`, not an Emotion / Stylis nested selector, as intended.\n\n### Expected behavior\n\nCorrect nesting. Compare with 7.3.8:\n\n```css\n.MuiTypography-root:where(.css-cfq8qh-MuiListItemText-root .MuiListItemText-primary) { \n  display:block;\n}\n.MuiTypography-root:where(.css-cfq8qh-MuiListItemText-root .MuiListItemText-secondary) {\n  display:block;\n}\n```\n\n### Context\n\nI discovered this while comparing Jest snapshots. It appears to be the result of a bug in @emotion/cache (see https://github.com/emotion-js/emotion/issues/3366) and was triggered by the refactoring in #47838.\n\n### Your environment\n\n<details>\n  <summary><code>npx @mui/envinfo</code></summary>\n\n```\n  System:\n    OS: macOS 15.7.4\n  Binaries:\n    Node: 24.14.0 - /Users/josh/.nvm/versions/node/v24.14.0/bin/node\n    npm: 11.9.0 - /Users/josh/.nvm/versions/node/v24.14.0/bin/npm\n    pnpm: Not Found\n  Browsers:\n    Chrome: 145.0.7632.160\n    Edge: 145.0.3800.82\n    Firefox: 148.0\n    Safari: 26.3\n  npmPackages:\n    @base-ui/utils:  0.2.3 \n    @emotion/react:  11.14.0 \n    @emotion/styled:  11.14.1 \n    @mui/core-downloads-tracker:  7.3.9 \n    @mui/icons-material:  7.3.9 \n    @mui/lab:  7.0.1-beta.23 \n    @mui/material:  7.3.9 \n    @mui/private-theming:  7.3.9 \n    @mui/styled-engine:  7.3.9 \n    @mui/system:  7.3.9 \n    @mui/types:  7.4.12 \n    @mui/utils:  7.3.9 \n    @mui/x-date-pickers:  8.27.2 \n    @mui/x-internals:  8.26.0 \n    @mui/x-tree-view:  8.27.2 \n    @types/react: ^18.3.27 => 18.3.27 \n    react: ^18.3.1 => 18.3.1 \n    react-dom: ^18.3.1 => 18.3.1 \n    typescript: ^5.9.3 => 5.9.3 \n```\n</details>\n\n\n**Search keywords**: nested css",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/47926#issuecomment-4017906631",
+          "body": "<!-- linear-linkback -->\n<p><a href=\"https://linear.app/mui/issue/MAT-1786/css-regression-in-739\">MAT-1786</a></p>"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/47926#issuecomment-4029049964",
+          "body": "**This issue has been closed.** If you have a similar problem but not exactly the same, please open a [new issue](https://github.com/mui/material-ui/issues/new/choose).\nNow, if you have additional information related to this issue or things that could help future readers, feel free to leave a comment.\n\n---\n\n@joshkel Thanks again for creating this issue! If you have a moment, we would love to hear your thoughts on how we handled it with this short [feedback form](https://tally.mui.com/support-satisfaction-survey?issue=47926&productId=material-ui)."
+        }
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 47811,
+      "title": "[autocomplete] regression in width behavior in v7.3.8",
+      "url": "https://github.com/mui/material-ui/issues/47811",
+      "origin": "repo:mui/material-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Steps to reproduce\n\nSteps:\n\nSet the `<Autocomplete>`'s width via the `sx` prop while also explicitly setting `fullWidth` to `false`.  \n\nI tried using stackblitz as your documentation suggested, but that too is now bugged out for me. My will to recursively debug things just to report a bug is rapidly falling apart but I think this should illustrate the point here:\n\n```typescript\nimport Autocomplete from '@mui/material/Autocomplete';\nimport TextField from '@mui/material/TextField';\n\nexport const App: FC<{ name: string }> = ({ name }) => {\n  const opts = ['meep', 'beep', 'foo'];\n\n  return (\n    <div>\n      <div style={{ width: '300px', border: '1px solid #0000FF' }}>\n        {/* This should be full width inside the containing div */}\n        <Autocomplete\n          value=\"meep\"\n          options={opts}\n          fullWidth={false}\n          sx={{ width: '100%' }}\n          size=\"small\"\n          placeholder=\"should be wide enough\"\n          renderInput={(params)=><TextField {...params}/>}\n        />\n      </div>\n    </div>\n  );\n};\n\n```\n\n### Current behavior\n\nIn 7.3.7, the above JSX would work to create a _de facto_ full-width autocomplete element (e.g., expanding `sx={{ width: \"100%\" }}` to fill a containing `<div>` block). In 7.3.8 now the Autocomplete is only as wide as needed to display the down-caret icon. \n\nSee the attached screenshot to see several Autocomplete elements that used to be as wide as their containing column in the 2-column tables .\n\n<img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a57502d-8cf5-446b-92ed-2df8d2f62497\" />\n\nI am pretty sure that pull request https://github.com/mui/material-ui/pull/47663 (which was switched from \"breaking change\" label to \"non-breaking\" at the last minute without much discussion) is the culprit. All of this worked fine last week on 7.3.7.\n\n\n### Expected behavior\n\nThe autocomplete elements in the screenshot above should be as wide as the containing fixed-width column of the 2-column <table> layout they're in. This worked on 7.3.7.\n\n### Context\n\nThis is a regression in 7.3.8. Ideally no code changes should be required.\n\n### Your environment\n\n<details>\n  <summary><code>npx @mui/envinfo</code></summary>\n\n```\n  System:\n    OS: Linux 5.15 Ubuntu 24.04.3 LTS 24.04.3 LTS (Noble Numbat)\n  Binaries:\n    Node: 24.11.1 - /home/aaron/.nvm/versions/node/v24.11.1/bin/node\n    npm: 11.8.0 - /home/aaron/.nvm/versions/node/v24.11.1/bin/npm\n    pnpm: Not Found\n  Browsers:\n    Chrome: Not Found\n    Firefox: Not Found\n  npmPackages:\n    @emotion/react: ^11.14.0 => 11.14.0\n    @emotion/styled: ^11.14.1 => 11.14.1\n    @mui/core-downloads-tracker:  7.3.8\n    @mui/icons-material: ^7.3.8 => 7.3.8\n    @mui/material: ^7.3.8 => 7.3.8\n    @mui/private-theming:  7.3.8\n    @mui/styled-engine:  7.3.8\n    @mui/system: ^7.3.7 => 7.3.8\n    @mui/types: ^7.4.9 => 7.4.11\n    @mui/utils:  7.3.8\n    @mui/x-date-pickers: ^8.27.0 => 8.27.0\n    @mui/x-internals:  8.26.0\n    @types/react: ^19.2.14 => 19.2.14\n    react: ^19.2.4 => 19.2.4\n    react-dom: ^19.2.4 => 19.2.4\n    typescript: ^5.9.3 => 5.9.3\n```\n</details>\n\nBrowser is Google Chrome:\n\n```\n145.0.7632.45\u00a0(Official Build)\u00a0(64-bit)\u00a0(cohort: 145.0.7632.45 Rollout)\nRevision: 7ad2aeb6be38786b2bf653d667d3df01e68d3c40-refs/branch-heads/7632@{#1825}\nOS: Windows\u00a011 Version 25H2 (Build 26200.7840)\nJavaScript: V8\u00a014.5.201.7\n```\n\n**Search keywords**: autocomplete fullwidth",
+      "comments": [
+        {
+          "url": "https://github.com/mui/material-ui/issues/47811#issuecomment-3925086481",
+          "body": "<!-- linear-linkback -->\n<p><a href=\"https://linear.app/mui/issue/MAT-1767/autocomplete-regression-in-width-behavior-in-v738\">MAT-1767</a></p>"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/47811#issuecomment-3945616397",
+          "body": "Hey @kimballa thanks for opening the issue, and sorry about the outcome.\n\nAs we worked on that fix, we actually added a guard against breaking changes for users that would expect their Autocomplete to still behave as before without fullWidth passed. Essentially, passing the fullWidth prop as true to the Input if there's no fullWidth prop passed to the Autocomplete.\n\nHowever, we did not guard against your use case. Since you are passing {false} and the 100% width from sx landing on the component root instead of the input, it is the expected outcome, after all. Unfortunately, it was discovered through a patch release that was not meant to break usages.\n\nPlease consider changing the usages of the component to make it take the whole space, in your example removing both fullWidth (or passing it as true to signal intention) and the sx should do. I'm sorry again for this unintentional side effect."
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/47811#issuecomment-3949693391",
+          "body": "Thanks @silviuaavram . I appreciate the follow-up. I was able to work around things on my end. \n\nFor what it's worth, my setup using the Autocomplete component is a _bit_ convoluted in that it's wrapped in a couple of layers of application-specific components (although many apps likely wrap MUI controls in more-complex application-specific component libraries). In any case, the `fullWidth` prop isn't actually passed in via direct prop-drilling; based on some other props, I render the component with `<Autocomplete .... fullWidth={otherProp === anotherCondition} sx={someStyleThings}>` so until this happened, I was always passing `fullWidth` explicitly one way or the other. \n\nI sort of understand what you're doing, but I _do_ think it's somewhat unique JSX API expectations that now `true`, `false`, and `undefined` actually have three distinct outcomes in how Autocomplete treats the prop. Boolean-typed props usually treat all false-ish values the same. If it's really not an \"Autocomplete-wide\" prop but is instead something you're forwarding to an internal component, that feels more like something that other MUI components put into nested `slotProps` maps that make their prop-drilled behavior explicit/visible to the caller (e.g., the `inputProps` map on the `<Select>` component).\n\nAt the very least I believe it deserves some very explicit documentation, as now it no longer behaves exactly like the `fullWidth` property used in several other components.  (Assuming your feedback implies the behavior I demonstrate is `not-a-bug`, this issue should probably turn into a documentation bug issue, as the [v7.3.8 API docs on your site](https://mui.com/material-ui/api/autocomplete/) states:\n\n> If `true`, the input will take up the full width of its container.\n\n... and lists the default value as `false`, which is now incorrect -- since otherwise my passing `false` in explicitly would have no effect. (It should probably list the default as `undefined` and include a note on how `undefined` and `false` are treated distinctly.)"
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/47811#issuecomment-3957702776",
+          "body": "That makes sense. I propose we update our API to make it clear that the fullWidth behaviour in Autocomplete is different, and give the reasoning for it. How's that sound, @kimballa ? "
+        },
+        {
+          "url": "https://github.com/mui/material-ui/issues/47811#issuecomment-4667065022",
+          "body": "**This issue has been closed.** If you have a similar problem but not exactly the same, please open a [new issue](https://github.com/mui/material-ui/issues/new/choose).\nNow, if you have additional information related to this issue or things that could help future readers, feel free to leave a comment.\n\n---\n\n@kimballa Thanks again for creating this issue! If you have a moment, we would love to hear your thoughts on how we handled it with this short [feedback form](https://tally.mui.com/support-satisfaction-survey?issue=47811&productId=material-ui)."
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 9858,
+      "title": "NumberInput Regression: different button hover CSS for light option enabled and disabled",
+      "url": "https://github.com/carbon-design-system/carbon/issues/9858",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Package\r\n\r\ncarbon-components, carbon-components-react\r\n\r\n### Browser\r\n\r\nChrome\r\n\r\n### Package version\r\n\r\nv10.45.0\r\n\r\n### Description\r\n\r\nWhen using `<NumberInput />` with light option enabled and disabled, there's some difference in button hover CSS.\r\nThis is a regression issue. Same issue was fixed in earlier carbon version https://github.com/carbon-design-system/carbon/issues/8649\r\nThis issue is back in latest carbon version 10.45.0\r\n\r\n### CodeSandbox example\r\n\r\nhttps://codesandbox.io/s/friendly-cloud-d0deb\r\n\r\n### Steps to reproduce\r\n\r\nNumberInput with light option enabled -\r\n![Screen Shot 2021-10-12 at 4 19 45 PM](https://user-images.githubusercontent.com/25124000/137179934-7932da14-7fb2-4b97-bfab-47d9d7b658db.png)\r\n\r\n\r\nNumberInput with light option disabled. Everything works fine -\r\n![Screen Shot 2021-10-13 at 10 04 03 AM](https://user-images.githubusercontent.com/25124000/137180083-ebcf70e1-8550-4022-add8-0d4370445ad9.png)\r\n\r\n\r\n### Code of Conduct\r\n\r\n- [X] I agree to follow this project's [Code of Conduct](https://github.com/carbon-design-system/carbon/blob/f555616971a03fd454c0f4daea184adf41fff05b/.github/CODE_OF_CONDUCT.md)\r\n- [X] I checked the [current issues](https://github.com/carbon-design-system/carbon/issues) for duplicate problems",
+      "comments": [
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/9858#issuecomment-956443869",
+          "body": "@joshblack Is there any estimate to fix this issue? We can't upgrade carbon version until this issue is fixed. Thanks."
+        }
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 9725,
+      "title": "[SideNavMenu]: regression SideNavMenu no longer collapses in isRail mode when SideNav is not expanded",
+      "url": "https://github.com/carbon-design-system/carbon/issues/9725",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Package\n\ncarbon-components, carbon-components-react\n\n### Browser\n\nChrome\n\n### Package version\n\nv10.44.0, v7.44.0\n\n### Description\n\nThe expected behavior is for the SideNavMenu item to collapse when the SideNav collapses, and it was fixed at one point: https://deploy-preview-3626--carbon-components-react.netlify.app/?path=/story/ui-shell--sidenav-rail, but there has been a regression and it no longer closes. Also visible in the current storybook: https://react.carbondesignsystem.com/?path=/story/components-ui-shell--side-nav-rail\n\n### CodeSandbox example\n\nhttps://codesandbox.io/s/peaceful-pare-fbo9u?file=/src/index.js\n\n### Steps to reproduce\n\nClick the a SideNavMenu item to expand it, move mouse after from SideNav to cause it to collapse into rail mode. Extra space is still visible where submenu items are.\n\n### Code of Conduct\n\n- [X] I agree to follow this project's [Code of Conduct](https://github.com/carbon-design-system/carbon/blob/f555616971a03fd454c0f4daea184adf41fff05b/.github/CODE_OF_CONDUCT.md)\n- [X] I checked the [current issues](https://github.com/carbon-design-system/carbon/issues) for duplicate problems",
+      "comments": [
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/9725#issuecomment-965164158",
+          "body": "We need to re-open this issue. @dakahn The fix works great in dev, but once the code is minified for production the type name is mangled and the check no longer works. See this [deploy preview](https://deploy-preview-2932--carbon-addons-iot-react.netlify.app/?path=/story/1-watson-iot-sidenav--side-nav-component) which includes 7.47.2. It works locally, but fails in the preview."
+        },
+        {
+          "url": "https://github.com/carbon-design-system/carbon/issues/9725#issuecomment-965422852",
+          "body": "I believe related to this issue. Proposed solution: https://github.com/facebook/react/issues/4915#issuecomment-162736123"
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 29819,
+      "title": "[Bug]: Re-Regression - mountNode not available",
+      "url": "https://github.com/microsoft/fluentui/issues/29819",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Library\n\nReact Components / v9 (@fluentui/react-components)\n\n### System Info\n\n```shell\nSystem:\r\n    OS: Windows 11 10.0.22631\r\n    CPU: (8) x64 Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz\r\n    Memory: 19.94 GB / 31.60 GB\r\n  Browsers:\r\n    Edge: Chromium (119.0.2151.58)\r\n    Internet Explorer: 11.0.22621.1\n```\n\n\n### Are you reporting Accessibility issue?\n\nno\n\n### Reproduction\n\nhttps://codesandbox.io/s/loving-leftpad-cmzvg2\n\n### Bug Description\n\nSee issue #29515, same issue.\r\nThis happened again with the drawer being updated to stable, in commit #8381d2c4c7d389b2199398212beccbe1a899d4ea\r\n\r\nI would like to call out @Hotell for being right, we need a unit test.\r\nThis was fixed then quickly broke again.\r\n\r\nThis was also broken by @marcosmoura when it was moved to stable.\r\nPlease write a unit test so this doesn't happen for a third time. I know you said that it would be a significant undertaking, but this is the second time in a short time period this has been broken.\n\n### Logs\n\n_No response_\n\n### Requested priority\n\nHigh\n\n### Products/sites affected\n\n_No response_\n\n### Are you willing to submit a PR to fix?\n\nno\n\n### Validations\n\n- [X] Check that there isn't already an issue that reports the same bug to avoid creating a duplicate.\n- [X] The provided reproduction is a minimal reproducible example of the bug.",
+      "comments": [
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/29819#issuecomment-1834149234",
+          "body": "Checking in on the status of this, I see this is still in PR where other items have been merged in but not this..."
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 25078,
+      "title": "[Epic]: Visual Regression Tool Migration",
+      "url": "https://github.com/microsoft/fluentui/issues/25078",
+      "origin": "repo:microsoft/fluentui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "<!-- For instructions on shaping a project see https://hackmd.io/kX02SXVbS6KzMOQd56i6Cg -->\r\n\r\n## Problem\r\n\r\nWe are looking to move off using **Screener** as our Visual Regression testing solution for the entire monorepo by the end of the year.\r\n\r\n## Solution\r\n**Near Term**\r\n- Near term plan is to integrate and use an internal **1JS VR** tool to replace screener for **v0, v7, v8, and v9**. The intent is for v0, v7 and v8 to stay with this solution going forward since they are legacy libraries.\r\n\t- [x] Integrate pipeline jobs to run 1JS VR tool (v9) #25606\r\n\t\t- [x] Only run VR test when package is affected #25676\r\n\t- [x] Integrate pipeline jobs to run 1JS VR tool (v8) #25643\r\n\t\t- [x] Only run VR test when package is affected #25676\r\n\t- [x] Add v0 stories to be used by 1JS VR tool #25663\r\n\t- [x] Integrate pipeline jobs to run 1JS VR tool (v0) #25922\r\n\t- [x] Intergrate pipeline jobs to run 1JS VR tool (v7) #25946\r\n\t- [x] Remove Screener workflow files (master branch) #25977\r\n\t- [x] Remove Screener pipeline job (v7 branch) #25990\r\n\t- [x] Replace any `Screener` imports with `StoryWright` for v8 #25979\r\n\t- [x] Replace any `Screener` imports with `StoryWright` for v9 #25980\r\n\t- [x] Replace any `Screener` imports with `StoryWright` for v7 #26049\r\n\t- [x] Remove any `Screener` related files from v0 #26053\r\n\t- [x] Remove `Screener` dependencies from package.json #26070\r\n\t- [x] Cleanup new 1JS VR tool yaml files (remove convert scripts,etc) #26070\r\n\t- [ ] Update any VR tool related docs in repo\r\n\t- [x] Delete `Screener` related github secrets #26086\r\n\r\n**Long Term**\r\n- Long term plan is to migrate **v9** VR tests to use **Chromatic** (Internal [Doc](https://microsoft-my.sharepoint-df.com/:w:/p/twatanabe/ETJng-7UQw9ClI4NDzfKFrcBO6miFceu_fxKhQx_Hy_6hw?e=ffgJ4o) writeup). This will have to be done in multiple steps: \r\n   - [x] Make `react-storybook-addon` configurable to be used by vr stories: #25162 \r\n   - [ ] Refactor all v9 VR tests to use storybook Component Story Format (CSF)\r\n   \t\t- [x] Accordion #25525\r\n   \t\t- [x] Button #25108\r\n   \t\t- [x] Card #25526\r\n   \t\t- [x] Dialog #25527\r\n   \t\t- [x] Image #25527\r\n   - [ ] Integrate Chromatic project for v9 into repo and make available for use\r\n   - [ ] Slowly migrate each v9 component VR test to chromatic and refactor Screener interaction and hover tests to appropriate CSF equivalent. \r\n   - [ ] Colocate VR stories to their respective packages (i.e. move Menu VR tests to the `react-menu` package etc.)",
+      "comments": [
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1269593991",
+          "body": "@TristanWatanabe  since we are moving to CSF, would it be feasible to also colocate the vr-test stories like we do for other stories in the docsite ?"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1269645529",
+          "body": "> @TristanWatanabe since we are moving to CSF, would it be feasible to also colocate the vr-test stories like we do for other stories in the docsite ?\r\n\r\nOne topic we already talked about is to co-locate those vr stories/tests within package, same for performance etc. This approach should be taken into consideration if a new VR solution supports this or not and based on that tweak the decision of the tool to be used. \r\n\r\n  I'm not sure what you meant by \"other stories in the docsite\" @ling1726  ?"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1272831545",
+          "body": "> I'm not sure what you meant by \"other stories in the docsite\" @ling1726 ?\r\n\r\n@Hotell all our docsite stories are colocated. i.e `Menu` docs stories are in the react-menu package\r\n\r\n"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1273360210",
+          "body": "> > I'm not sure what you meant by \"other stories in the docsite\" @ling1726 ?\r\n> \r\n> @Hotell all our docsite stories are colocated. i.e `Menu` docs stories are in the react-menu package\r\n\r\ngotcha, so we are on same page -> \"about is to co-locate those vr stories/tests within package\""
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1273400101",
+          "body": "Added vr stories colocation to the \"todo\" steps in the issue "
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1693788364",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.\n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1693788367",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.\n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1693788607",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.\n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1693793054",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.\n\n*Still require assistance? Please, create a new issue with up-to date details.*"
+        },
+        {
+          "url": "https://github.com/microsoft/fluentui/issues/25078#issuecomment-1910785846",
+          "body": "Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.\n\n*Still require assistance? Please, create a new issue with up-to date details.*\n<!-- Policy app identification https://img.shields.io/static/v1?label=PullRequestIssueManagement. -->"
+        }
+      ]
+    },
+    {
+      "repo": "tailwindlabs/headlessui",
+      "number": 1607,
+      "title": "Regression: No transitions on open dialog [v1.6.5]",
+      "url": "https://github.com/tailwindlabs/headlessui/issues/1607",
+      "origin": "repo:tailwindlabs/headlessui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "<!-- Please provide all of the information requested below. We're a small team and without all of this information it's not possible for us to help and your bug report will be closed. -->\r\n\r\n**What package within Headless UI are you using?**\r\n\r\n@headlessui/vue\r\n\r\n**What version of that package are you using?**\r\n\r\n1.6.5\r\n\r\n**What browser are you using?**\r\n\r\nChrome\r\n\r\n**Reproduction URL**\r\n\r\nhttps://headlessui.dev/vue/dialog\r\n\r\n**Describe your issue**\r\n\r\nNo transitions take place when dialog initially appears or after closing/opening it again. Transition on close seems to work though. It used to work in v1.6.4.",
+      "comments": [
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1161596899",
+          "body": "This is appears to be whenever there is a focussable (input/button) element within the dialog panel. The lack of transition used to occur on initial load of the component but now it appears to never transition when showing the panel."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1161901761",
+          "body": "Seems to be working in Safari, but not in Firefox or Chrome anymore... if that helps."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1161935337",
+          "body": "I'm seeing this too. Only when I have an input with autofocus turned on though."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1161939670",
+          "body": "A workaround, for now, is to manually focus the input with no delay. Seems to work.\r\n\r\n```typescript\r\n  useEffect(() => {\r\n    setTimeout(() => {\r\n      if (inputRef.current) {\r\n        inputRef.current.focus();\r\n      }\r\n    }, 0);\r\n  }, []);\r\n```"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1163640824",
+          "body": "Must have been introduced in `1.6.5`. Tested it in `1.6.4` with no problems. I see this issue on modals and slideovers, if the _first_ autofocussed item is an input. If it's a button the problem does not appear.\r\n\r\nProblem appears on safari in my case, tool "
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1164787316",
+          "body": "Yeah, also happens in Safari.  https://headlessui.dev/vue/popover\r\n\r\nThe react version works fine though."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1165210286",
+          "body": "Can confirm that the issue is in `1.6.5`. Modals and slide-overs both skip their entrance transition classes and insta-render.\r\n\r\nSafari did not have the issue in my use cases. Chrome and Firefox had it - in a Vite/Vue setup, a Vite/Vue/Ts setup, and a Nuxt 3 setup.\r\n\r\nDowngrading to `1.6.4` solved the issue across all three implementations. \r\n\r\nAnd for what it's worth in my use cases, there were no inputs or anything. I had a slide-over and a dialog from the headlessUI site both balking on the animate in on the two browsers. No inputs involved. Just an icon close button or the default buttons from the headless examps."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1167322862",
+          "body": "I'm experiencing similar issues on react with v1.50, v1.6.4 and v1.6.5.\r\n\r\nReproduction URL: https://codesandbox.io/embed/tailwind-css-and-react-forked-wsiu2h"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1167731160",
+          "body": "I'm experiencing the same problem. I had the v1.4.1 and decided to update to v.1.6.5 today and then I had this issue with the Transition component. I had to downgrade to v.1.50 in order to see this problem disappear. I'm going to skip v1.6+ for now. "
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1170836363",
+          "body": "same here"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1172680061",
+          "body": "I have this same issue but with a variation that may provide clues as to the cause. Crucially, for me it (the \"insta render/insta open bug) occurs **ONLY IN SPECIFIC CIRCUMSTANCES** in _1.6.4_, but **always** in 1.6.5. However, because I was able to reproduce the insta-open behavior under a specific circumstance in 1.6.4, I thought this could be useful to report in terms of tracking down the cause.\r\n\r\nIn the attached video, note that the slide-open transition appears properly when triggering (via a simple update of a `ref` reactive boolean which is tied to a prop of the slideover panel) from:\r\n - A regular button (button tag; not SFC)\r\n - A regular button as part of a button group (as a separate SFC)\r\n\r\nHowever, note that when it is triggered from an open menu (Button group, with dropdown: https://tailwindui.com/components/application-ui/elements/button-groups), it instantly renders without transition.\r\n\r\nhttps://user-images.githubusercontent.com/5987153/176961871-5b394c62-8f02-4bce-9bc5-556edb59c96d.mp4\r\n\r\n\r\nGiven this, I am wondering if there is a (Headless UI internal) interaction between whatever's tracking the \"open\" state for both the Button group with dropdown, and the slideover?\r\n\r\nOn the other hand, I was not able to reproduce the issue with a minimal example, even using 1.6.4:\r\n\r\nhttps://stackblitz.com/edit/github-gdgttl-kvccnl?file=src/App.vue\r\n\r\n\r\nMy local project (as pictured in video; with hybrid behavior) versions:\r\nVue 3.2.25\r\n@headlessui/vue 1.6.4\r\n Slideover and Button with dropdown components directly from TailwindUI with modification to pass props in, emit events out, etc.\r\n"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1172997966",
+          "body": "I'm experiencing the same issue with @headlessui/vue 1.6.5, the initial animations won't work. For now downgrading to the previous version (1.6.4) fix the problem. "
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1173633931",
+          "body": "Same: @headlessui/vue 1.6.5.\r\nIf there is no focusable element works fine. The demo on the site is with the same issue."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1175168833",
+          "body": "Confirm, too only enter position are not working with `@headlessui/vue@1.6.5`\r\n\r\nThe example are not working either when choosing Vue (it works when you chose react)"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1175704346",
+          "body": "I've been thinking I've been going crazy (maybe I missed something) the last week, and just gave up... until I tried a new popover and still no transition. Both glad and frustrated it's not just me. Gonna try the downgrade."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1179580091",
+          "body": "Seems to be related to focus-trap refactories since v1.5.0 - sadly Combobox \"tab+focus\" was broken in 1.5.0. So I had to find a workaround for any 1.6.x version, which is to pin to version 1.6.4 + handling `focus()` in dialogs by app logic.\r\n\r\nThis is all vue... btw.\r\n\r\nSetup modals, panels with new `DialogPanel` (https://github.com/tailwindlabs/headlessui/releases/tag/%40headlessui%2Fvue%40v1.6.0)\r\n\r\nnow transitions work, but focus-trap is messed up (tab cycles through all other focusable elements first until stepping into modal, from now on stays in the trap). \r\n\r\nA fix is to force `focus()` onModalOpen by yourself, so let focus step into the trap.\r\n\r\nAdd event handler to TransitionRoot, ie.:\r\n```vue\r\n<TransitionRoot as=\"template\" :show=\"isOpen\" @after-enter=\"onEntered\">\r\n```\r\n\r\nAnd with (template):\r\n\r\n```html\r\n<button ref=\"CancelButtonRef\" type=\"button\">\r\n  Cancel\r\n</button>\r\n```\r\n\r\nplus (script setup):\r\n\r\n```js\r\nconst okButtonRef = ref(null)\r\nconst onEntered = () => okButtonRef.value.focus()\r\n```\r\n\r\nUX works out as expected.\r\n\r\n---\r\n\r\nissues with 1.6.5 & 1.6.6 \r\n\r\n- no fix for initial transition issue\r\n- no fix for focus (1.6.6 gives some back but not when combined with combobox)\r\n- Menue with a or button tags will stay \"opened\" after click when opening a dialog (also related to focus-trap handling)\r\n\r\n---\r\n\r\nI'll try to setup stackblitz examples for both issue (1.6.6) and workaround (1.6.4). I'd liked to investigate and contribute, but TS + React are not my best friends..."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1179763604",
+          "body": "follow up:\r\n\r\n1.6.6 with Transition- (& focus-) issue\r\nhttps://stackblitz.com/github/mashpie/headlessui-transition-focus-issue/tree/1.6.6?file=src%2Fcomponents%2FDialog.vue\r\n\r\n1.6.4 working Transition but focus issue (with workaround)\r\nhttps://stackblitz.com/github/mashpie/headlessui-transition-focus-issue/tree/1.6.4?file=src%2Fcomponents%2FDialog.vue"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1181950273",
+          "body": "Hey! Thank you for your bug report!\r\nMuch appreciated! \ud83d\ude4f\r\n\r\nThis should be fixed by #1664, and is available in the latest release 1.6.7.\r\n\r\nYou can already try it using `npm install @headlessui/vue@latest`."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1181971023",
+          "body": "Thank you so much @RobinMalfait!\r\n\r\nI can confirm my use cases are working fine now with 1.6.7\r\n(https://github.com/mashpie/headlessui-transition-focus-issue/tree/1.6.7)\r\n\r\nKeep up the good work :)\r\n"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1182006538",
+          "body": "Looking forward to the react release!"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1182615738",
+          "body": "@RobinMalfait Awesome and thank you very much! Nice work on the tests, too! :)"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1183669631",
+          "body": "@RobinMalfait Thanks! will this be fixed on the React version?"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1206816808",
+          "body": "@LucasNovaes2016 Looks like the React version is being worked on right now https://github.com/tailwindlabs/headlessui/pull/1118"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1267457026",
+          "body": "It seems absolutely the same issue exists in `@headlessui/react`, latest `v1.7.3`. Did anyone look at that by chance?"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1267461804",
+          "body": "@eugenet8k can you create a reproduction of this and share it?"
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1267467310",
+          "body": "@RobinMalfait won't do an example, because the issue seems to be well described here https://github.com/tailwindlabs/headlessui/issues/390\r\n\r\nIt was about having a button with `autoFocus` prop in React, the initial transition wouldn't work then. So it has a workaround. \r\n\r\nThank you for a quick response though."
+        },
+        {
+          "url": "https://github.com/tailwindlabs/headlessui/issues/1607#issuecomment-1267673347",
+          "body": "Hmm, when I use the CodeSandbox from #390 and bump to the latest version all the enter transitions seem to work just fine: https://codesandbox.io/s/headlessui-dialog-forked-beenfw?file=/pages/index.js \ud83e\udd14 "
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 20979,
+      "title": "[Bug Report][3.7.12] Regression in v-dialog, the height of the content is not respected any more",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/20979",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "https://github.com/user-attachments/assets/862f9ffb-e52d-4a57-bd98-2d490fb3850c\n\n### Environment\n**Vuetify Version:** 3.7.12\n**Last working version:** 3.7.3\n**Vue Version:** 3.5.13\n**Browsers:** Chrome 133.0.0.0\n**OS:** Windows 10\n\n### Steps to reproduce\n1) use the reproduction link\n2) click 'open dialog'\n\n### Expected Behavior\nThe component height should be 800, as the content `<v-card height=\"800\">`.\n\nThis was working until version 3.7.3 and since version 3.7.4 is not working any more\n\n### Actual Behavior\nThe height of v-card is ignored and it is adjusted to the v-card content\n\n### Reproduction Link\n[https://play.vuetifyjs.com/#...](https://play.vuetifyjs.com/#eNp9U01v2zAM/SuEz7FTYBs2BGmxYjsO2O7LDozMJMRkWZMor0DQ/17KiVvbdeuTRT4+8vHj97mIwazvva+6RMWm2Ao13qLQ3c4BbLsSve9/+4dpnSA7CldTb6wZbXuEBh/K/1zL6XZXfLq52RXPGEUNrNCV0bayQSPcobRBwWfwofVxA8/GX/kNjxOKPtVe3NgCSrdnVyvJNHZXTGGmtX2qmMIBDZUdBkYnc5jQgyjqpycH33tVc8Q1UEEHlTP13m3XfYVj3etRO99pR00HTDbTnoHjfdZCS/oNhhqExZJChwrhRHw85eAvs7aPosqsbeYC+NEGaoB9TA3UuUcQWQAbkpX2zEUyQpICYM2eo2F3BLKszki1BszpiFNsWq1Q5SkXO8M118kJJAGLe80GJJdMpAtzdAho+V/Cala0dnJc9bKkPHMt8pUq9UevYw79RK6/c5LlfRptwTfbRnpjDfL31Vg2fxU4DKzq0CaCWzigjfQ6ZGE/JlqX5AzOt3bqBXW5wuFUc9jkVrPlcsqT+OJx5ZK1q+JD9bn6WPx5AqhFL8Q=)\n\n\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/20979#issuecomment-2714290307",
+          "body": "@KaelWD I cannot update vuetify anymore because of this issue, we are using dialog extensively.\n\n would you have a workaround ?"
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/20979#issuecomment-2772399049",
+          "body": "Looks to be caused by [this change](https://github.com/vuetifyjs/vuetify/pull/20555/files#diff-0ca827fe1439dde86f60164ea243a0e4c495fa2e03606f4dd802703d1a0d30efR27)\nQuick workaround can be setting `style=\"flex: unset\"` on the `v-card` (which can be also set as a [config default](https://play.vuetifyjs.com/?active-file=src%2Fvuetify.js#eNp9VE1v2zAM/SuEL9mAJO5lwBC0xYruOGA7DL3MOygynWiTJU2ivBRB/vso2U5jN10OtkU+frxHKj+ORfCy7CKSap7Xv0KxKVTrrCc4gvQoCJ96H5yg8baFxYBdVKYyeMhQaU0gGBxwNw18d6wMAO2xxQ3kb4AaGxE1fe+NC612e1ose19ZpvcpnwZcOAeWJXhsbYcgGkIPjTpg3buePiuh7e4MZcuj8PXFGSDQs04FG42HDUQT8Fx2LDm+0/P0vjLFMiv04NyaCbI8t4St08zvPsFuu5VwLn/mA0tBQhn0gykb69wZtOKw+qtq2t9VxYebm6o4Yxg1ZoVuFbSljZCkOkHWM/gIzlvHKpyN39IZTpMUudSWeCwvFuB0W2VqTjKNrYopTFqdS4XoGyFx1QmvhKE5jPBAjPrq0ECv9xwxBDKoYTpT7/1tmTu85F1eyPkfOYZNyGKo8JC44DX+kkcOpEgjQ8cOYY9pw9jycSb7RdQqcZu5AL5Y3jdQLsQW6qQRBEUgWqRlXnuUhBQ9iFo5FaQyO0Ct2Bmw5oB5OlQxtJY7ZHqcSxmpalVHQxAJtNhyNUDqKyEvzM4IEFr9iWI9a5qVvOz6OqU0c27yFSv2B8dj9nkiw+c8yfV9utiCR20DvrEG6fdJaiV/M3Ac2LoTOiL/QTRCB3wdcmU/Jlyv0Rmdb+3UC6q/heNVTWGTu5os/VWexBenpYla58fPfzU/jd8=) to apply it globally until a fix is made)\n\n\n"
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/20979#issuecomment-2776394203",
+          "body": "In 3.7.4+ set height prop directly in v-dialog instead v-card fix this"
+        },
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/20979#issuecomment-2777811017",
+          "body": "@valbertVieira no the point is that the behavior do not change when I do an update of vuetify"
+        }
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 20021,
+      "title": "[Bug Report][3.6.9] v-icon doesn't display \"icon\" when slot is filled (regression from 3.0.0 beta 5)",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/20021",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### Environment\r\n**Vuetify Version:** 3.6.9\r\n**Last working version:** 3.0.0-beta.4\r\n**Vue Version:** 3.4.29\r\n**Browsers:** Firefox 129.0\r\n**OS:** Linux x86_64\r\n\r\n### Steps to reproduce\r\nCreate an empty v-btn. Populate the icon prop. An icon-button should appear\r\nAdd a comment or an empty <template></template>. The icon disappears, but the button remains.\r\n\r\n### Expected Behavior\r\nIcon remains\r\n\r\n### Actual Behavior\r\nIcon disappears\r\n\r\n### Reproduction Link\r\n[https://play.vuetifyjs.com/#...](https://play.vuetifyjs.com/#eNqNkcFuwyAMhl+FcS5w2A5T1U3dYU9RekgTb2ULBmGaaqr67jNEm9L20NzANt///2Zzkm8x6uEAcilXGXzsmwyvFoVYDWqXUbg24IuVvnOKcpOsrE1uPygl3gdA0Yg2eA+YhQciIJH3Dj9JHKJQakSZyuLzHPC/i2M4rsylp3mgydwFQC5k7/Cb9BcF5MCnQrGyJbJyKTajvpX7nCMtjWk75MkOejckjZANRm94Vdl9/Kwf9aN+Np2j/FdSfbMjXWGFtLV4ZkHnY0hZ+SZeqY6Nqlwrpcakcr9jYc1jJh0wOw+qC756eRq9TMoayKtdCkeCxBArFxOZYniG1L20LHGDNqw3QFIJsIME/CHzEl09m6a6at0kK+rnsu/zQtZnvPhqWW5/Abfv94c=)\r\n\r\n### Other comments\r\nThis is mostly annoying when using an icon-button to activate a v-dialog. The modal sits inside the button, but there's no actual \"content\" in the slot, which I assume tells the component to not utilize the icon anymore.\r\n\r\nI can see this not being a bug, just unintended but technically correct behavior.\r\n\r\nused to work in Vuetify 3.0.0 beta 4\r\n\r\n\r\n<!-- generated by vuetify-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/vuetifyjs/vuetify/issues/20021#issuecomment-2173847549",
+          "body": "https://github.com/vuetifyjs/vuetify/issues/17807 is closed without any reason. So I had to open a new one.\r\n"
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 4311,
+      "title": "Table enableFocusedCell causes text to be written in a previous unfocused cell (regression between 3.8.0 and 3.8.1)",
+      "url": "https://github.com/palantir/blueprint/issues/4311",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "#### Environment\r\n\r\n- __Package version(s)__: 3.8.1 and above\r\n- __Operating System__: Mac\r\n- __Browser name and version__: Chrome\r\n\r\n#### Code Sandbox\r\n\r\nLink to a minimal repro (fork [this code sandbox](https://codesandbox.io/s/blueprint-sandbox-et9xy)): https://codesandbox.io/s/blueprint-sandbox-forked-gen08?file=/src/index.tsx\r\n\r\n#### Steps to reproduce\r\n\r\n1. in the first cell type 6\r\n1. press enter\r\n1. press 7\r\n1. press enter\r\n\r\n\r\n#### Actual behavior\r\n\r\n7 will override 6 but focus will be in row 3\r\n\r\n#### Expected behavior\r\n\r\nin version 3.8.0 \"6\" will be input into the first row and 7 will be input into the second row.\r\n\r\n\r\n#### Possible solution\r\n\r\nCheck for a regression between 3.8.0 and 3.8.1\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/4311#issuecomment-689007043",
+          "body": "Was this working before 3.8.0? https://github.com/palantir/blueprint/commit/69882d36d1f1c8a0eb83859d714fc80a5ed98a53 is the only change between those two versions, it is a commit which tried to _fix_ some regressions in table lifecycle methods introduced in table v3.8.0.\r\n\r\nNote that there are still lingering issues with table lifecycle methods in the 3.8.x version range: https://github.com/palantir/blueprint/milestone/41. For now the recommendation is to downgrade to 3.7.x"
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/4311#issuecomment-689014273",
+          "body": "Yes, it was working before 3.8.0.\r\n\r\nTo test I went into the codesandbox https://codesandbox.io/s/blueprint-sandbox-forked-gen08?file=/src/index.tsx and changed the version and retested the steps above.\r\n\r\nThe result:\r\n3.8.1 fails\r\n3.8.0 works ok\r\n3.7.1 works ok\r\n3.4.0 works ok\r\n3.2.0 works ok\r\n3.1.1 the code sandbox doesn't compile\r\n "
+        },
+        {
+          "url": "https://github.com/palantir/blueprint/issues/4311#issuecomment-1069269402",
+          "body": "Forked and updated your sandbox to table v4.0.0-rc.2 and `<Table2>`... looks like the behavior is at least a little better since \"6\" is not overwritten, but the second cell never goes into editing state to accept the \"7\", it's just blank:\r\n\r\n![2022-03-16 11 35 51](https://user-images.githubusercontent.com/723999/158628852-ea9cafc9-3556-4848-878a-f7cc9658fa55.gif)\r\n\r\nhttps://codesandbox.io/s/blueprint-sandbox-forked-dlbgl1?file=/src/index.tsx\r\n\r\nthis seems like a different issue, though... if it's still present after upgrading to v4.0 stable (releasing soon), I'd be happy to take another look at this issue or a new one."
+        }
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 3389,
+      "title": "3.14.0 regression with old react types",
+      "url": "https://github.com/palantir/blueprint/issues/3389",
+      "origin": "repo:palantir/blueprint is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Reported defect is type/build/test-only or visual-testing infrastructure, not original user-facing keyboard regression.",
+      "issueBody": "Consumers with old `@types/react` versions get compilation failures like this:\r\n\r\n```\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/common/utils.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/common/utils.d.ts(20,115):\r\n        TS2314: Generic type 'ReactElement<P>' requires 1 type argument(s).\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/common/utils.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/common/utils.d.ts(93,175):\r\n        TS2707: Generic type 'SyntheticEvent<T>' requires between 0 and 1 type arguments.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/collapse/collapse.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/collapse/collapse.d.ts(87,15):\r\n        TS2314: Generic type 'ReactElement<P>' requires 1 type argument(s).\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget.d.ts(11,19):\r\n        TS2314: Generic type 'ReactElement<P>' requires 1 type argument(s).\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget.d.ts(12,30):\r\n        TS2707: Generic type 'MouseEvent<T>' requires between 0 and 1 type arguments.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/hotkeys/hotkeysTarget.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/hotkeys/hotkeysTarget.d.ts(23,26):\r\n        TS2314: Generic type 'ReactElement<P>' requires 1 type argument(s).\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(7,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(8,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(9,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(10,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(11,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(12,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(13,40):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(14,34):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(15,33):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(16,35):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(17,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/html/html.d.ts(18,32):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/resize-sensor/resizeSensor.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/resize-sensor/resizeSensor.d.ts(39,48):\r\n        TS2314: Generic type 'ReactElement<P>' requires 1 type argument(s).\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/slider/multiSlider.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/slider/multiSlider.d.ts(82,26):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n        \r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/tabs/tabs.d.ts\r\n        ERROR in /home/circleci/project/node_modules/@blueprintjs/core/lib/esm/components/tabs/tabs.d.ts(60,28):\r\n        TS2694: Namespace 'React' has no exported member 'FunctionComponent'.\r\n```",
+      "comments": [
+        {
+          "url": "https://github.com/palantir/blueprint/issues/3389#issuecomment-469383902",
+          "body": "fixed in 3.14.1"
+        }
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 2511,
+      "title": "Menu Regression: Prop gutter is not applied to popper element",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/2511",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "# Bug report\r\n\r\n## Describe the bug\r\n\r\nThe Menu component doesn't apply the gutter props to popper.\r\n\r\n```(jsx)\r\n<Menu gutter={100}>\r\n        <MenuButton as={Button}>Actions</MenuButton>\r\n        <MenuList>\r\n            <MenuItem>Download</MenuItem>\r\n            <MenuItem>Create a Copy</MenuItem>\r\n            <MenuItem>Mark as Draft</MenuItem>\r\n            <MenuItem>Delete</MenuItem>\r\n            <MenuItem>Attend a Workshop</MenuItem>\r\n        </MenuList>\r\n</Menu>\r\n```\r\n\r\n## To reproduce\r\n\r\n1. Go to the following codesandbox https://codesandbox.io/s/chakra-menu-gutter-regression-2r3ob\r\n2. Click on the menu you should see the default gutter of 8px instead of 100 from props\r\n3. Click on the popover you should see the correct gutter of 100px\r\n\r\n## Minimal reproduction\r\n\r\nhttps://codesandbox.io/s/chakra-menu-gutter-regression-2r3ob\r\n\r\n## Expected behavior\r\n\r\nMenu should apply the gutter value when it is set in the props.\r\n\r\n## System information\r\n\r\n- Version of @chakra-ui/react: 1.0.0\r\n\r\n## Additional context\r\n\r\nThis was not a problem with the release candidate 1.0.0-rc7\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/2511#issuecomment-730671052",
+          "body": "Hi @gauthierrodaro ,\r\n\r\nI just pushed a fix for this. We'll release an update shortly.\r\n\r\nIf the issue persists after upgrading, I'll re-open it."
+        }
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 1118,
+      "title": "[Menu] V1 Rendering Performance Regression",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/1118",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "**Describe the bug**\r\n\r\nRendering performance of Menu component (and possibly some others) got a lot worse (~8-10 times) after migrating a codebase to V1.0.\r\n\r\nDescription of a JSX layout rendered:\r\n- 20 Boxes each having a Menu with 6 MenuItems\r\n\r\n**Expected Behavior** \r\n\r\nRendering of such a layout should be reasonably fast.\r\n\r\n**Link to minimal reproduction** \r\n\r\n### V1.0 (huge lag when rendering):\r\n~~https://codesandbox.io/s/staging-tree-fywty?file=/src/App.js~~\r\nUpdated Sandbox: https://codesandbox.io/s/inspiring-nightingale-wmmjs?file=/src/App.js\r\n\r\n### Pre-V1.0, rendering is instant:\r\nhttps://codesandbox.io/s/condescending-hugle-40nim?file=/src/App.js\r\n\r\n**Steps to Reproduce** \r\n\r\nOpen Sandbox, click on \"Toggle\" button to hide and then un-hide the thumbnails. Notice a significant lag while rendering the layout.\r\n\r\n**Desktop (please complete the following information):**\r\n\r\n- OS: OS X most recent\r\n- Browser: Chrome\r\n- Version: most recent\r\n\r\n**Additional info**\r\n\r\nReact profiler screenshots - before V1.0:\r\n\r\n![image](https://user-images.githubusercontent.com/948486/86486971-b9f29d00-bd11-11ea-98fb-ad54a856e3ed.png)\r\n\r\nReact profiler screenshots - after V1.0 migration:\r\n\r\n![image](https://user-images.githubusercontent.com/948486/86486979-bc54f700-bd11-11ea-8f9a-51c5dae17260.png)\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-653631969",
+          "body": "I am not sure if it is related or not, but I also saw pretty bad frame rate drops too while I scroll. But for me, I think I traced it back to Popper which I believe is used for `Menu`.  \r\n  \r\nYou can actually just see the frame rate drops if you use https://next.chakra-ui.com/docs/components/menu and compare it to say for example https://next.chakra-ui.com/docs/components/modal. Simply scrolling causes the frame rate drops, no other interactions at all.\r\n\r\nMenu example:\r\n![image](https://user-images.githubusercontent.com/33623601/86489141-aa03a900-bd63-11ea-9e6c-9af9ffdf61ce.png)  \r\n  \r\nModal example:\r\n![image](https://user-images.githubusercontent.com/33623601/86489154-bab41f00-bd63-11ea-9ba2-bf07b17fb56e.png)\r\n\r\nIn my own project, I have the following. Which, if I comment out the use of `Menu` then I get a constant FPS.\r\n![image](https://user-images.githubusercontent.com/33623601/86489322-4f1e8180-bd64-11ea-951f-1d97942af7d4.png)\r\n\r\n"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-653894519",
+          "body": "We could add some tests for render times using a combination of [react-testing-library](https://github.com/testing-library/react-testing-library) and react [profiler api](https://reactjs.org/docs/profiler.html)"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-653898443",
+          "body": "The `<Popover />` component seems to have the same behaviour: rendering although not visible through the [hidden](https://github.com/chakra-ui/chakra-ui/blob/master/packages/popover/src/use-popover.ts#L176) attribute (just like `<Menu />` does [here](https://github.com/chakra-ui/chakra-ui/blob/master/packages/menu/src/use-menu.ts#L395))."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-655364048",
+          "body": "Thanks for reporting this @dmitru. I spotted a couple of performance issues related to the styling API which is related to this and I've fixed this.\r\n\r\nWe can set up the Profiler API to measure the performance metrics and further improve the code. If it's related to popper, we need to confirm for sure.\r\n\r\nAs regards the rendering, we updated the \"popover\" components to render and stay hidden in the DOM to better collect the `refs` and `index` of each item in the tree, to improve keyboard navigation and handle nested menu scenarios.\r\n\r\nIn v0, we use `querySelector` to get these `refs` but we ran into some issues with nested menus and popovers hence the change.\r\n\r\nWe need to look into this some more but I believe the changes I've made will help a bit."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-655552338",
+          "body": "@segunadebayo Tried it by running a local repo clone (but not sure if I set it up correctly, there were some theming issues). I did not notice performance improvements \u2013 rendering a dozen of Menus still blocked the main thread for ~600ms. I'll give it another try as soon as the fixes are published (btw, I'd appreciate docs on how to install a Chakra clone locally in an existing project that used chakra from npm registry!)\r\n\r\nThe version I tested was: 7c0a7ebee6ea032a53eb78c1141f54416903517d\r\n\r\nIn my experience, the current approach to always rendering content for popovers and menus won't work performance-wise in some cases (I encounter them very often for the types of apps I'm building - think interactive graphical editors with sliders, color pickers and such). \r\n\r\nFor example, in the app I'm building, there are some rendering-heavy components rendered inside Popovers, which are connected to a store (I'm using Mobx), and are re-rendered every time values change there... But I really only expect one Popover to be visible at any time (and then the performance is fine). Rendering all of their content just won't fly for me.\r\n\r\n**As a suggestion**, perhaps we could have a `isLazy` prop or similar, for both Menus and Popovers, to defer rendering of content until these components open?"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-655554998",
+          "body": "@segunadebayo **Update** The profiler shows a shallower render tree (which is good, great job on this one!), and also confirms that performance did improve slightly (but below the perception threshold).\r\n\r\n(The version I tested was: 7c0a7ebee6ea032a53eb78c1141f54416903517d)\r\n \r\nSo far the improvemens for my case are (22ms to ~19ms) for one rendered Menu. \r\n\r\nImagine how much better it'd be if Menu skipped rendering its children - it'd be down to 3ms! And the gains would be much more evident for longer / more complex content.\r\n\r\n![image](https://user-images.githubusercontent.com/948486/86930969-6e166e00-c0ec-11ea-8227-8fe2fa2d2b91.png)\r\n"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-655563526",
+          "body": "Here's an updated Sandbox that illustrates the suggestion. Notice how rendering of the layout takes so much less time.  \r\n\r\nSkipping rendering of Menu content allowed to bring the performance to an acceptable level:\r\nhttps://codesandbox.io/s/blissful-mayer-g8vmu?file=/src/App.js\r\n\r\nStill, there's a noticeable lag after a click on \"Toggle thumbnails rendering\" button, something I wouldn't expect from such a simple layout."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-656263533",
+          "body": "Comparison with a few other a11y-first libraries:\r\n\r\n**Performance is ranked from best to worst.**\r\n1. Chakra with skipped rendering of MenuItem's: https://codesandbox.io/s/blissful-mayer-g8vmu?file=/src/App.js\r\n2. Reach: https://codesandbox.io/s/stoic-diffie-8zi65-reach-84b95?file=/src/App.js\r\n3. Chakra without skipped rendering (default behavior): https://codesandbox.io/s/inspiring-nightingale-wmmjs?file=/src/App.js\r\n4. Reakit is the slowest: https://codesandbox.io/s/stoic-diffie-8zi65-reakit-8zi65\r\n\r\nIt confirms that skipping rendering of MenuItems is the biggest possible performance gain."
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-656291512",
+          "body": "@dmitru This is such thorough investigation! Thanks so much for the time and effort you're putting into this. "
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-656783744",
+          "body": "Thanks to @dmitru, we've implemented a solution for this.\r\n\r\nCheers guys"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-702711082",
+          "body": "Hi @segunadebayo, \r\n\r\nI'm seem to be experiencing similar Menu performance issues with chakra-ui/core v1.0.0-rc.3. \r\n\r\nCould you confirm which which version has the solution implemented? And where in the code base the fix exists?\r\n\r\nThanks \ud83d\udc4d \r\n"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-702717420",
+          "body": "@jackhkmatthews could you please provide a codesandbox? You may simply add the `isLazy` prop to the `Menu` component to not render the `MenuList` contents until opened. Also you may upgrade to `rc.5`. For this kind of question, I'd recommend joining [our Discord](https://discord.gg/8nzYM2) as they can be easily resolved there.\r\n\r\n[code](https://github.com/chakra-ui/chakra-ui/blob/develop/packages/menu/src/use-menu.ts#L291)"
+        },
+        {
+          "url": "https://github.com/chakra-ui/chakra-ui/issues/1118#issuecomment-702753473",
+          "body": "@ljosberinn thanks for the quick response, code link and advice!\r\n\r\nI'll be sure to join the discord and post there or here with any further questions"
+        }
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 5288,
+      "title": "MultiSelect/TagsInput (regression): placeholder doesn't dissapear in uncontrolled mode",
+      "url": "https://github.com/mantinedev/mantine/issues/5288",
+      "origin": "repo:mantinedev/mantine is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "### What package has an issue?\n\n@mantine/core\n\n### Describe the bug\n\nMultiSelect and TagsInput components in uncontrolled mode always have a placeholder, even if the value is not empty. The controlled mode works correctly. SingleSelect works correctly.\r\n\r\nThe issue doesn't reproduce in v6.0.21. Reproduces after v7.0.0.\n\n### What version of @mantine/* packages do you have in package.json? (Note that all @mantine/* packages must have the same version in order to work correctly)\n\n7.2.2\n\n### If possible, please include a link to a codesandbox with a minimal reproduction\n\n_No response_\n\n### Do you know how to fix the issue\n\nNo\n\n### Do you want to send a pull request with a fix?\n\nNone\n\n### Possible fix\n\n_No response_",
+      "comments": [
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/5288#issuecomment-1846845534",
+          "body": "It is intended behavior which is the same both for controlled and uncontrolled mode. If you would like to change it, use Combobox component to build a custom multi select component that matches the requirements of your application."
+        },
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/5288#issuecomment-1853851666",
+          "body": "> It is intended behavior which is the same both for controlled and uncontrolled mode.\r\n\r\nThis behavior is not the same for controlled and uncontrolled mode. In controlled mode, placeholder disappear, when value exists. At same time, when I set a value to uncontrolled component, the placeholder doesn't disappear. See screenshot below.\r\n\r\n<img width=\"418\" alt=\"image\" src=\"https://github.com/mantinedev/mantine/assets/43685423/8a98f932-1625-47cf-9847-b397315cbb9b\">"
+        },
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/5288#issuecomment-1853948103",
+          "body": "The behavior is consistent, I cannot reproduce it \u2013 https://codesandbox.io/p/sandbox/nostalgic-chaum-w34jm6?file=%2Fsrc%2FApp.tsx%3A28%2C15"
+        },
+        {
+          "url": "https://github.com/mantinedev/mantine/issues/5288#issuecomment-1854030259",
+          "body": "Thanks for your example. Unfortunately, I was unable to reproduce the bug in CodeSandbox. However, it reproduces in my application.\r\nAlso, I have not seen such behavior in MultiSelect components with placeholder in other libraries. That was confusing for me. If this behavior is considered correct, I have no questions left.\r\nThank you very much for your time!"
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 36743,
+      "title": "5.2.0 Regression when recreating disposed tooltips using `title`",
+      "url": "https://github.com/twbs/bootstrap/issues/36743",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Prerequisites\r\n\r\n- [X] I have [searched](https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue) for duplicate or closed issues\r\n- [X] I have [validated](https://html5.validator.nu/) any HTML to avoid common problems\r\n- [X] I have read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md)\r\n\r\n### Describe the issue\r\n\r\nHi,\r\n\r\napologies if this is a duplicate, I've tried to search without success and I've also tested against the main branch on my local machine.\r\n\r\nThe instructions to reproduce may not make sense, but I've noticed a regression with a [stimulus](https://stimulus.hotwired.dev/) controller that an application uses for tooltips\r\n\r\nSteps to reproduce are:\r\n\r\n1. Create a tooltip\r\n2. Dispose the tooltip\r\n3. Create the tooltip again on the same element\r\n4. Hover on the link\r\n\r\nGit bisect: 328f723008cc39292a9f355e2eafb0fd04740656 #35456\r\n\r\n### Reduced test cases\r\n\r\n\u2705 Working (5.1.3): https://jsfiddle.net/tagliala/r263x1bt/12/\r\n\u274c Broken (5.2.0): https://jsfiddle.net/tagliala/r263x1bt/18/\r\n\r\nMore complex use case: https://github.com/diowa/ruby3-rails7-bootstrap-heroku/compare/main...test-bootstrap-tooltip\r\n\r\n### Workaround\r\n\r\nUse `data-bs-title`\r\n\u2705 Working (5.2.0 using `data-bs-title`): https://jsfiddle.net/tagliala/r263x1bt/19/\r\n\r\n### What operating system(s) are you seeing the problem on?\r\n\r\nmacOS\r\n\r\n### What browser(s) are you seeing the problem on?\r\n\r\nChrome, Safari, Firefox\r\n\r\n### What version of Bootstrap are you using?\r\n\r\n5.2.0",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/36743#issuecomment-1186120966",
+          "body": "Git bisect: https://github.com/twbs/bootstrap/commit/328f723008cc39292a9f355e2eafb0fd04740656 https://github.com/twbs/bootstrap/pull/35456\r\n\r\nA workaround is to use `data-bs-title`"
+        }
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 32384,
+      "title": "Popover overflows container (regression)",
+      "url": "https://github.com/twbs/bootstrap/issues/32384",
+      "origin": "repo:twbs/bootstrap is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "Operating system and version (Windows, macOS, Android, iOS)\r\n- Windows 10, Build 19042 (10.0.19042)\r\n\r\nBrowser and version (Chrome, Firefox, Safari, Microsoft Edge, Opera, Android Browser)\r\n- Google Chrome, Version 87.0.4280.88 (Official Build) (64-bit)\r\n\r\n--\r\n\r\n_Note: This bug seems to have been introduced [during the transition](https://github.com/twbs/bootstrap/commit/adfdf7160b5822aae12eea677e7dd3128d2569bf) from `\"popper.js\": \"^1.16.1\"` to `\"@popperjs/core\": \"^2.5.4\"`._\r\n\r\n### Steps to reproduce the problem\r\n\r\n1. Visit https://getbootstrap.com/docs/4.5/components/popovers/#four-directions\r\n2. Trigger \"Popover on Left\" and \"Popover on Right\"\r\n3. Notice both adjust their position to be fully visible inside the body when viewport is sufficiently narrow\r\n4. Visit https://getbootstrap.com/docs/5.0/components/popovers/#four-directions\r\n5. Trigger \"Popover on Left\" and \"Popover on Right\"\r\n6. Notice both overflow the body when viewport is sufficiently narrow\r\n\r\n![456](https://user-images.githubusercontent.com/1605754/101505935-79d7bc00-393a-11eb-97e8-11a6b4ba92d9.png)\r\n\r\n### What is the expected behavior?\r\n\r\nExpected behavior is for popovers to not overflow their container (like in Bootstrap 4.5.1).\r\n\r\n### What went wrong?\r\n\r\nIt seems like there's been some change in the inline styles that are applied by Popper where we no longer perform:\r\n`transform: translate3d(x, y, z)` \r\nand instead use:\r\n`transform: translate(x, y)`.\r\n\r\n![123](https://user-images.githubusercontent.com/1605754/101506119-ac81b480-393a-11eb-9643-7374e442dbb0.png)\r\n\r\n### Any other comments?\r\n\r\nMaybe [this change](https://github.com/popperjs/popper-core/blame/671f71e2b6990765e5ca780daaea7d1f7175beb6/src/modifiers/computeStyles.js#L106) from 10 months ago had something to do with it.\r\n\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/32384#issuecomment-741955759",
+          "body": "It seems we got to explicitly define our fallback behaviour. See this demo, based on [popper's tutorial](https://popper.js.org/docs/v2/tutorial/): https://codepen.io/MartijnCuppens/pen/QWKKmLg?editors=1010 (Uncomment js for fix)"
+        },
+        {
+          "url": "https://github.com/twbs/bootstrap/issues/32384#issuecomment-742093440",
+          "body": "That was fast, thanks everyone!"
+        }
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 860,
+      "title": "`<sl-dropdown>` cannot keep content in viewport (regression in `2.0.0-beta.81`)",
+      "url": "https://github.com/shoelace-style/shoelace/issues/860",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "pending documentary qualification",
+      "reason": "Not admitted: working stable pair, applicable fix and original keyboard task not yet jointly established.",
+      "issueBody": "### Describe the bug\r\nIn version `.81`, `<sl-dropdown>` cannot keep its content in viewport. This is a regression.\r\n\r\nOne example is described here with a playground link and screenshots.\r\n[Another example is described in the next comment with a playground link and a video.](https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1219413168)\r\n\r\n### To Reproduce\r\nSteps to reproduce the behavior:\r\n\r\n1. Go to this sync: [**//rt.ht/\u22ef**](//rt.ht/x/#/=%3Clink+rel%3Dstylesheet+href%3D//cdn.jsdelivr.net/npm/%40shoelace-style/shoelace%402.0.0-beta.81/dist/themes/light.css%3E%0A%3Cscript+++type%3Dmodule+src%3D//cdn.jsdelivr.net/npm/%40shoelace-style/shoelace%402.0.0-beta.81/dist/shoelace.js+reload%3E%3C/script%3E%0A%0A%3Cstyle%3E%0A++sl-dropdown+%7B+position:+relative%3B+left:+calc%28100vw+-+3rem%29%3B+%7D++%0A%3C/style%3E%0A%0A%3Csl-dropdown+open%3E%0A++%3Csl-button+slot%3D%22trigger%22+caret%3EDropdown%3C/sl-button%3E%0A++%3Csl-menu%3E%0A++++%3Csl-menu-item%3EDropdown+Item+1%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3EDropdown+Item+2%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3EDropdown+Item+3%3C/sl-menu-item%3E%0A++++%3Csl-divider%3E%3C/sl-divider%3E%0A++++%3Csl-menu-item+checked%3EChecked%3C/sl-menu-item%3E%0A++++%3Csl-menu-item+disabled%3EDisabled%3C/sl-menu-item%3E%0A++++%3Csl-divider%3E%3C/sl-divider%3E%0A++++%3Csl-menu-item%3E%0A++++++Prefix%0A++++++%3Csl-icon+slot%3D%22prefix%22+name%3D%22gift%22%3E%3C/sl-icon%3E%0A++++%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3E%0A++++++Suffix+Icon%0A++++++%3Csl-icon+slot%3D%22suffix%22+name%3D%22heart%22%3E%3C/sl-icon%3E%0A++++%3C/sl-menu-item%3E%0A++%3C/sl-menu%3E%0A%3C/sl-dropdown%3E&|=[[1,86,1,88,0],[2,86,2,88,0]]&oi=0&h=1) \ud83d\udc48\ud83c\udffb<br><sup>Sync has versions selected for step 3 \ud83d\ude09!</sup>\r\n2. See \u274c `.81`\r\n3. Press <kbd>\u2193</kbd>\r\n4. See \u2714\ufe0f `.80`\r\n\r\n### Demo\r\n\r\nDemo is linked at step 1 above! Just open the link and press <kbd>\u2193</kbd> once! Simple as it gets.\r\n\r\n### Screenshots\r\n\u26a0\ufe0f Also added a \ud83d\udc49\ud83c\udffb [video you can play right on this GitHub issue page](https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1219413168)! \ud83d\udc48\ud83c\udffb \u26a0\ufe0f\r\n| \u274c `.81` | \u2714\ufe0f `.80` |\r\n| :-: | :-: |\r\n| ![image](https://user-images.githubusercontent.com/27027/185228863-d35e9559-0bf7-4efa-a701-22848e3e997c.png) | ![image](https://user-images.githubusercontent.com/27027/185228885-691f5943-7b66-4442-a53f-56f6193c086d.png) | \r\n\r\n### Browser / OS\r\n - OS: all\r\n - Browser: all\r\n - Browser version: all\r\n\r\n### Additional information\r\n- `.81` also taxes the CPU a lot more in this case!\r\n- <s>This seems to only happen with the right edge of the screen.</s><br>*See right below for a [vertical reproduction with video](https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1219413168)!*\r\n  - Please review `RTL` mode.\r\n- Please review `<sl-tooltip>`.\r\n- This might also be due to [updating Floating UI to `1.0.1`](https://github.com/shoelace-style/shoelace/blame/next/docs/resources/changelog.md#L35).",
+      "comments": [
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1219413168",
+          "body": "@claviska \u2013 Here is a vertical example with video capture you can play right on this GitHub issue page!\r\n\r\nPlease note that here, unlike above, the trigger is entirely in the viewport.\r\n\r\n1. Go to this sync: [**//rt.ht/\u22ef**](//rt.ht/x/#h=1&oi=0&/=%3Clink+rel%3Dstylesheet+href%3D//cdn.jsdelivr.net/npm/%40shoelace-style/shoelace%402.0.0-beta.81/dist/themes/light.css%3E%0A%3Cscript+++type%3Dmodule+src%3D//cdn.jsdelivr.net/npm/%40shoelace-style/shoelace%402.0.0-beta.81/dist/shoelace.js+reload%3E%3C/script%3E%0A%0A%3Cstyle%3E%0A++body+%7B+display:+flex%3B+justify-content:+end+%7D%0A%3C/style%3E%0A%0A%3Csl-dropdown+open%3E%0A++%3Csl-button+slot%3D%22trigger%22+caret%3EDropdown%3C/sl-button%3E%0A++%3Csl-menu%3E%0A++++%3Csl-menu-item%3EDropdown+Item+1%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3EDropdown+Item+2%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3EDropdown+Item+3%3C/sl-menu-item%3E%0A++++%3Csl-divider%3E%3C/sl-divider%3E%0A++++%3Csl-menu-item+checked%3EChecked%3C/sl-menu-item%3E%0A++++%3Csl-menu-item+disabled%3EDisabled%3C/sl-menu-item%3E%0A++++%3Csl-divider%3E%3C/sl-divider%3E%0A++++%3Csl-menu-item%3E%0A++++++Prefix%0A++++++%3Csl-icon+slot%3D%22prefix%22+name%3D%22gift%22%3E%3C/sl-icon%3E%0A++++%3C/sl-menu-item%3E%0A++++%3Csl-menu-item%3E%0A++++++Suffix+Icon%0A++++++%3Csl-icon+slot%3D%22suffix%22+name%3D%22heart%22%3E%3C/sl-icon%3E%0A++++%3C/sl-menu-item%3E%0A++%3C/sl-menu%3E%0A%3C/sl-dropdown%3E&|=[[1,86,1,88,0],[2,86,2,88,0]]&title=SL%23860) \ud83d\udc48\ud83c\udffb\r\n2. Adjust viewport height with mouse or keyboard\r\n3. Adjust library version with <kbd>\u2193</kbd>/<kbd>\u2191</kbd> keys\r\n\r\n---\r\n\r\nHere is a video capture that plays right on GitHub! Just click/tap on it \ud83d\udc47\ud83c\udffb\r\n<video src=https://user-images.githubusercontent.com/27027/185394555-e7a59f5b-e7cf-4e41-85d4-f52a4ff7af7b.mp4 autoplay muted></video>"
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1219741325",
+          "body": "Temporarily worked around with `<sl-popup>.autoSize = false` because all of my `<sl-dropdown>`s are contained in the header which makes it possible use a single rule (`sl-dropdown::part(panel) { max-height: \u22ef }`) with a trivial calculation.\r\n\r\nI have to say all this is really only possible and easy because of how well-designed [Shoelace](https://shoelace.style/) is! It truly is a gem of a library that shines bright among many that don't even grasp the power of web components, yet alone know what to do with the tech. \ud83d\udc5f\ud83d\udc8e\ud83d\udc96!\r\n\r\n---\r\n\r\nStill looking forward to a solution on this one that works for everyone though : )"
+        },
+        {
+          "url": "https://github.com/shoelace-style/shoelace/issues/860#issuecomment-1220974612",
+          "body": "Replicated and fixed in 1996037. The `auto-size` attribute was resizing both horizontally and vertically. This is now configurable in `<sl-popup>` and set to `vertical` in `<sl-dropdown>`, which restores the previous and desired behavior."
+        }
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 4951,
+      "title": "[EuiComboBox] Regression in singleSelection scrolling behavior",
+      "url": "https://github.com/elastic/eui/issues/4951",
+      "origin": "repo:elastic/eui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "Hey,\r\n\r\nI noticed that after #4879, an `EuiComboBox` with `singleSelection` will no longer scroll to the selected option on open.\r\nYou can verify this behavior by going to the [sandbox](https://codesandbox.io/s/eui-issue-ulk5f?file=/index.js) found in #4072, and alternating between versions 34.4.0 and 34.5.0. (open the first combobox in the sandbox)\r\n\r\nI think this is because of line 158 added in `componentDidUpdate`, as this condition will never be true on mount.\r\n\r\nhttps://github.com/elastic/eui/blob/efad82b13106474c83f19eeb535e037b5af13e44/src/components/combo_box/combo_box_options_list/combo_box_options_list.tsx#L155-L161\r\n\r\nI haven't sat down to think of a solution yet, maybe we could add a similar `scrollToItem` call in `componentDidMount`? (without this condition)\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/elastic/eui/issues/4951#issuecomment-3316362803",
+          "body": "\ud83d\udc4b Hi there - this issue hasn't had any activity in 6 months. If the EUI team has not explicitly expressed that this is something on our roadmap, it's unlikely that we'll pick this issue up. We would sincerely appreciate a PR/community contribution if this is something that matters to you! If not, and there is no further activity on this issue for another 6 months (i.e. it's stale for over a year), the issue will be auto-closed."
+        },
+        {
+          "url": "https://github.com/elastic/eui/issues/4951#issuecomment-3657465798",
+          "body": "Closing this old issue as it has gone stale. Feel free to re-open it if you feel it is still important."
+        }
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 1313,
+      "title": "EuiComboBox no longer supports fullWidth (regression)",
+      "url": "https://github.com/elastic/eui/issues/1313",
+      "origin": "repo:elastic/eui is:issue is:closed regression in:title (batch-fourteen query cap)",
+      "disposition": "excluded",
+      "reason": "Original reported criterion is visual layout/style, pointer-only behavior or animation; no qualifying original keyboard failure established.",
+      "issueBody": "It looks like something changed regarding the styles applied to `.euiComboBox__inputWrap`. In the [original PR adding fullWidth support](https://github.com/elastic/eui/commit/2312d6645b17857f55c4a15bd545e07680fd703d#diff-38d63a385c2b682be221f43841b4fb88) it looks like this enabled fullWidth:\r\n\r\n```scss\r\n @include euiFormControlStyle($includeStates: false, $includeSizes: true);\r\n```\r\n\r\nThen in the [latest PR touching these styles](https://github.com/elastic/eui/commit/9e429dbdc343698acfa2ab44df038c279ee82d23#diff-38d63a385c2b682be221f43841b4fb88) we changed it to:\r\n\r\n```scss\r\n@include euiFormControlStyle($includeStates: false, $includeSizes: false);\r\n@include euiFormControlSize(auto);\r\n```\r\n\r\nI haven't verified that this is the culprit but it looks possible.\r\n\r\nCC @chandlerprall @cchaos ",
+      "comments": []
+    }
+  ]
+}
