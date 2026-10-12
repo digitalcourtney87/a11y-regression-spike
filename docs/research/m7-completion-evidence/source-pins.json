@@ -716,5 +716,175 @@
       "react-dom": "18.2.0",
       "react-router": "7.6.2"
     }
+  },
+  {
+    "package": "react-datepicker",
+    "releases": [
+      {
+        "version": "6.9.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18",
+          "react-dom": "^16.9.0 || ^17 || ^18"
+        },
+        "dist": {
+          "shasum": "0ad234dad81d567ae64cad79697bbad69c95490b",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-6.9.0.tgz",
+          "fileCount": 18,
+          "integrity": "sha512-QTxuzeem7BUfVFWv+g5WuvzT0c5BPo+XTCNbMTZKSZQLU+cMMwSUHwspaxuIcDlwNcOH0tiJ+bh1fJ2yxOGYWA==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDHGd/lKcTB58prIm7QOIu/z2ezXc0ael/ej7wEOai6dgIgcW8anQ6V7yQtm2iKsGeheHub8xEcg784ntitQkccaZQ=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2741408
+        },
+        "published": "2024-04-18T07:26:54.454Z"
+      },
+      {
+        "version": "7.0.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18",
+          "react-dom": "^16.9.0 || ^17 || ^18"
+        },
+        "dist": {
+          "shasum": "432458c9ca3de201a624f31f81c808abab572d53",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-7.0.0.tgz",
+          "fileCount": 62,
+          "integrity": "sha512-GXyf0nzmjl5vvj/bBbeJUWArfc/S6k0XaLV6zjUCFFZlDtdaHIwAwVAV5Z1vX2Gxc+5pw9HOa0j/0RRfwilAYw==",
+          "signatures": [
+            {
+              "sig": "MEQCIGHu3Avr94f9RVfxoojEt/I8fFbMfOiv7E5RSrarZTnPAiBDan14xBO+KEBP2IlfT3kzj12+EBoEFo+lXZEfrB6crA==",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2017995
+        },
+        "published": "2024-06-13T18:04:05.584Z"
+      },
+      {
+        "version": "8.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc",
+          "react-dom": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc"
+        },
+        "dist": {
+          "shasum": "7dfe1fe92c4c2498491094e23141c6c32c99a55f",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-8.2.0.tgz",
+          "fileCount": 43,
+          "integrity": "sha512-zmUSOKxLrdYA6+etDU8N/w3vC9BZ4qRQ9azvp1seFgW4kk7QZJLB9aB7PJcw/EYWOK/1X7un9rUMXWPlcuZ4dw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCv421te3lCvFPRsPnFa1O+HTDOkjvdLTNn3R+4by0lZwIgEm7+MZq2JX1Gr7IOBiRiLphOP4Vy3/l3JtiD0RumMXA=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 1980405
+        },
+        "published": "2025-03-10T10:29:18.986Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
+    }
+  },
+  {
+    "package": "@mui/material",
+    "releases": [
+      {
+        "version": "7.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.2.0"
+        },
+        "dist": {
+          "shasum": "957da3b927c67e5a36a026658ffb40c10a3b6b5f",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.2.0.tgz",
+          "fileCount": 2223,
+          "integrity": "sha512-NTuyFNen5Z2QY+I242MDZzXnFIVIR6ERxo7vntFi9K1wCgSwvIl0HcAO2OOydKqqKApE6omRiYhpny1ZhGuH7Q==",
+          "signatures": [
+            {
+              "sig": "MEQCIAg54c9ydJzyzuK0+cOeIGljEUJu1oaHP8nplwKDtv5aAiA7b+aO8p/D2L0t9sTP8uKVvq+X1bVQqM74nTPO0ElsGw==",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 5596717
+        },
+        "published": "2025-06-30T08:58:52.810Z"
+      },
+      {
+        "version": "7.3.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.3.0"
+        },
+        "dist": {
+          "shasum": "12a375b2c96c84be53cd2cd51a6aa3cccd7e85d1",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.3.0.tgz",
+          "fileCount": 2223,
+          "integrity": "sha512-t0fb7+zEDTjnVe4hqzNvoGIopzGJ6AyN+qodGRENAFvL/UV3IT/vFIMHloFGnJ9DPmIgWaWasKgefPUU3OsgOQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIFCjW1ahQJCo9DkbQX4cahY2FUWzci3hTwW6gfEK/lokAiEA/+GWRZl9cVLhKeWRXipGYVvjnANPIsMTYJVItSUevow=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 5607253
+        },
+        "published": "2025-08-05T05:38:26.139Z"
+      },
+      {
+        "version": "7.3.3",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.3.3"
+        },
+        "dist": {
+          "shasum": "292fb25038945d5c0ee6675f505e4f2e147f892c",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.3.3.tgz",
+          "fileCount": 2459,
+          "integrity": "sha512-MM+pqCPvVgnbzB2DLZkqfvHKzFTJMHcxCvuDhAJvHfJeqODScIn9SuG6GVuyhxAvnnhx+3DcUiwiR83tVET1cw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC95hZNFt2FKijj/hTHlVFNj5pliJh7CAkpQTVxMbu4DwIhAKiwGQw1o2hkx/2sFBHA/825vL+kgbj1zBvWGKYi2Fzc",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@mui%2fmaterial@7.3.3",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 5650365
+        },
+        "published": "2025-10-01T16:12:50.566Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.14.0",
+      "@emotion/styled": "11.14.0"
+    }
   }
 ]

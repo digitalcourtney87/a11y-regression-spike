@@ -514,6 +514,54 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "datepicker-5428",
+      "repo": "Hacker0x01/react-datepicker",
+      "refs": [
+        "#5428",
+        "PR #4766",
+        "PR #5456"
+      ],
+      "stack": "react",
+      "package": "react-datepicker",
+      "licence": "MIT",
+      "good": "6.9.0",
+      "broken": "7.0.0",
+      "fixed": "8.2.0",
+      "symptom": "FOCUS_NOT_MOVED",
+      "documentary": "accept",
+      "note": "Same-month arrow navigation does not move actual day focus in7.0.0. Source-supported6.9.0 and published8.2.0 fix5456 propagate containerRef; shared React18.2.0. Pointer selection holds everywhere, keyboard ArrowLeft must focus February18. Two final checks/locks and fresh width twin match (DR-0106).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38228576972,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "mui-46734",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#46734",
+        "PR #46489",
+        "PR #46894"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "7.2.0",
+      "broken": "7.3.0",
+      "fixed": "7.3.3",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Empty-option freeSolo autoHighlight selection reports undefined and crashes instead of chosen foobar in7.3.0. Reported7.2.0 working, published7.3.3 fix46894 synchronizes highlight on popup opening. Shared React18.2.0 and Emotion11.14.0; original Enter criterion, ordinary Chosen foobar browse goal and width twin match independently (DR-0106).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38228576972,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [

@@ -1,0 +1,16 @@
+{
+  "id": "oss-datepicker-5428-twin",
+  "patternId": "oss--datepicker-5428",
+  "operator": "css-only",
+  "app": "oss/datepicker-5428",
+  "journeyId": "oss-datepicker-5428",
+  "target": "Main width only; component props, keyboard handling and feedback unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-datepicker-5428"
+}

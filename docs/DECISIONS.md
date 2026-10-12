@@ -4061,3 +4061,21 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Append one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and TAB/Enter/TAB journey to tab|Overview. Both refs share fixture commit41ce0d124c7cf0c1e94504b772337dc0dfd91a0c. Manual all-test append, fraction1/unused seed0; preserve prior assignments/items. No changed oracle, strategy, threshold or context. Real assigned NVDA execution remains unperformed. Evidence: docs/research/m7-completion-evidence/baseui-repeat-comparison.json.
 
 **Progress.** Eleven of18 additions built:70 test,20 dev,90 patterns,234 items; seven still needed. react-datepicker remains unsplit pending its original criterion and repeat. No new tag or M8 work.
+
+## DR-0106 Date navigation and empty-option selection admissions
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Runs38228262460/38228576972 independently match final check outputs and dependency locks for both candidates; installs/builds succeed, no external requests. Source pins and comparison hashes are retained in docs/research/m7-completion-evidence.
+
+- react-datepicker#5428: reported first broken7.0.0, source-supported6.9.0 restores the prior containerRef path, published8.2.0 contains merged5456's propagation and wrapper repair. Shared React/react-dom18.2.0. Original same-month arrow navigation must move actual day focus from February19 to February18. Good/fixed do; broken retains prior focus. Pointer selection holds everywhere, fresh width-only twin preserves keyboard outcome, no page errors. Initial38227533511 CJS default-namespace mounting failures on6.9.0/7.0.0 remain recorded; uniform default export normalization before assignment leaves the same component/props and criterion. Primary existing symptom FOCUS_NOT_MOVED. Frozen journey native Tab to Date, ArrowDown once to the initial day, ArrowLeft once to the target day; exact accessible names, no role guess or fallback.
+- MUI#46734: reported7.2.0 working/7.3.0 broken, published7.3.3 contains merged46894 popupOpen highlight synchronization (7.3.2 predates merge). Shared React18.2.0 and Emotion11.14.0. Maintainer's later confirmation accepts freeSolo+autoHighlight empty options after initial contrary speculation; original construct remains supported. Controlled multiple freeSolo/autoHighlight/autoSelect with empty options must select typed foobar on Enter. Good/fixed do; broken selects undefined and crashes reading label. Those errors are retained. Original typing/blur control and fresh width-only twin agree. Ordinary Chosen foobar browse goal is reached on line8 for keyboard good/fixed, absent broken. Existing JOURNEY_BLOCKED; frozen Tab/type/Enter then focus-mode toggle and document-top/browse goal.
+
+**Construction.** Two test version pairs, CSS_ONLY twins, exact unchanged controls and declared journeys. Both refs share final fixture commit e9969cde4df14c4c92e52a38071f8189fe3611e5. Manual all-test appends, fraction1/unused seed0, preserving previous assignments/item bytes. No changed oracle, strategy, threshold, context or execution safeguards. No assigned NVDA execution before a new tag.
+
+**Progress.** Thirteen of18 additions built:72 test,20 dev,92 patterns,240 items; five still needed. react-modal remains unsplit source-supported hypothesis. No new tag or M8 work.

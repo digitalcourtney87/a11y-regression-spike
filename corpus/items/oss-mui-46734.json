@@ -1,0 +1,24 @@
+{
+  "id": "oss-mui-46734",
+  "source": "oss-history",
+  "patternId": "oss--mui-46734",
+  "split": "test",
+  "app": "oss/mui-46734",
+  "journeyId": "oss-mui-46734",
+  "base": {
+    "ref": "oss/mui-46734@e9969cde4df14c4c92e52a38071f8189fe3611e5+@mui/material@7.2.0"
+  },
+  "candidate": {
+    "ref": "oss/mui-46734@e9969cde4df14c4c92e52a38071f8189fe3611e5+@mui/material@7.3.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Empty-option freeSolo autoHighlight selection reports undefined and crashes instead of chosen foobar in7.3.0. Reported7.2.0 working, published7.3.3 fix46894 synchronizes highlight on popup opening. Shared React18.2.0 and Emotion11.14.0; original Enter criterion, ordinary Chosen foobar browse goal and width twin match independently (DR-0106)."
+  },
+  "provenance": {
+    "origin": "mined from mui/material-ui (#46734, PR #46894); verified by m3-oss-repro run 38228576972; second-round admission DR-0106",
+    "licence": "MIT (@mui/material)",
+    "url": "https://github.com/mui/material-ui/issues/4421"
+  }
+}

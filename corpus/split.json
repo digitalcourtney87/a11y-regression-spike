@@ -193,6 +193,28 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-datepicker-5428",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:FOCUS_NOT_MOVED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-mui-46734",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -241,11 +263,13 @@
     "oss--carbon-7253": "test",
     "oss--carbon-7861": "test",
     "oss--chakra-6693": "test",
+    "oss--datepicker-5428": "test",
     "oss--fluent-27997": "test",
     "oss--fluent-35927": "dev",
     "oss--fluent-4620": "test",
     "oss--fluent-7796": "test",
     "oss--headlessui-2084": "test",
+    "oss--mui-46734": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",
     "oss--ras-8637": "test",
