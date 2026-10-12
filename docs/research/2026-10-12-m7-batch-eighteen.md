@@ -1,0 +1,3 @@
+# M7 batch eighteen — EXPLORATORY, query failure
+
+The first four planned query calls completed for Floating UI/Sonner, then `repo:pacocoursey/cmdk ... keyboard in:title` returned HTTP422. The temporary collector wrote its ledger only after all six queries, so those partial responses were not retained. No candidate source fetch/review or fixture/admission completed, and no counts are inferred from missing responses. Five query attempts consumed; the failed repository qualifier is not silently substituted within this batch. Preserve the failure and record a new retry batch before repeating calls. Existing source scope and P22/P39 remain unchanged.
