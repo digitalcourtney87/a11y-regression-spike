@@ -4272,3 +4272,18 @@ Implementation decisions under DR-0045:
 - **Approval labels.** Each calibration case carries its own approval label, so P42 raw summaries do not inherit the P40 label that P41's did.
 
 Checklist: docs/plans/2026-10-12-m9-implementation.md.
+
+## DR-0121 M9 registered evaluation complete
+
+2026-10-12. Recorded; gate acceptance pending. P42/DR-0120 was consumed by run 38315343825 at `69760a04015b3867e5f9cdc09b97de8eecec4170`. The run followed the registration (`ac21ec8`), the implementation (`b750282`, with ordinary CI 38315076817 passing) and the pre-committed analysis (`f545d29`).
+
+- **Integrity.** Exactly two Windows jobs ran, both successful. Twenty blocks, all EXPLORATORY and VALID, came from 60 base-only attempts. All 40 K1 brackets pass and all manifests are valid. There are no package, attempt, diagnostic-read or full-tree-read errors and no retry. Raw summaries carry their own P42 label.
+- **Rule 1: cursor v2 is accepted for future registered studies.** It reached the C1–C3 targets in 3/3 repetitions with no repeated position. It matched v1 on C4, and NVDA reached every target. The v1 positive control (the C1 marker stall) was reproduced.
+- **Rule 2: the focus readers are unchanged.** On F1–F4, the early absent, MSAA and full-tree reads agree with NVDA's focus speech in every repetition. Every registered prediction holds.
+- **Limits.** C3 did not exercise ignored wrappers, because Chrome omits those spans. So ignored ancestry is validated on C1 and the M8 development tree only. v2 still segments lines differently from NVDA. F2's owned markup reproduces Vuetify's "edit blank" signature, which shows a sufficient mechanism, not Vuetify's own.
+- **Scope.** M7 stays measured with v1 under `protocol-freeze-v4`, with no rescore.
+- **Cost.** The jobs took 9m38s and 7m11s, 16m49s in total against a cap of 120 minutes. M8 and M9 together used 50m29s across six jobs.
+- **Retirement.** The workflow is retired in source (its budget test failed before the guard changed and passed after) and is `disabled_manually` in GitHub. No further dispatch is authorised.
+- **Archive.** The complete raw archive (40 files, 151,272 bytes, SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`) is verified by extraction. It will be published on results under D6 after acceptance.
+
+Report: docs/reports/M9-registered-evaluation.md. Brief: docs/gates/M9-brief.md.

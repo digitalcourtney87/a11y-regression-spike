@@ -471,3 +471,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 — Read-only check: NVDA spoke Vuetify's focused field without a name, as the focus readers recorded; P42 proposed. See DR-0119 and docs/plans/M9-remedy-evaluation-proposal.md. No new execution.
 
 2026-10-12 — P42 approved; fresh controls and criteria registered before cursor v2. See DR-0120 and docs/plans/2026-10-12-m9-registered-criteria.md.
+
+2026-10-12 — M9 registered evaluation complete: cursor v2 accepted for future registered studies, focus readers unchanged. See DR-0121 and docs/reports/M9-registered-evaluation.md.

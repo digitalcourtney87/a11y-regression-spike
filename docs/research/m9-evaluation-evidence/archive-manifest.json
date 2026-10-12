@@ -1,0 +1,124 @@
+{
+  "runId": 38315343825,
+  "runUrl": "https://github.com/digitalcourtney87/a11y-regression-spike/actions/runs/38315343825",
+  "experimentalHead": "69760a04015b3867e5f9cdc09b97de8eecec4170",
+  "registrationCommit": "ac21ec8e24c7185324fff5b567e9251fab164822",
+  "approval": "P42/DR-0120",
+  "label": "EXPLORATORY",
+  "outcome": "complete: twenty valid blocks, sixty base-only attempts, both legs",
+  "bundle": "m9-registered-evaluation.tar.zst",
+  "bytes": 151272,
+  "sha256": "5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d",
+  "files": 40,
+  "inventory": {
+    "m9-registered-evaluation-nvda-absent/builds.json": "268d1d4fb103660fabc68d9567402cf06ea66d678717c45f7207611bdc2f540d",
+    "m9-registered-evaluation-nvda-absent/env.json": "c8277154617c073054c613ca05bdebff8212348c87c17d3346a41f337d5ae606",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/blocks-m9-controls-nvda-absent-1of1.jsonl": "55f22aecd647ea254e24f6ec33d82c6e22cdbab2db895d7e87e96322d506746f",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/blocks/m8-m9-generated-text.json.gz": "a3508a992d57f2a8c88bfff0863952d088110ce78336ba4968145125a94b4714",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/blocks/m8-m9-ignored-wrappers.json.gz": "61a9d06ef1531f570cdc56be458aeafcfdcf4073d3eb874a3802e5053d138f8e",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/blocks/m8-m9-marker-list.json.gz": "59cc8392c4b67219e34aa367b99f9dea0f3241cb9dcc81101a7087e64d6e03fc",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/blocks/m8-m9-plain-page.json.gz": "977dba73252a878ffe5e33ee73f08f273bb1b81a2ea878f2204ea0b63b5ff93a",
+    "m9-registered-evaluation-nvda-absent/p42-cursor-v2/summary-m9-controls-nvda-absent-1of1.json": "76fdab7be6f353fd8b3cf808ee51e141a4ae4a08bccd152cc81f565f2d62309b",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/blocks-m9-controls-nvda-absent-1of1.jsonl": "67216a321b267c6fb24e46e3edd3a190a74f1d527e6e471c5493f78a942a8c16",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/blocks/m8-m9-generated-text.json.gz": "8ed9228e63374a8b38ddb6da5494a52c334f0eab44b1e1569768630525d47a9b",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/blocks/m8-m9-ignored-wrappers.json.gz": "84760be9f0dab34986cda653889fda9c19d97f67f52afa30c279ad47632d0bd8",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/blocks/m8-m9-marker-list.json.gz": "6cffaf967706f5032729949a23952adf4d7dc5d7308a01d848e980583c50180a",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/blocks/m8-m9-plain-page.json.gz": "1a0c4d3176def3e8531eb1ccfdeeeca8f79de8934f5d27f8563b6a5f8a28e356",
+    "m9-registered-evaluation-nvda-absent/p42-cursor/summary-m9-controls-nvda-absent-1of1.json": "0f8b4776d44c983bd5bce566cfc282668a561101ffc21eb2b0ec77c43b0d7c69",
+    "m9-registered-evaluation-nvda-absent/p42-focus/blocks-m9-controls-nvda-absent-1of1.jsonl": "58456628fc69fc4675d926084113009eaf22e19caf5b4de373ad9be8f3f8e3b8",
+    "m9-registered-evaluation-nvda-absent/p42-focus/blocks/m8-m9-delayed-label.json.gz": "478bc8d33185a2498aa50b351615f3b9f649a256b07cd0bad1cd0d10ca07d528",
+    "m9-registered-evaluation-nvda-absent/p42-focus/blocks/m8-m9-focus-hidden-label.json.gz": "3294f524ab4ba1ae1cec2d336d2da475d511851b2ffccec7e4cf376201caa0c5",
+    "m9-registered-evaluation-nvda-absent/p42-focus/blocks/m8-m9-static-label.json.gz": "48db09ca84de7282105b04e082fea05245a3a279cc4ce44e6207a83b6306741b",
+    "m9-registered-evaluation-nvda-absent/p42-focus/blocks/m8-m9-unnamed-wrapper.json.gz": "ff78accc9c6be4c3645f15bf3688ca6478526c5b320c033f5603d452fb7af8e2",
+    "m9-registered-evaluation-nvda-absent/p42-focus/summary-m9-controls-nvda-absent-1of1.json": "e5e8bd987556042102d793607aae0962bf4bb727c0fc762600d5c724e3223871",
+    "m9-registered-evaluation-nvda-absent/pilot-summary.json": "023d43dfb3d9aaf8968156be6abddc23307c5002419857ba457ef6765e06598a",
+    "m9-registered-evaluation-nvda-absent/scream-signature.json": "bbb28b6c9eaad3ada4bf374f9a3c41561eec9d72f54f8cd14721c9a60d53c1d5",
+    "m9-registered-evaluation-nvda-present/builds.json": "268d1d4fb103660fabc68d9567402cf06ea66d678717c45f7207611bdc2f540d",
+    "m9-registered-evaluation-nvda-present/env.json": "28e4f0354c93d93df237c221b4daa85d578b8c094ee660237203717aa9884bb5",
+    "m9-registered-evaluation-nvda-present/p42-cursor/blocks-m9-controls-nvda-present-1of1.jsonl": "c1a17a20e0ba98b049a6e244f39384d726606a7256554f481caaff24f8606a89",
+    "m9-registered-evaluation-nvda-present/p42-cursor/blocks/m8-m9-generated-text.json.gz": "36c8119e3173b1d2b02ba8206b16841fa7865eba1d1955022daba9fc83dc770d",
+    "m9-registered-evaluation-nvda-present/p42-cursor/blocks/m8-m9-ignored-wrappers.json.gz": "8477c26c081a529e0a04e409f04f7b4e64a7878ef2f399b6f61c090a62c2aa5f",
+    "m9-registered-evaluation-nvda-present/p42-cursor/blocks/m8-m9-marker-list.json.gz": "d4ecf353594682f0bb8342926116b1db25ebd8f751a98d393ec727682ae499dd",
+    "m9-registered-evaluation-nvda-present/p42-cursor/blocks/m8-m9-plain-page.json.gz": "b19b49c34d1ca479127aac15e41c19e5683e2e3cb168c8dbbab114d72b429bc7",
+    "m9-registered-evaluation-nvda-present/p42-cursor/nvda-m9-controls-nvda-present-1of1.log": "319842aa7584c4cbc70cb73e0a1bb60606ff3ed842446e47348872cb5c666241",
+    "m9-registered-evaluation-nvda-present/p42-cursor/summary-m9-controls-nvda-present-1of1.json": "c4cc58f5e86f38643f09379c8c3cd1e2ec4b013adaf112ca1465c50388bcff6f",
+    "m9-registered-evaluation-nvda-present/p42-focus/blocks-m9-controls-nvda-present-1of1.jsonl": "11ea37525538265ee7fa90d161407ddaf789080ba538ac4243ef1f123fa383b2",
+    "m9-registered-evaluation-nvda-present/p42-focus/blocks/m8-m9-delayed-label.json.gz": "cc67da67e8ffc0784820584b25936d92857a00017ca8c575b14f1a000587a968",
+    "m9-registered-evaluation-nvda-present/p42-focus/blocks/m8-m9-focus-hidden-label.json.gz": "d2d57b2327422465db96dcf9f730658aa7ae2fcef7f597a79de725236730998c",
+    "m9-registered-evaluation-nvda-present/p42-focus/blocks/m8-m9-static-label.json.gz": "025f155f6d255161e4252b8f9b1a368cde1098fdc193f04017f288069669c164",
+    "m9-registered-evaluation-nvda-present/p42-focus/blocks/m8-m9-unnamed-wrapper.json.gz": "54c5867f44c0814b1e86e87b177cd3162d055c6f2ce4a245b3b29e7dbecef8f9",
+    "m9-registered-evaluation-nvda-present/p42-focus/nvda-m9-controls-nvda-present-1of1.log": "0c5d47bf0a24450678b638dbb1660a1c48181121ef5422efc8fb46e84675fdc6",
+    "m9-registered-evaluation-nvda-present/p42-focus/summary-m9-controls-nvda-present-1of1.json": "83d1cef91b57dde8db59d4751f37320823d6fce7d0836391ea7b1ce8a42c6ede",
+    "m9-registered-evaluation-nvda-present/pilot-summary.json": "26891bc1f3f22ef2fb0ff1045a46a2cabd2ce58b84529baa38502d5bab5bee20",
+    "m9-registered-evaluation-nvda-present/scream-signature.json": "bbb28b6c9eaad3ada4bf374f9a3c41561eec9d72f54f8cd14721c9a60d53c1d5"
+  },
+  "counts": {
+    "blocks": 20,
+    "attempts": 60,
+    "validity": {
+      "VALID": 20
+    },
+    "k1Brackets": 40,
+    "k1Passing": 40,
+    "packageErrors": 0,
+    "diagnosticReadErrors": 0
+  },
+  "manifests": [
+    {
+      "harnessCommit": "69760a04015b3867e5f9cdc09b97de8eecec4170",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "0.3.1 (sha256 5071f9664d2b656d9f8557a629427cbc92eea8fd763b312a6fce5a1fc11d7495)",
+      "dotnetVersion": "10.0.12",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      }
+    },
+    {
+      "harnessCommit": "69760a04015b3867e5f9cdc09b97de8eecec4170",
+      "imageOS": "win25-vs2026",
+      "imageVersion": "20260925.250.1",
+      "windowsBuild": "26100.33438",
+      "chromeVersion": "153.0.8010.12",
+      "chromeFlags": [
+        "--force-renderer-accessibility=screen-reader"
+      ],
+      "listenerVersion": "not run in this leg (P4)",
+      "nodeVersion": "v24.21.0",
+      "locale": "en-GB",
+      "playwrightVersion": "1.63.0",
+      "chromeSandbox": true,
+      "axMode": "screen-reader",
+      "audio": {
+        "endpointCount": 1,
+        "audiosrvRunning": true,
+        "driver": "Speakers (Scream (WDM))"
+      },
+      "nvdaVersion": "2026.2",
+      "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+      "adapter": {
+        "name": "guidepup",
+        "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+      },
+      "nvdaChannel": "IA2",
+      "synth": {
+        "name": "espeak",
+        "rate": 30,
+        "rateBoost": false
+      }
+    }
+  ],
+  "nvdaBinariesIncluded": false
+}
