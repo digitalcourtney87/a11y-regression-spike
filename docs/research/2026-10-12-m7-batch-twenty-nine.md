@@ -1,0 +1,3 @@
+# M7 batch twenty-nine — EXPLORATORY
+
+17 queries,287 reported total hits,12 selected leads. Two new fixtures: MUI custom Paper and Carbon timeout. Two dispatches, first38231384520 shared with modal role preparation, second shared with batch30 first. MUI original content/browse criterion qualifies on first; independent repeat remains required. Carbon original lifetime criterion reproduces but its Saved browse goal matches a static heading, so neutral heading repair precedes final two checks. Modal diagnostics retain absence of DOM outside-focus events and add document-focus evidence. No search-only admission or assigned execution/tag. Fluent source lead followed separately in batch30.

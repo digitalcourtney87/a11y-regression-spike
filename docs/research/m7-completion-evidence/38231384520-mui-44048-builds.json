@@ -1,0 +1,23 @@
+[
+  {
+    "label": "5.10.17",
+    "version": "5.10.17",
+    "before": "2022-12-07T10:59:27Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "5.16.7",
+    "version": "5.16.7",
+    "before": "2024-08-10T09:19:28Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "5.16.14",
+    "version": "5.16.14",
+    "before": "2025-01-07T21:19:07Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]
