@@ -1,0 +1,16 @@
+{
+  "id": "oss-headlessui-2084-twin",
+  "patternId": "oss--headlessui-2084",
+  "operator": "css-only",
+  "app": "oss/headlessui-2084",
+  "journeyId": "oss-headlessui-2084",
+  "target": "Main width only; input props, values and event handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "h(\"main\", null, [",
+      "replace": "h(\"main\", { style: { maxWidth: \"480px\" } }, ["
+    }
+  ],
+  "twinOf": "oss-headlessui-2084"
+}

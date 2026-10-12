@@ -1,0 +1,5 @@
+# M7 completion batch eleven — EXPLORATORY, recorded before search
+
+Broaden the source of explicit regression claims. Repository order is batch eight's sixteen original-M3 repositories. One query per repository: `is:issue is:closed regression in:title`, creation descending, at most30 hits/query. Select at most two new unique issues/query whose body mentions keyboard, focus, screen reader, aria or accessib (case insensitive). Apply registry/prior-ledger/original-survey exclusions and deduplication. Sixteen queries/32 selections maximum; no substitutions. Record every inspected hit/filter/cap. Do not derive cases from known G4 misses.
+
+At most two new fixtures and two exploratory dispatches, including independent repeats if qualified. P22/P39 remain unchanged: source-supported stable working pair, accessible last-good construct, identical direct framework pins and issue-derived criterion, two successful matching reproductions, benign twin/control, append to test only. No assigned execution, freeze tag, new symptom/oracle/threshold/context change. The goal remains77, availability unestablished.

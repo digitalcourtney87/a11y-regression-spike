@@ -1,0 +1,24 @@
+{
+  "id": "oss-carbon-8392",
+  "source": "oss-history",
+  "patternId": "oss--carbon-8392",
+  "split": "test",
+  "app": "oss/carbon-8392",
+  "journeyId": "oss-carbon-8392",
+  "base": {
+    "ref": "oss/carbon-8392@70b4cf64b125c66e388fbe46b8351072e0e23b1d+carbon-components-react@7.31.0"
+  },
+  "candidate": {
+    "ref": "oss/carbon-8392@70b4cf64b125c66e388fbe46b8351072e0e23b1d+carbon-components-react@7.32.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Toast timeout is omitted in7.32.0, dismissing feedback immediately. Reported7.31.0 working, published7.33.0 fix8362 restores timeout argument. Same React16.14.0/Carbon CSS10.30.0. Native Save changes must retain Saved before specified10000ms expiry, ordinary browse goal line3; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+  },
+  "provenance": {
+    "origin": "mined from carbon-design-system/carbon (#8392, PR #8362); verified by m3-oss-repro run 38234013533; second-round admission DR-0107",
+    "licence": "Apache-2.0 (carbon-components-react)",
+    "url": "https://github.com/carbon-design-system/carbon/issues/8392"
+  }
+}

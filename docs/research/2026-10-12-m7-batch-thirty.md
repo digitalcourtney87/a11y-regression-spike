@@ -1,0 +1,3 @@
+# M7 batch thirty — EXPLORATORY
+
+No new queries, two new fixtures and two dispatches38232414560/38234013533. Fluent SearchBox final checks/locks match, admitted DR-0107. Carbon final repeat matches in shared second dispatch. Deterministic controlled-close date-picker is not admitted: ArrowDown entry fails every release, and native Tab-to-day repair then fails original keyboard close on working/broken/fixed while pointer close holds everywhere. Retire recorded fixture without replacing controller/API to manufacture eligibility. Modal independent direction diagnostics show stalled wrapping but no actual original focus escape; not admitted. All outputs and source attempts retained. Actual assigned execution/new tag remain gated.

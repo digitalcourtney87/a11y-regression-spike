@@ -1,0 +1,22 @@
+{
+  "id": "oss-bootstrap-39189-twin",
+  "source": "seeded",
+  "patternId": "oss--bootstrap-39189",
+  "split": "test",
+  "app": "oss/bootstrap-39189",
+  "journeyId": "oss-bootstrap-39189",
+  "base": {
+    "ref": "oss/bootstrap-39189@b5c3ccb4bb1387903fa80d8494b5cc07a912cc06+bootstrap@5.3.1"
+  },
+  "candidate": {
+    "patch": "oss-bootstrap-39189-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0104)",
+    "licence": "MIT (Bootstrap)"
+  }
+}

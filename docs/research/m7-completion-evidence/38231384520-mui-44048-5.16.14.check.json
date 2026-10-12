@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.16.14",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": 4,
+      "holds": true,
+      "detail": "No recent searches visible=true (pointer)"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": 4,
+      "holds": true,
+      "detail": "No recent searches visible=true (keyboard)"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": 4,
+      "holds": true,
+      "detail": "No recent searches visible=true (keyboard)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

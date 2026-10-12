@@ -1,0 +1,16 @@
+{
+  "firstSuccessfulRun": 38181259137,
+  "repeatRun": 38181647925,
+  "checkOutputsIdentical": true,
+  "locksIdentical": true,
+  "versions": [
+    "9.19.1",
+    "9.20.0",
+    "9.20.4"
+  ],
+  "lockHashes": {
+    "9.19.1": "b982f7f19abf6b955c86c876904618d2b06f1e09a6f71003dcd0daacbb13cbcc",
+    "9.20.0": "5a99052d638519690081641dd3586cec5ded5ddc1facf65cf3750fbe5d153ba0",
+    "9.20.4": "8407dabfb556b9af673f6dfea91534458294dc5abced8480e85d49f93b1a5b99"
+  }
+}

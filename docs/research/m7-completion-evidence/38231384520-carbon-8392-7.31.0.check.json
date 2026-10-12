@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.31.0",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": 1,
+      "holds": true,
+      "detail": "Saved visible=true (pointer)"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": 1,
+      "holds": true,
+      "detail": "Saved visible=true (keyboard)"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": 1,
+      "holds": true,
+      "detail": "Saved visible=true (keyboard)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

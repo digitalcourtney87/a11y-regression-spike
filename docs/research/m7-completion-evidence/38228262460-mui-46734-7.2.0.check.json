@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.2.0",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": 7,
+      "holds": true,
+      "detail": "Chosen foobar=true (blur)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": 8,
+      "holds": true,
+      "detail": "Chosen foobar=true (Enter)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": 8,
+      "holds": true,
+      "detail": "Chosen foobar=true (Enter)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

@@ -1,0 +1,54 @@
+{
+  "id": "oss-mui-45049",
+  "version": "1",
+  "app": "oss/mui-45049",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-level",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "role": "slider",
+        "name": "Level",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "attempt-past-upper-mark",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowRight"
+    },
+    {
+      "kind": "at",
+      "id": "browse-level",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-preserved-level",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Level 30",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

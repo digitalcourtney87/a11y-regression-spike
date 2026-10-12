@@ -1,5 +1,5 @@
 {
-  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment. P39 second-round additions are explicitly appended to test (no shuffle); their batches have testFraction 1 and seed 0 (unused).",
+  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher\u2013Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n \u00d7 testFraction) go to test. A batch never changes an earlier assignment. P39 second-round additions are explicitly appended to test (no shuffle); their batches have testFraction 1 and seed 0 (unused).",
   "batches": [
     {
       "name": "spa-regression",
@@ -105,6 +105,171 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-datefield",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-vuetify",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-datagrid",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:STATE_NOT_CONVEYED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-zero-delay-menu",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-grouped-select",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-final-inputs",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 3
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-colon-modal",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-router-tabs",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-datepicker-5428",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:FOCUS_NOT_MOVED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-mui-46734",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-mui-44048",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-carbon-8392",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-fluent-18714",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-manual-tooltip",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-restricted-slider",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -143,17 +308,34 @@
     "atomic-crm--tab-swallowed": "test",
     "atomic-crm--toast-duplicated": "test",
     "atomic-crm--toast-region-created-populated": "test",
+    "oss--baseui-5532": "test",
     "oss--blueprint-6163": "test",
+    "oss--bootstrap-15168": "test",
     "oss--bootstrap-35496": "test",
+    "oss--bootstrap-39189": "test",
     "oss--carbon-18824": "test",
     "oss--carbon-19563": "dev",
     "oss--carbon-5623": "test",
     "oss--carbon-7253": "test",
+    "oss--carbon-7861": "test",
+    "oss--carbon-8392": "test",
+    "oss--chakra-6693": "test",
+    "oss--datepicker-5428": "test",
+    "oss--fluent-18714": "test",
+    "oss--fluent-27997": "test",
     "oss--fluent-35927": "dev",
     "oss--fluent-4620": "test",
     "oss--fluent-7796": "test",
+    "oss--headlessui-2084": "test",
+    "oss--mui-44048": "test",
+    "oss--mui-45049": "test",
+    "oss--mui-46734": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",
+    "oss--ras-8637": "test",
+    "oss--reactselect-4421": "test",
+    "oss--vuetify-21591": "test",
+    "oss--vuetify-22770": "test",
     "oss--vuetify-9627": "test",
     "react-admin-simple--action-tabindex-removed": "test",
     "react-admin-simple--aria-modal-removed": "test",

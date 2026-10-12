@@ -1,0 +1,355 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": "twenty-two",
+  "queries": [
+    {
+      "query": "repo:ant-design/ant-design is:issue is:closed regression in:title",
+      "totalHits": 27,
+      "hits": [
+        {
+          "number": 58347,
+          "title": "[6.4.4 regression] \u70b9\u51fb Modal \u5916\u4fa7\u6765\u5173\u95ed modal \u4e4b\u540e\uff0c\u6709\u4e00\u4e2a modal-mask div \u5360\u5168\u5c4f\uff0c\u6240\u6709\u5143\u7d20\u5747\u65e0\u6cd5\u70b9\u51fb",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 58125,
+          "title": "Regression in progresss bar height in Upload component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 54367,
+          "title": "[Tag] regression: closeIcon not correctly passed through",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 54366,
+          "title": "[Tag] regression: closeIcon not correctly passed through",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 52610,
+          "title": "\u274c  download visual-regression report failed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 48071,
+          "title": "Button icons with shape \"circle\" not fully vertically centered (regression of #31701)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 43747,
+          "title": "Try cypress-plugin-visual-regression-diff over argos-ci",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41864,
+          "title": "notification content won't be captured by storycap visual regression test",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 39025,
+          "title": "Card meta regression after updating from 4.20.0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 36424,
+          "title": "filterDropdown does not manage tab (usability regression since 4.19)",
+          "disposition": "selected"
+        },
+        {
+          "number": 35644,
+          "title": "Regression, Input.Search.ref causes Maximum update depth exceeded when RefCallback provided",
+          "disposition": "selected"
+        },
+        {
+          "number": 32318,
+          "title": "regression: cannot compile without allowSyntheticDefaultImports flag",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 30175,
+          "title": "[Select][Regression] rc-virtual-list-scrollbar is not removed from DOM (v 4.7.1 and later)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 29015,
+          "title": "Typescript compile error regression in 4.11.1",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 28955,
+          "title": "Select component style regression when using custom tag renderer",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 27436,
+          "title": "regression: typescript compile error without allowSyntheticDefaultImports flag ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 26484,
+          "title": "regression: compile error without allowSyntheticDefaultImports flag",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 25940,
+          "title": "regression: cannot compile without  allowSyntheticDefaultImports flag",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 22708,
+          "title": "typescript error - regression in v4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21743,
+          "title": "[4.0.0] Form.Item key string is not translated to path (regression)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21717,
+          "title": "[4.0.0] Form.Item input feedback position regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 19276,
+          "title": "typescript compiler error in 3.24.1 - regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 19086,
+          "title": "Regression: Unused moment.js is now included in bundle",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18301,
+          "title": "Regression in 3.21.4 generates tons of compilation errors",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 16210,
+          "title": "Regression: Typescript error in antd 3.16.4",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 11625,
+          "title": "Incorrect typescript interface for RcFile in Upload component [regression]",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10368,
+          "title": "Regression in onClick for Menu component",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:react-bootstrap/react-bootstrap is:issue is:closed regression in:title",
+      "totalHits": 6,
+      "hits": [
+        {
+          "number": 1563,
+          "title": "A regression for #1078 \"Modal (and probably others) should use componentWillUnmount\"",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1238,
+          "title": "[Regression] Using props \"title\" for Tabs conflicts with HTML title attribute and causes buggy hover behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1235,
+          "title": "Regression: Use of OverlayTrigger results in Javascript exception: Uncaught TypeError: \"e._reactInternalInstance._processChildContext is not a function\"",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1220,
+          "title": "Regression: overlaytrigger tooltip does not disappear when used with dropdown button",
+          "disposition": "selected"
+        },
+        {
+          "number": 587,
+          "title": "Screenshot regression tests.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 211,
+          "title": "Potential regression with browserify+NPM+Gulp",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:reach/reach-ui is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/select is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/input-number is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/checkbox is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:reactjs/react-modal is:issue is:closed regression in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:mui/base-ui is:issue is:closed regression in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 5532,
+          "title": "[Tabs][composite] v1.7.0 regression: infinite render loop (\"Maximum update depth exceeded\") when a composite item's render child has an unstable ref (e.g. react-router NavLink)",
+          "disposition": "selected"
+        },
+        {
+          "number": 5432,
+          "title": "[tabs] \"Maximum update depth exceeded\" when Tabs.Tab renders a react-router Link (1.7.0 regression)",
+          "disposition": "selected"
+        },
+        {
+          "number": 5416,
+          "title": "[popover] Hover handoff between detached triggers sharing a handle silently drops the popup (regression in 1.7.0)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5108,
+          "title": "1.6.0 regression: tooltip doesn't appear if button has ID",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3363,
+          "title": "[popover] Placement regression",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3245,
+          "title": "[tooltip] \"Maximum update depth exceeded\" when trigger is `react-router` Link (beta 5 regression)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2311,
+          "title": "[menu] Regression: pressing Space when a menu item is highlighted scrolls the menu down (while triggering the item)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 484,
+          "title": "[slider] Home / End regression",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "ant-design/ant-design",
+      "number": 36424,
+      "title": "filterDropdown does not manage tab (usability regression since 4.19)",
+      "url": "https://github.com/ant-design/ant-design/issues/36424",
+      "origin": "repo:ant-design/ant-design is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Named4.18.9/4.21.5 pair; parent36176 fix38585 stops Enter propagation but does not establish repair for this original Tab criterion.",
+      "issueBody": "### Reproduction link\r\n\r\n[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/antd-filterdropdown-focus-issue-yy73v8)\r\n\r\n### Steps to reproduce\r\n\r\n- Add `filterDropdown` option to a column\r\n- Press on the filter icon\r\n- Focus on an input element\r\n- Press `tab`\r\n\r\n### What is expected?\r\n\r\nFocus moves to the next element\r\n\r\n### What is actually happening?\r\n\r\nFocus is lost and filter dropdown is closed\r\n\r\n| Environment | Info |\r\n| --- | --- |\r\n| antd | 4.21.5 |\r\n| React | 17.0.2, 18.0.0 |\r\n| System | MacOS 12.4 (21F79) |\r\n| Browser | Chrome |\r\n\r\n---\r\n[Here's a link to the last working version](https://codesandbox.io/s/antd-filterdropdown-focus-issue-last-working-version-9tp2mv) (4.18.9) - it is the same code, the only difference is the antd version. Please also note that the bug occurs with React 17 and 18, so it's not related to `render` vs `createRoot` mounting implementation.\r\n\r\n<!-- generated by ant-design-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/ant-design/ant-design/issues/36424#issuecomment-1178469901",
+          "body": "Hello @danielkov. We totally like your proposal/feedback, welcome to [send us a Pull Request](https://help.github.com/en/articles/creating-a-pull-request) for it. Please send your Pull Request to proper branch (feature branch for the new feature, master for bugfix and other changes), fill the [Pull Request Template](https://github.com/ant-design/ant-design/blob/master/.github/PULL_REQUEST_TEMPLATE.md) here, provide changelog/TypeScript/documentation/test cases if needed and make sure CI passed, we will review it soon. We appreciate your effort in advance and looking forward to your contribution!\n\n\u4f60\u597d @danielkov\uff0c\u6211\u4eec\u5b8c\u5168\u540c\u610f\u4f60\u7684\u63d0\u8bae/\u53cd\u9988\uff0c\u6b22\u8fce\u76f4\u63a5\u5728\u6b64\u4ed3\u5e93 [\u521b\u5efa\u4e00\u4e2a Pull Request](https://help.github.com/en/articles/creating-a-pull-request) \u6765\u89e3\u51b3\u8fd9\u4e2a\u95ee\u9898\u3002\u8bf7\u5c06 Pull Request \u53d1\u5230\u6b63\u786e\u7684\u5206\u652f\uff08\u65b0\u7279\u6027\u53d1\u5230 feature \u5206\u652f\uff0c\u5176\u4ed6\u53d1\u5230 master \u5206\u652f\uff09\uff0c\u52a1\u5fc5\u586b\u5199 Pull Request \u5185\u7684[\u9884\u8bbe\u6a21\u677f](https://github.com/ant-design/ant-design/blob/master/.github/PULL_REQUEST_TEMPLATE.md)\uff0c\u63d0\u4f9b\u6539\u52a8\u6240\u9700\u76f8\u5e94\u7684 changelog\u3001TypeScript \u5b9a\u4e49\u3001\u6d4b\u8bd5\u7528\u4f8b\u3001\u6587\u6863\u7b49\uff0c\u5e76\u786e\u4fdd CI \u901a\u8fc7\uff0c\u6211\u4eec\u4f1a\u5c3d\u5feb\u8fdb\u884c Review\uff0c\u63d0\u524d\u611f\u8c22\u548c\u671f\u5f85\u60a8\u7684\u8d21\u732e\u3002\n\n![giphy](https://user-images.githubusercontent.com/507615/62342668-4735dc00-b51a-11e9-92a7-d46fbb1cc0c7.gif)"
+        },
+        {
+          "url": "https://github.com/ant-design/ant-design/issues/36424#issuecomment-1178470137",
+          "body": "trace #36176"
+        }
+      ]
+    },
+    {
+      "repo": "ant-design/ant-design",
+      "number": 35644,
+      "title": "Regression, Input.Search.ref causes Maximum update depth exceeded when RefCallback provided",
+      "url": "https://github.com/ant-design/ant-design/issues/35644",
+      "origin": "repo:ant-design/ant-design is:issue is:closed regression in:title",
+      "disposition": "pending documentary qualification",
+      "reason": "Maintainer advises useRef; no named working stable pair or applicable restoration fix established.",
+      "issueBody": "### Reproduction link\r\n\r\n[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/antd-reproduction-template-forked-5co4vz?file=/index.js)\r\n\r\n### Steps to reproduce\r\n\r\nAdd const [, setRef] = useState() prop to <Input.Search ref/>\r\n\r\nconst [, setRef] = useState();\r\n<Input.Search ref={setRef} placeholder=\"some searchable input\" />\r\n\r\n### What is expected?\r\n\r\nTo set ref\r\n\r\n### What is actually happening?\r\n\r\nError\r\nMaximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.\r\n\r\n| Environment | Info |\r\n| --- | --- |\r\n| antd | 4.20.5 |\r\n| React | tested on react 16 and 18 |\r\n| System | any |\r\n| Browser | Chrome |\r\n\r\n<!-- generated by ant-design-issue-helper. DO NOT REMOVE -->",
+      "comments": [
+        {
+          "url": "https://github.com/ant-design/ant-design/issues/35644#issuecomment-1131675655",
+          "body": "Don't use ref as state. You should use `useRef` to create ref object."
+        },
+        {
+          "url": "https://github.com/ant-design/ant-design/issues/35644#issuecomment-1131677255",
+          "body": "So if RefCallback support is dropped then types should be updated accordingly "
+        },
+        {
+          "url": "https://github.com/ant-design/ant-design/issues/35644#issuecomment-1131697344",
+          "body": "And if I wanna run some useEffect on the ref I need useState because otherwise rerender won't be trigerred"
+        }
+      ]
+    },
+    {
+      "repo": "react-bootstrap/react-bootstrap",
+      "number": 1220,
+      "title": "Regression: overlaytrigger tooltip does not disappear when used with dropdown button",
+      "url": "https://github.com/react-bootstrap/react-bootstrap/issues/1220",
+      "origin": "repo:react-bootstrap/react-bootstrap is:issue is:closed regression in:title",
+      "disposition": "excluded",
+      "reason": "Original criterion is pointer mouseleave/click tooltip dismissal; no original keyboard criterion.",
+      "issueBody": "See:\n![overlaytrigger-bug](https://cloud.githubusercontent.com/assets/30173/9492248/ba5893fe-4baa-11e5-8bee-42fb8e956010.gif)\n\n``` jsx\n  <OverlayTrigger placement='top' overlay={<Tooltip>Hello World</Tooltip>}>\n    <DropdownButton title=\"Menu\">\n      <MenuItem>Click Me</MenuItem>\n      <MenuItem>Click Me</MenuItem>\n    </DropdownButton>\n  </OverlayTrigger>\n```\n\nExpected behavior:\nTooltip should disappear as soon as user moves mouse out of the button.\n\nActual behavior:\nTooltip does not disappear when user moves mouse from the button to the menu.\nTooltip does not disappear when user clicks on a menu item.\nTooltip does not disappear until after user moves mouse on to the trigger element and then back out to force mouseleave event.\n\nUsed to work correctly in the previous release.\n",
+      "comments": [
+        {
+          "url": "https://github.com/react-bootstrap/react-bootstrap/issues/1220#issuecomment-169410446",
+          "body": "Is this issue being worked ?  I'm still seeing this bug in the 0.28.1 release.\n"
+        },
+        {
+          "url": "https://github.com/react-bootstrap/react-bootstrap/issues/1220#issuecomment-223141503",
+          "body": "Also having this issue. Is there another way an overlay on a DropdownButton?\n"
+        },
+        {
+          "url": "https://github.com/react-bootstrap/react-bootstrap/issues/1220#issuecomment-249208119",
+          "body": "Have someone found any acceptable solutions for this bag? \n"
+        },
+        {
+          "url": "https://github.com/react-bootstrap/react-bootstrap/issues/1220#issuecomment-261651199",
+          "body": "I set the trigger to hover only as I don't need mobile support right now. Not a solution though.\n"
+        }
+      ]
+    },
+    {
+      "repo": "mui/base-ui",
+      "number": 5532,
+      "title": "[Tabs][composite] v1.7.0 regression: infinite render loop (\"Maximum update depth exceeded\") when a composite item's render child has an unstable ref (e.g. react-router NavLink)",
+      "url": "https://github.com/mui/base-ui/issues/5532",
+      "origin": "repo:mui/base-ui is:issue is:closed regression in:title",
+      "disposition": "one defect, unsplit reproduction",
+      "reason": "Both reports lead to same composite ref-loop fix5441; batch23 tests one compatible router-tab construct. Never count duplicates as separate patterns.",
+      "issueBody": "# Bug report\n\n## Current behavior\n\nSince **v1.7.0**, a `<Tabs.Tab>` rendered as a react-router `<NavLink>` (the standard router-tabs pattern) throws on **mount** \u2014 no interaction required:\n\n> Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.\n\n```tsx\n<Tabs.Tab value=\"\" nativeButton={false} render={<NavLink to=\"\" end />}>One</Tabs.Tab>\n```\n\nThe loop runs through the new synchronous map-update path in `CompositeList`:\n\n```\ndispatchSetState (react-dom)\n  @base-ui/react/internals/composite/list/CompositeList.mjs:37     // setMapTick, in scheduleMapUpdate\n  @base-ui/react/internals/composite/list/CompositeList.mjs:45     // unregister\n  @base-ui/react/internals/composite/list/useCompositeListItem.mjs:45  // ref callback -> unregister(previousNode)\n  @base-ui/utils/useMergedRefs.mjs:95                              // forkRef.cleanup\n```\n\nThis worked on **v1.6.0** and broke on **v1.7.0** (the release that reworked CompositeList lifecycle timing).\n\n## Expected behavior\n\nThe tab should render once and settle, as it did on v1.6.0. A composite item whose `render` child supplies an unstable (new-identity-per-render) callback ref should not cause the composite list to re-enter `register`/`unregister` indefinitely. Composing refs with a fresh callback each render is common (react-router `NavLink`, and many wrapper/link components, do it), so it should be tolerated.\n\n## Reproducible example\n\n**https://stackblitz.com/github/tomas-gerzicak/base-ui-1.7.0-tabs-loop-repro**\n(source: https://github.com/tomas-gerzicak/base-ui-1.7.0-tabs-loop-repro)\n\nOpen it and check the console \u2014 it throws `Maximum update depth exceeded` on mount. The entire app:\n\n```tsx\nimport { MemoryRouter, NavLink } from 'react-router';\nimport { Tabs } from '@base-ui/react/tabs';\n\nfunction App() {\n  return (\n    <MemoryRouter>\n      <Tabs.Root value=\"\">\n        <Tabs.List>\n          <Tabs.Tab value=\"\" nativeButton={false} render={<NavLink to=\"\" end />}>One</Tabs.Tab>\n          <Tabs.Tab value=\"two\" nativeButton={false} render={<NavLink to=\"two\" />}>Two</Tabs.Tab>\n        </Tabs.List>\n      </Tabs.Root>\n    </MemoryRouter>\n  );\n}\n```\n\n## Base UI version\n\nv1.7.0 (regression from v1.6.0). `@base-ui/utils` 0.3.2, react 19.2, react-router 7.18.1.\n\n## Which browser are you using?\n\nReproduced in Chromium and in a React 19.2 + jsdom test environment (`@testing-library/react`). The loop is in Base UI's reconciliation (`CompositeList` \u2192 `useMergedRefs`), not environment-specific \u2014 \"Maximum update depth exceeded\" is React's runtime loop guard.\n\n## Which OS are you using?\n\nmacOS (also fails on Ubuntu CI).\n\n## Which assistive tech are you using (if applicable)?\n\nN/A\n\n## Additional context\n\nI bisected the trigger down to ref stability of the `render` child:\n\n- `render={<a href=\"#a\" />}` (static element) \u2014 **no loop**\n- `render` child that re-renders itself once (`useEffect` setState) \u2014 **no loop**\n- `render` child with a **memoized** (`useCallback`) merged ref \u2014 **no loop**\n- `render` child with an **unstable per-render callback ref** (what `NavLink` installs) \u2014 **loops**\n- `<Tabs.Indicator>` is not required; `Tabs.Root` + `Tabs.List` + two tabs is enough.\n\nSuspected root cause \u2014 interaction of two v1.7.0 changes:\n\n1. `useCompositeListItem`'s ref is merged (via `useMergedRefs`) with the `render` child's ref. When the child supplies a new callback-ref identity each render, `useMergedRefs` returns a new merged callback each render, so React detaches the old ref (\u2192 `unregister(previousNode)`) and attaches the new one (\u2192 `register(node)`) on **every commit**.\n2. `CompositeList`'s `scheduleMapUpdate` calls `setMapTick` **synchronously** on each `register`/`unregister` (the dep-less `useIsoLayoutEffect` that runs `flush()`), forcing another commit \u2014 which re-runs the merged ref \u2014 which unregisters/registers again \u2192 infinite loop.\n\nA fix could skip the synchronous re-render when the same node re-registers (map contents unchanged), or make (un)registration resilient to a merged ref that detaches+reattaches the same DOM node within a commit.",
+      "comments": []
+    },
+    {
+      "repo": "mui/base-ui",
+      "number": 5432,
+      "title": "[tabs] \"Maximum update depth exceeded\" when Tabs.Tab renders a react-router Link (1.7.0 regression)",
+      "url": "https://github.com/mui/base-ui/issues/5432",
+      "origin": "repo:mui/base-ui is:issue is:closed regression in:title",
+      "disposition": "one defect, unsplit reproduction",
+      "reason": "Both reports lead to same composite ref-loop fix5441; batch23 tests one compatible router-tab construct. Never count duplicates as separate patterns.",
+      "issueBody": "# Bug report\n\n## Current behavior\n\nA `Tabs.Tab` whose `render` target is a `react-router` `Link` puts `CompositeList` into an unbounded update loop on 1.7.0. Rendering the tab list once is enough:\n\n> Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.\n\n```\n\u276f Object.<anonymous> node_modules/@base-ui/react/internals/composite/list/CompositeList.mjs:37:5\n\u276f Object.<anonymous> node_modules/@base-ui/react/internals/composite/list/CompositeList.mjs:45:5\n\u276f node_modules/@base-ui/react/internals/composite/list/useCompositeListItem.mjs:45:7\n\u276f Object.forkRef.cleanup node_modules/@base-ui/utils/useMergedRefs.mjs:95:24\n```\n\n```tsx\nimport { Tabs } from '@base-ui/react/tabs'\nimport { Link } from 'react-router'\n\nfunction TabList() {\n  return (\n    <Tabs.List>\n      <Tabs.Tab value=\"general\" nativeButton={false} render={<Link to=\"/org\" />}>\n        General\n      </Tabs.Tab>\n    </Tabs.List>\n  )\n}\n```\n\n## Expected behavior\n\nRenders once and settles, as on 1.6.0.\n\n## What I narrowed it to\n\nOne `Tabs.Tab` with a `Link` is enough; the other tabs can be plain. Four variants, same test file, same 1.7.0 install:\n\n| `render` target | Result |\n|---|---|\n| `<Link to=\"\u2026\" />` (react-router) | \u2717 loops |\n| `(props) => <Link {...props} to=\"\u2026\" />` (callback form) | \u2717 loops |\n| local component that renders `<Link>` | \u2717 loops |\n| `<a href=\"\u2026\" />` (intrinsic) | \u2713 fine |\n| local component that renders `<a>` | \u2713 fine |\n\nSo it is not the `render` prop shape and not component-vs-intrinsic: it is `Link` itself. Wrapping it does not break the chain. On 1.6.0 every variant renders fine.\n\nThe trace bottoms out in `useMergedRefs`' `forkRef.cleanup` calling back into `useCompositeListItem`, which re-registers into `CompositeList` and setStates, so the suspects on my side are the 1.7.0 changes around ref/lifecycle timing: \"Correct layout and passive effect timing\" (#5337), \"Remove redundant lifecycle synchronization\" (#5341), \"Prevent stale cleanup from clearing registered part IDs\" (#5340), and in Composite \"Fix nested list reorder detection\" (#5156).\n\nThis looks like the same interaction as #3245 (`[tooltip] \"Maximum update depth exceeded\" when trigger is react-router Link`), which was a beta-5 regression fixed in 2025, resurfacing in the composite list path.\n\n## Versions\n\n- `@base-ui/react` 1.7.0 (1.6.0 is unaffected)\n- `@base-ui/utils` 0.3.2\n- `react` / `react-dom` 19.2.8\n- `react-router` 8.3.0 (current latest)\n- Reproduced under jsdom + Vitest, and in a Playwright run against a real browser where the page never finishes rendering.\n",
+      "comments": [
+        {
+          "url": "https://github.com/mui/base-ui/issues/5432#issuecomment-5235229651",
+          "body": "This fix will be available in the next npm release of Base UI.\n\nIn the meantime, use the [canary build](https://base-ui.com/react/overview/releases#canary-releases) from [PR #5441](https://github.com/mui/base-ui/pull/5441):\n\n```sh\nnpm i https://pkg.pr.new/@base-ui/react@ba41f1f\n```\n\nThis installs a complete package for `@base-ui/react` with the fix included. It is hosted by pkg.pr.new rather than npm, and the URL is available for up to six months."
+        }
+      ]
+    }
+  ]
+}

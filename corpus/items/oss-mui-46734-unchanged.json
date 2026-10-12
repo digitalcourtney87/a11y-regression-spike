@@ -1,0 +1,21 @@
+{
+  "id": "oss-mui-46734-unchanged",
+  "source": "oss-history",
+  "patternId": "oss--mui-46734",
+  "split": "test",
+  "app": "oss/mui-46734",
+  "journeyId": "oss-mui-46734",
+  "base": {
+    "ref": "oss/mui-46734@e9969cde4df14c4c92e52a38071f8189fe3611e5+@mui/material@7.2.0"
+  },
+  "candidate": {
+    "ref": "oss/mui-46734@e9969cde4df14c4c92e52a38071f8189fe3611e5+@mui/material@7.2.0"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-mui-46734 (P15/P39, DR-0106)",
+    "licence": "MIT (@mui/material)"
+  }
+}

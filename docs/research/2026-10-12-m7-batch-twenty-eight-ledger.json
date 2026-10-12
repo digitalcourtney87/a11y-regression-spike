@@ -1,0 +1,469 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": 28,
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed keyboard regression in:body",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 10553,
+          "title": "Docs suggestion: optional applied modal screen-reader failure exercise",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10051,
+          "title": "`Button` and `Checkbox` from `react-aria-components` rendered inside a shadow  root via `ReactDOM.createRoot` are completely non-interactive",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9631,
+          "title": "\ud83d\udc1e Chrome: Link URL hint persists after click when link remains mounted",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8697,
+          "title": "MenuItem links do not work in 1.11.0 using keyboard",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8298,
+          "title": "Combobox closes when navigating items with keyboard (May release regression)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 5658,
+          "title": "useFocusRing: isTextInput no longer toggling focus ring",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 2608,
+          "title": "ListView keyboard issues",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 2572,
+          "title": "ListView needs to support PageUp, PageDown, End and Home key events",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed keyboard regression in:body",
+      "totalHits": 7,
+      "hits": [
+        {
+          "number": 48443,
+          "title": "[MenuBar] Implementation + tests (unstable)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 48438,
+          "title": "[NumberField] Implementation + tests (unstable)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 48433,
+          "title": "[SelectField] Implementation + tests (unstable)",
+          "disposition": "selected"
+        },
+        {
+          "number": 48428,
+          "title": "[List + ToggleButtonGroup + Toolbar] Implementation + tests",
+          "disposition": "selected"
+        },
+        {
+          "number": 48423,
+          "title": "[Chip] Implementation + tests",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 48418,
+          "title": "[CardActionArea] Implementation + tests",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 36018,
+          "title": "Select dropdown menu selects the first non-disabled element when no value is selected",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed keyboard regression in:body",
+      "totalHits": 2,
+      "hits": [
+        {
+          "number": 23126,
+          "title": "[Bug]: Tooltip on the modal close button swallows Escape, so ComposedModal/Modal never handle it (strands the overlay with enable-dialog-element)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7861,
+          "title": "Update Filterable MultiSelect to work in new format",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed keyboard regression in:body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 4619,
+          "title": "DatePicker: Keyboard focus is not visible on the \"Go to Today,\" \"Next month\" and \"Previous month\" buttons",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed keyboard regression in:body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 18547,
+          "title": "[Bug Report][3.3.23] No button element for VChip close button",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed keyboard regression in:body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 3988,
+          "title": "In a Table of EditableCells, when using Tab/Enter to navigate and update cells, every other cell is updated.",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed keyboard regression in:body",
+      "totalHits": 5,
+      "hits": [
+        {
+          "number": 42851,
+          "title": "Docs: consider an applied modal accessibility exercise in Additional resources",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41542,
+          "title": "Disabled buttons breaks WCAG compliance and expected UX behavior",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 35496,
+          "title": "ESC key in DropDown no longer sets focus back to the toggle button in 5.1x",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 16074,
+          "title": "v3.3.5 ship list",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 15103,
+          "title": "v3.3.2 ship list",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed keyboard regression in:body",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 1107,
+          "title": "Menu items with `display: none` or `hidden` erroneously receive focus when using arrow keys",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 845,
+          "title": "`<sl-menu>` and `<sl-menu-item>` regression in `2.0.0-beta.79` caused by allowing focus on disabled items for improved accessibility",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 766,
+          "title": "`<sl-menu>` caching `<sl-menu-item>`s breaks dynamic toggling of `<sl-menu-item>.disabled` (`2.0.0-beta.74` regression)",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed keyboard regression in:body",
+      "totalHits": 3,
+      "hits": [
+        {
+          "number": 9997,
+          "title": "[EuiToolTip] Tooltip does not dismiss on mouse-out for aria-disabled anchors",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9099,
+          "title": "[EuiFlyout] Make flyout update focus trap shards",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 4684,
+          "title": "[EuiButtonGroup] Usability/accessibility enhancements",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:floating-ui/floating-ui is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed keyboard regression in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed keyboard regression in:body",
+      "totalHits": 30,
+      "hits": [
+        {
+          "number": 7805,
+          "title": "Find the correct scroll element for virtualized lists and keep active items in view on each axis",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7803,
+          "title": "Keep a far keyboard move in view in a virtualized list when the browser is zoomed out",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7657,
+          "title": "Return focus from ComboboxList to the combobox inside a shadow root",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7641,
+          "title": "Handle ComboboxSelect keyboard focus checks inside a shadow root",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7628,
+          "title": "Keep a far keyboard move in view in a virtualized list with items of different sizes",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7616,
+          "title": "Keep the popup state when a close is prevented",
+          "disposition": "selected"
+        },
+        {
+          "number": 7606,
+          "title": "Diagnose the Safari flake where the dialog-3403 route dialog stays in its leave state after Escape",
+          "disposition": "selected"
+        },
+        {
+          "number": 7521,
+          "title": "Ariakit UI Shell: app shell layout component (design specification)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7519,
+          "title": "Keep borderless Ariakit UI folder tab selection visible in forced colors",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7395,
+          "title": "fireClickEvent's PointerEvent construction throws under vitest's jsdom environment: \"Failed to construct 'PointerEvent': member view is not of type Window\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7384,
+          "title": "CompositeItem ignores an accessibleWhenDisabled resolved by a Focusable it renders, so arrow keys skip the item",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7363,
+          "title": "Composite composite={false} documentation overstates what it disables",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7193,
+          "title": "Event helpers in @ariakit/utils build events from the ambient global instead of the element's own window",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7192,
+          "title": "The synthetic click behind keyboard activation reports view: null and composed: false",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7168,
+          "title": "initUIEventModififiers reports a bogus modifier state for Object.prototype key names",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7116,
+          "title": "Truly disabled anchor opens the tooltip on hover when the disabled state is below the anchor",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7115,
+          "title": "Tooltip hover depends on composition order with accessibleWhenDisabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7099,
+          "title": "Alt-modified keys that move composite focus are treated as pointer modality",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7092,
+          "title": "Tab moves focus out of a modal Dialog into the browser UI",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7042,
+          "title": "Composite: a presentation drops a replaced item when the item itself held DOM focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6986,
+          "title": "Revisit composite focus presentation for real and virtual focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6902,
+          "title": "ComboboxSelect aria-haspopup stays listbox after the popover opens on macOS",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6858,
+          "title": "ComboboxSelect scroll into view can retarget on hover and misses late items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6852,
+          "title": "ComboboxPopover re-renders per keystroke and its Escape baseline can drift",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6848,
+          "title": "Clicking a combobox popover's empty space disables arrow navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6690,
+          "title": "Provider component strict miss doesn't propagate through composed hooks",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6341,
+          "title": "Div-based Focusable server-renders without tabindex=\"0\" (not keyboard-reachable until hydration) and with an invalid disabled attribute",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6323,
+          "title": "@ariakit/store: re-registering a sync/batch listener discards its pending cleanup without running it",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6301,
+          "title": "CompositeRenderer/SelectRenderer emit invalid aria-setsize/aria-posinset when an ungrouped item follows a group",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 6295,
+          "title": "Collection store item() drops metadata from the items state and ignores controlled items updates",
+          "disposition": "already-reviewed"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "mui/material-ui",
+      "number": 48433,
+      "title": "[SelectField] Implementation + tests (unstable)",
+      "url": "https://github.com/mui/material-ui/issues/48433",
+      "origin": "repo:mui/material-ui is:issue is:closed keyboard regression in:body",
+      "disposition": "not admitted",
+      "reason": "New unstable API/test implementation ticket, not a same-package stable-release regression.",
+      "issueBody": "Build `SelectField` under an `unstable_` export so the API can settle without committing to backwards compatibility. Same a11y test bar as a rewrite.\n\n**Acceptance criteria:**\n\n* Implementation matches the RFC\n* Tests:\n  * Keyboard-interaction tests for every RFC binding\n  * Accessibility-tree snapshot asserts roles/states/properties match the RFC\n  * axe-core in CI on the demo with zero violations\n  * Visual regression for default, hover, focus-visible, open, disabled, error, forced-colors states\n* Bundle-size impact recorded\n\n**Search keywords**: ",
+      "comments": []
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 48428,
+      "title": "[List + ToggleButtonGroup + Toolbar] Implementation + tests",
+      "url": "https://github.com/mui/material-ui/issues/48428",
+      "origin": "repo:mui/material-ui is:issue is:closed keyboard regression in:body",
+      "disposition": "not admitted",
+      "reason": "New unstable API/test implementation ticket, not a same-package stable-release regression.",
+      "issueBody": "Implement the shared `useRovingTabIndex` hook and integrate it across `List`, `ToggleButtonGroup`, and `Toolbar`. Splits into per-component PRs but tracked here as one issue.\n\n**Acceptance criteria:**\n\n* `useRovingTabIndex` shipped with unit tests covering Arrow keys, Home, End, Tab/Shift+Tab, focus return\n* Each of the three components updated to use the hook, preserving existing visual behaviour\n* Per-component tests:\n  * Keyboard-interaction tests for every RFC binding\n  * Accessibility-tree snapshot asserts roles/states/properties match the RFC\n  * axe-core in CI on each component's demo with zero violations\n  * Visual regression covers focus-visible state at the new (single) tab stop\n* Bundle-size delta recorded\n\n**Search keywords**: ",
+      "comments": []
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7616,
+      "title": "Keep the popup state when a close is prevented",
+      "url": "https://github.com/ariakit/ariakit/issues/7616",
+      "origin": "repo:ariakit/ariakit is:issue is:closed keyboard regression in:body",
+      "disposition": "not admitted",
+      "reason": "Applicable fix7618 identified; no stable working release or published fixing boundary established for same ComboboxSelect construct.",
+      "issueBody": "## Context\n\nWhile addressing review feedback on #7614, which fixes #7612, a [review comment](https://github.com/ariakit/ariakit/pull/7614#discussion_r4082271068) suggested that a prevented close during positioning makes that fix lose a keyboard move. Probes showed that a prevented close disturbs the popup state earlier, in two places, whether or not the popup is still positioning.\n\n## Problem\n\nWhen a close request is prevented, `Dialog` sets `open` to `false` and then back to `true` ([`dialog.tsx#L214-L225`](https://github.com/ariakit/ariakit/blob/10d46f1b327509b0c7dd0d25305b819ae260f1e0/packages/ariakit-react-components/src/dialog/dialog.tsx#L214-L225)). Other parts handle the two changes as a close and a reopen:\n\n1. **The combobox store resets the active item.** On close, it resets `activeId` and `moves` ([`combobox-store.ts#L380-L389`](https://github.com/ariakit/ariakit/blob/10d46f1b327509b0c7dd0d25305b819ae260f1e0/packages/ariakit-components/src/combobox/combobox-store.ts#L380-L389)). On reopen, the selected-item resolver makes the selected item active again ([`combobox-store.ts#L419-L442`](https://github.com/ariakit/ariakit/blob/10d46f1b327509b0c7dd0d25305b819ae260f1e0/packages/ariakit-components/src/combobox/combobox-store.ts#L419-L442)). So a `ComboboxSelect` loses a keyboard move that the user made before the prevented close.\n2. **`Popover` marks a placed popup as unplaced.** It sets its unplaced state from `mounted` ([`popover.tsx#L573-L575`](https://github.com/ariakit/ariakit/blob/10d46f1b327509b0c7dd0d25305b819ae260f1e0/packages/ariakit-react-components/src/popover/popover.tsx#L573-L575)), so the toggle sets `data-placing` on a popup that was already placed. The positioning effect does not run again, so the popup stays unplaced until an `autoUpdate` trigger, such as a resize or a scroll, runs a pass. Until then, work that waits for placement is held: keyboard moves stop scrolling the active item into view ([`composite/utils.ts#L317`](https://github.com/ariakit/ariakit/blob/10d46f1b327509b0c7dd0d25305b819ae260f1e0/packages/ariakit-react-components/src/composite/utils.ts#L317)). This also affects `Select`.\n\n## Reproduction\n\n```tsx\nimport * as Ariakit from \"@ariakit/react\";\n\nconst fruits = Array.from({ length: 40 }, (_, index) => `Fruit ${index + 1}`);\n\nexport default function Example() {\n  return (\n    <Ariakit.ComboboxProvider defaultSelectedValue=\"Fruit 1\">\n      <Ariakit.ComboboxSelectLabel>Fruit</Ariakit.ComboboxSelectLabel>\n      <Ariakit.ComboboxSelect />\n      <Ariakit.ComboboxPopover\n        onClose={(event) => event.preventDefault()}\n        style={{ maxHeight: 200, overflow: \"auto\" }}\n      >\n        {fruits.map((value) => (\n          <Ariakit.ComboboxItem key={value} value={value} />\n        ))}\n      </Ariakit.ComboboxPopover>\n    </Ariakit.ComboboxProvider>\n  );\n}\n```\n\nFor the active item:\n\n1. Click the select. `Fruit 1` is active.\n2. Press <kbd>ArrowDown</kbd>. `Fruit 2` is active.\n3. Press <kbd>Escape</kbd>. The popup stays open, and `Fruit 1` is active again.\n\nFor the placement:\n\n1. Click the select and wait until the popup is placed.\n2. Press <kbd>Escape</kbd>. The popup stays open, but it has `data-placing` again.\n3. Press <kbd>ArrowDown</kbd> 15 times. The active item moves out of view, and the list does not scroll until the page is resized.\n\nExpected: the move stays active, the popup stays placed, and the list scrolls to the active item.\n\nThe same happens with a controlled `open` state whose `setOpen` ignores `false`. With `hideOnEscape={false}`, no close is requested, and nothing changes.\n\n## Pre-existing on main\n\nYes. The active-item reset reproduces on `main` at [`10d46f1`](https://github.com/ariakit/ariakit/commit/10d46f1b327509b0c7dd0d25305b819ae260f1e0) in happy-dom and in Chrome. The placement problem reproduces there in Chrome, Firefox, and Safari, with both `ComboboxSelect` and `Select`. On `main`, when a resize finally runs a pass, `ComboboxSelect` also makes the selected item active again, because the popup takes its initial focus again. #7614 keeps a keyboard move made in the meantime. The reproductions used temporary sandboxes only.\n\n## Why #7614 can finish without it\n\n#7614 keeps a move that the user makes while the popup is positioning. A prevented close resets the active item and the placement independently of that fix, and it does so whether or not the popup was positioning.\n\n## Expected outcome\n\nA prevented close leaves the popup as it was. The active item and the move count stay the same, the popup stays placed, and the popup does not take its initial focus again.\n\n## Workaround\n\nhttps://github.com/ariakit/ariakit/issues/7616#issuecomment-5803668263\nhttps://github.com/ariakit/ariakit/issues/7616#issuecomment-5808113448\n\n## Notes for the fix\n\n- A `Dialog` fix that stops toggling `open` on a prevented close would address both problems. `ComboboxPopover` already preserves its selected-value capture across this rollback, but following that rule for the active item alone would leave the placement problem.\n- `ComboboxSelect` records the move count each time the popup opens, keyed by the select element (`openingMovesBySelect` in `combobox/__utils.ts`, since #7619). The opening presentation reads it, and after #7614 the popover's moved-item focus (`getMovedItemRef`) reads it too. The same `open` toggle resets that baseline. So a fix that keeps the store state while `Dialog` still toggles `open` must also keep this baseline. Otherwise, the popup makes the selected item active again when the next positioning pass ends.\n- With the default positioner, the veto does not run a positioning pass by itself. A regression test for a placed popup must trigger a pass, for example with a resize, or assert that the popup stays placed. With a custom `updatePosition` that holds the pass, the veto can also be tested while positioning is pending.\n\n\n",
+      "comments": [
+        {
+          "url": "https://github.com/ariakit/ariakit/issues/7616#issuecomment-5803668263",
+          "body": "**Outcome: `ariakit-bug`.** I confirmed this in Chrome against the latest `origin/main` at [`10d46f1`](https://github.com/ariakit/ariakit/commit/10d46f1b327509b0c7dd0d25305b819ae260f1e0). `ComboboxSelect` exposes the behavior through `@ariakit/react`, so the existing `bug` label is correct.\n\nI used the issue's example in a temporary sandbox, started the app with `pnpm dev-app`, and ran Click \u2192 ArrowDown \u2192 Escape in Chrome. Before Escape, the popup was open with Banana active and `moves=1`. After `onClose` prevented the close, the popup remained open but Apple was active and `moves=0`. In a control case with `hideOnEscape={false}`, Escape made no close request and Banana stayed active with `moves=1`. The screenshot shows both final states, and the recording shows both interaction sequences.\n\n![Current-main Chrome comparison: a prevented close resets the active item to Apple, while no close request keeps Banana active](https://github.com/user-attachments/assets/d4b2093b-6066-4379-a853-d2621f10f656)\n\nhttps://github.com/user-attachments/assets/2b7723c5-70b6-4a30-aa58-4c90b41248a6\n\nThe reset happens before the positioning work in #7614. Dialog publishes `open=false` and then `open=true` after the close event is vetoed. The combobox store treats the first change as a close and resets `activeId` and `moves`; reopening makes the selected Apple item active. This also resets the move baselines described in the issue body.\n\n**#5695 would address only the controlled-`open` overlap, as currently scoped.** This reproduction supplies no controlled `open` prop. #5695 proposes request-versus-commit semantics for controlled keys and explicitly leaves setter-only observer mode uncontrolled. That can prevent the speculative `open=false` transition when an owner ignores `setOpen(false)`, but it does not stop Dialog's uncontrolled `onClose` veto from publishing the false-to-true rollback. #7616 needs its own Dialog/Combobox regression coverage and a fix that preserves the active item and move baselines across a veto, or prevents the false transition before it reaches the store.\n\nFor an Escape-specific veto, prevent the close request before Dialog changes `open`:\n\n```tsx\n<ComboboxPopover hideOnEscape={false}>\n  {/* items */}\n</ComboboxPopover>\n```\n\nThis keeps Escape from closing the popup at all. For other dismissal sources, use the corresponding pre-close `hideOn...` prop where it fits the application. This workaround does not cover every `onClose` veto.\n"
+        },
+        {
+          "url": "https://github.com/ariakit/ariakit/issues/7616#issuecomment-5808113448",
+          "body": "Until #7618 is released, a prevented close can keep the popup state if the popup rejects <kbd>Escape</kbd> and outside interactions before it requests a close, so `onClose` doesn't need to prevent them:\n\n```tsx\n// TODO: Remove this workaround when\n// https://github.com/ariakit/ariakit/issues/7616 is fixed.\n<Ariakit.ComboboxPopover\n  hideOnEscape={false}\n  hideOnInteractOutside={false}\n  onClose={(event) => event.preventDefault()}\n>\n  {/* items */}\n</Ariakit.ComboboxPopover>\n```\n\nThe same props work on `SelectPopover` and other popups based on `Dialog`. When the close is prevented only under a condition, pass the condition as a callback, for example `hideOnEscape={() => !hasUnsavedChanges}`.\n\nThis extends the earlier `hideOnEscape={false}` suggestion with these limitations:\n\n- It covers only <kbd>Escape</kbd> and outside interactions. Other close requests still set `open` to `false` before `onClose` prevents them, so they still reset the popup state. For example, clicking the select button while the popup is open still makes the selected item active again. `DialogDismiss` and `store.hide()` also still reset it.\n- `onClose` no longer runs for <kbd>Escape</kbd> and outside interactions, so move any side effect that it runs for them, such as showing a warning, into the `hideOnEscape` and `hideOnInteractOutside` callbacks.\n- The popup no longer handles <kbd>Escape</kbd>, so the key press also reaches <kbd>Escape</kbd> handlers outside the popup, such as an ancestor `onKeyDown` or a `document` or `window` listener. Ariakit parent dialogs still ignore it.\n\nThe recording in #7618 shows the workaround in the reproduction sandbox.\n"
+        },
+        {
+          "url": "https://github.com/ariakit/ariakit/issues/7616#issuecomment-5808287072",
+          "body": "<!-- issue-fixed-pr-7618 -->\nThis issue has been fixed and will be included in the next release.\n\nIf you'd like to try it now, you can install the canary version:\n\n    npm i https://pkg.pr.new/@ariakit/components@7618\n\n    npm i https://pkg.pr.new/@ariakit/react@7618\n\n    npm i https://pkg.pr.new/@ariakit/react-components@7618\n\n    npm i https://pkg.pr.new/@ariakit/solid@7618\n\n    npm i https://pkg.pr.new/@ariakit/solid-components@7618\n\n"
+        },
+        {
+          "url": "https://github.com/ariakit/ariakit/issues/7616#issuecomment-5828491723",
+          "body": "<!-- issue-fixed-pr-7630 -->\nThis issue has been fixed and will be included in the next release.\n\nIf you'd like to try it now, you can install the canary version:\n\n    npm i https://pkg.pr.new/@ariakit/components@7630\n\n    npm i https://pkg.pr.new/@ariakit/react@7630\n\n    npm i https://pkg.pr.new/@ariakit/react-components@7630\n\n    npm i https://pkg.pr.new/@ariakit/solid@7630\n\n    npm i https://pkg.pr.new/@ariakit/solid-components@7630\n\n"
+        }
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7606,
+      "title": "Diagnose the Safari flake where the dialog-3403 route dialog stays in its leave state after Escape",
+      "url": "https://github.com/ariakit/ariakit/issues/7606",
+      "origin": "repo:ariakit/ariakit is:issue is:closed keyboard regression in:body",
+      "disposition": "not admitted",
+      "reason": "Safari-only test flake with unconfirmed root cause, outside frozen browser context.",
+      "issueBody": "## Context\n\nWhile fixing #7603, I scanned the complete raw logs of every `main` `app.yml` run from the #6881 merge (2026-07-27) to 2026-09-23: 459 runs, 466 attempts, including green jobs. The scan found one incident of the third `dialog-3403` browser test, \"route dialog without unmountOnHide preserves close behavior\". #7603 mentions this case but does not diagnose it.\n\n## Problem\n\nThe test opens the route dialog, presses Escape, and expects the dialog to stay attached and become hidden ([`test-browser.ts#L34-L48`](https://github.com/ariakit/ariakit/blob/4474bd3c68da69c58817a2ca23da44f43e23264c/app/src/sandbox/dialog-3403/test-browser.ts#L34-L48)):\n\n```ts\nawait page.keyboard.press(\"Escape\");\nawait test.expect(dialog).toBeAttached();\nawait test.expect(dialog).not.toBeVisible();\n```\n\nIn [run 33503498549](https://github.com/ariakit/ariakit/actions/runs/33503498549/job/99842488195) (\"Test Safari (1/2)\", 2026-09-01, attempt 1), `not.toBeVisible()` at line 47 failed after its 5000ms timeout. For the whole timeout, the dialog stayed visible in its leave state:\n\n```\nError: expect(locator).not.toBeVisible() failed\nTimeout:  5000ms\n- locator resolved to <div inert=\"\" id=\"_r1R_b_\" role=\"dialog\" tabindex=\"-1\" data-dialog=\"\" class=\"dialog\" data-leave=\"true\" aria-labelledby=\"_r1r_0_\" data-dialog-portal=\"portal/_r1R_b_\">\u2026</div>\n- unexpected value \"visible\"\n```\n\nThe route dialog has a 200ms transition ([`style.css`](https://github.com/ariakit/ariakit/blob/4474bd3c68da69c58817a2ca23da44f43e23264c/app/src/sandbox/dialog-3403/style.css)), so its leave state should end after about 200ms. `dialog.tsx` makes a closed dialog `inert` while it stays mounted. The dialog was therefore closed, but its leave animation did not stop for at least 5 seconds.\n\nThis failure is different from the #7603 flakes. In those tests, the leave state ends before the assertion runs, and the locator reports \"element(s) not found\". Here, the leave state did not end.\n\nThe test passed on retry. That shard's Playwright run took 16.0 minutes (`296 passed (16.0m)`) and reported 4 flaky tests. A stalled runner is one possible cause, and a race in the disclosure content leave timer is another. I did not confirm either cause.\n\n## Pre-existing on main\n\nYes. The incident occurred in a `main` run. The fix for #7603 does not change the route dialog, which keeps its 200ms transition.\n\n## Why #7603 can finish without it\n\n#7603 covers the tests that fail because the leave state ends too early. This case has a different failure, it occurred once in the scanned runs, and the #7603 change does not touch the route dialog, the dialog components, or this test.\n\n## Expected outcome\n\nFind out why the route dialog in `dialog-3403` can stay in its leave state after Escape in Safari. If a library race causes it, fix the dialog or disclosure code and add a regression test. If only runner starvation causes it, make the test independent of it. The test must still check that the dialog stays attached and becomes hidden after Escape.\n",
+      "comments": []
+    }
+  ]
+}

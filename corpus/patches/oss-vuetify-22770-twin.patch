@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/vuetify-22770/src/main.js b/fixtures/oss/vuetify-22770/src/main.js
+index f91e172..74ed90f 100644
+--- a/fixtures/oss/vuetify-22770/src/main.js
++++ b/fixtures/oss/vuetify-22770/src/main.js
+@@ -5,7 +5,7 @@ import "vuetify/styles";
+ 
+ // Issue #22770 / fix #23031: keyboard wrap must reach all 100 items.
+ const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
+-createApp({ render: () => h(VApp, null, { default: () => h("main", null, [
++createApp({ render: () => h(VApp, null, { default: () => h("main", { style: { maxWidth: "480px" } }, [
+   h("h1", "Autocomplete navigation"),
+   h(VAutocomplete, { label: "Select an item", items, density: "comfortable", menuProps: { maxHeight: 220 } }),
+ ]) }) }).use(createVuetify()).mount("#app");

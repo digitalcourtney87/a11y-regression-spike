@@ -1,0 +1,22 @@
+{
+  "id": "oss-baseui-5532-twin",
+  "source": "seeded",
+  "patternId": "oss--baseui-5532",
+  "split": "test",
+  "app": "oss/baseui-5532",
+  "journeyId": "oss-baseui-5532",
+  "base": {
+    "ref": "oss/baseui-5532@41ce0d124c7cf0c1e94504b772337dc0dfd91a0c+@base-ui/react@1.6.0"
+  },
+  "candidate": {
+    "patch": "oss-baseui-5532-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0105)",
+    "licence": "MIT (Base UI)"
+  }
+}

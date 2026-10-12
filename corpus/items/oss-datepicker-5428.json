@@ -1,0 +1,24 @@
+{
+  "id": "oss-datepicker-5428",
+  "source": "oss-history",
+  "patternId": "oss--datepicker-5428",
+  "split": "test",
+  "app": "oss/datepicker-5428",
+  "journeyId": "oss-datepicker-5428",
+  "base": {
+    "ref": "oss/datepicker-5428@e9969cde4df14c4c92e52a38071f8189fe3611e5+react-datepicker@6.9.0"
+  },
+  "candidate": {
+    "ref": "oss/datepicker-5428@e9969cde4df14c4c92e52a38071f8189fe3611e5+react-datepicker@7.0.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "FOCUS_NOT_MOVED",
+    "mechanism": "mined: Same-month arrow navigation does not move actual day focus in7.0.0. Source-supported6.9.0 and published8.2.0 fix5456 propagate containerRef; shared React18.2.0. Pointer selection holds everywhere, keyboard ArrowLeft must focus February18. Two final checks/locks and fresh width twin match (DR-0106)."
+  },
+  "provenance": {
+    "origin": "mined from Hacker0x01/react-datepicker (#5428, PR #5456); verified by m3-oss-repro run 38228576972; second-round admission DR-0106",
+    "licence": "MIT (react-datepicker)",
+    "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428"
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "label": "EXPLORATORY",
+  "planCommit": "14485d5",
+  "queries": [],
+  "candidates": [
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1466,
+      "title": "Keyboard navigation from toggle with menu closed highlights disabled items",
+      "origin": "repo:downshift-js/downshift is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/downshift-js/downshift/issues/1466",
+      "disposition": "excluded",
+      "reason": "Known API limitation: disabled getItemProps only registered when open; maintainer tracks new isItemDisabled hook feature, no working stable boundary.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1466"
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1569,
+      "title": "Document focus reset to body element when menu is open and combobox is tabbed away from (Firefox only)",
+      "origin": "repo:downshift-js/downshift is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/downshift-js/downshift/issues/1569",
+      "disposition": "excluded",
+      "reason": "Firefox-only docs environment defect; maintainer reports ordinary app works.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1569"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7192,
+      "title": "The synthetic click behind keyboard activation reports view: null and composed: false",
+      "origin": "repo:ariakit/ariakit is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/ariakit/ariakit/issues/7192",
+      "disposition": "pending",
+      "reason": "Stable synthetic-event metadata defect/fix, no working stable release or primary journey established.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7192",
+        "https://github.com/ariakit/ariakit/pull/7189",
+        "https://github.com/ariakit/ariakit/issues/7171",
+        "https://github.com/ariakit/ariakit/pull/7216",
+        "https://github.com/ariakit/ariakit/issues/7395"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7424,
+      "title": "Recreating a menu store while its menu is open moves focus back to the menu button",
+      "origin": "repo:ariakit/ariakit is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/ariakit/ariakit/issues/7424",
+      "disposition": "pending",
+      "reason": "Stable store-replacement focus defect; no working release, maintainers close not planned for lack of required use case.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7424"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10079,
+      "title": "Keyboard navigation in Menu is broken",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10079",
+      "disposition": "excluded",
+      "reason": "Intentional arrow-key menu navigation; no working regression boundary for Tab behavior.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10079"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10226,
+      "title": "Checkboxes within popover: focus-visible on first checkbox not triggering?",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10226",
+      "disposition": "excluded",
+      "reason": "Visual focus-visible only; checkbox activation works.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10226"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9045,
+      "title": "Tree keyboard navigation doesn't work on Safari",
+      "origin": "repo:mantinedev/mantine is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/mantinedev/mantine/issues/9045",
+      "disposition": "excluded",
+      "reason": "Safari-only tree navigation, report says Chrome works; outside context.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9045",
+        "https://github.com/mantinedev/mantine/pull/9049"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9108,
+      "title": "Focus outline is clipped in the desktop documentation navbar",
+      "origin": "repo:mantinedev/mantine is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/mantinedev/mantine/issues/9108",
+      "disposition": "excluded",
+      "reason": "Documentation navbar visual outline clipping.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9108",
+        "https://github.com/mantinedev/mantine/pull/9109",
+        "https://github.com/mantinedev/mantine/pull/9116"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 3879,
+      "title": "isSearchable still showing iphone keyboard menu",
+      "origin": "repo:JedWatson/react-select is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/JedWatson/react-select/issues/3879",
+      "disposition": "excluded",
+      "reason": "iPhone virtual keyboard behavior outside fixed context.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/3879"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 4418,
+      "title": "v.3.1 -> v3.2, cursor no longer stays focused when entering multi",
+      "origin": "repo:JedWatson/react-select is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/JedWatson/react-select/issues/4418",
+      "disposition": "excluded",
+      "reason": "Maintainer cannot reproduce3.2.0; no source implementation supplied/reply.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/4418"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 37073,
+      "title": "Keyboard control of dropdown with input is not working",
+      "origin": "repo:twbs/bootstrap is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/twbs/bootstrap/issues/37073",
+      "disposition": "pending",
+      "reason": "Reported5.1.3/5.2 input-wrapped dropdown arrows; supported accessible last-good construct/fix not established.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/37073",
+        "https://github.com/twbs/bootstrap/pull/37074"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 42032,
+      "title": "In high contrast themes (Aquatic, Desert, Dusk, Night Sky), the selected date and focus indicator on calendar controls are not visible in windows.",
+      "origin": "repo:twbs/bootstrap is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/twbs/bootstrap/issues/42032",
+      "disposition": "excluded",
+      "reason": "External bootstrap-datepicker visual high-contrast issue, not Bootstrap core.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/42032",
+        "https://github.com/twbs/bootstrap/issues/42031"
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 1382,
+      "title": "[Dialog] Focus trap does not work properly when <sl-dialog> is in a shadow root",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/shoelace-style/shoelace/issues/1382",
+      "disposition": "pending",
+      "reason": "Shadow-root dialog trap failure2.4.0/fix sources; no working stable release boundary established.",
+      "sources": [
+        "https://github.com/shoelace-style/shoelace/issues/1382",
+        "https://github.com/shoelace-style/shoelace/pull/1403",
+        "https://github.com/shoelace-style/shoelace/pull/1537"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 8064,
+      "title": "Badge is inaccessible for keyboard, screen reader users",
+      "origin": "repo:elastic/eui is:issue is:closed keyboard in:title (batch-nine query cap)",
+      "url": "https://github.com/elastic/eui/issues/8064",
+      "disposition": "excluded",
+      "reason": "Static badge is reachable via screen-reader browse; maintainer/user agree no fix needed.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/8064",
+        "https://github.com/elastic/kibana/issues/195209"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 8953,
+      "title": "[EuiButton] [A11y] :focus-visible outline for Primary filled buttons barely visible",
+      "origin": "repo:elastic/eui is:issue is:closed focus in:title (batch-nine query cap)",
+      "url": "https://github.com/elastic/eui/issues/8953",
+      "disposition": "excluded",
+      "reason": "Visual focus contrast only.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/8953",
+        "https://github.com/elastic/kibana/pull/230878",
+        "https://github.com/elastic/kibana/pull/231351",
+        "https://github.com/elastic/eui/issues/8961"
+      ]
+    }
+  ]
+}

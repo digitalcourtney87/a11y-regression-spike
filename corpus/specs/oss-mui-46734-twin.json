@@ -1,0 +1,16 @@
+{
+  "id": "oss-mui-46734-twin",
+  "patternId": "oss--mui-46734",
+  "operator": "css-only",
+  "app": "oss/mui-46734",
+  "journeyId": "oss-mui-46734",
+  "target": "Main width only; component props, keyboard handling and feedback unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-mui-46734"
+}

@@ -1,0 +1,5 @@
+# M7 completion batch twenty — EXPLORATORY, recorded before reproduction
+
+Follow existing Bootstrap#39189 modal trigger lead. Reported5.3.1 working/5.3.2 broken, merged-source candidate fix#39201. Confirm published5.3.3 contains that fix and the same construct is not documented unsupported/inaccessible. Use a standard modal with valid HTML colon-containing id `j_id22:exampleModal`, matching data-bs-target, native labeled trigger, connected heading/close control and original criterion: activation opens Details. Pointer click control and pure Tab/Enter path; fresh width-only twin. All versions share the same direct Popper2.11.8 pin if needed; no framework/selector workaround between releases. The broken selector error is retained as library behavior, not hidden or converted into a fallback.
+
+No new query, at most one new fixture/two exploratory dispatches, including existing unsplit repeats. Require two matching checks/locks and ordinary declared goal before test assignment. Standard safe workflow, no assigned execution/new tag or changed symptom/oracle/threshold/context. Continue77-pattern objective.

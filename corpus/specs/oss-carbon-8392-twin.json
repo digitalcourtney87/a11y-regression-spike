@@ -1,0 +1,16 @@
+{
+  "id": "oss-carbon-8392-twin",
+  "patternId": "oss--carbon-8392",
+  "operator": "css-only",
+  "app": "oss/carbon-8392",
+  "journeyId": "oss-carbon-8392",
+  "target": "Main width only; component properties and feedback unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-carbon-8392"
+}

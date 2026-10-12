@@ -1,0 +1,793 @@
+{
+  "label": "EXPLORATORY",
+  "planCommit": "f028211",
+  "queries": [
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:radix-ui/primitives is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 6,
+      "hits": [
+        {
+          "number": 4148,
+          "title": "[FocusScope] Unmount `setTimeout` is never cleared and uses realm globals, so it can throw after test environment teardown",
+          "disposition": "selected"
+        },
+        {
+          "number": 4124,
+          "title": "Popover: PopoverContent throws \"Primitive.div failed to slot onto its children\" on mount (React 19)",
+          "disposition": "selected"
+        },
+        {
+          "number": 4091,
+          "title": "Accessibility conformance results for Radix Primitives, ahead of publication (all checks pass)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 3540,
+          "title": "Error: Attempted to call createSlot() from the server but createSlot is on the client.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2505,
+          "title": "Too much recursion error, Select in Dialog in Firefox",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1615,
+          "title": "[Dialog][DropdownMenu] Possible regression in auto focus behaviour when opening a dialog from a dropdown",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:adobe/react-spectrum is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 11,
+      "hits": [
+        {
+          "number": 10440,
+          "title": "Accessibility conformance results for React Spectrum, ahead of publication (all checks pass, and a thank you)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 10229,
+          "title": "Button `onPress` does not fire when activated via Vimium",
+          "disposition": "selected"
+        },
+        {
+          "number": 9874,
+          "title": "react-aria-components ComboBox: onSelectionChange(null) fired on blur (regression / behavior change vs. earlier 1.x)",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 8985,
+          "title": "Allow setting or configuration which elements should not trigger the focus date",
+          "disposition": "selected"
+        },
+        {
+          "number": 8513,
+          "title": "userEvent.keyboard doesn't work correctly in tests for a component that uses useMenu after upgrading to react-aria 3.38.0",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7874,
+          "title": "FocusScope restoreFocus \"Cannot read properties of null (reading 'dispatchEvent')\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7778,
+          "title": "Issues with keyboard selection for Autocomplete (alpha)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7080,
+          "title": "Disabled `Tag` can be removed with keyboard nav",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5658,
+          "title": "useFocusRing: isTextInput no longer toggling focus ring",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4922,
+          "title": "DatePicker is difficult/impossible to use with screen reader",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2867,
+          "title": "useSelect can't use click to open select anymore and weird behaviour",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:mui/material-ui is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 12,
+      "hits": [
+        {
+          "number": 37178,
+          "title": "[Tabs][base] Does the `onChange()` prop support any other events like state change with `useState` hook other than just click events.",
+          "disposition": "selected"
+        },
+        {
+          "number": 36336,
+          "title": "[autocomplete] the first option is not highlighted for autoHighlight using filterOptions",
+          "disposition": "selected"
+        },
+        {
+          "number": 34372,
+          "title": "[MuiOutlinedInput]: Unable to override css properties for notchedOutline when focused (Mui v5 theme) ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 31404,
+          "title": "MUI v5 broke default TextField behavior",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 26476,
+          "title": "[docs] Make source code snippet editable",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21441,
+          "title": "[Select] Focusing component with inputRef gives null value despite check",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 20131,
+          "title": "Autocomplete | disableOpenOnFocus should also work if components is already focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 19666,
+          "title": "Dialog takes over focus on Stripe checkout input elements.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 19418,
+          "title": "MuiFormLabel.focused does not seem to take effect.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 12646,
+          "title": "SpeedDialAction onClick broken for some touch screen devices",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3558,
+          "title": "[DropDownMenu] TabIndex, Close on ESC, Emitting button label",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 61,
+          "title": "Keyboard and general accessibility",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:carbon-design-system/carbon is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 19274,
+          "title": "[Bug]: ComboBox Dropdown doesn't close when switching focus to embedded AI label",
+          "disposition": "selected"
+        },
+        {
+          "number": 17896,
+          "title": "[Bug]: Table component not tab-able (for accessibility)",
+          "disposition": "selected"
+        },
+        {
+          "number": 17277,
+          "title": "[a11y][MenuButton]: Focus Trapped Within MenuItem List in MenuButton Component",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 13964,
+          "title": "[Question]: Is anyone else having issues getting the developer environment set up on silicon Mac processors? ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9662,
+          "title": "[Feature Request]: Detect user input method and then provide appropriate focus style",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6567,
+          "title": "Toggle and ToggleSmall aria-label is better placed on the checkbox, not the label element",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3021,
+          "title": "Change in Modal behavior - Links embedded in Tooltips no longer work.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 708,
+          "title": "Tile: \"Cannot read property 'checked' of null\" error when pressing space key.",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:microsoft/fluentui is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 10,
+      "hits": [
+        {
+          "number": 27510,
+          "title": "[Bug]: DatePicker focus of current value (v8 regression) ",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 25550,
+          "title": "[Bug]: PeoplePicker itemLimit=0 can cause an infinite loop",
+          "disposition": "selected"
+        },
+        {
+          "number": 25549,
+          "title": "[Bug]: FocusZone is unreachable with keyboard if last element focused before tabbing out got hidden",
+          "disposition": "selected"
+        },
+        {
+          "number": 21106,
+          "title": "v9 Menu: manual a11y review",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16372,
+          "title": "Continued styling convergence",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 14102,
+          "title": "DetailList - First item stays selected when using ARROWDOWN key",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 13222,
+          "title": "DetailsList: Navigating in scan mode of narrator it announce on every separation as Blank .",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 12543,
+          "title": "DX: SelectionZone and MarqueeSelection should be generic, exemple not works in @fluentui/react.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9957,
+          "title": "No way to return focus to last element when dialog closes with Voiceover iOS",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5419,
+          "title": "New Component: Stack",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:tailwindlabs/headlessui is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 9,
+      "hits": [
+        {
+          "number": 3713,
+          "title": "[v2]: Managing Dialog initial focus doesn't appear to work",
+          "disposition": "selected"
+        },
+        {
+          "number": 3701,
+          "title": "Menu behavior change with 2.2.2",
+          "disposition": "selected"
+        },
+        {
+          "number": 3570,
+          "title": "input fields inside ComboBoxOptions doesn't go into focus when clicked",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3341,
+          "title": "Dialog text input React DOM ref not initialized soon enough",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2346,
+          "title": "Menu reacts to key events even if it's not focused.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2196,
+          "title": "Cannot read properties of undefined (reading 'headlessuiFocusGuard') in 1.7.6+",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2049,
+          "title": "Unhandled error during execution of setup function: TypeError: Cannot read properties of undefined (reading 'panelId')",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1366,
+          "title": "Unreleased Combobox support for multiple selections fails to update selections as an array",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 210,
+          "title": "Discussion: Web Components might be the right tool and save you time",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 24,
+      "hits": [
+        {
+          "number": 22291,
+          "title": "[Bug Report] v-date-input with max attribute fails with keyboard entry",
+          "disposition": "selected"
+        },
+        {
+          "number": 21591,
+          "title": "[Bug Report][3.4.10] v-menu closes unexpected when using open-on-hover with delays set to 0",
+          "disposition": "selected"
+        },
+        {
+          "number": 21491,
+          "title": "[Bug Report][3.8.7] VSelect:  Accessibility - After select item via space key focus is lost and menu are reopened",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21404,
+          "title": "[Bug Report][3.8.4] Autocomplete on active element using only keyboard doesn't work",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21301,
+          "title": "[Bug Report][3.8.2] VDialog/VBottomSheet retain-focus prop not working since V3.4.11",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 20850,
+          "title": "[Bug Report][3.7.0] VCombobox and VAutocomplete - keyboard navigation over the items does not work properly",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18911,
+          "title": "[Bug Report][3.4.8] Cannot focus append-inner icon of v-text-field by keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18833,
+          "title": "[Bug Report][3.4.6] Issue with VCombobox while deleting the selected value with delete key ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18818,
+          "title": "[Bug Report][3.4.4] VSelect auto scroll on keypress",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18175,
+          "title": "[Bug Report][3.3.14] VTextField ignores every second keystroke",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 18011,
+          "title": "[Bug Report][3.3.9] Keyboard navigation doesn't work like the Vuetify2",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17775,
+          "title": "[Bug Report][3.3.7] v-menu closes on click keyboard tab",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17470,
+          "title": "[Bug Report][3.3.1] bug(VList): clickable list item are not keyboard focusable when nested in list",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16326,
+          "title": "[Bug Report][3.0.6] Hitting \"Done\" on IOS virtual keyboard collapses menu for V-Autocomplete causing it to lose focus and close",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16274,
+          "title": "[Bug Report][3.0.4] Focus after selecting item in Combobox/Autocomplete bug : different behavior with Chrome and Firefox",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16232,
+          "title": "[Bug Report][3.0.3] V-autocomplete does not close using menu-props: {attach} with 200+ items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16230,
+          "title": "[Bug Report][3.0.3] V-Autocomplete: menu attach prop does not attach and does not close with 300+ items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16055,
+          "title": "[Bug Report][3.0.0] Pressing letters on the keyboard does not select items in VSelect",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 14072,
+          "title": "[Bug Report][2.4.11] V-AutoComplete/V-Combobox regression with tab order when selecting item with mouse click",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 11430,
+          "title": "[Bug Report] Tab clicks on read-only VSelect is broken",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 11243,
+          "title": "[Bug Report] v-text-field v-model not updated immediately on android chrome",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10369,
+          "title": "[Bug Report] V-Select selection with keyboard not possible anymore ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10253,
+          "title": "[Bug Report] v-combobox item selection using keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9289,
+          "title": "[Bug Report] V-data-table does not support keyboard commands for navigating through table headers and rows",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:vuetifyjs/vuetify is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 12,
+      "hits": [
+        {
+          "number": 22793,
+          "title": "[Bug Report][4.0.5] Inconsistent VDateInput range button colors when using global VBtn defaults",
+          "disposition": "selected"
+        },
+        {
+          "number": 22387,
+          "title": "[Bug Report][3.11.1] VMenu is closing upon interaction when using `open-on-focus`",
+          "disposition": "selected"
+        },
+        {
+          "number": 22061,
+          "title": "[Bug Report][3.10.0] Disabled VBtn with `href` can still be focused and followed with the Enter key",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21912,
+          "title": "[Bug Report][3.9.3] v-text-field labels prevent autofill",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 21697,
+          "title": "[Bug Report][3.8.12] v-text-field focus does not work",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17500,
+          "title": "[Feature Request] Shadow DOM improvements for handling focus/active elements",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 17197,
+          "title": "[Bug Report][3.1.15] VTextField update:focused event type issue",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 16035,
+          "title": "[Bug Report][3.0.0] v-autocomplete focus programmatically from script (v3)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 15825,
+          "title": "[Bug Report][3.0.0-beta.11] Label animation flicker with changing text color",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 14621,
+          "title": "[Feature Request] Nuxt 3 support for Vuetify 3",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7608,
+          "title": "[Bug Report] V-Dialog Regression BreaksTinyMCE Inside Dialog",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5712,
+          "title": "[Bug Report] v-select is still partially open after value selected in v-edit-dialog",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed \"last working version\" keyboard in:body",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:palantir/blueprint is:issue is:closed \"worked\" focus in:body",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 3870,
+          "title": "[EditableText] Bugs when @blueprintjs/datetime is not installed",
+          "disposition": "selected"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "radix-ui/primitives",
+      "number": 4148,
+      "title": "[FocusScope] Unmount `setTimeout` is never cleared and uses realm globals, so it can throw after test environment teardown",
+      "origin": "repo:radix-ui/primitives is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/radix-ui/primitives/issues/4148",
+      "disposition": "excluded",
+      "reason": "Test-runner teardown error; report explicitly harmless in browser.",
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/4148",
+        "https://github.com/radix-ui/primitives/pull/4149",
+        "https://github.com/STN-DTS/canadian-dental-care-plan/pull/5379",
+        "https://github.com/radix-ui/primitives/issues/4136",
+        "https://github.com/radix-ui/primitives/issues/4189"
+      ]
+    },
+    {
+      "repo": "radix-ui/primitives",
+      "number": 4124,
+      "title": "Popover: PopoverContent throws \"Primitive.div failed to slot onto its children\" on mount (React 19)",
+      "origin": "repo:radix-ui/primitives is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/radix-ui/primitives/issues/4124",
+      "disposition": "pending",
+      "reason": "Popover crash not reproduced by source reviewer; no working release or confirmed boundary.",
+      "sources": [
+        "https://github.com/radix-ui/primitives/issues/4124",
+        "https://github.com/radix-ui/primitives/pull/4137"
+      ]
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 10229,
+      "title": "Button `onPress` does not fire when activated via Vimium",
+      "origin": "repo:adobe/react-spectrum is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/adobe/react-spectrum/issues/10229",
+      "disposition": "excluded",
+      "reason": "Vimium synthetic pointer-event incompatibility; ordinary Enter/Space activation works; extension outside context.",
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/10229"
+      ]
+    },
+    {
+      "repo": "adobe/react-spectrum",
+      "number": 8985,
+      "title": "Allow setting or configuration which elements should not trigger the focus date",
+      "origin": "repo:adobe/react-spectrum is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/adobe/react-spectrum/issues/8985",
+      "disposition": "excluded",
+      "reason": "API feature request, no working release regression.",
+      "sources": [
+        "https://github.com/adobe/react-spectrum/issues/8985"
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 37178,
+      "title": "[Tabs][base] Does the `onChange()` prop support any other events like state change with `useState` hook other than just click events.",
+      "origin": "repo:mui/material-ui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/mui/material-ui/issues/37178",
+      "disposition": "excluded",
+      "reason": "Controlled state onChange support question, not regression.",
+      "sources": [
+        "https://github.com/mui/material-ui/issues/37178",
+        "https://github.com/yusuke-suzuki/qoodish-web/pull/1075"
+      ]
+    },
+    {
+      "repo": "mui/material-ui",
+      "number": 36336,
+      "title": "[autocomplete] the first option is not highlighted for autoHighlight using filterOptions",
+      "origin": "repo:mui/material-ui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/mui/material-ui/issues/36336",
+      "disposition": "pending",
+      "reason": "Reported visual highlight disagrees with Enter selection in 5.11.6/5.11.10; inspect source and ARIA before assuming primary symptom.",
+      "sources": [
+        "https://github.com/mui/material-ui/issues/36336",
+        "https://github.com/mui/material-ui/pull/36659",
+        "https://github.com/mui/material-ui/pull/37012"
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 19274,
+      "title": "[Bug]: ComboBox Dropdown doesn't close when switching focus to embedded AI label",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/carbon-design-system/carbon/issues/19274",
+      "disposition": "pending",
+      "reason": "Web-component AI label overlap/fix; no accessible working stable boundary established.",
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/19274",
+        "https://github.com/carbon-design-system/carbon/pull/19578",
+        "https://github.com/carbon-design-system/carbon/pull/19502",
+        "https://github.com/carbon-design-system/carbon/pull/19732",
+        "https://github.com/carbon-design-system/carbon/pull/20015",
+        "https://github.com/carbon-design-system/carbon/pull/20552",
+        "https://github.com/carbon-design-system/carbon/pull/20566",
+        "https://github.com/carbon-design-system/carbon/pull/22300"
+      ]
+    },
+    {
+      "repo": "carbon-design-system/carbon",
+      "number": 17896,
+      "title": "[Bug]: Table component not tab-able (for accessibility)",
+      "origin": "repo:carbon-design-system/carbon is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/carbon-design-system/carbon/issues/17896",
+      "disposition": "excluded",
+      "reason": "Request to expose table tabIndex configuration; no working stable regression boundary.",
+      "sources": [
+        "https://github.com/carbon-design-system/carbon/issues/17896",
+        "https://github.com/carbon-design-system/carbon/pull/17907"
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 25550,
+      "title": "[Bug]: PeoplePicker itemLimit=0 can cause an infinite loop",
+      "origin": "repo:microsoft/fluentui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/microsoft/fluentui/issues/25550",
+      "disposition": "pending",
+      "reason": "PeoplePicker itemLimit=0 loop, before v8 worked; no exact same-major working boundary or confirmed fix identified.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/25550",
+        "https://github.com/microsoft/fluentui/pull/25557"
+      ]
+    },
+    {
+      "repo": "microsoft/fluentui",
+      "number": 25549,
+      "title": "[Bug]: FocusZone is unreachable with keyboard if last element focused before tabbing out got hidden",
+      "origin": "repo:microsoft/fluentui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/microsoft/fluentui/issues/25549",
+      "disposition": "pending",
+      "reason": "Hidden last-focused item removes FocusZone tab entry; no working release or fix established, stale closure.",
+      "sources": [
+        "https://github.com/microsoft/fluentui/issues/25549"
+      ]
+    },
+    {
+      "repo": "tailwindlabs/headlessui",
+      "number": 3713,
+      "title": "[v2]: Managing Dialog initial focus doesn't appear to work",
+      "origin": "repo:tailwindlabs/headlessui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/tailwindlabs/headlessui/issues/3713",
+      "disposition": "excluded",
+      "reason": "Touch-device intentional autofocus suppression, outside fixed desktop context.",
+      "sources": [
+        "https://github.com/tailwindlabs/headlessui/issues/3713",
+        "https://github.com/hngprojects/flowbrand-ui/pull/133",
+        "https://github.com/6529-Collections/6529seize-frontend/pull/3829"
+      ]
+    },
+    {
+      "repo": "tailwindlabs/headlessui",
+      "number": 3701,
+      "title": "Menu behavior change with 2.2.2",
+      "origin": "repo:tailwindlabs/headlessui is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/tailwindlabs/headlessui/issues/3701",
+      "disposition": "pending",
+      "reason": "Mouse-click multiple-menu dismissal and visual focus; keyboard primary symptom not established.",
+      "sources": [
+        "https://github.com/tailwindlabs/headlessui/issues/3701",
+        "https://github.com/alveusgg/alveusgg/issues/1183",
+        "https://github.com/alveusgg/alveusgg/pull/1200",
+        "https://github.com/tailwindlabs/headlessui/pull/3726"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22291,
+      "title": "[Bug Report] v-date-input with max attribute fails with keyboard entry",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed \"last working version\" keyboard in:body",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22291",
+      "disposition": "excluded",
+      "reason": "VDateInput is a labs component for the reported releases; no supported stable last-good construct established.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/22291",
+        "https://github.com/vuetifyjs/vuetify/pull/22295"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 21591,
+      "title": "[Bug Report][3.4.10] v-menu closes unexpected when using open-on-hover with delays set to 0",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed \"last working version\" keyboard in:body",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/21591",
+      "disposition": "reproduction",
+      "reason": "3.4.9/3.4.10 stable zero-delay menu boundary; source defer change and fix #22242, shared Vue3.3.8; fixture scheduled.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/21591",
+        "https://github.com/vuetifyjs/vuetify/pull/22242"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22793,
+      "title": "[Bug Report][4.0.5] Inconsistent VDateInput range button colors when using global VBtn defaults",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22793",
+      "disposition": "excluded",
+      "reason": "Date range button colors only, no primary symptom.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/22793",
+        "https://github.com/vuetifyjs/vuetify/pull/22858"
+      ]
+    },
+    {
+      "repo": "vuetifyjs/vuetify",
+      "number": 22387,
+      "title": "[Bug Report][3.11.1] VMenu is closing upon interaction when using `open-on-focus`",
+      "origin": "repo:vuetifyjs/vuetify is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/vuetifyjs/vuetify/issues/22387",
+      "disposition": "excluded",
+      "reason": "Pointer-start interaction only; report explicitly says pure Tab entry works, intended close-on-blur behavior.",
+      "sources": [
+        "https://github.com/vuetifyjs/vuetify/issues/22387",
+        "https://github.com/vuetifyjs/vuetify/pull/22276"
+      ]
+    },
+    {
+      "repo": "palantir/blueprint",
+      "number": 3870,
+      "title": "[EditableText] Bugs when @blueprintjs/datetime is not installed",
+      "origin": "repo:palantir/blueprint is:issue is:closed \"worked\" focus in:body",
+      "url": "https://github.com/palantir/blueprint/issues/3870",
+      "disposition": "excluded",
+      "reason": "Double-click pointer focus and clipped input; no keyboard regression demonstrated.",
+      "sources": [
+        "https://github.com/palantir/blueprint/issues/3870",
+        "https://github.com/palantir/blueprint/issues/4423"
+      ]
+    }
+  ]
+}

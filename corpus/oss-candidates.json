@@ -277,6 +277,410 @@
         "pointer": false,
         "keyboard": true
       }
+    },
+    {
+      "id": "ras-8637",
+      "repo": "adobe/react-spectrum",
+      "refs": [
+        "#8637",
+        "PR #8447",
+        "PR #8684"
+      ],
+      "stack": "react",
+      "package": "@adobe/react-spectrum",
+      "licence": "Apache-2.0",
+      "good": "3.42.2",
+      "broken": "3.43.0",
+      "fixed": "3.44.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "DateField leading-zero suppression prevents continuous 01011970 entering January 1, 1970; it instead enters October 11, 970. Reverted by PR #8684. Reproduced in runs 38176937862 and 38177297242; original criterion unchanged, browse-outcome/CSS-twin diagnostics pass (DR-0098).",
+      "reproduction": {
+        "run": 38177297242,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "vuetify-22770",
+      "repo": "vuetifyjs/vuetify",
+      "refs": [
+        "#22770",
+        "PR #17265",
+        "PR #23031"
+      ],
+      "stack": "vanilla",
+      "package": "vuetify",
+      "licence": "MIT",
+      "good": "3.3.6",
+      "broken": "3.3.7",
+      "fixed": null,
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "VAutocomplete virtualization restricts keyboard wrap to rendered options: ArrowUp from Item 1 reaches Item 9 instead of Item 100. Introduced by #17265 and fixed by merged #23031. Pair shares Vue 3.3.4; the modern fix requires newer Vue and was not executed. Two unchanged exploratory reproductions plus width-only twin in 38178948350/38179257999 (DR-0099).",
+      "reproduction": {
+        "run": 38179257999,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "fluent-27997",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#27997",
+        "#27896",
+        "PR #27702",
+        "PR #27978"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react-components",
+      "licence": "MIT",
+      "good": "9.19.1",
+      "broken": "9.20.0",
+      "fixed": "9.20.4",
+      "symptom": "STATE_NOT_CONVEYED",
+      "documentary": "accept",
+      "operator": "mined",
+      "note": "Controlled DataGrid selection dispatcher becomes a noop after #27702: selecting Beta leaves Alpha selected, Beta row aria-selected and radio checked false. #27978 restores dispatcher. Refined published-source boundary and repaired supported header/ArrowDown/Space route reproduce in 38181259137 and 38181647925 with identical locks and CSS twin; prior setup failures and false 9.20.0 last-good hypothesis retained (DR-0100).",
+      "reproduction": {
+        "run": 38181647925,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "vuetify-21591",
+      "repo": "vuetifyjs/vuetify",
+      "refs": [
+        "#21591",
+        "commit e89b5c3250f6a873bf73ec93a55dd575f196e6cb",
+        "PR #22242"
+      ],
+      "stack": "vanilla",
+      "package": "vuetify",
+      "licence": "MIT",
+      "good": "3.4.9",
+      "broken": "3.4.10",
+      "fixed": null,
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Zero-delay hover menu closes on keyboard entry after deferred delay became synchronous. Supported interactive item setup preserves original one-ArrowDown focus/open/visible criterion. Published3.4.9/3.4.10 sources and fix#22242; identical exploratory checks/locks and width-only twin in38183612490/38211936352; earlier noninteractive setup failure retained (DR-0101).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38211936352,
+        "pointer": false,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "reactselect-4421",
+      "repo": "JedWatson/react-select",
+      "refs": [
+        "#4421",
+        "PR #4398",
+        "PR #4422"
+      ],
+      "stack": "react",
+      "package": "react-select",
+      "licence": "MIT",
+      "good": "3.2.0",
+      "broken": "4.0.2",
+      "fixed": "4.1.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Grouped filtered keyboard navigation uses unfiltered group options: after filtering o, ArrowDown/Enter chooses hidden Blue instead of Orange. Reported stable3.2.0/4.0.2 pair and fix#4422 in4.1.0, shared React16.14.0. Original selection criterion plus existing-model browse goal and CSS twin match independently in38213610821/38214490819; earlier setup failures retained (DR-0102).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38214490819,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-7861",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#7861",
+        "PR #8178"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "licence": "Apache-2.0",
+      "good": "7.28.0",
+      "broken": "7.29.0",
+      "fixed": "7.32.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "First filtered-option index0 becomes null through || null in7.29.0;7.32.0 fixes it. ArrowDown/Enter selects Alpha on7.28.0/fixed, none on broken; pointer option click works all. Same React16.14.0, system font, ordinary Chosen Alpha feedback and width twin; final checks/locks match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": false,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "chakra-6693",
+      "repo": "chakra-ui/chakra-ui",
+      "refs": [
+        "#6693",
+        "@chakra-ui/editable 2.0.11 callback-ref fix"
+      ],
+      "stack": "react",
+      "package": "@chakra-ui/react",
+      "licence": "MIT",
+      "good": "2.2.8",
+      "broken": "2.2.9",
+      "fixed": "2.3.4",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Editable onEdit identity changes reselect all text on every controlled onChange in2.2.9: typing abc leaves c. Reported2.2.8 works;2.3.4 contains editable2.0.11 callback stabilization. Shared React18.2/Emotion11.10/motion6.5.1. Original typing criterion, default selected-text entry, ordinary Entered abc browse goal and CSS twin match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "headlessui-2084",
+      "repo": "tailwindlabs/headlessui",
+      "refs": [
+        "#2084",
+        "PR #2087"
+      ],
+      "stack": "vanilla",
+      "package": "@headlessui/vue",
+      "licence": "MIT",
+      "good": "1.7.4",
+      "broken": "1.7.5",
+      "fixed": "1.7.6",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Combobox displayValue incorrectly evaluates unspecified defaultValue in1.7.5; documented controlled object construct cannot choose Beta. Reported1.7.4 works;1.7.6 guards undefined default values (#2087). Shared Vue3.2.41 and supported uniform native select-all props; original chosen-value criterion, ordinary Chosen Beta browse goal and CSS twin match38215953512/38216780105 (DR-0103).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38216780105,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "bootstrap-39189",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#39189",
+        "PR #39201"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "licence": "MIT",
+      "good": "5.3.1",
+      "broken": "5.3.2",
+      "fixed": "5.3.3",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Native modal activation with a valid colon-containing HTML id fails in Bootstrap5.3.2. Reported5.3.1 working and published5.3.3 fix39201 support the same construct, shared Popper2.11.8. Pointer and Tab/Enter must open and focus Details; good/fixed hold, broken retains selector error. Checks and resolved locks match independently (DR-0104).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38226318174,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "baseui-5532",
+      "repo": "mui/base-ui",
+      "refs": [
+        "#5532",
+        "#5432",
+        "PR #5441"
+      ],
+      "stack": "react",
+      "package": "@base-ui/react",
+      "licence": "MIT",
+      "good": "1.6.0",
+      "broken": "1.7.0",
+      "fixed": "1.8.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Router-rendered Tabs.Tab enters an infinite composite-ref update loop in1.7.0, preventing tabs rendering. Reported1.6.0 working, published1.8.0 contains merged5441 unchanged-map guard. Shared React18.2.0/router7.6.2; pointer and native Show tabs activation, ordinary Overview tab focus and width twin match independently (DR-0105).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38227533511,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "datepicker-5428",
+      "repo": "Hacker0x01/react-datepicker",
+      "refs": [
+        "#5428",
+        "PR #4766",
+        "PR #5456"
+      ],
+      "stack": "react",
+      "package": "react-datepicker",
+      "licence": "MIT",
+      "good": "6.9.0",
+      "broken": "7.0.0",
+      "fixed": "8.2.0",
+      "symptom": "FOCUS_NOT_MOVED",
+      "documentary": "accept",
+      "note": "Same-month arrow navigation does not move actual day focus in7.0.0. Source-supported6.9.0 and published8.2.0 fix5456 propagate containerRef; shared React18.2.0. Pointer selection holds everywhere, keyboard ArrowLeft must focus February18. Two final checks/locks and fresh width twin match (DR-0106).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38228576972,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "mui-46734",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#46734",
+        "PR #46489",
+        "PR #46894"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "7.2.0",
+      "broken": "7.3.0",
+      "fixed": "7.3.3",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Empty-option freeSolo autoHighlight selection reports undefined and crashes instead of chosen foobar in7.3.0. Reported7.2.0 working, published7.3.3 fix46894 synchronizes highlight on popup opening. Shared React18.2.0 and Emotion11.14.0; original Enter criterion, ordinary Chosen foobar browse goal and width twin match independently (DR-0106).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38228576972,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "mui-44048",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#44048",
+        "PR #41300",
+        "PR #44857"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "5.10.17",
+      "broken": "5.16.7",
+      "fixed": "5.16.14",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Custom Paper information is removed when freeSolo options are empty in5.16.7. Reported5.10.17 working; published5.16.14 rollback44857 restores content. Same React18.2.0/Emotion11.10.5. Native ArrowDown must render No recent searches, ordinary browse goal line4; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38232414560,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-8392",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#8392",
+        "#8348",
+        "PR #8362"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "licence": "Apache-2.0",
+      "good": "7.31.0",
+      "broken": "7.32.0",
+      "fixed": "7.33.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Toast timeout is omitted in7.32.0, dismissing feedback immediately. Reported7.31.0 working, published7.33.0 fix8362 restores timeout argument. Same React16.14.0/Carbon CSS10.30.0. Native Save changes must retain Saved before specified10000ms expiry, ordinary browse goal line3; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38234013533,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "fluent-18714",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#18714",
+        "PR #18715"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react",
+      "licence": "MIT",
+      "good": "7.167.0",
+      "broken": "8.19.1",
+      "fixed": "8.21.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "SearchBox no longer calls supported deprecated onChanged in8.19.1. Source-supported7.167.0 working, published8.21.0 fix18715 restores callback. Same React16.14.0, internal companion resolves with unchanged release-cutoff method. Typed abc must produce Query abc, ordinary browse goal line5; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38234013533,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "bootstrap-15168",
+      "repo": "twbs/bootstrap",
+      "refs": [
+        "#15168",
+        "PR #14189",
+        "PR #15466"
+      ],
+      "stack": "vanilla",
+      "package": "bootstrap",
+      "licence": "MIT",
+      "good": "3.2.0",
+      "broken": "3.3.0",
+      "fixed": "3.3.2",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Manual Tooltip string-method dispatch fails after selector initialization in3.3.0. Reported3.2.0 working, published3.3.2 reverts14189 via15466. Same jQuery1.11.1, vanilla context. Native Show help activation must show Extra information; good/fixed browse goal line3, absent broken with expected method error. Final outputs and locks match independently (DR-0108).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38236198602,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "mui-45049",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#45049",
+        "PR #44537",
+        "PR #45050"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "6.1.10",
+      "broken": "6.2.0",
+      "fixed": "6.4.2",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Restricted Slider arrow handling sets last allowed mark to NaN in6.2.0. Reported6.1.10 working, published6.4.2 fix45050 uses inclusive mark boundaries. Same React18.2.0 and Emotion11.13.3/11.13.0. Native ArrowRight at30 must retain Level30; good/fixed browse line3, broken NaN/absent. Final original checks, CSS twin and locks match independently (DR-0109).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38242172957,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [
@@ -423,6 +827,22 @@
     {
       "id": "rac-8298",
       "reason": "not reproduced in three fixtures: two React Aria Components layouts (runs 37132740948, 37133618945) and React Spectrum's ComboBox as in the fix's own test steps (run 37134051657); the fix's author could reproduce it only on the docs site, not in Storybook, so it depends on page context the issue does not give (DR-0063)"
+    },
+    {
+      "id": "mantine-2503",
+      "reason": "Second-round exploration: pointer boundary reproduces, but original pure-Tab criterion fails on working/broken/fixed releases; no keyboard regression boundary (batch seven)."
+    },
+    {
+      "id": "carbon-23126",
+      "reason": "Second-round exploration: linked #23157 fixes native-dialog flag escalation, not the tested default passive-modal tooltip/Escape path; no applicable library fix under P22 rule6 (batch twelve/thirteen)."
+    },
+    {
+      "id": "reactmodal-732",
+      "reason": "Recorded second-round fixture stalls forward/reverse Tab wrapping but shows no DOM outside-focus events or document focus loss. Original reported focus-escape symptom is not established; do not reclassify a related failure after outcomes to count it."
+    },
+    {
+      "id": "datepicker-5366",
+      "reason": "Recorded deterministic controlled fixture: native ArrowDown entry fails all versions; native Tab-to-day repair then leaves calendar open on good/broken/fixed. Pointer close holds all three. No original keyboard closing regression boundary established; no admission or controller workaround."
     }
   ]
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "label": "3.3.6",
+    "version": "3.3.6",
+    "before": "2023-06-28T21:01:18Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "3.3.7",
+    "version": "3.3.7",
+    "before": "2023-07-06T18:59:45Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

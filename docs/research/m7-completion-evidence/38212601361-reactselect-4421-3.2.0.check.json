@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.2.0",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (pointer entry)"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (Tab entry)"
+    },
+    "benignTwin": {
+      "holds": true,
+      "detail": "Ocean -> Orange; Chosen Orange (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

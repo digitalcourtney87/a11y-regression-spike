@@ -1,0 +1,34 @@
+{
+  "id": "oss-bootstrap-39189",
+  "version": "1",
+  "app": "oss/bootstrap-39189",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-open-details",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "role": "button",
+        "name": "Open details",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "open-details",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter",
+      "until": {
+        "role": "dialog",
+        "name": "Details",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}

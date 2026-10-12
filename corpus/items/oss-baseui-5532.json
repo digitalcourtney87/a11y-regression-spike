@@ -1,0 +1,24 @@
+{
+  "id": "oss-baseui-5532",
+  "source": "oss-history",
+  "patternId": "oss--baseui-5532",
+  "split": "test",
+  "app": "oss/baseui-5532",
+  "journeyId": "oss-baseui-5532",
+  "base": {
+    "ref": "oss/baseui-5532@41ce0d124c7cf0c1e94504b772337dc0dfd91a0c+@base-ui/react@1.6.0"
+  },
+  "candidate": {
+    "ref": "oss/baseui-5532@41ce0d124c7cf0c1e94504b772337dc0dfd91a0c+@base-ui/react@1.7.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Router-rendered Tabs.Tab enters an infinite composite-ref update loop in1.7.0, preventing tabs rendering. Reported1.6.0 working, published1.8.0 contains merged5441 unchanged-map guard. Shared React18.2.0/router7.6.2; pointer and native Show tabs activation, ordinary Overview tab focus and width twin match independently (DR-0105)."
+  },
+  "provenance": {
+    "origin": "mined from mui/base-ui (#5532, PR #5441); verified by m3-oss-repro run 38227533511; second-round admission DR-0105",
+    "licence": "MIT (Base UI)",
+    "url": "https://github.com/mui/base-ui/issues/5532"
+  }
+}

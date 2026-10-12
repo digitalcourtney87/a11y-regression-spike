@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.5.0",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": 4,
+      "holds": true,
+      "detail": "Calendar visible=false; closed feedback=true"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": null,
+      "holds": false,
+      "detail": "Calendar visible=true; closed feedback=false"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": null,
+      "holds": false,
+      "detail": "Calendar visible=true; closed feedback=false"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

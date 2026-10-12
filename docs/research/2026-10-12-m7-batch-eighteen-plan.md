@@ -1,0 +1,5 @@
+# M7 completion batch eighteen — EXPLORATORY, recorded before search
+
+Search the remaining repositories already present in the original M3 survey/registry: floating-ui/floating-ui, emilkowalski/sonner, pacocoursey/cmdk, in that order. For each, closed issues with keyboard in:title then focus in:title; creation descending, at most30 hits/query. Select at most two new unique reports/query whose body contains regress, upgrad, previous, used to, worked, or a three-part version. Exclude registry, previous ledgers and original survey, deduplicate. Six queries/12 selections maximum, no substitution; record each hit/filter/cap.
+
+At most two new fixtures/two exploratory dispatches, including repeats of unsplit leads. Require applicable library fix, accessible supported stable last-good, same-package release pair/shared direct framework pins, original issue/fix criterion and primary user-facing keyboard/AT symptom using only the frozen journey repertoire. No new strategy, oracle, threshold, assigned execution, tag or context. Continue77-pattern objective; availability remains unestablished.

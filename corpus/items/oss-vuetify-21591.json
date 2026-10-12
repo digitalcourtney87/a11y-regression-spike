@@ -1,0 +1,24 @@
+{
+  "id": "oss-vuetify-21591",
+  "patternId": "oss--vuetify-21591",
+  "split": "test",
+  "source": "oss-history",
+  "app": "oss/vuetify-21591",
+  "journeyId": "oss-vuetify-21591",
+  "base": {
+    "ref": "oss/vuetify-21591@3cfccafbb4a28a492a22dfc88355e2b336328b46+vuetify@3.4.9"
+  },
+  "candidate": {
+    "ref": "oss/vuetify-21591@3cfccafbb4a28a492a22dfc88355e2b336328b46+vuetify@3.4.10"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Zero-delay hover menu closes on keyboard entry after deferred delay became synchronous. Supported interactive item setup preserves original one-ArrowDown focus/open/visible criterion. Published3.4.9/3.4.10 sources and fix#22242; identical exploratory checks/locks and width-only twin in38183612490/38211936352; earlier noninteractive setup failure retained (DR-0101)."
+  },
+  "provenance": {
+    "origin": "mined from vuetifyjs/vuetify (#21591, introducing e89b5c3, PR #22242); verified by m3-oss-repro run 38211936352; second-round admission DR-0101",
+    "licence": "MIT (vuetify)",
+    "url": "https://github.com/vuetifyjs/vuetify/issues/21591"
+  }
+}

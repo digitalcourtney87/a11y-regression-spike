@@ -1,0 +1,176 @@
+[
+  {
+    "version": "1.42.0",
+    "dist": {
+      "shasum": "98b26e5c870b57345f85a561d48d43d5461c697f",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.42.0.tgz",
+      "fileCount": 1277,
+      "integrity": "sha512-avkfrBozits3d5OobqmPzd6IEX4G2nP2hhkrpDyqO4YrwzoKvcIn42mQL81dt6IDOKrgy+o/gGuF4SJlq97giA==",
+      "signatures": [
+        {
+          "sig": "MEUCIFfi+W3SkNY//+ACItNqH10Y1iFdECUY09IfbOW0l8j5AiEAgGVjMPWY0mIFHkGJaUkH7YaGvypAm1K2xdlblb1uDAw=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.42.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 3872304
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "b1d1748e98fdcac996d97ad5081df8dbfcc7e66399d41c9b633c24a7d3057af8"
+  },
+  {
+    "version": "1.38.0",
+    "dist": {
+      "shasum": "c8690e84146c2ed8d0ff0b724527c45e72f0af4f",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.38.0.tgz",
+      "fileCount": 1226,
+      "integrity": "sha512-k8/IwIAzduPI4G5dm6hh4sfOhIDnIvMwXmntR8JX0WPxUrGSWnvas+Yl2PIXgPP2+8JRfmUHvTFEvGvCSX4deQ==",
+      "signatures": [
+        {
+          "sig": "MEUCIDCp8T062io3djR/f+bf/u05k279bdFV8x/+tO3Oh6fuAiEAlzoaSrSKUY23pdfBR5yzS0Jrml56rajrd0u1Et7IJcM=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.38.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 3432387
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "829b02ad36ab136ee91b6573ddb663e1b0f1e1c1647b843b3299b092ed01b263"
+  },
+  {
+    "version": "1.36.0",
+    "dist": {
+      "shasum": "c2449787990d161085d9ebecee80cfc1b19ee00f",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.36.0.tgz",
+      "fileCount": 1201,
+      "integrity": "sha512-w23O+UgyevsVtgM2TL+Y7rzy2HkdHa85DwADdb+NQ5jskeeVbSR1YCkXe9S/VwM+uZq7sMP3Hwico1esh6+DMQ==",
+      "signatures": [
+        {
+          "sig": "MEUCIFTBeHYc83yH8XgkOvx/0LvIqf7TTiDHxx10Kz6135sMAiEAs20UUx4QYq3CiR0gVDvqPl5dU8mdIyZKuAuzgawPQlA=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.36.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 3055716
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "829b02ad36ab136ee91b6573ddb663e1b0f1e1c1647b843b3299b092ed01b263"
+  },
+  {
+    "version": "1.35.0",
+    "dist": {
+      "shasum": "df20af256e5c1c8fe4c15ce1cf93a6501dcfa246",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.35.0.tgz",
+      "fileCount": 1167,
+      "integrity": "sha512-1rXcokhB6MV72HtvYx2saLdjwyZV0X7VDLtTuYJABrwh5+RsQenHGVfuSejr5hkDWp91LnNA08WKCwM+d65G9Q==",
+      "signatures": [
+        {
+          "sig": "MEUCIQCZb/1UY7lqEYes1wpN1Zq/6fdbzwurWdmKnMZY6R2V0wIgUZD+axaVI0el4C5juOVlOjH6SAmmQUEDcHGcxeIIrwU=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.35.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 3044468
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "829b02ad36ab136ee91b6573ddb663e1b0f1e1c1647b843b3299b092ed01b263"
+  },
+  {
+    "version": "1.48.0",
+    "dist": {
+      "shasum": "994aa2aa15dad6520d89696f291ca1512f281e24",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.48.0.tgz",
+      "fileCount": 1371,
+      "integrity": "sha512-pu/uGGe61b9z3QDQWc72BvkBYGZan1JMbB/jjw5azLrTGUszZ+TijWomM64I8P83bw4klh1kjqOtGc7GjrLgCQ==",
+      "signatures": [
+        {
+          "sig": "MEQCIEvbpwyHd5qrM1rDm8h4l1jSfXaka3hyuL+i+PNpA2+ZAiAUK6kAB16bM5QdcrFrJZJnDUqzm2OxJq1fNYTJQ85BiQ==",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.48.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 4153854
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "0bab2a99d571fa11831bf1f370a49f21ee60f3bcb87c588e76719a741e729141"
+  },
+  {
+    "version": "1.47.0",
+    "dist": {
+      "shasum": "ea233f764223e07feade05fd126f68fef8ca27d2",
+      "tarball": "https://registry.npmjs.org/@carbon/react/-/react-1.47.0.tgz",
+      "fileCount": 1361,
+      "integrity": "sha512-Gk9meOahQQJnbzKj8iSnUat4QY8RISbezenqew/J6B0WcO+/WvdEPCtSFO7XprNpyBNurp1dxhC6uJKyziLFYw==",
+      "signatures": [
+        {
+          "sig": "MEYCIQCEx5lXLjkd7drrhsJ1sv5sP0i5awjdZwYJmFGwO6kr7QIhANAGO5eDVk3CX3beEKt3NU2xtJC++eAnzTNh+m70mIxe",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@carbon%2freact@1.47.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v0.2"
+        }
+      },
+      "unpackedSize": 3963051
+    },
+    "license": "Apache-2.0",
+    "peerDependencies": {
+      "sass": "^1.33.0",
+      "react": "^16.8.6 || ^17.0.1 || ^18.2.0",
+      "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0"
+    },
+    "modalSourceSha256": "96a9168c6b02a80b8af8676ab7cb8f4bdae14d77bd66411965e36c7951fd26c8"
+  }
+]

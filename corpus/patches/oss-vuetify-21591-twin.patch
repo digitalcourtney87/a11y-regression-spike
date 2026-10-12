@@ -1,0 +1,11 @@
+--- a/fixtures/oss/vuetify-21591/src/main.js
++++ b/fixtures/oss/vuetify-21591/src/main.js
+@@ -4,7 +4,7 @@
+ import "vuetify/styles";
+ 
+ // Issue #21591 / fix #22242: zero-delay hover menus remain open on keyboard entry.
+-createApp({ render: () => h(VApp, null, { default: () => h("main", null, [
++createApp({ render: () => h(VApp, null, { default: () => h("main", { style: { maxWidth: "480px" } }, [
+   h("h1", "Menu navigation"),
+   h(VMenu, { openOnHover: true, openDelay: 0, closeDelay: 0, transition: "slide-x-transition" }, {
+     activator: ({ props }) => h(VBtn, props, { default: () => "Test menu" }),

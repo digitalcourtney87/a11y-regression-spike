@@ -1,0 +1,1 @@
+{"id":"bootstrap-39189","stack":"vanilla","package":"bootstrap","versions":["5.3.1","5.3.2","5.3.3"],"dependencies":{"@popperjs/core":"2.11.8"},"issue":"https://github.com/twbs/bootstrap/issues/39189"}

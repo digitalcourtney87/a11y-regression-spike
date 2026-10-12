@@ -1,0 +1,16 @@
+{
+  "id": "oss-fluent-18714-twin",
+  "patternId": "oss--fluent-18714",
+  "operator": "css-only",
+  "app": "oss/fluent-18714",
+  "journeyId": "oss-fluent-18714",
+  "target": "Main width only; component properties and feedback unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-fluent-18714"
+}

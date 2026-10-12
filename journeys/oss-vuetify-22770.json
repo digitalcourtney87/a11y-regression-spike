@@ -1,0 +1,52 @@
+{
+  "id": "oss-vuetify-22770",
+  "version": "1",
+  "app": "oss/vuetify-22770",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-autocomplete",
+      "strategy": "TAB",
+      "until": {
+        "name": "Select an item",
+        "maxAttempts": 20
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "open-options",
+      "strategy": "PRESS",
+      "key": "Enter",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-first-option",
+      "strategy": "PRESS",
+      "key": "ArrowDown",
+      "until": {
+        "name": "Item 1",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "wrap-to-last-option",
+      "strategy": "PRESS",
+      "key": "ArrowUp",
+      "until": {
+        "name": "Item 100",
+        "maxAttempts": 1
+      },
+      "observeMs": 1000,
+      "expectations": []
+    }
+  ]
+}

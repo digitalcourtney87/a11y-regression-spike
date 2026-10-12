@@ -1,0 +1,13 @@
+diff --git a/fixtures/oss/ras-8637/src/main.jsx b/fixtures/oss/ras-8637/src/main.jsx
+index 8acd00e..391d384 100644
+--- a/fixtures/oss/ras-8637/src/main.jsx
++++ b/fixtures/oss/ras-8637/src/main.jsx
+@@ -6,7 +6,7 @@ import { Provider, defaultTheme, DateField } from "@adobe/react-spectrum";
+ function App() {
+   const [date, setDate] = useState(null);
+   return <Provider theme={defaultTheme} locale="en-US">
+-    <main>
++    <main style={{ maxWidth: 480 }}>
+       <h1>Date entry</h1>
+       <DateField label="Birthdate" value={date} onChange={setDate} />
+       <p id="date">{date?.toString() ?? "empty"}</p>

@@ -1,0 +1,291 @@
+{
+  "package": "@adobe/react-spectrum",
+  "releases": [
+    {
+      "version": "3.42.2",
+      "published": "2025-06-10T18:12:46.845Z",
+      "licence": "Apache-2.0",
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "datepickerDependency": "^3.14.3",
+      "dist": {
+        "shasum": "38a4b760ea252f2b8bc6b2ebedef316046d695fa",
+        "tarball": "https://registry.npmjs.org/@adobe/react-spectrum/-/react-spectrum-3.42.2.tgz",
+        "fileCount": 79,
+        "integrity": "sha512-6iLmVyEyBQhQuT5ZtT8q8Cpz1ZegZTod4DnhAu5J0ZjbSbQn+53NWGGTmHORJ7Qdmtd7h1wUeybMsuS8A7LYcg==",
+        "signatures": [
+          {
+            "sig": "MEUCIQCioqxWlW4HkPIkBdcIftVtIpdo/8ny2T/eXdWFRQ6YTAIgVorz4NzDDiS7rh6ul2ItNcU9cTT50OK8G/WgoQt3M90=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 781349
+      }
+    },
+    {
+      "version": "3.43.0",
+      "published": "2025-07-23T00:26:42.482Z",
+      "licence": "Apache-2.0",
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "datepickerDependency": "^3.14.4",
+      "dist": {
+        "shasum": "6766d2b7e39242e1c862e43bef1c031d647135d2",
+        "tarball": "https://registry.npmjs.org/@adobe/react-spectrum/-/react-spectrum-3.43.0.tgz",
+        "fileCount": 79,
+        "integrity": "sha512-QeFxyUK60M26Nz2WhsNGZ5kRWT3tcrC/WWCASS8UFDI+Oy1P7+o35hNKBGJpeWFwBE/1+8B7G0rAk3+gapYAZg==",
+        "signatures": [
+          {
+            "sig": "MEUCIGpsNArhitg9Mr5/zK3BdHhS39so4QKrM+5d25futXRoAiEAl900dVUJASMCGs0dQHeeA+39xYaO1rqHzNdMuTK5ak0=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 790370
+      }
+    },
+    {
+      "version": "3.44.0",
+      "published": "2025-08-25T18:14:33.361Z",
+      "licence": "Apache-2.0",
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "datepickerDependency": "^3.14.5",
+      "dist": {
+        "shasum": "950246378510e44a432cdbfdad4f0c6e9991be96",
+        "tarball": "https://registry.npmjs.org/@adobe/react-spectrum/-/react-spectrum-3.44.0.tgz",
+        "fileCount": 79,
+        "integrity": "sha512-B5pHvAJvBIVa9EPklAKN5WSy9shlWeagrck4TefQ8dShAEI6Y4DEizOKN0nhiCmUaOkpP+AHn5L8i3XaRheO7A==",
+        "signatures": [
+          {
+            "sig": "MEQCIBOEAtVfS9POO5MMcxz3Eew0jYIcaU1Kw5a2xydvL1YEAiBaB02JIZJ4wuS9nyHTZ/hMdl4iJzwlkLBc9qWpjMm6dg==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 790371
+      }
+    }
+  ],
+  "datepickerSource": [
+    {
+      "version": "3.14.3",
+      "published": "2025-05-19T17:01:05.655Z",
+      "ignoresLeadingZero": false,
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "dependencies": {
+        "@swc/helpers": "^0.5.0",
+        "@react-aria/form": "^3.0.16",
+        "@react-aria/i18n": "^3.12.9",
+        "@react-aria/focus": "^3.20.3",
+        "@react-aria/label": "^3.7.18",
+        "@react-aria/utils": "^3.29.0",
+        "@react-stately/form": "^3.1.4",
+        "@react-types/button": "^3.12.1",
+        "@react-types/dialog": "^3.5.18",
+        "@react-types/shared": "^3.29.1",
+        "@react-types/calendar": "^3.7.1",
+        "@react-aria/spinbutton": "^3.6.15",
+        "@internationalized/date": "^3.8.1",
+        "@react-types/datepicker": "^3.12.1",
+        "@react-aria/interactions": "^3.25.1",
+        "@internationalized/number": "^3.6.2",
+        "@internationalized/string": "^3.2.6",
+        "@react-stately/datepicker": "^3.14.1"
+      },
+      "licence": "Apache-2.0",
+      "dist": {
+        "shasum": "a018ebe51f9437eafd3cdd732082b9d236119b6e",
+        "tarball": "https://registry.npmjs.org/@react-aria/datepicker/-/datepicker-3.14.3.tgz",
+        "fileCount": 222,
+        "integrity": "sha512-gDc+bM0EaY3BuIW8IJu/ARJV78bRpOaHp+B08EW4N2qJvc7Bs+EmGLnxMrB6Ny+YxNxsYdQRA/FqiytVYOEk8w==",
+        "signatures": [
+          {
+            "sig": "MEYCIQDv4PdaPsSjYy1ZXtmH6NqrPKQlJbin8hU02U7LjnHxNwIhALkHDR5AuxnKIYaKQ4ntf1UXmcPSRi+cCbpFsp9UIg9G",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 572327
+      }
+    },
+    {
+      "version": "3.14.4",
+      "published": "2025-06-05T16:02:52.855Z",
+      "ignoresLeadingZero": false,
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "dependencies": {
+        "@swc/helpers": "^0.5.0",
+        "@react-aria/form": "^3.0.17",
+        "@react-aria/i18n": "^3.12.10",
+        "@react-aria/focus": "^3.20.4",
+        "@react-aria/label": "^3.7.19",
+        "@react-aria/utils": "^3.29.1",
+        "@react-stately/form": "^3.1.5",
+        "@react-types/button": "^3.12.2",
+        "@react-types/dialog": "^3.5.19",
+        "@react-types/shared": "^3.30.0",
+        "@react-types/calendar": "^3.7.2",
+        "@react-aria/spinbutton": "^3.6.16",
+        "@internationalized/date": "^3.8.2",
+        "@react-types/datepicker": "^3.12.2",
+        "@react-aria/interactions": "^3.25.2",
+        "@internationalized/number": "^3.6.3",
+        "@internationalized/string": "^3.2.7",
+        "@react-stately/datepicker": "^3.14.2"
+      },
+      "licence": "Apache-2.0",
+      "dist": {
+        "shasum": "8220e3e7f349bfef0a24bcaa19f12490366a34ee",
+        "tarball": "https://registry.npmjs.org/@react-aria/datepicker/-/datepicker-3.14.4.tgz",
+        "fileCount": 222,
+        "integrity": "sha512-VoVLqTSttvHE1h8nrF2L7r1SDN0VCv5UtIlYqUxK4Gk/5Z7Pboo7aY2OAhgpycm9ZUfWio/VVAtj6oMoWHjxQw==",
+        "signatures": [
+          {
+            "sig": "MEUCIQDvCynUCdTxUWpBjcA0YcRLWuXxucV3WsloOhOtuXIBxwIgAOlbkg5PIeNvxwn3Ct/loy2yXCqR7AluRbWysclxIWw=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 572600
+      }
+    },
+    {
+      "version": "3.14.5",
+      "published": "2025-06-10T18:12:23.079Z",
+      "ignoresLeadingZero": false,
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "dependencies": {
+        "@swc/helpers": "^0.5.0",
+        "@react-aria/form": "^3.0.18",
+        "@react-aria/i18n": "^3.12.10",
+        "@react-aria/focus": "^3.20.5",
+        "@react-aria/label": "^3.7.19",
+        "@react-aria/utils": "^3.29.1",
+        "@react-stately/form": "^3.1.5",
+        "@react-types/button": "^3.12.2",
+        "@react-types/dialog": "^3.5.19",
+        "@react-types/shared": "^3.30.0",
+        "@react-types/calendar": "^3.7.2",
+        "@react-aria/spinbutton": "^3.6.16",
+        "@internationalized/date": "^3.8.2",
+        "@react-types/datepicker": "^3.12.2",
+        "@react-aria/interactions": "^3.25.3",
+        "@internationalized/number": "^3.6.3",
+        "@internationalized/string": "^3.2.7",
+        "@react-stately/datepicker": "^3.14.2"
+      },
+      "licence": "Apache-2.0",
+      "dist": {
+        "shasum": "8c0c2763fe63d7a2281614cfc1e3c18960fc2beb",
+        "tarball": "https://registry.npmjs.org/@react-aria/datepicker/-/datepicker-3.14.5.tgz",
+        "fileCount": 222,
+        "integrity": "sha512-TeV/yXEOQ2QOYMxvetWcWUcZN83evmnmG/uSruTdk93e2nZzs227Gg/M95tzgCYRRACCzSzrGujJhNs12Nh7mg==",
+        "signatures": [
+          {
+            "sig": "MEQCIDvXtJZNycZ7RdgTs78UYBKUSKHX6aNBxmKCIkuyrxAQAiAUGFEOVF5U7kVEGrYosUiqERzOTN1dTxQ92y2onqM9UA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 572600
+      }
+    },
+    {
+      "version": "3.15.0",
+      "published": "2025-07-23T00:26:19.480Z",
+      "ignoresLeadingZero": true,
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "dependencies": {
+        "@swc/helpers": "^0.5.0",
+        "@react-aria/form": "^3.1.0",
+        "@react-aria/i18n": "^3.12.11",
+        "@react-aria/focus": "^3.21.0",
+        "@react-aria/label": "^3.7.20",
+        "@react-aria/utils": "^3.30.0",
+        "@react-stately/form": "^3.2.0",
+        "@react-types/button": "^3.13.0",
+        "@react-types/dialog": "^3.5.20",
+        "@react-types/shared": "^3.31.0",
+        "@react-types/calendar": "^3.7.3",
+        "@react-aria/spinbutton": "^3.6.17",
+        "@internationalized/date": "^3.8.2",
+        "@react-types/datepicker": "^3.13.0",
+        "@react-aria/interactions": "^3.25.4",
+        "@internationalized/number": "^3.6.4",
+        "@internationalized/string": "^3.2.7",
+        "@react-stately/datepicker": "^3.15.0"
+      },
+      "licence": "Apache-2.0",
+      "dist": {
+        "shasum": "b110e35189dad1fd6008c2a271bf03624a0959b3",
+        "tarball": "https://registry.npmjs.org/@react-aria/datepicker/-/datepicker-3.15.0.tgz",
+        "fileCount": 222,
+        "integrity": "sha512-AONeLj7sMKz4JmzCu4bhsqwcNFXCSWoaBhi4wOJO9+WYmxudn5mSI9ez8NMCVn+s5kcYpyvzrrAFf/DvQ4UDgw==",
+        "signatures": [
+          {
+            "sig": "MEYCIQCG8h4d2XyE4l9bt1CuhjAd7SvlpBq1rb6tPMmRNEuyBgIhAKbMGMNR6qII2VQbuJFfXoDMn3WmVsFXrqIiAQj+SgTa",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 576379
+      }
+    },
+    {
+      "version": "3.15.1",
+      "published": "2025-08-25T18:14:08.769Z",
+      "ignoresLeadingZero": false,
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+        "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+      },
+      "dependencies": {
+        "@swc/helpers": "^0.5.0",
+        "@react-aria/form": "^3.1.1",
+        "@react-aria/i18n": "^3.12.12",
+        "@react-aria/focus": "^3.21.1",
+        "@react-aria/label": "^3.7.21",
+        "@react-aria/utils": "^3.30.1",
+        "@react-stately/form": "^3.2.1",
+        "@react-types/button": "^3.14.0",
+        "@react-types/dialog": "^3.5.21",
+        "@react-types/shared": "^3.32.0",
+        "@react-types/calendar": "^3.7.4",
+        "@react-aria/spinbutton": "^3.6.18",
+        "@internationalized/date": "^3.9.0",
+        "@react-types/datepicker": "^3.13.1",
+        "@react-aria/interactions": "^3.25.5",
+        "@internationalized/number": "^3.6.5",
+        "@internationalized/string": "^3.2.7",
+        "@react-stately/datepicker": "^3.15.1"
+      },
+      "licence": "Apache-2.0",
+      "dist": {
+        "shasum": "df128ee61bdfaabd24a387e22dcc24b4bf2f036f",
+        "tarball": "https://registry.npmjs.org/@react-aria/datepicker/-/datepicker-3.15.1.tgz",
+        "fileCount": 222,
+        "integrity": "sha512-RfUOvsupON6E5ZELpBgb9qxsilkbqwzsZ78iqCDTVio+5kc5G9jVeHEIQOyHnavi/TmJoAnbmmVpEbE6M9lYJQ==",
+        "signatures": [
+          {
+            "sig": "MEYCIQDFPU4R8mtaHYqKRnT1IQ/YwlKKVHAM2xq2Z+TdZ8YsOgIhAP2ramEKNzVEq8o2EXoVnnLy8YCJ8Kuy28RTKd2NEaY3",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 576720
+      }
+    }
+  ]
+}

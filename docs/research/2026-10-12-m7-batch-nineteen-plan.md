@@ -1,0 +1,5 @@
+# M7 completion batch nineteen — EXPLORATORY, recorded before retry
+
+Repeat the six batch-eighteen queries under a new bounded batch after its temporary collector failure. GitHub repository metadata redirects pacocoursey/cmdk to dip/cmdk; this is the same original-survey project/package, not a new library or package rename. Use floating-ui/floating-ui, emilkowalski/sonner, dip/cmdk, in that order, closed keyboard in:title then focus in:title, creation descending,30 hits/query. Same body filter (regress/upgrad/previous/used to/worked/three-part version), two new unique selections/query, registry/prior-ledger/original-survey exclusions and deduplication. Six attempts/12 selections maximum, no substitution. Save each query response/log before the next call; preserve any further failure.
+
+At most two new fixtures/two exploratory dispatches including unsplit repeats, unchanged P22/P39/frozen journey repertoire. No assigned execution/new tag or changed context, criterion, symptom, oracle or threshold. Continue77-pattern target, availability unestablished.

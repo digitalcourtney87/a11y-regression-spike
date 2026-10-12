@@ -1,0 +1,22 @@
+{
+  "id": "oss-mui-46734-twin",
+  "source": "seeded",
+  "patternId": "oss--mui-46734",
+  "split": "test",
+  "app": "oss/mui-46734",
+  "journeyId": "oss-mui-46734",
+  "base": {
+    "ref": "oss/mui-46734@e9969cde4df14c4c92e52a38071f8189fe3611e5+@mui/material@7.2.0"
+  },
+  "candidate": {
+    "patch": "oss-mui-46734-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0106)",
+    "licence": "MIT (@mui/material)"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "oss-baseui-5532",
+  "version": "1",
+  "app": "oss/baseui-5532",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-show-tabs",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "role": "button",
+        "name": "Show tabs",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "show-tabs",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "reach-overview",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "role": "tab",
+        "name": "Overview",
+        "maxAttempts": 20
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# M7 batch twelve — EXPLORATORY
+
+Existing Carbon#23126 followed without new searches. Published Modal changes from native close button1.47.0 to IconButton/Tooltip1.48.0. All releases share React/react-dom18.2.0. Fix#23157 wires native-dialog cancellation only; it does not repair the non-flag passive-modal path. Therefore this attempted default construct is excluded under P22 rule6, even if its source boundary reproduces. Do not vary a feature flag or claim a fix for a different construct.
+
+38212601361 fails both builds because current Vite requires a newer Sass compiler API. Uniform published compiled CSS repair in38213037408 fails current minification on an unrelated legacy code-snippet media query.38213610821 keeps the full published CSS intact via raw style import and reaches the check, recording blocked external font requests. All attempts are retained. No admission; fixture retired to non-executable source text under `rejected-fixtures/carbon-23126`, exact historical source remains in git. The two batch-twelve dispatches are38212601361/38213037408; third attempt belongs to recorded batch thirteen.
+
+Grouped-select first complete behavioral check38212601361 and repeat38213037408 agree on original criterion; final ordinary feedback/browse diagnostic is38213610821, independent repeat of final fixture pending. No assigned execution, new tag, changed criterion/oracle/context or M8 work.

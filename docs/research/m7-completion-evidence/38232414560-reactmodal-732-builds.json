@@ -1,0 +1,23 @@
+[
+  {
+    "label": "3.1.0",
+    "version": "3.1.0",
+    "before": "2017-10-26T17:26:25Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "3.8.1",
+    "version": "3.8.1",
+    "before": "2018-12-20T01:01:21Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "3.11.1",
+    "version": "3.11.1",
+    "before": "2019-10-27T00:02:48Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

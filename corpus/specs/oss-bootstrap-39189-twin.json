@@ -1,0 +1,16 @@
+{
+  "id": "oss-bootstrap-39189-twin",
+  "patternId": "oss--bootstrap-39189",
+  "operator": "css-only",
+  "app": "oss/bootstrap-39189",
+  "journeyId": "oss-bootstrap-39189",
+  "target": "Main width only; modal id, trigger attributes and focus behavior unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "<main>",
+      "replace": "<main style=\"max-width: 480px\">"
+    }
+  ],
+  "twinOf": "oss-bootstrap-39189"
+}

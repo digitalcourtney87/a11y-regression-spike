@@ -1,0 +1,39 @@
+{
+  "id": "oss-vuetify-21591",
+  "version": "1",
+  "app": "oss/vuetify-21591",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-menu",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Test menu",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "enable-menu-key-input",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "enter-item-one",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown",
+      "until": {
+        "name": "Item 1",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}

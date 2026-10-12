@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "5.3.1",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Details visible=true; dialog focused=true (click)"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "Details visible=true; dialog focused=true (Enter)"
+    },
+    "benignTwin": {
+      "holds": true,
+      "detail": "Details visible=true; dialog focused=true (Enter)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

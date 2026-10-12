@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "9.20.0",
+  "result": {
+    "pointer": {
+      "holds": false,
+      "detail": "selection=alpha, Beta aria-selected=false (pointer)"
+    },
+    "keyboard": {
+      "holds": false,
+      "detail": "selection=alpha, Beta aria-selected=false (ArrowDown/Space)"
+    },
+    "benignTwin": {
+      "holds": false,
+      "detail": "selection=alpha, Beta aria-selected=false (ArrowDown/Space)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

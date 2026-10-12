@@ -1,0 +1,54 @@
+{
+  "id": "oss-mui-44048",
+  "version": "1",
+  "app": "oss/mui-44048",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-search",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Search",
+        "role": "combobox",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "open-information",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown"
+    },
+    {
+      "kind": "at",
+      "id": "browse-information",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-information",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "No recent searches",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "6.4.2",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": 3,
+      "holds": true,
+      "detail": "Upper mark after ArrowRight=30"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": 3,
+      "holds": true,
+      "detail": "Upper mark after ArrowRight=30"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": 3,
+      "holds": true,
+      "detail": "Upper mark after ArrowRight=30"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "oss-bootstrap-39189",
+  "source": "oss-history",
+  "patternId": "oss--bootstrap-39189",
+  "split": "test",
+  "app": "oss/bootstrap-39189",
+  "journeyId": "oss-bootstrap-39189",
+  "base": {
+    "ref": "oss/bootstrap-39189@b5c3ccb4bb1387903fa80d8494b5cc07a912cc06+bootstrap@5.3.1"
+  },
+  "candidate": {
+    "ref": "oss/bootstrap-39189@b5c3ccb4bb1387903fa80d8494b5cc07a912cc06+bootstrap@5.3.2"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Native modal activation with a valid colon-containing HTML id fails in Bootstrap5.3.2. Reported5.3.1 working and published5.3.3 fix39201 support the same construct, shared Popper2.11.8. Pointer and Tab/Enter must open and focus Details; good/fixed hold, broken retains selector error. Checks and resolved locks match independently (DR-0104)."
+  },
+  "provenance": {
+    "origin": "mined from twbs/bootstrap (#39189, PR #39201); verified by m3-oss-repro run 38226318174; second-round admission DR-0104",
+    "licence": "MIT (Bootstrap)",
+    "url": "https://github.com/twbs/bootstrap/issues/39189"
+  }
+}

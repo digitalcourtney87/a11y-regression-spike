@@ -1,0 +1,24 @@
+{
+  "id": "oss-bootstrap-15168",
+  "source": "oss-history",
+  "patternId": "oss--bootstrap-15168",
+  "split": "test",
+  "app": "oss/bootstrap-15168",
+  "journeyId": "oss-bootstrap-15168",
+  "base": {
+    "ref": "oss/bootstrap-15168@c4d00480ee6b88261716c9604520b7994df9679e+bootstrap@3.2.0"
+  },
+  "candidate": {
+    "ref": "oss/bootstrap-15168@c4d00480ee6b88261716c9604520b7994df9679e+bootstrap@3.3.0"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Manual Tooltip string-method dispatch fails after selector initialization in3.3.0. Reported3.2.0 working, published3.3.2 reverts14189 via15466. Same jQuery1.11.1, vanilla context. Native Show help activation must show Extra information; good/fixed browse goal line3, absent broken with expected method error. Final outputs and locks match independently (DR-0108)."
+  },
+  "provenance": {
+    "origin": "mined from twbs/bootstrap (#15168, PR #15466); verified by m3-oss-repro run 38236198602; second-round admission DR-0108",
+    "licence": "MIT (Bootstrap)",
+    "url": "https://github.com/twbs/bootstrap/issues/15168"
+  }
+}

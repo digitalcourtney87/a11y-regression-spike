@@ -421,3 +421,37 @@ NVDA-present leg (G1-type, no listener): K1–K5 conveyed (5 of 5), K6e one rAF 
 ### 2026-10-11 — Calendar admission and lead follow-up
 
 DR-0096; [Calendar admission](research/2026-10-11-calendar-admission.md), [lead follow-up](research/2026-10-11-m7-leads-followup.md), [next bounded search plan](research/2026-10-11-m7-next-mining-plan.md). One new test pattern built with twin/control; 17 additions remain. No confirmatory execution or new tag.
+
+### 2026-10-11 — Second bounded mining pass
+
+DR-0097; [pass-two report and source-linked ledger](research/2026-10-11-m7-mining-pass-two.md). Eight queries, one new candidate excluded, zero additions or CI dispatches; 17 patterns still needed.
+
+### 2026-10-11 — Broader mining pass and DateField admission
+
+DR-0098; [source-linked report and ledger](research/2026-10-11-m7-pass-three.md). Ten new issues, one admitted DateField pair with twin/control after two exploratory checks. Two additions built, 16 remain; six documentary leads pending. No confirmatory execution or new tag.
+
+### 2026-10-11 — Completion batches and Vuetify navigation admission
+
+DR-0099; [batch-four ledger/report](research/2026-10-11-m7-batch-four.md), [batch-five ledger/report](research/2026-10-11-m7-batch-five.md), [completion evidence](research/m7-completion-evidence/vuetify-repeat-comparison.json). Three additions built, 62 test patterns, 15 still needed; completion work continues. DataGrid remains unadmitted after setup failures.
+
+### 2026-10-12 — EXPLORATORY: DataGrid admission
+
+DR-0100; A-009; [matching reproduction evidence](research/m7-completion-evidence/datagrid-repeat-comparison.json). Completion continues; no new freeze tag or assigned execution.
+
+### 2026-10-12 — EXPLORATORY: zero-delay menu admission
+
+DR-0101; A-010; [matching menu evidence](research/m7-completion-evidence/menu-repeat-comparison.json). Completion continues, no new tag or assigned execution.
+
+### 2026-10-12 — EXPLORATORY: grouped-select admission
+
+DR-0102; A-011; [matching grouped-select evidence](research/m7-completion-evidence/reactselect-repeat-comparison.json). Completion continues; no new tag or assigned execution.
+
+### 2026-10-12 — EXPLORATORY: three input admissions
+
+DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repeat-comparison.json), [Chakra repeat](research/m7-completion-evidence/chakra-6693-repeat-comparison.json), [Headless repeat](research/m7-completion-evidence/headlessui-2084-repeat-comparison.json). Completion continues, no new tag or assigned execution.
+
+2026-10-12 M7 continuation: Bootstrap admission and next source batch. See DR-0104, A-013, docs/research/2026-10-12-m7-batch-twenty.md and batch-twenty-three/24 plans.
+
+2026-10-12 M7 continuation: Base UI, date-picker and MUI admissions. See DR-0105/0106, A-014/015, docs/research/2026-10-12-m7-batch-twenty-three.md and batch24–29 ledgers/plans; current72 test patterns, five still needed.
+
+2026-10-12 M7 second-round pattern construction complete. See DR-0107–0109, A-016–018, docs/reports/M7-second-round-build.md and final batch/evidence records.77 test patterns built; no new freeze tag or assigned execution.

@@ -1,0 +1,16 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.43.0",
+  "result": {
+    "pointer": {
+      "holds": false,
+      "detail": "01011970 -> 0970-10-11 (pointer to first segment; continuous typing)"
+    },
+    "keyboard": {
+      "holds": false,
+      "detail": "01011970 -> 0970-10-11 (Tab to first segment; continuous typing)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

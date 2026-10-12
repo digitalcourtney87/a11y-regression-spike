@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "1.7.5",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen Alpha (pointer entry)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen Alpha (Tab entry)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen Alpha (Tab entry)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

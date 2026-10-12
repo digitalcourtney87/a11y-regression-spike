@@ -1,0 +1,27 @@
+{
+  "label": "EXPLORATORY",
+  "version": "7.3.0",
+  "result": {
+    "pointer": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen foobar=false (blur)"
+    },
+    "keyboard": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen foobar=false (Enter)"
+    },
+    "benignTwin": {
+      "browseChosenReachedAt": null,
+      "holds": false,
+      "detail": "Chosen foobar=false (Enter)"
+    }
+  },
+  "external": [],
+  "pageErrors": [
+    "Cannot read properties of undefined (reading 'label')",
+    "Cannot read properties of undefined (reading 'label')",
+    "Cannot read properties of undefined (reading 'label')"
+  ]
+}

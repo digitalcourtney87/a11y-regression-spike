@@ -1,0 +1,2616 @@
+{
+  "label": "EXPLORATORY",
+  "planCommit": "58e4c37",
+  "queries": [
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed keyboard in:title",
+      "totalHits": 17,
+      "hits": [
+        {
+          "number": 1595,
+          "title": "useCombobox focus-ring during keyboard navigation",
+          "disposition": "selected"
+        },
+        {
+          "number": 1550,
+          "title": "How to keep menu open on mobile for useComboBox when the keyboard closes",
+          "disposition": "selected"
+        },
+        {
+          "number": 1466,
+          "title": "Keyboard navigation from toggle with menu closed highlights disabled items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1403,
+          "title": "Keyboard navigation breaks when the toggle button acquires focus while the menu is open.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1341,
+          "title": "Cannot remove multiselect items via keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1332,
+          "title": "feat: Support more keyboard event meta in reducers",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1321,
+          "title": "Question: Why when I select items by keyboard it doesn't scroll menu container",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1072,
+          "title": "[useSelect] Focus is not set to dropdown part if it's open with transition using keyboard.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1009,
+          "title": "[useCombobox] disabled items are selectable via keyboard when using React.StrictMode",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 859,
+          "title": "Combobox / dropdown list with keyboard controls?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 729,
+          "title": "Dropdown menu is not interactive with keyboard in Safari and firefox",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 699,
+          "title": "Controlling isOpen state removes initial highlightedIndex when opened via keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 690,
+          "title": "Mouse interferes with keyboard navigation in Safari (#240 repeat)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 532,
+          "title": "On IOS: Text Input Field Cleared When Keyboard is Hidden",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 280,
+          "title": "Mouse interferes with keyboard navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 276,
+          "title": "broken keyboard navigation in safari",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 240,
+          "title": "Keyboard selection is rudely interrupted and overridden by auto-complete mouse-enter actions.",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:downshift-js/downshift is:issue is:closed focus in:title",
+      "totalHits": 40,
+      "hits": [
+        {
+          "number": 1595,
+          "title": "useCombobox focus-ring during keyboard navigation",
+          "disposition": "duplicate/queued"
+        },
+        {
+          "number": 1574,
+          "title": "useComboBox always grabbing focus on render",
+          "disposition": "selected"
+        },
+        {
+          "number": 1572,
+          "title": "Is it normal for no downshift event to fire on input focus?",
+          "disposition": "selected"
+        },
+        {
+          "number": 1569,
+          "title": "Document focus reset to body element when menu is open and combobox is tabbed away from (Firefox only)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1557,
+          "title": "Select element doesn't receive focus when the label is clicked.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1537,
+          "title": "[useSelect] Toggle button lost focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1522,
+          "title": "Focus should not be triggered if menu is not opened (WCAG)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1516,
+          "title": "tabbing to next focusable element when combobox menu is open",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1446,
+          "title": "How does one avoid losing focus on input when using tab auto-complete?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1439,
+          "title": "[Feedback] New input focus behaviour added in v7.0.0",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1433,
+          "title": "Open menu when input is focused using multiselect",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1432,
+          "title": "useSelect, `openMenu` when getToggleButtonProps is focused didn't work as expected",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1423,
+          "title": "MultiSelect menu closes if any focusable element is used inside list item.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1418,
+          "title": "[useSelect] How to openMenu without focus?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1403,
+          "title": "Keyboard navigation breaks when the toggle button acquires focus while the menu is open.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1387,
+          "title": "Wrong event triggered when clicking an item when openMenu is called on input focus with useCombobox",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1383,
+          "title": "[Question] input get focused after every select item click, is this the normal behaviour?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1293,
+          "title": "Axe acccessibility violation when using `useSelect` example from docs (\"scrollable-region-focusable\")",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1270,
+          "title": "When I click the toggle button with an input focused the menu close and open instantly after, on IOS Safari and IOS Chrome",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1234,
+          "title": "[useCombobox] InputKeyDownEnter action not triggering when focus is on the input field on version 6.1.0",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1206,
+          "title": "[useSelect] Trigger not focused when clicking outside the menu",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1187,
+          "title": "Input Loses Focus in MultipleSelection",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1132,
+          "title": "[useCombobox] How to keep Menu open as long as Input is focused?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1131,
+          "title": "[useCombobox] How to programmatically focus input?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1114,
+          "title": "[useCombobox] InputKeyDownEnter action not triggering when focus is on the input field",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1072,
+          "title": "[useSelect] Focus is not set to dropdown part if it's open with transition using keyboard.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1069,
+          "title": "Focus on item that is most similar to typed input",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1027,
+          "title": "Input and toggle button don't get focus in VoiceOver",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1024,
+          "title": "[useCombobox] Attaching `openMenu` to input's `onFocus` open and directly close menu on input's focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1014,
+          "title": "Focus not set after item is selected",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed keyboard in:title",
+      "totalHits": 20,
+      "hits": [
+        {
+          "number": 7803,
+          "title": "Keep a far keyboard move in view in a virtualized list when the browser is zoomed out",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 7777,
+          "title": "Keep a far keyboard move in view in a virtualized list inside a scaled container",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7767,
+          "title": "Keep a far keyboard move in view in a virtualized list that scrolls smoothly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7681,
+          "title": "Set data-focus-visible and call onFocusVisible for keyboard focus inside a shadow root",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7641,
+          "title": "Handle ComboboxSelect keyboard focus checks inside a shadow root",
+          "disposition": "selected"
+        },
+        {
+          "number": 7628,
+          "title": "Keep a far keyboard move in view in a virtualized list with items of different sizes",
+          "disposition": "selected"
+        },
+        {
+          "number": 7192,
+          "title": "The synthetic click behind keyboard activation reports view: null and composed: false",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7181,
+          "title": "The click keyboard activation produces drops the gesture's modifier* init members",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7094,
+          "title": "Safari Option+Tab is treated as pointer modality, so keyboard focus is not focus-visible",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6341,
+          "title": "Div-based Focusable server-renders without tabindex=\"0\" (not keyboard-reachable until hydration) and with an invalid disabled attribute",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6306,
+          "title": "FocusTrapRegion with no tabbable elements strands keyboard focus on an invisible aria-hidden sentinel",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4540,
+          "title": "Button doesn't work with useFormStatus on keyboard click",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4089,
+          "title": "Clicking on esc keyboard elements do not prevent propagation to popover from child elements.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1811,
+          "title": "Select-combobox causes the page to the scroll when using keyboard keys",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 910,
+          "title": "Duplicate setState calls on keyboard changes to Radio",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 841,
+          "title": "Pass modifier state when clicking on a Clickable element with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 566,
+          "title": "Accessiblity issue: Portal Popover breaks keyboard navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 368,
+          "title": "Checkbox on Firefox when using keyboard checks and unchecks immediately",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 259,
+          "title": "Remove outline for mouse users but preserves it for keyboard users",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 217,
+          "title": "Feature Request - Keyboard support for Step element",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:ariakit/ariakit is:issue is:closed focus in:title",
+      "totalHits": 106,
+      "hits": [
+        {
+          "number": 7842,
+          "title": "Paint the same brand color on focused selected and unselected Ariakit UI tabs",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7795,
+          "title": "Keep focus inside an open Menu when its focused item is removed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7794,
+          "title": "Keep focus in place when the first item of an open Menu in a shadow root changes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7791,
+          "title": "Take a fresh initial focus target when a modal Menu opens again",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7785,
+          "title": "Return focus to an element in the page when the captured opener of a Dialog is replaced while it's open",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7778,
+          "title": "Keep a Dialog open on a focus move to a later element after its element changes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7776,
+          "title": "Keep focus inside a `Portal` when a fullscreen change moves its portal node",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7766,
+          "title": "Keep focus in place when the first item of an open Menu changes",
+          "disposition": "selected"
+        },
+        {
+          "number": 7681,
+          "title": "Set data-focus-visible and call onFocusVisible for keyboard focus inside a shadow root",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7657,
+          "title": "Return focus from ComboboxList to the combobox inside a shadow root",
+          "disposition": "selected"
+        },
+        {
+          "number": 7641,
+          "title": "Handle ComboboxSelect keyboard focus checks inside a shadow root",
+          "disposition": "duplicate/queued"
+        },
+        {
+          "number": 7626,
+          "title": "Keep focus in the list when a ComboboxSelect popup opens with nothing selected",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7625,
+          "title": "Keep focus inside a popover when it positions again while open",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7620,
+          "title": "Center the selected item when a focused ComboboxSelect reopens with autoFocusOnShow disabled",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7483,
+          "title": "Refine Ariakit UI key caps, link focus rings and heading line height",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7424,
+          "title": "Recreating a menu store while its menu is open moves focus back to the menu button",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7409,
+          "title": "Arrow keys on a non-MenuItem element inside a Menu move focus to the next Menubar item",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7384,
+          "title": "CompositeItem ignores an accessibleWhenDisabled resolved by a Focusable it renders, so arrow keys skip the item",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7377,
+          "title": "Cover the superseded composite move request with a virtual focus fixture",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7360,
+          "title": "Composite remount replays an old focus request and scrolls the page",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7359,
+          "title": "Disabling the active composite item loses focus and breaks arrow-key navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7228,
+          "title": "useTagName and Focusable still read tagName directly, so a named control throws",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7221,
+          "title": "hover and focus in @ariakit/test keep cross-call state per document, so frame-boundary transitions lose it",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7155,
+          "title": "Clicking the tag field no longer focuses the tag input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7118,
+          "title": "ComboboxItem focusOnHover can move focus while the combobox is collapsed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7100,
+          "title": "Legacy Select moves focus into its popup when typeahead runs while the popup is closed",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7099,
+          "title": "Alt-modified keys that move composite focus are treated as pointer modality",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7094,
+          "title": "Safari Option+Tab is treated as pointer modality, so keyboard focus is not focus-visible",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7093,
+          "title": "ComboboxSelect moves focus into the popup when typeahead runs while the popup is closed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7092,
+          "title": "Tab moves focus out of a modal Dialog into the browser UI",
+          "disposition": "already-reviewed"
+        }
+      ]
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed keyboard in:title",
+      "totalHits": 22,
+      "hits": [
+        {
+          "number": 10812,
+          "title": "Show link outline when focused with only keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10527,
+          "title": "[a11y] \"Code\" tab is not reachable via keyboard (focus skips directly to Stackblitz)",
+          "disposition": "selected"
+        },
+        {
+          "number": 10182,
+          "title": "Dialog initialFocusEl does not bring up the keyboard on iOS",
+          "disposition": "selected"
+        },
+        {
+          "number": 10079,
+          "title": "Keyboard navigation in Menu is broken",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8687,
+          "title": "Use Modals should stop keyboard Propagation in the same way that it does for clicks",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8490,
+          "title": "Search keyboard shortcut not working on v2 website",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8449,
+          "title": "Stepper is not keyboard accessible",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8358,
+          "title": "useCheckbox Hook does not provide keyboard accessibility",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8086,
+          "title": "Pincode Component Keyboard Layout Issue on Mobile",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7371,
+          "title": "Chakra ui Modal, keyboard, input, scroll",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7275,
+          "title": "Chakra ui ignores autoSelect property when user opens up a menu by hitting enter on keyboard ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6445,
+          "title": "Mobile Chrome password manager bar above keyboard on Editable input focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6431,
+          "title": "Keyboard shortcuts for buttons",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4510,
+          "title": "Keyboard navigation does not scroll down the view when MenuList is long",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4009,
+          "title": "[Menu] The isLazy prop prevents keyboard accessibility from working in the <Menu /> component",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3957,
+          "title": "Disable keyboard focusing on menu items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3449,
+          "title": "Disable the accessibility outline for non-keyboard uses",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2016,
+          "title": "Only show outlines when user is keyboard navigating",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1502,
+          "title": "[MenuItem] No event when clicking with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 314,
+          "title": "Accessiblity: Navigation issues using keyboard on <Menu/>",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 182,
+          "title": "[NumberInput] not showing numeric keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5,
+          "title": "Code editor leading to keyboard trap",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:chakra-ui/chakra-ui is:issue is:closed focus in:title",
+      "totalHits": 123,
+      "hits": [
+        {
+          "number": 10918,
+          "title": "`Checkbox` and `Radio` (and maybe other components too) when used inside a `Dialog` or `Popover` (etc) component, they show a `focus-visible` ring",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10812,
+          "title": "Show link outline when focused with only keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 10714,
+          "title": "focus visible ring on mouse use",
+          "disposition": "selected"
+        },
+        {
+          "number": 10527,
+          "title": "[a11y] \"Code\" tab is not reachable via keyboard (focus skips directly to Stackblitz)",
+          "disposition": "duplicate/queued"
+        },
+        {
+          "number": 10386,
+          "title": "Combobox example with react-hook-form does not switch focus to the input when there is an error in the form",
+          "disposition": "selected"
+        },
+        {
+          "number": 10226,
+          "title": "Checkboxes within popover: focus-visible on first checkbox not triggering?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10224,
+          "title": "Focus loss with Shadow DOM",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10161,
+          "title": "Not able to focus within a popover place inside a dialog with `scrollBehavior=inside`",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10142,
+          "title": "Not able to focus within a popover place inside a dialog",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10120,
+          "title": "Global CSS Focus Ring",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 10034,
+          "title": "Chakra Menu applies focus visible to the trigger when closed",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9915,
+          "title": "Controlled Popover inside Portal doesn't return focus to trigger even if \"returnFocusOnClose\" is true",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9773,
+          "title": "Closing Menu Focuses the Trigger",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9715,
+          "title": "Focus not preserved when dialog in dialog",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 9368,
+          "title": "Allow to disable the focus ring globally",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9236,
+          "title": "Not way to disable the focus ring?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8809,
+          "title": "Screenreaders unable to use arrow navigation when focussing tabs",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8598,
+          "title": "Popover doesn't focus content with framer-motion v11",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8540,
+          "title": "Change `fireEvent` to `user` in the `focus-look` component test",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8454,
+          "title": "'react-focus-lock' is deprecated",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8451,
+          "title": "Compatibility Issue with react-focus-lock in Next.js Projects",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8230,
+          "title": "onFocus event is not fired if element is focused using Modal's finalFocusRef",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8209,
+          "title": "Issue with Link Component Focus/FocusVisible Styles Not Working in Firefox",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8000,
+          "title": "Inconsistent checkbox focus ring behaviour",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7990,
+          "title": "Select element :focus style is missing",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7976,
+          "title": "Focussing an element within Popover via `initialFocusRef` is broken",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7965,
+          "title": "`isLoading` accessibility problem b/c of losing focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7808,
+          "title": "`Tabs` component moves focus when pressing Cmd/Ctrl-LeftArrow",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7779,
+          "title": "Auto focus is on last `MenuItem` instead of the first if `Menu` has `isLazy` attribute",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7734,
+          "title": "`Modal` returning focus improperly in some cases, causing sudden page scroll upon close",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed keyboard in:title",
+      "totalHits": 24,
+      "hits": [
+        {
+          "number": 9205,
+          "title": "Combobox: keyboard navigation overwrites aria-selected on options, breaking MultiSelect",
+          "disposition": "selected"
+        },
+        {
+          "number": 9090,
+          "title": "Can't reach the visibility toggle of PasswordInput with keyboard navigation",
+          "disposition": "selected"
+        },
+        {
+          "number": 9045,
+          "title": "Tree keyboard navigation doesn't work on Safari",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8927,
+          "title": "Mask Input blocks keyboard shortcut for \"Undo\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8889,
+          "title": "PinInput swallows keyboard shortcuts in numeric mode",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7936,
+          "title": "Keyboard navigation (Arrow Up/Down) not working for Select component when rendered inside Shadow DOM with portal targeting Shadow Root",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7935,
+          "title": "PasswordInput visibility-toggle buttons not reachable via keyboard nav",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6978,
+          "title": "Select component when dropdown opens with keyboard down it visually selects first element, but doesn't really",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6528,
+          "title": "mantine Menu in Modal keyboard accessibility",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6495,
+          "title": "useHotkeys hook does not accept \"shift+number\" combination on keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6095,
+          "title": "@mantine/dropzone keyboard activation not working",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6042,
+          "title": "Selectbox throws error on keyboard navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5613,
+          "title": "Carousel: keyboard navigation only works when its child element is focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5444,
+          "title": "DatePickerInput keyboard accessibility",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4748,
+          "title": "Menu.Item with Polymorphic component: when using keyboard arrows to enter Menu.Dropdown, I get the error TypeError: Cannot read properties of undefined (reading 'focus')",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3662,
+          "title": "Unexpected keyboard interactions in calendar components",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3508,
+          "title": "Menu Keyboard Interactions",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3412,
+          "title": "[RangeCalendar] days are not accessible by keyboard when the month has changed. ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2736,
+          "title": "MultiSelect doesn't scroll when using keyboard to navigate values",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2623,
+          "title": "Menu component keyboard navigation limited to two items",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1698,
+          "title": "Datepicker is not keyboard accessible in certain cases",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1663,
+          "title": "Dates in Calendar is not focusable with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1614,
+          "title": "Menu items have no focus styles when using keyboard to navigate",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 986,
+          "title": "Spotlight action onTrigger execution order incorrect when using keyboard",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:mantinedev/mantine is:issue is:closed focus in:title",
+      "totalHits": 66,
+      "hits": [
+        {
+          "number": 9215,
+          "title": "Select (and other opinionated Combobox components) don't dismiss the dropdown when focus leaves the widget (WCAG 4.1.2 / APG)",
+          "disposition": "selected"
+        },
+        {
+          "number": 9128,
+          "title": "DateTimePicker Time mis-focuses on minutes after a single '0' '1' or '2' input for hours",
+          "disposition": "selected"
+        },
+        {
+          "number": 9108,
+          "title": "Focus outline is clipped in the desktop documentation navbar",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8696,
+          "title": "When using form.getInputProps on radio input, returned onFocus handler messes up focus order of radio inputs",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8517,
+          "title": "Menus do not restore focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8335,
+          "title": "[Dates] Readonly input has focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8280,
+          "title": "`useCombobox` hook occasionally throws `Cannot read properties of null (reading 'focus')` error",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8170,
+          "title": "Can't disable TimeInput highlight on focus. How to do it ?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8139,
+          "title": "PasswordInput does not display cursor when focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8099,
+          "title": "ConfirmModal \u2013 the focused button causes a type error",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7769,
+          "title": "Mantine 7 searchable Select inside iframe (Flutter desktop) traps focus and prevents selecting new option after scrolling",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7610,
+          "title": "DatePickerInput not focused after selection",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7482,
+          "title": "Polymorphic component lacks focus state when rendered as <a />",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7476,
+          "title": "Visible carret on Select when focuses",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7414,
+          "title": "Carousel: aria-hidden Conflict with Indicator Focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7313,
+          "title": "Stuck cursor in focused `Select` value.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7249,
+          "title": "RadioCard exception focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7126,
+          "title": "Issue with Help Center article \"How can I change inputs focus styles?\"",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7036,
+          "title": "Drawer and element with visibility: hidden causes focus trapping to fail",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7035,
+          "title": "Blocked aria-hidden on a <button> element because the element that just received focus must not be hidden from ....",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6859,
+          "title": "useForm use uncontrolled mode call form.setValues() in onValuesChange input will lose focus each typed",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6748,
+          "title": "input field loss focus because of re-rendering of the component",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6475,
+          "title": "use-form, NumberInput custom handle onChange inside func call form.setFieldValue(...) when keyin number cursor lost focus ?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6331,
+          "title": "Changed to `userEvent` in `user-focus-tap` test",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6157,
+          "title": "Clicking the label of Checkbox crashes the browser when a Drawer is focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6079,
+          "title": "Setting focus on TextInput and TextArea with styles &:focus does not work",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5934,
+          "title": "Combobox Submits Focused Option on Enter Key with IME Conversion",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5893,
+          "title": "Dropdown of searchable Select component is automatically opened again when browser window is focussed again",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5877,
+          "title": "<Select /> throws [@mantine/hooks/use-focus-trap] Failed to find focusable element within provided node",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5736,
+          "title": "ButtonGroup focus ring overlaps",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed keyboard in:title",
+      "totalHits": 26,
+      "hits": [
+        {
+          "number": 4980,
+          "title": "Safari Keyboard covers input when select element is on bottom of page",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4421,
+          "title": "Broken keyboard navigation on grouped selects during filtering",
+          "disposition": "selected"
+        },
+        {
+          "number": 3940,
+          "title": "Accessing custom MenuList buttons with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3902,
+          "title": "Feature Request: Skip keyboard navigation of disabled options",
+          "disposition": "selected"
+        },
+        {
+          "number": 3879,
+          "title": "isSearchable still showing iphone keyboard menu",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3799,
+          "title": "Async won't work with Persian/Arabic keyboards",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3624,
+          "title": "[Android] Multi-select text input not clearing value after pressing enter using Korean keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3526,
+          "title": "prevent keyboard from opening automaticaly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3495,
+          "title": "Keyboard doesn't work sometimes on iOS",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3361,
+          "title": "[Creatable] Custom keyboard keys to create option",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3220,
+          "title": "onMenuScrollToTop and onMenuScrollToBottom not fired on navigate with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2618,
+          "title": "onInputKeyDown event is preventing the up and down keyboard navigation in IE",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2598,
+          "title": "Keyboard on iOS not opening on autoFocus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2592,
+          "title": "Option focus on keyboard input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2509,
+          "title": "Keyboard navigation does not work on IE11 with JAWS(screen reader)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1745,
+          "title": "1.0.0-rc.4 breaks keyboard navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1461,
+          "title": "Virtual keyboard not opening in Edge",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1314,
+          "title": "Add option to prevent cycling through options items when using keyboard navigation.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1070,
+          "title": "dropdown is covered by keyboard in iPad",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 918,
+          "title": "Enhancement: Keyboard Support",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 756,
+          "title": "No Virtual Keyboard on IE Mobile / Windows Phone 8",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 594,
+          "title": "Tab, keyboard navigation, and outside mouse click-to-close is broken in 1.0.0",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 456,
+          "title": "Example: All samples are not selectable by keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 378,
+          "title": "Disabled options are keyboard selectable",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 343,
+          "title": "Keyboard navigation to the \"allowCreate\" user input item unavailable",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 274,
+          "title": "disabled value is selectable by keyboard enter",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:JedWatson/react-select is:issue is:closed focus in:title",
+      "totalHits": 104,
+      "hits": [
+        {
+          "number": 5959,
+          "title": "Setting a state in onChange resets focus on options to the first element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5890,
+          "title": "Unwanted focus state on the input element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5406,
+          "title": "Select keep focuses on the first item when I hover the menu items.",
+          "disposition": "selected"
+        },
+        {
+          "number": 5366,
+          "title": "Selected options mis focus style",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5255,
+          "title": "Slow change of focused option on large dataset",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5083,
+          "title": "Numbers in aria-context's content when focusing an option do not take filtering into consideration",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5040,
+          "title": "Switching browser tabs cause dropdown to focus and re-open",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5039,
+          "title": "Input loosing focus when menu is Open",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4830,
+          "title": "React Multi Select places the cursor(caret) at the end of the placeholder when the input is focused",
+          "disposition": "selected"
+        },
+        {
+          "number": 4813,
+          "title": "Accessibility issue:  Focus is lost on select field when using a screen reader, it is not possible to choose the option",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4670,
+          "title": "Hover/Focus styling on Option",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4639,
+          "title": "Focus selected option if we remove input of the search bar",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4638,
+          "title": "[feature] allow to don't display option list when focus on input (for very large options set)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4544,
+          "title": "Is there an on focused option change event",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4543,
+          "title": "on focused option change event",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4496,
+          "title": "How to obtain currently focused item?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4482,
+          "title": "Feature request: Pass focused option as prop to MenuList",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4450,
+          "title": "How to make reactselect get focus when required and empty",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4418,
+          "title": "v.3.1 -> v3.2, cursor no longer stays focused when entering multi",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4416,
+          "title": "Obtaining focus from the hidden input inside react-select",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4343,
+          "title": "Announce selected or not while option is focused in the list menu of select box",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4255,
+          "title": "Select should not be styled as having focus when disabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4180,
+          "title": "focus() method fails when called (stored in redux)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4016,
+          "title": "Async select inputValue gets cleared on focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4013,
+          "title": "3.1.0: Selected value not focused/visible when using defaultMenuIsOpen or menuIsOpen",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3918,
+          "title": "Feature regressed and disappeared: Tab shifts focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3895,
+          "title": "After selection, dropdown doesn't display options unless focus is lost",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3852,
+          "title": "AsyncCreatable LOSES FOCUS WHEN OPTIONS ARRIVES FROM API",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3819,
+          "title": "Can't see caret when blur and focus back to the select",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3811,
+          "title": "The input doesn't lose focus, after an option has been selected",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed keyboard in:title",
+      "totalHits": 66,
+      "hits": [
+        {
+          "number": 42391,
+          "title": "[v6] Disabled Chip input remove button accessible via keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41598,
+          "title": "Tapping form-floating input doesn't scroll to input when touch keyboard opens on some Android and iOS devices",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41186,
+          "title": "Add Keyboard Navigation for Bootstrap Accordion",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41146,
+          "title": "IPhone Keyboard block Bootstrap 5 Bottom Canvas",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41085,
+          "title": "TypeError: Cannot read properties of undefined (reading 'keyboard') - Carousel Component Bootstrap v5.3.3",
+          "disposition": "selected"
+        },
+        {
+          "number": 40801,
+          "title": "Escape key is totally supressed in modal when data-bs-keyboard is false",
+          "disposition": "selected"
+        },
+        {
+          "number": 37073,
+          "title": "Keyboard control of dropdown with input is not working",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 34814,
+          "title": "Tabs Component Keyboard Navigation",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 34069,
+          "title": "data-bs-backdrop and data-bs-keyboard not functioning on v5.0.1",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 33790,
+          "title": "V5 Offcanvas : data-bs-keyboard=\"false\" not working!!",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32954,
+          "title": "dropdown keyboard fixes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 32329,
+          "title": "RTL: Carousel wrong direction on keyboard and touch",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 30929,
+          "title": "Bootstrap 4.5.0 modal \"keyboard: false\" don't work",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 30647,
+          "title": "Bootstrap v4.4.1 Modal with data-backdrop=\"static\" data-keyboard=\"false\" blinks on outside click.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 28718,
+          "title": "Modal - keyboard navigation does not work when using the <a> anchor tag as the trigger button",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 28628,
+          "title": "[IE] carousel keyboard navigation and ripple-like effect on last slide",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 28564,
+          "title": "JS - button plugin stop event propagation on checkboxes/radio when browsing with keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 28132,
+          "title": "List group should support keyboard accessibility just like dropdown",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 27980,
+          "title": "The keyboard key under the modal box is not valid",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 27241,
+          "title": "Keyboard Accessibility in Modals - SHIFT + TAB should cycle backwards ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 26855,
+          "title": "Radio buttons: .btn-group-toggle: Keyboard selection only works visually.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 24565,
+          "title": "Custom Radio's Active State Not Removed Using Keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 23361,
+          "title": "Disabled links accessible via keyboard (tab)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 23080,
+          "title": "Firefox, Accessibility - Links with .btn classes aren't focusable via keyboard in FF.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 22402,
+          "title": "Feature Request:  Modals:  input autofocus attr, and keyboard focus (has-PR)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 21851,
+          "title": "[Docs] Search functionality not obvious for keyboard/screenreader users",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20972,
+          "title": "[BUG] - Accessibility using menu(dropdown) and select  + keyboard - IE",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20793,
+          "title": "bootrap carousel (keyboard: false) and modal pop up do not mix well ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 20211,
+          "title": "radio .btn-group not highlighting properly for keyboard users",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 19972,
+          "title": "Keyboard trap in carousel",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:twbs/bootstrap is:issue is:closed focus in:title",
+      "totalHits": 322,
+      "hits": [
+        {
+          "number": 42738,
+          "title": "[docs] The input field's focus shadow is incorrect in the navbar example.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 42625,
+          "title": "Clicking .form-adorn-icon or .form-adorn-text should focus the <input>",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 42503,
+          "title": "Modal focus-trap stops working when there is no other focusable element after the modal",
+          "disposition": "selected"
+        },
+        {
+          "number": 42343,
+          "title": "[v6] Focus ring always has the primary color",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 42342,
+          "title": "[v6] Focus ring doesn't appear when clicked",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 42062,
+          "title": "With `forced-colors: active`, focus-rings may be invisible",
+          "disposition": "selected"
+        },
+        {
+          "number": 42032,
+          "title": "In high contrast themes (Aquatic, Desert, Dusk, Night Sky), the selected date and focus indicator on calendar controls are not visible in windows.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 42031,
+          "title": "Luminosity contrast ratio of focus indicator on calendar dates is 1.2:1 which is less than expected ratio 3:1 in windows.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 42006,
+          "title": "New SASS variable: $input-select-focus-bg",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 41700,
+          "title": "::-moz-focus-inner throws deprecation warning",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41667,
+          "title": "Modal opened from dropdown has focused close button",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41606,
+          "title": "There is an extra focus stop on hidden element at the end of modal.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41520,
+          "title": "Input Group Floating Label Disappears on Selection; Reappears on losing focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41514,
+          "title": "Trying to expand a dropdown after expanding another dropdown breaks the focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41395,
+          "title": "Updated navbar focus styles are an accessibility regression",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 41381,
+          "title": "When setting both $input-focus-box-shadow and $input-box-shadow to `none`, Bootstrap generates invalid CSS.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41354,
+          "title": "Submitting form on input focus (pressing enter) and dropdown is toggled instead of submitting",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 41019,
+          "title": "Offcanvas Navbar Focus Problem",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 40827,
+          "title": "Add `:focus-within` class like `.form-control:focus`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 40564,
+          "title": "Accessibility: Bootstrap must not remove outline on focusable disabled buttons ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 40526,
+          "title": "Scrollspy: focus shift bug",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 40495,
+          "title": "Unable to focus the input in the popup, and the popup closes immediately when placed inside the Offcanvas",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 39668,
+          "title": "focus-ring is not displayed on a button applied shadow class",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 39569,
+          "title": "btn-check: When $enable-shadows is true, all checkboxes and radio buttons using the button toggles when checked and is focus-visible do not show a focus ring box shadow around the button toggle.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 39558,
+          "title": "Accordion button border color is changed on focus but its width is always 0",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 39408,
+          "title": "Offcanvas outside focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 39229,
+          "title": "How do I change this bg when I focused an input element? I set bg-transparent or any other and it still keep that white background, I\u2019m using React + Vite",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 38903,
+          "title": "Invisible focus outline in chrome for button element",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 38697,
+          "title": "Override `$focus-ring-*` Sass vars",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 38515,
+          "title": "Can't focus input field inside Toast when a Modal is shown",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed keyboard in:title",
+      "totalHits": 7,
+      "hits": [
+        {
+          "number": 1824,
+          "title": "Checkboxes won't change checked/unchecked from keyboard",
+          "disposition": "selected"
+        },
+        {
+          "number": 1494,
+          "title": "Menu keyboard navigation focus disabled items",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1492,
+          "title": "Unable to disable sl-tree-item keyboard shortcuts",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 852,
+          "title": "Tree component cannot be navigated with keyboard, when VoiceOver is enabled",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 727,
+          "title": "Input's clearable, password toggle, and date picker actions need keyboard access",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 658,
+          "title": "<sl-details disabled> can open/close when using keyboard navigation with screen reader",
+          "disposition": "selected"
+        },
+        {
+          "number": 273,
+          "title": "Click on sl-select component calls displaying the keyboard in mobile browsers",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:shoelace-style/shoelace is:issue is:closed focus in:title",
+      "totalHits": 35,
+      "hits": [
+        {
+          "number": 2176,
+          "title": "Focusing a control too quickly throws an error",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2090,
+          "title": "Focus trapping not being removed correctly",
+          "disposition": "selected"
+        },
+        {
+          "number": 1809,
+          "title": "Focus trapping in Firefox + `<sl-select>` do not behave as expected",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1753,
+          "title": "Dialogs do not allow focus in <iframe> and <video> elements",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1720,
+          "title": "Multiple elements can be focussed if dropdown is expanded",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1676,
+          "title": "Menu item focus visible styles show even when using the mouse",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1591,
+          "title": "Color theme synced focus rings",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1571,
+          "title": "Trap focus on Drawer prevents from using TinyMCE in it (and probably other things)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1501,
+          "title": "`sl-details` shows focus outline on click in Chrome",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1494,
+          "title": "Menu keyboard navigation focus disabled items",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1488,
+          "title": "Display-input in sl-select doesn't scroll its text to the start on blur/lose focus",
+          "disposition": "selected"
+        },
+        {
+          "number": 1472,
+          "title": "sl-dropdown not passing focus to first menu item as suggested by the code",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1466,
+          "title": "Special-case handling of sl-menu within sl-dropdown causing issues with focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1436,
+          "title": "Tree view component steals the focus when the last focused tree item gets removed from the DOM",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1382,
+          "title": "[Dialog] Focus trap does not work properly when <sl-dialog> is in a shadow root",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1288,
+          "title": "`<sl-split-panel>` divider is not focusable in Edge / Chrome",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1282,
+          "title": "<sl-menu> hover overrides focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1165,
+          "title": "<sl-dropdown> <sl-menu-item> not focusing with up/down arrow keys when first/last item is a <sl-menu-label>",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1107,
+          "title": "Menu items with `display: none` or `hidden` erroneously receive focus when using arrow keys",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 845,
+          "title": "`<sl-menu>` and `<sl-menu-item>` regression in `2.0.0-beta.79` caused by allowing focus on disabled items for improved accessibility",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 840,
+          "title": "Safari bug: Radio and Checkbox has no focus, not tabbable",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 767,
+          "title": "Using `outline` for focus rings breaks `border-radius` in Safari (15.4 latest stable; 15.4 Technology Preview Release 146)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 739,
+          "title": "Focus on SlButton not showing consistently",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 709,
+          "title": "[Dialog] Focus trap does not work properly when `<sl-dialog>` is in a shadow root",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 624,
+          "title": "Unable to programmatically set focus to SlSelect",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 619,
+          "title": "Why has --sl-focus-ring-color been abandoned?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 504,
+          "title": "sl-select is not allowing the user to trigger Ctrl/Command + key when it has focus on .select__box element",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 462,
+          "title": "SlDialog customising initial focus doesn't work reliably on page load",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 453,
+          "title": "Dialog Customizing Initial Focus no longer works in Beta 42",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 442,
+          "title": "Clicking on an sl-input of an sl-dialog doesn't initially give that element focus in Safari based browsers",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed keyboard in:title",
+      "totalHits": 52,
+      "hits": [
+        {
+          "number": 9310,
+          "title": "[EuiSuperDatePicker] Quick Select: unexpected keyboard behavior on dropdown focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8795,
+          "title": "[Drag'n'Drop][Spike] Investigate making drag and drop keyboard accessible",
+          "disposition": "selected"
+        },
+        {
+          "number": 8104,
+          "title": "[EuiComboBox] Remove `Pill` delete button is not accessible from the keyboard",
+          "disposition": "selected"
+        },
+        {
+          "number": 8064,
+          "title": "Badge is inaccessible for keyboard, screen reader users",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8033,
+          "title": "[EuiButtonGroup] Keyboard navigation through items",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7741,
+          "title": "[EuiTooltip][KEYBOARD]: Would we consider adding `ESC` keypress to dismiss the tooltip?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7722,
+          "title": "[EuiBadge][COLOR CONTRAST]: It is difficult to see selected text when I click and drag or select all with the keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7532,
+          "title": "[EuiModal] VoiceOver + Safari is able to escape the focus trap when navigating by virtual cursor instead of keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7466,
+          "title": "New EuiFlyout component cannot be closed using keyboard `ESC`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7289,
+          "title": "[EuiComboBox] Broken keyboard interaction in `x` clear button",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 7070,
+          "title": "[EuiDataGrid] Keyboard navigation to header cells is broken on Firefox only",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6980,
+          "title": "[EuiAccordion] Children are still present in keyboard tab order when accordions are closed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6707,
+          "title": "[EuiToast] Add Cypress keyboard test for component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6685,
+          "title": "[EuiSuggest] Add Cypress a11y and keyboard test for component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6561,
+          "title": "[EuiDataGrid] Add support for copying the focused cell's value with keyboard shortcut only",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6375,
+          "title": "[EuiSelectableTemplateSitewide] Interactive elements in popover footer are not keyboard accessible",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6301,
+          "title": "[META] Add Cypress keyboard navigation checks to components",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6134,
+          "title": "[Docs] Our tabbed pages in our side nav are problematic for keyboard/focus/screen reader accessibility ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5813,
+          "title": "Add keyboard usage instructions to screen reader popover dialogue",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5589,
+          "title": "[EuiCombobox][KEYBOARD]: Pill buttons, close button, and clear button should also listen for `ENTER` keypress evnet",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5517,
+          "title": "[EuiDataGrid] Virtualization+scroll+keyboard focus combination bug",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5516,
+          "title": "[EuiDataGrid] Sticky footer rows and keyboard navigation don't play well together",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5481,
+          "title": "[EuiDataGrid][KEYBOARD]: Can't always view entire last column when layout is zoomed in",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5479,
+          "title": "[EuiDataGrid][KEYBOARD]: Update data grid control cells' focus halo to same blue as other cells",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5477,
+          "title": "[EuiDataGrid][KEYBOARD]: Row control button must receive keyboard focus when popover is dismissed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5476,
+          "title": "[EuiDataGrid][KEYBOARD]: Reordering columns causes a jump when navigating by arrow keys",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5404,
+          "title": "[EuiContextMenu][KEYBOARD]: Focus needs to be returned to button when closing context menu",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5375,
+          "title": "[EuiTour][KEYBOARD]: Is there a way to insert the Tour modal dialog as a next focusable element to its trigger?",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5295,
+          "title": "[EuiResizableContainer][AXE-CORE]: Containers must allow keyboard users to access all content",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5248,
+          "title": "[EuiHeaderLinks][KEYBOARD]: HeaderLinks component needs optional ref and tabindex props to facilitate keyboard focus",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:elastic/eui is:issue is:closed focus in:title",
+      "totalHits": 128,
+      "hits": [
+        {
+          "number": 9580,
+          "title": "[EuiToolTip] Hide tooltip on programmatic focus return to the trigger",
+          "disposition": "selected"
+        },
+        {
+          "number": 9549,
+          "title": "[Spike] Investigate a feasible programmatic focus detection",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9334,
+          "title": "2\ufe0f\u20e3 [Flyouts] Focus trap can not be disabled for overlay flyouts",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9310,
+          "title": "[EuiSuperDatePicker] Quick Select: unexpected keyboard behavior on dropdown focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 9099,
+          "title": "[EuiFlyout] Make flyout update focus trap shards",
+          "disposition": "already-reviewed"
+        },
+        {
+          "number": 9098,
+          "title": "[EuiButton] Implement focusable disabled state behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8961,
+          "title": "[EuiButton] [A11y] Cannot tab to focus on Safari",
+          "disposition": "selected"
+        },
+        {
+          "number": 8959,
+          "title": "[EuiButtonIcon] [A11y] Focus is lost when isLoading state is back",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8953,
+          "title": "[EuiButton] [A11y] :focus-visible outline for Primary filled buttons barely visible",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8869,
+          "title": "[EuiSelectable] Enable focusable disabled options",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8622,
+          "title": "[EuiBasicTable][A11y] Ensure `nameTooltip` tooltip is read on cell focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8486,
+          "title": "[EuiDataGrid] Focus is lost on click in leading cell",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8485,
+          "title": "[EuiDataGrid][A11y] Ensure focus is returned to trigger after fullscreen is closed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8206,
+          "title": "[Bug] Focusable Site Navigation in Flyouts After Recent Update",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 8204,
+          "title": "Add support for triggering popovers on hover, alongside the existing click or focus mechanisms.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 8094,
+          "title": "How to set my own focus within EuiContextMenu",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 7532,
+          "title": "[EuiModal] VoiceOver + Safari is able to escape the focus trap when navigating by virtual cursor instead of keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6848,
+          "title": "[EuiModal] Issue with Focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6693,
+          "title": "[EuiPageHeader] The focus order of `rightSideItems` does not correspond to the logical processing sequence",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6654,
+          "title": "[EUIToast][DOCS]: Add guidance for when to auto focus an element inside a toast message",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6633,
+          "title": "[EuiSelectable] Non-searchable listboxes' focus rings",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6627,
+          "title": "(Accessibility) [EuiSelectable] Unable to make selections when second interactable element in focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6619,
+          "title": "[All Form Controls][SCREEN READER]: `prepend` and `append` labels are not announced when main control receives focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6561,
+          "title": "[EuiDataGrid] Add support for copying the focused cell's value with keyboard shortcut only",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6491,
+          "title": "Unable to programmatically focus on <EuiFieldText>",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6134,
+          "title": "[Docs] Our tabbed pages in our side nav are problematic for keyboard/focus/screen reader accessibility ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6128,
+          "title": "EuiFormRow and EuiDatePickerRange focus behaviour",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 6098,
+          "title": "Focus trap issue in Datagrid when Full Screen with Flyout",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 6008,
+          "title": "[EuiDataGrid] Page jumps to table header when initial focus is horizontal scroll",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5975,
+          "title": "[Enhancement][EuiSelectable] expose a new callback prop that enables us to receive an update every time the `pseudo-focused` item changes",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1595,
+      "title": "useCombobox focus-ring during keyboard navigation",
+      "origin": "repo:downshift-js/downshift is:issue is:closed keyboard in:title",
+      "url": "https://github.com/downshift-js/downshift/issues/1595",
+      "disposition": "excluded",
+      "reason": "Visual focus-ring API request, no primary symptom.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1595"
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1550,
+      "title": "How to keep menu open on mobile for useComboBox when the keyboard closes",
+      "origin": "repo:downshift-js/downshift is:issue is:closed keyboard in:title",
+      "url": "https://github.com/downshift-js/downshift/issues/1550",
+      "disposition": "excluded",
+      "reason": "Mobile iOS keyboard behavior outside context.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1550"
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1574,
+      "title": "useComboBox always grabbing focus on render",
+      "origin": "repo:downshift-js/downshift is:issue is:closed focus in:title",
+      "url": "https://github.com/downshift-js/downshift/issues/1574",
+      "disposition": "pending",
+      "reason": "8.3.1/8.3.2/8.3.3 mount focus-stealing boundary; no frozen primary-symptom journey established for initial autofocus.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1574",
+        "https://github.com/downshift-js/downshift/pull/1575"
+      ]
+    },
+    {
+      "repo": "downshift-js/downshift",
+      "number": 1572,
+      "title": "Is it normal for no downshift event to fire on input focus?",
+      "origin": "repo:downshift-js/downshift is:issue is:closed focus in:title",
+      "url": "https://github.com/downshift-js/downshift/issues/1572",
+      "disposition": "excluded",
+      "reason": "Intentional ARIA1.2 focus behavior and documented migration, not regression.",
+      "sources": [
+        "https://github.com/downshift-js/downshift/issues/1572"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7641,
+      "title": "Handle ComboboxSelect keyboard focus checks inside a shadow root",
+      "origin": "repo:ariakit/ariakit is:issue is:closed keyboard in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/7641",
+      "disposition": "pending",
+      "reason": "Stable API shadow-root failure confirmed, but no working stable release boundary established.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7641",
+        "https://github.com/ariakit/ariakit/pull/7624",
+        "https://github.com/ariakit/ariakit/pull/7655",
+        "https://github.com/ariakit/ariakit/issues/7657",
+        "https://github.com/ariakit/ariakit/issues/7671"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7628,
+      "title": "Keep a far keyboard move in view in a virtualized list with items of different sizes",
+      "origin": "repo:ariakit/ariakit is:issue is:closed keyboard in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/7628",
+      "disposition": "excluded",
+      "reason": "Experimental renderer, reported shipped with first release, no last good.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7628",
+        "https://github.com/ariakit/ariakit/pull/7614",
+        "https://github.com/ariakit/ariakit/pull/7765",
+        "https://github.com/ariakit/ariakit/issues/7767",
+        "https://github.com/ariakit/ariakit/issues/7777",
+        "https://github.com/ariakit/ariakit/issues/7792",
+        "https://github.com/ariakit/ariakit/issues/7803",
+        "https://github.com/ariakit/ariakit/issues/7805"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7766,
+      "title": "Keep focus in place when the first item of an open Menu changes",
+      "origin": "repo:ariakit/ariakit is:issue is:closed focus in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/7766",
+      "disposition": "pending",
+      "reason": "Stable dynamic-menu focus loss, no working release boundary established.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7766",
+        "https://github.com/ariakit/ariakit/pull/7762",
+        "https://github.com/ariakit/ariakit/issues/7791",
+        "https://github.com/ariakit/ariakit/issues/7794",
+        "https://github.com/ariakit/ariakit/issues/7795",
+        "https://github.com/ariakit/ariakit/pull/7788",
+        "https://github.com/ariakit/ariakit/pull/7802"
+      ]
+    },
+    {
+      "repo": "ariakit/ariakit",
+      "number": 7657,
+      "title": "Return focus from ComboboxList to the combobox inside a shadow root",
+      "origin": "repo:ariakit/ariakit is:issue is:closed focus in:title",
+      "url": "https://github.com/ariakit/ariakit/issues/7657",
+      "disposition": "pending",
+      "reason": "Stable shadow-root focus redirection failure, no working release boundary established.",
+      "sources": [
+        "https://github.com/ariakit/ariakit/issues/7657",
+        "https://github.com/ariakit/ariakit/pull/7655",
+        "https://github.com/ariakit/ariakit/pull/7676",
+        "https://github.com/ariakit/ariakit/issues/7677",
+        "https://github.com/ariakit/ariakit/issues/7681",
+        "https://github.com/ariakit/ariakit/pull/7682"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10527,
+      "title": "[a11y] \"Code\" tab is not reachable via keyboard (focus skips directly to Stackblitz)",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed keyboard in:title",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10527",
+      "disposition": "excluded",
+      "reason": "Docs tabs use standard arrow-key roving focus; maintainer/user agree.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10527"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10182,
+      "title": "Dialog initialFocusEl does not bring up the keyboard on iOS",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed keyboard in:title",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10182",
+      "disposition": "excluded",
+      "reason": "iOS virtual keyboard/browser restriction outside context.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10182"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10714,
+      "title": "focus visible ring on mouse use",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed focus in:title",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10714",
+      "disposition": "excluded",
+      "reason": "Visual mouse focus ring only.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10714"
+      ]
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "number": 10386,
+      "title": "Combobox example with react-hook-form does not switch focus to the input when there is an error in the form",
+      "origin": "repo:chakra-ui/chakra-ui is:issue is:closed focus in:title",
+      "url": "https://github.com/chakra-ui/chakra-ui/issues/10386",
+      "disposition": "excluded",
+      "reason": "Docs form-ref integration example, no library working release boundary.",
+      "sources": [
+        "https://github.com/chakra-ui/chakra-ui/issues/10386"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9205,
+      "title": "Combobox: keyboard navigation overwrites aria-selected on options, breaking MultiSelect",
+      "origin": "repo:mantinedev/mantine is:issue is:closed keyboard in:title",
+      "url": "https://github.com/mantinedev/mantine/issues/9205",
+      "disposition": "pending",
+      "reason": "Wrong picked state confirmed/fixed9.6.2; no earlier working stable release demonstrated.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9205",
+        "https://github.com/metabase/metabase/pull/82556",
+        "https://github.com/mantinedev/mantine/pull/9230"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9090,
+      "title": "Can't reach the visibility toggle of PasswordInput with keyboard navigation",
+      "origin": "repo:mantinedev/mantine is:issue is:closed keyboard in:title",
+      "url": "https://github.com/mantinedev/mantine/issues/9090",
+      "disposition": "excluded",
+      "reason": "Intentional default password-toggle tabindex; new configuration feature, no working regression boundary.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9090",
+        "https://github.com/mantinedev/mantine/pull/9091"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9215,
+      "title": "Select (and other opinionated Combobox components) don't dismiss the dropdown when focus leaves the widget (WCAG 4.1.2 / APG)",
+      "origin": "repo:mantinedev/mantine is:issue is:closed focus in:title",
+      "url": "https://github.com/mantinedev/mantine/issues/9215",
+      "disposition": "pending",
+      "reason": "Dropdown blur dismissal fix9.6.3; no working release boundary demonstrated.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9215",
+        "https://github.com/AixleHQ/flow/pull/382"
+      ]
+    },
+    {
+      "repo": "mantinedev/mantine",
+      "number": 9128,
+      "title": "DateTimePicker Time mis-focuses on minutes after a single '0' '1' or '2' input for hours",
+      "origin": "repo:mantinedev/mantine is:issue is:closed focus in:title",
+      "url": "https://github.com/mantinedev/mantine/issues/9128",
+      "disposition": "pending",
+      "reason": "Hour auto-advance fix9.5.2; no working release boundary demonstrated.",
+      "sources": [
+        "https://github.com/mantinedev/mantine/issues/9128",
+        "https://github.com/mantinedev/mantine/pull/9139"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 4421,
+      "title": "Broken keyboard navigation on grouped selects during filtering",
+      "origin": "repo:JedWatson/react-select is:issue is:closed keyboard in:title",
+      "url": "https://github.com/JedWatson/react-select/issues/4421",
+      "disposition": "reproduction",
+      "reason": "Reported3.2.0/4.0.2 pair and published fix4.1.0, identical React16.14.0; grouped filtered ArrowDown criterion.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/4421",
+        "https://github.com/JedWatson/react-select/pull/4422"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 3902,
+      "title": "Feature Request: Skip keyboard navigation of disabled options",
+      "origin": "repo:JedWatson/react-select is:issue is:closed keyboard in:title",
+      "url": "https://github.com/JedWatson/react-select/issues/3902",
+      "disposition": "excluded",
+      "reason": "Intentional focusable disabled options for accessible explanations; no compatible accessible same-construct last-good established.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/3902",
+        "https://github.com/JedWatson/react-select/pull/3913",
+        "https://github.com/mui/material-ui/pull/19967",
+        "https://github.com/JedWatson/react-select/issues/4195"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 5406,
+      "title": "Select keep focuses on the first item when I hover the menu items.",
+      "origin": "repo:JedWatson/react-select is:issue is:closed focus in:title",
+      "url": "https://github.com/JedWatson/react-select/issues/5406",
+      "disposition": "excluded",
+      "reason": "Reporter confirms application code fault.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/5406"
+      ]
+    },
+    {
+      "repo": "JedWatson/react-select",
+      "number": 4830,
+      "title": "React Multi Select places the cursor(caret) at the end of the placeholder when the input is focused",
+      "origin": "repo:JedWatson/react-select is:issue is:closed focus in:title",
+      "url": "https://github.com/JedWatson/react-select/issues/4830",
+      "disposition": "excluded",
+      "reason": "Visual caret position only, duplicate4797.",
+      "sources": [
+        "https://github.com/JedWatson/react-select/issues/4830"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 41085,
+      "title": "TypeError: Cannot read properties of undefined (reading 'keyboard') - Carousel Component Bootstrap v5.3.3",
+      "origin": "repo:twbs/bootstrap is:issue is:closed keyboard in:title",
+      "url": "https://github.com/twbs/bootstrap/issues/41085",
+      "disposition": "excluded",
+      "reason": "Application selector does not match DOM id; reporter confirms fix.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/41085"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 40801,
+      "title": "Escape key is totally supressed in modal when data-bs-keyboard is false",
+      "origin": "repo:twbs/bootstrap is:issue is:closed keyboard in:title",
+      "url": "https://github.com/twbs/bootstrap/issues/40801",
+      "disposition": "excluded",
+      "reason": "Custom keyup typeahead handler; standard dropdown Escape works, missing reproduction and last-good boundary.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/40801",
+        "https://github.com/marcinpsk/netbox-librenms-plugin/pull/79"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 42503,
+      "title": "Modal focus-trap stops working when there is no other focusable element after the modal",
+      "origin": "repo:twbs/bootstrap is:issue is:closed focus in:title",
+      "url": "https://github.com/twbs/bootstrap/issues/42503",
+      "disposition": "pending",
+      "reason": "Focus trap defect, v6-dev native dialog only; no working stable pair established.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/42503",
+        "https://github.com/shopware/shopware/issues/15035",
+        "https://github.com/twbs/bootstrap/pull/42504",
+        "https://github.com/shopware/shopware/pull/17501",
+        "https://github.com/shopware/shopware/pull/20558"
+      ]
+    },
+    {
+      "repo": "twbs/bootstrap",
+      "number": 42062,
+      "title": "With `forced-colors: active`, focus-rings may be invisible",
+      "origin": "repo:twbs/bootstrap is:issue is:closed focus in:title",
+      "url": "https://github.com/twbs/bootstrap/issues/42062",
+      "disposition": "excluded",
+      "reason": "Visual contrast/focus ring only.",
+      "sources": [
+        "https://github.com/twbs/bootstrap/issues/42062",
+        "https://github.com/samuelrubiodev/brevety/pull/1",
+        "https://github.com/quarto-dev/quarto-cli/pull/14785",
+        "https://github.com/quarto-dev/quarto-cli/pull/14867",
+        "https://github.com/Open-reSource/openresource.dev/pull/1726"
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 1824,
+      "title": "Checkboxes won't change checked/unchecked from keyboard",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed keyboard in:title",
+      "url": "https://github.com/shoelace-style/shoelace/issues/1824",
+      "disposition": "excluded",
+      "reason": "Reporter traces failure to Evernote browser extension, not library regression.",
+      "sources": [
+        "https://github.com/shoelace-style/shoelace/issues/1824"
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 658,
+      "title": "<sl-details disabled> can open/close when using keyboard navigation with screen reader",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed keyboard in:title",
+      "url": "https://github.com/shoelace-style/shoelace/issues/658",
+      "disposition": "excluded",
+      "reason": "Beta-era disabled details activation; no stable working release boundary.",
+      "sources": [
+        "https://github.com/shoelace-style/shoelace/issues/658"
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 2090,
+      "title": "Focus trapping not being removed correctly",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed focus in:title",
+      "url": "https://github.com/shoelace-style/shoelace/issues/2090",
+      "disposition": "pending",
+      "reason": "Inconsistent pointer-start tooltip behavior, no working keyboard release boundary established.",
+      "sources": [
+        "https://github.com/shoelace-style/shoelace/issues/2090"
+      ]
+    },
+    {
+      "repo": "shoelace-style/shoelace",
+      "number": 1488,
+      "title": "Display-input in sl-select doesn't scroll its text to the start on blur/lose focus",
+      "origin": "repo:shoelace-style/shoelace is:issue is:closed focus in:title",
+      "url": "https://github.com/shoelace-style/shoelace/issues/1488",
+      "disposition": "excluded",
+      "reason": "Firefox-only visual ellipsis scroll behavior.",
+      "sources": [
+        "https://github.com/shoelace-style/shoelace/issues/1488"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 8795,
+      "title": "[Drag'n'Drop][Spike] Investigate making drag and drop keyboard accessible",
+      "origin": "repo:elastic/eui is:issue is:closed keyboard in:title",
+      "url": "https://github.com/elastic/eui/issues/8795",
+      "disposition": "excluded",
+      "reason": "Drag/drop investigation/feature, no working regression release.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/8795"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 8104,
+      "title": "[EuiComboBox] Remove `Pill` delete button is not accessible from the keyboard",
+      "origin": "repo:elastic/eui is:issue is:closed keyboard in:title",
+      "url": "https://github.com/elastic/eui/issues/8104",
+      "disposition": "pending",
+      "reason": "ComboBox pill Enter removal defect, no working release boundary established.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/8104",
+        "https://github.com/elastic/kibana/issues/196825",
+        "https://github.com/elastic/eui/pull/8105"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 9580,
+      "title": "[EuiToolTip] Hide tooltip on programmatic focus return to the trigger",
+      "origin": "repo:elastic/eui is:issue is:closed focus in:title",
+      "url": "https://github.com/elastic/eui/issues/9580",
+      "disposition": "excluded",
+      "reason": "Pointer-triggered tooltip restoration and long-standing hover persistence, no working keyboard regression boundary.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/9580",
+        "https://github.com/elastic/kibana/issues/256689",
+        "https://github.com/elastic/eui/pull/9581",
+        "https://github.com/elastic/eui/issues/9440",
+        "https://github.com/elastic/eui/pull/9624"
+      ]
+    },
+    {
+      "repo": "elastic/eui",
+      "number": 8961,
+      "title": "[EuiButton] [A11y] Cannot tab to focus on Safari",
+      "origin": "repo:elastic/eui is:issue is:closed focus in:title",
+      "url": "https://github.com/elastic/eui/issues/8961",
+      "disposition": "excluded",
+      "reason": "Safari tab setting, maintainer confirms browser preference rather than EUI regression.",
+      "sources": [
+        "https://github.com/elastic/eui/issues/8961",
+        "https://github.com/elastic/kibana/pull/231351"
+      ]
+    }
+  ]
+}

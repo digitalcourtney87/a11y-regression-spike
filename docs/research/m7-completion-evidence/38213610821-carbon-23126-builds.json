@@ -1,0 +1,16 @@
+[
+  {
+    "label": "1.47.0",
+    "version": "1.47.0",
+    "before": "2024-01-05T15:35:00Z",
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "label": "1.48.0",
+    "version": "1.48.0",
+    "before": "2024-01-20T14:24:25Z",
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

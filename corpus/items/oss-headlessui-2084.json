@@ -1,0 +1,24 @@
+{
+  "id": "oss-headlessui-2084",
+  "source": "oss-history",
+  "patternId": "oss--headlessui-2084",
+  "split": "test",
+  "app": "oss/headlessui-2084",
+  "journeyId": "oss-headlessui-2084",
+  "base": {
+    "ref": "oss/headlessui-2084@de00f9cde16b733ae725f885ba27b3718994f31d+@headlessui/vue@1.7.4"
+  },
+  "candidate": {
+    "ref": "oss/headlessui-2084@de00f9cde16b733ae725f885ba27b3718994f31d+@headlessui/vue@1.7.5"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Combobox displayValue incorrectly evaluates unspecified defaultValue in1.7.5; documented controlled object construct cannot choose Beta. Reported1.7.4 works;1.7.6 guards undefined default values (#2087). Shared Vue3.2.41 and supported uniform native select-all props; original chosen-value criterion, ordinary Chosen Beta browse goal and CSS twin match38215953512/38216780105 (DR-0103)."
+  },
+  "provenance": {
+    "origin": "mined from tailwindlabs/headlessui (#2084, PR #2087); verified by m3-oss-repro run 38216780105; second-round admission DR-0103",
+    "licence": "MIT (@headlessui/vue)",
+    "url": "https://github.com/tailwindlabs/headlessui/issues/2084"
+  }
+}

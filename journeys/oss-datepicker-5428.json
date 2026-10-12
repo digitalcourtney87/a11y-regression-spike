@@ -1,0 +1,44 @@
+{
+  "id": "oss-datepicker-5428",
+  "version": "1",
+  "app": "oss/datepicker-5428",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-date",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Date",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "enter-calendar",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown",
+      "until": {
+        "name": "Choose Wednesday, February 19th, 2025",
+        "maxAttempts": 1
+      }
+    },
+    {
+      "kind": "at",
+      "id": "previous-day",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowLeft",
+      "until": {
+        "name": "Choose Tuesday, February 18th, 2025",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}

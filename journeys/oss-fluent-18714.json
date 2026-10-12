@@ -1,0 +1,53 @@
+{
+  "id": "oss-fluent-18714",
+  "version": "1",
+  "app": "oss/fluent-18714",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-query",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Query",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "type-query",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "abc"
+    },
+    {
+      "kind": "at",
+      "id": "browse-query",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-query-feedback",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Query abc",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

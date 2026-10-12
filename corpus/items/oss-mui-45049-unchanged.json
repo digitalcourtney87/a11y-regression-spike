@@ -1,0 +1,21 @@
+{
+  "id": "oss-mui-45049-unchanged",
+  "source": "oss-history",
+  "patternId": "oss--mui-45049",
+  "split": "test",
+  "app": "oss/mui-45049",
+  "journeyId": "oss-mui-45049",
+  "base": {
+    "ref": "oss/mui-45049@4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e+@mui/material@6.1.10"
+  },
+  "candidate": {
+    "ref": "oss/mui-45049@4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e+@mui/material@6.1.10"
+  },
+  "expected": {
+    "kind": "unchanged"
+  },
+  "provenance": {
+    "origin": "unchanged control for journey oss-mui-45049 (P15/P39, DR-0109)",
+    "licence": "MIT (Material UI)"
+  }
+}

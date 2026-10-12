@@ -1,0 +1,11 @@
+--- a/fixtures/oss/mui-46734/src/main.jsx
++++ b/fixtures/oss/mui-46734/src/main.jsx
+@@ -3,7 +3,7 @@
+ import { Autocomplete, TextField } from "@mui/material";
+ function App() {
+   const [values, setValues] = useState([]);
+-  return <main>
++  return <main style={{ maxWidth: "480px" }}>
+     <h1>New entry</h1>
+     <Autocomplete multiple freeSolo autoHighlight autoSelect options={[]} value={values} onChange={(_event, next) => setValues(next)} renderInput={(params) => <TextField {...params} label="Entry" />} />
+     <button>Finish</button>

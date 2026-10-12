@@ -1,0 +1,16 @@
+{
+  "id": "oss-mui-45049-twin",
+  "patternId": "oss--mui-45049",
+  "operator": "css-only",
+  "app": "oss/mui-45049",
+  "journeyId": "oss-mui-45049",
+  "target": "Main width only; slider bounds, marks and keyboard handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-mui-45049"
+}

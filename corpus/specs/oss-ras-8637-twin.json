@@ -1,0 +1,16 @@
+{
+  "id": "oss-ras-8637-twin",
+  "patternId": "oss--ras-8637",
+  "operator": "css-only",
+  "app": "oss/ras-8637",
+  "journeyId": "oss-ras-8637",
+  "target": "Main maximum width only; DateField props and date entry unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: 480 }}>"
+    }
+  ],
+  "twinOf": "oss-ras-8637"
+}

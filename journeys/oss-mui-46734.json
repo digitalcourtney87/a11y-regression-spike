@@ -1,0 +1,62 @@
+{
+  "id": "oss-mui-46734",
+  "version": "1",
+  "app": "oss/mui-46734",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-entry",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Entry",
+        "role": "combobox",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "type-new-entry",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "foobar"
+    },
+    {
+      "kind": "at",
+      "id": "choose-entry",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "browse-result",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-chosen-entry",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Chosen foobar",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

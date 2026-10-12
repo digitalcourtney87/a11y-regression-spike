@@ -1,0 +1,1 @@
+{"id":"mantine-2503","stack":"react","package":"@mantine/core","versions":["5.2.7","5.3.0","5.5.1"],"dependencies":{"react":"17.0.2","react-dom":"17.0.2"},"issue":"https://github.com/mantinedev/mantine/issues/2503"}

@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.44.0",
+  "result": {
+    "pointer": {
+      "browseDateReachedAt": 8,
+      "holds": true,
+      "detail": "01011970 -> 1970-01-01 (pointer to first segment; continuous typing)"
+    },
+    "keyboard": {
+      "browseDateReachedAt": 8,
+      "holds": true,
+      "detail": "01011970 -> 1970-01-01 (Tab to first segment; continuous typing)"
+    },
+    "benignTwin": {
+      "browseDateReachedAt": 8,
+      "holds": true,
+      "detail": "01011970 -> 1970-01-01 (Tab to first segment; continuous typing)"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

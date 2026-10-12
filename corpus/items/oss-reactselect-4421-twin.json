@@ -1,0 +1,22 @@
+{
+  "id": "oss-reactselect-4421-twin",
+  "source": "seeded",
+  "patternId": "oss--reactselect-4421",
+  "split": "test",
+  "app": "oss/reactselect-4421",
+  "journeyId": "oss-reactselect-4421",
+  "base": {
+    "ref": "oss/reactselect-4421@ed89089afce19fff4ea2ac6050a24e97514bda4a+react-select@3.2.0"
+  },
+  "candidate": {
+    "patch": "oss-reactselect-4421-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0102)",
+    "licence": "MIT (react-select)"
+  }
+}

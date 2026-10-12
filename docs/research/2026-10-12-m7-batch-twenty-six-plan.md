@@ -1,0 +1,3 @@
+# M7 completion batch twenty-six — EXPLORATORY, before source follow-up
+
+No new search queries. Follow the next two still-new query-capped issues from each recorded batch14 query, preserving repository/query/hit order and excluding all registry/ledger candidates. At most32 selected source follow-ups, two new fixtures/two dispatches after full P22 documentary qualification. Preserve original query origins and do not silently re-sort by likely outcomes. Same public OSS frame, stable package pair and direct framework pins, original keyboard task, applicable fix, independent successful repetition and twin required. No G4-miss selection, assigned execution, new strategy/oracle/threshold/context or tag. Continue77 completion, currently70.

@@ -1,0 +1,16 @@
+{
+  "id": "oss-mui-44048-twin",
+  "patternId": "oss--mui-44048",
+  "operator": "css-only",
+  "app": "oss/mui-44048",
+  "journeyId": "oss-mui-44048",
+  "target": "Main width only; component properties and feedback unchanged",
+  "edits": [
+    {
+      "file": "src/main.jsx",
+      "find": "<main>",
+      "replace": "<main style={{ maxWidth: \"480px\" }}>"
+    }
+  ],
+  "twinOf": "oss-mui-44048"
+}

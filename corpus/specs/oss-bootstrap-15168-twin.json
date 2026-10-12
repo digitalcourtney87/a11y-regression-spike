@@ -1,0 +1,16 @@
+{
+  "id": "oss-bootstrap-15168-twin",
+  "patternId": "oss--bootstrap-15168",
+  "operator": "css-only",
+  "app": "oss/bootstrap-15168",
+  "journeyId": "oss-bootstrap-15168",
+  "target": "Main width only; tooltip configuration and manual methods unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "<main>",
+      "replace": "<main style=\"max-width: 480px\">"
+    }
+  ],
+  "twinOf": "oss-bootstrap-15168"
+}

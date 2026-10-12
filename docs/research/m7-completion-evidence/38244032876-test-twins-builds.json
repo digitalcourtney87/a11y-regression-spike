@@ -1,0 +1,236 @@
+[
+  {
+    "item": "oss-baseui-5532-twin",
+    "version": "1.6.0",
+    "before": "2026-06-19T12:04:15Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-blueprint-6163-twin",
+    "version": "4.9.14",
+    "before": "2023-04-22T00:01:40Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-bootstrap-15168-twin",
+    "version": "3.2.0",
+    "before": "2014-06-27T16:44:01Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-bootstrap-35496-twin",
+    "version": "5.0.2",
+    "before": "2021-06-23T18:37:55Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-bootstrap-39189-twin",
+    "version": "5.3.1",
+    "before": "2023-07-27T08:02:20Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-18824-twin",
+    "version": "1.53.1",
+    "before": "2024-03-20T16:45:22Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-5623-twin",
+    "version": "7.9.3",
+    "before": "2020-01-31T16:04:38Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-7253-twin",
+    "version": "10.22.0",
+    "before": "2020-10-16T19:12:32Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-7861-twin",
+    "version": "7.28.0",
+    "before": "2021-02-05T16:53:43Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-carbon-8392-twin",
+    "version": "7.31.0",
+    "before": "2021-03-19T21:36:23Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-chakra-6693-twin",
+    "version": "2.2.8",
+    "before": "2022-08-15T07:11:07Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-datepicker-5428-twin",
+    "version": "6.9.0",
+    "before": "2024-04-19T07:26:54Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-18714-twin",
+    "version": "7.167.0",
+    "before": "2021-04-16T12:23:01Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-27997-twin",
+    "version": "9.19.1",
+    "before": "2023-04-25T08:11:59Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-4620-twin",
+    "version": "5.40.2",
+    "before": "2018-01-20T11:14:37Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-fluent-7796-twin",
+    "version": "6.124.2",
+    "before": "2019-01-15T13:39:54Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-headlessui-2084-twin",
+    "version": "1.7.4",
+    "before": "2022-11-04T15:22:19Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-mui-44048-twin",
+    "version": "5.10.17",
+    "before": "2022-12-07T10:59:27Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-mui-45049-twin",
+    "version": "6.1.10",
+    "before": "2024-12-05T10:02:44Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-mui-46734-twin",
+    "version": "7.2.0",
+    "before": "2025-07-01T08:58:52Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-radix-4014-twin",
+    "version": "1.1.13",
+    "before": "2026-06-16T19:08:52Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-ras-8637-twin",
+    "version": "3.42.2",
+    "before": "2025-06-11T18:12:46Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-reactselect-4421-twin",
+    "version": "3.2.0",
+    "before": "2021-01-14T13:42:50Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-vuetify-21591-twin",
+    "version": "3.4.9",
+    "before": "2023-12-29T02:02:31Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-vuetify-22770-twin",
+    "version": "3.3.6",
+    "before": "2023-06-28T21:01:18Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  },
+  {
+    "item": "oss-vuetify-9627-twin",
+    "version": "2.0.14",
+    "before": "2019-09-05T02:27:43Z",
+    "applyExit": 0,
+    "revertExit": 0,
+    "installExit": 0,
+    "buildExit": 0
+  }
+]

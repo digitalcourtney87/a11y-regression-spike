@@ -1,0 +1,70 @@
+{
+  "id": "oss-carbon-7861",
+  "version": "1",
+  "app": "oss/carbon-7861",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-choices",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Choices",
+        "role": "textbox",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "filter-alpha",
+      "strategy": "TYPE",
+      "observeMs": 1000,
+      "expectations": [],
+      "text": "Al"
+    },
+    {
+      "kind": "at",
+      "id": "highlight-alpha",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "ArrowDown"
+    },
+    {
+      "kind": "at",
+      "id": "select-alpha",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "browse-result",
+      "strategy": "FOCUS_MODE_TOGGLE",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-result",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Chosen Alpha",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

@@ -135,6 +135,22 @@ Conventions:
 
 | [DR-0096](#dr-0096-calendar-admission-and-mining-lead-follow-up) | Calendar admission and mining lead follow-up | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | One new test pattern; 17 additions remain |
 
+| [DR-0097](#dr-0097-second-bounded-mining-pass) | Second bounded mining pass | Accepted | 2026-10-11 | Owner instruction to move to next task | — | Zero additions; 17 still needed |
+
+| [DR-0098](#dr-0098-broader-mining-pass-and-datefield-admission) | Broader mining pass and DateField admission | Accepted | 2026-10-11 | Owner instruction to proceed; P22/P39 | — | Second addition built; 16 still needed |
+
+| [DR-0099](#dr-0099-completion-batches-and-vuetify-navigation-admission) | Completion batches and Vuetify navigation admission | Accepted | 2026-10-11 | Owner instruction to finish patterns; P22/P39 | — | 62 test patterns; completion continues |
+| [DR-0100](#dr-0100-datagrid-admission-after-source-boundary-correction) | DataGrid admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 63 test |
+| [DR-0101](#dr-0101-zero-delay-vuetify-menu-admission) | Zero-delay menu admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 64 test |
+| [DR-0102](#dr-0102-grouped-react-select-admission) | Grouped react-select admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 65 test |
+| [DR-0103](#dr-0103-three-final-input-pattern-admissions) | Three input admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 68 test |
+| [DR-0104](#dr-0104-bootstrap-colon-id-modal-admission) | Colon-id modal admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 69 test |
+| [DR-0105](#dr-0105-base-ui-router-tab-admission) | Router-tab admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 70 test |
+| [DR-0106](#dr-0106-date-navigation-and-empty-option-selection-admissions) | Date and selection admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 72 test |
+| [DR-0107](#dr-0107-three-content-and-callback-admissions-rejected-diagnostics-retained) | Content and callback admissions | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 75 test |
+| [DR-0108](#dr-0108-manual-tooltip-admission) | Manual-tooltip admission | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 76 test |
+| [DR-0109](#dr-0109-restricted-slider-admission-completes-the-second-round-build) | Second-round build complete | Accepted | 2026-10-12 | Owner finish-patterns instruction; P22/P39 | — | 77 test;18 additions |
+
 ## Pending owner items (hard rule 12)
 
 Rows here were hard-rule-12 items carrying **Proposed by Claude (not yet owner-approved)** until the owner ruled. Each is a hard-rule-12 item under DR-0045 (what is measured, what counts as detection, cost or security), so Claude has not decided it. They go in the next gate brief. An item needed before the G1 brief is put to the owner when it is first needed, as a yes/no question with Claude's recommendation (DR-0045).
@@ -3908,3 +3924,219 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Limits.** The browse diagnostic uses the unchanged accessibility-tree cursor model; it is not real NVDA evidence or a scored corpus run. The CSS diagnostic applies the identical inline style on a fresh page; the committed patch is checked structurally. Assigned test items are not executed before a new owner freeze tag. The existing M7 scores remain at protocol-freeze-v3. There are now 20 dev and 60 test regression patterns (80 total), with one of the needed 18 additions built, leaving 17. No claim of availability follows.
 
 **Lead follow-up.** The five recorded leads were revisited without a new search. Carbon #3397 was closed as stale after maintainers requested missing MDX reproduction context, with no linked fix; exclude it from this pass under P22 rules 5/6. Four documentary leads remain pending and none is scheduled for CI. A revised bounded title-search plan is recorded before searches in `docs/research/2026-10-11-m7-next-mining-plan.md`; no query under it has yet run. Details: `docs/research/2026-10-11-m7-leads-followup.md`.
+
+## DR-0097 Second bounded mining pass
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Merge, please move onto the next task” |
+| Scope | Recorded next bounded mining search; no criteria/context change |
+
+**Outcome.** PR #12 was already merged when checked (ba2831f). Execute the eight pre-recorded title queries in `docs/research/2026-10-11-m7-next-mining-plan.md`: three hits, two previously excluded, one new candidate (Fluent UI #8750). Its merged fix removes a dangling described-by reference only when the selected-item list is empty. No issue-derived primary user-facing symptom is established; exclude under P22 rule 7. The scanner finding alone does not justify a new symptom or verdict. Zero new patterns, fixtures or CI dispatches. Calendar remains the first addition, with 17 needed and four documentary leads pending. See `docs/research/2026-10-11-m7-mining-pass-two.md` and its JSON ledger.
+
+**Boundary.** The title intersection is sparse; do not substitute new queries after seeing the result. A subsequent search starts from a revised recorded plan. No frozen set, original assignment, detection rule, target, context or freeze tag changes. No confirmatory execution or M8 work.
+
+## DR-0098 Broader mining pass and DateField admission
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner “Please proceed” after the broader-search recommendation; P22/P39 |
+| Scope | Eight recorded queries, at most two fixtures/two exploratory dispatches; second-round build only |
+
+**Method and result.** Commit `5607d07` records the broader plan before search. Eight queries inspect 77 hits and select ten new issues: seven excluded, two pending documentary, and one DateField candidate later admitted. All four exact regression-label queries are empty. Per-query selection caps, ordering and exclusions are retained; no query substitution or selection from G4 misses. Sources and all inspected-hit dispositions are in `docs/research/2026-10-11-m7-pass-three-ledger.json` and the Markdown report.
+
+**DateField evidence.** Issue #8637's continuous `01011970` criterion follows published @adobe/react-spectrum 3.42.2/3.43.0/3.44.0 with compatible shared React/react-dom 18.3.1, Apache-2.0. Introducing PR #8447 suppresses leading zeros; merged revert #8684 fixes it. Runs 38176937862 and 38177297242 reproduce January 1, 1970 on good/fixed versus October 11, 970 on broken, with zero errors/external requests and successful installs/builds. The original criterion and resolved locks agree across both. Before assignment, the second run also checks existing-model browse reachability of the expected date (line 8 good/fixed, absent broken), and an identical CSS-only width twin. First candidate artifacts are complete; the remaining first-run Carbon job is cancelled by replacement, so overall run one is cancelled. Run two succeeds in all six jobs.
+
+**Admission/build.** Add `oss--ras-8637` with existing JOURNEY_BLOCKED and `mined` mechanism metadata, a test regression item, CSS_ONLY twin and exact base/base unchanged control. Refs share immutable fixture commit 613899074a9864fff939ebaa29bdca6b77fc0ae5. Follow P39's explicit all-test append (unused seed 0, fraction 1), without altering prior assignments/items. The journey uses existing TAB/TYPE/mode-toggle/DOCUMENT_TOP/BROWSE_NEXT strategies; actual NVDA path remains unexecuted until a new tag. The ordinary fixture output exposes the entered date identically on every release; no oracle, threshold or trigger changes.
+
+**Boundary and validation.** One fixture and two dispatches used; no local third-party execution or assigned test-item execution. Corpus validation reports 207 items, 81 patterns (20 dev, 61 test); lint/typecheck and all 154 corpus/schema tests pass. Source patch applies. A-005/A-006 record frozen-set changes; no new tag. Two of 18 additions are built, 16 still needed; six documentary leads remain pending. The cap is reached and availability remains unestablished. No M8 work or criteria/context/target change.
+
+## DR-0099 Completion batches and Vuetify navigation admission
+
+| | |
+|---|---|
+| Date | 2026-10-11 |
+| Status | Accepted |
+| Owner label | Owner instruction to finish test patterns, retaining 77; P22/P39 |
+| Scope | Successive recorded bounded mining/reproduction batches; no new freeze tag |
+
+**Method.** Completion/batch-four plan committed as f65ef41 before queries. Eleven previously query-capped issues plus 32 new selections are reviewed: 43 candidates, 38 excluded, three documentary leads pending, DataGrid taken to reproduction and Vuetify subsequently admitted. Batch-five plan committed as c8a59d1 before its sixteen queries: 18 new selections, 14 excluded and four pending documentary. Full ledgers retain every search hit/disposition and sources. Previous six pending leads remain separate. Follow-up of Carbon #2600 finds contributor PR #13391, which addresses a different issue (#13110) and does not establish #2600's release boundary; Blueprint #3988 still has no linked fix in its timeline. No fabricated admissions follow from missing evidence.
+
+**DataGrid failures.** Run 38178617035 renders no valid fixture because DataGridRow needs a render-function child; fix it uniformly. Runs 38178948350 and 38179257999 fail the first-row Tab precondition on all three releases, even after replacing later-version composite focus mode with the supported default cell mode. No successful keyboard behaviour or admission is claimed. Before batch-five dispatch two, instrument focus/tabindex traces and uniformly correct the initial route to the grid's tabbable column header, then ArrowDown to Alpha and Beta, then Space. The controlled selection criterion and release pins never change. P22 rule 8 permits pre-assignment setup repair; failing checks do not retry an alternative path. Retain every failed attempt.
+
+**Vuetify admission.** #22770/#17265/#23031 isolate VAutocomplete virtualization. MIT Vuetify 3.3.6 versus 3.3.7 shares Vue 3.3.4; ordinary JavaScript render functions use the existing vanilla build mode without workflow/security changes. Runs 38178948350 and 38179257999 have identical check outputs and resolved locks: Enter opens, ArrowDown reaches Item 1, then ArrowUp reaches Item 100 on last good but only Item 9 on broken. Pointer-start and pure Tab-entry paths agree; a fresh width-only twin preserves both. No page errors/external requests and successful installs/builds. The modern merged fix requires newer Vue and is documentary corroboration, not a third execution with incompatible pins.
+
+**Construction.** Add oss--vuetify-22770 with existing JOURNEY_BLOCKED, a test version pair, CSS_ONLY twin and exact unchanged control. Both refs share immutable fixture commit 9f8dc24ccde90eb6d884e069fc46bc4d64ec09cf. Append P39's all-test assignment (unused seed 0, fraction 1); preserve previous assignments/items. The declared TAB/Enter/ArrowDown/ArrowUp journey uses existing name goals; no oracle, trigger, threshold or scoring definition changes. Actual NVDA journey execution remains gated by the new-tag requirement. Corpus validation: 210 items, 82 patterns (20 dev, 62 test); lint/typecheck and 154 corpus/schema tests pass. Twin patch applies. A-008 discloses admission after G4 exposure.
+
+**Ongoing objective.** Three of 18 additions are built; 15 still needed. This is a progress record, not a claim that completion is achieved or remaining pairs are available. Continue the owner's completion objective in recorded batches; report genuine source/evidence barriers without relaxing P22, context or target. No assigned test item is executed/scored, freeze tag applied or M8 work started.
+
+## DR-0100 DataGrid admission after source-boundary correction
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner instruction to finish test patterns; P22/P39 |
+| Scope | Second-round build only; no new tag or assigned execution |
+
+**Evidence.** Fluent UI #27997 (duplicate #27896), introducing PR #27702 and revert #27978 establish the controlled selection regression. Published react-components 9.19.1 uses the working utilities range; 9.20.0 introduces the broken controllable-state setter; 9.20.4 restores it. Shared direct React/react-dom pins are 18.2.0, with internal dependencies resolved at each release cutoff. The initial proposed last-good 9.20.0 is disproved by run 38180235709 and retained, alongside all earlier render/focus setup failures. Refining the release hypothesis does not alter the issue-derived selection criterion. Runs 38181259137 and 38181647925 independently reproduce identical checks and resolved locks: good/fixed select Beta by pointer and keyboard, broken retains Alpha. The fresh width-only twin preserves each keyboard outcome. Installs/builds exit zero, with no page errors/external requests. Raw evidence and lock hashes are under `docs/research/m7-completion-evidence/`.
+
+**Construction.** Register MIT oss--fluent-27997 with existing STATE_NOT_CONVEYED, using immutable fixture commit d26f7a08671909d4289f91f4ade4fe321d9bfd58. Append its test version pair, CSS_ONLY twin and exact unchanged control under P39 (manual all-test batch, fraction 1, unused seed 0). Preserve all previous assignments/items. TAB enters Name column header; ArrowDown reaches Alpha then Beta; Space must expose checked=true on Select Beta radio. Published TableSelectionCell source derives native radio checked and row aria-selected from the same selection state. This uses the existing state vocabulary. NVDA's standard focus-mode role handling covers the column header/row path; actual NVDA execution remains unperformed until the new freeze tag. No oracle, trigger, threshold, scoring or workflow safeguard changes.
+
+**Progress.** Four of 18 additions are built: 63 test patterns, 20 dev, 83 total and 213 items. Fourteen additions remain; availability remains unestablished. Mantine's first attempt (38181647925) fails only its pointer-target setup precondition on every release. Its recorded batch-seven repair uses the visible combobox click surface uniformly, retaining the keyboard target, original criterion and release pins; no Mantine admission is claimed. Continue the completion objective through recorded batches. No new tag, confirmatory execution or M8 work.
+
+## DR-0101 Zero-delay Vuetify menu admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no new tag or assigned execution |
+
+**Source and evidence.** Vuetify #21591 identifies working3.4.9 and broken3.4.10 with zero-delay hover menus. Introducing e89b5c3 removes asynchronous zero-delay scheduling; merged fix#22242 adds a minimum close delay. Both published releases share Vue3.3.8. The much later fix is documentary corroboration only, with incompatible newer framework requirements excluded from execution. First run38183361845 shows the good menu stays open but focuses its list container: modern string-only sample lacks interactive entries in these older releases. Before assignment, repair item value/link and root tabindex uniformly using supported props; leave the original one-ArrowDown Item1/open/visible criterion and releases unchanged. Preserve the first attempt.
+
+Runs38183612490 and38211936352 then independently match all check outputs and resolved locks: hover exposes Item1 in both; Tab entry plus one ArrowDown reaches visible Item1 and keeps the good menu open, but closes the broken menu with focus lost to body. Fresh width-only twin preserves outcomes. All candidate installs/builds succeed with no page errors or external requests. Evidence/lock hashes: `docs/research/m7-completion-evidence/menu-repeat-comparison.json` and raw checks.
+
+**Construction.** Append oss--vuetify-21591 with existing JOURNEY_BLOCKED, one test version-pair item, CSS_ONLY twin and exact unchanged control. Both refs pin immutable fixture commit3cfccafbb4a28a492a22dfc88355e2b336328b46. Manual P39 all-test batch has fraction1 and unused seed0; prior assignments/items are preserved. Journey: TAB to Test menu, explicit focus-mode toggle (native button does not automatically enter NVDA focus mode), ArrowDown with one-attempt Item1 goal. No new oracle, trigger, threshold or scoring definition. Actual assigned NVDA execution remains unperformed until a new tag.
+
+**Progress and limits.** Five of18 additions built:64 test,20 dev,84 patterns,216 items;13 still needed, availability unestablished. Mantine is excluded because its keyboard criterion fails on good/fixed too; its source is retained as non-executable text and raw failures retained. Grouped-select first attempt38183612490 fails all releases before behavior because render targets app while HTML supplies root; uniformly repair mount under P22 rule8. Recorded source searches/ledgers continue. No freeze tag, confirmatory execution or M8 work.
+
+## DR-0102 Grouped react-select admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner completion instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Issue#4421 reports the stable working/broken pair3.2.0/4.0.2; fix#4422 in4.1.0 uses filtered categorized group entries rather than original unfiltered group data. All three releases share React/react-dom16.14.0. After filtering `o`, one ArrowDown and Enter must choose Orange after Ocean. Broken chooses hidden Blue. Initial attempts fail uniformly because of a wrong mount target, then placeholder interception; use the normal control click surface and documented focused-option class marker, retaining the criterion. The older API uses live announcements rather than aria-activedescendant; no new oracle follows from that.
+
+Final ordinary feedback and existing-model browse diagnostic in runs38213610821 and38214490819 agree exactly, including resolved dependency locks: Chosen Orange is reachable on line7 in good/fixed and absent in broken. Fresh width-only twin agrees. All candidate installs/builds succeed, no page errors/external requests. Earlier successful behavioral checks38212601361/38213037408 and failed setup attempts are retained separately. Evidence and hashes: `docs/research/m7-completion-evidence/reactselect-repeat-comparison.json`.
+
+**Construction.** Add oss--reactselect-4421 with existing JOURNEY_BLOCKED, test version pair, CSS_ONLY twin and exact unchanged control. Both refs use immutable fixture commit ed89089afce19fff4ea2ac6050a24e97514bda4a. Manual P39 all-test append (fraction1, unused seed0), preserving previous assignments/items. Journey uses existing TAB/TYPE/ArrowDown/Enter, explicit focus-mode toggle before DOCUMENT_TOP/BROWSE_NEXT to Chosen Orange. Real assigned NVDA execution remains unperformed until a new tag. No changed oracle, trigger, threshold, scoring or workflow safeguard.
+
+**Progress.** Six of18 additions built:65 test,20 dev,85 total patterns,219 items;12 still needed, availability unestablished. FilterableMultiSelect, Chakra Editable and Headless Vue remain unsplit until final repeated diagnostics are complete. Passive-modal default path is excluded for no applicable library fix, independently of its exploratory outcomes. Continue recorded source/reproduction batches. No new tag, confirmatory execution or M8 work.
+
+## DR-0103 Three final input-pattern admissions
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Recorded batch seventeen runs 38215953512 and 38216780105 independently match final check outputs and resolved dependency locks for all three candidates. Each candidate installs/builds successfully, has no page errors or external requests, and preserves its keyboard result under a fresh width-only twin. Raw checks, lock hashes and source pins are in `docs/research/m7-completion-evidence/`.
+
+- Carbon #7861, `carbon-components-react` 7.28.0/7.29.0/fixed 7.32.0, Apache-2.0, shared React/react-dom 16.14.0: the broken release coerces highlighted index zero to null. After filtering Al, ArrowDown/Enter must choose Alpha; good/fixed do, broken chooses none. Pointer option click succeeds everywhere. Fix #8178 uses an explicit undefined guard. Final ordinary Chosen Alpha browse goal is reached on line 13 in good, line 11 in fixed, and absent on broken keyboard path. The same system-font override removes earlier blocked remote-font requests without changing the criterion or library styles. Earlier split feedback text nodes are consolidated before final repetition.
+- Chakra #6693, `@chakra-ui/react` 2.2.8/2.2.9/fixed 2.3.4, MIT: inline onChange/onEdit callbacks cause each character to select all existing text in broken, so abc becomes c. Fixed contains `@chakra-ui/editable` 2.0.11's callback-ref stabilization. Shared React/react-dom 18.2.0, Emotion 11.10.0 and motion 6.5.1 predate the pair. Default editing entry already selects initial text; final checks assert that setup and use ordinary typing, with no unsupported Control+A journey key. Entered abc browse goal is reached on line 3 in good/fixed, absent broken.
+- Headless Vue #2084, `@headlessui/vue` 1.7.4/1.7.5/fixed 1.7.6, MIT, shared Vue 3.2.41: object displayValue incorrectly evaluates an unspecified defaultValue; fix #2087 guards undefined. The ordinary documented controlled construct must choose Beta after Be/ArrowDown/Enter; broken retains Alpha. Supported native input onFocus/onClick select-all handlers prepare the same original text selection on every release, without a new driver key or fallback. Chosen Beta browse goal is reached on line 6 in good/fixed, absent broken. Preserve observations rather than claim an uncaught page crash: these final runs record no page errors.
+
+**Construction.** Append three existing JOURNEY_BLOCKED patterns, each with a test version pair, CSS_ONLY twin, exact unchanged control and declared journey. Both refs for each share immutable fixture commit de00f9cde16b733ae725f885ba27b3718994f31d. Manual all-test batch records fraction 1, unused seed 0 and three test assignments; preserve prior assignments/items. Journeys use frozen TAB/TYPE/PRESS keys and explicit focus-mode toggle before DOCUMENT_TOP/BROWSE_NEXT. Carbon targets the actual native textbox role, avoiding its older outer button wrapper; Chakra targets resulting Text textbox, Headless targets Assignee combobox. No oracle, trigger, threshold, scoring or execution safeguard changes. Actual assigned NVDA execution remains unperformed until a new owner tag.
+
+**Progress.** Nine of 18 additions built: 68 test, 20 dev, 88 patterns and 228 items; nine still needed, availability unestablished. Bootstrap #39189 is unsplit and scheduled under its recorded source-supported plan. Public source search continues under P39/P22; the repository frame is not a frozen measurement definition. No new tag, confirmatory execution or M8 work.
+
+## DR-0104 Bootstrap colon-id modal admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Bootstrap#39189 reports5.3.1 working/5.3.2 broken for a native data-api modal whose valid HTML id contains a colon. Merged fix#39201 explicitly tests the same colon-id construct; published5.3.3 contains the selector parsing repair. Earlier maintainer speculation about accidental support is retained alongside that source evidence. Direct Popper2.11.8 is identical across versions and predates5.3.1. Independent exploratory runs38219370287/38226318174 match all check outputs and resolved dependency locks, with successful installs/builds. Pointer and pure Tab/Enter activation open and focus the named Details dialog on good/fixed; broken fails with the expected invalid-selector error. No external requests. The fresh width-only twin preserves those results. The broken library error is retained, not hidden or called a setup error.
+
+**Construction.** Append oss--bootstrap-39189 as existing JOURNEY_BLOCKED, test version pair, CSS_ONLY twin and exact unchanged control. Both refs use immutable fixture commit b5c3ccb4bb1387903fa80d8494b5cc07a912cc06. The frozen journey tabs to Open details, then presses Enter once with a dialog|Details focus goal. Manual all-test append, fraction1/unused seed0, preserving prior assignments/items. No new oracle, strategy, threshold, context or changed symptom; no assigned NVDA execution before a new tag. Evidence: docs/research/m7-completion-evidence/bootstrap-repeat-comparison.json.
+
+**Progress.** Ten of18 additions built:69 test,20 dev,89 patterns,231 items; eight still needed. Base UI router-tab construct remains unsplit and exploratory. No new tag or M8 work.
+
+## DR-0105 Base UI router-tab admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Base UI#5532/#5432 describe the same defect and count once. Reported1.6.0 working/1.7.0 broken; merged5441 and published1.8.0 compare the composite item snapshot before publishing a new map. Fix tests support router-Link Tabs.Tab and unstable merged refs. Shared direct React/react-dom18.2.0 and react-router7.6.2 satisfy all peer ranges and predate1.6.0. The reported mount/settle criterion is reproduced without upgrading to React19 or manually manufacturing refs: a normal native Show tabs button reveals two router-link tabs. Good/fixed render both and allow pure keyboard focus to Overview, broken crashes with React update-depth error185. Fresh width-only twin preserves these results. Runs38226873394/38227533511 match final checks and dependency locks exactly; candidate installs/builds succeed, no external requests. Broken page errors retained.
+
+**Construction.** Append one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and TAB/Enter/TAB journey to tab|Overview. Both refs share fixture commit41ce0d124c7cf0c1e94504b772337dc0dfd91a0c. Manual all-test append, fraction1/unused seed0; preserve prior assignments/items. No changed oracle, strategy, threshold or context. Real assigned NVDA execution remains unperformed. Evidence: docs/research/m7-completion-evidence/baseui-repeat-comparison.json.
+
+**Progress.** Eleven of18 additions built:70 test,20 dev,90 patterns,234 items; seven still needed. react-datepicker remains unsplit pending its original criterion and repeat. No new tag or M8 work.
+
+## DR-0106 Date navigation and empty-option selection admissions
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Runs38228262460/38228576972 independently match final check outputs and dependency locks for both candidates; installs/builds succeed, no external requests. Source pins and comparison hashes are retained in docs/research/m7-completion-evidence.
+
+- react-datepicker#5428: reported first broken7.0.0, source-supported6.9.0 restores the prior containerRef path, published8.2.0 contains merged5456's propagation and wrapper repair. Shared React/react-dom18.2.0. Original same-month arrow navigation must move actual day focus from February19 to February18. Good/fixed do; broken retains prior focus. Pointer selection holds everywhere, fresh width-only twin preserves keyboard outcome, no page errors. Initial38227533511 CJS default-namespace mounting failures on6.9.0/7.0.0 remain recorded; uniform default export normalization before assignment leaves the same component/props and criterion. Primary existing symptom FOCUS_NOT_MOVED. Frozen journey native Tab to Date, ArrowDown once to the initial day, ArrowLeft once to the target day; exact accessible names, no role guess or fallback.
+- MUI#46734: reported7.2.0 working/7.3.0 broken, published7.3.3 contains merged46894 popupOpen highlight synchronization (7.3.2 predates merge). Shared React18.2.0 and Emotion11.14.0. Maintainer's later confirmation accepts freeSolo+autoHighlight empty options after initial contrary speculation; original construct remains supported. Controlled multiple freeSolo/autoHighlight/autoSelect with empty options must select typed foobar on Enter. Good/fixed do; broken selects undefined and crashes reading label. Those errors are retained. Original typing/blur control and fresh width-only twin agree. Ordinary Chosen foobar browse goal is reached on line8 for keyboard good/fixed, absent broken. Existing JOURNEY_BLOCKED; frozen Tab/type/Enter then focus-mode toggle and document-top/browse goal.
+
+**Construction.** Two test version pairs, CSS_ONLY twins, exact unchanged controls and declared journeys. Both refs share final fixture commit e9969cde4df14c4c92e52a38071f8189fe3611e5. Manual all-test appends, fraction1/unused seed0, preserving previous assignments/item bytes. No changed oracle, strategy, threshold, context or execution safeguards. No assigned NVDA execution before a new tag.
+
+**Progress.** Thirteen of18 additions built:72 test,20 dev,92 patterns,240 items; five still needed. react-modal remains unsplit source-supported hypothesis. No new tag or M8 work.
+
+## DR-0107 Three content and callback admissions; rejected diagnostics retained
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** MUI#44048 final38231384520/38232414560 and Carbon#8392/Fluent#18714 final38232414560/38234013533 independently match checks and resolved dependency locks. All candidate installs/builds succeed, no page errors/external requests, fresh width-only twins preserve outcomes. Comparison files and source pins retained in docs/research/m7-completion-evidence.
+
+- MUI custom Paper: reported5.10.17/5.16.7, published5.16.14 restores custom empty freeSolo content via44857 revert of41300. Same React18.2.0/Emotion11.10.5. Original expected behavior explicitly includes custom other information. Native Tab/ArrowDown and pointer click must render No recent searches; good/fixed do and ordinary browse goal is line4, broken removes content. Standard Paper and disablePortal keep plain information in document order; no invented interactive option or claim of actual NVDA execution.
+- Carbon Toast: reported7.31.0/7.32.0, published7.33.0 contains8362 omitted-timeout restoration. Same React16.14.0 and supported Carbon CSS10.30.0 before good. Native Save changes must retain Saved at1500ms, before specified10000ms expiry; good/fixed hold, broken dismisses immediately. Ordinary browse goal line3/absent, pointer activation agrees. Earlier static heading Saved notification incorrectly matched the generic Saved goal; neutral heading correction before final repetitions removes that ambiguity without changing feedback or lifetime criterion. Font override planned before outcomes prevents blocked remote fonts. No claim of an actual NVDA announcement.
+- Fluent SearchBox: source-supported@fluentui/react7.167.0/8.19.1, published8.21.0 fix18715 restores supported deprecated onChanged callback. Good package reexports office-ui-fabric-react through its range; internal companion resolution stays at each release cutoff, no forced pin. Same direct React16.14.0. Native Tab/type abc must produce Query abc; good/fixed do, broken input becomes abc but callback feedback does not. Ordinary browse goal line5/absent; pointer entry agrees. Do not substitute onChange.
+
+**Construction.** Three existing JOURNEY_BLOCKED patterns, each with test version pair, CSS_ONLY twin, exact unchanged control and frozen-strategy journey. Both refs share final fixture commit70b4cf64b125c66e388fbe46b8351072e0e23b1d. Manual all-test append, fraction1/unused seed0. Previous assignments and measurement fields preserved. Correct seven new-round regression-item provenance URLs that a reused generator incorrectly left at issue4421; only source URL metadata changes on four previously admitted new items, no ref, expectation, journey, source classification or old-round item changes. Actual assigned execution remains unperformed before a new tag.
+
+**Negative evidence.** react-modal#732 final forward/reverse checks fail wrap but do not show original reported focus escape: no outside DOM focus events and document.hasFocus remains true. Keep all results, do not reclassify a related failure to count it. The recorded controlled date-picker#5366 fixture fails ArrowDown entry everywhere; uniform native Tab-to-day preparation then fails original keyboard closing on good/broken/fixed, while pointer close holds everywhere. Retire both without admission or controller workaround. Source/check archives retain attempts, not executable fixtures. These statements concern recorded fixtures, not proof no defect exists in other constructs. Build-only test-twin run38229779177 records21 completed mined test twins with all apply/revert/install/build exits zero; no assigned loading/checking.
+
+**Progress.** Sixteen of18 additions built:75 test,20 dev,95 patterns,249 items; two still needed. Bootstrap manual-tooltip candidate is unsplit source preparation. No new tag or M8 work.
+
+## DR-0108 Manual-tooltip admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** Bootstrap#15168 reports3.2.0 working/3.3.0 broken for manual tooltip initialized with selector. The first source comment explains string methods failing after the selector-handling change14189. Merged15466 reverts that map-backed instance storage; published3.3.2 restores string-method dispatch. Same jQuery1.11.1 before good, same vanilla context throughout. Native labeled Show help button initializes the supported manual selector/title options and calls show; generated aria-describedby links actual trigger to plain Extra information. Good/fixed show information and ordinary browse reaches line3; broken fails with expected i[n]-method error and goal absent. Pointer and fresh width-only twin agree. Runs38235235122/38236198602 match all check outputs and resolved locks exactly; installs/builds succeed, no external requests. Original linked fiddle returned403; no claim its code was inspected. Construction uses original issue/API and published/fix source, not an escaped-selector workaround.
+
+**Construction.** Add one existing JOURNEY_BLOCKED pattern, test version pair, CSS_ONLY twin, exact unchanged control and native TAB/Enter/document-top/browse journey. Both refs share immutable fixture commit c4d00480ee6b88261716c9604520b7994df9679e. Manual all-test append, fraction1/unused seed0. Previous assignments/items preserved. No changed oracle, key, threshold, context or local third-party execution; assigned NVDA remains unperformed. Evidence: docs/research/m7-completion-evidence/bootstrap-15168-repeat-comparison.json.
+
+**Progress.** Seventeen of18 additions built:76 test,20 dev,96 patterns,252 items; one still needed. MUI restricted Slider45049 is unsplit source preparation. No new tag or M8 work.
+
+## DR-0109 Restricted-slider admission completes the second-round build
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** MUI#45049 source comment identifies6.1.10 working/6.2.0 broken after44537's custom keyboard handling. Published6.4.2 contains45050 inclusive mark-boundary checks;6.4.1 predates merge and is not called fixed. Same React18.2.0, Emotion/react11.13.3 and Emotion/styled11.13.0 before earliest. Fix's own controlled marks10/20/30, step=null and value30 support the original right-edge requirement; explicit native bounds10..30 match the allowed marks before any outcome. Native Tab/ArrowRight at upper mark must retain30 rather than NaN. Good/fixed do, broken returns NaN; ordinary Level30 browse goal line3/absent. Original pointer-entry/ArrowRight path and fresh width-only twin agree. Runs38241500151/38242172957 match all final check outputs and dependency locks; installs/builds succeed, no page errors/external requests. Evidence: docs/research/m7-completion-evidence/mui-45049-repeat-comparison.json.
+
+**Construction.** Add existing JOURNEY_BLOCKED test version pair, CSS_ONLY twin, exact unchanged control and TAB/ArrowRight/focus-mode-toggle/document-top/browse journey. Both refs share fixture commit4bbb766e485f5a3904bf01ff0d3e9058bc2d7a6e. Manual all-test append, fraction1/unused seed0; previous assignments/items preserved. No changed oracle, strategy, threshold, context or local third-party execution. Actual assigned NVDA remains unperformed before a new tag.
+
+**Completion.** All18 required new mined patterns are built:77 test,20 dev,97 total patterns,255 items. Original59 test assignments and all original-freeze item bytes are unchanged. Four previously admitted new-round source URLs were corrected under A-016; measurement/ref/expectation fields preserved. Full local suite passes740 tests; source/corpus validation and build-only control verification accompany the completion report. This completes pattern construction, not confirmatory execution or M8. No new tag applied.

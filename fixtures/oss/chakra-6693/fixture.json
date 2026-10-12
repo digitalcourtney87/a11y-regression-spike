@@ -1,0 +1,1 @@
+{"id":"chakra-6693","stack":"react","package":"@chakra-ui/react","versions":["2.2.8","2.2.9","2.3.4"],"dependencies":{"react":"18.2.0","react-dom":"18.2.0","@emotion/react":"11.10.0","@emotion/styled":"11.10.0","framer-motion":"6.5.1"},"issue":"https://github.com/chakra-ui/chakra-ui/issues/6693"}

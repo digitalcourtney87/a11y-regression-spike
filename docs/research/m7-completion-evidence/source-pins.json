@@ -1,0 +1,1300 @@
+[
+  {
+    "package": "vuetify",
+    "releases": [
+      {
+        "version": "3.3.6",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": "^1.0.0-alpha.12",
+          "webpack-plugin-vuetify": "^2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "58f620cedd9445686a4a694b78a61c3f0ecc1369",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.3.6.tgz",
+          "fileCount": 1383,
+          "integrity": "sha512-9QHh3mY5dK2Y4FGGBHFaIl/RVoP3Wg+XzP/pvruAoglIsUqzMlHrUOYAjO6/SWTxmhsiPI1jl4TyEBlppMXtNQ==",
+          "signatures": [
+            {
+              "sig": "MEUCICUd9nZOwrO26InUNqXiioRwPTjKY0UpvBVR7r3d5KMCAiEA1ZHkKmz5YRfTYg22UMkOfwJh0ai1BqnZUpgakV+zCFw=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 31446282
+        },
+        "published": "2023-06-27T21:01:18.411Z"
+      },
+      {
+        "version": "3.3.7",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": "^1.0.0-alpha.12",
+          "webpack-plugin-vuetify": "^2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "858dceca1a2bcb465b1214b611c70625868ce99b",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.3.7.tgz",
+          "fileCount": 1385,
+          "integrity": "sha512-+Avd/vXdDZsct7PiXbOlgEKy8ZhxlaWZERv4MZ1x4tyJ5AoTm/jZW33u6TzlwhilqBgqKJFOe2UOH60LkKlukQ==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCMF+UzQOJXf/7Vhih7TJTDmLA7MPmb/YKlItvj1lifvQIhAJxE0XBfL5Nob/Jxo7qzKyPwfKPLmYJl4BjOtJBXsuoA",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 31540017
+        },
+        "published": "2023-07-05T18:59:45.643Z"
+      }
+    ]
+  },
+  {
+    "package": "@fluentui/react-components",
+    "releases": [
+      {
+        "version": "9.19.1",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "26c166798f3bff755d4abe2bcc7a4fef45c5646e",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.19.1.tgz",
+          "fileCount": 28,
+          "integrity": "sha512-HHhQdGXHVn0PwrEbFGu/xEqSLVYRf2WfMsG6FVmFBNwSwojB/2/DRWXQPUPL8K2Hzrg5Xon8z3RBP/XrSUFqtw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCQI57kINrbOGgLD/0/0SQepNPKQ9vwkkJ6Kcs6BrmADwIgd7ook2Ab2KYHXobfqZq55d8kMw2KQ7Fe5ZAy5pbd1pU=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2445722,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkRjnPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoWvQ/+N7KtwRQ81VUzAZoDSW4yru1VSsEbBRSc3xVZPIYCL7TgH0G/\r\n3KUZdMjiGZF7X8Y18LGZUOy8x6MajWg2kqqoG8UMfGie/bd8vcc2s4juiRQQ\r\nWVXhi6QkjdaHlDmFTaBqMCrpSVoZc8QzHjI6Ok57/pHqrcsomuROdodEctDT\r\nPgb6JdQ4OgRHZigaHjC87U23Hg6ssFnah02bly7ZCZblUmkrkxsoaf9LTT+5\r\nFc2SU5s7admQW9N/+A7SXaolpn6X99k61LWl3SmQLo4qv06GFLS7rTR2gI8t\r\nOZz9ltnJNKyraOxGX4jR2uQGjsNKvCXLw/7buKDo7o1jMzffuftZ9SrAwPOl\r\n0f3qL+xI9nMxTDW11RiJqIiETeQc5PAcU2uQmlfAd/4CbukcnuMWKdsJGkaD\r\nDzhwZah2JUky69OsRCg6K+u4dlOQ9zFJSYQZz6AnOyxIcBHOvo2Tlgx8NB57\r\nMYe3q6lzZnRGx7l4TihM8tWzj+bKmLqNFmdm/H359mes5FmdNjHAHdorkMKU\r\nWOwyfiXzuOec5/29+m4p6Z1NUZhtFr00GnUOjsJ1i/emAfhBTfmBd/8QR4TV\r\n/s/PkKjrQVgMIkMgw/JQCW4YHcphLAbBa2CH0KB63N4P8AZUVb8GLDkyr8HU\r\nRskDonnzvNOWOH1Mv91fPdA5vEyVATexdso=\r\n=Hwrs\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2023-04-24T08:11:59.234Z"
+      },
+      {
+        "version": "9.20.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "001175cf68a74cd62ebe51db4e89a9d7e7eb7907",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.0.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-2EMBXlmny04XJ4rQfsnLDSPC0dXXNP+exHXhF+vyhTkR8nKjsK1jGMZs84dDXIZq6l5Ok87bfDlxVt1WMmuXzw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDvj7N3400X2+FgnF2FVg/CSzfx4p+34MZ0auQpmJmZfwIhAJKx85fTqHA5Uy4rmg9yp7BSboa5vsr7NVOjuMVcOglx",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2536514
+        },
+        "published": "2023-05-12T20:25:49.400Z"
+      },
+      {
+        "version": "9.20.1",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "0dcc35e7e8724c1a3b7d21e3419c63345d2c6198",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.1.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-UmPk6Z756gQqLNi7A/0bV6OC3ybh1i5fe1aDUhR+1JbIlRH+hgbpCWQfL3UACbTjwuw/taOQNRyAeHsxgcBzYQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIBWLLbilN0tcExGrObYKNE4iW0w805sPNjkCXVkhEyjQAiEAqfFXA2fVnIVEZDADjTCxKW/MfAXkfaGcz0V1HAIgvY8=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2556377
+        },
+        "published": "2023-05-18T00:38:28.672Z"
+      },
+      {
+        "version": "9.20.4",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <19.0.0",
+          "react-dom": ">=16.8.0 <19.0.0",
+          "scheduler": "^0.19.0 || ^0.20.0",
+          "@types/react": ">=16.8.0 <19.0.0",
+          "@types/react-dom": ">=16.8.0 <19.0.0"
+        },
+        "dist": {
+          "shasum": "5c932fc101b0fd14c52834e24cb7747072318c3d",
+          "tarball": "https://registry.npmjs.org/@fluentui/react-components/-/react-components-9.20.4.tgz",
+          "fileCount": 27,
+          "integrity": "sha512-XpEiNO1dbCV+5BmMEzJPKfAyH4VV1lWTmIZ+6Pa/CW/B8me6ninCeUj9Jep5N5lI3mPde2ue7KCMpNZMdJM6Aw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQD67vg5GZqK9w5lbyN3bKv7L1KDIHkGRep6PpWGNb+2CAIhAKjPgetP8e57UGloJmzASLCzY0yIMaT4Wjs4SQ8q+KZS",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2578905
+        },
+        "published": "2023-05-25T10:00:30.539Z"
+      }
+    ]
+  },
+  {
+    "package": "vuetify",
+    "releases": [
+      {
+        "version": "3.4.9",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.3.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": ">=1.0.0-alpha.12",
+          "webpack-plugin-vuetify": ">=2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "f26952a4a7c643fb3be9c6771bc26aaebf6e3169",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.4.9.tgz",
+          "fileCount": 1364,
+          "integrity": "sha512-pgBPdbgrHHHZWRybWevzRFezMax6CP2MccTivjOZSOF0XsnzoNOJGGpkTgIfBrk4UCp9jKx6JOJIztGtx/IcSw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDITrLzXFuXwjWl185XE+8PhsaK96Ez7MjSTXshSICsogIhALQCWBfwU7ASgYEP9uyGvqEm0Fi8lx0TPDyBtEsYs4ay",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 29900610
+        },
+        "published": "2023-12-28T02:02:31.189Z"
+      },
+      {
+        "version": "3.4.10",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.3.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": ">=1.0.0-alpha.12",
+          "webpack-plugin-vuetify": ">=2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "436ff039857cacc5239a8a86d7c391f871d16110",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.4.10.tgz",
+          "fileCount": 1364,
+          "integrity": "sha512-tObGoumCJxuK26OpS/CLZZIJAgDtN2cnd31vJscVhpuf6jeMD7wh8IsgfZownAOXU1FcKWVQwn1RSDsoXk5cJA==",
+          "signatures": [
+            {
+              "sig": "MEUCIAyS2lZpuA8jWc3lxaSwae9lzT+zH6f7PYBpVihqma8vAiEA8/2SAOEcVyV1YBeLEG+B26OixBXAPOzRgvuxnE9KRaI=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 29943353
+        },
+        "published": "2024-01-09T18:17:09.457Z"
+      }
+    ],
+    "sharedFramework": {
+      "vue": "3.3.8"
+    }
+  },
+  {
+    "package": "react-select",
+    "releases": [
+      {
+        "version": "3.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "de9284700196f5f9b5277c5d850a9ce85f5c72fe",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-3.2.0.tgz",
+          "fileCount": 119,
+          "integrity": "sha512-B/q3TnCZXEKItO0fFN/I0tWOX3WJvi/X2wtdffmwSQVRwg5BpValScTO1vdic9AxlUgmeSzib2hAZAwIUQUZGQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDnxKQZqgtvsHB+e0LRJh7GFDSSm55gmg7fa4U3N6onWgIgJltJSEmqHwz8sCPuyFIcdYB5DF7ewDy8CJro5W0/ZaM=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1379531,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf/vjbCRA9TVsSAnZWagAAHjkP/R5ulx6KjN+3W+nOXtgR\n6VjcXE1wMU1Xalauv+6N2bLMNzL/QdS0sOhV87BnKupv5GlrBuUuaVkTTHIK\nv91OINiAe8ZtzhWDoumNDQpnVWzPUpGKPdFmpDhbUzqMAIsMJ+FfxyBzKcR9\n3GQ57BSvY4M/rcI7iJUxqvL1SSs+TC5Qfj91xz3H2k0lWfBDCeo2Zmr1DoNP\nDn1lfTiyQPrNLbXSdUXqeK4vd4rBXjMF5du2pJNuxR6eVWUp0xQLK5d2JsAn\nDeASgxUbEuNRRIinL/7XAVIRcF+XtbOyZ6vSKbHiwz8I9t0wTLNNT/q9itO6\nTSkweRf49pKZ+aCxJ/fimSC2NJZFtfqHJEiONwxOqauiXhHyDVo7iMYgIdiW\nyQKAVu8H9zU8ohTxfpjLzFA6AYSoKZlnj00xFKIpP7shwFX/mnwADbQVl94+\naDyhWrtEQvDzYovW/yEgg72KeyL6iyQTVuxmKFUk0/mt0ollp4axQde4YLVy\nQdB0gcG1gBfhURto2KIXI71d/4DUaTLSoXyBGg/4c9LrSq+ArM1EePpTlmVX\nv1pNA83fqle4xKxNi+0PfWgkOlQMKZZFglfXXTH8mHHp0UTF5eGUt83q7sJ4\nUeK2O6KILEsTpsZs2SS+wYHonTA+kCmF8BJNO13ZxSouqdUxYLQaV0ry6npe\n5/FB\r\n=S1Ni\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-01-13T13:42:50.781Z"
+      },
+      {
+        "version": "4.0.2",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "4dcca9f38d6a41e01f2dc7673e244a325e3b4e0e",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-4.0.2.tgz",
+          "fileCount": 116,
+          "integrity": "sha512-BiihrRpRIBBvNqofNZIBpo08Kw8DBHb/kgpIDW4bxgkttk50Sxf0alEIKobns3U7UJXk/CA4rsFUueQEg9Pm5A==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDLRpiNh2J2lRhQ99ZrT8CWZHSVygE+flt6Vt/sBfPtIQIgNNgk5mQo5+YTODm+46WsLDPYjgL/NxpsUTlJi9k7Y3c=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1357535,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgC2BMCRA9TVsSAnZWagAACzgP/3CxeTTZRUV20CU3BEIY\ncUHvQrxg8R7VtTjB6iaeFqGeAWlurnYsKgewCOzCa2TzPNBigbNH4iwZuIgc\nagDQENxFmUOLZY2NGYAIu+TqXZqwPyDBuSLmwmF5gfUFhbYGu/JEYbtZpQUv\n/8zWfp2xgTaFloOYt27lA8EtNLI53y/UJ/5BtFLS83ksNQfYkVvD2b2dBq1k\nO2La/ynw9qWhCwTAwWR3l5HLVASWkvv22vo4NZkPkTSXkn0SVryffDkVLDte\n5hx/bwSECGeFn8CTEwDwhbA0UfPFKElYFsq5iHpHHQyOhmthKyGqf5DztsK0\nXdpkPNzaVI3Yjf6y7/qn3EbZtLSyWWk4pDA6NKvDKc+nQ3GMZDjbbgKyWjne\nvQspm8uul3pAjQYuZrKNwQqNmpSUqqswcJXJhlibJwva6o3+AQGxwf6Lgn/2\ns1GpjPlzBT0PzTIjPHHexpvv7sWXD5Ax8qzT9VbSAowy0JmaA2Fn6Lomiu0j\nSSFUNMuwk8I0U6AzANHlO8OXHyyzxNj3L7X4IjNXLjTdmLL6oI9JQaySTdXu\netFzogciXycsSth31DH30FMzxylpwcdLXKURwLJLq9KWzAIx9olrACCK5DSq\n7XfDmPaNOHKGihcAlCjvORl3U0Hrffx0Hc7bN8gTf1HjczVWFC6yRGBw2IGY\ndsA7\r\n=gGWM\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-01-22T23:31:23.849Z"
+      },
+      {
+        "version": "4.1.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0"
+        },
+        "dist": {
+          "shasum": "7ce06b4e8e79b8f58d09a15d25c705abb1ac4885",
+          "tarball": "https://registry.npmjs.org/react-select/-/react-select-4.1.0.tgz",
+          "fileCount": 116,
+          "integrity": "sha512-OYn+jL8TXMMaZtosErpkdvoI1UWN4ZqMFulIRp5r5bbuqe4OaZN7yv1BNq7PdAJgRu2E19ODFiV1SgJ6wPUaeA==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC3Y9s4dbcD61wqo43S2ZRnIDIWEZ3zCAuk4BLfcNO2uAIhAO8bq2xIBVhmXXsNkBRB0lg8GTlYSyuBw7KsQ7g1KDIt",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 1302557,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgHzW3CRA9TVsSAnZWagAAyCcQAJrdO/jUTcKkmyr7zC0f\nOqZZpSfS91vWN4jG/t/DguTnqNmLKohGprEbaxy0ejGxF041JkjtDMcfBBBS\nIqVhZqZXnZ5BpTPWpMG5gac2pQEciYGNkuWniJCs/W0ByVP+7EraEI1ay9Ou\ngJv9wezxGevNYgrqApDKKYWXA1aSYV+hffY8+4dAXo0N0tz1AbOqygYbVxCH\nrUZP56uW75P+EF9/f46p9txpeW89PxIrAsUXD45ce2MM2sd1McDK4YCapIK1\nOQi/e+FAI2Z5DJwtvP9V+m/zOan2fxiwzF/m3/1eL5te6H9UGr/6/aUTdZ7T\nLIWqdIL8XnS6bC4jUK4ngjooK7oqcRGx5U5f8rfHYXxOeWQ4p2I4kwKyYFVp\nA0SX2QnqHLwZgkPkt63KckWP+GhFSk6+42ETfUySHLyLBkXKmLROFWsNcSid\nGFOV6nZChmparaJsKyVpV4SUeyn0ezw1Tv5reE+WCrNRkjDSoKjVhSaeI0k5\nyymaMe4kWv+0BrCHKLOD+CWVYrA8vlmUC4uwF8wfMlFHeLggP/2WqTEMPDcJ\nS9mLJJ4K3GmO2KAQO19XJbFwZE4+7Qf+gF3J74q/VM7ymFpRgSnDuKv/8CPC\nUVyHgGY/iijuFhfNaN4nhp0b7csZdvs1Jcb/mAD3ATLFEhPtzYsAdYPfWpKt\nQU9q\r\n=ZtX6\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-02-07T00:35:02.886Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "16.14.0",
+      "react-dom": "16.14.0"
+    }
+  },
+  {
+    "package": "carbon-components-react",
+    "releases": [
+      {
+        "version": "7.28.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.9.0"
+        },
+        "dist": {
+          "shasum": "255e58fd78fedfc111f0b8da91338d88559510ea",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.28.0.tgz",
+          "fileCount": 885,
+          "integrity": "sha512-k9YzECDOUFdIM2M/hJUydQ+ONpeD63P4nOl98D7oUDP8/GdRNh3QZYXnZJp3vibzVJHVlDPXY2ysTixNMdoiHA==",
+          "signatures": [
+            {
+              "sig": "MEQCIHwYCx6f1KRFaO8Crj7e67YrX2kqqRIE3X4ef4CzeV9mAiAQXflJcV8wuJiG18wFqJ7JspaWzZdQu6XpVtZ3kmVVHw==",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6367527,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgHCaXCRA9TVsSAnZWagAANroP/2XQaaFUSip/Qlu6j/G2\n8zt2wtApPoOgvbC/xhBZde9tLSQS3Zi6rQyx9WgILdM7RPO/LeANeQg+NNbR\nLDx3CTNUBlod6lwE8qzioYaNXDHtYcH2TXL31uT8OaG02Jr1X8AMRW09GUpx\ngAlozUrqYmWpZqXl2X17CTJZdTfy2RjB+XHTpXBJwrvS02IYbiODF1H2tnLQ\nhjnP4wRrPn85y2jYz9iSg3oYDBrcU6OwWe7n3uKtVsN7o2uafn2whxz9v/cY\nvzQTKDLX2Jev3Ep5DTPDfFDkUF4PwA90KWSKHbwzz5caAFKFHMohLNcS0r90\nNWB4QDffvPp4xU+9XmQl5xnlFxzOdSqCmLaNIIP7uroRzriBMmQ4mxY+zuE2\nzF9xaegavv6IcejY5aq0oA83BvNPYF8f53y5IhgnGav1+7S67/cK52TJiQtj\nC/x+7BhhNpmSX6KTG6CrLjjkuGsuTiREbe4d7FZMx5RWMHBvwI8eFy8wTMpM\nMFNp4XeROkN/MV1aw8QXW1OSACmiVOFoO/8cAyz/GxZCvPG4ulclrc006Ns9\n/s4WtuWNyY3s17t7owQS57Y4xm0b2ku9cWW9HNb2MPzx5ekXC4F6U+BsoIVb\nMxIpErap9DX5LLziJKjfMscaFZ9afG3nMhjb2KpQO7j4Age1tg/Jtwocv3MR\niiyc\r\n=ti3j\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-02-04T16:53:43.175Z"
+      },
+      {
+        "version": "7.29.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.9.0"
+        },
+        "dist": {
+          "shasum": "1869b3070aa1e80cdcebe95c23c476e2af72852c",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.29.0.tgz",
+          "fileCount": 887,
+          "integrity": "sha512-fcCo46EeGk+6aemmjaQtPkkjN7niVBG51uIM6HJx8Xug2f+APqt9k+B0zgViYLkeXm471p5qtxqBtcA//5xKog==",
+          "signatures": [
+            {
+              "sig": "MEUCIEcGCcUu7z/gRV6N31Ic9+d5uGUxbYnXElf1kj5ktwohAiEAgAssbxmpWy6w8VVWlEF0DBU1dhcACC8At+8eor7bhaI=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6400948,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgMB4WCRA9TVsSAnZWagAA4moP/AzqCIuSAaGKETV6Hcg0\n9eVinSElQva/ImLPGuiS/LsPkgJ7Zku5SPOdaxm3rJAxaxEM8dUx/yocsxW2\njPOFiLbo2rxyrXnO481MeGDNE4LZTzDFhTXC0e/AYP3aWbod5zzPPvYT8Jts\nQsOdx9c/sjfT6KCG0VfGUQFTDizn5lG2biyx2Wp/9sOKFDp+MfaptBX84HOv\nrsD8WWNLGWNBTflKeniVXPndZaDCv8Qsa213g4O6mmPJ3EeNPKlyKmuyqVbC\nDmEatrLSsji1gRAGkdWtecThAd48LTyQ8WYlMO1aYzWzahAi+GH1na/rVUYk\nRSv0xFeBgfGHaOryu9mZdEyt+ayxvOOf0W1cQ86A9KyTk0bk6Iq4QnNvSizi\nvXEr5x+alhbm70ySab0FQTcaQyesXlp7+y6508xZuKr2t+evQquHeKKsFMCS\nkrhCQ6Z/obdZCNA7FBBjBRHgy+RBMv1naXLgjIN9byD1+ZvcPw3Wb0x7ca1A\nU2M2kj0IL3ieneSWkrS2GnlpV+I0SvAmcaeX7HYjyb4b7Bjhi4RiVZiLQLXW\nhoIjxCaHd8fN71l1Myys1cyQh7ipGlV0T20Sll3CqFJUthJhhdFVCYKuV+o/\nnsZnPRYRYf6GiY2b9QyFbOFl4NMFz5evDDJNhI+YenTj3G5CO5giVaakaAW3\naPE8\r\n=/K7r\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-02-19T20:22:46.131Z"
+      },
+      {
+        "version": "7.32.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.30.0"
+        },
+        "dist": {
+          "shasum": "81ae7c2a95f16c6f63a7f6cc974d9738c40c7797",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.32.0.tgz",
+          "fileCount": 943,
+          "integrity": "sha512-gXM6YfS51pwkaJzy5ukk5QUuE8z55/LkFfsUxe8qYTrdkZJ6lRc0LPD2XrFQg2lGLMUW48vs2H1KB6o5TuG/Fw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCiIWsxSmApQBpSV6/03f1qVp+zRy16MB3FCVAML1fUwwIgJSyd8fyq7bxAGY23aDVEtuEc+iboF1GOdci0Kc/I57k=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6821416,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgZnjiCRA9TVsSAnZWagAAah4P/jSIQp71R3hoTQK2PP5k\ngWWNdeqn+zzK2O4tqOvLnRrakzy5Pr75/qZmjSUIoulDXl07qbpFQHu4FuVh\nCaXaZTHFjyqQ/1j9PqvSyuDuY/iaMtvELWrrE8nkdLHq5EqdZYV9OQr52QBy\nmnGEeMLaqnzZWyiqO+7nh9ybLTajuyslpabAOpky9FXZobmE51h4swGIAiOw\nBo6q9KZVivOOf6xJO+YAhOZ7gr4NIT2Fv4MRoxOnsbGy0sOcnHNGvDzqHEqm\n/0jTeqdUPestRoRmrvL1x549jnJjZFFqJLxodhA1cvFQAyjDJigHRycThoIj\nfPnbz++ufHhhlllLhcZQUfopRWh+s5lwylmbSPipLV9QhgBwsl5oV47Nih9Q\nNGPBwCx/JUOVjAxxzfzBilG80cXa3ck+TKQl2h057De+hJHW2BBp0rhuUOv5\n9BRsRQY1/Vju1t89ueQj7sX1yagoeg051mLTA4pU6/GRh37BlkFlX/gFGs+O\ntW1jynfrCmWfhM/mNXABOl3mYxh2KbWCg0Inxdufcwq6YWUzyoJFoj4XqMYf\nud0sAu3FimNCwFRgy8ZavZWZxGVnoPZIMzf1FloJ1vAjLTvPG+RfcjGcVPSe\nBg92NsRLnIOycKC6is8FCedT2636p9eGUtqnzSDZjEtebBRKZgLowbbmEVri\nvd9R\r\n=lDQi\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-04-02T01:52:33.822Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "16.14.0",
+      "react-dom": "16.14.0"
+    }
+  },
+  {
+    "package": "@chakra-ui/react",
+    "releases": [
+      {
+        "version": "2.2.8",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=18",
+          "react-dom": ">=18",
+          "framer-motion": ">=4.0.0",
+          "@emotion/react": "^11.0.0",
+          "@emotion/styled": "^11.0.0"
+        },
+        "dist": {
+          "shasum": "7dcc976c655d1f6ec2f71efb4cfd076ea940e6e8",
+          "tarball": "https://registry.npmjs.org/@chakra-ui/react/-/react-2.2.8.tgz",
+          "fileCount": 6,
+          "integrity": "sha512-yLHoE6NpDu3UORtv/drzYl+d/ngjLkEPuUggJd6gu+kv0lHLAmTkoNL8yNGPxuY/StiQEyCSjwFXmknklRr+BA==",
+          "signatures": [
+            {
+              "sig": "MEQCIHjCcE+PT1hw3TOtHjlLPCg+R4c70NXBVeouo5moQ9Z3AiB0hmL5FxYxvq/U8jJocKx+7sv5t+UMgUpbUqxTJMosRA==",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 32209,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi+KALACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrf0w//aIhuUKDuozsJ/qfaMgcnR9AxFK+k8Ak9T2ho89En0gGyon7s\r\nIFFeSTmJpaUqOEIFvB6wZQbeUzsHe+i3z1rvPps/DSRxp3Lkk4mDtURVJQxn\r\n7o+YRANfXCRPifrufSmDEuuK3gDko/JI/81Wokm//TJ2sKksBgaEratXFXys\r\nnOjNj2wRlD0sNkmyl1o6nTrvbkEJiQ0OTJrbJqujf7uulkz/D4pZnp2exvVU\r\nIh8odp8v2TVMeb/lPINGG8YMCgpY5pudMhLu8FbPFvNCOA6kZFC6rg3Ro2t7\r\nGN0pGNOXgGXtRDrjHGXlJPzjGxA2jTFUlH4PhWXnVFRRDcJ5DaaokTPxbLLu\r\nnOtU4nLwDmdshoUoWiZ5uZHfhLqirkG4Jdap0y6tn7r2zV3B2OyDODFgRrL9\r\niaYmc/hoOEOLuCc56T3riTx7Wi5en2ZDpi+4KFajS7QgWYAOiRG+aDY/nmUe\r\nZ4GGIB9utkYiGGQtvJuIaD900ul6D+pD6UV5yL87OaF3Nk0VA2P+9bsYzL2r\r\nctXOazN9VffUb43S+qIgcZDfn3BxQzERBVu1HBHT3XExiGFSIJ/F2v7bQgXK\r\njvDswDFZzvB072jA93SxRARTE/Yb9kuNGdhHsgkZ1L+HLouqMfD7z1D0HY64\r\nni+oUUIwLI8Sdh0RpujFr7K/snZXb5vKyKc=\r\n=aJ2m\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-08-14T07:11:07.144Z"
+      },
+      {
+        "version": "2.2.9",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=18",
+          "react-dom": ">=18",
+          "framer-motion": ">=4.0.0",
+          "@emotion/react": "^11.0.0",
+          "@emotion/styled": "^11.0.0"
+        },
+        "dist": {
+          "shasum": "0e5500a4dc4a45ae941def4b1b3b1c1b9aa8dd57",
+          "tarball": "https://registry.npmjs.org/@chakra-ui/react/-/react-2.2.9.tgz",
+          "fileCount": 6,
+          "integrity": "sha512-biW1C8b+pmw9gvpTWZOgSU9qxnOu1/nqjYsCY9eznSHIr50E3jeO987D2KEuegHPb7O0PfRdGmEaZzHnUTNweg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCo+M0919A6YNl1OE65uaZaY25iB4zaMrxZa5hpIRlq/wIgUTlmjQ5OLaPGmiqXpdpWei7M2ZVmMZCsW2Dm8SWEsnM=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 28633,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjBeWQACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq/bg/9HE0qqPU6U/pnsJvD8tdyN3ycMrXawd5wi4mrsGOcF76NvoBK\r\nZAVR8yfA/ObsInjLOLFgrQnHAWGLRiKQO0QZV+nfnG7SiWFEviaH6NWcdaGl\r\n3/D/iOziMZjmtxEt/oD4doSdRfS7UHZpX6HGyizBRRkedjNZe7vIi/hbanO0\r\nocy6mf5FpzDIEFcoIC/27RrW2qdE3e7Sh3KS7/6K82xMFCF6UyLzFrU+gfUy\r\nb2yQEq9Qp3ruPTUZnOFcKVBVCXI6lNOVUMdaSJDq7PG9ydiF9tZnQ/uNZdyS\r\nblx7EXdsKFGZefJBeuYkBNy3pkXWqg9HTcaEaI+wTiIHa78iBVP/hT6kCpvw\r\nZaVRmbZ11JOx2pkT7NcNeKcPMyXhS8TMNAaGL6o9Hty/yN+DGxKgfuug++7d\r\ngBAnVTc9ri4sMOKybX1+KrNWRWk2giQRBw1CHmuNZft4RbPqrHyA7XjRN3T/\r\nlPq+WNZ+nfRhIbrcDU2xTisLm/7IEbZxZUjswRLEaCZxBxjMEHiUeGF2kOs0\r\niOJYbiMcrbr9iNmCPJgN0Pnr3FvrlP8x7C5QkE1NA86bxouwTOJiYdxfBHYk\r\nqpVXh3r3pzlncDpN8DjxJOsmKeFAZHqWCvewEwb9p3rbDtoQCZ+UiogsFrK1\r\n2GACocIqGJzmOwksnDJh6HOcvjkI/qku+II=\r\n=Y57v\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-08-24T08:47:12.373Z"
+      },
+      {
+        "version": "2.3.4",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=18",
+          "react-dom": ">=18",
+          "framer-motion": ">=4.0.0",
+          "@emotion/react": "^11.0.0",
+          "@emotion/styled": "^11.0.0"
+        },
+        "dist": {
+          "shasum": "e3f7364e155b805fcaf1ef65c5e6e2db4f840563",
+          "tarball": "https://registry.npmjs.org/@chakra-ui/react/-/react-2.3.4.tgz",
+          "fileCount": 6,
+          "integrity": "sha512-b1jbDwl6EZICTh8IaMlsrYAATpT2SvZi2za+asBdDexmnP6ooW3NTKm/HaTikuQCaysfMUhztrbERmenWvOXzA==",
+          "signatures": [
+            {
+              "sig": "MEUCIB0O8MGKMf26AxWnh5bdlEdJJpL2WPpnETm0GWh9GE7SAiEAlCj3wyMpg7tYCqVvsa1QmVJY+1HpVwbPQq474E/dAtk=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 28665,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjKG8rACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoJpg/9F4WhUXzgtyJ8Q5fLsAHtd7QBpzI8mSQtp552gMLPAvkSW4Fu\r\n8FCZYQeBgy7R5GgRZK6Oh2213wdmatj504tKeA++h62q6NWUA8AowG6aRwpR\r\nvRdf5azof6jhNO2y1ROTaYg6ffT0kb2N5scmJfNXGPcMrWnw6jt0pctzjWDa\r\nEGkfgyNl26PXlDszZPIn6gq12IXYLFKTfVs+08xcIfLu/3iAaZrv1avWzDXC\r\nJxCginevR3XoxvMsiwlx/V4E44d8UBLfhj8Y3wtH9Spgt4buJCGnHIwadmu7\r\nR+6bs5iF4kuJUlBQSOqH+JtxKqWHfWJVdTn6SrrkrKz04BANKBNgknbODJ6n\r\nLAs2so5Ao6CtDJzCR8uEADB3wZGRpKzThUibmD7XyYEkYgiiOfJuI42quEyI\r\njht0f4z7Ot8mjQe40xUhFkl6lickVdKExy+RQzbtTTRr8rVHiV6Awg+La07w\r\ns6IIBpSMlo+pEsqKdlHcGjhITl59aIroojheswE64vdShJdLQ/WkzmhjBvCU\r\nFDye3jPO1qhrJI6oiM3zi8EvbcAB9jxj0qnMyC2eSVSPSw4nsm+TaSpHi82N\r\n2xHZ+PyuD/v5R6mBIKvfR2KYWn1DOBrzLM0VltQf/c5DGG4fSw6bmCEZHDPz\r\np4AUBR3SMLgcHrEVXH23YiM/sbHGminZFfI=\r\n=/NVp\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-09-19T13:31:23.304Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.10.0",
+      "@emotion/styled": "11.10.0",
+      "framer-motion": "6.5.1"
+    }
+  },
+  {
+    "package": "@headlessui/vue",
+    "releases": [
+      {
+        "version": "1.7.4",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0"
+        },
+        "dist": {
+          "shasum": "c554e9ac893a2ec2f58eb8b6b9d80b8be03c5d0e",
+          "tarball": "https://registry.npmjs.org/@headlessui/vue/-/vue-1.7.4.tgz",
+          "fileCount": 100,
+          "integrity": "sha512-QHRlKCK/zRpjSjhth7c2CZvx5eMDFflXauqRdRJgp1CwScx6PwCpWiwDsjQcYM4z8Yik2ZvyX8W4PFT2Wsqqyw==",
+          "signatures": [
+            {
+              "sig": "MEUCICAdwzlIMIt2nRWCs4g/E0nBdSmSQRbdPEkSnDa6aBQpAiEAj7LFgY1MHBFyHlL47s6zRgW0IqLIUyhYhcjwXbMatzo=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 777651,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjY9yrACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoXAg/+IBKGYLGpS1r7qxvtyOxK9LuqQcr7urUWa7vnviDxQCwLbL4D\r\n25xRhrsTX4yk0jfD9Hcg/mL1gZuqJrxeLAMS7bX5iIbaWqc6xsGvvQg7L+ro\r\ni5ygcb6hT8GuQZv5t4jiqvC36SqG84MXME1ja+TFvfZXJg3bYkRyng+Z+mgJ\r\nrHOKf3/WI4YJYJgnOzUis0I2OhudR9gpBYOuApQEH86yzOUx2DTLY2HUhCjV\r\npM5XnskH1txjA/hYMQF/ad4cktZ9qfEHFqtgEFx46MmmP4nELKKFV479jf3L\r\nF7FSqPW7IZj1bD4gIKieedYTMrWPjc/zyue3WGgVFeOJXVZ1TfJoxnNcc2ic\r\ndS5XAnyacGOlZQu8vOevEqdzVlvpvS/e80u696dDH1UGkNQtXcluB+cZBtcj\r\nM8TrhucRsAAkvOHysaSSxUi+TqdyZ1hzZO0C2cdK9NiPc2V2unvBsx6T5dxn\r\nxHwehMdIZJ6Oq0ZcK/8sNQA617VsRNyh+xvTEXHjKVpd6vWeMVsW7x1gEs75\r\nONCFBjipmNE+aa1jMfp0pR+XtWb9kfI4g7U5WN6sOTSIzovNsU/33Fscstd2\r\nIABM1nPEpo3F9FT+wX3eFNBid8AWcgJ7wyqQkMNrspnXnpvPumZOydDgS4TM\r\n9L2/Pr+YD/cntgo6L9BTds2ju26Ucxe1xfw=\r\n=ieA/\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-11-03T15:22:19.805Z"
+      },
+      {
+        "version": "1.7.5",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0"
+        },
+        "dist": {
+          "shasum": "d089e9f126976ad9740c8c54b1fa5132614f5e7f",
+          "tarball": "https://registry.npmjs.org/@headlessui/vue/-/vue-1.7.5.tgz",
+          "fileCount": 102,
+          "integrity": "sha512-WjMvaOoxNUqbJO9UxdDJQmCtZZTsTUh4VbAekfhnbFsLqLrbvct27g1Q8gjEJjI4EWHiofIPCUs7mDsuKvwlHw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCzCNl1uDNy5e0Cs+htoXcCP1eA9foOV/g0FNkAJoCM8gIhALnR8YVWbAonQiMQdcMxljR0vVx5kxVRtpkWfjg0hMqY",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 816355,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjkmLEACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr/oA//Ue93Q81/DdLtVK08a0HxNVEgXDo0hslihCgtOAqp1zeQj3g5\r\n0+umf1RKobcXX/NPrU513EWSKvh96X6DrSoURVziHL9eZ6Mg9n25xeMcAwb6\r\ntJmoeOv+IPWVO7PZ4hWQmGRf/M7JsKrmHrU1mRyEg+40LfFOeIwmD3JARAzR\r\nIAVJ7Twz4RU24hDNfZShQ8vzu7QYJWJZId9Qb7h3pk2IMIdJLSTJ8JFSe2Jg\r\nY9DXLO7Qvm+3ZOcYUM4te9hzFJ1/JzDxs50YbruBopXL2j4sGCkkAMDNUECH\r\niODeC4wNphxOnr5paxXNafw7Qjh9klgjdjSw8O4nC4lC/yYe0bY/2k58ooKc\r\nPQn0rrjHTixBOY9M+Xbw6AHx4BQQoHpeTrtt7+sl1gBZK+dygwYiFaSdN5JR\r\nkKqPZaoPZjTLBFecAkn9r9A+fbVYcKRyfH46amGYFESRIrJJR/dLDTa2Ahjt\r\nKNCAIFbi14IqXvHNBokUy1Sn3zaLj3LzW7DjYcnmlfs+tGRG3RlC9gUBxYOJ\r\nAzb9peyen2qcnq/YdWRv8hqLjX0ePgT6ivwjU6AY6za0lr749NEj208fOjrb\r\noYyACW8xKDt4fF8uUb/c/VOVKrp4ytCjHiHFU3o4CRHOjFTDyo7FBBZdX/0/\r\nRnIoKFZCHFgxYQTz3RQ8zeqYnGZGnbV/WcE=\r\n=PmTV\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-12-08T22:18:44.328Z"
+      },
+      {
+        "version": "1.7.6",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.2.0"
+        },
+        "dist": {
+          "shasum": "2847a5cdd78deea2b4684f6a4ec42f771cf72581",
+          "tarball": "https://registry.npmjs.org/@headlessui/vue/-/vue-1.7.6.tgz",
+          "fileCount": 102,
+          "integrity": "sha512-G5Y23FLCk8/pkv/m/UMEMhISFn6mn2mDpmFuVIT7kT8536SSmxuXT6aJh3FSpztYIXjjE0hbD2qezmJ2OHtMjg==",
+          "signatures": [
+            {
+              "sig": "MEQCIFQSNcBRPbH8OJQo+4P4SjQ/wUeGt3SdQh874oOl30bOAiAvh8vSBT1dqyv10MhC6gsRrWWLjOhuHHUI4TNst3aMOQ==",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 826167,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjm0zzACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrt/g//diBS+WNSCZCWzp6P1ksTse2/hmILsqM7jhwDTIxE+MvWH2Zi\r\n3RkY9LDf0e0na1cbK/UbUaqyMSovttdbl9yrfUNqEIsMKe/y9IIThr/hS0TJ\r\nA0k1Klntt+umJdTw8ncfA+ftxQWJ3ppt802IC6d/ksms85gS0hLLkpIVi4vC\r\nKvJwMzPh/Sk2OgQepmLqUll4sQScokLAmjedDMEGbWM89f4Gwm3o1i08bjfL\r\n6nMSr9rpud547FEOOffXejLjcL4zXYSQpakl6AcXahAo/+bjObGWNXVE3Gve\r\n/9ew2AfvYqF+Lk0ZdPuQJII9mVPa7oWX3w3x6sIweDmMw4Ba8WND1LODg3Hn\r\nq7aL02CriNQpfUjXZYOUDqUajrzqnHTK2Z6iPaJoVGmLlZSrypqxfVK3rnr9\r\ncguiE90BSN+ak/EW2O9R2OBQsO3WnBrfY1Tw5UOSfkQVVxxVHjvn1m+qpf83\r\nIgbSXz3oC4w2dPmbi+Tf6T5qUjLYDmYQOmcQz87PKAAvrMud3vk8FU4jmpOd\r\niH6do8rNHBz9BtbPQzsOCJclx0dj9BBmH3gibCh0COje+jGn0V0sbnF+dYcO\r\nHzR9EeGEL9Lz6mUqch9VaJtQUC74PNtrGUvjB8q0TfpM8FFni341J/u8i4dV\r\nIdR4LRy/qK0XKFyF8FdwoXvyDHf/p3v3/eI=\r\n=+crU\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-12-15T16:36:03.638Z"
+      }
+    ],
+    "sharedFramework": {
+      "vue": "3.2.41"
+    }
+  },
+  {
+    "package": "bootstrap",
+    "releases": [
+      {
+        "version": "5.3.1",
+        "license": "MIT",
+        "dist": {
+          "shasum": "8ca07040ad15d7f75891d1504cf14c5dedfb1cfe",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.1.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDTwXCUEF1AI3csvOn7bpcqSyr0bYigEpt+9mEolnsV5AIgM46sAxpCFq9vzKuxYd1CSVsgkOVsHcgbPj/EtUX9cvo=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9651961
+        },
+        "published": "2023-07-26T08:02:20.041Z"
+      },
+      {
+        "version": "5.3.2",
+        "license": "MIT",
+        "dist": {
+          "shasum": "97226583f27aae93b2b28ab23f4c114757ff16ae",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.2.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDrx4VVjwpU5+XqZS8bkHdvesyxX5QkN4f8bZ63+Gb36QIhANcCxLGB350n5wPWps65zbwVnT0zFepl/E29ALb7roJt",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9660342
+        },
+        "published": "2023-09-14T14:27:51.474Z"
+      },
+      {
+        "version": "5.3.3",
+        "license": "MIT",
+        "dist": {
+          "shasum": "de35e1a765c897ac940021900fcbb831602bac38",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.3.tgz",
+          "fileCount": 219,
+          "integrity": "sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCB3M+cQa7EzKYaDM+5yTXIgKLwlfFYISOOdcxXmuhA9QIgC8m6rDgZbP8AK/woLZYWoifF7xajv4UgxH/Bqj/WokQ=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9665519
+        },
+        "published": "2024-02-20T15:21:20.251Z"
+      }
+    ],
+    "sharedFramework": {
+      "@popperjs/core": "2.11.8"
+    }
+  },
+  {
+    "package": "@base-ui/react",
+    "releases": [
+      {
+        "version": "1.6.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "143a892157224a57046f3f4886c025eba173c258",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.6.0.tgz",
+          "fileCount": 3187,
+          "integrity": "sha512-/jzjTWJYXhRFO45Bev9lc3cHbmjzCMpUqbMZ2AgKy/z25mY9B6shGSNcXcjQar9n5doM0KYW1W8fcFv2jZBuMw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCqJwVsxrpkViG5kp7K/QB3sKZJn3kJErg2uZPwEFtc3QIgCbEkiee0VYWA1cV3WtLe/PdcGamb6Ib7SvXRgpLhiTY=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.6.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9282630
+        },
+        "published": "2026-06-18T12:04:15.326Z"
+      },
+      {
+        "version": "1.7.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "e42eeb6dcfad26be1077d805d46fb812092b4cfc",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.7.0.tgz",
+          "fileCount": 3240,
+          "integrity": "sha512-j+8QjX44C32jrXD/qyEAGpFr70FRpGL2CY61mQd9nBPWN737CK0xxD1ceJ055rW4RtdvFDT1e7otzdlfxvsYug==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCPGkH7q2pWHivhm96ntGTTWvxI0tDdhWit47MRdsTlNwIgXykZrm1d2WDBh8kcJLaBmKr37X1jyEsV/PFUbYah900=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "sig": "MEUCIQD8mPv3sr+Ogk7gF8gI8pyXv8/MFAVhWtNrv+J8eK88RAIgOSm7EzxGuPTSJTZMZkY2pjOIhlZKPhuE86YaK+TMk7E=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.7.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9491657
+        },
+        "published": "2026-08-04T09:55:20.089Z"
+      },
+      {
+        "version": "1.8.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17 || ^18 || ^19",
+          "date-fns": "^4.0.0",
+          "react-dom": "^17 || ^18 || ^19",
+          "@date-fns/tz": "^1.2.0",
+          "@types/react": "^17 || ^18 || ^19"
+        },
+        "dist": {
+          "shasum": "b13699aec1e7891dc8859dbddbba0016e894dcf3",
+          "tarball": "https://registry.npmjs.org/@base-ui/react/-/react-1.8.0.tgz",
+          "fileCount": 3269,
+          "integrity": "sha512-P0/1sxo6SBVZOklKMIedvTWqw2s2IQzi9x5bIVsXu980cuSOD4NeuRSs+/L7LZQfDkZP/uRZyGPyfFl/B1oH+Q==",
+          "signatures": [
+            {
+              "sig": "MEUCIGb1SQ3AiBicQERVseJMbCUo0eHlh9yDEnnZ7bcHJ0EfAiEAtiJGcJMFjNUCOA1Wkj1KQtHcJ/IAtzBu5lyUR+qXh08=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "sig": "MEYCIQCtsWKihHa/cjP7yaBhLe/EEXIAkOGAcfVUomLb1YM9TQIhAM40Pm/MmYbdfdFhC0ofIoRl0ierpuebY7i3GaSUTsnN",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@base-ui%2freact@1.8.0",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 9628362
+        },
+        "published": "2026-09-04T08:52:51.986Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-router": "7.6.2"
+    }
+  },
+  {
+    "package": "react-datepicker",
+    "releases": [
+      {
+        "version": "6.9.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18",
+          "react-dom": "^16.9.0 || ^17 || ^18"
+        },
+        "dist": {
+          "shasum": "0ad234dad81d567ae64cad79697bbad69c95490b",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-6.9.0.tgz",
+          "fileCount": 18,
+          "integrity": "sha512-QTxuzeem7BUfVFWv+g5WuvzT0c5BPo+XTCNbMTZKSZQLU+cMMwSUHwspaxuIcDlwNcOH0tiJ+bh1fJ2yxOGYWA==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDHGd/lKcTB58prIm7QOIu/z2ezXc0ael/ej7wEOai6dgIgcW8anQ6V7yQtm2iKsGeheHub8xEcg784ntitQkccaZQ=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2741408
+        },
+        "published": "2024-04-18T07:26:54.454Z"
+      },
+      {
+        "version": "7.0.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18",
+          "react-dom": "^16.9.0 || ^17 || ^18"
+        },
+        "dist": {
+          "shasum": "432458c9ca3de201a624f31f81c808abab572d53",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-7.0.0.tgz",
+          "fileCount": 62,
+          "integrity": "sha512-GXyf0nzmjl5vvj/bBbeJUWArfc/S6k0XaLV6zjUCFFZlDtdaHIwAwVAV5Z1vX2Gxc+5pw9HOa0j/0RRfwilAYw==",
+          "signatures": [
+            {
+              "sig": "MEQCIGHu3Avr94f9RVfxoojEt/I8fFbMfOiv7E5RSrarZTnPAiBDan14xBO+KEBP2IlfT3kzj12+EBoEFo+lXZEfrB6crA==",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 2017995
+        },
+        "published": "2024-06-13T18:04:05.584Z"
+      },
+      {
+        "version": "8.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc",
+          "react-dom": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc"
+        },
+        "dist": {
+          "shasum": "7dfe1fe92c4c2498491094e23141c6c32c99a55f",
+          "tarball": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-8.2.0.tgz",
+          "fileCount": 43,
+          "integrity": "sha512-zmUSOKxLrdYA6+etDU8N/w3vC9BZ4qRQ9azvp1seFgW4kk7QZJLB9aB7PJcw/EYWOK/1X7un9rUMXWPlcuZ4dw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCv421te3lCvFPRsPnFa1O+HTDOkjvdLTNn3R+4by0lZwIgEm7+MZq2JX1Gr7IOBiRiLphOP4Vy3/l3JtiD0RumMXA=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 1980405
+        },
+        "published": "2025-03-10T10:29:18.986Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
+    }
+  },
+  {
+    "package": "@mui/material",
+    "releases": [
+      {
+        "version": "7.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.2.0"
+        },
+        "dist": {
+          "shasum": "957da3b927c67e5a36a026658ffb40c10a3b6b5f",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.2.0.tgz",
+          "fileCount": 2223,
+          "integrity": "sha512-NTuyFNen5Z2QY+I242MDZzXnFIVIR6ERxo7vntFi9K1wCgSwvIl0HcAO2OOydKqqKApE6omRiYhpny1ZhGuH7Q==",
+          "signatures": [
+            {
+              "sig": "MEQCIAg54c9ydJzyzuK0+cOeIGljEUJu1oaHP8nplwKDtv5aAiA7b+aO8p/D2L0t9sTP8uKVvq+X1bVQqM74nTPO0ElsGw==",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 5596717
+        },
+        "published": "2025-06-30T08:58:52.810Z"
+      },
+      {
+        "version": "7.3.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.3.0"
+        },
+        "dist": {
+          "shasum": "12a375b2c96c84be53cd2cd51a6aa3cccd7e85d1",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.3.0.tgz",
+          "fileCount": 2223,
+          "integrity": "sha512-t0fb7+zEDTjnVe4hqzNvoGIopzGJ6AyN+qodGRENAFvL/UV3IT/vFIMHloFGnJ9DPmIgWaWasKgefPUU3OsgOQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIFCjW1ahQJCo9DkbQX4cahY2FUWzci3hTwW6gfEK/lokAiEA/+GWRZl9cVLhKeWRXipGYVvjnANPIsMTYJVItSUevow=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 5607253
+        },
+        "published": "2025-08-05T05:38:26.139Z"
+      },
+      {
+        "version": "7.3.3",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^7.3.3"
+        },
+        "dist": {
+          "shasum": "292fb25038945d5c0ee6675f505e4f2e147f892c",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-7.3.3.tgz",
+          "fileCount": 2459,
+          "integrity": "sha512-MM+pqCPvVgnbzB2DLZkqfvHKzFTJMHcxCvuDhAJvHfJeqODScIn9SuG6GVuyhxAvnnhx+3DcUiwiR83tVET1cw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC95hZNFt2FKijj/hTHlVFNj5pliJh7CAkpQTVxMbu4DwIhAKiwGQw1o2hkx/2sFBHA/825vL+kgbj1zBvWGKYi2Fzc",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@mui%2fmaterial@7.3.3",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 5650365
+        },
+        "published": "2025-10-01T16:12:50.566Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.14.0",
+      "@emotion/styled": "11.14.0"
+    }
+  },
+  {
+    "package": "@mui/material",
+    "releases": [
+      {
+        "version": "5.10.17",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0"
+        },
+        "dist": {
+          "shasum": "d74c531219c37426b421badc9106f9a67404c251",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-5.10.17.tgz",
+          "fileCount": 2699,
+          "integrity": "sha512-Kuqgv1qI5HXnc/Xu426xhCGYBSKzplb+xFNLitbnIb92Qx8jmcpfNpFlDJa2kD2H6qP66rr/m4c/zMUfGX/xBQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQClNnox5cSQ1vuiY1cmqTLrGG3LnLheV5wsfz0zoBLk2gIgfuxteVB40LdrOWEw75Zfm3eYJ7SzAZ7xnX9ai5n4nSo=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 9786678,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjjyCPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqI8w//VZbUGAyWQ8FNk/Myyt86B7e57Hcd+p/5ZtDfXm5EQmrP7ru/\r\n0PWaVqz7PlSsA2KL9tKZG9x96sYuG/GzwLheoJosE999C/iuLxPGjdjbGEec\r\nTibjfrZ4g0dsbp9ejX/HLI8F6qlp8eu8fQUzEzOWBDLVxiFLN0Y+P7iKyOw+\r\nrwLGH0DzhITly97ZLLrDvws5/49Z5W24pgmrIlxokw+1IVwcsSIRIFuAIU9P\r\n1pRuL9/03wgZAcpuHn2+dRB4skkaspz8VGymg3SxuUX16eDlusx/4M8bPRjm\r\nfoyga/bz5URYpIqpgWeR48DCDHSmCLn37XYglDvapJdZtA3BtbejRRaD946x\r\nsQc7mOVXax8clcwYViMoNPIFL/it4o0Qa0S6sNWB4c8bk5KFOQ3vLEoLz1rn\r\nQW2CpIqHkpildKLT36rUSQv8UmaLTcNx+SLRzAuMLNHrj8vJ28H3db2V+1tE\r\nrQLaB0Lw9AETmw5iFjIuMkuwLuOxlh8CDW+tXfpWV11zGPJdgkix9ni3z5BJ\r\nU9dZPp0Otkj6CB574PkOqvb1JogXVWkz7H7NAA/6YXe9XT2qxikinw2PMnzq\r\nKy51ouLNSGynBpV5dc+pepvDESDBSs3DMHzv+CcpazVjUD3O5tYNCU3M+Sb0\r\nQYjSEwZQJQ+avpQMVqjsCsH3JFPhSo/w2gw=\r\n=9nQe\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2022-12-06T10:59:27.105Z"
+      },
+      {
+        "version": "5.16.7",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0"
+        },
+        "dist": {
+          "shasum": "6e814e2eefdaf065a769cecf549c3569e107a50b",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-5.16.7.tgz",
+          "fileCount": 2923,
+          "integrity": "sha512-cwwVQxBhK60OIOqZOVLFt55t01zmarKJiJUWbk0+8s/Ix5IaUzAShqlJchxsIQ4mSrWqgcKCCXKtIlG5H+/Jmg==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCMiA3yaAeVgXmc27C0bAiXiZZ6gKwnPHSnUpGzqfo12AIhAK1Ht4iVcevOSGLgixkfIMtqyQZ3z7mchjXKmSlPQcqF",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 11417417
+        },
+        "published": "2024-08-09T09:19:28.406Z"
+      },
+      {
+        "version": "5.16.14",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0"
+        },
+        "dist": {
+          "shasum": "da8a75822f039d8c1b0ab7fb4146d767c2f9248a",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-5.16.14.tgz",
+          "fileCount": 2923,
+          "integrity": "sha512-eSXQVCMKU2xc7EcTxe/X/rC9QsV2jUe8eLM3MUCPYbo6V52eCE436akRIvELq/AqZpxx2bwkq7HC0cRhLB+yaw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCivejjPE5LZBysElAt6xBvd7VPnKDyi6ZQj9IlT0iN9gIhAJ5fb07Sy1UdcJxJLRZzpZRm+50mG1rT/bSGDeIlZCIs",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 11422213
+        },
+        "published": "2025-01-06T21:19:07.978Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.10.5",
+      "@emotion/styled": "11.10.5"
+    }
+  },
+  {
+    "package": "carbon-components-react",
+    "releases": [
+      {
+        "version": "7.31.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.30.0"
+        },
+        "dist": {
+          "shasum": "dfa25971e0f33810411be656a9481b6eec3eafa7",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.31.0.tgz",
+          "fileCount": 939,
+          "integrity": "sha512-zVX/x6kmVkQERmye9j9WezefmHavE7zJPzqbzC2C12T6X3gud6y1hq2VGnMauXby/NOaR5aP9Hr51iAfSoi2nQ==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDm579XYD2JLXrWXIaNcBQciDw60hcU7flveNnBqNNiNgIhAIv+McIr461fLgzX1HXtMKdIwVv/3OGQartAACE6Rgay",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6721825,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgU8fYCRA9TVsSAnZWagAAQeEP/10lzyvVeLuZSUc7g+F3\n6ayGznDiRYfNoVar2UHfmHgGfxiofvrexNRfpGe4Z42XrCOsdEWw3gYJwkhS\nGcmoI0DAsQfNPn9PXKBt1Ioe/zg2Y9c/fhX9g2rthi/m4B+xDMfjysA1rWOw\n59K+7oNgCvwpaS0MCrmcDocg9Qeo01up8icFyz9CaFa/aM/2sOH6Plb7+Esh\n1NFR++47r2+47ElwSXtUCQkOvRevB8CpDTiTu1RTD7okHiF6aSiI9Mg8mcd2\nQchr3H7u9tEqPvDq6z6kGH57kAWtsPsgsk1DjOwYAXFjSrwVNEXeMFbqFZ+R\nUEs1Wp5Eo39bPT6cWf/RCok0ai0/ZJcJaMqyqfeOuOfu0rGvxBj7ZKks1aSZ\neDjANEloiGGdPY5agAHGRr6oom8JnczB11KrBpj3DfLk7YT/InVFNHQf4MBw\n1a686SmuYeINLkVIDTkTF0JGw1rvTqT+JYghzE55JdfMChjcof9QWQcfQQGC\ncK7PDq72bPMQwkP/CCc3j+axy2NSimCX09ITA9Is+RkAKkdS2XxMgdi9lVIo\nzu1DCXVHOr9YfIV7ZqmWjcs2e64h1b+EvkKwZPtLfkzUYoNyLoas16gK5PMy\nd0yppIftjzJEbQ7hWKrjRZUrl2HCvbN3V0YDxPTGbJ5Hpk98RE+LY7TP33OY\nk8r9\r\n=lpSD\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-03-18T21:36:23.769Z"
+      },
+      {
+        "version": "7.32.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.30.0"
+        },
+        "dist": {
+          "shasum": "81ae7c2a95f16c6f63a7f6cc974d9738c40c7797",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.32.0.tgz",
+          "fileCount": 943,
+          "integrity": "sha512-gXM6YfS51pwkaJzy5ukk5QUuE8z55/LkFfsUxe8qYTrdkZJ6lRc0LPD2XrFQg2lGLMUW48vs2H1KB6o5TuG/Fw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCiIWsxSmApQBpSV6/03f1qVp+zRy16MB3FCVAML1fUwwIgJSyd8fyq7bxAGY23aDVEtuEc+iboF1GOdci0Kc/I57k=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6821416,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgZnjiCRA9TVsSAnZWagAAah4P/jSIQp71R3hoTQK2PP5k\ngWWNdeqn+zzK2O4tqOvLnRrakzy5Pr75/qZmjSUIoulDXl07qbpFQHu4FuVh\nCaXaZTHFjyqQ/1j9PqvSyuDuY/iaMtvELWrrE8nkdLHq5EqdZYV9OQr52QBy\nmnGEeMLaqnzZWyiqO+7nh9ybLTajuyslpabAOpky9FXZobmE51h4swGIAiOw\nBo6q9KZVivOOf6xJO+YAhOZ7gr4NIT2Fv4MRoxOnsbGy0sOcnHNGvDzqHEqm\n/0jTeqdUPestRoRmrvL1x549jnJjZFFqJLxodhA1cvFQAyjDJigHRycThoIj\nfPnbz++ufHhhlllLhcZQUfopRWh+s5lwylmbSPipLV9QhgBwsl5oV47Nih9Q\nNGPBwCx/JUOVjAxxzfzBilG80cXa3ck+TKQl2h057De+hJHW2BBp0rhuUOv5\n9BRsRQY1/Vju1t89ueQj7sX1yagoeg051mLTA4pU6/GRh37BlkFlX/gFGs+O\ntW1jynfrCmWfhM/mNXABOl3mYxh2KbWCg0Inxdufcwq6YWUzyoJFoj4XqMYf\nud0sAu3FimNCwFRgy8ZavZWZxGVnoPZIMzf1FloJ1vAjLTvPG+RfcjGcVPSe\nBg92NsRLnIOycKC6is8FCedT2636p9eGUtqnzSDZjEtebBRKZgLowbbmEVri\nvd9R\r\n=lDQi\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-04-02T01:52:33.822Z"
+      },
+      {
+        "version": "7.33.0",
+        "license": "Apache-2.0",
+        "peerDependencies": {
+          "react": "^16.8.6 || ^17.0.1",
+          "react-dom": "^16.8.6 || ^17.0.1",
+          "carbon-icons": "^7.0.7",
+          "carbon-components": "^10.30.0"
+        },
+        "dist": {
+          "shasum": "dc00004dd1d6ae19b810edc2896b2a6a3a5f980e",
+          "tarball": "https://registry.npmjs.org/carbon-components-react/-/carbon-components-react-7.33.0.tgz",
+          "fileCount": 953,
+          "integrity": "sha512-qjZv91s3n9Nmd8Pn1T2NHVIWmpmtYZ+3mxC3s+uuey1DM4IIL7ZYPaUGIEyWDxHv/NiH61oFC+QQk23HgvPdnQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDnBYiQB4kfufky092eIik0vWfyvQxMeUxxhxBwiggIPgIga3jlyV9o6S71XNV3TgUVHnMoQw5m5GDiUGFCW2x69aM=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6972054,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeNzaCRA9TVsSAnZWagAA+DgP/31R3Xegfghpq2dffg0f\ngRclFf+1fvMp92ZgDAHTeds+EfbFofeYzQqePU/0L4MHGoeNlvIzsrn0+n/c\nHFys6MtNhHHSnRmmzsBKa0Xr9apxssjKdE+bsdFHZeRLGjw/ghBTPe/ccv96\nbjQ3T9P1JZD0JzcHOkSD0tBih+aIX7QxCUBTcAIP2s3SoSk+iC7O6IbiXkv4\n+jZFSsAKdo8v0G6wdBxXiMTcteN/zrlNSxb7TuWnsjW3g+sGOmr0g6jrinIg\n3FwAMxUbfwvr+8TjrxDhhOpBLk/fq/4nHteO5cVrWAslq4eKO55OkRbd5IdA\nBsMGJH5NouCxHn+kfr+k4GnWbd3OVTlNbjyTP6muKbpVGsn+VlAGexsRz7Dg\nG+jj5LUdxnbepQKYggPmtNrYz1+9D16xb0ZimSnUb7yRZPeHkvdAjS3M5fBR\nSuI+whRG4bcDkaRvwMp2/hlIPk7CQHX5xJEuxNZ/2S0f6Fuj39Y+XeKlhv+t\n55EE2LRvCjivKFMI1OWQEoZsu5DyQcDbR9C7fLk7bHQ0JBfHpqWiWEwd14AM\nzUuYBzCOcL2iNGKjx2PB++1n9UsoDyY0sCuIz+wsNt38D9QDZvnxwQi/tzm2\npgrBXTLb5R0ddAxnCEbKMJTJnNv7EjZvaBZCvRun953q4cwGCwiOqkJY4P2D\nwdtV\r\n=7m2g\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-04-16T00:39:54.334Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "16.14.0",
+      "react-dom": "16.14.0",
+      "carbon-components": "10.30.0"
+    }
+  },
+  {
+    "package": "@fluentui/react",
+    "releases": [
+      {
+        "version": "7.167.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <17.0.0",
+          "react-dom": ">=16.8.0 <17.0.0",
+          "@types/react": ">=16.8.0 <17.0.0",
+          "@types/react-dom": ">=16.8.0 <17.0.0"
+        },
+        "dist": {
+          "shasum": "2445e3ee2440c113fdbeee861468396bf93f8188",
+          "tarball": "https://registry.npmjs.org/@fluentui/react/-/react-7.167.0.tgz",
+          "fileCount": 899,
+          "integrity": "sha512-NuEywkYUvNouuqXuR6u/r8Dl2vo6RTbXCAm+WRDnSnwqsF8hablYdZL9ImgHczKOsRs6XK6X4lk//eiyE/Gtpw==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDxMVOrPX913a/Xug7TTL1Vd8K04pTetwmtvgzvi4erfAIgS5x61S+ztFohQCPuflcdDzERZOPEhPxMZ18jWnXLlSA=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 11745612,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeDAmCRA9TVsSAnZWagAAEVcQAJ6Ufg7RF1qUPYwgqs8E\nl3fQWbU2/LEiLKP/CV5OE1GeRwFYSGpt3BTx2nS6lC5iR3Lq44CdIUq1Saxn\nImFVUgLmFXu23UlKti3+zPZ8heAprimA75YjSPnm/QzDPMK09UaUR41MSmsM\nFia/kIkmwyx0Jdm9lq60e+hrvhP66UAxuffFDV5gK17o7zCeXkIP2WyZfGo0\ndFlwq+GQPB4fyYLyDUFpFMW0qUAYHisMCa3LOPv6UxM+TAa6IBaK4sWdfSyp\nO260dmyPTOVogV4kekc+NhTsLXU5GnRfI8FTOFj2xd+Ok7sM0wkPWQHy/yHm\na+22gzeC/gjoz2bLXP7RCpJ41ttGSbroyfZ4oCP4X9TVEjHb7lh2tJp3TWuZ\nA0cAHivcYjBzvNVo9UrtO4jhWQOz7B63L/PRe+209k3qXfcON8o6sO8AemL0\n2NXCPPN+33GMf0ATTnsVYrbwhIN+0V+qoWDDd3kOn8JPgM4++q2M1XdQzuM9\nLnHbR5tfUKIvrePTdgEce5dvRSoPffF8hsu+s8cDNuTD/8i1BNmqZPuF7/jG\nZRruh2s6xWd7Ej6mshvcpv8q29vGwxJfuLb9A6LCKYmTk41cISmpdFVTbKhY\nABxXX+9+NoeItoW3BiZ8s7O4z5Ihld+P9XX+LXv441DFlVR8/mlcmafXmu4h\nuoO6\r\n=Y806\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-04-15T12:23:01.263Z"
+      },
+      {
+        "version": "8.19.1",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <18.0.0",
+          "react-dom": ">=16.8.0 <18.0.0",
+          "@types/react": ">=16.8.0 <18.0.0",
+          "@types/react-dom": ">=16.8.0 <18.0.0"
+        },
+        "dist": {
+          "shasum": "92df02621830de07345a8e993cb3e5071aa4f626",
+          "tarball": "https://registry.npmjs.org/@fluentui/react/-/react-8.19.1.tgz",
+          "fileCount": 7309,
+          "integrity": "sha512-xrunEtSspCWKr3h99x7UXncEfGlQWNPc6Vr5ydY8fldA//3nc7R4tLeXbs/rTpCbQf93hI458KDgA0bIfBGwrQ==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCYyxV3QUbRGiBlFYftXvyTLEE6EE1Y0YGL73tr6jXLjQIhALiQiKXzR2XS+sVlxSFi4Ek7HZ2oLQ4sAUIAIxlgHDLv",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 30728533,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyakQCRA9TVsSAnZWagAAlEMQAINjnZjH4ViwWle9mpiI\neF6thLpFQKdb/DkeB1O/EJy42kkfGjH6u007CKsdf2TEKXN1W7577BY7WfCr\nqo5ta2FSljNS2yYbVT2vqXB8+3w5fxtarstC/0DrhCqJWrjsyqRCPVbSOnxp\nCj+bCPwcPUR6ENj1LjSLgbuY68qtnUIYPTiQSwWgXbGU4rCtyleR3IlVLKk2\nLJbXfrGJ1W5oc6VNz1viXbfSrBmHaJO6V60s6E/0Fv2mZVBsJwoRvL+YNRwe\nq44mrQA5ey7mzXHnzYnxpHCLOa7pYqoQ0a1H/0RiE5ADv7o7SfGcwH4RzYJk\ntJ9v2Tg7C97OU6wT+o4GnTmF63ecB0gO5tF4fGbWIFp++rLLgxRijCCRku8y\ntVIq3WWzIs9m1grKskZP+9m94MRojt6lLj+Dd6/UuasEYLp4yfKFm13mQRJU\n4OLojIfSqt+wFLqck+21tX6rZc2impgCcYUR652wZUdhw5Jwy3lgt2dD7wVm\nv9hIydFAnyW+SF5mIP24AA2QX0oDrMe94oreEKMGgke3yftPNjVwD0Ugfab+\nBIl88b/vXdmtxOQb0qhhKX4r5E09weFQmg85oE0VjS2YVke8A0PEoVnEXJ/c\nLlpbZqiOPLdHGijAnMrwgNdiTkSUsKjw/6bu/e0JdCEX92aueImK9nfn/IrG\nySE0\r\n=kwY5\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-06-16T07:32:32.525Z"
+      },
+      {
+        "version": "8.21.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": ">=16.8.0 <18.0.0",
+          "react-dom": ">=16.8.0 <18.0.0",
+          "@types/react": ">=16.8.0 <18.0.0",
+          "@types/react-dom": ">=16.8.0 <18.0.0"
+        },
+        "dist": {
+          "shasum": "39e2e4d504c4fbf8ee7141a45ab7e707c99da6c7",
+          "tarball": "https://registry.npmjs.org/@fluentui/react/-/react-8.21.0.tgz",
+          "fileCount": 7346,
+          "integrity": "sha512-ZYXIqumMmFoiAZm8SEQNDHXsWPPVRXSZg1pbf3lt+Zp4ZYISt0v8xQWELn4ndhxpfRdQQRcC9YCKpGL7nC0lKw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQCvY7dLPmSWUH+OA5BTB4pUQ7LBuoErXmaBClQ2xFcbegIhAPCZJikvOqHrO5wclr+UIav2g3z6H7ct5REls/yFxLsr",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 30861512,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg2XtBCRA9TVsSAnZWagAAffIQAKOiCBFTZkUzyPFNB1XB\nruX1SqnygSuMFYJsgJdEgXuHIgH6S/pRb8mkirLEBnjPhEkV1Jpq44V2Gv4v\ngjPFhV6wbhjcXI2o5sovwzkqFABDqMI1RBmnIZm5mrQXgYbr/JScfmCVme25\nFchg7n0S9LwTtj+6RbvbIP0I/+eQFGsAk3inlo8HRVd7Pf4y/s1YVfna9ZFK\nwqNROnxqZGcisDHW1N/KWkNDV4nHpbKbpbYW8S91nWlJOMRvq/s0ZVC0gYhW\nocxLA9GH6Pu+xmE8b4IFVUARaHnETgvN2oCy4h7fPkGljI4YIXTLXBtF6SSu\nwO9+M1APmnA6V74zRNzLhz/vtK/ztR8hOAk7v7gB2vZ1tas+unLdaEiF6VPf\nY3Dse0kmAtiklC3sFd7vmVTfk+a0o328rcCHq8OMzRg1tE7LORpCQMMW1Iap\nMMhvYsDK8JzPXkoRUQjun8fH7aGmKxxFY48QPmT0miYhe4RNK0I3mDXYwWBZ\nDrgNfK7wV3o9hBnTwQ9dAeBT8Ca9alQpGUhc9U7Na+bEjsKQktTCsHzjQUD9\nRJWMM0rOnTnaptuYBeTHUCeqvkRBiycFADj1e4II/HBKg9zrG/rsRbP1LI7R\nwDBtY5sVdJWlizWzJ2n8kqRD2AfVSx+us61AVtgex201RtlE9FsPtiFJakg+\n4AL5\r\n=fluW\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "published": "2021-06-28T07:33:21.196Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "16.14.0",
+      "react-dom": "16.14.0"
+    }
+  },
+  {
+    "package": "bootstrap",
+    "releases": [
+      {
+        "version": "3.2.0",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "a0726e7c12e79f4a2a504f8d1ee9f2850a83f637",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.2.0.tgz",
+          "integrity": "sha512-MVUiqgpLinHRQlO8RIEsua7gmA+OHPD9wQU2ShAl+PzqmPXC0qzPgrynZEWTA6YlSY+APl7NEF3jXhBixadAvg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDhSGDQkLs/RfoEFNpQRdKzmXoOop/330ArA6XzTUjsPgIgE9Mttm07ct0qkAjzjsQ4qBj5+HfIgLxqzMKqiputmjA=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2014-06-26T16:44:01.175Z"
+      },
+      {
+        "version": "3.3.0",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "27d83ec81c51b3f86d20cf610ded3724e4b7ace3",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.0.tgz",
+          "integrity": "sha512-ELzD57D1ss/3H8/HdYg/zYneTU6Zkk4USICly/H8qsvh+KqklKf1KcB39KAHPkQjubodYSFrwrz2FFYxnqYwxg==",
+          "signatures": [
+            {
+              "sig": "MEYCIQC0LDrI015JLAlepvoPtWMurP9ok3BiC/POsSy6pysCpAIhAMzpIGCKM9cD8rJ1LM9yAoHNT5+/9ooQ8+RxN4soS8Jj",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2014-10-29T19:20:49.068Z"
+      },
+      {
+        "version": "3.3.2",
+        "license": {
+          "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE",
+          "type": "MIT"
+        },
+        "dist": {
+          "shasum": "43b0283dfb2ac83b12cd3dc1f4238f5042ed02cc",
+          "tarball": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.2.tgz",
+          "integrity": "sha512-4aP7n3MWfOyASkwezPN2Q7PBczCaaU/pD7sFA+1YlP8SVF4gjTQPbTKMeBopCg3S6ScUzmU64SFmWkE4Kx31kw==",
+          "signatures": [
+            {
+              "sig": "MEUCIDBX00waRhvs0s2SObYtAn2/DtLxh81mMkiLScq9Z6QMAiEA7zMT3V29ZM5IkOlsvZ90xld4iX6Z6WcMaUMAd90k0zA=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ]
+        },
+        "published": "2015-01-19T17:18:50.245Z"
+      }
+    ],
+    "sharedFramework": {
+      "jquery": "1.11.1"
+    }
+  },
+  {
+    "package": "@mui/material",
+    "releases": [
+      {
+        "version": "6.1.10",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.1.10"
+        },
+        "dist": {
+          "shasum": "eab2a9df24c68548d0df2b5b25c0410311313ff9",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.1.10.tgz",
+          "fileCount": 2421,
+          "integrity": "sha512-txnwYObY4N9ugv5T2n5h1KcbISegZ6l65w1/7tpSU5OB6MQCU94YkP8n/3slDw2KcEfRk4+4D8EUGfhSPMODEQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIQDyFpqPFo3DFUn58wk6YawEV1l3+Lh7QfipjzWNY2deOgIgM3G5LSbd8A1YZL08u/sknHqZhqol5+iHuZW41RtGaPg=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6291309
+        },
+        "published": "2024-12-04T10:02:44.881Z"
+      },
+      {
+        "version": "6.2.0",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.2.0"
+        },
+        "dist": {
+          "shasum": "e649438c3de3d26c8e79845711572a4ae34125bb",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.2.0.tgz",
+          "fileCount": 2421,
+          "integrity": "sha512-7FXXUPIyYzP02a7GvqwJ7ocmdP+FkvLvmy/uxG1TDmTlsr8nEClQp75uxiVznJqAY/jJy4d+Rj/fNWNxwidrYQ==",
+          "signatures": [
+            {
+              "sig": "MEUCIHez/FwkpV/EpxrplC7JzI/XNWfmhX0yqabMmqSIqGuLAiEA44hScBGRftXra0X88D9NztwO8sN0yAx8SqrR3RZHb7M=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 6304756
+        },
+        "published": "2024-12-11T02:02:20.329Z"
+      },
+      {
+        "version": "6.4.2",
+        "license": "MIT",
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^6.4.2"
+        },
+        "dist": {
+          "shasum": "480ecc683584d598efafd703655ecaac16335995",
+          "tarball": "https://registry.npmjs.org/@mui/material/-/material-6.4.2.tgz",
+          "fileCount": 2441,
+          "integrity": "sha512-9jKr53KbAJyyBRx8LRmX7ATXHlGtxVQdPgm1uyXMoEPMVkSJW1yO3vFgfYoDbGx4ZHcCNuWa4FkFIPWVt9fghA==",
+          "signatures": [
+            {
+              "sig": "MEUCIFIjhzXnMtnRe+Q2gpzDZ6zW8TaLgKxGcNoFKJpFFbTjAiEAgLXuEKFhktFjM3JV4Y9FjmYJ+v54vo9Jzm3RxYmcRb4=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            }
+          ],
+          "unpackedSize": 6407534
+        },
+        "published": "2025-01-29T15:49:03.585Z"
+      }
+    ],
+    "sharedFramework": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "@emotion/react": "11.13.3",
+      "@emotion/styled": "11.13.0"
+    }
+  }
+]

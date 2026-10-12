@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "8.2.0",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Pointer date=02/18/2025"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "February 18 actual focus=true"
+    },
+    "benignTwin": {
+      "holds": true,
+      "detail": "February 18 actual focus=true"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

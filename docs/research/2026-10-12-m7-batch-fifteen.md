@@ -1,0 +1,3 @@
+# M7 batch fifteen — EXPLORATORY
+
+MUI#48692 has a reported7.3.9/7.3.11 boundary and reviewers reproduce the conditional-groupBy create-option case. Proposed fix#48788 is closed unmerged. Follow-up comments say the root-cause solution has not been found, and its timeline links no superseding fix. Therefore no applicable merged library fix is established; exclude from this reproduction pass under P22 rule6, with source lead retained for future documentary evidence. No fixture, query or admission. See [issue](https://github.com/mui/material-ui/issues/48692) and [proposed fix](https://github.com/mui/material-ui/pull/48788).

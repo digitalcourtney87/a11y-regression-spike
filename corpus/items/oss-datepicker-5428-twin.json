@@ -1,0 +1,22 @@
+{
+  "id": "oss-datepicker-5428-twin",
+  "source": "seeded",
+  "patternId": "oss--datepicker-5428",
+  "split": "test",
+  "app": "oss/datepicker-5428",
+  "journeyId": "oss-datepicker-5428",
+  "base": {
+    "ref": "oss/datepicker-5428@e9969cde4df14c4c92e52a38071f8189fe3611e5+react-datepicker@6.9.0"
+  },
+  "candidate": {
+    "patch": "oss-datepicker-5428-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0106)",
+    "licence": "MIT (react-datepicker)"
+  }
+}
