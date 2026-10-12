@@ -1,0 +1,22 @@
+{
+  "id": "oss-vuetify-21591-twin",
+  "patternId": "oss--vuetify-21591",
+  "split": "test",
+  "source": "seeded",
+  "app": "oss/vuetify-21591",
+  "journeyId": "oss-vuetify-21591",
+  "base": {
+    "ref": "oss/vuetify-21591@3cfccafbb4a28a492a22dfc88355e2b336328b46+vuetify@3.4.9"
+  },
+  "candidate": {
+    "patch": "oss-vuetify-21591-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0101)",
+    "licence": "MIT (vuetify)"
+  }
+}

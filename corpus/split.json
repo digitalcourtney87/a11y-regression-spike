@@ -1,5 +1,5 @@
 {
-  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher–Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n × testFraction) go to test. A batch never changes an earlier assignment. P39 second-round additions are explicitly appended to test (no shuffle); their batches have testFraction 1 and seed 0 (unused).",
+  "method": "Per batch: stratified by pattern stratum (expected class). Strata in sorted order; within each, patternIds sorted, shuffled by Fisher\u2013Yates with one mulberry32 generator per batch seeded by the batch's seed; the first round(n \u00d7 testFraction) go to test. A batch never changes an earlier assignment. P39 second-round additions are explicitly appended to test (no shuffle); their batches have testFraction 1 and seed 0 (unused).",
   "batches": [
     {
       "name": "spa-regression",
@@ -138,6 +138,17 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-zero-delay-menu",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -189,6 +200,7 @@
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",
     "oss--ras-8637": "test",
+    "oss--vuetify-21591": "test",
     "oss--vuetify-22770": "test",
     "oss--vuetify-9627": "test",
     "react-admin-simple--action-tabindex-removed": "test",

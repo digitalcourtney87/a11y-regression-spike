@@ -3978,3 +3978,20 @@ The tag push is the owner's explicit approval under hard rule 2. No test item is
 **Construction.** Register MIT oss--fluent-27997 with existing STATE_NOT_CONVEYED, using immutable fixture commit d26f7a08671909d4289f91f4ade4fe321d9bfd58. Append its test version pair, CSS_ONLY twin and exact unchanged control under P39 (manual all-test batch, fraction 1, unused seed 0). Preserve all previous assignments/items. TAB enters Name column header; ArrowDown reaches Alpha then Beta; Space must expose checked=true on Select Beta radio. Published TableSelectionCell source derives native radio checked and row aria-selected from the same selection state. This uses the existing state vocabulary. NVDA's standard focus-mode role handling covers the column header/row path; actual NVDA execution remains unperformed until the new freeze tag. No oracle, trigger, threshold, scoring or workflow safeguard changes.
 
 **Progress.** Four of 18 additions are built: 63 test patterns, 20 dev, 83 total and 213 items. Fourteen additions remain; availability remains unestablished. Mantine's first attempt (38181647925) fails only its pointer-target setup precondition on every release. Its recorded batch-seven repair uses the visible combobox click surface uniformly, retaining the keyboard target, original criterion and release pins; no Mantine admission is claimed. Continue the completion objective through recorded batches. No new tag, confirmatory execution or M8 work.
+
+## DR-0101 Zero-delay Vuetify menu admission
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no new tag or assigned execution |
+
+**Source and evidence.** Vuetify #21591 identifies working3.4.9 and broken3.4.10 with zero-delay hover menus. Introducing e89b5c3 removes asynchronous zero-delay scheduling; merged fix#22242 adds a minimum close delay. Both published releases share Vue3.3.8. The much later fix is documentary corroboration only, with incompatible newer framework requirements excluded from execution. First run38183361845 shows the good menu stays open but focuses its list container: modern string-only sample lacks interactive entries in these older releases. Before assignment, repair item value/link and root tabindex uniformly using supported props; leave the original one-ArrowDown Item1/open/visible criterion and releases unchanged. Preserve the first attempt.
+
+Runs38183612490 and38211936352 then independently match all check outputs and resolved locks: hover exposes Item1 in both; Tab entry plus one ArrowDown reaches visible Item1 and keeps the good menu open, but closes the broken menu with focus lost to body. Fresh width-only twin preserves outcomes. All candidate installs/builds succeed with no page errors or external requests. Evidence/lock hashes: `docs/research/m7-completion-evidence/menu-repeat-comparison.json` and raw checks.
+
+**Construction.** Append oss--vuetify-21591 with existing JOURNEY_BLOCKED, one test version-pair item, CSS_ONLY twin and exact unchanged control. Both refs pin immutable fixture commit3cfccafbb4a28a492a22dfc88355e2b336328b46. Manual P39 all-test batch has fraction1 and unused seed0; prior assignments/items are preserved. Journey: TAB to Test menu, explicit focus-mode toggle (native button does not automatically enter NVDA focus mode), ArrowDown with one-attempt Item1 goal. No new oracle, trigger, threshold or scoring definition. Actual assigned NVDA execution remains unperformed until a new tag.
+
+**Progress and limits.** Five of18 additions built:64 test,20 dev,84 patterns,216 items;13 still needed, availability unestablished. Mantine is excluded because its keyboard criterion fails on good/fixed too; its source is retained as non-executable text and raw failures retained. Grouped-select first attempt38183612490 fails all releases before behavior because render targets app while HTML supplies root; uniformly repair mount under P22 rule8. Recorded source searches/ledgers continue. No freeze tag, confirmatory execution or M8 work.

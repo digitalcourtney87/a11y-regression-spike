@@ -1,0 +1,16 @@
+{
+  "id": "oss-vuetify-21591-twin",
+  "patternId": "oss--vuetify-21591",
+  "operator": "css-only",
+  "app": "oss/vuetify-21591",
+  "journeyId": "oss-vuetify-21591",
+  "target": "Main width only; menu props, items and key handling unchanged",
+  "edits": [
+    {
+      "file": "src/main.js",
+      "find": "h(\"main\", null, [",
+      "replace": "h(\"main\", { style: { maxWidth: \"480px\" } }, ["
+    }
+  ],
+  "twinOf": "oss-vuetify-21591"
+}

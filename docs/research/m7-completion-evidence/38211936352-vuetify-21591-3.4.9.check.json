@@ -1,0 +1,20 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.4.9",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Hover exposes Item 1"
+    },
+    "keyboard": {
+      "holds": true,
+      "detail": "expanded=true; Item 1 visible=true; focus=Item 1"
+    },
+    "benignTwin": {
+      "holds": true,
+      "detail": "expanded=true; Item 1 visible=true; focus=Item 1"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

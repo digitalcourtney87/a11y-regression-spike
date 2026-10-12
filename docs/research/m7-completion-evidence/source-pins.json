@@ -159,5 +159,63 @@
         "published": "2023-05-25T10:00:30.539Z"
       }
     ]
+  },
+  {
+    "package": "vuetify",
+    "releases": [
+      {
+        "version": "3.4.9",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.3.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": ">=1.0.0-alpha.12",
+          "webpack-plugin-vuetify": ">=2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "f26952a4a7c643fb3be9c6771bc26aaebf6e3169",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.4.9.tgz",
+          "fileCount": 1364,
+          "integrity": "sha512-pgBPdbgrHHHZWRybWevzRFezMax6CP2MccTivjOZSOF0XsnzoNOJGGpkTgIfBrk4UCp9jKx6JOJIztGtx/IcSw==",
+          "signatures": [
+            {
+              "sig": "MEYCIQDITrLzXFuXwjWl185XE+8PhsaK96Ez7MjSTXshSICsogIhALQCWBfwU7ASgYEP9uyGvqEm0Fi8lx0TPDyBtEsYs4ay",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 29900610
+        },
+        "published": "2023-12-28T02:02:31.189Z"
+      },
+      {
+        "version": "3.4.10",
+        "license": "MIT",
+        "peerDependencies": {
+          "vue": "^3.3.0",
+          "vue-i18n": "^9.0.0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": ">=1.0.0-alpha.12",
+          "webpack-plugin-vuetify": ">=2.0.0-alpha.11"
+        },
+        "dist": {
+          "shasum": "436ff039857cacc5239a8a86d7c391f871d16110",
+          "tarball": "https://registry.npmjs.org/vuetify/-/vuetify-3.4.10.tgz",
+          "fileCount": 1364,
+          "integrity": "sha512-tObGoumCJxuK26OpS/CLZZIJAgDtN2cnd31vJscVhpuf6jeMD7wh8IsgfZownAOXU1FcKWVQwn1RSDsoXk5cJA==",
+          "signatures": [
+            {
+              "sig": "MEUCIAyS2lZpuA8jWc3lxaSwae9lzT+zH6f7PYBpVihqma8vAiEA8/2SAOEcVyV1YBeLEG+B26OixBXAPOzRgvuxnE9KRaI=",
+              "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+            }
+          ],
+          "unpackedSize": 29943353
+        },
+        "published": "2024-01-09T18:17:09.457Z"
+      }
+    ],
+    "sharedFramework": {
+      "vue": "3.3.8"
+    }
   }
 ]

@@ -732,6 +732,15 @@
       "stratum": "regression:STATE_NOT_CONVEYED",
       "status": "planned",
       "note": "@fluentui/react-components 9.19.1 to 9.20.0: Controlled DataGrid selection dispatcher becomes a noop after #27702: selecting Beta leaves Alpha selected, Beta row aria-selected and radio checked false. #27978 restores dispatcher. Refined published-source boundary and repaired supported header/ArrowDown/Space route reproduce in 38181259137 and 38181647925 with identical locks and CSS twin; prior setup failures and false 9.20.0 last-good hypothesis retained (DR-0100)."
+    },
+    {
+      "id": "oss--vuetify-21591",
+      "batch": "oss-regression",
+      "context": "oss:vuetifyjs/vuetify#21591",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Zero-delay hover menu closes on keyboard entry after deferred delay became synchronous. Supported interactive item setup preserves original one-ArrowDown focus/open/visible criterion. Published3.4.9/3.4.10 sources and fix#22242; identical exploratory checks/locks and width-only twin in38183612490/38211936352; earlier noninteractive setup failure retained (DR-0101)."
     }
   ]
 }
