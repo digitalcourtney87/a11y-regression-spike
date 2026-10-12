@@ -215,6 +215,39 @@
           "test": 1
         }
       }
+    },
+    {
+      "name": "m7-second-round-mui-44048",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-carbon-8392",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
+    },
+    {
+      "name": "m7-second-round-fluent-18714",
+      "seed": 0,
+      "testFraction": 1,
+      "strata": {
+        "regression:JOURNEY_BLOCKED": {
+          "dev": 0,
+          "test": 1
+        }
+      }
     }
   ],
   "assignments": {
@@ -262,13 +295,16 @@
     "oss--carbon-5623": "test",
     "oss--carbon-7253": "test",
     "oss--carbon-7861": "test",
+    "oss--carbon-8392": "test",
     "oss--chakra-6693": "test",
     "oss--datepicker-5428": "test",
+    "oss--fluent-18714": "test",
     "oss--fluent-27997": "test",
     "oss--fluent-35927": "dev",
     "oss--fluent-4620": "test",
     "oss--fluent-7796": "test",
     "oss--headlessui-2084": "test",
+    "oss--mui-44048": "test",
     "oss--mui-46734": "test",
     "oss--rac-8697": "dev",
     "oss--radix-4014": "test",

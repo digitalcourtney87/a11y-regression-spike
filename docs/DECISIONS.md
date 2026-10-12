@@ -4079,3 +4079,24 @@ Final ordinary feedback and existing-model browse diagnostic in runs38213610821 
 **Construction.** Two test version pairs, CSS_ONLY twins, exact unchanged controls and declared journeys. Both refs share final fixture commit e9969cde4df14c4c92e52a38071f8189fe3611e5. Manual all-test appends, fraction1/unused seed0, preserving previous assignments/item bytes. No changed oracle, strategy, threshold, context or execution safeguards. No assigned NVDA execution before a new tag.
 
 **Progress.** Thirteen of18 additions built:72 test,20 dev,92 patterns,240 items; five still needed. react-modal remains unsplit source-supported hypothesis. No new tag or M8 work.
+
+## DR-0107 Three content and callback admissions; rejected diagnostics retained
+
+| | |
+|---|---|
+| Date | 2026-10-12 |
+| Status | Accepted |
+| Owner label | Owner finish-patterns instruction and “Please continue”; P22/P39 |
+| Scope | Second-round build only; no assigned execution or new tag |
+
+**Evidence.** MUI#44048 final38231384520/38232414560 and Carbon#8392/Fluent#18714 final38232414560/38234013533 independently match checks and resolved dependency locks. All candidate installs/builds succeed, no page errors/external requests, fresh width-only twins preserve outcomes. Comparison files and source pins retained in docs/research/m7-completion-evidence.
+
+- MUI custom Paper: reported5.10.17/5.16.7, published5.16.14 restores custom empty freeSolo content via44857 revert of41300. Same React18.2.0/Emotion11.10.5. Original expected behavior explicitly includes custom other information. Native Tab/ArrowDown and pointer click must render No recent searches; good/fixed do and ordinary browse goal is line4, broken removes content. Standard Paper and disablePortal keep plain information in document order; no invented interactive option or claim of actual NVDA execution.
+- Carbon Toast: reported7.31.0/7.32.0, published7.33.0 contains8362 omitted-timeout restoration. Same React16.14.0 and supported Carbon CSS10.30.0 before good. Native Save changes must retain Saved at1500ms, before specified10000ms expiry; good/fixed hold, broken dismisses immediately. Ordinary browse goal line3/absent, pointer activation agrees. Earlier static heading Saved notification incorrectly matched the generic Saved goal; neutral heading correction before final repetitions removes that ambiguity without changing feedback or lifetime criterion. Font override planned before outcomes prevents blocked remote fonts. No claim of an actual NVDA announcement.
+- Fluent SearchBox: source-supported@fluentui/react7.167.0/8.19.1, published8.21.0 fix18715 restores supported deprecated onChanged callback. Good package reexports office-ui-fabric-react through its range; internal companion resolution stays at each release cutoff, no forced pin. Same direct React16.14.0. Native Tab/type abc must produce Query abc; good/fixed do, broken input becomes abc but callback feedback does not. Ordinary browse goal line5/absent; pointer entry agrees. Do not substitute onChange.
+
+**Construction.** Three existing JOURNEY_BLOCKED patterns, each with test version pair, CSS_ONLY twin, exact unchanged control and frozen-strategy journey. Both refs share final fixture commit70b4cf64b125c66e388fbe46b8351072e0e23b1d. Manual all-test append, fraction1/unused seed0. Previous assignments and measurement fields preserved. Correct seven new-round regression-item provenance URLs that a reused generator incorrectly left at issue4421; only source URL metadata changes on four previously admitted new items, no ref, expectation, journey, source classification or old-round item changes. Actual assigned execution remains unperformed before a new tag.
+
+**Negative evidence.** react-modal#732 final forward/reverse checks fail wrap but do not show original reported focus escape: no outside DOM focus events and document.hasFocus remains true. Keep all results, do not reclassify a related failure to count it. The recorded controlled date-picker#5366 fixture fails ArrowDown entry everywhere; uniform native Tab-to-day preparation then fails original keyboard closing on good/broken/fixed, while pointer close holds everywhere. Retire both without admission or controller workaround. Source/check archives retain attempts, not executable fixtures. These statements concern recorded fixtures, not proof no defect exists in other constructs. Build-only test-twin run38229779177 records21 completed mined test twins with all apply/revert/install/build exits zero; no assigned loading/checking.
+
+**Progress.** Sixteen of18 additions built:75 test,20 dev,95 patterns,249 items; two still needed. Bootstrap manual-tooltip candidate is unsplit source preparation. No new tag or M8 work.

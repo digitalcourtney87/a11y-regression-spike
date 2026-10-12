@@ -1,0 +1,47 @@
+{
+  "id": "oss-carbon-8392",
+  "version": "1",
+  "app": "oss/carbon-8392",
+  "entryUrl": "/",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-save",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Save changes",
+        "role": "button",
+        "maxAttempts": 20
+      }
+    },
+    {
+      "kind": "at",
+      "id": "save-changes",
+      "strategy": "PRESS",
+      "observeMs": 1000,
+      "expectations": [],
+      "key": "Enter"
+    },
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "reach-saved",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Saved",
+        "maxAttempts": 60
+      }
+    }
+  ]
+}

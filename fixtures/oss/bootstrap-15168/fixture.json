@@ -1,0 +1,14 @@
+{
+  "id": "bootstrap-15168",
+  "stack": "vanilla",
+  "package": "bootstrap",
+  "versions": [
+    "3.2.0",
+    "3.3.0",
+    "3.3.2"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1"
+  },
+  "issue": "https://github.com/twbs/bootstrap/issues/15168"
+}

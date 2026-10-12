@@ -1,0 +1,28 @@
+{
+  "label": "EXPLORATORY",
+  "version": "3.8.1",
+  "result": {
+    "pointer": {
+      "holds": true,
+      "detail": "Pointer activation opens Details"
+    },
+    "keyboard": {
+      "holds": false,
+      "detail": "Boundary forward wrap=false; outside focus events=[]; active tag=BUTTON; document focus=true"
+    },
+    "benignTwin": {
+      "holds": false,
+      "detail": "Boundary forward wrap=false; outside focus events=[]; active tag=BUTTON; document focus=true"
+    },
+    "reverseKeyboard": {
+      "holds": false,
+      "detail": "Boundary reverse wrap=false; outside focus events=[]; active tag=BUTTON; document focus=true"
+    },
+    "reverseTwin": {
+      "holds": false,
+      "detail": "Boundary reverse wrap=false; outside focus events=[]; active tag=BUTTON; document focus=true"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

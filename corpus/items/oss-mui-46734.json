@@ -19,6 +19,6 @@
   "provenance": {
     "origin": "mined from mui/material-ui (#46734, PR #46894); verified by m3-oss-repro run 38228576972; second-round admission DR-0106",
     "licence": "MIT (@mui/material)",
-    "url": "https://github.com/mui/material-ui/issues/4421"
+    "url": "https://github.com/mui/material-ui/issues/46734"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "id": "oss-mui-44048",
+  "source": "oss-history",
+  "patternId": "oss--mui-44048",
+  "split": "test",
+  "app": "oss/mui-44048",
+  "journeyId": "oss-mui-44048",
+  "base": {
+    "ref": "oss/mui-44048@70b4cf64b125c66e388fbe46b8351072e0e23b1d+@mui/material@5.10.17"
+  },
+  "candidate": {
+    "ref": "oss/mui-44048@70b4cf64b125c66e388fbe46b8351072e0e23b1d+@mui/material@5.16.7"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: Custom Paper information is removed when freeSolo options are empty in5.16.7. Reported5.10.17 working; published5.16.14 rollback44857 restores content. Same React18.2.0/Emotion11.10.5. Native ArrowDown must render No recent searches, ordinary browse goal line4; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+  },
+  "provenance": {
+    "origin": "mined from mui/material-ui (#44048, PR #44857); verified by m3-oss-repro run 38232414560; second-round admission DR-0107",
+    "licence": "MIT (@mui/material)",
+    "url": "https://github.com/mui/material-ui/issues/44048"
+  }
+}

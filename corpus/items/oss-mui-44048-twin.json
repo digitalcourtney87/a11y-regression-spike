@@ -1,0 +1,22 @@
+{
+  "id": "oss-mui-44048-twin",
+  "source": "seeded",
+  "patternId": "oss--mui-44048",
+  "split": "test",
+  "app": "oss/mui-44048",
+  "journeyId": "oss-mui-44048",
+  "base": {
+    "ref": "oss/mui-44048@70b4cf64b125c66e388fbe46b8351072e0e23b1d+@mui/material@5.10.17"
+  },
+  "candidate": {
+    "patch": "oss-mui-44048-twin.patch"
+  },
+  "expected": {
+    "kind": "benign",
+    "benignType": "CSS_ONLY"
+  },
+  "provenance": {
+    "origin": "seeded by Codex with operator css-only (P20/P39, DR-0107)",
+    "licence": "MIT (@mui/material)"
+  }
+}

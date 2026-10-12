@@ -562,6 +562,77 @@
         "pointer": true,
         "keyboard": true
       }
+    },
+    {
+      "id": "mui-44048",
+      "repo": "mui/material-ui",
+      "refs": [
+        "#44048",
+        "PR #41300",
+        "PR #44857"
+      ],
+      "stack": "react",
+      "package": "@mui/material",
+      "licence": "MIT",
+      "good": "5.10.17",
+      "broken": "5.16.7",
+      "fixed": "5.16.14",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Custom Paper information is removed when freeSolo options are empty in5.16.7. Reported5.10.17 working; published5.16.14 rollback44857 restores content. Same React18.2.0/Emotion11.10.5. Native ArrowDown must render No recent searches, ordinary browse goal line4; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38232414560,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "carbon-8392",
+      "repo": "carbon-design-system/carbon",
+      "refs": [
+        "#8392",
+        "#8348",
+        "PR #8362"
+      ],
+      "stack": "react",
+      "package": "carbon-components-react",
+      "licence": "Apache-2.0",
+      "good": "7.31.0",
+      "broken": "7.32.0",
+      "fixed": "7.33.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "Toast timeout is omitted in7.32.0, dismissing feedback immediately. Reported7.31.0 working, published7.33.0 fix8362 restores timeout argument. Same React16.14.0/Carbon CSS10.30.0. Native Save changes must retain Saved before specified10000ms expiry, ordinary browse goal line3; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38234013533,
+        "pointer": true,
+        "keyboard": true
+      }
+    },
+    {
+      "id": "fluent-18714",
+      "repo": "microsoft/fluentui",
+      "refs": [
+        "#18714",
+        "PR #18715"
+      ],
+      "stack": "react",
+      "package": "@fluentui/react",
+      "licence": "MIT",
+      "good": "7.167.0",
+      "broken": "8.19.1",
+      "fixed": "8.21.0",
+      "symptom": "JOURNEY_BLOCKED",
+      "documentary": "accept",
+      "note": "SearchBox no longer calls supported deprecated onChanged in8.19.1. Source-supported7.167.0 working, published8.21.0 fix18715 restores callback. Same React16.14.0, internal companion resolves with unchanged release-cutoff method. Typed abc must produce Query abc, ordinary browse goal line5; final pointer/keyboard/twin outputs and locks match (DR-0107).",
+      "operator": "mined",
+      "reproduction": {
+        "run": 38234013533,
+        "pointer": true,
+        "keyboard": true
+      }
     }
   ],
   "rejected": [
@@ -716,6 +787,14 @@
     {
       "id": "carbon-23126",
       "reason": "Second-round exploration: linked #23157 fixes native-dialog flag escalation, not the tested default passive-modal tooltip/Escape path; no applicable library fix under P22 rule6 (batch twelve/thirteen)."
+    },
+    {
+      "id": "reactmodal-732",
+      "reason": "Recorded second-round fixture stalls forward/reverse Tab wrapping but shows no DOM outside-focus events or document focus loss. Original reported focus-escape symptom is not established; do not reclassify a related failure after outcomes to count it."
+    },
+    {
+      "id": "datepicker-5366",
+      "reason": "Recorded deterministic controlled fixture: native ArrowDown entry fails all versions; native Tab-to-day repair then leaves calendar open on good/broken/fixed. Pointer close holds all three. No original keyboard closing regression boundary established; no admission or controller workaround."
     }
   ]
 }

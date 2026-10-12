@@ -1,0 +1,16 @@
+{
+  "firstFinalFixtureRun": 38232414560,
+  "repeatRun": 38234013533,
+  "checkOutputsIdentical": true,
+  "locksIdentical": true,
+  "versions": [
+    "7.31.0",
+    "7.32.0",
+    "7.33.0"
+  ],
+  "lockHashes": {
+    "7.31.0": "02d96fdc8680db294b55f19aab88b968f9554e983f5380e32e858bdcca2e7240",
+    "7.32.0": "3dcee52927ec2c421f61f8141ef040442cce8d729fa89451a2b71c77ab5a4654",
+    "7.33.0": "d009b1169d9de17997910e6f88ad652b5f6d9ee81ca2657bc7f1835341dd9014"
+  }
+}

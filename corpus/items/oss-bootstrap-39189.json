@@ -19,6 +19,6 @@
   "provenance": {
     "origin": "mined from twbs/bootstrap (#39189, PR #39201); verified by m3-oss-repro run 38226318174; second-round admission DR-0104",
     "licence": "MIT (Bootstrap)",
-    "url": "https://github.com/twbs/bootstrap/issues/4421"
+    "url": "https://github.com/twbs/bootstrap/issues/39189"
   }
 }

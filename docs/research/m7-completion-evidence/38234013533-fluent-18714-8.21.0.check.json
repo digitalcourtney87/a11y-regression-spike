@@ -1,0 +1,23 @@
+{
+  "label": "EXPLORATORY",
+  "version": "8.21.0",
+  "result": {
+    "pointer": {
+      "browseGoalReachedAt": 5,
+      "holds": true,
+      "detail": "Query abc=true; input=abc"
+    },
+    "keyboard": {
+      "browseGoalReachedAt": 5,
+      "holds": true,
+      "detail": "Query abc=true; input=abc"
+    },
+    "benignTwin": {
+      "browseGoalReachedAt": 5,
+      "holds": true,
+      "detail": "Query abc=true; input=abc"
+    }
+  },
+  "external": [],
+  "pageErrors": []
+}

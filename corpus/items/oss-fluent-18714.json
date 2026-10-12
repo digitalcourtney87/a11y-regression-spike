@@ -1,0 +1,24 @@
+{
+  "id": "oss-fluent-18714",
+  "source": "oss-history",
+  "patternId": "oss--fluent-18714",
+  "split": "test",
+  "app": "oss/fluent-18714",
+  "journeyId": "oss-fluent-18714",
+  "base": {
+    "ref": "oss/fluent-18714@70b4cf64b125c66e388fbe46b8351072e0e23b1d+@fluentui/react@7.167.0"
+  },
+  "candidate": {
+    "ref": "oss/fluent-18714@70b4cf64b125c66e388fbe46b8351072e0e23b1d+@fluentui/react@8.19.1"
+  },
+  "expected": {
+    "kind": "regression",
+    "symptom": "JOURNEY_BLOCKED",
+    "mechanism": "mined: SearchBox no longer calls supported deprecated onChanged in8.19.1. Source-supported7.167.0 working, published8.21.0 fix18715 restores callback. Same React16.14.0, internal companion resolves with unchanged release-cutoff method. Typed abc must produce Query abc, ordinary browse goal line5; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+  },
+  "provenance": {
+    "origin": "mined from microsoft/fluentui (#18714, PR #18715); verified by m3-oss-repro run 38234013533; second-round admission DR-0107",
+    "licence": "MIT (@fluentui/react)",
+    "url": "https://github.com/microsoft/fluentui/issues/18714"
+  }
+}

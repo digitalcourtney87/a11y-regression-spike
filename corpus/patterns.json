@@ -813,6 +813,33 @@
       "stratum": "regression:JOURNEY_BLOCKED",
       "status": "planned",
       "note": "Empty-option freeSolo autoHighlight selection reports undefined and crashes instead of chosen foobar in7.3.0. Reported7.2.0 working, published7.3.3 fix46894 synchronizes highlight on popup opening. Shared React18.2.0 and Emotion11.14.0; original Enter criterion, ordinary Chosen foobar browse goal and width twin match independently (DR-0106)."
+    },
+    {
+      "id": "oss--mui-44048",
+      "batch": "oss-regression",
+      "context": "oss:mui/material-ui#44048",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Custom Paper information is removed when freeSolo options are empty in5.16.7. Reported5.10.17 working; published5.16.14 rollback44857 restores content. Same React18.2.0/Emotion11.10.5. Native ArrowDown must render No recent searches, ordinary browse goal line4; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+    },
+    {
+      "id": "oss--carbon-8392",
+      "batch": "oss-regression",
+      "context": "oss:carbon-design-system/carbon#8392",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "Toast timeout is omitted in7.32.0, dismissing feedback immediately. Reported7.31.0 working, published7.33.0 fix8362 restores timeout argument. Same React16.14.0/Carbon CSS10.30.0. Native Save changes must retain Saved before specified10000ms expiry, ordinary browse goal line3; final pointer/keyboard/twin outputs and locks match (DR-0107)."
+    },
+    {
+      "id": "oss--fluent-18714",
+      "batch": "oss-regression",
+      "context": "oss:microsoft/fluentui#18714",
+      "operator": "mined",
+      "stratum": "regression:JOURNEY_BLOCKED",
+      "status": "planned",
+      "note": "SearchBox no longer calls supported deprecated onChanged in8.19.1. Source-supported7.167.0 working, published8.21.0 fix18715 restores callback. Same React16.14.0, internal companion resolves with unchanged release-cutoff method. Typed abc must produce Query abc, ordinary browse goal line5; final pointer/keyboard/twin outputs and locks match (DR-0107)."
     }
   ]
 }
