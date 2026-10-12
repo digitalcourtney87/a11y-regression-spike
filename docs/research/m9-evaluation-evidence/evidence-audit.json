@@ -1,0 +1,1292 @@
+{
+ "runId": 38315343825,
+ "approval": "P42/DR-0120",
+ "legs": {
+  "nvda-absent": {
+   "pilotSummary": {
+    "label": "EXPLORATORY",
+    "approval": "P42/DR-0120",
+    "leg": "nvda-absent",
+    "dispatches": 1,
+    "repetitions": 3,
+    "results": [
+     {
+      "case": "p42-cursor",
+      "startedQpcNs": 193998222600,
+      "endedQpcNs": 375310307600,
+      "status": "completed",
+      "exitCode": 0
+     },
+     {
+      "case": "p42-cursor-v2",
+      "startedQpcNs": 375310742200,
+      "endedQpcNs": 540861603000,
+      "status": "completed",
+      "exitCode": 0
+     },
+     {
+      "case": "p42-focus",
+      "startedQpcNs": 540861952300,
+      "endedQpcNs": 678619834100,
+      "status": "completed",
+      "exitCode": 0
+     }
+    ]
+   },
+   "caseSummaries": {
+    "p42-cursor": {
+     "label": "EXPLORATORY",
+     "calibrationCase": "p42-cursor",
+     "calibrationApproval": "P42/DR-0120",
+     "cursorModel": "v1",
+     "fullTreeFocusName": true,
+     "manifestValid": true
+    },
+    "p42-cursor-v2": {
+     "label": "EXPLORATORY",
+     "calibrationCase": "p42-cursor-v2",
+     "calibrationApproval": "P42/DR-0120",
+     "cursorModel": "v2",
+     "fullTreeFocusName": true,
+     "manifestValid": true
+    },
+    "p42-focus": {
+     "label": "EXPLORATORY",
+     "calibrationCase": "p42-focus",
+     "calibrationApproval": "P42/DR-0120",
+     "cursorModel": "v1",
+     "fullTreeFocusName": true,
+     "manifestValid": true
+    }
+   },
+   "manifest": {
+    "harnessCommit": "69760a04015b3867e5f9cdc09b97de8eecec4170",
+    "imageOS": "win25-vs2026",
+    "imageVersion": "20260925.250.1",
+    "windowsBuild": "26100.33438",
+    "chromeVersion": "153.0.8010.12",
+    "chromeFlags": [
+     "--force-renderer-accessibility=screen-reader"
+    ],
+    "listenerVersion": "0.3.1 (sha256 5071f9664d2b656d9f8557a629427cbc92eea8fd763b312a6fce5a1fc11d7495)",
+    "dotnetVersion": "10.0.12",
+    "nodeVersion": "v24.21.0",
+    "locale": "en-GB",
+    "playwrightVersion": "1.63.0",
+    "chromeSandbox": true,
+    "axMode": "screen-reader",
+    "audio": {
+     "endpointCount": 1,
+     "audiosrvRunning": true,
+     "driver": "Speakers (Scream (WDM))"
+    }
+   },
+   "blocks": [
+    {
+     "case": "p42-cursor",
+     "journey": "m9-generated-text",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-ignored-wrappers",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-marker-list",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-plain-page",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor-v2",
+     "journey": "m9-generated-text",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor-v2",
+     "journey": "m9-ignored-wrappers",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor-v2",
+     "journey": "m9-marker-list",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor-v2",
+     "journey": "m9-plain-page",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-delayed-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-focus-hidden-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-static-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-unnamed-wrapper",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    }
+   ]
+  },
+  "nvda-present": {
+   "pilotSummary": {
+    "label": "EXPLORATORY",
+    "approval": "P42/DR-0120",
+    "leg": "nvda-present",
+    "dispatches": 1,
+    "repetitions": 3,
+    "results": [
+     {
+      "case": "p42-cursor",
+      "startedQpcNs": 187611467700,
+      "endedQpcNs": 379397894600,
+      "status": "completed",
+      "exitCode": 0
+     },
+     {
+      "case": "p42-focus",
+      "startedQpcNs": 379398404400,
+      "endedQpcNs": 524756874800,
+      "status": "completed",
+      "exitCode": 0
+     }
+    ]
+   },
+   "caseSummaries": {
+    "p42-cursor": {
+     "label": "EXPLORATORY",
+     "calibrationCase": "p42-cursor",
+     "calibrationApproval": "P42/DR-0120",
+     "cursorModel": "unused; NVDA browse cursor",
+     "fullTreeFocusName": true,
+     "manifestValid": true
+    },
+    "p42-focus": {
+     "label": "EXPLORATORY",
+     "calibrationCase": "p42-focus",
+     "calibrationApproval": "P42/DR-0120",
+     "cursorModel": "unused; NVDA browse cursor",
+     "fullTreeFocusName": true,
+     "manifestValid": true
+    }
+   },
+   "manifest": {
+    "harnessCommit": "69760a04015b3867e5f9cdc09b97de8eecec4170",
+    "imageOS": "win25-vs2026",
+    "imageVersion": "20260925.250.1",
+    "windowsBuild": "26100.33438",
+    "chromeVersion": "153.0.8010.12",
+    "chromeFlags": [
+     "--force-renderer-accessibility=screen-reader"
+    ],
+    "listenerVersion": "not run in this leg (P4)",
+    "nodeVersion": "v24.21.0",
+    "locale": "en-GB",
+    "playwrightVersion": "1.63.0",
+    "chromeSandbox": true,
+    "axMode": "screen-reader",
+    "audio": {
+     "endpointCount": 1,
+     "audiosrvRunning": true,
+     "driver": "Speakers (Scream (WDM))"
+    },
+    "nvdaVersion": "2026.2",
+    "nvdaConfigHash": "80d2287ec59a8fae89d6349950257a17bc193c0ff1c0a30d0ececfd2fd923b0e",
+    "adapter": {
+     "name": "guidepup",
+     "version": "0.35.0 (NVDA asset 0.2.1-2026.2)"
+    },
+    "nvdaChannel": "IA2",
+    "synth": {
+     "name": "espeak",
+     "rate": 30,
+     "rateBoost": false
+    }
+   },
+   "blocks": [
+    {
+     "case": "p42-cursor",
+     "journey": "m9-generated-text",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-ignored-wrappers",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-marker-list",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-cursor",
+     "journey": "m9-plain-page",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-delayed-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-focus-hidden-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-static-label",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    },
+    {
+     "case": "p42-focus",
+     "journey": "m9-unnamed-wrapper",
+     "label": "EXPLORATORY",
+     "validity": "VALID",
+     "k1Pre": true,
+     "k1Post": true,
+     "attempts": 3,
+     "sides": [
+      "base"
+     ],
+     "packageErrors": [],
+     "attemptReasons": [],
+     "calibrationReadErrors": [],
+     "notRun": []
+    }
+   ]
+  }
+ },
+ "focusTimings": {
+  "m9-delayed-label": {
+   "nvda-absent": {
+    "1": {
+     "earlyDiagnosticMs": [
+      316.2,
+      320.6
+     ],
+     "endDiagnosticMs": [
+      1323.8,
+      1330.6
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      319.1,
+      324.4
+     ],
+     "endDiagnosticMs": [
+      1328.3,
+      1335.4
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      319.1,
+      323.8
+     ],
+     "endDiagnosticMs": [
+      1326.5,
+      1333.9
+     ]
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "earlyDiagnosticMs": [
+      912.6,
+      917.2
+     ],
+     "endDiagnosticMs": [
+      1926.7,
+      1938.2
+     ],
+     "speechMs": [
+      [
+       89.7,
+       "main landmark"
+      ],
+      [
+       102.4,
+       "edit blank"
+      ],
+      [
+       1134.5,
+       "Account reference"
+      ]
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      913.8,
+      918.7
+     ],
+     "endDiagnosticMs": [
+      1926.1,
+      1937.5
+     ],
+     "speechMs": [
+      [
+       89.9,
+       "main landmark"
+      ],
+      [
+       102.5,
+       "edit blank"
+      ],
+      [
+       1139.1,
+       "Account reference"
+      ]
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      911.7,
+      916.2
+     ],
+     "endDiagnosticMs": [
+      1925.4,
+      1936.5
+     ],
+     "speechMs": [
+      [
+       89.3,
+       "main landmark"
+      ],
+      [
+       101.4,
+       "edit blank"
+      ],
+      [
+       1137.3,
+       "Account reference"
+      ]
+     ]
+    }
+   }
+  },
+  "m9-focus-hidden-label": {
+   "nvda-absent": {
+    "1": {
+     "earlyDiagnosticMs": [
+      320.3,
+      325.0
+     ],
+     "endDiagnosticMs": [
+      1328.0,
+      1335.2
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      320.3,
+      326.1
+     ],
+     "endDiagnosticMs": [
+      1329.9,
+      1337.7
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      315.8,
+      320.2
+     ],
+     "endDiagnosticMs": [
+      1324.5,
+      1331.2
+     ]
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "earlyDiagnosticMs": [
+      913.0,
+      917.9
+     ],
+     "endDiagnosticMs": [
+      1925.1,
+      1937.0
+     ],
+     "speechMs": [
+      [
+       100.1,
+       "main landmark"
+      ],
+      [
+       112.2,
+       "edit blank"
+      ]
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      913.0,
+      917.7
+     ],
+     "endDiagnosticMs": [
+      1925.3,
+      1937.1
+     ],
+     "speechMs": [
+      [
+       98.0,
+       "main landmark"
+      ],
+      [
+       110.3,
+       "edit blank"
+      ]
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      914.9,
+      919.7
+     ],
+     "endDiagnosticMs": [
+      1927.6,
+      1938.5
+     ],
+     "speechMs": [
+      [
+       99.9,
+       "main landmark"
+      ],
+      [
+       112.9,
+       "edit blank"
+      ]
+     ]
+    }
+   }
+  },
+  "m9-static-label": {
+   "nvda-absent": {
+    "1": {
+     "earlyDiagnosticMs": [
+      319.0,
+      324.7
+     ],
+     "endDiagnosticMs": [
+      1327.9,
+      1335.1
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      317.7,
+      322.8
+     ],
+     "endDiagnosticMs": [
+      1326.1,
+      1333.5
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      316.2,
+      321.1
+     ],
+     "endDiagnosticMs": [
+      1326.6,
+      1333.2
+     ]
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "earlyDiagnosticMs": [
+      928.9,
+      935.1
+     ],
+     "endDiagnosticMs": [
+      1943.4,
+      1955.0
+     ],
+     "speechMs": [
+      [
+       85.4,
+       "main landmark"
+      ],
+      [
+       97.6,
+       "Delivery note edit blank"
+      ]
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      914.5,
+      919.7
+     ],
+     "endDiagnosticMs": [
+      1928.1,
+      1940.5
+     ],
+     "speechMs": [
+      [
+       92.3,
+       "main landmark"
+      ],
+      [
+       105.4,
+       "Delivery note edit blank"
+      ]
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      912.7,
+      917.8
+     ],
+     "endDiagnosticMs": [
+      1926.8,
+      1938.1
+     ],
+     "speechMs": [
+      [
+       91.7,
+       "main landmark"
+      ],
+      [
+       104.8,
+       "Delivery note edit blank"
+      ]
+     ]
+    }
+   }
+  },
+  "m9-unnamed-wrapper": {
+   "nvda-absent": {
+    "1": {
+     "earlyDiagnosticMs": [
+      317.4,
+      322.5
+     ],
+     "endDiagnosticMs": [
+      1325.5,
+      1332.2
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      316.7,
+      322.3
+     ],
+     "endDiagnosticMs": [
+      1326.8,
+      1333.8
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      318.1,
+      323.0
+     ],
+     "endDiagnosticMs": [
+      1326.4,
+      1333.4
+     ]
+    }
+   },
+   "nvda-present": {
+    "1": {
+     "earlyDiagnosticMs": [
+      911.8,
+      916.5
+     ],
+     "endDiagnosticMs": [
+      1926.6,
+      1938.1
+     ],
+     "speechMs": [
+      [
+       99.0,
+       "main landmark"
+      ],
+      [
+       112.3,
+       "Item name edit blank"
+      ]
+     ]
+    },
+    "2": {
+     "earlyDiagnosticMs": [
+      912.6,
+      918.0
+     ],
+     "endDiagnosticMs": [
+      1927.7,
+      1939.1
+     ],
+     "speechMs": [
+      [
+       99.9,
+       "main landmark"
+      ],
+      [
+       113.4,
+       "Item name edit blank"
+      ]
+     ]
+    },
+    "3": {
+     "earlyDiagnosticMs": [
+      925.2,
+      930.4
+     ],
+     "endDiagnosticMs": [
+      1937.3,
+      1948.4
+     ],
+     "speechMs": [
+      [
+       105.3,
+       "main landmark"
+      ],
+      [
+       118.8,
+       "Item name edit blank"
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "textAncestryRep1": {
+  "m9-marker-list": [
+   {
+    "text": "Marker list",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 23
+     },
+     {
+      "role": "heading",
+      "ignored": false,
+      "backendId": 14
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Marker target reached",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 27
+     },
+     {
+      "role": "paragraph",
+      "ignored": false,
+      "backendId": 19
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "1. ",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": null
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 20
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 16
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     }
+    ]
+   },
+   {
+    "text": "North gate",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 24
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 16
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     }
+    ]
+   },
+   {
+    "text": "2. ",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": null
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 21
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 17
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     }
+    ]
+   },
+   {
+    "text": "River bridge",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 25
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 17
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     }
+    ]
+   },
+   {
+    "text": "3. ",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": null
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 22
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 18
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     }
+    ]
+   },
+   {
+    "text": "Market square",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 26
+     },
+     {
+      "role": "option",
+      "ignored": false,
+      "backendId": 18
+     },
+     {
+      "role": "listbox",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     }
+    ]
+   }
+  ],
+  "m9-generated-text": [
+   {
+    "text": "Generated text",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 18
+     },
+     {
+      "role": "heading",
+      "ignored": false,
+      "backendId": 14
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Note: ",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": null
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 17
+     },
+     {
+      "role": "generic",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     }
+    ]
+   },
+   {
+    "text": "Check the second panel before continuing.",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 19
+     },
+     {
+      "role": "generic",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Generated target reached",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 20
+     },
+     {
+      "role": "paragraph",
+      "ignored": false,
+      "backendId": 16
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   }
+  ],
+  "m9-ignored-wrappers": [
+   {
+    "text": "Wrapped text",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 20
+     },
+     {
+      "role": "heading",
+      "ignored": false,
+      "backendId": 14
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Wrapped sentence one.",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 21
+     },
+     {
+      "role": "paragraph",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Wrapped sentence two.",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 23
+     },
+     {
+      "role": "paragraph",
+      "ignored": false,
+      "backendId": 15
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   },
+   {
+    "text": "Wrapper target reached",
+    "chain": [
+     {
+      "role": "StaticText",
+      "ignored": false,
+      "backendId": 24
+     },
+     {
+      "role": "paragraph",
+      "ignored": false,
+      "backendId": 19
+     },
+     {
+      "role": "main",
+      "ignored": false,
+      "backendId": 12
+     },
+     {
+      "role": "none",
+      "ignored": true,
+      "backendId": 11
+     }
+    ]
+   }
+  ]
+ }
+}
