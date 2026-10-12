@@ -10,4 +10,4 @@ function App() {
   const [value, setValue] = useState(null);
   return <main><h1>Grouped color selection</h1><label htmlFor="color">Color</label><Select inputId="color" instanceId="colors" options={options} value={value} onChange={setValue} /><p id="chosen">Chosen {value?.label ?? "none"}</p></main>;
 }
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("root"));

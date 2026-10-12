@@ -1,0 +1,11 @@
+{
+  "label": "EXPLORATORY",
+  "version": "4.1.0",
+  "result": {
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#color')\u001b[22m\n"
+  },
+  "external": [],
+  "pageErrors": [
+    "Minified React error #200; visit https://reactjs.org/docs/error-decoder.html?invariant=200 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+  ]
+}
