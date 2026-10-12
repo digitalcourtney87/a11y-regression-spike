@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 $repo = (Get-Location).Path
 New-Item -ItemType Directory -Force -Path $Out, $Evidence | Out-Null
 $cases = Get-Content harness/src/runner/calibration-cases.json -Raw | ConvertFrom-Json
-$logs = Join-Path $Evidence "build-logs"
+$logs = Join-Path (Resolve-Path -LiteralPath $Evidence).Path "build-logs"
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
 if ($ValidatePathsOnly) { Write-Output $logs; return }
 $env:npm_config_cache = Join-Path $env:RUNNER_TEMP "npm-cache-m8"

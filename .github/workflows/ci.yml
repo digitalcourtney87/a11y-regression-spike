@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      - name: Parse the M8 build script without executing it
+      - name: Validate M8 script syntax and log paths without building fixtures
         shell: pwsh
         run: |
           $tokens = $null
