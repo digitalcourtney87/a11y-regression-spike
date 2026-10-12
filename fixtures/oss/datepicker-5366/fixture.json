@@ -1,0 +1,15 @@
+{
+  "id": "datepicker-5366",
+  "stack": "react",
+  "package": "react-datepicker",
+  "versions": [
+    "7.5.0",
+    "7.6.0",
+    "8.2.0"
+  ],
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "issue": "https://github.com/Hacker0x01/react-datepicker/issues/5366"
+}

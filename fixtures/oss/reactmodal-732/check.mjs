@@ -31,7 +31,8 @@ export default async function check({ page, fresh }) {
     const wrapped = await first.evaluate((el) => el === document.activeElement);
     const escapes = await p.evaluate(() => window.dialogEscapes);
     const activeTag = await p.evaluate(() => document.activeElement?.tagName);
-    return { holds: wrapped && escapes.length === 0, detail: `First action wrap=${wrapped}; outside focus events=${JSON.stringify(escapes)}; active tag=${activeTag}` };
+    const pageHasFocus = await p.evaluate(() => document.hasFocus());
+    return { holds: wrapped && escapes.length === 0 && pageHasFocus, detail: `First action wrap=${wrapped}; outside focus events=${JSON.stringify(escapes)}; active tag=${activeTag}; document focus=${pageHasFocus}` };
   };
   return { pointer: await scenario(page, false), keyboard: await scenario(await fresh(), true), benignTwin: await scenario(await fresh(), true, true) };
 }

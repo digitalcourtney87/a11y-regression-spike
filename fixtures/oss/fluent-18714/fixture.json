@@ -1,0 +1,15 @@
+{
+  "id": "fluent-18714",
+  "stack": "react",
+  "package": "@fluentui/react",
+  "versions": [
+    "7.167.0",
+    "8.19.1",
+    "8.21.0"
+  ],
+  "dependencies": {
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  },
+  "issue": "https://github.com/microsoft/fluentui/issues/18714"
+}
