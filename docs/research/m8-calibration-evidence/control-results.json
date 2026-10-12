@@ -1,0 +1,320 @@
+[
+  {
+    "journey": "m8-delayed-modal",
+    "leg": "nvda-absent",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "open-details",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 1,
+        "earlyFocusName": "Open details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 2,
+        "step": "open-details",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 1,
+        "earlyFocusName": "Open details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 3,
+        "step": "open-details",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 1,
+        "earlyFocusName": "Open details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      }
+    ]
+  },
+  {
+    "journey": "m8-feedback-application",
+    "leg": "nvda-absent",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 2,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 3,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      }
+    ]
+  },
+  {
+    "journey": "m8-feedback-document",
+    "leg": "nvda-absent",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 2,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 3,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": "Selection feedback",
+        "lateFocusName": "\u2022 ",
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      }
+    ]
+  },
+  {
+    "journey": "m8-nested-editor",
+    "leg": "nvda-absent",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 2,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 3,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      }
+    ]
+  },
+  {
+    "journey": "m8-delayed-modal",
+    "leg": "nvda-present",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "open-details",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 2,
+        "step": "open-details",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 3,
+        "step": "open-details",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Details",
+        "lateFocusName": "Details",
+        "lateSpeech": [],
+        "lateDomId": "details",
+        "hasChosenAlpha": false
+      }
+    ]
+  },
+  {
+    "journey": "m8-feedback-application",
+    "leg": "nvda-present",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 2,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 3,
+        "step": "read-result",
+        "outcome": "UNREACHABLE",
+        "goalAttempts": 12,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      }
+    ]
+  },
+  {
+    "journey": "m8-feedback-document",
+    "leg": "nvda-present",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "read-result",
+        "outcome": "REACHED",
+        "goalAttempts": 3,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [
+          "Chosen Alpha"
+        ],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 2,
+        "step": "read-result",
+        "outcome": "REACHED",
+        "goalAttempts": 3,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [
+          "Chosen Alpha"
+        ],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      },
+      {
+        "repetition": 3,
+        "step": "read-result",
+        "outcome": "REACHED",
+        "goalAttempts": 3,
+        "earlyFocusName": null,
+        "lateFocusName": null,
+        "lateSpeech": [
+          "Chosen Alpha"
+        ],
+        "lateDomId": "alpha",
+        "hasChosenAlpha": true
+      }
+    ]
+  },
+  {
+    "journey": "m8-nested-editor",
+    "leg": "nvda-present",
+    "terminal": [
+      {
+        "repetition": 1,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 2,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      },
+      {
+        "repetition": 3,
+        "step": "reach-actual-input",
+        "outcome": "REACHED",
+        "goalAttempts": 1,
+        "earlyFocusName": "Actual field",
+        "lateFocusName": "Actual field",
+        "lateSpeech": [],
+        "lateDomId": "actual",
+        "hasChosenAlpha": false
+      }
+    ]
+  }
+]

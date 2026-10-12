@@ -1,0 +1,17 @@
+{
+  "role": "independent read-only M8 gate reviewer",
+  "baseCommit": "48506b12f7efb9dff56b40735a47ebad70ad013c",
+  "headReviewed": "42978fd77f4443004c8ebde6b2dd3e0a236abfcc",
+  "criticalFindings": [],
+  "importantFindings": [],
+  "minorFindings": [],
+  "targetedTestsPassed": 13,
+  "countsVerified": {
+    "blocks": 8,
+    "attempts": 24,
+    "K1Passed": 16,
+    "jobSeconds": 842,
+    "cursorReplaySteps": 12
+  },
+  "assessment": "Ready for owner review as partial pilot evidence with missing Windows working comparisons disclosed; gate brief/archive required; further dispatch needs P41 approval."
+}

@@ -1,0 +1,237 @@
+{
+  "source": "owned feedback-document AX snapshot from first nvda-absent base attempt; no fixture execution",
+  "rows": [
+    {
+      "attempt": 1,
+      "from": -1,
+      "index": 2,
+      "id": "14",
+      "role": "heading",
+      "name": "Selection feedback",
+      "backendId": 14,
+      "parent": "12",
+      "cursorBackendAfter": 14,
+      "line": [
+        {
+          "id": "14",
+          "role": "heading",
+          "name": "Selection feedback",
+          "backendId": 14
+        },
+        {
+          "id": "22",
+          "role": "StaticText",
+          "name": "Selection feedback",
+          "backendId": 22
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "from": 2,
+      "index": 6,
+      "id": "23",
+      "role": "StaticText",
+      "name": "Choices",
+      "backendId": 23,
+      "parent": "15",
+      "cursorBackendAfter": 23,
+      "line": [
+        {
+          "id": "23",
+          "role": "StaticText",
+          "name": "Choices",
+          "backendId": 23
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "from": 6,
+      "index": 8,
+      "id": "16",
+      "role": "textbox",
+      "name": "Choices",
+      "backendId": 16,
+      "parent": "12",
+      "cursorBackendAfter": 16,
+      "line": [
+        {
+          "id": "16",
+          "role": "textbox",
+          "name": "Choices",
+          "backendId": 16
+        },
+        {
+          "id": "26",
+          "role": "StaticText",
+          "name": "Al",
+          "backendId": 26
+        }
+      ]
+    },
+    {
+      "attempt": 4,
+      "from": 8,
+      "index": 12,
+      "id": "17",
+      "role": "listbox",
+      "name": "Available choices",
+      "backendId": 17,
+      "parent": "12",
+      "cursorBackendAfter": 17,
+      "line": [
+        {
+          "id": "17",
+          "role": "listbox",
+          "name": "Available choices",
+          "backendId": 17
+        }
+      ]
+    },
+    {
+      "attempt": 5,
+      "from": 12,
+      "index": 13,
+      "id": "18",
+      "role": "option",
+      "name": "Alpha",
+      "backendId": 18,
+      "parent": "17",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "18",
+          "role": "option",
+          "name": "Alpha",
+          "backendId": 18
+        },
+        {
+          "id": "24",
+          "role": "StaticText",
+          "name": "Alpha",
+          "backendId": 24
+        }
+      ]
+    },
+    {
+      "attempt": 6,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 7,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 8,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 9,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 10,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 11,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    },
+    {
+      "attempt": 12,
+      "from": 13,
+      "index": 14,
+      "id": "-1000000004",
+      "role": "StaticText",
+      "name": "• ",
+      "parent": "21",
+      "cursorBackendAfter": 18,
+      "line": [
+        {
+          "id": "-1000000004",
+          "role": "StaticText",
+          "name": "• "
+        }
+      ]
+    }
+  ]
+}
