@@ -1,0 +1,7 @@
+{
+  "approval": "DR-0114",
+  "dispatches": 1,
+  "jobs": 2,
+  "timeoutMinutes": 60,
+  "repetitions": 3
+}

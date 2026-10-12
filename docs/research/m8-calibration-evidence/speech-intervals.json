@@ -1,0 +1,141 @@
+{
+  "runId": 38299059098,
+  "method": "Disjoint QPC receipt intervals around diagnostic read boundaries. Primary goal read precedes the early diagnostic start; exact goal-read timestamp is not separately captured. End goal speech is cumulative since last input and is not late-only evidence. Boundary-equal events belong only to the earlier interval.",
+  "records": [
+    {
+      "journey": "m8-feedback-application",
+      "repetition": 1,
+      "step": "read-result",
+      "boundsQpcNs": [
+        583529686000,
+        584433980600,
+        584435002200,
+        585440871200,
+        585442330700
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "m8-feedback-application",
+      "repetition": 2,
+      "step": "read-result",
+      "boundsQpcNs": [
+        611269231700,
+        612173845600,
+        612174911300,
+        613179833300,
+        613181206000
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "m8-feedback-application",
+      "repetition": 3,
+      "step": "read-result",
+      "boundsQpcNs": [
+        639790010700,
+        640693594000,
+        640694653400,
+        641700532100,
+        641702028900
+      ],
+      "beforeEarlyDiagnostic": [],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [],
+      "recordedCumulativeEndSpeech": []
+    },
+    {
+      "journey": "m8-feedback-document",
+      "repetition": 1,
+      "step": "read-result",
+      "boundsQpcNs": [
+        501016948300,
+        501921743100,
+        501922701100,
+        502929126100,
+        502930560800
+      ],
+      "beforeEarlyDiagnostic": [
+        {
+          "t": 501025677700,
+          "text": "Chosen Alpha"
+        }
+      ],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [
+        "Chosen Alpha"
+      ],
+      "recordedCumulativeEndSpeech": [
+        "Chosen Alpha"
+      ]
+    },
+    {
+      "journey": "m8-feedback-document",
+      "repetition": 2,
+      "step": "read-result",
+      "boundsQpcNs": [
+        520906022000,
+        521810112700,
+        521811376400,
+        522816714300,
+        522818158200
+      ],
+      "beforeEarlyDiagnostic": [
+        {
+          "t": 520912094900,
+          "text": "Chosen Alpha"
+        }
+      ],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [
+        "Chosen Alpha"
+      ],
+      "recordedCumulativeEndSpeech": [
+        "Chosen Alpha"
+      ]
+    },
+    {
+      "journey": "m8-feedback-document",
+      "repetition": 3,
+      "step": "read-result",
+      "boundsQpcNs": [
+        540726345400,
+        541630427700,
+        541631216500,
+        542637277900,
+        542638772000
+      ],
+      "beforeEarlyDiagnostic": [
+        {
+          "t": 540732656600,
+          "text": "Chosen Alpha"
+        }
+      ],
+      "duringEarlyDiagnostic": [],
+      "afterEarlyDiagnosticBeforeLateRead": [],
+      "duringLateDiagnostic": [],
+      "recordedEarlySpeech": [
+        "Chosen Alpha"
+      ],
+      "recordedCumulativeEndSpeech": [
+        "Chosen Alpha"
+      ]
+    }
+  ]
+}

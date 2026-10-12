@@ -1,6 +1,6 @@
 # Proposed M8: exploratory harness calibration
 
-Status: proposal for owner approval, not an authorised experiment. The documented milestone sequence ends at M7; this scopes a possible next task rather than assuming a product milestone. M7's two adjudicated comparisons remain inconclusive. The [retained-evidence diagnosis](../reports/M7-followup-diagnosis.md) identifies specific journey/measurement limits that should be understood before another study.
+Status: approved by the owner on 2026-10-12 (P40, DR-0114), after PR15 merge. The documented milestone sequence ends at M7; this scopes a possible next task rather than assuming a product milestone. M7's two adjudicated comparisons remain inconclusive. The [retained-evidence diagnosis](../reports/M7-followup-diagnosis.md) identifies specific journey/measurement limits that should be understood before another study.
 
 ## Objective and scope
 
@@ -25,4 +25,4 @@ The report distinguishes observed evidence from hypotheses, compares early/late 
 
 ## Owner decision
 
-Approve this bounded exploratory pilot with its new diagnostic observations and at most two Windows jobs/120 runner-minutes? Recommendation: Yes. The repository's hard rule 12 requires approval because this adds what is measured and defines a new cost envelope. Implementation and dispatch begin after approval.
+Approve this bounded exploratory pilot with its new diagnostic observations and at most two Windows jobs/120 runner-minutes? Recommendation: Yes. The repository's hard rule 12 requires approval because this adds what is measured and defines a new cost envelope. Approved by the owner; implementation and the single bounded dispatch may proceed (DR-0114).

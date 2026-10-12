@@ -148,7 +148,7 @@ describe("files git would commit", () => {
       findTripwireDigests(text, TRIPWIRE_DIGESTS).map(({ line, digest }) => `${rel}:${String(line)}: tripwire digest ${digest}`),
     );
     expect(offenders).toEqual([]);
-  });
+  }, 30_000); // Full-repository scan; retained evidence now exceeds the default five-second CI test deadline.
 });
 
 describe("repository safety detectors", () => {

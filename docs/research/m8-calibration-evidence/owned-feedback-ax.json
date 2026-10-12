@@ -1,0 +1,288 @@
+[
+  {
+    "id": "5",
+    "role": "RootWebArea",
+    "name": "Exploratory calibration",
+    "props": {
+      "focusable": true,
+      "focused": true
+    },
+    "children": [
+      "6"
+    ],
+    "backendId": 5
+  },
+  {
+    "id": "6",
+    "role": "none",
+    "name": "",
+    "ignored": true,
+    "props": {},
+    "parent": "5",
+    "children": [
+      "11"
+    ],
+    "backendId": 6
+  },
+  {
+    "id": "11",
+    "role": "none",
+    "name": "",
+    "ignored": true,
+    "props": {},
+    "parent": "6",
+    "children": [
+      "12"
+    ],
+    "backendId": 11
+  },
+  {
+    "id": "12",
+    "role": "main",
+    "name": "",
+    "props": {},
+    "parent": "11",
+    "children": [
+      "14",
+      "15",
+      "16",
+      "17",
+      "19"
+    ],
+    "backendId": 12
+  },
+  {
+    "id": "14",
+    "role": "heading",
+    "name": "Selection feedback",
+    "props": {
+      "level": 1
+    },
+    "parent": "12",
+    "children": [
+      "22"
+    ],
+    "backendId": 14
+  },
+  {
+    "id": "15",
+    "role": "LabelText",
+    "name": "",
+    "props": {},
+    "parent": "12",
+    "children": [
+      "23"
+    ],
+    "backendId": 15
+  },
+  {
+    "id": "16",
+    "role": "textbox",
+    "name": "Choices",
+    "value": "Al",
+    "props": {
+      "invalid": "false",
+      "focusable": true,
+      "editable": "plaintext",
+      "readonly": false,
+      "required": false
+    },
+    "parent": "12",
+    "children": [
+      "20"
+    ],
+    "backendId": 16
+  },
+  {
+    "id": "17",
+    "role": "listbox",
+    "name": "Available choices",
+    "props": {
+      "multiselectable": false,
+      "orientation": "vertical",
+      "required": false
+    },
+    "parent": "12",
+    "children": [
+      "18"
+    ],
+    "backendId": 17
+  },
+  {
+    "id": "19",
+    "role": "paragraph",
+    "name": "",
+    "props": {},
+    "parent": "12",
+    "children": [
+      "27"
+    ],
+    "backendId": 19
+  },
+  {
+    "id": "22",
+    "role": "StaticText",
+    "name": "Selection feedback",
+    "props": {},
+    "parent": "14",
+    "children": [
+      "-1000000008"
+    ],
+    "backendId": 22
+  },
+  {
+    "id": "23",
+    "role": "StaticText",
+    "name": "Choices",
+    "props": {},
+    "parent": "15",
+    "children": [
+      "-1000000017"
+    ],
+    "backendId": 23
+  },
+  {
+    "id": "20",
+    "role": "generic",
+    "name": "",
+    "props": {
+      "editable": "plaintext"
+    },
+    "parent": "16",
+    "children": [
+      "26"
+    ],
+    "backendId": 20
+  },
+  {
+    "id": "18",
+    "role": "option",
+    "name": "Alpha",
+    "props": {
+      "focusable": true,
+      "focused": true,
+      "selected": true
+    },
+    "parent": "17",
+    "children": [
+      "21",
+      "24"
+    ],
+    "backendId": 18
+  },
+  {
+    "id": "27",
+    "role": "StaticText",
+    "name": "Chosen Alpha",
+    "props": {},
+    "parent": "19",
+    "children": [
+      "-1000000019"
+    ],
+    "backendId": 27
+  },
+  {
+    "id": "-1000000008",
+    "role": "InlineTextBox",
+    "name": "Selection feedback",
+    "props": {},
+    "parent": "22",
+    "children": []
+  },
+  {
+    "id": "-1000000017",
+    "role": "InlineTextBox",
+    "name": "Choices",
+    "props": {},
+    "parent": "23",
+    "children": []
+  },
+  {
+    "id": "26",
+    "role": "StaticText",
+    "name": "Al",
+    "props": {
+      "editable": "plaintext"
+    },
+    "parent": "20",
+    "children": [
+      "-1000000016"
+    ],
+    "backendId": 26
+  },
+  {
+    "id": "21",
+    "role": "none",
+    "name": "",
+    "ignored": true,
+    "props": {},
+    "parent": "18",
+    "children": [
+      "-1000000004"
+    ],
+    "backendId": 21
+  },
+  {
+    "id": "-1000000004",
+    "role": "StaticText",
+    "name": "\u2022 ",
+    "props": {},
+    "parent": "21",
+    "children": [
+      "-1000000005"
+    ]
+  },
+  {
+    "id": "-1000000005",
+    "role": "InlineTextBox",
+    "name": "\u2022 ",
+    "props": {},
+    "parent": "-1000000004",
+    "children": []
+  },
+  {
+    "id": "24",
+    "role": "StaticText",
+    "name": "Alpha",
+    "props": {},
+    "parent": "18",
+    "children": [
+      "-1000000010"
+    ],
+    "backendId": 24
+  },
+  {
+    "id": "-1000000019",
+    "role": "InlineTextBox",
+    "name": "Chosen Alpha",
+    "props": {},
+    "parent": "27",
+    "children": []
+  },
+  {
+    "id": "-1000000016",
+    "role": "InlineTextBox",
+    "name": "Al",
+    "props": {
+      "editable": "plaintext"
+    },
+    "parent": "26",
+    "children": []
+  },
+  {
+    "id": "-1000000005",
+    "role": "InlineTextBox",
+    "name": "\u2022 ",
+    "props": {},
+    "parent": "-1000000004",
+    "children": []
+  },
+  {
+    "id": "-1000000010",
+    "role": "InlineTextBox",
+    "name": "Alpha",
+    "props": {},
+    "parent": "24",
+    "children": []
+  }
+]

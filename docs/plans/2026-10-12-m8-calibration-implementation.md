@@ -1,0 +1,19 @@
+# M8 calibration implementation
+
+Owner approval: “Merged, please proceed with my approval”, following PR15 and P40. One dispatch; two Windows jobs; timeout 60 minutes each; no reruns.
+
+Design: extend the existing journey-development runner with a strictly gated calibration option. Build only explicitly pinned working releases plus owned static controls. Calibration uses new dev pseudo-items, never reads assigned corpus items, and retains the existing early goal outcome. Read-only diagnostic points record goal-check/end focus and DOM identity, QPC times and explicit unavailable internal-mode state. No late observation changes a reached/unreachable outcome. The known controls are delayed modal focus, a labelled nested input, and the same selection feedback outside/inside an application container. Known functional content and navigation hypotheses are declared before dispatch.
+
+Alternatives considered: a second independent AT runner would duplicate handover/clock/validity code; adding a new NVDA add-on API would expand the security/runtime boundary. Reuse the existing runner with no new relay capability. Internal mode is unavailable; speech, focus and controlled page effects are the evidence.
+
+- [x] Tests first: calibration rejects test split, candidate sides, item ids, unknown cases and wrong repetition counts; pseudo-items stay dev/base-only. Diagnostic read failures are retained without changing the early goal.
+- [x] Implement portable calibration definitions/observation helper and the opt-in runner path.
+- [x] Add controlled pages and journeys; predeclare their expected content/early-late observations and browse hypotheses.
+- [x] Build/launch script and one static two-leg workflow, capped 60 minutes/job. No request file until checks pass.
+- [x] Run targeted tests, full suite, lint/typecheck and workflow/clock safety policies; commit/push and verify ordinary CI.
+- [x] Commit the single dispatch request; retain both jobs regardless of outcome. Download, audit and report failures/unavailable observations; do not rerun.
+- [x] Prepare evidence/archive and reviewable result PR. Original M7 corpus, scores, oracles and freeze-v4 remain unchanged.
+
+Pre-dispatch CI 38298492501: PowerShell syntax, lint/typecheck and 754 tests passed; the full-repository commercial-content tripwire scan exceeded the default 5000 ms test timeout at 6523 ms. Increase only that integration test deadline to 30000 ms, retaining every file/digest/rule. This is ordinary CI, not a pilot dispatch; no Windows experiment was run or retried. Decided under DR-0045.
+
+Pilot 38299059098: both jobs retained. Owned controls completed, but all four working-release builds per leg were unavailable because the install-log root was relative and resolved inside the temporary fixture directory after Push-Location. The path regression test was added before the repair and failed in ordinary CI 38300158837 with “M8 log root must remain absolute”. Repair: resolve Evidence to an absolute directory once, before changing location. The CI check invokes only the path-validation mode (no installs/builds) and writes a probe after changing directory. The pilot is not rerun; working-fixture comparisons remain missing until a separately approved recovery dispatch.
