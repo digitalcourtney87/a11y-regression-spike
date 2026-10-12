@@ -221,3 +221,5 @@ A-007 batch27 unsplit react-modal#732: original Tab containment when first/last 
 ### A-015: Twelfth and thirteenth second-round mined patterns
 
 2026-10-12; owner completion instruction and “Please continue”, P22/P39; DR-0106. Append react-datepicker same-month actual-focus and MUI empty-option freeSolo selection after matching final original criteria/checks and dependency locks. Registry/pattern/split, six items, two twin spec/patches and journeys change frozen set after G4 exposure. Prior assignments/items and measurement definitions preserved. No assigned execution, new tag or M8 work.
+
+A-007 react-modal initial38229251699: all three installs succeed, builds fail because React16.0 predates automatic JSX runtime. Keep all failures; do not upgrade framework after outcomes. Rewrite the same fixture elements/props with supported React.createElement uniformly, leaving the same component, visibility, original Tab-containment criterion and tools. Batch28 first dispatch checks this repaired construct; its second dispatch may independently repeat, with prior batch27 budget exhausted.

@@ -1,0 +1,68 @@
+{
+  "label": "EXPLORATORY",
+  "candidate": "react-modal#732",
+  "sourceOnly": true,
+  "note": "No third-party execution locally.3.8.0/3.2.2/3.1.1 do not exist in registry;3.7.1 already shares flawed code;3.1.0 older pre-overflow hypothesis. NPM source hashes below. Final behavior needs Windows checks.",
+  "sources": [
+    {
+      "file": "m7-reactmodal-hidden-3.1.0.txt",
+      "sha256": "6f8d7ccf719165f010cfee258ea870285eb316f3ab65d5e620403497f7623576",
+      "overflowZeroSizeLogic": false,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.1.13.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.11.1.txt",
+      "sha256": "fb0043bb52067c5aedb6abb7cfd06b6eb2ae3bbab1206cda3b299662a799c5dc",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": true
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.2.1.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.3.2.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.4.5.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.5.1.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.6.1.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.7.1.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    },
+    {
+      "file": "m7-reactmodal-hidden-3.8.1.txt",
+      "sha256": "9b590ed6529e64313995a9f39f64679fe2f4d74ec6d0ac367e40516e88f0c16a",
+      "overflowZeroSizeLogic": true,
+      "fixedScrollSizeGuard": false
+    }
+  ]
+}
