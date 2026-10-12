@@ -34,7 +34,7 @@ const FORM_FIELD_ROLES: ReadonlySet<string> = new Set([
   ...BUTTON_ROLES, "checkbox", "switch", "combobox", "listbox", "tree", "radio", "tab", "menuitemcheckbox",
 ]);
 const LANDMARK_ROLES: ReadonlySet<string> = new Set(["banner", "complementary", "contentinfo", "main", "navigation", "search"]);
-const CONTROL_ROLES: ReadonlySet<string> = new Set([
+export const CONTROL_ROLES: ReadonlySet<string> = new Set([
   ...FORM_FIELD_ROLES, "link", "textbox", "searchbox", "spinbutton", "slider", "menuitem", "menuitemradio", "option", "treeitem", "img", "image",
 ]);
 const TEXT_ROLES: ReadonlySet<string> = new Set(["StaticText", "staticText"]);
@@ -67,7 +67,7 @@ const MATCHERS: Record<Exclude<BrowseStrategy, "BROWSE_NEXT" | "READ_CURRENT">, 
 };
 
 /** Containers whose content NVDA reads as one line. */
-const LINE_ROLES: ReadonlySet<string> = new Set(["listitem", "paragraph", "cell", "gridcell", "rowheader", "columnheader", "option", "menuitem", "menuitemcheckbox", "menuitemradio", "treeitem"]);
+export const LINE_ROLES: ReadonlySet<string> = new Set(["listitem", "paragraph", "cell", "gridcell", "rowheader", "columnheader", "option", "menuitem", "menuitemcheckbox", "menuitemradio", "treeitem"]);
 
 /** The line a node belongs to: the nearest line container (a heading or control counts as its own line), or the node itself. */
 function lineKey(flat: readonly AxNode[], byId: ReadonlyMap<string, AxNode>, i: number): string {
@@ -82,7 +82,7 @@ function lineKey(flat: readonly AxNode[], byId: ReadonlyMap<string, AxNode>, i: 
 }
 
 /** Whether a node starts or carries content on a line (not an empty structural node). */
-function onLine(n: AxNode): boolean {
+export function onLine(n: AxNode): boolean {
   return CONTROL_ROLES.has(n.role) || isHeading(n) || (TEXT_ROLES.has(n.role) && n.name.trim() !== "");
 }
 

@@ -1,14 +1,21 @@
-# P40: working builds only. No corpus registry, candidate release or patch is read.
-param([string]$Out = "builds", [string]$Evidence = "artefacts/calibration", [switch]$ValidatePathsOnly, [string]$RecoveryRequest = "")
+# P40/P41: working builds only; P42: owned controls only. No corpus registry, candidate release or patch is read.
+param([string]$Out = "builds", [string]$Evidence = "artefacts/calibration", [switch]$ValidatePathsOnly, [string]$RecoveryRequest = "", [string]$P42Request = "")
 $ErrorActionPreference = "Stop"
 $repo = (Get-Location).Path
 New-Item -ItemType Directory -Force -Path $Out, $Evidence | Out-Null
-$cases = Get-Content harness/src/runner/calibration-cases.json -Raw | ConvertFrom-Json
+if ($RecoveryRequest -ne "" -and $P42Request -ne "") { throw "pass one approved request" }
+# Without a request only the original P40 cases (no approval field) are eligible.
+$cases = Get-Content harness/src/runner/calibration-cases.json -Raw | ConvertFrom-Json | Where-Object { -not $_.approval }
 $logs = Join-Path (Resolve-Path -LiteralPath $Evidence).Path "build-logs"
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
 if ($RecoveryRequest -ne "") {
   $selectedJson = node harness/src/runner/recoveryPlan.ts $RecoveryRequest
   if ($LASTEXITCODE -ne 0) { throw "recovery request rejected" }
+  $cases = $selectedJson | ConvertFrom-Json
+}
+if ($P42Request -ne "") {
+  $selectedJson = node harness/src/runner/p42Plan.ts $P42Request
+  if ($LASTEXITCODE -ne 0) { throw "P42 request rejected" }
   $cases = $selectedJson | ConvertFrom-Json
 }
 if ($ValidatePathsOnly) { Write-Output $logs; return }
@@ -17,8 +24,11 @@ $tools = Join-Path $env:RUNNER_TEMP "m8-tools"
 New-Item -ItemType Directory -Force -Path $tools | Out-Null
 '{"private":true,"dependencies":{"vite":"8.3.2","@vitejs/plugin-react":"6.0.1"}}' | Out-File -Encoding utf8NoBOM (Join-Path $tools "package.json")
 Copy-Item fixtures/oss-tools/ossBuild.mjs $tools
-npm install --prefix $tools --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $logs "tools.log")
-$toolsExit = $LASTEXITCODE
+$toolsExit = 0
+if ($cases | Where-Object { $_.fixture -notin @("m8-controls", "m9-controls") }) {
+  npm install --prefix $tools --ignore-scripts --no-audit --no-fund 2>&1 | Out-File (Join-Path $logs "tools.log")
+  $toolsExit = $LASTEXITCODE
+}
 $results = @()
 foreach ($case in $cases) {
   $row = [ordered]@{ case = $case.id; app = $case.app; baseRef = $case.baseRef; label = "base"; candidateBuilt = $false; labelEvidence = "EXPLORATORY" }
@@ -28,6 +38,10 @@ foreach ($case in $cases) {
     if ($case.id -eq "controls") {
       New-Item -ItemType Directory -Force -Path $dest | Out-Null
       Copy-Item fixtures/m8-controls/* $dest
+      $row.buildExit = 0
+    } elseif ($case.fixture -eq "m9-controls") {
+      New-Item -ItemType Directory -Force -Path $dest | Out-Null
+      Copy-Item -Force fixtures/m9-controls/* $dest
       $row.buildExit = 0
     } else {
       if ($toolsExit -ne 0) { throw "build tools install failed" }

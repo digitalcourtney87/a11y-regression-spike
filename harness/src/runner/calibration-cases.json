@@ -3,5 +3,8 @@
   { "id": "bootstrap-modal", "app": "oss/bootstrap-39189", "baseRef": "bootstrap@5.3.1", "fixture": "bootstrap-39189", "journeys": ["oss-bootstrap-39189"] },
   { "id": "vuetify-input", "app": "oss/vuetify-22770", "baseRef": "vuetify@3.3.6", "fixture": "vuetify-22770", "journeys": ["oss-vuetify-22770"] },
   { "id": "calendar", "app": "oss/fluent-4620", "baseRef": "office-ui-fabric-react@5.40.2", "fixture": "fluent-4620", "journeys": ["oss-fluent-4620"] },
-  { "id": "multiselect", "app": "oss/carbon-7861", "baseRef": "carbon-components-react@7.28.0", "fixture": "carbon-7861", "journeys": ["oss-carbon-7861"] }
+  { "id": "multiselect", "app": "oss/carbon-7861", "baseRef": "carbon-components-react@7.28.0", "fixture": "carbon-7861", "journeys": ["oss-carbon-7861"] },
+  { "id": "p42-cursor", "app": "m9-controls", "baseRef": "owned-m9-controls@1", "fixture": "m9-controls", "journeys": ["m9-marker-list", "m9-generated-text", "m9-ignored-wrappers", "m9-plain-page"], "approval": "P42/DR-0120", "cursor": "v1", "legs": ["nvda-absent", "nvda-present"], "fullTreeFocusName": true },
+  { "id": "p42-cursor-v2", "app": "m9-controls", "baseRef": "owned-m9-controls@1", "fixture": "m9-controls", "journeys": ["m9-marker-list", "m9-generated-text", "m9-ignored-wrappers", "m9-plain-page"], "approval": "P42/DR-0120", "cursor": "v2", "legs": ["nvda-absent"], "fullTreeFocusName": true },
+  { "id": "p42-focus", "app": "m9-controls", "baseRef": "owned-m9-controls@1", "fixture": "m9-controls", "journeys": ["m9-static-label", "m9-focus-hidden-label", "m9-delayed-label", "m9-unnamed-wrapper"], "approval": "P42/DR-0120", "cursor": "v1", "legs": ["nvda-absent", "nvda-present"], "fullTreeFocusName": true }
 ]

@@ -39,3 +39,17 @@ test("consumed P41 retains its two-leg budget but cannot start another job", () 
   expect(job["timeout-minutes"]).toBe(60);
   expect(job).toHaveProperty("if", "${{ false }}");
 });
+
+
+test("P42 has one push-triggered two-leg job within 120 runner-minutes and no rerun", () => {
+  const workflow = parse(readFileSync(resolve(import.meta.dirname, "../../../.github/workflows/m9-registered-evaluation.yml"), "utf8")) as CalibrationWorkflow & { on: Record<string, unknown> };
+  expect(workflow.on).toEqual({ push: { branches: ["claude/m9-registered-evaluation"], paths: [".github/m9-request.json"] } });
+  expect(Object.keys(workflow.jobs)).toEqual(["calibration"]);
+  const job = workflow.jobs.calibration;
+  if (job === undefined) throw new Error("missing P42 job");
+  expect(job["runs-on"]).toBe("windows-2025");
+  expect(job.strategy.matrix.leg).toEqual(["nvda-absent", "nvda-present"]);
+  expect(job["timeout-minutes"]).toBe(60);
+  expect(job.strategy.matrix.leg.length * job["timeout-minutes"]).toBeLessThanOrEqual(120);
+  expect(job).toHaveProperty("if", "${{ github.run_attempt == 1 }}");
+});

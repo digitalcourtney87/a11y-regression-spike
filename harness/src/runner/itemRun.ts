@@ -93,11 +93,13 @@ import { checkJourneys } from "./journeys.ts";
 import { abbaOrder, repetitionsFor } from "./order.ts";
 import { evaluateAttempt } from "./outcome.ts";
 import { SETUP_NAMES, SETUPS } from "./setups.ts";
-import { CALIBRATION_FOCUS_SCRIPT, calibrationCaseFor, calibrationItems, captureCalibrationPoint } from "./calibration.ts";
-import type { CalibrationPoint, FocusIdentity } from "./calibration.ts";
+import { CALIBRATION_FOCUS_SCRIPT, calibrationCaseFor, calibrationItems, captureCalibrationPoint, focusFromFullTree } from "./calibration.ts";
+import type { CalibrationPoint, FocusIdentity, FullTreeFocus } from "./calibration.ts";
 import { assertItemExecutable } from "./splitGuard.ts";
 import { inconclusiveReasons } from "./validity.ts";
 import { indexOfBackend, lineAt, nextIndex } from "./virtualCursor.ts";
+import { browseV2 } from "./virtualCursorV2.ts";
+import type { CursorPosition } from "./virtualCursorV2.ts";
 
 const EXPECTED_CHROME = "153.0.8010.12";
 const CHROME_FLAGS = ["--force-renderer-accessibility=screen-reader"];
@@ -169,7 +171,7 @@ if (args.app === undefined) throw new Error("--app is required");
 const app: string = args.app;
 if (args.sides !== "both" && args.sides !== "base") throw new Error("--sides must be both or base");
 if (args.journeys !== "" && args.sides !== "base") throw new Error("--journeys develops journeys on the base build only: pass --sides base");
-const calibration = calibrationCaseFor({ caseId: args.calibration, app, journeys: args.journeys, split: args.split, sides: args.sides, items: args.items, reps: args.reps, shard: args.shard });
+const calibration = calibrationCaseFor({ caseId: args.calibration, app, journeys: args.journeys, split: args.split, sides: args.sides, items: args.items, reps: args.reps, shard: args.shard, leg });
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outDir = resolve(args.out);
 const appKey = app.replace("/", "-");
@@ -308,6 +310,21 @@ async function backendIdById(cdp: CDPSession, id: string): Promise<number | null
   }
 }
 
+/** P42 only: the deep active element's node, looked up in one full-tree read (both legs; read-only). */
+async function fullTreeFocus(cdp: CDPSession): Promise<FullTreeFocus> {
+  const { result } = (await cdp.send("Runtime.evaluate", { expression: DEEP_ACTIVE })) as { result: { objectId?: string } };
+  if (result.objectId === undefined) throw new Error("no deep active element");
+  let backendId: number | undefined;
+  try {
+    const { node } = (await cdp.send("DOM.describeNode", { objectId: result.objectId })) as { node: { backendNodeId?: number } };
+    backendId = node.backendNodeId;
+  } finally {
+    await cdp.send("Runtime.releaseObject", { objectId: result.objectId }).catch(() => undefined);
+  }
+  if (backendId === undefined) throw new Error("deep active element has no backend id");
+  return focusFromFullTree(await fullTree(cdp), backendId);
+}
+
 /** The anchor's accessible name, from Chrome's accessibility tree (the handover compares it with the MSAA focus read). */
 async function anchorName(cdp: CDPSession, selector: string): Promise<string> {
   const { result } = (await cdp.send("Runtime.evaluate", { expression: `document.querySelector(${JSON.stringify(selector)})` })) as { result: { objectId?: string } };
@@ -424,8 +441,8 @@ interface Runtime {
   helper: WinHelper;
   hwnd: number;
   nvda: NvdaRun | null;
-  /** The simulated virtual cursor's node (NVDA-absent leg; P23). */
-  cursor: { backendId?: number };
+  /** The simulated virtual cursor's node (NVDA-absent leg; P23). `position` is set by cursor v2 only (P42). */
+  cursor: { backendId?: number; position?: CursorPosition };
   /** The focused node when last read, so the cursor can follow focus as NVDA's browse cursor does. */
   focusBackend?: number;
   /** Set by DOCUMENT_TOP: the next browse step starts before the first line (P26). */
@@ -531,6 +548,18 @@ async function act(rt: Runtime, step: AtStep, absent: boolean): Promise<void> {
       rt.cursorAtTop = true;
       return;
     default: {
+      // P42 cursor v2: only when a registered calibration case selects it (DR-0120).
+      if (calibration?.cursor === "v2") {
+        const start = rt.cursorAtTop === true ? null : (rt.cursor.position ?? (rt.cursor.backendId === undefined ? {} : { backendId: rt.cursor.backendId }));
+        rt.cursorAtTop = false;
+        const r = browseV2(await fullTree(cdp), start, step.strategy, focused?.backendId === undefined ? undefined : { backendId: focused.backendId });
+        if (r === null) return;
+        // ACTIVATE keeps v1's rule: it acts on the last backend-carrying node.
+        const backendId = r.position.backendId ?? rt.cursor.backendId;
+        rt.cursor = { ...(backendId === undefined ? {} : { backendId }), position: r.position };
+        cursorLine.set(rt, r.line);
+        return;
+      }
       const flat = flattenAxTree(await fullTree(cdp));
       let from = rt.cursorAtTop === true ? -1 : indexOfBackend(flat, rt.cursor.backendId);
       if (from < 0 && rt.cursorAtTop !== true) from = indexOfBackend(flat, focused?.backendId);
@@ -576,6 +605,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
   run.reachedAt = null;
   let lastInputAt = run.startedAt ?? qpcNowNs();
   const diagnosticFocus = (): Promise<FocusIdentity> => rt.page.evaluate<FocusIdentity>(CALIBRATION_FOCUS_SCRIPT);
+  const diagnosticFullTree = calibration?.fullTreeFocusName === true && (step.strategy === "TAB" || step.strategy === "SHIFT_TAB") ? () => fullTreeFocus(rt.cdp) : undefined;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     const since = qpcNowNs();
     lastInputAt = since;
@@ -583,13 +613,13 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
     await sleep(ATTEMPT_SETTLE_MS[leg]);
     await afterAction();
     if (goal === undefined) {
-      if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, () => goalTarget(rt, step, absent, since), diagnosticFocus, qpcNowNs));
+      if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, () => goalTarget(rt, step, absent, since), diagnosticFocus, qpcNowNs, diagnosticFullTree));
       run.reachedAt = 1;
       break;
     }
     const target = { ...(await goalTarget(rt, step, absent, since)), attempt, t: since };
     run.goalTrace?.push(target);
-    if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, target, diagnosticFocus, qpcNowNs));
+    if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("goal-check", leg, target, diagnosticFocus, qpcNowNs, diagnosticFullTree));
     const met = target.speech !== undefined ? speechMatchesGoal(target.speech, goal) : target.line !== undefined ? target.line.some((x) => nodeMatchesGoal(x, goal)) : target.node != null && nodeMatchesGoal(target.node, goal);
     if (met) {
       run.reachedAt = attempt;
@@ -617,7 +647,7 @@ async function runAtStep(rt: Runtime, step: AtStep, segmentId: string, absent: b
   }
   // Speech here is cumulative since last input. Use retained speechEvents QPC timestamps
   // and diagnostic boundaries for disjoint early/late intervals; never infer delayed arrival from this snapshot.
-  if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("observation-end", leg, () => goalTarget(rt, step, absent, lastInputAt), diagnosticFocus, qpcNowNs));
+  if (calibration !== null) (run.calibration ??= []).push(await captureCalibrationPoint("observation-end", leg, () => goalTarget(rt, step, absent, lastInputAt), diagnosticFocus, qpcNowNs, diagnosticFullTree));
   const ids = [...new Set(step.expectations.flatMap((e) => (e.type === "focusOn" || e.type === "stateIs" ? [e.value.split("|")[1] ?? ""] : [])).filter((n) => n.startsWith("#")).map((n) => n.slice(1)))];
   if (ids.length > 0) run.targets = await Promise.all(ids.map(async (id) => ({ id, backendId: await backendIdById(rt.cdp, id).catch(() => null) })));
   run.ariaSnapshot = await rt.page.locator("body").ariaSnapshot().catch((e: unknown) => `error: ${errorText(e)}`);
@@ -1147,7 +1177,7 @@ function readJourneyFiles(): Map<string, unknown> {
 async function main(): Promise<void> {
   mkdirSync(outDir, { recursive: true });
   if (args.split !== "dev" && args.split !== "test") throw new Error(`--split must be dev or test, not ${args.split}`);
-  const summary: Json = { ...(calibration === null ? {} : { calibrationCase: calibration.id, calibrationApproval: "P40/DR-0114", internalModeObservation: "unavailable; no new relay API" }), label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
+  const summary: Json = { ...(calibration === null ? {} : { calibrationCase: calibration.id, calibrationApproval: calibration.approval, internalModeObservation: "unavailable; no new relay API", ...(calibration.approval === "P40/DR-0114" ? {} : { cursorModel: leg === "nvda-absent" ? calibration.cursor : "unused; NVDA browse cursor", fullTreeFocusName: calibration.fullTreeFocusName }) }), label: args.split === "test" && args.journeys === "" ? "CONFIRMATORY" : "EXPLORATORY", jobId, app, leg, startedQpcNs: qpcNowNs() };
   const corpus = calibration === null ? readCorpus() : [];
   const wantedIds = args.items === "" ? null : new Set(args.items.split(",").map((s) => s.trim()));
   const devJourneys = args.journeys.split(",").map((s) => s.trim()).filter((s) => s !== "");

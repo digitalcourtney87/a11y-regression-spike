@@ -1,19 +1,23 @@
-/** One approved M8 leg: serial base-only cases, no retry or corpus loading. */
+/** One approved M8 or P42 leg: serial base-only cases, no retry or corpus loading. */
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 
 import { qpcNowNs } from "../clock/qpc.ts";
+import { p42Plan } from "./p42Plan.ts";
 import { recoveryPlan } from "./recoveryPlan.ts";
 import { CALIBRATION_CASES } from "./calibration.ts";
 
-const { values } = parseArgs({ options: { leg: { type: "string" }, "recovery-request": { type: "string" }, out: { type: "string", default: "artefacts/calibration" } } });
+const { values } = parseArgs({ options: { leg: { type: "string" }, "recovery-request": { type: "string" }, "p42-request": { type: "string" }, out: { type: "string", default: "artefacts/calibration" } } });
 if (values.leg !== "nvda-absent" && values.leg !== "nvda-present") throw new Error("calibration requires one declared leg");
 const recoveryRequest = values["recovery-request"];
-const cases = recoveryRequest === undefined ? CALIBRATION_CASES : recoveryPlan(JSON.parse(readFileSync(recoveryRequest, "utf8")));
-const approval = recoveryRequest === undefined ? "P40/DR-0114" : "P41/DR-0116";
-if (recoveryRequest === undefined) {
+const p42Request = values["p42-request"];
+if (recoveryRequest !== undefined && p42Request !== undefined) throw new Error("pass one approved request");
+// Without a request only the original P40 cases are eligible; P42 cases need the P42 request (DR-0120).
+const cases = p42Request !== undefined ? p42Plan(JSON.parse(readFileSync(p42Request, "utf8")), values.leg) : recoveryRequest !== undefined ? recoveryPlan(JSON.parse(readFileSync(recoveryRequest, "utf8"))) : CALIBRATION_CASES.filter((c) => c.approval === "P40/DR-0114");
+const approval = p42Request !== undefined ? "P42/DR-0120" : recoveryRequest === undefined ? "P40/DR-0114" : "P41/DR-0116";
+if (recoveryRequest === undefined && p42Request === undefined) {
   const request = JSON.parse(readFileSync(".github/m8-request.json", "utf8")) as { approval?: string; dispatches?: number; jobs?: number; timeoutMinutes?: number; repetitions?: number };
   if (request.approval !== "DR-0114" || request.dispatches !== 1 || request.jobs !== 2 || request.timeoutMinutes !== 60 || request.repetitions !== 3) throw new Error("request exceeds the approved P40 envelope");
 }
