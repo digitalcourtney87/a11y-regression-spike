@@ -11,10 +11,10 @@ export default async function check({ page, fresh }) {
         if (reached) break;
       }
       if (!reached) throw new Error("Select input not keyboard reachable");
-    } else await input.click();
+    } else await p.locator(".colors__control").click();
     await p.keyboard.type("o");
     await p.waitForTimeout(300);
-    const active = () => input.evaluate((el) => document.getElementById(el.getAttribute("aria-activedescendant"))?.textContent ?? "");
+    const active = () => p.locator(".colors__option--is-focused").allTextContents().then((values) => values.join(""));
     const initial = await active();
     if (initial !== "Ocean") throw new Error(`Filtered Ocean precondition failed: ${initial}`);
     await p.keyboard.press("ArrowDown");
