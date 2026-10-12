@@ -465,3 +465,5 @@ DR-0103; A-012; [Carbon repeat](research/m7-completion-evidence/carbon-7861-repe
 2026-10-12 M8 bounded pilot completed with partial evidence; build path repaired and CI-tested, no experiment rerun. See DR-0114/0115, docs/reports/M8-calibration.md, docs/gates/M8-calibration-brief.md and docs/plans/M8-recovery-proposal.md.
 
 2026-10-12 — M8 working-only recovery completed; report `docs/reports/M8-working-recovery.md`, gate brief `docs/gates/M8-recovery-brief.md`, retained audit `docs/research/m8-recovery-evidence/`, DR-0116/DR-0117.
+
+2026-10-12 — M8 closed after PR17 merge; recovery archive published on results at `363cbf5`. See DR-0118. No new execution.
