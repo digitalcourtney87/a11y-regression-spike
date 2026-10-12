@@ -30,7 +30,8 @@ export default async function check({ page, fresh }) {
     await p.keyboard.press("Tab");
     const wrapped = await first.evaluate((el) => el === document.activeElement);
     const escapes = await p.evaluate(() => window.dialogEscapes);
-    return { holds: wrapped && escapes.length === 0, detail: `First action wrap=${wrapped}; outside focus events=${JSON.stringify(escapes)}` };
+    const activeTag = await p.evaluate(() => document.activeElement?.tagName);
+    return { holds: wrapped && escapes.length === 0, detail: `First action wrap=${wrapped}; outside focus events=${JSON.stringify(escapes)}; active tag=${activeTag}` };
   };
   return { pointer: await scenario(page, false), keyboard: await scenario(await fresh(), true), benignTwin: await scenario(await fresh(), true, true) };
 }
