@@ -13,3 +13,5 @@ Alternatives considered: a second independent AT runner would duplicate handover
 - [ ] Run targeted tests, full suite, lint/typecheck and workflow/clock safety policies; commit/push and verify ordinary CI.
 - [ ] Commit the single dispatch request; retain both jobs regardless of outcome. Download, audit and report failures/unavailable observations; do not rerun.
 - [ ] Prepare evidence/archive and reviewable result PR. Original M7 corpus, scores, oracles and freeze-v4 remain unchanged.
+
+Pre-dispatch CI38298492501: PowerShell syntax, lint/typecheck and754 tests passed; the full-repository commercial-content tripwire scan exceeded the default5000ms test timeout at6523ms. Increase only that integration test deadline to30000ms, retaining every file/digest/rule. This is ordinary CI, not a pilot dispatch; no Windows experiment was run or retried. Decided under DR-0045.
