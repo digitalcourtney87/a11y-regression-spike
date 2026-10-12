@@ -1,0 +1,27 @@
+{
+  "id": "m9-generated-text",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=generated-text",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-to-target",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Generated target reached",
+        "maxAttempts": 10
+      }
+    }
+  ]
+}

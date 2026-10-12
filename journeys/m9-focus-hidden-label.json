@@ -1,0 +1,21 @@
+{
+  "id": "m9-focus-hidden-label",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=focus-hidden-label",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "reach-field",
+      "strategy": "TAB",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Billing code",
+        "role": "textbox",
+        "maxAttempts": 1
+      }
+    }
+  ]
+}

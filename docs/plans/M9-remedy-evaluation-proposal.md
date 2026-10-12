@@ -1,6 +1,6 @@
 # Proposed M9: registered evaluation of cursor identity and focus-name reads
 
-Status: proposed by Claude, P42, not approved (DR-0119). Nothing is implemented, registered or dispatched. M8 is closed (DR-0118); this follows the next step named in [the recovery report](../reports/M8-working-recovery.md). The documented milestones end at M7; as with M8, this scopes a possible next task, not a product milestone.
+Status: approved by the owner after PR19 merge (P42, DR-0120). Registered criteria: [2026-10-12-m9-registered-criteria.md](2026-10-12-m9-registered-criteria.md). M8 is closed (DR-0118); this follows the next step named in [the recovery report](../reports/M8-working-recovery.md). The documented milestones end at M7; as with M8, this scopes a possible next task, not a product milestone.
 
 ## Objective
 

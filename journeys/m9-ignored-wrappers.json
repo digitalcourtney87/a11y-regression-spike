@@ -1,0 +1,27 @@
+{
+  "id": "m9-ignored-wrappers",
+  "version": "1",
+  "app": "m9-controls",
+  "entryUrl": "/?case=ignored-wrappers",
+  "anchor": "body",
+  "steps": [
+    {
+      "kind": "at",
+      "id": "start-document",
+      "strategy": "DOCUMENT_TOP",
+      "observeMs": 1000,
+      "expectations": []
+    },
+    {
+      "kind": "at",
+      "id": "read-to-target",
+      "strategy": "BROWSE_NEXT",
+      "observeMs": 1000,
+      "expectations": [],
+      "until": {
+        "name": "Wrapper target reached",
+        "maxAttempts": 10
+      }
+    }
+  ]
+}

@@ -44,6 +44,9 @@ jobs:
           $request = Join-Path $env:RUNNER_TEMP 'm8-recovery-path-proof.json'
           '{"approval":"DR-0116","dispatches":1,"jobs":2,"timeoutMinutes":60,"repetitions":3,"cases":["bootstrap-modal","vuetify-input","calendar","multiselect"]}' | Out-File -Encoding utf8NoBOM $request
           ./harness/src/runner/calibrationBuild.ps1 -Out artefacts/m8-path-proof/builds -Evidence artefacts/m8-path-proof/evidence -ValidatePathsOnly -RecoveryRequest $request | Out-Null
+          $p42 = Join-Path $env:RUNNER_TEMP 'm9-request-proof.json'
+          '{"approval":"DR-0120","dispatches":1,"jobs":2,"timeoutMinutes":60,"repetitions":3,"cases":["p42-cursor","p42-cursor-v2","p42-focus"]}' | Out-File -Encoding utf8NoBOM $p42
+          ./harness/src/runner/calibrationBuild.ps1 -Out artefacts/m9-path-proof/builds -Evidence artefacts/m9-path-proof/evidence -ValidatePathsOnly -P42Request $p42 | Out-Null
       - run: npm test
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:
