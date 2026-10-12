@@ -1,0 +1,3 @@
+# M7 completion batch twenty-five — EXPLORATORY, before source queries
+
+Same eight public React-library repositories as batch24. One closed issue query regression in:title per repository, creation descending, first30 hits, at most two new per query after prior-candidate exclusions and body functional keyword filter (combobox/select/input/textfield/date/menu/dialog/popover/onchange). Eight calls, max16 selected candidates; retain every query/filter/cap outcome. No selection from G4 misses. At most two new fixtures/two exploratory dispatches after original keyboard task, source-supported stable same-package pair and applicable fix qualification. Existing framework pins/context/security remain fixed; no assigned execution or tag. Continue77-pattern completion, currently69.

@@ -1,0 +1,1864 @@
+{
+  "phase": "EXPLORATORY",
+  "batch": 24,
+  "queries": [
+    {
+      "query": "repo:react-dates/react-dates is:issue is:closed keyboard in:title",
+      "totalHits": 13,
+      "hits": [
+        {
+          "number": 1706,
+          "title": "The keyboard shortcuts panel toggle button is not displayed in Chrome",
+          "disposition": "selected"
+        },
+        {
+          "number": 1009,
+          "title": "Keyboard keystroke to enter date picker is not discoverable",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 937,
+          "title": "[a11y] Tabbing away from date picker results in keyboard trap in Safari, Edge/IE",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 872,
+          "title": "DayPickerRangeController highlight selection does not remove when using keyboard",
+          "disposition": "selected"
+        },
+        {
+          "number": 831,
+          "title": "`DayPickerRangeController` leaves ghost values when using a keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 774,
+          "title": "Right to left keyboard navigation ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 737,
+          "title": "Keyboard shorcuts triangle button renders as square in Chrome 63 Canary ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 717,
+          "title": "Firefox accessibility issue no focus on calendar picker can't select a day via keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 466,
+          "title": "Disable keyboard shortcuts panel",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 462,
+          "title": "Day Picker Keyboard Shortcuts panel on single month view is overflowing",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 461,
+          "title": "Keyboard Shortcuts button on single month overlap with CalendarDay",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 427,
+          "title": "Keyboard Accessibility help modal broken when only 1 month is visible",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 361,
+          "title": "End Date: once you pick in date you cant change it with keyboard",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:react-dates/react-dates is:issue is:closed focus in:title",
+      "totalHits": 21,
+      "hits": [
+        {
+          "number": 2090,
+          "title": "Focused element is off by one when selecting start date",
+          "disposition": "selected"
+        },
+        {
+          "number": 1915,
+          "title": "Blocked date typed into a DatePicker is recognized as a valid date (calendar is losing focus and date is selected))",
+          "disposition": "selected"
+        },
+        {
+          "number": 1870,
+          "title": "DatePickerSingleDate focus issue when tabing, tab-index is set to -1 for all available dates",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1816,
+          "title": "Date input jumps to nearest Saturday on focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1815,
+          "title": "Both Single / Range Pickers change date to first day of the week on focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1809,
+          "title": "DRP: drop down not closing when (forward) tabbing out of focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1808,
+          "title": "DRP: Start date being unintentionally set to the last value of current week when focusing it a second time",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1799,
+          "title": "Single date picker date change on focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1570,
+          "title": "I have a custom input which controls the DayPickerSingleDateController. I want to keep focus on the input when I am interacting with the date picker.  ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1420,
+          "title": "Clicking on buttons inside of the DayPickerRangeController does not handle focus correctly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1319,
+          "title": "Focus on a date when calendar is opened",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 830,
+          "title": "Avoid initial input focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 719,
+          "title": "React DateRangePicker clicking either start or end date focuses on end date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 717,
+          "title": "Firefox accessibility issue no focus on calendar picker can't select a day via keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 626,
+          "title": "Focus on second field, when the first one is choosen.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 360,
+          "title": "Is it possible for the SingleDatePicker component to return the currently focused/rendered calendar month?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 151,
+          "title": "go to start/end date on focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 138,
+          "title": "Auto-focusing startDate",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 120,
+          "title": "SingleDatePicker gets refocused if window put out and back into focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 82,
+          "title": "Focus/Selectable state on DayPicker?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 77,
+          "title": "type error when set date null and focused false of SingleDatePicker props",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:Hacker0x01/react-datepicker is:issue is:closed keyboard in:title",
+      "totalHits": 89,
+      "hits": [
+        {
+          "number": 6035,
+          "title": "Add keyboard navigation (ArrowUp/ArrowDown/Enter) support for time-only pickers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5750,
+          "title": "WCAG - Keyboard navigation with inline, range selection, showPreviousMonths and openToDate sometimes loses focus",
+          "disposition": "selected"
+        },
+        {
+          "number": 5669,
+          "title": "YearPicker is not applying --keyboard-selected when there is no default selected date passed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5609,
+          "title": "showYearDropdown and showMonthYearDropdown are not accessible via keyboard",
+          "disposition": "selected"
+        },
+        {
+          "number": 5577,
+          "title": "Double selected month and year when previously selected and selected via keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5576,
+          "title": "Double selected month and year when previously selected and selected via keyboard\"",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5575,
+          "title": "Double selected month and year when previously selected and selected via keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5490,
+          "title": "keyboard-selected is applied incorrectly.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5459,
+          "title": "Search date by keyboard typing does not work v8",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5218,
+          "title": "Keyboard arrow navigation does not work in Year Picker and Quarter Picker",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5147,
+          "title": "Keyboard Navigation to the days of a month is not working if the pre-selected date is disabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5135,
+          "title": "Keyboard Selection Styles Absent In Date Range",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4850,
+          "title": "Keyboard navigation not working as expected when includeDates is set.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4731,
+          "title": "MonthYearPicker: Excluded/Disabled Months are able to be navigated to with keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4701,
+          "title": "Keyboard not working when showTimeSelectOnly is True",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4657,
+          "title": "Space Bar and Enter key press to select the range of month (incorrect month selected from keyboard after first selection with calendar still open)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4482,
+          "title": "Month in Month Picker and Year in Year Picker cannot be selected by pressing the \"Space\" on keyboard.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4456,
+          "title": "Keyboard accessibility of Shift+PageUp and Shift+PageDown not aligned with ARIA authoring practices guide",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4446,
+          "title": "Incorrect keyboard behavior in the year selection calendar.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4420,
+          "title": "Keyboard accessibility not aligned with ARIA authoring practices guide",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4400,
+          "title": "Keyboard accessibility navigation not working on MonthYearPicker",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4361,
+          "title": "Disabling Mobile Keyboard Popup Without Using Readonly Mode in Datepicker",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4127,
+          "title": "showYearDropdown and showMonthYearDropdown are not accessible via keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4011,
+          "title": "Keyboard navigation is disabled if minDate or maxDate are `null`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3944,
+          "title": "Keyboard focus gets lost upon invoking elements in the date picker of the 'expiration date'.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3885,
+          "title": "The Today Button is not accessible via Tab key for keyboard users",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3884,
+          "title": "The Clear Button is not accessible via Tab key for keyboard users.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3876,
+          "title": "month picker keyboard selected class names issue and update solution",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3869,
+          "title": "Is there any way to input startDate and endDate from keyboard when we use selectRange? I have tried but not working.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3785,
+          "title": "Keyboard navigation when including times is very cumbersome (Accessibility) ",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:Hacker0x01/react-datepicker is:issue is:closed focus in:title",
+      "totalHits": 45,
+      "hits": [
+        {
+          "number": 5784,
+          "title": "Calendar lose focus from day after selection `startDay` when `selectsRange` equal `true`",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5750,
+          "title": "WCAG - Keyboard navigation with inline, range selection, showPreviousMonths and openToDate sometimes loses focus",
+          "disposition": "duplicate/queued"
+        },
+        {
+          "number": 5428,
+          "title": "Arrow-navigation in calendar does not change focus, breaking accessibility",
+          "disposition": "selected"
+        },
+        {
+          "number": 5366,
+          "title": "Focus behaviour after closing changed after 7.6.0",
+          "disposition": "selected"
+        },
+        {
+          "number": 5262,
+          "title": "Ability to prevent input from being given focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 5230,
+          "title": "Search icon click doesn't focus input field ( Date Picker with Custom Input)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5134,
+          "title": "Unable To Set Focus After Date Selection",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 5010,
+          "title": "Disabled date focus issue in Month, Year and Quarter Picker Views",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4949,
+          "title": "Custom time input needs 2 clicks to focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4847,
+          "title": "Able to focus on disabled months.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 4834,
+          "title": "Support ref.focus() alias",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 4514,
+          "title": "Time input field loses focus after one character input",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3990,
+          "title": "How to change focused inputs border color?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3944,
+          "title": "Keyboard focus gets lost upon invoking elements in the date picker of the 'expiration date'.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3927,
+          "title": "[Accessibility] Focus position in Month Picker",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3825,
+          "title": "Auto focus on selected date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3771,
+          "title": " Keyboard focus is not visible on header section.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3770,
+          "title": "On receiving focus itself, 'Date picker' pop-ups present for 'Date' edit fields are getting triggered.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3768,
+          "title": " In scan mode, narrator focus is moving on to all the 'Days' at once & narrating as 'Su Mo Tu we......'.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3635,
+          "title": "Accessibility issue - when date picker closes focus does not return on input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3633,
+          "title": "Accessibility issue - when selecting day focus goes on previous selected day ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3522,
+          "title": "Focus is not handled correctly with portals",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3121,
+          "title": "onCalendarClose the focus goes to body element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2747,
+          "title": "Keyboard-Focus gets lost when selecting range across months in inline version",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2170,
+          "title": "Year selection does not allow calendar to be focused by keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2146,
+          "title": "Accessibility: Calendar does not show when focusing the input with keyboard navigation after it has been closed with Escape",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2109,
+          "title": "reactdatepicker.com broken scroll/focus behavior (unusable)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2105,
+          "title": "Focus Event Hijacked on Some Edge/IE11 browsers When Clicking Other input[type=text]",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2058,
+          "title": "The calendar is focused when tabbing out of the input field",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2051,
+          "title": "customInput lost the focus after entering one or max 2 characters",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:gpbl/react-day-picker is:issue is:closed keyboard in:title",
+      "totalHits": 19,
+      "hits": [
+        {
+          "number": 2838,
+          "title": "Keyboard navigation moves focus outside visible month when navigation is disabled",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2806,
+          "title": "Custom Day component breaks keyboard navigation between days.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1968,
+          "title": "Bug: Using min breaks range selection with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1752,
+          "title": "Bug: Safari keyboard navigation does not work",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1491,
+          "title": "Bug: Home and End keyboard buttons does not take weekStartsOn into consideration",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1279,
+          "title": "Add keyboard navigation for navigating between months",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1237,
+          "title": "Disable all Keyboard Events",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1031,
+          "title": "feature(v8) Make keyboard navigation working correctly",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1023,
+          "title": "Prevent disabled days from being included in keyboard events",
+          "disposition": "selected"
+        },
+        {
+          "number": 837,
+          "title": "RTL keyboard handling issues",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 783,
+          "title": "Navigate from DayPickerInput to DayPicker with the keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 601,
+          "title": "Calendar when using DayPickerInput isn't keyboard accessible",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 582,
+          "title": "DayPickerInput on mobile triggers focus, which brings the keyboard over the calendar",
+          "disposition": "selected"
+        },
+        {
+          "number": 456,
+          "title": "Keyboard navigation",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 430,
+          "title": "Next and Previous buttons cannot be operated via keyboard.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 268,
+          "title": "Fix keyboard navigation bug when using custom classNames",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 222,
+          "title": "Keyboard navigation of captionElement select menus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 162,
+          "title": "Keyboard navigation allows to navigate before `fromMonth`",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 51,
+          "title": "Improve keyboard navigation",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:gpbl/react-day-picker is:issue is:closed focus in:title",
+      "totalHits": 39,
+      "hits": [
+        {
+          "number": 3009,
+          "title": "Focus is lost when a controlled month change removes the focused day",
+          "disposition": "selected"
+        },
+        {
+          "number": 2858,
+          "title": "Simulating focusing and pressing Enter on a disabled date causes it to appear enabled and fires onSelect in 9.11.2 but didn't in 9.11.1",
+          "disposition": "selected"
+        },
+        {
+          "number": 2843,
+          "title": "Arrow keys don\u2019t work for selecting a day if the focused day is disabled.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2838,
+          "title": "Keyboard navigation moves focus outside visible month when navigation is disabled",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2725,
+          "title": "`autoFocus` not focusing the selected day if after today's date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2630,
+          "title": "Current focus can be lost if next or previous month buttons become disabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2402,
+          "title": "Range select focus.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2237,
+          "title": "DayPickerInput with custom input component losing focus when changing its value",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2173,
+          "title": "Improve focus capabilities",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2110,
+          "title": "inactive elements in the focus order - accessibility issue",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1675,
+          "title": "Bug: Calendar loses focus in chrome when previousMonth button is disabled",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1567,
+          "title": "Bug: Stuck in a focus loop trying to focus outside day",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1529,
+          "title": ":focus vs :focus-visible",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1486,
+          "title": "Bug: Focus of custom caption is lost ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1471,
+          "title": "Bug: Screen Reader NVDA - reading all dates after focused date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1320,
+          "title": "Focus navigation breaks with disabled days ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1278,
+          "title": "Improve support for ARIA focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1236,
+          "title": "Tab navigation always focuses on the first day of the month",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1071,
+          "title": "Using state with custom component prevents from focusing input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 986,
+          "title": "Wrong/confusing `focus the \"to\" input field` comment in example",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 926,
+          "title": "Problems with DayPicker Overlay focus and hiding",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 913,
+          "title": "Have a focus prop that will bring the date in focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 892,
+          "title": "Remove focus ring on click",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 839,
+          "title": "Focus lost from caption element when choosing a new date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 792,
+          "title": "Bug: custom overlay won't close when pressing `esc` button or clicking outside (once having focus)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 773,
+          "title": "By pressing tab in DayPickerInput, the body element is focused if it opened in react modal",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 746,
+          "title": "Setting custom component results in focus error after selecting a date (this.input ref is null)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 652,
+          "title": "Inputs inside overlay cannot keep focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 630,
+          "title": "Cannot read property 'focus' of undefined in DayPicker",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 599,
+          "title": "v7 - Input stealing focus when interacting with caption element",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:jquense/react-widgets is:issue is:closed keyboard in:title",
+      "totalHits": 10,
+      "hits": [
+        {
+          "number": 981,
+          "title": "DateTimePicker keyboard navigation",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 897,
+          "title": "Dropdownlist options not being read by screen reader when navigating with keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 811,
+          "title": "I cannot type dot in numberpicker with keyboard.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 789,
+          "title": "DateTimePicker: Prevent keyboard input or copy pasting",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 555,
+          "title": "Android keyboard covers multiselect options dropdown",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 463,
+          "title": "Multiselect Feature request: Keyboard shorcut Tab",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 333,
+          "title": "Select List keyboard / mouse focus behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 272,
+          "title": " Don't bring up keyboard when selecting date/time from mobile",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 101,
+          "title": "DropdownList - keyboard / screen-reader accessibility",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 100,
+          "title": "Calendar: Changing months too quickly causes keyboard input to stop working",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:jquense/react-widgets is:issue is:closed focus in:title",
+      "totalHits": 24,
+      "hits": [
+        {
+          "number": 1100,
+          "title": "Dropdowns no longer set the first item to focused",
+          "disposition": "selected"
+        },
+        {
+          "number": 946,
+          "title": "DropdownList hover should change rw-state-focus element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 913,
+          "title": "Arrow only shows when focused",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 887,
+          "title": "DateTimePicker Time not auto focused after picking a date",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 856,
+          "title": "focus event  calendar not working on Ios Safari when select date.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 834,
+          "title": "When focus on DropdownList how to submit by enter?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 816,
+          "title": "DateTimePicker:  Reset Calendar Focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 704,
+          "title": "Keep formatting when focused",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 672,
+          "title": "Dropdownlist - onToggle is triggered when the focus is lost",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 595,
+          "title": "is there a property to make Combobox automatically open when the text field gets focused?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 581,
+          "title": "v4 DropdownList not auto-focusing the input box for searching",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 558,
+          "title": "NumberPicker hides the decimal unless focused",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 557,
+          "title": "ComboBox should allow having no focused item",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 471,
+          "title": "Alt-*  browser shortcuts don't work when DateTimePicker has focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 446,
+          "title": "How to drop down on focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 422,
+          "title": "Focus on inputs",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 339,
+          "title": "Feature request: possibility to programatically focus/blur all components",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 333,
+          "title": "Select List keyboard / mouse focus behavior",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 195,
+          "title": "I am not sure how you set focus to the ComboBox when my react component mounts",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 182,
+          "title": "Combobox - expose focused item",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 178,
+          "title": "Multiselect Always Open When Focused",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 157,
+          "title": "DropdownList error at losing the focus",
+          "disposition": "selected"
+        },
+        {
+          "number": 122,
+          "title": "Problem with the focus (DatePicker/TimePicker)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 60,
+          "title": "Focus on Multiselect",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed keyboard in:title",
+      "totalHits": 13,
+      "hits": [
+        {
+          "number": 4440,
+          "title": "Checkbox is not keyboard-accessible.",
+          "disposition": "selected"
+        },
+        {
+          "number": 3481,
+          "title": "Can't clear a clearable single-selection Dropdown using the keyboard",
+          "disposition": "selected"
+        },
+        {
+          "number": 3251,
+          "title": "Docs: make the filter keyboard shortcut other than \"/\" (for international keyboards)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3198,
+          "title": "Dropdown fires onChange when navigating through the options with keyboard cursor (UP and DOWN) instead of when you actually select the desired option (RETURN)",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2587,
+          "title": "Checkbox: doesn't toggle its state, when using only the keyboard ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1935,
+          "title": "Dropdown: keyboard navigation in non-search Dropdown",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1875,
+          "title": "Dropdown: Error occurred with keyboard action",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1797,
+          "title": "Attached <Button /> does not respond on keyboard events",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1487,
+          "title": "Dropdown: change active item on keyboard up/down",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 993,
+          "title": "Dropdown keyboard arrows don't work when rendering with children dropdown menu",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 958,
+          "title": "Dropdown menu errors out when navigating with keyboard",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 175,
+          "title": "Modal Keyboard Event Handlers",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 174,
+          "title": "Form Keyboard Event Handlers",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed focus in:title",
+      "totalHits": 33,
+      "hits": [
+        {
+          "number": 4160,
+          "title": "Search-in-menu dropdowns close when search input is focused (filtering items is impossible)",
+          "disposition": "selected"
+        },
+        {
+          "number": 4045,
+          "title": "Dropdown will close when the search input is focused",
+          "disposition": "selected"
+        },
+        {
+          "number": 3661,
+          "title": "Dropdowns close when embedded Input becomes the focus",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3498,
+          "title": "Prop autoComplete='random-string'  changes to autoComplete='off' on focus of Input",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3480,
+          "title": "Dropdown: doesn't open on focus the first time after selecting an option",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3476,
+          "title": "Dropdown with Input closes when focusing the input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3402,
+          "title": "Checkbox: no way to prevent to be focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 3349,
+          "title": "Dropdown: focus is lost after selection",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3158,
+          "title": "Dropdown: loses focus after a selection has been removed",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3116,
+          "title": "Set focus on confirm button in Confirm Component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 3005,
+          "title": "Popup: closed on trigger blur even when portal content is focused",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2696,
+          "title": "Pagination: focus not removed after click",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2542,
+          "title": "Search inside Popup does not show results when focused via ref",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2447,
+          "title": "Dropdown menu only closes when it loses focus if the parent dropdown has been clicked",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 2358,
+          "title": "Dropdown hides when inside form get focus. ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 2298,
+          "title": "Input: animation on focus doesn't work now",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1970,
+          "title": "Input: 'focus' method does not exist in typings",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1968,
+          "title": "Clicking on label does not focus input field",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1962,
+          "title": "SearchField triggers blur & focus event twice",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1905,
+          "title": "Dropdown closes when attempting to focus child input",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1806,
+          "title": "RFC: Dropdown loses the focus on the search input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1749,
+          "title": "How do you trigger a popup via props and not a button click/hover/focus?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1740,
+          "title": "Button: add focus() method",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1593,
+          "title": "Dropdown: Closes whenever input field focused",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1495,
+          "title": "Dropdown: Unnecessary extra calls state of focus.",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1475,
+          "title": "Add focus method to Input component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1370,
+          "title": "Modal & redux-form doesn't work : focus lose.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1335,
+          "title": "Checkbox: focus not properly activated on click",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1324,
+          "title": "Popups and Tooltips steal focus from input fields",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 1305,
+          "title": "Feature Request: AllowAdditions in dropdown to retain text on focus",
+          "disposition": "query-cap"
+        }
+      ]
+    },
+    {
+      "query": "repo:moroshko/react-autosuggest is:issue is:closed keyboard in:title",
+      "totalHits": 8,
+      "hits": [
+        {
+          "number": 449,
+          "title": "highlightFirstSuggestion = true, Jumps on Keyboard DOWN to the second result",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 406,
+          "title": "Old broswers and keyboard problem",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 268,
+          "title": "Unpredictable 'valueBeforeUpDown' when using keyboard + mouse together",
+          "disposition": "selected"
+        },
+        {
+          "number": 212,
+          "title": "Android - selecting suggestion when input is off canvas hides keyboard and does not select the suggestion",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 180,
+          "title": "Capture more events from keyboard",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 158,
+          "title": "Allow input blur when using keyboard for suggestion or term",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 90,
+          "title": "Input setState different when onSuggestionSelected using keyboard or mouse",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 1,
+          "title": "Keyboard support?",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:moroshko/react-autosuggest is:issue is:closed focus in:title",
+      "totalHits": 37,
+      "hits": [
+        {
+          "number": 833,
+          "title": "Load suggestion when focus input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 758,
+          "title": "Focus after rendering code with errors.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 723,
+          "title": "How to release the focus programmatically ?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 713,
+          "title": "How to manually focus a child textarea element",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 679,
+          "title": "How to set focus to input from some other event?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 629,
+          "title": "focus autosuggest input programmatically using ref?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 586,
+          "title": "_this3.input.focus is not a function at Object.onSuggestionClick [as onClick] with StyledComponents",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 491,
+          "title": "error: _this3.input.focus is not a function",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 482,
+          "title": "Component requires double Tab press to advance focus (with no interactions)",
+          "disposition": "selected"
+        },
+        {
+          "number": 464,
+          "title": "Cannot read property 'focus' of undefined",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 450,
+          "title": "Show suggestions on focus (even if input value is empty)",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 405,
+          "title": "Provide an option to not focus on field on clear",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 398,
+          "title": "On Focus render all suggestion and retain previously selected value.",
+          "disposition": "selected"
+        },
+        {
+          "number": 382,
+          "title": "Query - How to get full list on Focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 377,
+          "title": "_this3.input.focus is not a function",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 374,
+          "title": "Only Fetch Suggestions After Typing (not on Focus) ",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 345,
+          "title": "Keep autosuggest text search in focus even when user deletes search text",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 318,
+          "title": "'input.focus is not a function' when using a custom component as the input.",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 313,
+          "title": "v7.1.0 doesn't focus suggestions on hover",
+          "disposition": "query-cap"
+        },
+        {
+          "number": 300,
+          "title": "onFocus doesn't call on focus",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 295,
+          "title": "how to open the dropdown without focus on the input?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 294,
+          "title": "Full suggestions list to render when focusing on input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 264,
+          "title": "How can I focus the input field?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 253,
+          "title": "Set focus from external events",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 225,
+          "title": "focusFirstSuggestion only focuses the first suggestion if the suggestions list changes",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 217,
+          "title": "Show all suggestions on focus?",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 205,
+          "title": "Is it any possibility to catch press enter event, when user focused on input",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 197,
+          "title": "Show suggestions on focus. ",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 167,
+          "title": "Add focus() function to component",
+          "disposition": "body-filter"
+        },
+        {
+          "number": 147,
+          "title": "Focus first matching item",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:react-component/picker is:issue is:closed keyboard in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/picker is:issue is:closed focus in:title",
+      "totalHits": 0,
+      "hits": []
+    },
+    {
+      "query": "repo:react-component/tree is:issue is:closed keyboard in:title",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 342,
+          "title": "Does keyboard arrow key supported?",
+          "disposition": "body-filter"
+        }
+      ]
+    },
+    {
+      "query": "repo:react-component/tree is:issue is:closed focus in:title",
+      "totalHits": 1,
+      "hits": [
+        {
+          "number": 1062,
+          "title": "Tree scrolls when an interactive title descendant receives focus",
+          "disposition": "body-filter"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "react-dates/react-dates",
+      "number": 1706,
+      "title": "The keyboard shortcuts panel toggle button is not displayed in Chrome",
+      "url": "https://github.com/react-dates/react-dates/issues/1706",
+      "origin": "repo:react-dates/react-dates is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Chrome touch-device condition; no named stable working pair or applicable fix established; frozen PRESS does not include question mark.",
+      "issueBody": "**react-dates version**\r\ne.g. react-dates@20.1.0\r\n\r\n**Describe the bug**\r\nThe keyboard shortcuts panel toggle button (right bottom corner triangle with question mark) is not displayed in Chrome. It is displayed in Firefox. It's completely missing in the DOM in Chrome and pressing the question mark also doesn't open the info panel.\r\n\r\n**Desktop (please complete the following information):**\r\n - OS: Windows 10\r\n - Browser: Chrome 75.0.3770.100\r\n\r\n**Is the issue reproducible in Storybook?**\r\nYes. In every story.\r\n\r\n**Additional context**\r\nI have hybrid notebook with touch screen and external display. If you try to detect something as if the device is touch or not this might be an important information. (And your solution not working correctly in that case.)\r\nI suggest making the button appear only when focused and hide it visually in other cases. You should rather use approach similar to `sr-only-focusable` in Bootstrap 4. Hiding the button via any JS condition is not necessary and won't cover all the cases. It can be in the DOM all the time, like the skip links etc. This is a common and correct approach.",
+      "comments": [
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/1706#issuecomment-596650541",
+          "body": "I believe this has been fixed, I'm not able to reproduce.  Can you please try updating to the latest version?  I'm going to close this but please reopen if it's still an issue."
+        }
+      ]
+    },
+    {
+      "repo": "react-dates/react-dates",
+      "number": 872,
+      "title": "DayPickerRangeController highlight selection does not remove when using keyboard",
+      "url": "https://github.com/react-dates/react-dates/issues/872",
+      "origin": "repo:react-dates/react-dates is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Reported criterion is CSS hover-span highlight; no original announced state failure established.",
+      "issueBody": "Using a keyboard to navigate the calendar and making a selection works. When you make another selection using the keyboard, the original date range highlight remains.\r\n\r\nI am using `DayPickerRangeController` component and using CSS stylesheets and classes(not react-with-styles) and Chrome.\r\n\r\nIn the screenshot below the dates 15-19th are from the previous selection and still have the `.CalendarDay__hovered_span` class. Also cant replicate this on the \"react-with-styles\" version.\r\n\r\n<img width=\"1095\" alt=\"bug\" src=\"https://user-images.githubusercontent.com/2561365/33410635-5332fafe-d5d5-11e7-8b75-bdf73f2c9a72.png\">\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/872#issuecomment-348308819",
+          "body": "@allanpope can you share what version of react-dates you're using? We had recently addressed a similar issue so I'm wondering if it's related."
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/872#issuecomment-348343663",
+          "body": "@majapw Yeah you are right. I was using version `15.1.0`, upgrading to `15.2.1` fixes it. \r\nSorry should of checked the see if there was a newer version. Thanks for your help."
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/872#issuecomment-348354711",
+          "body": "Glad to see that we fixed it! :) "
+        }
+      ]
+    },
+    {
+      "repo": "react-dates/react-dates",
+      "number": 2090,
+      "title": "Focused element is off by one when selecting start date",
+      "url": "https://github.com/react-dates/react-dates/issues/2090",
+      "origin": "repo:react-dates/react-dates is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Maintainer explains noon date representation; no library restoration fix or working stable pair established.",
+      "issueBody": "**react-dates version** 21.8.0\r\n\r\n**Describe the bug**\r\nWhen selecting a start date, the end date that gets focused for keyboard navigation is off by one day.\r\n\r\n**Source code (including props configuration)**\r\nhttps://codesandbox.io/s/react-dates-date-range-picker-forked-oyxpn?file=/src/date-picker.jsx\r\nSelect a start date and then move your mouse over any of the dates after the one selected (at least 2 days later). The element that has focus is the date 2 days after the first selected date, which you can see there is a black outline around it.\r\n\r\n**Screenshots/Gifs**\r\n![image](https://user-images.githubusercontent.com/901732/107834422-bcaf7900-6d5b-11eb-8e2e-b73ebf4faa56.png)\r\n\r\n\r\n**Desktop (please complete the following information):**\r\n - OS: Ubuntu\r\n - Browser: Chrome\r\n - Version: 88.0.4324.150\r\n\r\n**Is the issue reproducible in Storybook?**\r\nNo",
+      "comments": [
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/2090#issuecomment-778528357",
+          "body": "It appears react-dates expects the dates to be at noon for some reason, so setting the dates like this solved the issue:\r\n\r\n```js\r\n<DateRangePicker\r\n  startDate={inDate ? moment(inDate + \" 12:00\") : null}\r\n  endDate={outDate ? moment(outDate + \" 12:00\") : null}\r\n  // ...\r\n/>\r\n```"
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/2090#issuecomment-778540661",
+          "body": "We had to pick some time, and midnight doesn\u2019t exist in every timezone \u00af\\\\\\_(\u30c4)\\_/\u00af "
+        },
+        {
+          "url": "https://github.com/react-dates/react-dates/issues/2090#issuecomment-778570249",
+          "body": "@ljharb That's interesting. Thanks for the comment."
+        }
+      ]
+    },
+    {
+      "repo": "react-dates/react-dates",
+      "number": 1915,
+      "title": "Blocked date typed into a DatePicker is recognized as a valid date (calendar is losing focus and date is selected))",
+      "url": "https://github.com/react-dates/react-dates/issues/1915",
+      "origin": "repo:react-dates/react-dates is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Fix1919 identified; no working stable baseline yet established.",
+      "issueBody": "**react-dates version**\r\nreact-dates@18.3.1\r\n\r\n**Describe the bug**\r\nManually typing a blocked date into DatePicker makes a blocked date become selected.\r\n\r\n**Steps to reproduce**\r\n```\r\nStep 1: \r\nGo to the playground.\r\nhttps://airbnb.io/react-dates/?path=/story/sdp-day-props--blocks-fridays\r\n\r\nStep 2: \r\nManually type 02/28/2020 into Datepicker input field. (a blocked date).\r\n\r\nStep 3:\r\nCalendar is losing focus and a blocked date is now selected in the calendar and input field.\r\n```\r\n\r\n**Desktop (please complete the following information):**\r\nPossible to reproduce on desktop.\r\n\r\n**Is the issue reproducible in Storybook?**\r\nhttps://airbnb.io/react-dates/?path=/story/sdp-day-props--blocks-fridays\r\n",
+      "comments": []
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 5750,
+      "title": "WCAG - Keyboard navigation with inline, range selection, showPreviousMonths and openToDate sometimes loses focus",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/5750",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Fix6054 identified, but no working stable baseline established.",
+      "issueBody": "**Describe the bug**\nWhen a day has keyboard focus and the openToDate does not match the startDate, then keyboard focus is lost on keyboard navigation\n\n**To Reproduce**\n1) Render a component as such:\n```\n  const [startDate, setStartDate] = useState<Date | null>(new Date('2025-6-1'))\n  const [endDate, setEndDate] = useState<Date | null>(new Date('2025-7-1'))\n  const current = new Date('2025-7-1')\n\n  return (\n    <DatePicker\n      selectsRange\n      inline\n      showPreviousMonths\n      monthsShown={3}\n      startDate={startDate}\n      endDate={endDate}\n      openToDate={current}\n      onChange={([start, end]) => {\n        setStartDate(start)\n        setEndDate(end)\n      }}\n    />\n  )\n```\n2) Use the tab key to go to the selected date (2025-6-1)\n3)  Use the down or right arrow key to go to 6/2 or 6/8 date\n\n**Expected behavior**\nExpected 6/2 or 6/8 to have keyboard focus.  (they are shown as having keyboard focus but document.activeElement says body has focus)\n\n**Desktop (please complete the following information):**\n- OS: Windows 11 (26`00.4349)\n- Browser: Chrome (138.0.7204.158)\n- Version: react-datepicker (8.4.0)\n\n**Additional context**\nThe focus does the right thing if using the left, up arrow (i.e. it changes the month i.e. 5/31 or 5/24) and it is only if the navigation would be within the same month as a start date\n\nThere is a workaround we are using where we force focus back if it was lost on key down:\n\n```\nonKeyDown={event => {\n  setTimeout(() => {\n    if (\n      event.key !== 'Tab' &&\n      event.key !== 'Escape' &&\n      document.activeElement === document.body\n    ) {\n      dateRangeRef.current?.querySelector<HTMLDivElement>('.react-datepicker__day--keyboard-selected')?.focus()\n    }\n  })\n}}\n```",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5750#issuecomment-3105092322",
+          "body": "For what it's worth my guess is something around here would explain the current behavior of it working when going to a previous month, but not on the current month\n\nhttps://github.com/Hacker0x01/react-datepicker/blob/main/src/index.tsx#L1156"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5750#issuecomment-3118401720",
+          "body": "Another related note is that if you extend the start date before the first month shown, the calendar will never receive focus.\n\ni.e. setting the start date in the example to '2025-4-1' the calendar will never receive focus by tab.\n\nNot sure if that's worth a separate bug?"
+        }
+      ]
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 5609,
+      "title": "showYearDropdown and showMonthYearDropdown are not accessible via keyboard",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/5609",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Longstanding dropdown a11y issue; no working stable baseline established.",
+      "issueBody": "**Describe the bug**\nYear (`showYearDropdown`=true) and month-year (`showMonthYearDropdown`=true) dropdowns are not accessible via keyboard\n\n**To Reproduce**\nSteps to reproduce the behavior:\n- Go to https://codesandbox.io/s/zen-tesla-86xt77?file=/src/App.js:514-535\n- Tab into either datepicker input field.\n- When the calendar popup appears, start tabbing through the elements.\n\nYou will not be able to tab into the year or month dropdowns\n\n**Expected behavior**\nYou can tab to the year/month-year dropdown as well as the calendar days, previous month, next month.\n\n**Additional context**\nThis was found during an a11y audit, here's the text of their finding:\n> Issue: The dropdowns for selecting Month/Year within the datepicker are not keyboard accessible. When focused on the screen reader using the arrow keys, they are announced without a role.\n> Why it matters: Proper implementation of a combobox ensures that screen reader users and those relying on keyboard navigation can perceive and operate its functionality effectively. This enables all users to select options smoothly. \n> How to fix it: Consider implementing the control as a single-selection combobox. Use the WAI-ARIA examples and patterns as a reference for proper implementation.\n\nThis is a rereport of https://github.com/Hacker0x01/react-datepicker/issues/4127",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5609#issuecomment-3514686476",
+          "body": "This issue is stale because it has been open 180 days with no activity. Remove stale label or comment or this will be closed in 10 days."
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5609#issuecomment-3565315438",
+          "body": "This issue was closed because it has been stalled for 10 days with no activity."
+        }
+      ]
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 5428,
+      "title": "Arrow-navigation in calendar does not change focus, breaking accessibility",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed focus in:title",
+      "disposition": "unsplit reproduction",
+      "reason": "Unsplit fixture under batch24: source-supported6.9.0/7.0.0/fixed8.2.0 hypothesis; checks pending.",
+      "issueBody": "**Describe the bug**\nWhen you open the calendar and use the arrow keys to navigate to a new day, the focused element does not change.\n\nThis has 2 important consequences that I'm aware of:\n1. Screen-reader accessibility for the calendar is broken. When screen-reader user uses arrow-key to navigate to a new day, there will be 0 announcements.\n\n2. `:focus` and `:focus-visible` pseudo-selectors will not apply to a day that has been selected via arrow keys.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. run the following script:\n`function printFocusedElement() {\n  console.log(document.activeElement);\n  setTimeout(printFocusedElement, 2000); \n}\nprintFocusedElement();` \n\n\n2. Use an arrow-key to navigate to a new day in react-datepicker calendar\n3. Note that the focused element being logged has not changed\n\n**Expected behavior**\nWhen you use arrow-key to navigate to a day, that day should be focused.\n\n**Screenshots**\nIn this screenshot, I have navigated from February 19th --> February 17th via arrow-keys, but February 19th is still the focused element.\n![Image](https://github.com/user-attachments/assets/cb0119e3-b3e5-43e4-b477-c2893a437415)\n\n\n\n**Desktop (please complete the following information):**\n- OS: [Windows]\n- Browser [Chrome]\n- Version [132.0.6834.197]\n\n**Additional context**\n\nThis behavior first appears in react-datepicker v7.0.0 \n\n\nThis only applies when using arrow keys to navigate between days in the same month. The focus is still applied correctly when you navigate from a day in month X to a day in Month Y using arrow-keys. \n\nAdditionally, if you tab from the `next-month` button to the day, it will be focused correctly. \n(ex: \nnavigate to a from May 20 to May 19 via arrows.  May 19 will not be focused.\nhit TAB. You are now on the 'previous-month' button. \nhit TAB again. You are now on 'next-month' button. \nhit TAB again. You are now on May 19, and now it it focused. \n)\n\n\n\n",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2672213377",
+          "body": "@martijnrusschen It looks like a regression occurred, causing the calendar in the last two major versions to be essentially completely inaccessible.\n"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2678857004",
+          "body": "@mellis481 @John-Feola \nPerhaps adding `containerRef={this.containerRef}` to the following link and adjusting the type will make it work correctly.\nHowever, I am not sure because it has been a while since I ran it, and I am unable to debug it properly in my local environment.\n\nhttps://github.com/Hacker0x01/react-datepicker/blob/cd1789c1de51a4a850da07ea32dbbc5b2f115c45/src/calendar.tsx#L994"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2679076518",
+          "body": "> However, I am not sure because it has been a while since I ran it, and I am unable to debug it properly in my local environment.\n\n@yuki0410-dev Can you clarify why you're saying you can't investigate the issue? To be clear, the issue in your PR has effectively made the calendar completely inaccessible. It would be great to get your involvement in this since you are most familiar with your own code."
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2679909025",
+          "body": "@mellis481 \n\nI have built a new environment according to CONTRIBUTING.md and tried debugging with console.log in my local docs-site, but the console.log results do not show up in the browser console.\nAny advice on this? (When I was a previous contributor, RCA was installed, not vite, and it worked fine.)\n\nJust to let you know, I am only one of about 400 contributors to this repository, so I can't always keep up with the latest developments in this repository.\n"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2682364746",
+          "body": "The above response was not sufficient.\nThe following PR may have involved the splitting of the Calendar.tsx div ref into a separate component.\nUnlike state, containerRef does not trigger re-rendering, so there are cases where child component props are not updated even if they are updated on a delay.\n\nhttps://github.com/Hacker0x01/react-datepicker/pull/4979"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2682476624",
+          "body": "@yuki0410-dev I want to make sure I'm interpreting your comment correct. Are you asserting that the issue is caused by #4979 and not #4766?"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2683601992",
+          "body": "@mellis481 \n\nFirst, containerRef is no longer passed from Calendar to Month in #4766.\nAt this point, we believe we could have fixed the problem by just fixing the passing of containerRef from Calendar to Month.\n(I believe this was both an inadvertent error on my part and the reviewer's, and also a test case coverage issue.)\n\nSecondly, I believe that the problem in this issue is complicated by the fact that in #4979, the containerRef is set from a div in the calendar component to a ClickOutsideWrapper, which changes the timing of when current is updated. The issue is complicated by the fact that the current is updated at different times.\n\nWe have implemented a fix to the first issue and created a PR for #5456.\n(We have not yet been able to confirm the test).\nHowever, we have not been able to resolve the issue in this issue, and further testing is required.\n"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2683609757",
+          "body": "In addition to #5456, one of the following fixes would resolve the events in this issue, but we feel that none of them are a good approach.\n\n Method 1\nPlace a div inside the ClickOutsideWrapper of the Calendar component.\nKeep the ref of that div in the Calendar component and pass it to the Month component instead of the containerRef.\n\nMethod 2\nMake the key of the part of the Week component that calls the Day component always be changed.\nExample: `key={day.valueOf() + new Date().valueOf()}`.\n\nAny good advice would be appreciated."
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5428#issuecomment-2710592003",
+          "body": "Thanks! @yuki0410-dev "
+        }
+      ]
+    },
+    {
+      "repo": "Hacker0x01/react-datepicker",
+      "number": 5366,
+      "title": "Focus behaviour after closing changed after 7.6.0",
+      "url": "https://github.com/Hacker0x01/react-datepicker/issues/5366",
+      "origin": "repo:Hacker0x01/react-datepicker is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Fix5448 identified; original primary steps pointer selection and working stable baseline not yet established.",
+      "issueBody": "**Describe the bug**\n7.6.0 calendar is refocusing on the input after selecting a date and closing, leading to the calendar to reopen, when using a controlled open:\n\n```typescript\nimport \"react-datepicker-new/dist/react-datepicker.css\";\nimport ReactDatePickerNew from \"react-datepicker-new\";\nimport { useState } from \"react\";\n\nexport const NewDatePicker = () => {\n  const [open, setOpen] = useState(false);\n\n  return (\n    <ReactDatePickerNew\n      open={open}\n      preventOpenOnFocus // We control the state\n      shouldCloseOnSelect // We control the state\n      onCalendarOpen={() => {\n        console.log(\"OPEN [7.6.0]\");\n        setOpen(true);\n      }}\n      onCalendarClose={() => {\n        console.log(\"CLOSE [7.6.0]\");\n        setOpen(false);\n      }}\n      onFocus={() => {\n        console.log(\"FOCUS [7.6.0]\");\n        setOpen(true);\n      }}\n    />\n  );\n};\n\n\n```\n\n\n**To Reproduce**\n\nClone https://github.com/danilofuchs/datepicker-repro/tree/bee52cff440319b71683f327af91bef1b3b1678e\n\nSteps to reproduce the behavior:\n\n1. Click on the input\n2. Select a date\n\n**Expected behavior**\nThe input should close\n\n(Check logs for the number of onFocus events)\n\n**Actual behavior**\nThe input closes than immediately opens again because of the focus\n\n(Check logs for the number of onFocus events)\n\n**Screenshots**\nIf applicable, add screenshots to help explain your problem.\n\n**Desktop (please complete the following information):**\n\n- OS: Pop_OS 22.04\n- Browser Chrome\n- Version 132\n\n**Additional Context**\n\nMaybe related to https://github.com/Hacker0x01/react-datepicker/pull/5179",
+      "comments": [
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5366#issuecomment-2625406732",
+          "body": "A dirty patch I'm considering applying:\n\n```typescript\nimport \"react-datepicker-new/dist/react-datepicker.css\";\nimport ReactDatePickerNew from \"react-datepicker-new\";\nimport { useRef, useState } from \"react\";\n\nexport const NewDatePicker = () => {\n  const [open, setOpen] = useState(false);\n\n  const mostRecentlyClosed = useRef<Date | null>(null);\n\n  return (\n    <ReactDatePickerNew\n      open={open}\n      preventOpenOnFocus // We control the state\n      shouldCloseOnSelect // We control the state\n      onCalendarOpen={() => {\n        console.log(\"OPEN [7.6.0]\");\n        setOpen(true);\n      }}\n      onCalendarClose={() => {\n        mostRecentlyClosed.current = new Date();\n        console.log(\"CLOSE [7.6.0]\");\n        setOpen(false);\n      }}\n      onFocus={() => {\n        if (\n          mostRecentlyClosed.current &&\n          mostRecentlyClosed.current.valueOf() - new Date().valueOf() < 100\n        ) {\n          console.log(\"FOCUS [7.6.0] - Ignored\");\n          return;\n        }\n        console.log(\"FOCUS [7.6.0]\");\n        setOpen(true);\n      }}\n    />\n  );\n};\n\n```"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5366#issuecomment-2660446586",
+          "body": "Same"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5366#issuecomment-2661368940",
+          "body": "I'll look into this issue"
+        },
+        {
+          "url": "https://github.com/Hacker0x01/react-datepicker/issues/5366#issuecomment-2767191982",
+          "body": "Thanks!!"
+        }
+      ]
+    },
+    {
+      "repo": "gpbl/react-day-picker",
+      "number": 1023,
+      "title": "Prevent disabled days from being included in keyboard events",
+      "url": "https://github.com/gpbl/react-day-picker/issues/1023",
+      "origin": "repo:gpbl/react-day-picker is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Feature request/longstanding behavior, no working stable pair or applicable restoration established.",
+      "issueBody": "**Is your feature request related to a problem? Please describe.**\r\nThanks for providing this neat calendar. I'm on v7.4.0 One issue: I would expect disabled days to be omitted from the default keyboard navigation order so that keyup and keydown events would focus the next / previous available day.\r\n\r\n**Describe the solution you'd like**\r\nA simple and general solution might be to provide a way to pass props into the Day component, perhaps by adding a key to modifier props. This would enable users to overwrite default properties on the Day component.\r\n\r\n**Describe alternatives you've considered**\r\nI tried to implement this myself using the onDayKeyDown handler:\r\n\r\n```jsx\r\n\tonDayKeyDown = (day, m, e) => {\r\n\t\tconst { fromDate, toDate } = this.state;\r\n\t\tconst { key } = e\r\n\t\tif (key === 'ArrowDown' || key === 'ArrowRight' && day !== toDate) {\r\n\t\t\tthis.focusNextDay(day);\r\n\t\t\treturn;\r\n\t\t}\r\n\t\tif (key === 'ArrowUp' || key === 'ArrowDown' && day !== fromDate) {\r\n\t\t\tthis.focusPreviousDay(day);\r\n\t\t\treturn;\r\n\t\t}\r\n\t}\r\n```\r\nThe issue I ran into is that the day that is being passed into this handler is not the day that was in focus during the key event - it's the day in focus after the key event navigates the user to the next / previous / up/ down day. \r\n\r\n\r\n**Additional context**\r\nThanks for considering.",
+      "comments": [
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/1023#issuecomment-616925694",
+          "body": "> I would expect disabled days to be omitted from the default keyboard navigation order so that keyup and keydown events would focus the next / previous available day.\r\n\r\nYes I'd expect that too! Defenitely a bug / feature.\r\n\r\n> The issue I ran into is that the day that is being passed into this handler is not the day that was in focus during the key event \r\n\r\nDo you know if this is expected or not? We should investigate, otherwise it looks like a serious bug.\r\n\r\nI agree \u2013 fixing the problem by skipping the disabled day would work. "
+        },
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/1023#issuecomment-633930152",
+          "body": "Hey @gpbl. Was this issue resolved? We're having this problem in our app. We're currently using react-day-picker v7.3.2. Thanks. "
+        }
+      ]
+    },
+    {
+      "repo": "gpbl/react-day-picker",
+      "number": 582,
+      "title": "DayPickerInput on mobile triggers focus, which brings the keyboard over the calendar",
+      "url": "https://github.com/gpbl/react-day-picker/issues/582",
+      "origin": "repo:gpbl/react-day-picker is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Mobile virtual keyboard outside frozen context.",
+      "issueBody": "![keyboard-on-focus](https://user-images.githubusercontent.com/1021849/33655739-39528700-da74-11e7-86c0-8190ca20ad70.png)\r\n\r\nStrange... I see this problem was previously reported on #100, but I do get this problem with `\"react-day-picker\": \"^7.0.5\"` (upgraded from `6.2.1` 30 mins ago).\r\n\r\nIsn't anyone else getting this problem? The implementation is done through a **DayPickerInput** component.",
+      "comments": [
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/582#issuecomment-349597841",
+          "body": "@dreamyguy the input component always worked like this on mobile. Could you show us the code that was working with v6? Maybe you were passing props to the input component that now should be passed via `inputProps`? "
+        },
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/582#issuecomment-349604220",
+          "body": "Sorry I could have been clearer. It was not working on v6 either, so I upgraded to see if it was working with v7. So no changes there.\r\n\r\nI got the impression on #100 that this was not an issue with DayPickerInput, as another user suggested the screenshot taken was from another component/project.\r\n\r\nSo I guess there's no way around it, then?"
+        },
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/582#issuecomment-349608218",
+          "body": "Duplicate of https://github.com/gpbl/react-day-picker/issues/583"
+        },
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/582#issuecomment-349628249",
+          "body": "For reference, I'd just like to point out that passing the property `readOnly: true` through `inputProps` made the input get the `readonly` attribute that prevents direct user input on the input field.\r\n\r\nThis is great because the keyboard will no longer be triggered on mobile, and therefore will not cover the calendar. This also improve input validation for those who must have it. \u2728 \r\n\r\n```\r\n<DayPickerInput\r\n  inputProps={{ readOnly: true }}\r\n  placeholder=\"DD/MM/YYYY\"\r\n  format=\"DD/MM/YYYY\"\r\n/>\r\n```\r\n\r\nChange the input style (like `cursor: pointer`) and you'll end up with an input that will be experienced more like a button.\r\n\r\nBig thanks to @gpbl who guided me in the right direction."
+        },
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/582#issuecomment-349641785",
+          "body": "Thanks for writing back @dreamyguy !"
+        }
+      ]
+    },
+    {
+      "repo": "gpbl/react-day-picker",
+      "number": 3009,
+      "title": "Focus is lost when a controlled month change removes the focused day",
+      "url": "https://github.com/gpbl/react-day-picker/issues/3009",
+      "origin": "repo:gpbl/react-day-picker is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Original key J unsupported frozen PRESS; no working stable baseline established.",
+      "issueBody": "In `react-day-picker` 10.0.1, changing the controlled `month` while a day has focus removes that day from the DOM and leaves `document.activeElement` on `<body>`. This breaks keyboard continuity for controlled calendars whose value can change externally, such as after undoing a date selection.\n\nThis also occurs on the current `main` branch. It was found while working on [WordPress/gutenberg#81635](https://github.com/WordPress/gutenberg/pull/81635).\n\n## To reproduce\n\n```tsx\nimport { useState } from \"react\";\nimport { DayPicker } from \"react-day-picker\";\nimport \"react-day-picker/style.css\";\n\nconst march = new Date(2026, 2, 15);\nconst november = new Date(2026, 10, 15);\n\nexport default function App() {\n  const [month, setMonth] = useState(march);\n  const [selected, setSelected] = useState<Date | undefined>(march);\n\n  return (\n    <div\n      onKeyDown={(event) => {\n        if (event.key.toLowerCase() === \"j\") {\n          setMonth(november);\n          setSelected(november);\n        }\n      }}\n    >\n      <p>Focus a day in the calendar, then press J.</p>\n      <DayPicker\n        mode=\"single\"\n        month={month}\n        selected={selected}\n        onMonthChange={setMonth}\n        onSelect={setSelected}\n      />\n    </div>\n  );\n}\n```\n\n1. Use Tab to focus a day in March.\n2. Press <kbd>J</kbd> to update the controlled month and selection to November.\n3. Inspect the focus position or press an arrow key.\n\n## Actual Behavior\n\nNovember is displayed and November 15 is selected, but focus moves to `<body>`. Arrow keys no longer move between days.\n\nThe focus state in `useFocus` still refers to the day from the previous month. When that day is removed from the DOM, the browser has no replacement focus target.\n\n## Expected Behavior\n\nWhen a controlled month change removes the focused day, DayPicker should keep focus on an enabled day in the newly displayed month. The selected day is the natural target when it is enabled. DayPicker should not move focus when focus was outside the day grid before the update.\n\n## Screenshots\n\nNot applicable.\n",
+      "comments": []
+    },
+    {
+      "repo": "gpbl/react-day-picker",
+      "number": 2858,
+      "title": "Simulating focusing and pressing Enter on a disabled date causes it to appear enabled and fires onSelect in 9.11.2 but didn't in 9.11.1",
+      "url": "https://github.com/gpbl/react-day-picker/issues/2858",
+      "origin": "repo:gpbl/react-day-picker is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Maintainer states only JSDOM tests affected, not end users.",
+      "issueBody": "## To reproduce\n\n* Render a react-day-picker with disabled dates, like `disabled={[{before: some-date}]}` in a testing-library test\n* Call `act(() => disabledElement.focus());` on a disabled element\n* Call `expect(disabledElement).toBeDisabled();` fails. \n* Also simulating a user pressing enter (`await user.keyboard(\"{enter}\")`) will fire the `onSelect` function\n\nThis didn't used to happen in 9.11.1. But does in 9.11.2. I assume this is as a result of the change in [this commit](https://github.com/gpbl/react-day-picker/commit/1dececbb93a99571f61ebcd6f0b89323c24e7a21).",
+      "comments": [
+        {
+          "url": "https://github.com/gpbl/react-day-picker/issues/2858#issuecomment-3591592197",
+          "body": "@IanGraingerGMSL thanks for the report! This is fixed in v9.11.3: please give it a try. (Note: the issue only affected JSDOM tests, not end users.)"
+        }
+      ]
+    },
+    {
+      "repo": "jquense/react-widgets",
+      "number": 1100,
+      "title": "Dropdowns no longer set the first item to focused",
+      "url": "https://github.com/jquense/react-widgets/issues/1100",
+      "origin": "repo:jquense/react-widgets is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Reporter confirms duplicate installed versions caused behavior; not qualifying library pair.",
+      "issueBody": "As of version ~5.3.0 (this works on ~5.2.0), the first item in a dropdown is no longer set to focused\r\n\r\nbefore: `<div role=\"option\" data-rw-option=\"\" data-rw-focusable=\"\" tabindex=\"-1\" aria-selected=\"false\" class=\"rw-list-option rw-state-focus\" id=\"rw_10_listbox_active_option\" data-rw-focused=\"\">`\r\n\r\nafter: `<div role=\"option\" data-rw-option=\"\" data-rw-focusable=\"\" tabindex=\"-1\" aria-selected=\"false\" class=\"rw-list-option\">`",
+      "comments": [
+        {
+          "url": "https://github.com/jquense/react-widgets/issues/1100#issuecomment-918580518",
+          "body": "check that you don't have two versions installed accidentally"
+        },
+        {
+          "url": "https://github.com/jquense/react-widgets/issues/1100#issuecomment-918585920",
+          "body": "yup, that was it!"
+        }
+      ]
+    },
+    {
+      "repo": "jquense/react-widgets",
+      "number": 157,
+      "title": "DropdownList error at losing the focus",
+      "url": "https://github.com/jquense/react-widgets/issues/157",
+      "origin": "repo:jquense/react-widgets is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Downstream dependency repaired by reinstall, no same-package stable pair under release-cutoff resolver established.",
+      "issueBody": "I am not sure when I started to have this problem. Probably after updating react. After changing the value of a DropdownList and losing the focus I get the following error:\n\n```\n\"Uncaught Error: Invariant Violation: ReactUpdates.asap: Can't enqueue an asap callback in a context whereupdates are not being batched.\"\n```\n\nThe border keep the blue color from when it had the focus and my \"onBlur\" function doesn't get executed.\n\nIn my package.json:\n\n```\n    \"react\": \"^0.13.3\",\n    \"react-bootstrap\": \"^0.23.7\",\n    \"react-router\": \"^0.13.3\",\n    \"react-widgets\": \"^2.7.2\",\n```\n",
+      "comments": [
+        {
+          "url": "https://github.com/jquense/react-widgets/issues/157#issuecomment-118857046",
+          "body": "Thanks for the update this is the same issue as #156 with a bug introduced in a downstream dep. should be fixed shortly\n"
+        },
+        {
+          "url": "https://github.com/jquense/react-widgets/issues/157#issuecomment-118861757",
+          "body": "should be fixed, just rm and reinstall react-widgets and everything should work\n"
+        }
+      ]
+    },
+    {
+      "repo": "Semantic-Org/Semantic-UI-React",
+      "number": 4440,
+      "title": "Checkbox is not keyboard-accessible.",
+      "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4440",
+      "origin": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Reporter withdraws: caused by project code.",
+      "issueBody": "## Bug Report\r\n\r\nThis bug is caused by the use of `.hidden` class on the input, which sets it to `display: none`, which makes it invisible to focus order.\r\n\r\n### Steps\r\n\r\n1. Attempt to focus the checkbox using keyboard\r\n\r\n### Expected Result\r\n\r\nCheckbox should receive focus\r\n\r\n### Actual Result\r\n\r\nKeyboard does not receive focus\r\n\r\n### Version\r\n\r\n2.1.3 (but I see the implementation is the same [on master](https://github.com/Semantic-Org/Semantic-UI-React/blob/master/src/modules/Checkbox/Checkbox.js#L218))\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4440#issuecomment-1735319871",
+          "body": "\ud83d\udc4b Thanks for opening your first issue here! If you're reporting a \ud83d\udc1e bug, please make sure you've completed all the fields in the issue template so we can best help.\n\nWe get a lot of issues on this repo, so please be patient and we will get back to you as soon as we can.\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4440#issuecomment-1740719739",
+          "body": "Please disregard. It was coming from the project code."
+        }
+      ]
+    },
+    {
+      "repo": "Semantic-Org/Semantic-UI-React",
+      "number": 3481,
+      "title": "Can't clear a clearable single-selection Dropdown using the keyboard",
+      "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/3481",
+      "origin": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Keyboard clear missing from first feature release; no working stable baseline or applicable fix established.",
+      "issueBody": "## Bug Report\r\nSemantic-UI-React v0.85.0 added the Dropdown `clearable` prop, allowing users to clear the value of a selection Dropdown by clicking the \u2716\ufe0f button. This button can be pressed via mouse, but not via keyboard\u2014which presents an accessibility issue.\r\n\r\n### Steps\r\nSee https://codesandbox.io/s/7mr7p7zwy6, with:\r\n```jsx\r\n<Dropdown options={options} selection clearable />\r\n```\r\n\r\n1. Click the Dropdown. (=> a list of options is rendered)\r\n2. Select an option by clicking or by pressing ENTER. (=> A clear \u2716\ufe0f icon appears)\r\n\r\n### Expected Result\r\nThe clear \u2716\ufe0f button is interact-able via the keyboard.\r\n\r\n### Actual Result\r\nThe clear \u2716\ufe0f button is not interact-able via the keyboard.\r\n\r\n### Version\r\n0.85.0\r\n\r\n### Testcase\r\nhttps://codesandbox.io/s/7mr7p7zwy6",
+      "comments": [
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/3481#issuecomment-470838109",
+          "body": "Can you please refer to accessibility spec for this?"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/3481#issuecomment-472108850",
+          "body": "Going to close this as I don't understand how it should work by a spec, please ping me with feedback."
+        }
+      ]
+    },
+    {
+      "repo": "Semantic-Org/Semantic-UI-React",
+      "number": 4160,
+      "title": "Search-in-menu dropdowns close when search input is focused (filtering items is impossible)",
+      "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4160",
+      "origin": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Duplicate1593, user stopPropagation workaround; no applicable library fix established.",
+      "issueBody": "## Bug Report\r\n\r\nThe examples for some dropdowns on the public website don't work as expected.\r\nThis affects both examples for the filter-in-menu dropdowns https://react.semantic-ui.com/modules/dropdown/#types-search-in-menu.\r\n\r\nWhen you focus the input element to filter the dropdown items, the dropdown element closes itself. \r\nThis means that you cannot use the filter functionality at all.\r\n\r\nHere is a GIF showing the problem:\r\n\r\n![semantic-ui-react](https://user-images.githubusercontent.com/7125814/109306278-3ad14c80-783f-11eb-85c3-7f0afa2214e4.gif)\r\n\r\n(See also the test case sandbox)\r\n\r\n### Steps\r\nAs mentioned above, simply \r\n- open a dropdown with a search menu \r\n- click the input field for filtering the dropdown items\r\n\r\n### Expected Result\r\n- I can type a filter text and the dropdown items are filtered accordingly\r\n- Actually, I think it would be nice and more consistent if the input field was focused automatically when I open the dropdown\r\n\r\n### Actual Result\r\n- the dropdown closes itself\r\n\r\n### Version\r\n2.0.3 (assuming the website runs the latest version)\r\n\r\n### Testcase\r\n\r\nMinimal reproduction example: https://codesandbox.io/s/semantic-ui-react-forked-rn8kq",
+      "comments": [
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4160#issuecomment-786655401",
+          "body": "\ud83d\udc4b Thanks for opening your first issue here! If you're reporting a \ud83d\udc1e bug, please make sure you've completed all the fields in the issue template so we can best help.\n\nWe get a lot of issues on this repo, so please be patient and we will get back to you as soon as we can.\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4160#issuecomment-812338609",
+          "body": "Please refer this https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-680729907"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4160#issuecomment-813586497",
+          "body": "Dupe of #1593 \r\n\r\nThank you @phuoc-insignia for referencing the workaround and conversations with additional context."
+        }
+      ]
+    },
+    {
+      "repo": "Semantic-Org/Semantic-UI-React",
+      "number": 4045,
+      "title": "Dropdown will close when the search input is focused",
+      "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045",
+      "origin": "repo:Semantic-Org/Semantic-UI-React is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Duplicate1593, user stopPropagation workaround; no applicable library fix established.",
+      "issueBody": "## Bug Report\r\n\r\n### Steps\r\n\r\n![Peek 2020-08-25 20-04](https://user-images.githubusercontent.com/1730073/91172134-42882b00-e70e-11ea-9234-4081591818ed.gif)\r\n\r\n### Expected Result\r\n\r\nDropdown should open.\r\n\r\n### Actual Result\r\n\r\nDropdown closed.\r\n\r\n### Version\r\n\r\n0.88.2\r\n\r\n### Testcase\r\n\r\n- https://codesandbox.io/s/vj3f6?module=/example.js\r\n- https://react.semantic-ui.com/modules/dropdown/#types-search-in-menu\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-679983940",
+          "body": "\ud83d\udc4b Thanks for opening your first issue here! If you're reporting a \ud83d\udc1e bug, please make sure you've completed all the fields in the issue template so we can best help.\n\nWe get a lot of issues on this repo, so please be patient and we will get back to you as soon as we can.\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-680178320",
+          "body": "@lc-soft please update to the latest version. I think this has been resolved there. If still present, reply back and we can reopen."
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-680421900",
+          "body": "> @lc-soft please update to the latest version. I think this has been resolved there. If still present, reply back and we can reopen.\r\n\r\n@brianespinosa  It is not resolved, have you followed the steps of gif animation in the Dropdown document page to reproduce this bug? \r\nhttps://react.semantic-ui.com/modules/dropdown/#types-search-in-menu\r\n\r\nThis bug can be reproduced on Chrome and FireFox browsers, I suggest you upload a gif animation to prove that this bug has been fixed.\r\n\r\n**Environment:**\r\n\r\nOS: Ubuntu 18.04.3 LTS\r\nChrome 78.0.3904.108 \r\nFireFox 76.0.1\r\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-680729907",
+          "body": "Thanks for the detailed description and filling the issue. This is a duplicate https://github.com/Semantic-Org/Semantic-UI-React/issues/1593#issuecomment-295010142\r\n\r\n---\r\n\r\nTo solve it please use `.stopPropagation()` on `Input`: https://codesandbox.io/s/thirsty-https-bneim?file=/example.js\r\n\r\n```tsx\r\n<Input\r\n  icon=\"search\"\r\n  iconPosition=\"left\"\r\n  className=\"search\"\r\n  onClick={e => e.stopPropagation()}\r\n/>\r\n```\r\n"
+        },
+        {
+          "url": "https://github.com/Semantic-Org/Semantic-UI-React/issues/4045#issuecomment-681104892",
+          "body": "> @brianespinosa It is not resolved, have you followed the steps of gif animation in the Dropdown document page to reproduce this bug?\r\n\r\n@lc-soft nope. We get a LOT of reports on this repository. If we see someone reports an issue from an old version, it is common we will ask for testing again with the latest version first. In the limited time some of us dedicate to open source work, we don't have time to chase down issues on old versions. If it turns out something is still present on the current version, we are always ready to reopen a reported issue, as noted above."
+        }
+      ]
+    },
+    {
+      "repo": "moroshko/react-autosuggest",
+      "number": 268,
+      "title": "Unpredictable 'valueBeforeUpDown' when using keyboard + mouse together",
+      "url": "https://github.com/moroshko/react-autosuggest/issues/268",
+      "origin": "repo:moroshko/react-autosuggest is:issue is:closed keyboard in:title",
+      "disposition": "not admitted",
+      "reason": "Original primary task mixes pointer mouseover with keys; pure keyboard reproduction and working boundary absent.",
+      "issueBody": "Not sure if this is a bug or intended behavior, but it seems odd to me. You can see it in your codepen here: http://codepen.io/moroshko/pen/PZWbzK\n1. Focus on the input field\n2. Type `c`, and wait for suggestions to appear\n3. <kbd>ArrowDown</kbd> to any option\n4. Mouseover/move over the suggestion list \n   \n   **Observed behaviour:** You should notice the one you have highlighted has the whole word highlighted now, and the input value change as well (but the suggestions don't update to reflect this).\n   \n   **Expected behaviour:** Not quite sure, but I feel like it should behave the same as key up/down and not update the input value. Maybe valueBeforeUpDown should not be updated if it's via mouseevent.\n\nLet me know if you think this is a bug or not, or maybe an unimportant edge case. I am doing some extra stuff on mouseenter/leave of each suggestion, so it's quite noticeable for me.\n\nCaused by a combo of:\n\n`\nonMouseLeave: this.resetFocusedSuggestion,\n`\n...\n`\nresetFocusedSuggestion = () => {\n    this.props.updateFocusedSuggestion(null, null);\n  };\n`\n\nSince it's null now, it grabs the input value instead of the correct previous value.\n`\n    const renderSuggestionData = {\n      query: (valueBeforeUpDown || value).trim()\n    };\n`\n\nIf [onSuggestionFocused](https://github.com/moroshko/react-autosuggest/issues/168) is implemented, this could be squashed at the same time.\n",
+      "comments": [
+        {
+          "url": "https://github.com/moroshko/react-autosuggest/issues/268#issuecomment-253978386",
+          "body": "@emersonyu First of all, thanks a lot for a properly submitted issue. This is already a great contribution to this project!\n\nThis is clearly a bug. `valueBeforeUpDown` should not change to `null` on mouse leave in this case.\n\nI hope to find time to fix this soon.\n"
+        },
+        {
+          "url": "https://github.com/moroshko/react-autosuggest/issues/268#issuecomment-254686721",
+          "body": "This is fixed in [v7.0.1](https://github.com/moroshko/react-autosuggest/releases/tag/v7.0.1) now.\n"
+        },
+        {
+          "url": "https://github.com/moroshko/react-autosuggest/issues/268#issuecomment-255262925",
+          "body": "Thanks @moroshko! Will test it out this week and let you know if there are any other issues related to this.\n"
+        }
+      ]
+    },
+    {
+      "repo": "moroshko/react-autosuggest",
+      "number": 482,
+      "title": "Component requires double Tab press to advance focus (with no interactions)",
+      "url": "https://github.com/moroshko/react-autosuggest/issues/482",
+      "origin": "repo:moroshko/react-autosuggest is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Reporter confirms custom suggestion component caused behavior.",
+      "issueBody": "### Background\r\n\r\nI have been trying to use the AutoSuggest component to create a wrapper to add some predefined and \"extended\" functionality for our app. I have been really appreciating the accessibility of the component (enabling keyboard/mouse interactions fluently) but have discovered a possible issue with tab-to-advance (in specific conditions).\r\n\r\nIf a user is tabbing through a form, when the focus reaches the AutoComplete it will automatically open the suggestion list (good). However, assuming the user **does not interact** with the component, the next <kbd>Tab</kbd> press will simply close the suggestions list and **not advance** to the next component. Pressing <kbd>Tab</kbd> again will advance to the next component as normal. Strangely, reversing through the order works perfectly with <kbd>Shift + Tab</kbd> and the component will open the suggestions list upon receiving focus and close it **and** move to the previous component if the keys are pressed again.\r\n\r\n**Additional Details:**\r\n\r\n- Suggestion list renders upon focus\r\n- When search text is the same as previously selected value, all suggestions are displayed (only matching ones otherwise)\r\n- Custom input is wrapped in an HOC to manage the UI (border when focused). The HOC has hooks for `onBlur` and `onFocus` (changes the border colour, helps with \"testing\" focus)\r\n\r\n### CodePen\r\n\r\n- I was unable to replicate this issue in a CodePen at the moment which makes me wonder if it is something in our wrapper component. However, we are using a possibly unique combination (but not likely) of parameters which may introduce an edge case.\r\n\r\n### Steps to Reproduce:\r\n\r\n- Component has `shouldRenderSuggestions={true}`\r\n\r\n1. Focus on the input field (_selections display_)\r\n2. Press <kbd>Tab</kbd> without interacting otherwise (_menu closes but focus doesn't appear to shift_)\r\n3. Press <kbd>Tab</kbd> again (_focus now shifts to next element, menu opens_)\r\n4. Press <kbd>Shift + Tab</kbd> (_focus shifts back immediately, current menu closes and new menu opens_)\r\n\r\n**Observed behaviour:** If no interaction is provided, focus doesn't immediately shift to next focusable element after the selections close (_with suggestions displaying on focus_).\r\n\r\n**Expected behaviour:** Focus should immediately shift to the next focusable element after the selections close.\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/moroshko/react-autosuggest/issues/482#issuecomment-349095291",
+          "body": "As it turns out there was a custom component that we were rendering for the Suggestion item that caused this issue. Replacing it with a `div` solved the problem."
+        }
+      ]
+    },
+    {
+      "repo": "moroshko/react-autosuggest",
+      "number": 398,
+      "title": "On Focus render all suggestion and retain previously selected value.",
+      "url": "https://github.com/moroshko/react-autosuggest/issues/398",
+      "origin": "repo:moroshko/react-autosuggest is:issue is:closed focus in:title",
+      "disposition": "not admitted",
+      "reason": "Configuration question resolved by reporter, no library regression established.",
+      "issueBody": "In my app, i want render all the suggestions each time user focuses and if user has selected any value previously that should remain. For eg: If user has selected C# and blurs out. Now again user focuses back on input field , the suggested value 'C#' should remain and all the suggestions should be rendered. Is there way to do this ? I tried setting suggestions onFocus didn't work. I'm attaching my component where i have used \r\n```js\r\nimport React, { Component } from 'react';\r\nimport { connect } from 'react-redux';\r\nimport Autosuggest from 'react-autosuggest';\r\nimport { fromJS } from 'immutable';\r\nimport { actions } from '../../redux/modules/Rulebook';\r\n\r\n/**\r\n@projectList is list of projectList to filter\r\n@value is value to filter\r\n@returns suggestions for auto suggest\r\n*/\r\nfunction getSuggestions(value, projectList) {\r\n    const inputValue = value.trim().toLowerCase();\r\n    const inputLength = inputValue.length;\r\n    let suggestions = projectList;\r\n    if (inputLength > 0) {\r\n        suggestions = projectList.filter(content =>\r\n            content.toLowerCase().includes(inputValue)\r\n        );\r\n    }\r\n    return suggestions;\r\n}\r\n\r\nconst getSuggestionValue = suggestion => suggestion;\r\n\r\nconst renderSuggestion = suggestion => (\r\n    <div> {suggestion} </div>\r\n);\r\n\r\n/**\r\n * RulebookModal\r\n * Description of what this component does\r\n * goes here.\r\n */\r\nexport class RulebookModalComponent extends Component {\r\n    constructor(props) {\r\n        super(props);\r\n        const projectList = props.projectList.map(item => item.get('name')).toJS();\r\n        let value = '';\r\n        if (props.questionBuilder.get('projectId')) {\r\n            value = props.projectList.find(item =>\r\n                item.get('id') === props.questionBuilder.get('projectId')\r\n            ).get('name');\r\n        }\r\n        const buttonText = props.type === 'create' ? `CREATE ${props.builderType}` :\r\n            `CREATE DUPLICATED ${props.builderType}`;\r\n        this.state = {\r\n            value,\r\n            suggestions: getSuggestions('', projectList),\r\n            projectList,\r\n            buttonText,\r\n            showSuggestions: false,\r\n            toClone: props.type === 'duplicate',\r\n            hasCloneModal: props.hasCloneModal\r\n        };\r\n        this.getOptions = this.getOptions.bind(this);\r\n        this.selectProjectType = this.selectProjectType.bind(this);\r\n        this.selectContentOwner = this.selectContentOwner.bind(this);\r\n        this.selectPlatform = this.selectPlatform.bind(this);\r\n        this.getTemplateInfo = this.getTemplateInfo.bind(this);\r\n        this.getRuleBookInfo = this.getRuleBookInfo.bind(this);\r\n        this.filterProjectTypeList = this.filterProjectTypeList.bind(this);\r\n        this.createQuestionBuilder = this.createQuestionBuilder.bind(this);\r\n        this.uniquePlatformList = this.uniquePlatformList.bind(this);\r\n        this.getNameById = this.getNameById.bind(this);\r\n        this.isValidBuilder = this.isValidBuilder.bind(this);\r\n        this.onChange = this.onChange.bind(this);\r\n        this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);\r\n        this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);\r\n        this.onSuggestionSelected = this.onSuggestionSelected.bind(this);\r\n        this.onFocus = this.onFocus.bind(this);\r\n        this.onBlur = this.onBlur.bind(this);\r\n        this.setCloneState = this.setCloneState.bind(this);\r\n        this.getModalBody = this.getModalBody.bind(this);\r\n        this.setDisplayTitle = this.setDisplayTitle.bind(this);\r\n    }\r\n\r\n    componentWillReceiveProps(nextProps) {\r\n        if (nextProps.apiError && (nextProps.apiError !== this.props.apiError)) {\r\n            const buttonText = this.props.type === 'create' ? `CREATE ${this.props.builderType}` :\r\n            `CREATE DUPLICATED ${this.props.builderType}`;\r\n            this.setState({ buttonText });\r\n        }\r\n    }\r\n\r\n    onChange(event, { newValue }) {\r\n        this.setState({\r\n            value: newValue\r\n        });\r\n    }\r\n\r\n    onFocus() {\r\n        this.setState({ showSuggestions: true });\r\n    }\r\n\r\n    onBlur() {\r\n        this.setState({ showSuggestions: false });\r\n        if (!this.state.value) {\r\n            this.props.selectContentOwner({ projectId: '' });\r\n        }\r\n    }\r\n\r\n    onSuggestionsFetchRequested({ value }) {\r\n        this.setState({\r\n            suggestions: getSuggestions(value, this.state.projectList)\r\n        });\r\n    }\r\n\r\n    onSuggestionsClearRequested() {\r\n        this.setState({\r\n            suggestions: getSuggestions('', this.state.projectList)\r\n        });\r\n    }\r\n\r\n    onSuggestionSelected(event, { suggestionValue }) {\r\n        this.setState({ showSuggestions: false });\r\n        const selectedProject = this.props.projectList.find(item =>\r\n            item.get('name') === suggestionValue\r\n        );\r\n        this.props.selectContentOwner({ projectId: parseInt(selectedProject.get('id'), 10) });\r\n    }\r\n\r\n    getNameById(list, id, fieldName) {\r\n        const currItem = list.find(arr => arr.get('id') === id);\r\n        if (fieldName === 'projectType' && this.props.builderType === 'rulebook') {\r\n            return (currItem ? `${currItem.get(fieldName)} - ${currItem.get('platform')}` : '');\r\n        }\r\n        return (currItem ? currItem.get(fieldName) : '');\r\n    }\r\n\r\n    getOptions(list, type, hasValueSelected) {\r\n        const placeHolders = { projectType: 'Choose a template',\r\n            partner: 'Select partner',\r\n            contentOwner: 'Choose a content owner',\r\n            title: 'Title Name (optional)',\r\n            platform: 'Select Platform',\r\n            displayTitle: 'Choose a template'\r\n        };\r\n        let options = [];\r\n        if (list) {\r\n            const subArray = Array.from(new Set(list.map(item => item.get('id'))));\r\n            options = subArray.map((item) => {\r\n                const fieldLabel = type === 'contentOwner' ? 'name' : type;\r\n\r\n                const option = (<option key={item} value={item}>\r\n                    {this.getNameById(list, item, fieldLabel)}\r\n                </option>);\r\n                return option;\r\n            });\r\n        }\r\n        if (type) {\r\n            options.unshift(<option key={0} value=\"\" disabled={hasValueSelected}>\r\n                {placeHolders[type]}</option>);\r\n        }\r\n        return options;\r\n    }\r\n\r\n    getProjectTypeTag() {\r\n        let returnObj = (<select\r\n            id=\"create-rulebook-project-type-dropdown\"\r\n            className=\"h40\"\r\n            onChange={(e) => this.selectProjectType(e)}\r\n            value={this.props.questionBuilder.get('projectTypeId')}\r\n        >\r\n            {this.getOptions(this.props.projectTypeList, 'projectType',\r\n            this.props.questionBuilder.get('projectTypeId'))}\r\n        </select>);\r\n        if (this.state.hasCloneModal !== undefined && this.state.toClone) {\r\n            const publishedList = this.props.templateList.map(template =>\r\n                fromJS({ id: template.get('id'),\r\n                    displayTitle: template.getIn(['versions', 0, 'displayTitle'])\r\n                })\r\n            );\r\n            returnObj = (<select\r\n                className=\"h40 test-select-template-component\"\r\n                onChange={(e) => this.selectTemplate(e)}\r\n                value={this.props.questionBuilder.get('builderId')}\r\n            >\r\n                {this.getOptions(publishedList, 'displayTitle',\r\n                this.props.questionBuilder.get('builderId'))}\r\n            </select>);\r\n        }\r\n        return returnObj;\r\n    }\r\n\r\n    getTemplateInfo() {\r\n        return (<div className=\"w450\">\r\n            <div className=\"custom-select mb10 required\">\r\n                <div className=\"tiny-label\">Choose Platform</div>\r\n                <select\r\n                    id=\"create-template-platform-dropdown\"\r\n                    onChange={(e) => this.selectPlatform(e)}\r\n                    className=\"h40\"\r\n                >\r\n                    {this.getOptions(this.uniquePlatformList(), 'platform',\r\n                        this.props.questionBuilder.get('platform'))}\r\n                </select>\r\n            </div>\r\n            <div className=\"custom-select mb10 required\">\r\n                <div className=\"tiny-label\">Select Project </div>\r\n                <select\r\n                    id=\"create-template-project-type-dropdown\"\r\n                    onChange={(e) => this.selectProjectType(e)}\r\n                    className=\"h40\"\r\n                >\r\n                    {this.getOptions(this.filterProjectTypeList(), 'projectType',\r\n                        this.props.questionBuilder.get('projectTypeId'))}\r\n                </select>\r\n            </div>\r\n        </div>);\r\n    }\r\n\r\n    setCloneState(value) {\r\n        const buttonText = value ? 'CREATE DUPLICATED RULEBOOK' : 'CREATE RULEBOOK';\r\n        this.setState({ toClone: value });\r\n        this.setState({ hasCloneModal: false });\r\n        this.setState({ buttonText });\r\n    }\r\n\r\n    getRuleBookInfo() {\r\n        const disableCOClass = this.props.questionBuilder.get('projectTypeId') ?\r\n            '' : 'disabled';\r\n        return (<div className=\"row text-left\">\r\n            <div className=\"col-95 custom-select mb10 required\">\r\n                <div className=\"tiny-label\">Choose a template</div>\r\n                {this.getProjectTypeTag()}\r\n            </div>\r\n            <div className={`col-95 custom-select mb10 required react-dd ${disableCOClass}`}>\r\n                <div className=\"tiny-label\">Select content owner</div>\r\n                {this.renderAutoSuggest()}\r\n            </div>\r\n            <div className=\"col-95 mb10\">\r\n                <div className=\"tiny-label\">RuleBook Name</div>\r\n                <input\r\n                    className=\"h40\"\r\n                    value={this.props.questionBuilder.get('displayTitle')}\r\n                    type=\"text\"\r\n                    onChange={this.setDisplayTitle}\r\n                />\r\n            </div>\r\n            <div className=\"col-5\" >\r\n                <a className=\"inblock lh0 mb10 ml10 alignmiddle show-tip ontop cursor\">\r\n                    <svg className=\"icon-w20 theme-fill\">\r\n                        <use\r\n                            xlinkHref=\"../../images/sprite.svg#info\"\r\n                            xmlnsXlink=\"http://www.w3.org/1999/xlink\"\r\n                        />\r\n                    </svg>\r\n                    <div className=\"tooltip on-right f12 p10 lh-n animate width225\">\r\n                        Entering a title name & ID makes this rulebook applicable only to that\r\n                        title.\r\n                    </div>\r\n                </a>\r\n            </div>\r\n        </div>);\r\n    }\r\n\r\n    getModalBody() {\r\n        let builderDiv = null;\r\n        if (this.props.builderType) {\r\n            builderDiv = (this.props.builderType.indexOf('rulebook') > -1 ?\r\n            this.getRuleBookInfo() : this.getTemplateInfo());\r\n        }\r\n\r\n        const headerText = !this.state.toClone ? 'Add new' : 'Duplicate';\r\n        let returnObj = (<div>\r\n            <div\r\n                id={`create-${this.props.builderType}-modal-header`}\r\n                className=\"fw-l f24 text-capitalize\"\r\n            >\r\n                {headerText} {(this.props.builderType)}\r\n            </div>\r\n            <div className=\"f12 lh-n fw-l text-left mb5\">\r\n                <b className=\"req-dot mr5\" />\r\n                Required fields\r\n            </div>\r\n            {builderDiv}\r\n            <div className=\"pt20 mb10\">\r\n                <button\r\n                    id={`create-${this.props.builderType}-button`}\r\n                    className=\"btn fw-sb f12 p10 zefr-primary cursor\r\n                            test-create-question-builder\"\r\n                    onClick={this.createQuestionBuilder}\r\n                    disabled={this.isValidBuilder()}\r\n                >\r\n                    {this.state.buttonText}\r\n                </button>\r\n            </div>\r\n        </div>);\r\n        if (this.state.hasCloneModal) {\r\n            returnObj = (<div className=\"test-clonemodal-component\">\r\n                CREATE RULEBOOK\r\n                <div className=\"pt20 mb10\">\r\n                    <button\r\n                        className=\"btn fw-sb f12 p10 zefr-primary cursor\r\n                            test-clone-rulebook-button pl30 pr30\"\r\n                        onClick={() => this.setCloneState(true)}\r\n                    >\r\n                        CLONE FROM EXISTING TEMPLATE\r\n                    </button>\r\n                </div>\r\n                <div className=\"pt20 mb10\">\r\n                    <button\r\n                        className=\"btn fw-sb f12 p10 zefr-primary cursor\r\n                            test-create-rulebook-builder\"\r\n                        onClick={() => this.setCloneState(false)}\r\n                    >\r\n                        CREATE NEW RULEBOOK FROM SCRATCH\r\n                    </button>\r\n                </div>\r\n            </div>);\r\n        }\r\n        return returnObj;\r\n    }\r\n\r\n    setDisplayTitle(e) {\r\n        this.props.setDisplayTitle({ displayTitle: e.target.value });\r\n    }\r\n\r\n    uniquePlatformList() {\r\n        if (this.props.projectTypeList && this.props.projectTypeList.size) {\r\n            const temp = this.props.projectTypeList.map(el => el.get('platform'));\r\n            return this.props.projectTypeList.filter((el, i) =>\r\n                temp.indexOf(el.get('platform')) === i\r\n            );\r\n        }\r\n        return null;\r\n    }\r\n\r\n    // filters projecttype list based on selected platform\r\n    filterProjectTypeList() {\r\n        let list;\r\n        if (this.props.questionBuilder && this.props.questionBuilder.get('platform')) {\r\n            list = this.props.projectTypeList.filter(item =>\r\n                item.get('platform') === this.props.questionBuilder.get('platform')\r\n            );\r\n        }\r\n        return list;\r\n    }\r\n\r\n    selectProjectType(e) {\r\n        this.props.selectProjectType({ projectTypeId: e.target.value });\r\n        this.setState({ value: '' });\r\n    }\r\n\r\n    selectContentOwner(e) {\r\n        this.props.selectContentOwner({ projectId: e.target.value });\r\n    }\r\n\r\n    selectPlatform(e) {\r\n        const project = this.props.projectTypeList.find(item =>\r\n            item.get('id') === parseInt(e.target.value, 10)\r\n        );\r\n        this.props.selectPlatform(project.get('platform'));\r\n    }\r\n\r\n    selectTemplate(e) {\r\n        const selectedBuilder = this.props.templateList.find(template =>\r\n            template.get('id') === parseInt(e.target.value, 10)\r\n        );\r\n        this.setState({ value: '' });\r\n        if (selectedBuilder) {\r\n            const builder = { builderId: selectedBuilder.get('id'),\r\n                builderType: 'rulebook',\r\n                projectTypeId: selectedBuilder.get('projectTypeId')\r\n            };\r\n            this.props.initialiseQuestionBuilder(builder);\r\n        }\r\n    }\r\n\r\n    createQuestionBuilder() {\r\n        const buttonText = this.props.type === 'create' ? 'CREATING' : 'DUPLICATING';\r\n        this.setState({ buttonText });\r\n        if (!this.state.toClone) {\r\n            this.props.createQuestionBuilder(this.props.questionBuilder);\r\n        } else {\r\n            if (this.props.questionData && !this.props.questionData.size) {\r\n                this.props.fetchQuestionData();\r\n            }\r\n            this.props.duplicateBuilder(this.props.questionBuilder);\r\n        }\r\n    }\r\n\r\n    isValidBuilder() {\r\n        let validBuilder = false;\r\n        if (this.props.questionBuilder.get('builderType') === 'rulebook') {\r\n            validBuilder = isNaN(this.props.questionBuilder.get('projectTypeId')) ||\r\n                isNaN(this.props.questionBuilder.get('projectId')) ||\r\n                !this.props.questionBuilder.get('projectId') ||\r\n                !this.props.questionBuilder.get('displayTitle');\r\n        } else {\r\n            validBuilder = isNaN(this.props.questionBuilder.get('projectTypeId'));\r\n        }\r\n        return validBuilder;\r\n    }\r\n\r\n    renderAutoSuggest() {\r\n        let returnObj = null;\r\n        const { value, suggestions } = this.state;\r\n        const inputProps = {\r\n            placeholder: 'Select content owner',\r\n            value,\r\n            onChange: this.onChange,\r\n            onBlur: this.onBlur,\r\n            onFocus: this.onFocus,\r\n            id: 'create-rulebook-content-owner-dropdown',\r\n            className: 'content-owner'\r\n        };\r\n        returnObj = (<Autosuggest\r\n            suggestions={suggestions}\r\n            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}\r\n            onSuggestionsClearRequested={this.onSuggestionsClearRequested}\r\n            getSuggestionValue={getSuggestionValue}\r\n            renderSuggestion={renderSuggestion}\r\n            inputProps={inputProps}\r\n            onSuggestionSelected={this.onSuggestionSelected}\r\n            onBlur={(e) => this.updateGroupName(e)}\r\n            alwaysRenderSuggestions={this.state.showSuggestions}\r\n        />);\r\n        return returnObj;\r\n    }\r\n\r\n    render() {\r\n        const hideClass = this.props.showModal ? '' : 'hide';\r\n        let projectTypeSelectedClass = null;\r\n        if (this.props.questionBuilder && this.props.questionBuilder.get('projectTypeId')) {\r\n            const selectedProject = this.props.projectTypeList.find(item =>\r\n                parseInt(this.props.questionBuilder.get('projectTypeId'), 10) ===\r\n                item.get('id')\r\n            );\r\n            projectTypeSelectedClass = selectedProject ? selectedProject.get('projectType') : '';\r\n        }\r\n        const errorMessage = this.props.apiError && this.props.apiError.size ?\r\n        (<div className=\"error-banner fw-r\">\r\n            {this.props.apiError.getIn([0, 'error'])}\r\n        </div>) : '';\r\n        return (\r\n            <div className=\"create-rulebook-modal test-rulebook-modal-component\">\r\n                {errorMessage}\r\n                <div id={`create-${this.props.builderType}-modal`} className={`popup ${hideClass}`}>\r\n                    <div\r\n                        className={'centermiddle text-center w500 fw-l ' +\r\n\t\t\t\t\t\t\t`whitebox p20 pl30 pr30 ${projectTypeSelectedClass}`}\r\n                    >\r\n                        <a\r\n                            className=\"topright mr15 mt15 cursor\"\r\n                            onClick={() => this.props.setModal(false)}\r\n                            id={`create-${this.props.builderType}-button`}\r\n                        >\r\n                            <svg className=\"icon-w20\">\r\n                                <use\r\n                                    xlinkHref=\"../../images/sprite.svg#close\"\r\n                                    xmlnsXlink=\"http://www.w3.org/1999/xlink\"\r\n                                />\r\n                            </svg>\r\n                        </a>\r\n                        {this.getModalBody()}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        );\r\n    }\r\n}\r\n\r\nconst mapStateToProps = (state) => {\r\n    const projectList = state.Rulebook.get('projectList').sort((a, b) =>\r\n        a.get('name').localeCompare(b.get('name'))\r\n    );\r\n    return {\r\n        projectList,\r\n        projectTypeList: state.Rulebook.get('projectTypeList'),\r\n        titleList: state.Rulebook.get('titleList'),\r\n        questionBuilder: state.Rulebook.get('questionBuilder'),\r\n        apiError: state.Rulebook.get('apiError'),\r\n        templateList: state.Rulebook.get('templateList').get('questionBuilders'),\r\n        questionData: state.DecisionTree.get('questionData')\r\n    };\r\n};\r\n\r\n/**\r\n * [propTypes description]\r\n */\r\nRulebookModalComponent.propTypes = {\r\n    projectList: React.PropTypes.object,\r\n    projectTypeList: React.PropTypes.object,\r\n    questionBuilder: React.PropTypes.object,\r\n    apiError: React.PropTypes.object,\r\n    selectPlatform: React.PropTypes.func,\r\n    selectProjectType: React.PropTypes.func,\r\n    selectContentOwner: React.PropTypes.func,\r\n    setDisplayTitle: React.PropTypes.func,\r\n    createQuestionBuilder: React.PropTypes.func,\r\n    builderType: React.PropTypes.string,\r\n    showModal: React.PropTypes.bool,\r\n    setModal: React.PropTypes.func,\r\n    type: React.PropTypes.string,\r\n    duplicateBuilder: React.PropTypes.func,\r\n    templateList: React.PropTypes.object,\r\n    hasCloneModal: React.PropTypes.bool,\r\n    initialiseQuestionBuilder: React.PropTypes.func,\r\n    fetchQuestionData: React.PropTypes.func,\r\n    questionData: React.PropTypes.object\r\n};\r\n\r\nconst RulebookModal = connect(\r\n    mapStateToProps,\r\n    actions\r\n)(RulebookModalComponent);\r\n\r\nexport default RulebookModal;\r\n```\r\n\r\n\r\n",
+      "comments": [
+        {
+          "url": "https://github.com/moroshko/react-autosuggest/issues/398#issuecomment-312846125",
+          "body": "Figured out a way. Thanks :)"
+        }
+      ]
+    }
+  ]
+}
