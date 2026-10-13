@@ -4304,3 +4304,13 @@ The focus readers stay unchanged, and the Vuetify goal failure stays a journey-g
 Under D6, the prepared archive is published to results at `5774bab629a68509c02d8789c69714b5cc633738`, directory `m9-registered-evaluation/`. Bundle SHA-256 `5a4fadb4bc7eb1db265413227afe5507cc6468e26a0313ff758d35a08236fb8d`, 151,272 bytes. All 40 raw files are verified against the committed manifest, again from the pushed branch. The pre-committed analysis reproduces `registered-results.json` byte for byte from the published copy. There are no NVDA binaries, and the six earlier archives are unchanged. The results README gains M9 verification steps (DR-0045). Publication metadata: docs/research/m9-evaluation-evidence/archive-publication.json.
 
 PR21 had no review threads. Devin reported no issues; the Codex review did not run because its usage limit was reached. All three exploratory workflows (P40, P41, P42) remain `disabled_manually`. No further run, remedy, freeze, rescore or Phase 1 commitment is authorised. The proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
+
+## DR-0123 Owner approval to publish the findings write-up
+
+2026-10-13. Approved. Publishing is an outward action, so it needs the owner's approval (golden rules). The owner instructed:
+
+> publish it as docs/findings.md in the spike repo too
+
+`docs/findings.md` is a plain-language write-up of the accepted 77-pattern results for practitioners. It was drafted first for the owner's personal website, and this copy is adapted for GitHub. Front matter becomes a title and a standfirst. The table keeps its row and column headers but drops the decorative rate bars, because GitHub strips their styling. Links to this repository become relative.
+
+Every figure comes from accepted records: [G4-second-round.md](gates/G4-second-round.md), [the frozen scorer output](research/m7-second-round-evidence/combined-scorer-report.md), [M7-soak.md](reports/M7-soak.md) and `protocol/` at `protocol-freeze-v4`. There is no new run, analysis, rescore or change to a frozen path, so the protocol hash is unchanged. The write-up reports capability in this corpus, not prevalence, and states the limits recorded in those reports. It contains no commercial content (D5) and no NVDA binaries (D6). Runner time and cost are not reported, because no accepted record gives them. M9 stays closed, and no further run is authorised. The Phase 1 proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
