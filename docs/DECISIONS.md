@@ -4314,3 +4314,15 @@ PR21 had no review threads. Devin reported no issues; the Codex review did not r
 `docs/findings.md` is a plain-language write-up of the accepted 77-pattern results for practitioners. It was drafted first for the owner's personal website, and this copy is adapted for GitHub. Front matter becomes a title and a standfirst. The table keeps its row and column headers but drops the decorative rate bars, because GitHub strips their styling. Links to this repository become relative.
 
 Every figure comes from accepted records: [G4-second-round.md](gates/G4-second-round.md), [the frozen scorer output](research/m7-second-round-evidence/combined-scorer-report.md), [M7-soak.md](reports/M7-soak.md) and `protocol/` at `protocol-freeze-v4`. There is no new run, analysis, rescore or change to a frozen path, so the protocol hash is unchanged. The write-up reports capability in this corpus, not prevalence, and states the limits recorded in those reports. It contains no commercial content (D5) and no NVDA binaries (D6). Runner time and cost are not reported, because no accepted record gives them. M9 stays closed, and no further run is authorised. The Phase 1 proceed/stop decision stays on Friday 27 November 2026 (DR-0003).
+
+## DR-0124 README rewritten for readers outside the project
+
+2026-11-05. Decided by Claude under DR-0045. The owner asked:
+
+> Please link the projects findings to the repos readme and generally tidy up the repo so I can share it more widely
+
+- **README.** It now opens with what the study tested and a link to [docs/findings.md](findings.md), then gives the 77-pattern results table from the findings, how to check the results, how the study ran, a map of the repository, the development commands with the existing security note, licence and credits, and contact. Every figure is copied from the findings, which take theirs from accepted records (DR-0123). The time-saving estimate for triggered steps is left to the findings, where its limit is stated beside it. The old status line, "Phase 0 (instrument validation)", is replaced by the closed state recorded in DR-0122.
+- **Placeholder.** `docs/gates/.gitkeep` is removed, because the directory has held gate reports since G1. The placeholders under `corpus/` and `fixtures/` stay, because those are frozen paths.
+- **Left alone.** No frozen path changes, so the protocol hash is unchanged. That includes `package.json`, whose description still says "exploratory, Phase 0". The GitHub repository description says the same, but repository settings are the owner's to apply (D7), so it is left for the owner. No branch, tag or release is created or deleted.
+
+No run, analysis, rescore or measurement change. M9 stays closed, and no further run is authorised.
